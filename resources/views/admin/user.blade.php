@@ -32,34 +32,48 @@
                     <div class="table-responsive table-card mt-3 mb-1">
                         <table class="table align-middle table-nowrap" id="customerTable">
                             <thead class="table-light">
+                                @if(session('success'))
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        Swal.fire({
+                                            title: "Good job!",
+                                            text: "{{ session('success') }}",
+                                            icon: "success",
+                                            showCancelButton: true,
+                                            confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                                            cancelButtonClass: "btn btn-danger w-xs mt-2",
+                                            buttonsStyling: false,
+                                            showCloseButton: true
+                                        });
+                                    });
+                                </script>
+                                @endif
                                 <tr>
                                     <th class="text-center" data_sort="no">No</th>
                                     <th class="text-center" data-sort="customer_name">Username</th>
                                     <th class="text-center" data-sort="email">Email</th>
                                     <th class="text-center" data-sort="phone">Alamat</th>
                                     <th class="text-center" data-sort="date">No.HP</th>
+                                    <th class="text-center" data-sort="date">Role</th>
                                     <th class="text-center" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
+                                @foreach ($users as $index => $user)
                                 <tr>
-                                    <th class="text-center">1</th>
+                                    <th class="text-center">{{ $index + 1 }}</th>
                                     <td class="text-center" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="text-center">Mary Cousar</td>
-                                    <td class="text-center">marycousar@velzon.com</td>
-                                    <td class="text-center">Jember</td>
-                                    <td class="text-center">580-464-4694</td>
+                                    <td class="text-center">{{ $user->name }}</td>
+                                    <td class="text-center">{{ $user->email }}</td>
+                                    <td class="text-center">{{ $user->alamat }}</td>
+                                    <td class="text-center">{{ $user->no_telp }}</td>
+                                    <td class="text-center">{{ $user->role }}</td>
                                     <td class="text-center">
-                                        <div class="d-flex gap-2">
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                            </div>
-                                            <div class="remove">
-                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                            </div>
-                                        </div>
+                                        <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$user->id}}">Edit</button>
+                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal{{$user->id}}">Remove</button>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <div class="noresult" style="display: none">
@@ -92,6 +106,7 @@
     <!-- end col -->
 </div>
 
+<!-- add-modal -->
 <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -99,38 +114,57 @@
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Pengguna</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
-            <form>
+            <form method="POST" action="{{ route('user.create') }}">
+                @csrf
                 <div class="modal-body">
-
-                    <div class="mb-3" id="modal-id" style="display: none;">
-                        <label for="id-field" class="form-label">ID</label>
-                        <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                    </div>
 
                     <div class="mb-3">
                         <label for="customername-field" class="form-label">Username</label>
-                        <input type="text" id="customername-field" class="form-control" placeholder="Masukkan Username" required />
+                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name')}}" placeholder="Masukkan Username" required />
                     </div>
+
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="email-field" class="form-label">Email</label>
-                        <input type="email" id="email-field" class="form-control" placeholder="Masukan Email" required />
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Masukan Email" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email-field" class="form-label">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Masukan Password" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Alamat</label>
-                        <input type="text" id="alamat-field" class="form-control" placeholder="Masukan Alamat" required />
+                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukan Alamat" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="phone-field" class="form-label">Phone</label>
-                        <input type="text" id="phone-field" class="form-control" placeholder="Masukan No.HP" required />
+                        <label for="phone-field" class="form-label">No.Hp</label>
+                        <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="Masukan No.HP" required />
                     </div>
+
+                    <div class="mb-3">
+                        <label for="phone-field" class="form-label">Role</label>
+                        <select class="form-select mb-3" name="role" id="role">
+                            <option selected disabled>Pilih Role Pengguna</option>
+                            <option value="supper-admin">Supper Admin</option>
+                            <option value="admin">Admin</option>
+                            <option value="executive">Executive</option>
+                            <option value="surveyor">Surveyor</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success" id="add-btn">Tambah Customer</button>
+                        <button type="submit" class="btn btn-primary">Tambah Pengguna</button>
                     </div>
                 </div>
             </form>
@@ -138,45 +172,54 @@
     </div>
 </div>
 
-<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- edit-modal -->
+@foreach ($users as $user)
+<div class="modal fade" id="showModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Pengguna</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
-            <form>
+            <form action="{{ route('user.update', $user->id) }}" method="POST">
+                @csrf
+                @method('POST')
                 <div class="modal-body">
-
-                    <div class="mb-3" id="modal-id" style="display: none;">
-                        <label for="id-field" class="form-label">ID</label>
-                        <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                    </div>
-
                     <div class="mb-3">
                         <label for="customername-field" class="form-label">Username</label>
-                        <input type="text" id="customername-field" class="form-control" placeholder="Masukkan Username" required />
+                        <input type="text" id="customername-field" name="name" value="{{$user->name}}" class="form-control" placeholder="Masukkan Username" required />
                     </div>
 
                     <div class="mb-3">
                         <label for="email-field" class="form-label">Email</label>
-                        <input type="email" id="email-field" class="form-control" placeholder="Masukan Email" required />
+                        <input type="email" id="email-field" name="email" value="{{$user->email}}" class="form-control" placeholder="Masukan Email" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Alamat</label>
-                        <input type="text" id="alamat-field" class="form-control" placeholder="Masukan Alamat" required />
+                        <input type="text" id="alamat-field" name="alamat" value="{{$user->alamat}}" class="form-control" placeholder="Masukan Alamat" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="phone-field" class="form-label">Phone</label>
-                        <input type="text" id="phone-field" class="form-control" placeholder="Masukan No.HP" required />
+                        <label for="phone-field" class="form-label">No.Hp</label>
+                        <input type="text" id="phone-field" name="no_telp" value="{{$user->no_telp}}" class="form-control" placeholder="Masukan No.HP" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone-field" class="form-label">Role</label>
+                        <select class="form-select mb-3" name="role" id="role">
+                            <option selected disabled>Pilih Role Pengguna</option>
+                            <option value="supper-admin" {{ $user->role === 'supper-admin' ? 'selected' : '' }}>Supper Admin</option>
+                            <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
+                            <option value="executive" {{ $user->role === 'executive' ? 'selected' : '' }}>Executive</option>
+                            <option value="surveyor" {{ $user->role === 'surveyor' ? 'selected' : '' }}>Surveyor</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+                        <button type="submit" class="btn btn-primary" id="edit-btn">Update</button>
                     </div>
                 </div>
             </form>
@@ -184,7 +227,8 @@
     </div>
 </div>
 
-<div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
+<!-- delete-modal -->
+<div class="modal fade zoomIn" id="deleteRecordModal{{$user->id}}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -200,10 +244,15 @@
                 </div>
                 <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                     <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn w-sm btn-danger " id="delete-record">Ya, Hapus!</button>
+                    <form action="{{ route('user.destroy', $user->id)}}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type=" button" class="btn w-sm btn-danger " id="delete-record{{$user->id}}">Ya, Hapus!</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endforeach
 @endsection

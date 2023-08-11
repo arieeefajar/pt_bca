@@ -14,9 +14,6 @@
     <!-- plugin css -->
     <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <!-- Sweet Alert css-->
-    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-
     <!-- gridjs css -->
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/libs/gridjs/theme/mermaid.min.css') }}">
 
@@ -40,10 +37,10 @@
     <div id="layout-wrapper">
 
         <header id="page-topbar">
-            @include('layout.navbar')
+            @include('layout1.navbar')
         </header>
         <!-- ========== App Menu ========== -->
-        @include('layout.sidebar')
+        @include('layout1.sidebar')
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
@@ -77,7 +74,7 @@
             </div>
             <!-- End Page-content -->
 
-            @include('layout.footer')
+            @include('layout1.footer')
         </div>
         <!-- end main content-->
 
@@ -640,12 +637,6 @@
 
     <!-- barcharts init -->
     <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script>
-
-    <!-- Sweet Alerts js -->
-    <script src="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-
-    <!-- Sweet alert init js-->
-    <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
 </body>
 
 </html>

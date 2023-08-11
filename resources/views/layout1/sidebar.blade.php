@@ -32,46 +32,45 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/admin-dashboard" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link" href="/surveyor-dashboard" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
-                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Master</span>
+                        <i class="ri-file-text-line"></i> <span data-key="t-apps">Kuisioner</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="/user" class="nav-link"> <i class="ri-user-line"></i>User</a>
+                                <a href="/kepuasan-pelanggan" class="nav-link">Kepuasan Pelanggan</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/jenis-kuisioner" class="nav-link" data-key="t-chat"> <i class="ri-honour-line"></i>Jenis Kuisioner</a>
+                                <a href="/analisis-kompetitor" class="nav-link">Analisis Kompetitor</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/kuisioner" class="nav-link" data-key="t-mailbox"> <i class="ri-file-3-line"></i><span><span></span>Kuisioner</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/detail-kuisioner" class="nav-link" data-key="t-ecommerce"> <i class="ri-file-text-line"></i>Detail Kuisioner</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/perusahaan" class="nav-link" data-key="t-projects"> <i class="ri-home-3-line"></i>Perusahaan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/posisi" class="nav-link" data-key="t-tasks"> <i class="ri-vip-crown-line"></i>Posisi</a>
+                                <a href="/kekuatan-dan-kelemahan-pesaing" class="nav-link">Kekuatan dan Kelemahan Pesaing</a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/penyimpanan">
-                        <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
+                    <a class="nav-link menu-link" href="#sidebarApps1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-survey-line"></i> <span data-key="t-apps">Form Survey</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="/laporan">
-                        <i class="bx bxs-report"></i><span data-key="t-tables">Laporan</span>
-                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarApps1">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="/kepuasan-pelanggan" class="nav-link">Potensi Lahan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/analisis-kompetitor" class="nav-link">Pesaing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/analisis-kompetitor" class="nav-link">Toko</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>

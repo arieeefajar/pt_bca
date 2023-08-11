@@ -6,8 +6,23 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function supperAdmin()
     {
-        return view('admin.dashboard');
+        return view('dashboard.supperAdmin');
+    }
+
+    public function admin()
+    {
+        return view('dashboard.admin');
+    }
+
+    public function executive()
+    {
+        return view('dashboard.executive');
+    }
+
+    public function surveyor()
+    {
+        return view('surveyor.dashboard');
     }
 }
