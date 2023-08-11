@@ -2,27 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kuisioner;
 use Illuminate\Http\Request;
 
 class KuisionerController extends Controller
 {
     public function index()
     {
-        return view('admin.kuisioner');
+        $dataKuisioner = Kuisioner::all();
+        return view('admin.kuisioner', compact('dataKuisioner'));
     }
 
-    public function kepuasanPelanggan()
+    public function store(Request $request)
     {
-        return view('surveyor.kepuasanPelanggan');
+
+        $request->validate([
+            'nama_quisioner' => 'required',
+            'status_quisioner' => 'required|numeric',
+        ]);
+
+        Kuisioner::create([
+            'nama' => $request->nama_quisioner,
+            'status' => $request->status_quisioner,
+        ]);
+
+        return redirect('/kuisioner');
     }
 
-    public function analisisKompetitor()
+    public function update(Request $request)
     {
-        return view('surveyor.analisisKompetitor');
+        // dd($request->all());
+        $request->validate([
+            'nama_quisioner_edit' => 'required',
+            'status_quisioner_edit' => 'required|numeric',
+        ]);
+
+        $data = Kuisioner::findOrFail($request->id);
+        $data->update([
+            'nama' => $request->nama_quisioner_edit,
+            'status' => $request->status_quisioner_edit,
+        ]);
+
+        return redirect('/kuisioner');
     }
 
-    public function kekuatanKelemahanPesaing()
+    public function destroy($id)
     {
-        return view('surveyor.kekuatanKelemahanPesaing');
+        // dd($id);
+        $data = Kuisioner::findOrFail($id);
+        $data->delete();
+        return redirect('/kuisioner');
     }
 }

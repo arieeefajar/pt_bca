@@ -54,10 +54,20 @@ Route::post('/user/{id}', [UserController::class, 'update'])->name('user.update'
 Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 //jenis kuisioner routes
-Route::get('jenis-kuisioner', [JenisKuisionerController::class, 'index']);
+Route::prefix('jenis-kuisioner')->group(function () {
+    Route::get('/', [JenisKuisionerController::class, 'index']);
+    Route::get('/store', [JenisKuisionerController::class, 'store']);
+    Route::get('/update', [JenisKuisionerController::class, 'update']);
+    Route::get('/destroy/{id}', [JenisKuisionerController::class, 'destroy']);
+});
 
 // kuisioner routes
-Route::get('kuisioner', [KuisionerController::class, 'index']);
+Route::prefix('kuisioner')->group(function () {
+    Route::get('/', [KuisionerController::class, 'index']);
+    Route::post('/store', [KuisionerController::class, 'store']);
+    Route::post('/update', [KuisionerController::class, 'update']);
+    Route::get('/destroy/{id}', [KuisionerController::class, 'destroy']);
+});
 
 // detail kuisioner routes
 Route::get('detail-kuisioner', [DetailKuisionerController::class, 'index']);
