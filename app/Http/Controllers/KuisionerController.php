@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailKuisioner;
 use App\Models\Kuisioner;
 use Illuminate\Http\Request;
 
@@ -61,7 +62,10 @@ class KuisionerController extends Controller
 
     public function analisisPesaing()
     {
-        return view('surveyor.analisisPesaing');
+        $model_detail_kuisioner = new DetailKuisioner();
+        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner_analisis_pesaing();
+
+        return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
     }
 
     public function kekuatanKelemahanPesaing()
