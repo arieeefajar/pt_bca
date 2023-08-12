@@ -2,12 +2,74 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailKuisioner;
+use App\Models\JenisKuisioner;
+use App\Models\Kuisioner;
 use Illuminate\Http\Request;
 
 class DetailKuisionerController extends Controller
 {
     public function index()
     {
-        return view('admin.detailKuisioner');
+        $dataDetailKuisioner = DetailKuisioner::with('kuisioner', 'jenisKuisioner')->get();
+        $dataJenisKuisioner = JenisKuisioner::all();
+        $dataKuisioner = Kuisioner::all();
+
+        return view('admin.detailKuisioner', compact('dataDetailKuisioner', 'dataJenisKuisioner', 'dataKuisioner'));
+    }
+
+    // add data
+    public function store(Request $request)
+    {
+        // dd($request->all());
+
+        $request->validate([
+            'kuisioner' => 'required',
+            'jenis_kuisioner' => 'required',
+            'pertanyaan' => 'required',
+            'jenis_jawaban' => 'required|numeric',
+        ]);
+
+        DetailKuisioner::create([
+            'quisioner_id' => $request->kuisioner,
+            'jenis_quisioner_id' => $request->jenis_kuisioner,
+            'pertanyaan' => $request->pertanyaan,
+            'jenis_jawaban' => $request->jenis_jawaban,
+        ]);
+
+        return redirect('/detail-kuisioner');
+    }
+
+    // update data
+    public function update(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'id' => 'required',
+            'kuisioner' => 'required',
+            'jenis_kuisioner' => 'required',
+            'pertanyaan' => 'required',
+            'jenis_jawaban' => 'required|numeric',
+        ]);
+
+        $dataUpdate = DetailKuisioner::findOrFail($request->id);
+
+        $dataUpdate->update([
+            'quisioner_id' => $request->kuisioner,
+            'jenis_quisioner_id' => $request->jenis_kuisioner,
+            'pertanyaan' => $request->pertanyaan,
+            'jenis_jawaban' => $request->jenis_jawaban,
+        ]);
+
+        return redirect('/detail-kuisioner');
+    }
+
+    // delete data
+    public function destroy($id)
+    {
+        // dd($id);
+        $dataDestroy = DetailKuisioner::findOrFail($id);
+        $dataDestroy->delete();
+        return redirect('/detail-kuisioner');
     }
 }

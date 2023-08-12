@@ -16,4 +16,9 @@ class Kuisioner extends Model
         'nama',
         'status',
     ];
+
+    public function detailKuisioner()
+    {
+        return $this->hashMany(DetailKuisioner::class, 'id', 'quisioner_id');
+    }
 }
