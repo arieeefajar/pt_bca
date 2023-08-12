@@ -53,4 +53,19 @@ class KuisionerController extends Controller
         $data->delete();
         return redirect('/kuisioner');
     }
+
+    public function kepuasanPelanggan()
+    {
+        return view('surveyor.kepuasanPelanggan');
+    }
+
+    public function analisisPesaing()
+    {
+        return view('surveyor.analisisPesaing');
+    }
+
+    public function kekuatanKelemahanPesaing()
+    {
+        return view('surveyor.kekuatanKelemahanPesaing');
+    }
 }

@@ -30,7 +30,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="/analisis-kompetitor">
+                <a href="/analisis-pesaing">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -42,7 +42,7 @@
                                 <div class="flex-grow-1 ms-3">
                                     <p class="text-uppercase fw-semibold text-truncate text-muted mb-3"></p>
                                     <div class="d-flex align-items-center mb-3">
-                                        <h4 class="fs-4 flex-grow-1 mb-0">Kuisioner Analisis Kompetitor</h4>
+                                        <h4 class="fs-4 flex-grow-1 mb-0">Kuisioner Analisis Pesaing</h4>
                                     </div>
                                 </div>
                             </div>
@@ -117,27 +117,6 @@
                 </a>
             </div><!-- end col -->
 
-            <div class="col-xl-4">
-                <a href="">
-                    <div class="card card-animate">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <span class="avatar-title bg-soft-info text-info rounded-2 fs-2">
-                                        <i class="ri-survey-line text-info"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden ms-3">
-                                    <p class="text-uppercase fw-semibold text-muted text-truncate mb-3"></p>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h4 class="fs-4 flex-grow-1 mb-0">Form Survey Toko</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card body -->
-                    </div>
-                </a>
-            </div><!-- end col -->
         </div><!-- end row -->
 
         <div class="row">

@@ -44,7 +44,7 @@ Route::get('surveyor-dashboard', [DashboardController::class, 'surveyor']);
 // surveyor routes
 // kepuasan pelanggan routes
 Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan']);
-Route::get('analisis-kompetitor', [KuisionerController::class, 'analisisKompetitor']);
+Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing']);
 Route::get('kekuatan-dan-kelemahan-pesaing', [KuisionerController::class, 'kekuatanKelemahanPesaing']);
 
 //user routes
