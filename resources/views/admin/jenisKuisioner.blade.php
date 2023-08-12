@@ -48,9 +48,11 @@
                                             <td class="text-center">{{ $data->jenis }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#showModal">Edit</button>
+                                                    data-bs-target="#showModal"
+                                                    onclick="setEdit({{ $data }})">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal">Remove</button>
+                                                    data-bs-target="#deleteRecordModal"
+                                                    onclick="deleteData({{ $data->id }})">Remove</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -87,6 +89,7 @@
         <!-- end col -->
     </div>
 
+    {{-- add modal --}}
     <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -95,7 +98,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form>
+                <form action="{{ url('jenis-kuisioner/store') }}" method="POST">
+                    @csrf
                     <div class="modal-body">
 
                         <div class="mb-3" id="modal-id" style="display: none;">
@@ -106,7 +110,7 @@
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Jenis Kuisioner</label>
                             <input type="text" id="customername-field" class="form-control"
-                                placeholder="Jenis Kuisioner..." required />
+                                placeholder="Jenis Kuisioner..." name="jenis_kuisioner" required />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -120,32 +124,36 @@
         </div>
     </div>
 
+    {{-- edit modal --}}
     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-light p-3">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Jenis Kuisioner</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="close-modal"></button>
+                        id="close-modal" onclick="clearEdit()"></button>
                 </div>
-                <form>
+                <form action="{{ url('jenis-kuisioner/update') }}" method="POST">
+                    @csrf
                     <div class="modal-body">
 
                         <div class="mb-3" id="modal-id" style="display: none;">
-                            <label for="id-field" class="form-label">ID</label>
-                            <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
+                            <label for="id-jenis-edit" class="form-label">ID</label>
+                            <input type="text" id="id-jenis-edit" name="id_jenis_kuisioner_edit" class="form-control"
+                                placeholder="ID" readonly />
                         </div>
 
                         <div class="mb-3">
-                            <label for="customername-field" class="form-label">Jenis Kuisioner</label>
-                            <input type="text" id="customername-field" class="form-control"
-                                placeholder="Jenis Kuisioner..." required />
+                            <label for="jenis-kuisioner-update" class="form-label">Jenis Kuisioner</label>
+                            <input type="text" id="jenis-kuisioner-update" class="form-control"
+                                placeholder="Jenis Kuisioner..." required name="jenis_kuisioner_edit" />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                                onclick="clearEdit()">Close</button>
+                            <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                         </div>
                     </div>
                 </form>
@@ -153,6 +161,7 @@
         </div>
     </div>
 
+    {{-- delete modal --}}
     <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -171,11 +180,34 @@
                     </div>
                     <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                         <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn w-sm btn-danger " id="delete-record">Ya, Hapus!</button>
+                        <button type="button" class="btn w-sm btn-danger " id="confirm-delete-data">Ya, Hapus!</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+@endsection
+
+@section('otherJs')
+    <script>
+        const setEdit = (data) => {
+            console.log(data);
+            $('#id-jenis-edit').val(data.id);
+            $('#jenis-kuisioner-update').val(data.jenis);
+        }
+
+        const clearEdit = () => {
+            $('#id-jenis-edit').val('');
+            $('#jenis-kuisioner-update').val('');
+        }
+
+        const deleteData = (id) => {
+            console.log(id);
+            $('#confirm-delete-data').click(function(e) {
+                e.preventDefault();
+                window.location.href = `/jenis-kuisioner/destroy/${id}`
+            });
+        }
+    </script>
 @endsection

@@ -15,4 +15,9 @@ class JenisKuisioner extends Model
         'id',
         'jenis',
     ];
+
+    public function detailKuisioner()
+    {
+        return $this->hashMany(DetailKuisioner::class, 'id', 'jenis_quisioner_id');
+    }
 }

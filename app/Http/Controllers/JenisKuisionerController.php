@@ -15,37 +15,39 @@ class JenisKuisionerController extends Controller
 
     public function store(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
-            'jenis' => 'required',
+            'jenis_kuisioner' => 'required',
         ]);
 
         JenisKuisioner::create([
-            'jenis' => $request->jenis,
+            'jenis' => $request->jenis_kuisioner,
         ]);
 
-        return redirect('/kuisioner');
+        return redirect('/jenis-kuisioner');
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'id' => 'required',
-            'jenis' => 'required',
+            'id_jenis_kuisioner_edit' => 'required',
+            'jenis_kuisioner_edit' => 'required',
         ]);
 
-        $dataUpdate = JenisKuisioner::findOrFail($request->id);
+        $dataUpdate = JenisKuisioner::findOrFail($request->id_jenis_kuisioner_edit);
 
         $dataUpdate->update([
-            'jenis' => $request->jenis,
+            'jenis' => $request->jenis_kuisioner_edit,
         ]);
 
-        return redirect('/kuisioner');
+        return redirect('/jenis-kuisioner');
     }
 
     public function destroy($id)
     {
         $dataDestroy = JenisKuisioner::findOrFail($id);
         $dataDestroy->delete();
-        return redirect('/kuisioner');
+        return redirect('/jenis-kuisioner');
     }
 }

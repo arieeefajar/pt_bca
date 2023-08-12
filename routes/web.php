@@ -56,8 +56,8 @@ Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.dest
 //jenis kuisioner routes
 Route::prefix('jenis-kuisioner')->group(function () {
     Route::get('/', [JenisKuisionerController::class, 'index']);
-    Route::get('/store', [JenisKuisionerController::class, 'store']);
-    Route::get('/update', [JenisKuisionerController::class, 'update']);
+    Route::post('/store', [JenisKuisionerController::class, 'store']);
+    Route::post('/update', [JenisKuisionerController::class, 'update']);
     Route::get('/destroy/{id}', [JenisKuisionerController::class, 'destroy']);
 });
 
@@ -70,7 +70,12 @@ Route::prefix('kuisioner')->group(function () {
 });
 
 // detail kuisioner routes
-Route::get('detail-kuisioner', [DetailKuisionerController::class, 'index']);
+Route::prefix('detail-kuisioner')->group(function () {
+    Route::get('/', [DetailKuisionerController::class, 'index']);
+    Route::post('/store', [DetailKuisionerController::class, 'store']);
+    Route::post('/update', [DetailKuisionerController::class, 'update']);
+    Route::get('/destroy/{id}', [DetailKuisionerController::class, 'destroy']);
+});
 
 // perusahaan routes
 Route::get('perusahaan', [PerusahaanController::class, 'index']);
