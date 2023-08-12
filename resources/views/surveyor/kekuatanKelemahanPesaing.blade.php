@@ -15,11 +15,11 @@
                 <div class="alert alert-warning text-dark" role="alert">
                     <p><b>Keterangan Isian Jawaban Kuisioner :</b></p>
                     <ul>
-                        <li>1 (Sangat Tidak Setuju)</li>
-                        <li>2 (Tidak Setuju)</li>
-                        <li>3 (Cukup Setuju)</li>
-                        <li>4 (Setuju)</li>
-                        <li>5 (Sangat Setuju)</li>
+                        <li>1 (Sangat Tidak Puas)</li>
+                        <li>2 (Tidak Puas)</li>
+                        <li>3 (Cukup Puas)</li>
+                        <li>4 (Puas)</li>
+                        <li>5 (Sangat Puas)</li>
                     </ul>
                 </div>
                 <div class="live-preview">

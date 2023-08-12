@@ -46,7 +46,7 @@
                                 <a href="/kepuasan-pelanggan" class="nav-link">Kepuasan Pelanggan</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/analisis-kompetitor" class="nav-link">Analisis Kompetitor</a>
+                                <a href="/analisis-pesaing" class="nav-link">Analisis Pesaing</a>
                             </li>
                             <li class="nav-item">
                                 <a href="/kekuatan-dan-kelemahan-pesaing" class="nav-link">Kekuatan dan Kelemahan Pesaing</a>
@@ -65,9 +65,6 @@
                             </li>
                             <li class="nav-item">
                                 <a href="/analisis-kompetitor" class="nav-link">Pesaing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/analisis-kompetitor" class="nav-link">Toko</a>
                             </li>
                         </ul>
                     </div>

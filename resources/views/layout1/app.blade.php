@@ -14,6 +14,9 @@
     <!-- plugin css -->
     <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <!-- Unicons CDN Link for Icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+
     <!-- gridjs css -->
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/libs/gridjs/theme/mermaid.min.css') }}">
 
@@ -28,7 +31,23 @@
     <!-- custom Css-->
     <link href="{{ asset('admin_assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <style>
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
 
+        .tag {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    @stack('styles')
 </head>
 
 <body>
@@ -48,6 +67,7 @@
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
+        @stack('scripts')
         <div class="main-content">
 
             <div class="page-content">
@@ -637,6 +657,26 @@
 
     <!-- barcharts init -->
     <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script>
+
+    <script>
+        // const inputTags = document.getElementById('inputTags');
+        // const tagContainer = document.getElementById('tagContainer');
+
+        // inputTags.addEventListener('keydown', function(event) {
+        //     if (event.key === ' ' && inputTags.value.trim() !== '') {
+        //         event.preventDefault();
+        //         const tagText = inputTags.value.trim();
+        //         const tagElement = document.createElement('div');
+        //         tagElement.className = 'tag';
+        //         tagElement.textContent = tagText;
+        //         tagElement.addEventListener('click', function() {
+        //             tagContainer.removeChild(tagElement);
+        //         });
+        //         tagContainer.appendChild(tagElement);
+        //         inputTags.value = '';
+        //     }
+        // });
+    </script>
 </body>
 
 </html>
