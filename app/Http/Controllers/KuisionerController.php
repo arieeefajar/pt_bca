@@ -57,19 +57,25 @@ class KuisionerController extends Controller
 
     public function kepuasanPelanggan()
     {
-        return view('surveyor.kepuasanPelanggan');
+        $model_detail_kuisioner = new DetailKuisioner();
+        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kepuasan Pelanggan');
+
+        return view('surveyor.kepuasanPelanggan', compact('dataPertanyaan'));
     }
 
     public function analisisPesaing()
     {
         $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner_analisis_pesaing();
+        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Kompetitor');
 
         return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
     }
 
     public function kekuatanKelemahanPesaing()
     {
-        return view('surveyor.kekuatanKelemahanPesaing');
+        $model_detail_kuisioner = new DetailKuisioner();
+        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kelemahan dan Kekuatan Pesaing');
+
+        return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
     }
 }
