@@ -25,4 +25,14 @@ class DashboardController extends Controller
     {
         return view('surveyor.dashboard');
     }
+
+    public function pesaing()
+    {
+        return view('surveyor.pesaing');
+    }
+
+    public function potensi()
+    {
+        return view('surveyor.potensiLahan');
+    }
 }

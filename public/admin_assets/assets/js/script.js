@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputTags = document.getElementById('inputTags');
     const ul = document.getElementById("tagList");
 
-    function addTag(e) {
+    function addTag(e, id) {
+        console.log(id);
         if(e.key == " "){
         let tag = e.target.value.replace(/\s+/g, ' ');
         if (tag.length > 1 && !tags.includes(tag)) {

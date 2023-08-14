@@ -92,6 +92,10 @@ Route::get('detail-penyimpanan', [DetailPenyimpananController::class, 'index']);
 // laporan routes
 Route::get('laporan', [LaporanController::class, 'index']);
 
+//form survey
+Route::get('pesaing', [DashboardController::class, 'pesaing']);
+Route::get('potensi-lahan', [DashboardController::class, 'potensi']);
+
 // Route::group(['middleware' => ['auth', 'supper-admin']], function () {
 
 //     //user route

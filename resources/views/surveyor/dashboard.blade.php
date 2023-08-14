@@ -74,7 +74,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="">
+                <a href="/potensi-lahan">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -96,7 +96,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="">
+                <a href="/pesaing">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
