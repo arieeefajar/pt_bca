@@ -74,7 +74,7 @@ class KuisionerController extends Controller
     public function kekuatanKelemahanPesaing()
     {
         $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kelemahan dan Kekuatan Pesaing');
+        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
 
         return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
     }
