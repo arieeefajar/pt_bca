@@ -66,7 +66,7 @@ class KuisionerController extends Controller
     public function analisisPesaing()
     {
         $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Kompetitor');
+        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Pesaing');
 
         return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
     }

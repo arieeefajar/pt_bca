@@ -61,10 +61,10 @@
                     <div class="collapse menu-dropdown" id="sidebarApps1">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="/kepuasan-pelanggan" class="nav-link">Potensi Lahan</a>
+                                <a href="/potensi-lahan" class="nav-link">Potensi Lahan</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/analisis-kompetitor" class="nav-link">Pesaing</a>
+                                <a href="/pesaing" class="nav-link">Pesaing</a>
                             </li>
                         </ul>
                     </div>
