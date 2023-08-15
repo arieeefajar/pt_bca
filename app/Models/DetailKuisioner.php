@@ -16,7 +16,6 @@ class DetailKuisioner extends Model
         'pertanyaan',
         'jenis_jawaban',
         'jenis_quisioner_id',
-        'quisioner_id',
     ];
 
     public function get_data_kuisioner($namaQuisioner)
@@ -24,13 +23,14 @@ class DetailKuisioner extends Model
 
         // select jenis section yang ada berdasarkan nama kuisioner
         $sectionDistinct = JenisKuisioner::select('jenis_quisioner.jenis')
-            ->rightJoin('detail_quisioner', 'jenis_quisioner.id', '=', 'detail_quisioner.jenis_quisioner_id')
-            ->leftJoin('quisioner', 'quisioner.id', '=', 'detail_quisioner.quisioner_id')
-            ->where('quisioner.nama', $namaQuisioner)
+            ->join('detail_quisioner', 'jenis_quisioner.id', '=', 'detail_quisioner.jenis_quisioner_id')
+            ->join('quisioner', 'quisioner.id', '=', 'jenis_quisioner.quisioner_id')
+            ->where('quisioner.nama', '=', $namaQuisioner)
             ->distinct()
             ->pluck('jenis_quisioner.jenis');
 
         // membuat wadah array berdasarkan jenis pertanyaan
+        $groupBySection = [];
         foreach ($sectionDistinct as $value) {
             $groupBySection[$value] = [];
         }
@@ -44,8 +44,8 @@ class DetailKuisioner extends Model
                 'jenis_quisioner.jenis',
                 'quisioner.nama'
             )
-                ->rightJoin('jenis_quisioner', 'jenis_quisioner.id', '=', 'detail_quisioner.jenis_quisioner_id')
-                ->leftJoin('quisioner', 'quisioner.id', '=', 'detail_quisioner.quisioner_id')
+                ->join('jenis_quisioner', 'jenis_quisioner.id', '=', 'detail_quisioner.jenis_quisioner_id')
+                ->join('quisioner', 'quisioner.id', '=', 'jenis_quisioner.quisioner_id')
                 ->where('quisioner.nama', $namaQuisioner)
                 ->where('jenis_quisioner.jenis', $keyJawaban)
                 ->orderBy('jenis_jawaban', 'ASC')
@@ -57,11 +57,6 @@ class DetailKuisioner extends Model
         }
 
         return $groupBySection;
-    }
-
-    public function kuisioner()
-    {
-        return $this->belongsTo(Kuisioner::class, 'quisioner_id', 'id');
     }
 
     public function jenisKuisioner()

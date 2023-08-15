@@ -14,6 +14,7 @@ class JenisKuisioner extends Model
     protected $fillable = [
         'id',
         'jenis',
+        'quisioner_id'
     ];
 
     public function detailKuisioner()

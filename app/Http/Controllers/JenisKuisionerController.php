@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JenisKuisioner;
+use App\Models\Kuisioner;
 use Illuminate\Http\Request;
 
 class JenisKuisionerController extends Controller
@@ -10,7 +11,8 @@ class JenisKuisionerController extends Controller
     public function index()
     {
         $dataJenisKuisioner = JenisKuisioner::all();
-        return view('admin.jenisKuisioner', compact('dataJenisKuisioner'));
+        $dataKuisioner = Kuisioner::all();
+        return view('admin.jenisKuisioner', compact('dataJenisKuisioner', 'dataKuisioner'));
     }
 
     public function store(Request $request)
@@ -19,10 +21,12 @@ class JenisKuisionerController extends Controller
         // dd($request->all());
         $request->validate([
             'jenis_kuisioner' => 'required',
+            'kuisioner' => 'required',
         ]);
 
         JenisKuisioner::create([
             'jenis' => $request->jenis_kuisioner,
+            'quisioner_id' => $request->kuisioner,
         ]);
 
         return redirect('/jenis-kuisioner');
@@ -30,15 +34,19 @@ class JenisKuisionerController extends Controller
 
     public function update(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             'id_jenis_kuisioner_edit' => 'required',
             'jenis_kuisioner_edit' => 'required',
+            'kuisioner_edit' => 'required',
         ]);
 
         $dataUpdate = JenisKuisioner::findOrFail($request->id_jenis_kuisioner_edit);
 
         $dataUpdate->update([
             'jenis' => $request->jenis_kuisioner_edit,
+            'quisioner_id' => $request->kuisioner_edit,
         ]);
 
         return redirect('/jenis-kuisioner');
