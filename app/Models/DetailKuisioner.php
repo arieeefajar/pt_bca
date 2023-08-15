@@ -16,7 +16,6 @@ class DetailKuisioner extends Model
         'pertanyaan',
         'jenis_jawaban',
         'jenis_quisioner_id',
-        'quisioner_id',
     ];
 
     public function get_data_kuisioner($namaQuisioner)
@@ -57,11 +56,6 @@ class DetailKuisioner extends Model
         }
 
         return $groupBySection;
-    }
-
-    public function kuisioner()
-    {
-        return $this->belongsTo(Kuisioner::class, 'quisioner_id', 'id');
     }
 
     public function jenisKuisioner()

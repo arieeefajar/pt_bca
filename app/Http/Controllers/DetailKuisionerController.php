@@ -11,7 +11,10 @@ class DetailKuisionerController extends Controller
 {
     public function index()
     {
-        $dataDetailKuisioner = DetailKuisioner::with('kuisioner', 'jenisKuisioner')->get();
+        $dataDetailKuisioner = Kuisioner::join('jenis_quisioner', 'quisioner.id', '=', 'jenis_quisioner.quisioner_id')
+            ->join('detail_quisioner', 'detail_quisioner.jenis_quisioner_id', '=', 'jenis_quisioner.id')
+            ->select('quisioner.id as quisioner_id', 'quisioner.nama', 'jenis_quisioner.id as jenis_quisioner_id', 'jenis_quisioner.jenis', 'detail_quisioner.id', 'detail_quisioner.pertanyaan', 'detail_quisioner.jenis_jawaban')
+            ->get();
         $dataJenisKuisioner = JenisKuisioner::all();
         $dataKuisioner = Kuisioner::all();
 
@@ -24,15 +27,13 @@ class DetailKuisionerController extends Controller
         // dd($request->all());
 
         $request->validate([
-            'kuisioner' => 'required',
-            'jenis_kuisioner' => 'required',
+            'jenis_kuisioner_add' => 'required',
             'pertanyaan' => 'required',
             'jenis_jawaban' => 'required|numeric',
         ]);
 
         DetailKuisioner::create([
-            'quisioner_id' => $request->kuisioner,
-            'jenis_quisioner_id' => $request->jenis_kuisioner,
+            'jenis_quisioner_id' => $request->jenis_kuisioner_add,
             'pertanyaan' => $request->pertanyaan,
             'jenis_jawaban' => $request->jenis_jawaban,
         ]);

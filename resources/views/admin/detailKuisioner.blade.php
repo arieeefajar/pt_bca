@@ -49,8 +49,8 @@
                                     @foreach ($dataDetailKuisioner as $data)
                                         <tr>
                                             <th class="text-center">1</th>
-                                            <td class="text-center">{{ $data->kuisioner->nama }}</td>
-                                            <td class="text-center">{{ $data->jenisKuisioner->jenis }}</td>
+                                            <td class="text-center">{{ $data->nama }}</td>
+                                            <td class="text-center">{{ $data->jenis }}</td>
                                             <td class="text-center">{{ $data->pertanyaan }}</td>
                                             <td class="text-center">
                                                 {{ $data->jenis_jawaban == 1 ? 'Skala Evaluasi' : ($data->jenis_jawaban == 2 ? 'Skala Pendapat' : 'Tanggapan Terbuka') }}
@@ -121,8 +121,9 @@
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Kuisioner</label>
                             <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect01" name="kuisioner">
-                                    <option selected>Pilih...</option>
+                                <select class="form-select" id="kuisioner-add" name="kuisioner"
+                                    onChange="setDataJenisKuisioner(this.options[this.selectedIndex].value, 'jenis-kuisioner-add', {{ $dataJenisKuisioner }})">
+                                    <option selected value=''>Pilih...</option>
                                     @foreach ($dataKuisioner as $data)
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                     @endforeach
@@ -134,11 +135,8 @@
                             <label for="email-field" class="form-label">Jenis Kuisioner</label>
                             <!-- Select -->
                             <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect01" name="jenis_kuisioner">
-                                    <option selected>Pilih...</option>
-                                    @foreach ($dataJenisKuisioner as $data)
-                                        <option value="{{ $data->id }}">{{ $data->jenis }}</option>
-                                    @endforeach
+                                <select class="form-select" id="jenis-kuisioner-add" name="jenis_kuisioner_add">
+                                    <option selected value=''>Pilih nama kuisioner</option>
                                 </select>
                             </div>
                         </div>
@@ -155,7 +153,7 @@
                             <label for="customername-field" class="form-label">Jenis Jawaban</label>
                             <div class="input-group">
                                 <select class="form-select" id="inputGroupSelect01" name="jenis jawaban">
-                                    <option selected>Pilih...</option>
+                                    <option value='' selected>Pilih...</option>
                                     <option value="1">Skala Evaluasi</option>
                                     <option value="2">Skala Pendapat</option>
                                     <option value="3">Tanggapan Terbuka</option>
@@ -196,7 +194,8 @@
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Kuisioner</label>
                             <div class="input-group">
-                                <select class="form-select" id="kuisioner-edit" name="kuisioner">
+                                <select class="form-select" id="kuisioner-edit" name="kuisioner"
+                                    onChange="setDataJenisKuisioner(this.options[this.selectedIndex].value, 'jenis-kuisioner-edit', {{ $dataJenisKuisioner }})">
                                     <option selected value="">Pilih...</option>
                                     @foreach ($dataKuisioner as $data)
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
@@ -210,10 +209,10 @@
                             <!-- Select -->
                             <div class="input-group">
                                 <select class="form-select" id="jenis-kuisioner-edit" name="jenis_kuisioner">
-                                    <option selected value="">Pilih...</option>
-                                    @foreach ($dataJenisKuisioner as $data)
+                                    {{-- <option selected value="">Pilih...</option> --}}
+                                    {{-- @foreach ($dataJenisKuisioner as $data)
                                         <option value="{{ $data->id }}">{{ $data->jenis }}</option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
                             </div>
                         </div>
@@ -304,6 +303,23 @@
                 e.preventDefault();
                 window.location.href = `/detail-kuisioner/destroy/${id}`
             });
+        }
+
+        const setDataJenisKuisioner = (value, idTarget, data) => {
+            // console.log(data)
+            optionData = '';
+
+            for (let index = 0; index < data.length; index++) {
+                if (value == data[index]['quisioner_id']) {
+                    optionData = `<option value="${data[index]['id']}">${data[index]['jenis']}</option>`;
+                }
+            }
+
+            // ternary operator : (condition) ? true action : else action;
+            (optionData != '') ? optionData = `<option selected value=''>Pilih...</option>` + optionData: optionData +=
+                `<option selected value=''>Tidak ada data</option>`;
+
+            $('#' + idTarget).html(optionData);
         }
     </script>
 @endsection

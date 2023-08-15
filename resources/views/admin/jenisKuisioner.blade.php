@@ -112,6 +112,17 @@
                             <input type="text" id="customername-field" class="form-control"
                                 placeholder="Jenis Kuisioner..." name="jenis_kuisioner" required />
                         </div>
+
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label">Pilih Kuisioner</label>
+                            <select class="form-select" id="" name="kuisioner">
+                                <option selected>Pilih...</option>
+                                @foreach ($dataKuisioner as $data)
+                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
@@ -147,6 +158,16 @@
                             <label for="jenis-kuisioner-update" class="form-label">Jenis Kuisioner</label>
                             <input type="text" id="jenis-kuisioner-update" class="form-control"
                                 placeholder="Jenis Kuisioner..." required name="jenis_kuisioner_edit" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label">Pilih Kuisioner</label>
+                            <select class="form-select" id="kuisioner-edit" name="kuisioner_edit">
+                                <option value="" selected>Pilih...</option>
+                                @foreach ($dataKuisioner as $data)
+                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -195,11 +216,13 @@
             console.log(data);
             $('#id-jenis-edit').val(data.id);
             $('#jenis-kuisioner-update').val(data.jenis);
+            $('#kuisioner-edit').val(data.quisioner_id).change();
         }
 
         const clearEdit = () => {
             $('#id-jenis-edit').val('');
             $('#jenis-kuisioner-update').val('');
+            $('#kuisioner-edit').val('').change();
         }
 
         const deleteData = (id) => {
