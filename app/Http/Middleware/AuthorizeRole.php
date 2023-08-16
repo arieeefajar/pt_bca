@@ -20,7 +20,18 @@ class AuthorizeRole
             return $next($request);
         }
 
+        if (Auth::user()->role == 'supper-admin') {
+            return redirect('/super-admin');
+        } elseif (Auth::user()->role == 'admin') {
+            return redirect('/admin');
+        } elseif (Auth::user()->role == 'executive') {
+            return redirect('/executive');
+        } elseif (Auth::user()->role == 'user') {
+            return redirect('/surveyor');
+        }
+
+        return redirect('/');
         // abort(403, 'Unauthorized');
-        dd(Auth::user()->role == $role);
+        // dd(Auth::user()->role);
     }
 }

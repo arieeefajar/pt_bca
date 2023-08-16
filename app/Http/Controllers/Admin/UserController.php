@@ -69,7 +69,7 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('superAdmin.indexuser.index')->with('success', 'User created successfully.');
     }
 
     public function update(Request $request, $id)
@@ -99,11 +99,11 @@ class UserController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return redirect()->route('user.index')->with('error', 'User not found.');
+            return redirect()->route('superAdmin.indexuser.index')->with('error', 'User not found.');
         }
 
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', 'Pengguna Berhasil Dihapus');
+        return redirect()->route('superAdmin.indexuser.index')->with('success', 'Pengguna Berhasil Dihapus');
     }
 }
