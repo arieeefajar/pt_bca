@@ -109,7 +109,7 @@
                         id="close-modal"></button>
                 </div>
 
-                <form action="{{ route('superAdmin.indexdetailKuisioner.create') }}" method="POST">
+                <form action="{{ route('detailKuisioner.create') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -181,7 +181,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal" onclick="clearEdit()"></button>
                 </div>
-                <form action="{{ route('superAdmin.indexdetailKuisioner.update') }}" method="POST">
+                <form action="{{ route('detailKuisioner.update') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -302,7 +302,7 @@
             console.log(id);
             $('#confirm-delete-data').click(function(e) {
                 e.preventDefault();
-                window.location.href = `detail-kuisioner/destroy/${id}`
+                window.location.href = `/detail-kuisioner/destroy/${id}`
             });
         }
 
