@@ -34,17 +34,16 @@
                             <label for="">Siapa saja pemasok perusahaan ?</label>
                             <input type="text" class="form-control" name="supplier" id="">
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-4">
                             <label for="">Siapa saja pembeli perusahaan ?</label>
                             <input type="text" class="form-control" name="buyer" id="">
                         </div>
-                        <br>
-
+                        
                     <div class="live-preview">
                         <div class="table-responsive">
                             
                             {{-- pertanyaan Persaingan Perusahaan --}}
-                            <table class="table table-bordered align-middle table-nowrap mb-0">
+                            <table class="table table-bordered align-middle table-nowrap mb-3">
                                 <thead class="table-warning">
                                     <tr >
                                         <th class="text-center bg-soft-primary" colspan=3>Persaingan diantara Perusahaan</th>
@@ -85,9 +84,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-<br>
+
                             {{-- Ancaman Pendatang Baru --}}
-                            <table class="table table-bordered align-middle table-nowrap mb-0">
+                            <table class="table table-bordered align-middle table-nowrap mb-3">
                                 <thead class="table-warning">
                                     <tr >
                                         <th class="text-center bg-soft-primary" colspan=3>Ancaman Pendatang Baru</th>
@@ -158,9 +157,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-<br>
+
                             {{-- Ancaman Produk Substitusi --}}
-                            <table class="table table-bordered align-middle table-nowrap mb-0">
+                            <table class="table table-bordered align-middle table-nowrap mb-3">
                                 <thead class="table-warning">
                                     <tr >
                                         <th class="text-center bg-soft-primary" colspan=3>Ancaman Produk Substitusi</th>
@@ -192,9 +191,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-<br>
+
                             {{-- Kekuatan Menawar Pemasok --}}
-                            <table class="table table-bordered align-middle table-nowrap mb-0">
+                            <table class="table table-bordered align-middle table-nowrap mb-3">
                                 <thead class="table-warning">
                                     <tr >
                                         <th class="text-center bg-soft-primary" colspan=3>Kekuatan Menawar Pemasok</th>
@@ -253,9 +252,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-<br>
+
                             {{-- Kekuatan Menawar Pembeli --}}
-                            <table class="table table-bordered align-middle table-nowrap mb-0">
+                            <table class="table table-bordered align-middle table-nowrap mb-3">
                                 <thead class="table-warning">
                                     <tr >
                                         <th class="text-center bg-soft-primary" colspan=3>Kekuatan Menawar Pembeli</th>
@@ -314,7 +313,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="text-center mt-3">
+                            <div class="text-center mt-4">
                                 <button type="button" class="btn btn-primary">Submit</button>
                             </div>
                         </div>

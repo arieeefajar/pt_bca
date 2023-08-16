@@ -8,7 +8,7 @@
     <div class="col-xxl-8">
         <div class="row">
             <div class="col-xl-4">
-                <a href="/kepuasan-pelanggan">
+                <a href="{{ route('surveyor.indexkepuasanPelanggan.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -30,7 +30,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="/analisis-pesaing">
+                <a href="{{ route('surveyor.indexanalisisPesaing.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -52,7 +52,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="/kekuatan-dan-kelemahan-pesaing">
+                <a href="{{ route('surveyor.indexKekuatanDanKelemahanPesaing.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -74,7 +74,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="/potensi-lahan">
+                <a href="{{ route('surveyor.indexformPotensiLahan.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -96,7 +96,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="/pesaing">
+                <a href="{{ route('surveyor.indexformPesaing.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
