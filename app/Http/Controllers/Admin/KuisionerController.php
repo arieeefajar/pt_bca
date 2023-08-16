@@ -29,7 +29,7 @@ class KuisionerController extends Controller
             'status' => $request->status_quisioner,
         ]);
 
-        return redirect('/kuisioner');
+        return redirect(route('superAdmin.indexkuisioner.index'));
     }
 
     public function update(Request $request)
@@ -46,7 +46,7 @@ class KuisionerController extends Controller
             'status' => $request->status_quisioner_edit,
         ]);
 
-        return redirect('/kuisioner');
+        return redirect(route('superAdmin.indexkuisioner.index'));
     }
 
     public function destroy($id)
@@ -54,7 +54,7 @@ class KuisionerController extends Controller
         // dd($id);
         $data = Kuisioner::findOrFail($id);
         $data->delete();
-        return redirect('/kuisioner');
+        return redirect(route('superAdmin.indexkuisioner.index'));
     }
 
     public function kepuasanPelanggan()

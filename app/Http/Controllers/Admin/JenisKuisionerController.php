@@ -31,7 +31,7 @@ class JenisKuisionerController extends Controller
             'quisioner_id' => $request->kuisioner,
         ]);
 
-        return redirect('/jenis-kuisioner');
+        return redirect(route('superAdmin.indexjenisKuisioner.index'));
     }
 
     public function update(Request $request)
@@ -51,13 +51,13 @@ class JenisKuisionerController extends Controller
             'quisioner_id' => $request->kuisioner_edit,
         ]);
 
-        return redirect('/jenis-kuisioner');
+        return redirect(route('superAdmin.indexjenisKuisioner.index'));
     }
 
     public function destroy($id)
     {
         $dataDestroy = JenisKuisioner::findOrFail($id);
         $dataDestroy->delete();
-        return redirect('/jenis-kuisioner');
+        return redirect(route('superAdmin.indexjenisKuisioner.index'));
     }
 }

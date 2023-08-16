@@ -40,7 +40,7 @@ class DetailKuisionerController extends Controller
             'jenis_jawaban' => $request->jenis_jawaban,
         ]);
 
-        return redirect('/detail-kuisioner');
+        return redirect(route('superAdmin.indexdetailKuisioner.index'));
     }
 
     // update data
@@ -64,7 +64,7 @@ class DetailKuisionerController extends Controller
             'jenis_jawaban' => $request->jenis_jawaban,
         ]);
 
-        return redirect('/detail-kuisioner');
+        return redirect(route('superAdmin.indexdetailKuisioner.index'));
     }
 
     // delete data
@@ -73,6 +73,6 @@ class DetailKuisionerController extends Controller
         // dd($id);
         $dataDestroy = DetailKuisioner::findOrFail($id);
         $dataDestroy->delete();
-        return redirect('/detail-kuisioner');
+        return redirect(route('superAdmin.indexdetailKuisioner.index'));
     }
 }

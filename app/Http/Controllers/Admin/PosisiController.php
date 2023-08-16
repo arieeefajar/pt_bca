@@ -35,7 +35,7 @@ class PosisiController extends Controller
             'nama' => $request->nama,
         ]);
 
-        return redirect('posisi')->with('success', 'Data created successfully.');
+        return redirect(route('superAdmin.indexposisi.index'))->with('success', 'Data created successfully.');
     }
 
     public function update(Request $request)
@@ -60,7 +60,7 @@ class PosisiController extends Controller
             'nama' => $request->nama,
         ]);
 
-        return redirect('posisi')->with('success', 'Data updated successfully.');
+        return redirect(route('superAdmin.indexposisi.index'))->with('success', 'Data updated successfully.');
     }
 
     public function destroy($id)
@@ -68,6 +68,6 @@ class PosisiController extends Controller
         $dataDelete = Posisi::findOrFail($id);
         $dataDelete->delete();
 
-        return redirect('posisi')->with('success', 'Data deleted successfully.');
+        return redirect(route('superAdmin.indexposisi.index'))->with('success', 'Data deleted successfully.');
     }
 }
