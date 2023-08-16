@@ -16,7 +16,7 @@ class surveyorView
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role == 'surveyor') {
+        if (Auth::user()->role == 'user') {
             return $next($request);
         }
 
