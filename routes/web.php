@@ -103,12 +103,12 @@ Route::prefix('executive')->middleware('auth', 'access:executive')->name('execut
     Route::get('/', [DashboardController::class, 'executive']);
 });
 
-Route::prefix('surveyor')->middleware('auth', 'access:user')->name('executive.index')->group(function () {
+Route::prefix('surveyor')->middleware('auth', 'access:user')->name('surveyor.index')->group(function () {
     Route::get('/', [DashboardSurveyerController::class, 'index']);
 
     // kuisioner routes
     Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
-    Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisiPesaing.index');
+    Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisisPesaing.index');
     Route::get('kekuatan-dan-kelemahan-pesaing', [KuisionerController::class, 'kekuatanKelemahanPesaing'])->name('KekuatanDanKelemahanPesaing.index');
 
     //form survey
