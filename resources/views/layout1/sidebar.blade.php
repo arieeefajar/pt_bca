@@ -32,7 +32,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('surveyor.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link" href="{{ route('surveyor.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
@@ -43,13 +43,13 @@
                     <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('surveyor.indexkepuasanPelanggan.index') }}" class="nav-link">Kepuasan Pelanggan</a>
+                                <a href="{{ route('kepuasanPelanggan.index') }}" class="nav-link">Kepuasan Pelanggan</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('surveyor.indexanalisisPesaing.index') }}" class="nav-link">Analisis Pesaing</a>
+                                <a href="{{ route('analisisPesaing.index') }}" class="nav-link">Analisis Pesaing</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('surveyor.indexKekuatanDanKelemahanPesaing.index') }}" class="nav-link">Kekuatan dan Kelemahan Pesaing</a>
+                                <a href="{{ route('KekuatanDanKelemahanPesaing.index') }}" class="nav-link">Kekuatan dan Kelemahan Pesaing</a>
                             </li>
                         </ul>
                     </div>
@@ -61,10 +61,10 @@
                     <div class="collapse menu-dropdown" id="sidebarApps1">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('surveyor.indexformPotensiLahan.index') }}" class="nav-link">Potensi Lahan</a>
+                                <a href="{{ route('formPotensiLahan.index') }}" class="nav-link">Potensi Lahan</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('surveyor.indexformPesaing.index') }}" class="nav-link">Pesaing</a>
+                                <a href="{{ route('formPesaing.index') }}" class="nav-link">Pesaing</a>
                             </li>
                         </ul>
                     </div>

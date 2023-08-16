@@ -136,7 +136,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form method="POST" action="{{ route('superAdmin.indexuser.create') }}">
+                <form method="POST" action="{{ route('user.index') }}">
                     @csrf
                     <div class="modal-body">
 
@@ -211,7 +211,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form action="{{ route('superAdmin.indexuser.update', $user->id) }}" method="POST">
+                    <form action="{{ route('user.update', $user->id) }}" method="POST">
                         @csrf
                         @method('POST')
                         <div class="modal-body">
@@ -284,7 +284,7 @@
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                             <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                            <form action="{{ route('superAdmin.indexuser.destroy', $user->id) }}" method="POST"
+                            <form action="{{ route('user.destroy', $user->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')

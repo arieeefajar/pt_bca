@@ -35,7 +35,7 @@ class PerusahaanController extends Controller
             'nama' => $request->nama,
         ]);
 
-        return redirect(route('superAdmin.indexperusahaan.index'))->with('success', 'Data created successfully.');
+        return redirect(route('perusahaan.index'))->with('success', 'Data created successfully.');
     }
 
     public function update(Request $request)
@@ -59,7 +59,7 @@ class PerusahaanController extends Controller
             'nama' => $request->nama,
         ]);
 
-        return redirect(route('superAdmin.indexperusahaan.index'))->with('success', 'Data Updated successfully.');
+        return redirect(route('perusahaan.index'))->with('success', 'Data Updated successfully.');
     }
 
     public function destroy($id)
@@ -67,6 +67,6 @@ class PerusahaanController extends Controller
         $dataDelete = Perusahaan::findOrFail($id);
         $dataDelete->delete();
 
-        return redirect(route('superAdmin.indexperusahaan.index'))->with('success', 'Data Deleted successfully.');
+        return redirect(route('perusahaan.index'))->with('success', 'Data Deleted successfully.');
     }
 }

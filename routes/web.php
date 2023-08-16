@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PenyimpananController;
 use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\PosisiController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Api\TestApi;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardSurveyerController;
 use Illuminate\Support\Facades\Route;
@@ -25,17 +26,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/keluar', [LoginController::class, 'logout'])->name('logout');
+// Route::get('callApi', [TestApi::class, 'getDataKompetitorAnalys']);
 
-// guest routes
-Route::group(['middleware' => ['guest']], function () {
-    //login routes
-    Route::get('/', [LoginController::class, 'login'])->name('login');
-    Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin');
-});
+//login routes
+Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin')->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('super-admin')->middleware('auth', 'access:supper-admin')->name('superAdmin.index')->group(function () {
-    Route::get('/', [DashboardController::class, 'supperAdmin']);
+// dashboard
+Route::get('/super-admin-dashboard', [DashboardController::class, 'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
+Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard')->middleware('auth', 'access:admin');
+Route::get('/executive-dashboard', [DashboardController::class, 'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
+Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index'])->name('surveyor.dashboard')->middleware('auth', 'access:user');
+
+// route only super admin & admin
+Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 
     //user routes
     Route::prefix('user')->group(function () {
@@ -95,17 +100,8 @@ Route::prefix('super-admin')->middleware('auth', 'access:supper-admin')->name('s
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
 
-Route::prefix('admin')->middleware('auth', 'access:admin')->name('admin.index')->group(function () {
-    Route::get('/', [DashboardController::class, 'admin']);
-});
-
-Route::prefix('executive')->middleware('auth', 'access:executive')->name('executive.index')->group(function () {
-    Route::get('/', [DashboardController::class, 'executive']);
-});
-
-Route::prefix('surveyor')->middleware('auth', 'access:user')->name('surveyor.index')->group(function () {
-    Route::get('/', [DashboardSurveyerController::class, 'index']);
-
+// route only surveyour
+Route::middleware(['auth', 'surveyor'])->group(function () {
     // kuisioner routes
     Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
     Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisisPesaing.index');

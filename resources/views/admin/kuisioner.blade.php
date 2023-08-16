@@ -112,7 +112,7 @@
                         id="close-modal"></button>
                 </div>
 
-                <form action="{{ route('superAdmin.indexkuisioner.create') }}" method="POST">
+                <form action="{{ route('kuisioner.create') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -163,7 +163,7 @@
                         id="close-modal"></button>
                 </div>
 
-                <form action="{{ route('superAdmin.indexkuisioner.update') }}" method="POST">
+                <form action="{{ route('kuisioner.update') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -247,7 +247,7 @@
             $('#id-destroy').val(id);
             $('#delete-record').click(function(e) {
                 e.preventDefault();
-                window.location.href = `kuisioner/destroy/${id}`
+                window.location.href = `/kuisioner/destroy/${id}`
             });
         }
     </script>

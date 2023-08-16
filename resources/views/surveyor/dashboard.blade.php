@@ -8,7 +8,7 @@
     <div class="col-xxl-8">
         <div class="row">
             <div class="col-xl-4">
-                <a href="{{ route('surveyor.indexkepuasanPelanggan.index') }}">
+                <a href="{{ route('kepuasanPelanggan.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -30,7 +30,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="{{ route('surveyor.indexanalisisPesaing.index') }}">
+                <a href="{{ route('analisisPesaing.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -52,7 +52,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="{{ route('surveyor.indexKekuatanDanKelemahanPesaing.index') }}">
+                <a href="{{ route('KekuatanDanKelemahanPesaing.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -74,7 +74,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="{{ route('surveyor.indexformPotensiLahan.index') }}">
+                <a href="{{ route('formPotensiLahan.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -96,7 +96,7 @@
             </div><!-- end col -->
 
             <div class="col-xl-4">
-                <a href="{{ route('surveyor.indexformPesaing.index') }}">
+                <a href="{{ route('formPesaing.index') }}">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-center">

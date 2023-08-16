@@ -22,10 +22,24 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+
             // Login berhasil
             $user = Auth::user();
-            return redirect('/');
+
+            if ($user->role == 'supper-admin') {
+                return redirect()->route('superAdmin.dashboard');
+            } elseif ($user->role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role == 'executive') {
+                return redirect()->route('executive.dashboard');
+            } elseif ($user->role == 'user') {
+                return redirect()->route('surveyor.dashboard');
+            }
+
+            abort(403, 'Unauthorized');
+
         } else {
+
             // Login gagal
             return back()->withErrors([
                 'email' => 'Invalid credentials.',
@@ -35,7 +49,6 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        // dd('wokoakwoaw');
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
