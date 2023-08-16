@@ -1,7 +1,7 @@
 @extends('layout1.app')
 @section('title', 'Form Potensi Lahan')
-@section('menu', 'Form Potensi Lahan')
-@section('submenu', 'Form Potensi Lahan')
+@section('menu', 'Potensi Lahan')
+@section('submenu', 'Form Survey')
 
 @section('content')
 @push('styles')
@@ -29,21 +29,24 @@
                         <form action="">
                             <div class="content col">
                                 <label class="form-label">Standar Keunggulan Umum</label>
-                                <ul id="tagList">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- <ul id="tagList">
                                     <input type="text" class="form-control" id="inputTags">
-                                </ul>
+                                </ul> -->
                             </div>
                             <div class="content col"><br>
                                 <label class="form-label">Keunggulan Produk Kita</label>
-                                <ul id="tagList1">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- <ul id="tagList1">
                                     <input type="text" class="form-control" id="inputTags1">
-                                </ul>
+                                </ul> -->
                             </div>
                             <div class="content col"><br>
                                 <label class="form-label">Keunggulan Kompetitor</label>
-                                <ul id="tagList2">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- <ul id="tagList2">
                                     <input type="text" class="form-control" id="inputTags2">
-                                </ul>
+                                </ul> -->
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -54,15 +57,17 @@
                         <form action="">
                             <div class="content col">
                                 <label class="form-label">Iklim</label>
-                                <ul id="tagList3">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- <ul id="tagList3">
                                     <input type="text" class="form-control" id="inputTags3">
-                                </ul>
+                                </ul> -->
                             </div><br>
                             <div class="content col">
                                 <label class="form-label">Event pasar atau perayaan</label>
-                                <ul id="tagList4">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- <ul id="tagList4">
                                     <input type="text" class="form-control" id="inputTags4">
-                                </ul>
+                                </ul> -->
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

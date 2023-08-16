@@ -83,7 +83,8 @@
                                                     data-bs-target="#showModal"
                                                     onclick="setEdit({{ $data }})">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal" onclick="deleteData({{ $data['id'] }})">Remove</button>
+                                                    data-bs-target="#deleteRecordModal"
+                                                    onclick="deleteData({{ $data['id'] }})">Remove</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -130,7 +131,7 @@
                         id="close-modal"></button>
                 </div>
 
-                <form action="{{ url('perusahaan/store') }}" method="POST">
+                <form action="{{ route('superAdmin.indexperusahaan.create') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -165,7 +166,7 @@
                     <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close" id="close-modal"></button>
                 </div>
-                <form action="{{ url('perusahaan/update') }}" method="POST">
+                <form action="{{ route('superAdmin.indexperusahaan.update') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -238,7 +239,7 @@
             console.log(id);
             $('#confirm-delete-data').click(function(e) {
                 e.preventDefault();
-                window.location.href = `/perusahaan/destroy/${id}`
+                window.location.href = `perusahaan/destroy/${id}`
             });
         }
     </script>

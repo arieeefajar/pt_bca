@@ -31,48 +31,66 @@
             </div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                @if(Auth::user()->role == 'supper-admin')
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/admin-dashboard" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
+                @elseif(Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                    </a>
+                </li>
+                @elseif(Auth::user()->role == 'executive')
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::user()->role != 'executive')
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">Master</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @if(Auth::user()->role == 'supper-admin')
                             <li class="nav-item">
-                                <a href="/user" class="nav-link"> <i class="ri-user-line"></i>User</a>
+                                <a href="{{ route('superAdmin.indexuser.index') }}" class="nav-link"> <i class="ri-user-line"></i>User</a>
+                            </li>
+                            @endif
+                            <li class="nav-item">
+                                <a href="{{ route('superAdmin.indexjenisKuisioner.index') }}" class="nav-link" data-key="t-chat"> <i class="ri-honour-line"></i>Jenis Kuisioner</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/jenis-kuisioner" class="nav-link" data-key="t-chat"> <i class="ri-honour-line"></i>Jenis Kuisioner</a>
+                                <a href="{{ route('superAdmin.indexkuisioner.index') }} " class="nav-link" data-key="t-mailbox"> <i class="ri-file-3-line"></i><span><span></span>Kuisioner</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/kuisioner" class="nav-link" data-key="t-mailbox"> <i class="ri-file-3-line"></i><span><span></span>Kuisioner</a>
+                                <a href="{{ route('superAdmin.indexdetailKuisioner.index') }} " class="nav-link" data-key="t-ecommerce"> <i class="ri-file-text-line"></i>Detail Kuisioner</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/detail-kuisioner" class="nav-link" data-key="t-ecommerce"> <i class="ri-file-text-line"></i>Detail Kuisioner</a>
+                                <a href="{{ route('superAdmin.indexperusahaan.index') }} " class="nav-link" data-key="t-projects"> <i class="ri-home-3-line"></i>Perusahaan</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/perusahaan" class="nav-link" data-key="t-projects"> <i class="ri-home-3-line"></i>Perusahaan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/posisi" class="nav-link" data-key="t-tasks"> <i class="ri-vip-crown-line"></i>Posisi</a>
+                                <a href=" {{ route('superAdmin.indexposisi.index') }} " class="nav-link" data-key="t-tasks"> <i class="ri-vip-crown-line"></i>Posisi</a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/penyimpanan">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.indexpenyimpanan.index') }}">
                         <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/laporan">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.indexlaporan.index') }}">
                         <i class="bx bxs-report"></i><span data-key="t-tables">Laporan</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->

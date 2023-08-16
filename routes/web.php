@@ -25,97 +25,93 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/keluar', [LoginController::class, 'logout'])->name('logout');
+
 // guest routes
 Route::group(['middleware' => ['guest']], function () {
     //login routes
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('/', [LoginController::class, 'prosesLogin'])->name('prosesLogin');
-    Route::match(['get', 'post'], '/keluar', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/', [LoginController::class, 'login'])->name('login');
+    Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin');
 });
 
-// auth routes
-Route::group(['middleware' => ['auth']], function () {
+Route::prefix('super-admin')->middleware('auth', 'access:supper-admin')->name('superAdmin.index')->group(function () {
+    Route::get('/', [DashboardController::class, 'supperAdmin']);
 
-    Route::group(['middleware' => ['access:supper-admin']], function () {
-        Route::get('/', [DashboardController::class, 'supperAdmin']);
-
-        //user routes
-        Route::prefix('user')->group(function () {
-            Route::get('/', [UserController::class, 'index'])->name('user.index');
-            Route::post('/', [UserController::class, 'create'])->name('user.create');
-            Route::post('/{id}', [UserController::class, 'update'])->name('user.update');
-            Route::delete('{id}', [UserController::class, 'destroy'])->name('user.destroy');
-        });
-
-        //jenis kuisioner routes
-        Route::prefix('jenis-kuisioner')->group(function () {
-            Route::get('/', [JenisKuisionerController::class, 'index']);
-            Route::post('/store', [JenisKuisionerController::class, 'store']);
-            Route::post('/update', [JenisKuisionerController::class, 'update']);
-            Route::get('/destroy/{id}', [JenisKuisionerController::class, 'destroy']);
-        });
-
-        // kuisioner routes
-        Route::prefix('kuisioner')->group(function () {
-            Route::get('/', [KuisionerController::class, 'index']);
-            Route::post('/store', [KuisionerController::class, 'store']);
-            Route::post('/update', [KuisionerController::class, 'update']);
-            Route::get('/destroy/{id}', [KuisionerController::class, 'destroy']);
-        });
-
-        // detail kuisioner routes
-        Route::prefix('detail-kuisioner')->group(function () {
-            Route::get('/', [DetailKuisionerController::class, 'index']);
-            Route::post('/store', [DetailKuisionerController::class, 'store']);
-            Route::post('/update', [DetailKuisionerController::class, 'update']);
-            Route::get('/destroy/{id}', [DetailKuisionerController::class, 'destroy']);
-        });
-
-        // perusahaan routes
-        Route::prefix('perusahaan')->group(function () {
-            Route::get('/', [PerusahaanController::class, 'index']);
-            Route::post('/store', [PerusahaanController::class, 'store']);
-            Route::post('/update', [PerusahaanController::class, 'update']);
-            Route::get('/destroy/{id}', [PerusahaanController::class, 'destroy']);
-        });
-
-        // posisi routes
-        Route::prefix('posisi')->group(function () {
-            Route::get('/', [PosisiController::class, 'index']);
-            Route::post('/store', [PosisiController::class, 'store']);
-            Route::post('/update', [PosisiController::class, 'update']);
-            Route::get('/destroy/{id}', [PosisiController::class, 'destroy']);
-        });
-
-        // detail penyimpanan routes
-        Route::get('penyimpanan', [PenyimpananController::class, 'index']);
-
-        // penyimpanan routes
-        Route::get('detail-penyimpanan', [DetailPenyimpananController::class, 'index']);
-
-        // laporan routes
-        Route::get('laporan', [LaporanController::class, 'index']);
-
+    //user routes
+    Route::prefix('user')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('user.index');
+        Route::post('/', [UserController::class, 'create'])->name('user.create');
+        Route::post('/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::delete('{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 
-    Route::group(['middleware' => ['access:admin']], function () {
-        Route::get('/', [DashboardController::class, 'admin']);
+    //jenis kuisioner routes
+    Route::prefix('jenis-kuisioner')->group(function () {
+        Route::get('/', [JenisKuisionerController::class, 'index'])->name('jenisKuisioner.index');
+        Route::post('/store', [JenisKuisionerController::class, 'store'])->name('jenisKuisioner.create');
+        Route::post('/update', [JenisKuisionerController::class, 'update'])->name('jenisKuisioner.update');
+        Route::get('/destroy/{id}', [JenisKuisionerController::class, 'destroy'])->name('jenisKuisioner.destroy');
     });
 
-    Route::group(['middleware' => ['access:executive']], function () {
-        Route::get('executive-dashboard', [DashboardController::class, 'executive']);
+    // kuisioner routes
+    Route::prefix('kuisioner')->group(function () {
+        Route::get('/', [KuisionerController::class, 'index'])->name('kuisioner.index');
+        Route::post('/store', [KuisionerController::class, 'store'])->name('kuisioner.create');
+        Route::post('/update', [KuisionerController::class, 'update'])->name('kuisioner.update');
+        Route::get('/destroy/{id}', [KuisionerController::class, 'destroy'])->name('kuisioner.destroy');
     });
 
-    Route::group(['middleware' => ['access:user']], function () {
-        Route::get('/', [DashboardSurveyerController::class, 'index']);
-
-        // kuisioner routes
-        Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan']);
-        Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing']);
-        Route::get('kekuatan-dan-kelemahan-pesaing', [KuisionerController::class, 'kekuatanKelemahanPesaing']);
-
-        //form survey
-        Route::get('pesaing', [DashboardController::class, 'pesaing']);
-        Route::get('potensi-lahan', [DashboardController::class, 'potensi']);
+    // detail kuisioner routes
+    Route::prefix('detail-kuisioner')->group(function () {
+        Route::get('/', [DetailKuisionerController::class, 'index'])->name('detailKuisioner.index');
+        Route::post('/store', [DetailKuisionerController::class, 'store'])->name('detailKuisioner.create');
+        Route::post('/update', [DetailKuisionerController::class, 'update'])->name('detailKuisioner.update');
+        Route::get('/destroy/{id}', [DetailKuisionerController::class, 'destroy'])->name('detailKuisioner.destroy');
     });
+
+    // perusahaan routes
+    Route::prefix('perusahaan')->group(function () {
+        Route::get('/', [PerusahaanController::class, 'index'])->name('perusahaan.index');
+        Route::post('/store', [PerusahaanController::class, 'store'])->name('perusahaan.create');
+        Route::post('/update', [PerusahaanController::class, 'update'])->name('perusahaan.update');
+        Route::get('/destroy/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
+    });
+
+    // posisi routes
+    Route::prefix('posisi')->group(function () {
+        Route::get('/', [PosisiController::class, 'index'])->name('posisi.index');
+        Route::post('/store', [PosisiController::class, 'store'])->name('posisi.create');
+        Route::post('/update', [PosisiController::class, 'update'])->name('posisi.update');
+        Route::get('/destroy/{id}', [PosisiController::class, 'destroy'])->name('posisi.destroy');
+    });
+
+    // detail penyimpanan routes
+    Route::get('penyimpanan', [PenyimpananController::class, 'index'])->name('penyimpanan.index');
+
+    // penyimpanan routes
+    Route::get('detail-penyimpanan', [DetailPenyimpananController::class, 'index'])->name('detailPenyimpanan.index');
+
+    // laporan routes
+    Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+});
+
+Route::prefix('admin')->middleware('auth', 'access:admin')->name('admin.index')->group(function () {
+    Route::get('/', [DashboardController::class, 'admin']);
+});
+
+Route::prefix('executive')->middleware('auth', 'access:executive')->name('executive.index')->group(function () {
+    Route::get('/', [DashboardController::class, 'executive']);
+});
+
+Route::prefix('surveyor')->middleware('auth', 'access:user')->name('surveyor.index')->group(function () {
+    Route::get('/', [DashboardSurveyerController::class, 'index']);
+
+    // kuisioner routes
+    Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
+    Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisisPesaing.index');
+    Route::get('kekuatan-dan-kelemahan-pesaing', [KuisionerController::class, 'kekuatanKelemahanPesaing'])->name('KekuatanDanKelemahanPesaing.index');
+
+    //form survey
+    Route::get('pesaing', [DashboardController::class, 'pesaing'])->name('formPesaing.index');
+    Route::get('potensi-lahan', [DashboardController::class, 'potensi'])->name('formPotensiLahan.index');
 });
