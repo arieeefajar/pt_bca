@@ -39,13 +39,13 @@
                 </li>
                 @elseif(Auth::user()->role == 'admin')
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
                 @elseif(Auth::user()->role == 'executive')
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>

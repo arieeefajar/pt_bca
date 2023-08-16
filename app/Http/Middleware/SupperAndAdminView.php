@@ -26,7 +26,7 @@ class SupperAndAdminView
             } elseif (Auth::user()->role == 'admin') {
                 return redirect()->route('admin.dashboard');
             } elseif (Auth::user()->role == 'executive') {
-                // return redirect()->route();
+                return redirect()->route('executive.dashboard');
             } elseif (Auth::user()->role == 'user') {
                 return redirect()->route('surveyor.dashboard');
             }

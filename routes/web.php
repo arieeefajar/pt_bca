@@ -36,9 +36,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // dashboard
 Route::get('/super-admin-dashboard', [DashboardController::class, 'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
 Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard')->middleware('auth', 'access:admin');
+Route::get('/executive-dashboard', [DashboardController::class, 'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
 Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index'])->name('surveyor.dashboard')->middleware('auth', 'access:user');
 
-
+// route only super admin & admin
 Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 
     //user routes
@@ -99,6 +100,7 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
 
+// route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
     // kuisioner routes
     Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
