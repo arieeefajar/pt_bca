@@ -1,7 +1,7 @@
 @extends('layout1.app')
 @section('title', 'Form Pesaing')
-@section('menu', 'Form Pesaing')
-@section('submenu', 'Form Pesaing')
+@section('menu', 'Pesaing')
+@section('submenu', 'Menu')
 
 @section('content')
 @push('styles')
@@ -62,12 +62,13 @@
                         <form action="">
                             <div class="content col">
                                 <label class="form-label">Apa saja keunggulan pesaing :</label>
-                                <ul id="tagList">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- {{-- <ul id="tagList">
                                     <input type="text" class="form-control" id="inputTags" onkeyup="addTag(event,'inputTags')">
-                                </ul>
+                                </ul> --}}
                                 {{-- <ul id="tagList">
                                     <input type="text" class="form-control" id="{{ $data['id'] }}" onkeyup="addTag({{ $data['id'] }})">
-                                </ul> --}}
+                                </ul> --}} -->
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -78,9 +79,10 @@
                         <form action="">
                             <div class="content col">
                                 <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
-                                <ul id="tagList1">
+                                <input type="text" class="form-control" name="" id="">
+                                <!-- <ul id="tagList1">
                                     <input type="text" class="form-control" id="inputTags1">
-                                </ul>
+                                </ul> -->
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -31,20 +31,37 @@
             </div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                @if(Auth::user()->role == 'supper-admin')
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('superAdmin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
+                @elseif(Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                    </a>
+                </li>
+                @elseif(Auth::user()->role == 'executive')
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('superAdmin.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::user()->role != 'executive')
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">Master</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @if(Auth::user()->role == 'supper-admin')
                             <li class="nav-item">
                                 <a href="{{ route('user.index') }}" class="nav-link"> <i class="ri-user-line"></i>User</a>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <a href="{{ route('jenisKuisioner.index') }}" class="nav-link" data-key="t-chat"> <i class="ri-honour-line"></i>Jenis Kuisioner</a>
                             </li>
@@ -73,6 +90,7 @@
                         <i class="bx bxs-report"></i><span data-key="t-tables">Laporan</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->

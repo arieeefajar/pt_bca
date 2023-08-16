@@ -102,7 +102,7 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 Route::middleware(['auth', 'surveyor'])->group(function () {
     // kuisioner routes
     Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
-    Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisiPesaing.index');
+    Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisisPesaing.index');
     Route::get('kekuatan-dan-kelemahan-pesaing', [KuisionerController::class, 'kekuatanKelemahanPesaing'])->name('KekuatanDanKelemahanPesaing.index');
 
     //form survey
