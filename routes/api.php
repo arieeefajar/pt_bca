@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\V1\AuthController;
+use App\Http\Controllers\API\V1\KuisionerController as V1KuisionerController;
 use App\Http\Controllers\KuisionerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::prefix('v1')->group(function () {
+    // AUTH
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+
+    // Kuisioner
+    Route::get('/kuisioner', [V1KuisionerController::class, 'index']);
+});
 
 Route::get('getKuisionerAnalisisPesaing', [KuisionerController::class, 'analisisPesaing']);
 

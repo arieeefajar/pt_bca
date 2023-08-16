@@ -21,4 +21,8 @@ class JenisKuisioner extends Model
     {
         return $this->hashMany(DetailKuisioner::class, 'id', 'jenis_quisioner_id');
     }
+    public function detailKuisioners()
+    {
+        return $this->hasMany(DetailKuisioner::class, 'jenis_quisioner_id', 'id');
+    }
 }

@@ -16,4 +16,9 @@ class Kuisioner extends Model
         'nama',
         'status',
     ];
+
+    public function jenisKuisioners()
+    {
+        return $this->hasMany(JenisKuisioner::class, 'quisioner_id', 'id');
+    }
 }
