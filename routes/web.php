@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\TestApi;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardSurveyerController;
+use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
+use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -102,14 +104,26 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 
 // route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
+
     //menu routes
     Route::get('menu', [DashboardController::class, 'menu'])->name('menu.index');
     Route::get('set-store', [DashboardController::class, 'setStore'])->name('surveyor.setStore');
 
     // kuisioner routes
+    // kuisioner kepusan pelanggan
     Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
-    Route::get('analisis-pesaing', [KuisionerController::class, 'analisisPesaing'])->name('analisisPesaing.index');
-    Route::get('kekuatan-dan-kelemahan-pesaing', [KuisionerController::class, 'kekuatanKelemahanPesaing'])->name('KekuatanDanKelemahanPesaing.index');
+
+    // kuisioner analisis pesaing
+    Route::prefix('analisis-pesaing')->group(function () {
+        Route::get('/', [KuisonerAnalisisPesaingController::class, 'index'])->name('analisisPesaing.index');
+        Route::post('/store', [KuisonerAnalisisPesaingController::class, 'store'])->name('analisisPesaing.create');
+    });
+
+    // kuisioner kekuatan dan kelemahan pesaing
+    Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
+        Route::get('/', [KuisionerKekuatanKelemahanPesaing::class, 'index'])->name('KekuatanDanKelemahanPesaing.index');
+        Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
+    });
 
     //form survey
     Route::get('pesaing', [DashboardController::class, 'pesaing'])->name('formPesaing.index');
