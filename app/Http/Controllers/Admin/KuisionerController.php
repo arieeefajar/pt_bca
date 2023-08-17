@@ -65,19 +65,19 @@ class KuisionerController extends Controller
         return view('surveyor.kepuasanPelanggan', compact('dataPertanyaan'));
     }
 
-    public function analisisPesaing()
-    {
-        $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Pesaing');
+    // public function analisisPesaing()
+    // {
+    //     $model_detail_kuisioner = new DetailKuisioner();
+    //     $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Pesaing');
 
-        return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
-    }
+    //     return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
+    // }
 
-    public function kekuatanKelemahanPesaing()
-    {
-        $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
+    // public function kekuatanKelemahanPesaing()
+    // {
+    //     $model_detail_kuisioner = new DetailKuisioner();
+    //     $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
 
-        return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
-    }
+    //     return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
+    // }
 }
