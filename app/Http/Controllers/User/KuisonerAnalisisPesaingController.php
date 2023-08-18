@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailKuisioner;
+use App\Models\DetailPenyimpanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class KuisonerAnalisisPesaingController extends Controller
@@ -20,6 +22,8 @@ class KuisonerAnalisisPesaingController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+
+        $endPointApi = 'http://103.175.216.72/api/simi/competitor-analys';
 
         // convert function
         $convert = function ($params) {
@@ -56,12 +60,18 @@ class KuisonerAnalisisPesaingController extends Controller
         $price_sensitivity = $convert($request->price_sensitivity);
         $quality_than_price = $convert($request->quality_than_price);
         $trend_competition = $convert($request->trend_competition);
+        $latitude = floatval($request->latitude);
+        $longitude = floatval($request->longitude);
 
 
 
-        $response = Http::post('http://103.175.216.72:8002/competitor-analys', [
-            "surveyor" => 1,
-            "location" => "123",
+        $response = Http::post($endPointApi, [
+            "surveyor" => Auth::user()->id,
+            "location" => [
+                "latitude" => $latitude,
+                //number *
+                "longtitude" => $longitude //number *
+            ],
             "competitor" => [$competitor],
             "new_competitor" => [$new_competitor],
             "substitution" => [$substitution],
@@ -91,6 +101,16 @@ class KuisonerAnalisisPesaingController extends Controller
             "trend_competition" => $trend_competition
         ]);
 
-        dd($response->json());
+        $responJson = $response->json();
+
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan();
+        // dd($idPenyimpanan);
+        DetailPenyimpanan::create([
+            'penyimpanan_id' => $idPenyimpanan,
+            'pertanyaan' => 'k_analisis',
+            'api_id' => $responJson['id']
+        ]);
+
+        return redirect()->route('surveyor.dashboard')->with('success', 'Data kuisioner berhasil di simpan');
     }
 }
