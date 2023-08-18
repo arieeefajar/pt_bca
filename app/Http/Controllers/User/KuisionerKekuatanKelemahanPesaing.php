@@ -5,7 +5,11 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 
 use App\Models\DetailKuisioner;
+use App\Models\DetailPenyimpanan;
+use App\Models\Penyimpanan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class KuisionerKekuatanKelemahanPesaing extends Controller
@@ -21,6 +25,8 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+
+        $endPointApi = 'http://103.175.216.72/api/simi/competitor-identifier';
 
         // data answer
         $position_pov = intval($request->position_pov);
@@ -53,12 +59,19 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $support_change = intval($request->support_change);
         $strengthening_ability = intval($request->strengthening_ability);
         $special_treatment = intval($request->special_treatment);
+        $latitude = floatval($request->latitude);
+        $longitude = floatval($request->longitude);
 
+        // dd($latitude, $longitude);
 
         // post api
-        $response = Http::post('http://103.175.216.72:8002/competitor-identifier', [
-            'surveyor' => 12,
-            'location' => "1234",
+        $response = Http::post($endPointApi, [
+            'surveyor' => Auth::user()->id,
+            'location' => [
+                "latitude" => $latitude,
+                //number *
+                "longtitude" => $longitude //number *
+            ],
             'position_pov' => $position_pov,
             'deep' => $deep,
             'distribution_line' => $distribution_line,
@@ -91,6 +104,17 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             'special_treatment' => $special_treatment,
         ]);
 
-        dd($response->json());
+        $responJson = $response->json();
+
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan();
+        // dd($idPenyimpanan);
+        DetailPenyimpanan::create([
+            'penyimpanan_id' => $idPenyimpanan,
+            'pertanyaan' => 'k_kekuatan_kelemahan',
+            'api_id' => $responJson['id']
+        ]);
+
+        return redirect()->route('surveyor.dashboard')->with('success', 'Data kuisioner berhasil di simpan');
+
     }
 }

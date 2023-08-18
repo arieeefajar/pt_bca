@@ -13,13 +13,12 @@ return new class extends Migration {
         Schema::create('detail_penyimpanan', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('penyimpanan_id');
-            $table->unsignedInteger('detail_quisioner_id');
-            $table->integer('jawaban');
+            $table->enum('pertanyaan', ['k_kepuasan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing']);
+            $table->string('api_id');
             $table->timestamps();
         });
 
         Schema::table('detail_penyimpanan', function (Blueprint $table) {
-            $table->foreign('detail_quisioner_id')->references('id')->on('detail_quisioner');
             $table->foreign('penyimpanan_id')->references('id')->on('penyimpanan');
         });
     }
@@ -31,7 +30,6 @@ return new class extends Migration {
     {
         Schema::table('detail_penyimpanan', function (Blueprint $table) {
             $table->dropForeign('detail_penyimpanan_penyimpanan_id_foreign');
-            $table->dropForeign('detail_penyimpanan_detail_quisioner_id_foreign');
         });
 
         Schema::dropIfExists('detail_penyimpanan');

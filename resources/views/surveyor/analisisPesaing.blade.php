@@ -12,7 +12,7 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    <form action="{{ route('analisisPesaing.create') }}" method="POST">
+                    <form id="form_body" action="{{ route('analisisPesaing.create') }}" method="POST">
                         @csrf
                         {{-- pertanyaan Gambaran Umum --}}
                         <div class="bg-soft-primary p-2 mb-3">
@@ -339,8 +339,15 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                {{-- geolocation --}}
+                                <input type="hidden" name="latitude" id="latitude_field">
+                                <input type="hidden" name="longitude" id="longitude_field">
+
+
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" onclick="submit_form()"
+                                        class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -349,4 +356,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        position => resolve(position.coords),
+                        error => reject(error)
+                    );
+                } else {
+                    reject("Geolocation is not supported by this browser.");
+                }
+            });
+        }
+
+        async function submit_form() {
+            try {
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
+
+                // Pastikan elemen dengan ID form_body adalah elemen <form> yang benar
+                const form = document.getElementById("form_body");
+                if (form) {
+                    await form.submit();
+                } else {
+                    console.log("Form element not found.");
+                }
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        }
+    </script>
 @endsection

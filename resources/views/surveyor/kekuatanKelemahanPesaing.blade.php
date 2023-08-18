@@ -25,7 +25,7 @@
                     </div>
                     <div class="live-preview">
                         <div class="table-responsive">
-                            <form action="{{ route('KekuatanDanKelemahanPesaing.create') }}" method="POST">
+                            <form id="form_body" action="{{ route('KekuatanDanKelemahanPesaing.create') }}" method="POST">
                                 @csrf
                                 {{-- pertanyaan Produk --}}
                                 <table class="table table-bordered align-middle table-nowrap mb-3">
@@ -512,7 +512,7 @@
                                         <tr>
                                             <td> Konsistensi struktur organisasi dengan strategi bisnis pesaing </td>
                                             <td align="center">
-                                                <input type="radio" name="management_ability" value="1">
+                                                <input type="radio" name="consistency_organization_structure" value="1">
                                             </td>
                                             <td align="center">
                                                 <input type="radio" name="consistency_organization_structure"
@@ -802,8 +802,13 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <input type="hidden" name="latitude" id="latitude_field">
+                                <input type="hidden" name="longitude" id="longitude_field">
+
                                 <div class="text-center mt-3">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" onclick="submit_form()"
+                                        class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -812,4 +817,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        position => resolve(position.coords),
+                        error => reject(error)
+                    );
+                } else {
+                    reject("Geolocation is not supported by this browser.");
+                }
+            });
+        }
+
+        async function submit_form() {
+            try {
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
+
+                // Pastikan elemen dengan ID form_body adalah elemen <form> yang benar
+                const form = document.getElementById("form_body");
+                if (form) {
+                    await form.submit();
+                } else {
+                    console.log("Form element not found.");
+                }
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        }
+    </script>
 @endsection
