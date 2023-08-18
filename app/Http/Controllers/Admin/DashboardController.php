@@ -40,4 +40,15 @@ class DashboardController extends Controller
     {
         return view('surveyor.potensiLahan');
     }
+
+    public function menu()
+    {
+        return view('surveyor.menu');
+    }
+
+    public function setStore(Request $request)
+    {
+        $store = $request->input('store');
+        return redirect()->route('menu.index')->withCookie(cookie('selectedTokoId', $store, 1440));
+    }
 }

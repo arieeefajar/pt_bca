@@ -105,6 +105,11 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 // route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
 
+    //menu routes
+    Route::get('menu', [DashboardController::class, 'menu'])->name('menu.index');
+    Route::get('set-store', [DashboardController::class, 'setStore'])->name('surveyor.setStore');
+
+    // kuisioner routes
     // kuisioner kepusan pelanggan
     Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
 
