@@ -107,10 +107,26 @@
                 </div> --}}
                     <label for="toko">Pilih Toko:</label>
                     <select class="form-select mb-3" name="store" id="toko">
-                        <option selected disabled>Pilih toko yang akan dikunjungi</option>
+                        <option selected disabled>Pilih toko yang akan dikunjungi:</option>
                         <option value="toko1">Contoh 1</option>
                         <!-- Tambahkan pilihan toko lain sesuai kebutuhan -->
                     </select>
+                </div>
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-xl-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Custom DataLabels Bar</h4>
+                        </div><!-- end card header -->
+
+                        <div class="card-body">
+                            <div id="custom_datalabels_bar"
+                                data-colors='["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-dark", "--vz-primary", "--vz-success", "--vz-secondary"]'
+                                class="apex-charts" dir="ltr"></div>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
                 </div>
             </div><!-- end row -->
 
