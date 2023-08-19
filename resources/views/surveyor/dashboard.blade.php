@@ -128,22 +128,6 @@
                         </div><!-- end card-body -->
                     </div><!-- end card -->
                 </div>
-            </div><!-- end row -->
-
-            <div class="row">
-                <div class="col-xl-6 col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title mb-0">Custom DataLabels Bar</h4>
-                        </div><!-- end card header -->
-
-                        <div class="card-body">
-                            <div id="custom_datalabels_bar"
-                                data-colors='["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-dark", "--vz-primary", "--vz-success", "--vz-secondary"]'
-                                class="apex-charts" dir="ltr"></div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
-                </div>
 
                 <div class="col-xl-6 col-md-6">
                     <div class="card">
