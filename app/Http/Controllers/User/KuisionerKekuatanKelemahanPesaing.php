@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Http;
 
 class KuisionerKekuatanKelemahanPesaing extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $model_detail_kuisioner = new DetailKuisioner();
         $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
+
+        // dd($request->cookie('selectedTokoId'));
 
         return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
     }

@@ -10,9 +10,9 @@ use App\Http\Controllers\Admin\PenyimpananController;
 use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\PosisiController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Api\TestApi;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardSurveyerController;
+use App\Http\Controllers\User\FormPotensiLahanController;
 use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use Illuminate\Support\Facades\Route;
@@ -127,5 +127,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     //form survey
     Route::get('pesaing', [DashboardController::class, 'pesaing'])->name('formPesaing.index');
-    Route::get('potensi-lahan', [DashboardController::class, 'potensi'])->name('formPotensiLahan.index');
+
+    // form pesaing
+    Route::prefix('potensi-lahan')->group(function(){
+        Route::get('/', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
+        Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
+    });
 });

@@ -26,7 +26,8 @@
                 <!-- Tab panes -->
                 <div class="tab-content text-muted">
                     <div class="tab-pane fade show active" id="perbandingan-produk" role="tabpanel" aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>
-                        <form action="">
+                        <form action="{{ route('formPotensiLahan.create') }}" method="POST">
+                            @csrf
                             <div class="content col">
                                 <label class="form-label">Standar Keunggulan Umum</label>
                                 <input type="text" class="form-control" name="" id="">

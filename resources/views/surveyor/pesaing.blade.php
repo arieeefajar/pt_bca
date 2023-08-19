@@ -11,6 +11,8 @@
     <div class="col-xxl-6">
         <div class="card">
             <div class="card-body">
+
+                {{-- tab bar --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab" href="#perbandingan-produk" role="tab" aria-selected="true">
@@ -28,6 +30,7 @@
                         </a>
                     </li>
                 </ul>
+
                 <!-- Tab panes -->
                 <div class="tab-content text-muted">
                     <div class="tab-pane fade show active" id="perbandingan-produk" role="tabpanel" aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>

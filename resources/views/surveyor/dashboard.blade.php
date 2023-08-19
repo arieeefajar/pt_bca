@@ -109,6 +109,7 @@
                 <select class="form-select mb-3" name="store" id="toko">
                     <option selected disabled>Pilih toko yang akan dikunjungi:</option>
                     <option value="toko1">Contoh 1</option>
+                    <option value="toko2">Contoh 2</option>
                     <!-- Tambahkan pilihan toko lain sesuai kebutuhan -->
                 </select>
             </div>
