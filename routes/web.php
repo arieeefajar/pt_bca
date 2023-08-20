@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PosisiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardSurveyerController;
+use App\Http\Controllers\User\FormPesaingController;
 use App\Http\Controllers\User\FormPotensiLahanController;
 use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
@@ -126,10 +127,13 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
     });
 
     //form survey
-    Route::get('pesaing', [DashboardController::class, 'pesaing'])->name('formPesaing.index');
+    Route::prefix('pesaing')->group(function () {
+        Route::get('/', [FormPesaingController::class, 'index'])->name('formPesaing.index');
+        Route::post('/', [FormPesaingController::class, 'store'])->name('formPesaing.create');
+    });
 
     // form pesaing
-    Route::prefix('potensi-lahan')->group(function(){
+    Route::prefix('potensi-lahan')->group(function () {
         Route::get('/', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
         Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
     });

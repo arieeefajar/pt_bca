@@ -116,7 +116,7 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             'api_id' => $responJson['id']
         ]);
 
-        return redirect()->route('surveyor.dashboard')->with('success', 'Data kuisioner berhasil di simpan');
+        return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
 
     }
 }

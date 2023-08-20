@@ -8,25 +8,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
-class FormPotensiLahanController extends Controller
+class FormPesaingController extends Controller
 {
     public function index()
     {
-        return view('surveyor.potensiLahan');
+        return view('surveyor.pesaing');
     }
 
     public function store(Request $request)
     {
 
         // dd($request->all());
+        $endPointApi = 'http://103.175.216.72/api/simi/retail';
 
-        $endPointApi = 'http://103.175.216.72/api/simi/potentional-area';
+        // data send
+        $produk_kita = $request->produk_kita . ", " . $request->deskripsi_produk;
+        $produk_pesaing = $request->produk_pesaing . ", " . $request->deskripsi_produk_pesaing;
 
-        $keunggulan_umum = $request->keunggulan_umum;
-        $keunggulan_produk = $request->keunggulan_produk;
-        $keunggulan_kompetitor = $request->keunggulan_kompetitor;
-        $iklim = $request->iklim;
-        $event = $request->event;
+        $keunggulan_pesaing = $request->keunggulan_pesaing;
+        $pemasaran_pesaing = $request->pemasaran_pesaing;
         $latitude = $request->latitude;
         $longitude = $request->longitude;
 
@@ -37,11 +37,10 @@ class FormPotensiLahanController extends Controller
                 "longtitude" => $longitude
             ],
             "answer" => [
-                $keunggulan_umum,
-                $keunggulan_produk,
-                $keunggulan_kompetitor,
-                $iklim,
-                $event
+                $produk_kita,
+                $produk_pesaing,
+                $keunggulan_pesaing,
+                $pemasaran_pesaing
             ]
         ]);
 
@@ -50,10 +49,11 @@ class FormPotensiLahanController extends Controller
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan();
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'form_lahan',
+            'pertanyaan' => 'form_pesaing',
             'api_id' => $responJson['id']
         ]);
 
         return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
+
     }
 }
