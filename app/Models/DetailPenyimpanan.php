@@ -19,14 +19,16 @@ class DetailPenyimpanan extends Model
         'api_id',
     ];
 
-    public static function getIdPenyimpanan()
+    public static function getIdPenyimpanan($request)
     {
         $startDate = Carbon::now(); //returns current day
         $firstDay = $startDate->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         $lastDay = $startDate->endOfMonth()->format('Y-m-d') . ' 23:59:59';
 
+        // cek apakah ada data penyimpanan dengan id surveyor dan toko yang di kunjungi pada bulan ini
         $records = Penyimpanan::whereBetween('created_at', [$firstDay, $lastDay])
             ->where('surveyor_id', Auth::user()->id)
+            // ->where('perusahaan_id', $request->cookie('selectedTokoId')) //ambil data dari cookies
             ->get()
             ->toArray();
 
@@ -44,5 +46,22 @@ class DetailPenyimpanan extends Model
             $idPenyimpanan = $records[0]['id'];
             return ($idPenyimpanan);
         }
+    }
+
+    public static function hasDetailPenyimpanan($idPenyimpanan, $jenis)
+    {
+
+        $startDate = Carbon::now(); //returns current day
+        $firstDay = $startDate->startOfMonth()->format('Y-m-d') . ' 00:00:00';
+        $lastDay = $startDate->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+
+        $records = DetailPenyimpanan::select('id')
+            ->whereBetween('created_at', [$firstDay, $lastDay])
+            ->where('penyimpanan_id', $idPenyimpanan)
+            ->where('pertanyaan', $jenis)
+            ->get()
+            ->toArray();
+
+        return $records;
     }
 }

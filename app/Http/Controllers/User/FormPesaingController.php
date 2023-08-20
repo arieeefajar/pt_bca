@@ -18,7 +18,14 @@ class FormPesaingController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->all());
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');
+
+        // cek apakah sudah ada detail penyimpanan dengan jenis pertanyaan yang sama
+        if ($cekDetailPenyimpanan) {
+            return redirect()->route('menu.index')->with('error', 'Data Form sudah ada');
+        }
+
         $endPointApi = 'http://103.175.216.72/api/simi/retail';
 
         // data send
@@ -46,7 +53,6 @@ class FormPesaingController extends Controller
 
         $responJson = $response->json();
 
-        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan();
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,
             'pertanyaan' => 'form_pesaing',
