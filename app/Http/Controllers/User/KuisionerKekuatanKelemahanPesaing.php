@@ -14,17 +14,26 @@ use Illuminate\Support\Facades\Http;
 
 class KuisionerKekuatanKelemahanPesaing extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $model_detail_kuisioner = new DetailKuisioner();
         $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
+
+        // dd($request->cookie('selectedTokoId'));
 
         return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
+
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kekuatan_kelemahan');
+
+        // cek apakah sudah ada detail penyimpanan dengan jenis pertanyaan yang sama
+        if ($cekDetailPenyimpanan) {
+            return redirect()->route('menu.index')->with('error', 'Data Kuisioner sudah ada');
+        }
 
         $endPointApi = 'http://103.175.216.72/api/simi/competitor-identifier';
 
@@ -106,15 +115,13 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
 
         $responJson = $response->json();
 
-        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan();
-        // dd($idPenyimpanan);
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,
             'pertanyaan' => 'k_kekuatan_kelemahan',
             'api_id' => $responJson['id']
         ]);
 
-        return redirect()->route('surveyor.dashboard')->with('success', 'Data kuisioner berhasil di simpan');
+        return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
 
     }
 }
