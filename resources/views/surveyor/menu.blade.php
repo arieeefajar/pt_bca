@@ -33,6 +33,13 @@
         </script>
     @endif
 
+    <style>
+        .card {
+            width: 100%;
+            height: 80%;
+        }
+    </style>
+
     <div class="row project-wrapper">
         <div class="col-xxl-8">
             <div class="row">
