@@ -1,4 +1,28 @@
 /*# sourceMappingURL=custom.min.css.map */
-.atur_lebar {
+/* .atur_lebar {
     width: 900px;
+} */
+
+/* .table_fix {
+    width: 1200px;
+} */
+
+/* .table_fix tr {
+    width: 1200px;
+} */
+
+/* .alert {
+    width: auto;
+} */
+
+.th_dua {
+    width: 100px;
+}
+
+.th_pertanyaan_kk {
+    width: 700px;
+}
+
+.th_pertanyaan {
+    width: 800px;
 }
