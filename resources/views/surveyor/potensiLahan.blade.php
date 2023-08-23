@@ -33,18 +33,22 @@
                                 aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>
                                 <div class="content col">
                                     <label class="form-label">Standar Keunggulan Umum</label>
-                                    <input type="text" class="form-control" required name="keunggulan_umum"
-                                        id="keunggulan_umum">
+                                    {{-- <input type="text" class="form-control" required name="keunggulan_umum"
+                                        id="keunggulan_umum"> --}}
+                                    <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="content col"><br>
                                     <label class="form-label">Keunggulan Produk Kita</label>
-                                    <input type="text" class="form-control" required name="keunggulan_produk"
-                                        id="keunggulan_produk">
+                                    {{-- <input type="text" class="form-control" required name="keunggulan_produk"
+                                        id="keunggulan_produk"> --}}
+                                    <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="content col"><br>
                                     <label class="form-label">Keunggulan Kompetitor</label>
-                                    <input type="text" class="form-control" required name="keunggulan_kompetitor"
-                                        id="keunggulan_kompetitor">
+                                    {{-- <input type="text" class="form-control" required name="keunggulan_kompetitor"
+                                        id="keunggulan_kompetitor"> --}}
+                                    <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5"
+                                        required></textarea>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="keunggulan-kompetitif" role="tabpanel"
@@ -52,11 +56,13 @@
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
-                                        <input type="text" class="form-control" required name="iklim" id="iklim">
+                                        {{-- <input type="text" class="form-control" required name="iklim" id="iklim"> --}}
+                                        <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5"></textarea>
                                     </div><br>
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
-                                        <input type="text" class="form-control" required name="event" id="event">
+                                        {{-- <input type="text" class="form-control" required name="event" id="event"> --}}
+                                        <textarea class="form-control" name="evet" id="evet" cols="30" rows="5"></textarea>
                                     </div>
                                 </div>
                             </div>
