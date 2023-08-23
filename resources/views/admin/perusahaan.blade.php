@@ -64,7 +64,34 @@
                             </div>
                         </div>
 
-                        <div class="table-responsive table-card mt-3 mb-1">
+                        <div class="table-responsive table-card mb-1 mt-3">
+                            <table class="table align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-center" data_sort="no">No</th>
+                                        <th class="text-center" data-sort="customer_name">Nama Perusahaan</th>
+                                        <th class="text-center" data-sort="action">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataPerusahaan as $key => $data)
+                                        <tr>
+                                            <th class="text-center">{{ $key + 1 }}</th>
+                                            <td>{{ $data['nama'] }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#showModal"
+                                                    onclick="setEdit({{ $data }})">Edit</button>
+                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteRecordModal"
+                                                    onclick="deleteData({{ $data['id'] }})">Remove</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        {{-- <div class="table-responsive table-card mt-3 mb-1">
                             <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     <tr>
@@ -112,7 +139,7 @@
                                     Next
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>

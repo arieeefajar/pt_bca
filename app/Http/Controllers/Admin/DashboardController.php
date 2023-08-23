@@ -51,4 +51,9 @@ class DashboardController extends Controller
         $store = $request->input('store');
         return redirect()->route('menu.index')->withCookie(cookie('selectedTokoId', $store, 1440));
     }
+
+    public function tes()
+    {
+        return view('layout1.tes');
+    }
 }

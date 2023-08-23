@@ -34,7 +34,43 @@
                             </div>
                         </div>
 
-                        <div class="table-responsive table-card mt-3 mb-1">
+                        <div class="table-responsive table-card mb-1 mt-3">
+                            <table class="table align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-center" data_sort="no">No</th>
+                                        <th class="text-center" data-sort="customer_name">Nama Kuisioner</th>
+                                        <th class="text-center" data-sort="email">Status</th>
+                                        <th class="text-center" data-sort="action">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataKuisioner as $index => $data)
+                                        <tr>
+                                            <th class="text-center">{{ $index + 1 }}</th>
+                                            <td class="text-center" style="display:none;"><a href="javascript:void(0);"
+                                                    class="fw-medium link-primary">#VZ2101</a></td>
+                                            <td>{{ $data->nama }}</td>
+                                            <td class="text-center">
+                                                <span
+                                                    class="badge rounded-pill bg-success">{{ $data->status == 1 ? 'Ditampilkan' : 'Tidak Ditampilkan' }}</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#showModal"
+                                                    onclick="showEdit({{ $data }})">Edit</button>
+
+                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteRecordModal"
+                                                    onclick="showDelete({{ $data->id }})">Remove</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {{-- <div class="table-responsive table-card mt-3 mb-1">
                             <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     <tr>
@@ -57,12 +93,12 @@
                                             </td>
                                             <td class="text-center">
 
-                                                {{-- edit data --}}
+                                                
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal"
                                                     onclick="showEdit({{ $data }})">Edit</button>
 
-                                                {{-- delete data --}}
+                                                
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#deleteRecordModal"
                                                     onclick="showDelete({{ $data->id }})">Remove</button>
@@ -93,7 +129,7 @@
                                     Next
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>

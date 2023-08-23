@@ -5,6 +5,10 @@
 
 @section('content')
 
+    <style>
+
+    </style>
+
     {{-- @dd($dataDetailKuisioner) --}}
     <div class="row">
         <div class="col-lg-12">
@@ -32,9 +36,46 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table align-middle table-nowrap" id="customerTable">
+                            <table class="table align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                    <tr>
+                                        <th class="text-center" data_sort="no">No</th>
+                                        <th class="text-center" data-sort="customer_name">Nama Kuisioner</th>
+                                        <th class="text-center" data-sort="customer_name">Jenis Kuisioner</th>
+                                        <th class="text-center" data-sort="email">Pertanyaan</th>
+                                        <th class="text-center" data-sort="email">Jenis Jawaban</th>
+                                        <th class="text-center" data-sort="action">Action</th>
+                                    </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataDetailKuisioner as $index => $data)
+                                        <tr>
+                                            <th class="text-center">{{ $index + 1 }}</th>
+                                            <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->jenis }}</td>
+                                            <td>{{ $data->pertanyaan }}</td>
+                                            <td class="text-center">
+                                                {{ $data->jenis_jawaban == 1 ? 'Skala Evaluasi' : ($data->jenis_jawaban == 2 ? 'Skala Pendapat' : 'Tanggapan Terbuka') }}
+                                            </td>
+                                            <td class="text-center">
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#showModal"
+                                                    onclick="setEdit({{ $data }})">Edit</button>
+                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteRecordModal"
+                                                    onclick="deleteData({{ $data->id }})">Remove</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {{-- <div class="table-responsive table-card mt-3 mb-1">
+                            <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
@@ -49,9 +90,9 @@
                                     @foreach ($dataDetailKuisioner as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center">{{ $data->nama }}</td>
-                                            <td class="text-center">{{ $data->jenis }}</td>
-                                            <td class="text-center">{{ $data->pertanyaan }}</td>
+                                            <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->jenis }}</td>
+                                            <td>{{ $data->pertanyaan }}</td>
                                             <td class="text-center">
                                                 {{ $data->jenis_jawaban == 1 ? 'Skala Evaluasi' : ($data->jenis_jawaban == 2 ? 'Skala Pendapat' : 'Tanggapan Terbuka') }}
                                             </td>
@@ -65,7 +106,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                             <div class="noresult" style="display: none">
@@ -78,9 +118,9 @@
                                         orders for you search.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="d-flex justify-content-end">
+                        {{-- <div class="d-flex justify-content-end">
                             <div class="pagination-wrap hstack gap-2">
                                 <a class="page-item pagination-prev disabled" href="#">
                                     Previous
@@ -90,7 +130,7 @@
                                     Next
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>

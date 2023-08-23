@@ -42,6 +42,9 @@ Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('adm
 Route::get('/executive-dashboard', [DashboardController::class, 'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
 Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index'])->name('surveyor.dashboard')->middleware('auth', 'access:user');
 
+//tes route
+Route::get('/tes', [DashboardController::class, 'tes'])->name('tes.index');
+
 // route only super admin & admin
 Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 

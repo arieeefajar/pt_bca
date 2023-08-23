@@ -31,7 +31,73 @@
                             </div>
                         </div>
 
-                        <div class="table-responsive table-card mt-3 mb-1">
+                        <div class="table-responsive table-card mb-1 mt-3">
+                            <table class="table align-middle mb-0">
+                                <thead class="table-light">
+                                    @if (session('success'))
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                Swal.fire({
+                                                    title: "Good job!",
+                                                    text: "{{ session('success') }}",
+                                                    icon: "success",
+                                                    showCancelButton: true,
+                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
+                                                    buttonsStyling: false,
+                                                    showCloseButton: true
+                                                });
+                                            });
+                                        </script>
+                                    @elseif ($errors->any())
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                Swal.fire({
+                                                    title: "Error",
+                                                    text: "{{ $errors->all()[0] }}",
+                                                    icon: "error",
+                                                    showCancelButton: true,
+                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
+                                                    buttonsStyling: false,
+                                                    showCloseButton: true
+                                                });
+                                            });
+                                        </script>
+                                    @endif
+                                    <tr>
+                                        <th class="text-center" data_sort="no">No</th>
+                                        <th class="text-center" data-sort="customer_name">Username</th>
+                                        <th class="text-center" data-sort="email">Email</th>
+                                        <th class="text-center" data-sort="phone">Alamat</th>
+                                        <th class="text-center" data-sort="date">No.HP</th>
+                                        <th class="text-center" data-sort="date">Role</th>
+                                        <th class="text-center" data-sort="action">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($users as $index => $user)
+                                        <tr>
+                                            <th class="text-center">{{ $index + 1 }}</th>
+                                            <td class="text-center" style="display:none;"><a href="javascript:void(0);"
+                                                    class="fw-medium link-primary">#VZ2101</a></td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->alamat }}</td>
+                                            <td class="text-center">{{ $user->no_telp }}</td>
+                                            <td class="text-center">{{ $user->role }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#showModal{{ $user->id }}">Edit</button>
+                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteRecordModal{{ $user->id }}">Remove</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        {{-- <div class="table-responsive table-card mt-3 mb-1">
                             <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     @if (session('success'))
@@ -118,7 +184,7 @@
                                     Next
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>
