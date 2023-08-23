@@ -21,7 +21,7 @@
                         <li class="nav-item">
                             <a class="nav-link" id="keunggulan-tab" data-bs-toggle="tab" href="#keunggulan-kompetitif"
                                 role="tab" aria-selected="false">
-                                Musing Tanam
+                                Musim Tanam
                             </a>
                         </li>
                     </ul>

@@ -62,8 +62,9 @@
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Apa saja keunggulan pesaing :</label>
-                                        <input type="text" class="form-control" name="keunggulan_pesaing" id=""
-                                            required>
+                                        {{-- <input type="text" class="form-control" name="keunggulan_pesaing" id=""
+                                            required> --}}
+                                        <textarea class="form-control" name="keunggulan_pesaing" id="" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -72,8 +73,9 @@
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
-                                        <input type="text" class="form-control" name="pemasaran_pesaing" id=""
-                                            required>
+                                        {{-- <input type="text" class="form-control" name="pemasaran_pesaing" id=""
+                                            required> --}}
+                                        <textarea class="form-control" name="pemasaran_pesaing" id="" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                             </div>
