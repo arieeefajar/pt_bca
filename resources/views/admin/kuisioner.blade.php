@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table align-middle table-nowrap" id="customerTable">
+                            <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
@@ -50,7 +50,7 @@
                                             <th class="text-center">{{ $index + 1 }}</th>
                                             <td class="text-center" style="display:none;"><a href="javascript:void(0);"
                                                     class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td class="text-center">{{ $data->nama }}</td>
+                                            <td>{{ $data->nama }}</td>
                                             <td class="text-center">
                                                 <span
                                                     class="badge rounded-pill bg-success">{{ $data->status == 1 ? 'Ditampilkan' : 'Tidak Ditampilkan' }}</span>

@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table align-middle table-nowrap" id="customerTable">
+                            <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
@@ -77,7 +77,7 @@
                                     @foreach ($dataPerusahaan as $key => $data)
                                         <tr>
                                             <th class="text-center">{{ $key + 1 }}</th>
-                                            <td class="text-center">{{ $data['nama'] }}</td>
+                                            <td>{{ $data['nama'] }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal"

@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table align-middle table-nowrap" id="customerTable">
+                            <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
                                     @if (session('success'))
                                         <script>
@@ -81,9 +81,9 @@
                                             <th class="text-center">{{ $index + 1 }}</th>
                                             <td class="text-center" style="display:none;"><a href="javascript:void(0);"
                                                     class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td class="text-center">{{ $user->name }}</td>
-                                            <td class="text-center">{{ $user->email }}</td>
-                                            <td class="text-center">{{ $user->alamat }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->alamat }}</td>
                                             <td class="text-center">{{ $user->no_telp }}</td>
                                             <td class="text-center">{{ $user->role }}</td>
                                             <td class="text-center">
