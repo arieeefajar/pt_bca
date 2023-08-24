@@ -4,7 +4,18 @@
 @section('submenu', 'Kuisioner')
 
 @section('content')
+<style>
+    @media(max-width:480px) {
 
+        .th_pertanyaan_kk {
+            width: 130px;
+        }
+
+        td {
+            font-size: 12px;
+        }
+    }
+</style>
 {{-- @dd($dataPertanyaan) --}}
 <div class="row">
     <div class="col">
@@ -568,7 +579,7 @@
                                     <tr>
                                         <td> Kemampuan manajemen perusahaan pesaing untuk mengkoordinasi fungsi atau
                                             kelompok fungsi tertentu
-                                            (misalnyakoordinasi pengembangan produk dengan riset) </td>
+                                            (misalnya koordinasi pengembangan produk dengan riset) </td>
                                         <td align="center">
                                             <input type="radio" name="management_ability" value="1">
                                         </td>
@@ -589,7 +600,7 @@
                             </table>
 
                             {{-- pertanyaan Kemampuan Inti dan Menyesuaikan Diri dengan Perubahan --}}
-                            <table class="table table-bordered align-middle  mb-3 table_nowrap">
+                            <table class="table table-bordered align-middle  mb-3 table_nowrap table_fix">
                                 <thead class="table-warning">
                                     <tr>
                                         <th class="bg-soft-primary" colspan=6>Kemampuan Inti dan
@@ -708,7 +719,7 @@
                             </table>
 
                             {{-- pertanyaan Portofolio Pesaing --}}
-                            <table class="table table-bordered align-middle  mb-3 table_nowrap">
+                            <table class="table table-bordered align-middle  mb-3 table_nowrap table_fix">
                                 <thead class="table-warning">
                                     <tr>
                                         <th class="bg-soft-primary" colspan=6>Portofolio Pesaing</th>
@@ -765,7 +776,7 @@
                             </table>
 
                             {{-- pertanyaan Lain-Lain --}}
-                            <table class="table table-bordered align-middle  mb-3 table_nowrap">
+                            <table class="table table-bordered align-middle  mb-3 table_nowrap table_fix">
                                 <thead class="table-warning">
                                     <tr>
                                         <th class="bg-soft-primary" colspan=6>Lain-lain</th>
