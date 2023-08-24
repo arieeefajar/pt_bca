@@ -44,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function penyimpanan()
+    {
+        return $this->hashMany(Penyimpanan::class, 'id', 'surveyor_id');
+    }
 }

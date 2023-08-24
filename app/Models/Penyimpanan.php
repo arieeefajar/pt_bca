@@ -16,4 +16,14 @@ class Penyimpanan extends Model
         'perusahaan_id',
         'status',
     ];
+
+    public function perusahaan()
+    {
+        return $this->belongsTo(Perusahaan::class, 'perusahaan_id', 'id');
+    }
+
+    public function surveyor()
+    {
+        return $this->belongsTo(User::class, 'surveyor_id', 'id');
+    }
 }

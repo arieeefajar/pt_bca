@@ -29,42 +29,43 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Nama</th>
-                                        <th class="text-center" data-sort="email">Alamat</th>
-                                        <th class="text-center" data-sort="phone">Umur</th>
+                                        <th class="text-center" data-sort="customer_name">Surveyor</th>
+                                        <th class="text-center" data-sort="email">Perusahaan Asal</th>
+                                        <th class="text-center" data-sort="email">Aksi</th>
+                                        {{-- <th class="text-center" data-sort="phone">Umur</th>
                                         <th class="text-center" data-sort="date">No.Telepon</th>
                                         <th class="text-center" data-sort="date">Daerah</th>
                                         <th class="text-center" data-sort="date">Perusahaan</th>
                                         <th class="text-center" data-sort="date">Posisi</th>
-                                        <th class="text-center" data-sort="action">Action</th>
+                                        <th class="text-center" data-sort="action">Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th class="text-center">1</th>
-                                        <td class="text-center" style="display:none;"><a href="javascript:void(0);"
-                                                class="fw-medium link-primary">#VZ2101</a></td>
-                                        <td class="text-center">Mary Cousar</td>
-                                        <td class="text-center">Mastrip</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">580-464-4694</td>
+                                    @foreach ($dataPenyimpanan as $index => $data)
+                                        <tr>
+                                            <th class="text-center">{{ $index + 1 }}</th>
+                                            <td class="text-center">{{ $data->surveyor->name }}</td>
+                                            <td class="text-center">{{ $data->perusahaan->nama }}</td>
+                                            {{-- <td class="text-center">580-464-4694</td>
                                         <td class="text-center">Jember</td>
                                         <td class="text-center">PT BISI Internasional Tbk</td>
-                                        <td class="text-center">Master Dealer</td>
-                                        <td class="text-center">
-                                            <div class="d-flex gap-2">
-                                                <div class="detail">
-                                                    <a href="/detail-penyimpanan"
-                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
-                                                </div>
-                                                <div class="remove">
+                                        <td class="text-center">Master Dealer</td> --}}
+                                            <td class="text-center">
+                                                <div class="d-flex gap-2 justify-content-center">
+                                                    <div class="detail">
+                                                        <a href="/detail-penyimpanan/{{ $data->id }}"
+                                                            class="btn btn-sm btn-primary edit-item-btn">Detail</a>
+                                                    </div>
+                                                    {{-- <div class="remove">
                                                     <button class="btn btn-sm btn-danger remove-item-btn"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteRecordModal">Remove</button>
+                                                </div> --}}
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
