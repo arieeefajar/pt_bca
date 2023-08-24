@@ -100,7 +100,7 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('penyimpanan', [PenyimpananController::class, 'index'])->name('penyimpanan.index');
 
     // penyimpanan routes
-    Route::get('detail-penyimpanan', [DetailPenyimpananController::class, 'index'])->name('detailPenyimpanan.index');
+    Route::get('detail-penyimpanan/{id}', [DetailPenyimpananController::class, 'index'])->name('detailPenyimpanan.index');
 
     // laporan routes
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');

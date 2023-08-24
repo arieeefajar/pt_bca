@@ -15,4 +15,9 @@ class Perusahaan extends Model
         'id',
         'nama',
     ];
+
+    public function penyimpanan()
+    {
+        return $this->hashMany(Penyimpanan::class, 'id', 'perusahaan_id');
+    }
 }
