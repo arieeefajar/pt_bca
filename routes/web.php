@@ -15,6 +15,7 @@ use App\Http\Controllers\User\DashboardSurveyerController;
 use App\Http\Controllers\User\FormPesaingController;
 use App\Http\Controllers\User\FormPotensiLahanController;
 use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
+use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use Illuminate\Support\Facades\Route;
 
@@ -115,7 +116,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner routes
     // kuisioner kepusan pelanggan
-    Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
+    Route::prefix('kepuasan-pelanggan')->group(function(){
+        Route::get('/', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
+
+    });
 
     // kuisioner analisis pesaing
     Route::prefix('analisis-pesaing')->group(function () {
