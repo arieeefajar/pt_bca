@@ -53,12 +53,14 @@
                             </div>
                             <div class="tab-pane fade" id="keunggulan-kompetitif" role="tabpanel"
                                 aria-labelledby="keunggulan-tab"> <br>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
                                         {{-- <input type="text" class="form-control" required name="iklim" id="iklim"> --}}
                                         <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5"></textarea>
-                                    </div><br>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
                                         {{-- <input type="text" class="form-control" required name="event" id="event"> --}}
