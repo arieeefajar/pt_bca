@@ -158,7 +158,7 @@
                         id="close-modal"></button>
                 </div>
 
-                <form action="{{ route('perusahaan.create') }}" method="POST">
+                <form action="{{ route('customer.create') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -193,7 +193,7 @@
                     <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close" id="close-modal"></button>
                 </div>
-                <form action="{{ route('perusahaan.update') }}" method="POST">
+                <form action="{{ route('customer.create') }}" method="POST">
                     @csrf
                     <div class="modal-body">
 
@@ -266,7 +266,7 @@
             console.log(id);
             $('#confirm-delete-data').click(function(e) {
                 e.preventDefault();
-                window.location.href = `/perusahaan/destroy/${id}`
+                window.location.href = `/customer/destroy/${id}`
             });
         }
     </script>

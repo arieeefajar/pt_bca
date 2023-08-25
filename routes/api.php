@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\KuisionerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('getKuisionerAnalisisPesaing', [KuisionerController::class, 'analisisPesaing']);
+Route::prefix('customer')->group(function(){
+    Route::get('/', [CustomerController::class, 'index']);
+    Route::post('/store', [CustomerController::class, 'store']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

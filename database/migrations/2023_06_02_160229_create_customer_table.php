@@ -10,9 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('perusahaan', function (Blueprint $table) {
+        Schema::create('customer', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->enum('jenis', array('dealer','master_dealer','lainnya'));
+            $table->string('provinsi');
+            $table->string('kota');
+            $table->string('area');
+            $table->string('amm');
             $table->timestamps();
         });
     }
