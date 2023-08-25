@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DetailKuisionerController;
 use App\Http\Controllers\Admin\DetailPenyimpananController;
@@ -7,7 +8,6 @@ use App\Http\Controllers\Admin\JenisKuisionerController;
 use App\Http\Controllers\Admin\KuisionerController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PenyimpananController;
-use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\PosisiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -15,6 +15,7 @@ use App\Http\Controllers\User\DashboardSurveyerController;
 use App\Http\Controllers\User\FormPesaingController;
 use App\Http\Controllers\User\FormPotensiLahanController;
 use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
+use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,12 +81,12 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::get('/destroy/{id}', [DetailKuisionerController::class, 'destroy'])->name('detailKuisioner.destroy');
     });
 
-    // perusahaan routes
-    Route::prefix('perusahaan')->group(function () {
-        Route::get('/', [PerusahaanController::class, 'index'])->name('perusahaan.index');
-        Route::post('/store', [PerusahaanController::class, 'store'])->name('perusahaan.create');
-        Route::post('/update', [PerusahaanController::class, 'update'])->name('perusahaan.update');
-        Route::get('/destroy/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
+    // customer routes
+    Route::prefix('customer')->group(function () {
+        Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
+        Route::post('/store', [CustomerController::class, 'store'])->name('customer.create');
+        Route::post('/update', [CustomerController::class, 'update'])->name('customer.update');
+        Route::get('/destroy/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
     });
 
     // posisi routes
@@ -115,7 +116,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner routes
     // kuisioner kepusan pelanggan
-    Route::get('kepuasan-pelanggan', [KuisionerController::class, 'kepuasanPelanggan'])->name('kepuasanPelanggan.index');
+    Route::prefix('kepuasan-pelanggan')->group(function () {
+        Route::get('/', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
+        Route::post('/store', [KuisionerKepuasanPelanggan::class, 'store'])->name('kepuasanPelanggan.create');
+    });
 
     // kuisioner analisis pesaing
     Route::prefix('analisis-pesaing')->group(function () {

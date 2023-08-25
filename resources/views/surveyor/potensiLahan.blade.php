@@ -99,6 +99,7 @@
         }
 
         async function submit_form() {
+            // alert('aowkoakwokwa');
             try {
                 const coords = await getLocation();
                 document.getElementById("latitude_field").value = coords.latitude;

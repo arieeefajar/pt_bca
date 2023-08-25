@@ -72,7 +72,7 @@
                                 <a href={{ route('detailKuisioner.index') }} class="nav-link" data-key="t-ecommerce"> <i class="ri-file-text-line"></i>Detail Kuisioner</a>
                             </li>
                             <li class="nav-item">
-                                <a  href={{ route('perusahaan.index') }} class="nav-link" data-key="t-projects"> <i class="ri-home-3-line"></i>Perusahaan</a>
+                                <a  href={{ route('customer.index') }} class="nav-link" data-key="t-projects"> <i class="ri-home-3-line"></i>Perusahaan</a>
                             </li>
                             <li class="nav-item">
                                 <a href={{ route('posisi.index') }} class="nav-link" data-key="t-tasks"> <i class="ri-vip-crown-line"></i>Posisi</a>

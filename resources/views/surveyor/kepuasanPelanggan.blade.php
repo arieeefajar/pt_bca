@@ -35,7 +35,8 @@
                             <li>5 (Sangat Puas)</li>
                         </ul>
                     </div>
-                    <form action="">
+                    <form id="form_body" action="{{ route('kepuasanPelanggan.create') }}" method="POST">
+                        @csrf
                         <div class="live-preview">
 
                             <div class="table-responsive">
@@ -625,6 +626,10 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <input type="hidden" name="latitude" id="latitude_field">
+                                <input type="hidden" name="longitude" id="longitude_field">
+
                                 <div class="text-center mt-3">
                                     <button type="button" onclick="submit_form()"
                                         class="btn btn-primary">Submit</button>
@@ -636,4 +641,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        position => resolve(position.coords),
+                        error => reject(error)
+                    );
+                } else {
+                    reject("Geolocation is not supported by this browser.");
+                }
+            });
+        }
+
+        async function submit_form() {
+            try {
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
+
+                // Pastikan elemen dengan ID form_body adalah elemen <form> yang benar
+                const form = document.getElementById("form_body");
+                if (form) {
+                    await form.submit();
+                } else {
+                    console.log("Form element not found.");
+                }
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        }
+    </script>
 @endsection

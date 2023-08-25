@@ -18,6 +18,8 @@ class FormPotensiLahanController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request->all());
+
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_lahan');
 

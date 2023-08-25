@@ -17,9 +17,9 @@ class Penyimpanan extends Model
         'status',
     ];
 
-    public function perusahaan()
+    public function customer()
     {
-        return $this->belongsTo(Perusahaan::class, 'perusahaan_id', 'id');
+        return $this->belongsTo(Perusahaan::class, 'customer_id', 'id');
     }
 
     public function surveyor()

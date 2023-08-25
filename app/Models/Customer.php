@@ -5,15 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Perusahaan extends Model
+class Customer extends Model
 {
     use HasFactory;
 
-    protected $table = 'perusahaan';
+    protected $table = 'customer';
 
     protected $fillable = [
         'id',
         'nama',
+        'jenis',
+        'provinsi',
+        'kota',
+        'area',
+        'amm',
     ];
 
     public function penyimpanan()
