@@ -22,11 +22,13 @@ class WilayahController extends Controller
         // custom message validate
         $customMessages = [
             'nama_wilayah.required' => 'Nama Wilayah harus diisi.',
+            'koordinat_wilayah.required' => 'Nama Wilayah harus diisi.',
         ];
 
         // validate
         $validator = Validator::make($request->all(), [
             'nama_wilayah' => 'required|string|max:255',
+            'koordinat_wilayah' => 'required|string|max:255',
         ], $customMessages);
 
         // check validator
@@ -37,6 +39,7 @@ class WilayahController extends Controller
         // create
         $result = Wilayah::create([
             'nama' => $request->nama_wilayah,
+            'koordinat' => $request->koordinat_wilayah,
         ]);
 
         // return response
@@ -50,12 +53,13 @@ class WilayahController extends Controller
         // custom message validate
         $customMessages = [
             'nama_wilayah.required' => 'Nama Wilayah harus diisi.',
-            'id.required' => 'Error ID.',
+            'koordinat_wilayah.required' => 'Nama Wilayah harus diisi.',
         ];
 
         // validate
         $validator = Validator::make($request->all(), [
             'nama_wilayah' => 'required|string|max:255',
+            'koordinat_wilayah' => 'required|string|max:255',
         ], $customMessages);
 
         // check validator
@@ -66,6 +70,7 @@ class WilayahController extends Controller
         // update
         $result = Wilayah::findOrFail($request->id)->update([
             'nama' => $request->nama_wilayah,
+            'koordinat' => $request->koordinat_wilayah,
         ]);
 
         // return response

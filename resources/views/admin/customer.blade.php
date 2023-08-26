@@ -85,7 +85,7 @@
                                             <td class="text-center">{{ $data['jenis'] }}</td>
                                             <td class="text-center">{{ $data['provinsi'] }}</td>
                                             <td class="text-center">{{ $data['kota'] }}</td>
-                                            <td class="text-center">{{ $data['area'] }}</td>
+                                            <td class="text-center">{{ $data['wilayah_id'] }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data['id'] }}"
@@ -207,16 +207,15 @@
                             <label class="form-label">Area</label>
                             <select class="form-select mb-3" name="area" id="area">
                                 <option selected disabled>Pilih Area</option>
-                                <option value="contoh">Contoh</option>
+                                @foreach ($dataArea as $data)
+                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Amm</label>
-                            <select class="form-select mb-3" name="amm" id="amm">
-                                <option selected disabled>Pilih Amm</option>
-                                <option value="contoh">Contoh</option>
-                            </select>
+                            <label class="form-label">Koordinat</label>
+                            <textarea class="form-control" name="koordinat" id="evet" cols="30" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -293,17 +292,18 @@
                                 <label class="form-label">Area</label>
                                 <select class="form-select mb-3" name="area" id="area">
                                     <option selected disabled>Pilih Area</option>
-                                    <option value="contoh" {{ $data->area === 'contoh' ? 'selected' : '' }}>Contoh
+                                    @foreach ($dataArea as $dataArea)
+                                        <option value="{{ $data->id }}"
+                                            {{ $dataArea->id === $data->wilayah_id ? 'selected' : '' }}>
+                                            {{ $dataArea->nama }}</option>
+                                    @endforeach
                                     </option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Amm</label>
-                                <select class="form-select mb-3" name="amm" id="amm">
-                                    <option selected disabled>Pilih Amm</option>
-                                    <option value="contoh" {{ $data->amm === 'contoh' ? 'selected' : '' }}>Contoh</option>
-                                </select>
+                                <label class="form-label">Koordinat</label>
+                                <textarea class="form-control" name="koordinat" id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
