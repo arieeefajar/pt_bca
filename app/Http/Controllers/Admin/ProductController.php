@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\JenisTanaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,8 +12,11 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $dataProduct = Product::all();
-        return view('admin.product', compact('dataProduct'));
+
+        $dataProduct = JenisTanaman::join('produk', 'jenis_tanaman.id', '=', 'produk.id_jenis_tanaman')->select('produk.id as id', 'produk.nama_produk', 'jenis_tanaman.id as id_jenis_tanaman', 'jenis_tanaman.jenis')->get();
+
+        $dataJenisTanaman = JenisTanaman::all();
+        return view('admin.product', compact('dataProduct', 'dataJenisTanaman'));
     }
 
     public function store(Request $request)
@@ -40,10 +44,11 @@ class ProductController extends Controller
             'id_jenis_tanaman' => $request->jenis_tanaman
         ]);
 
-        // return response
-        return response()->json([
-            "data" => $result
-        ]);
+        return redirect(route('product.index'))->with('success', 'Data created successfully.');
+        // // return response
+        // return response()->json([
+        //     "data" => $result
+        // ]);
     }
 
     public function update(Request $request)
@@ -71,10 +76,12 @@ class ProductController extends Controller
             'id_jenis_tanaman' => $request->jenis_tanaman
         ]);
 
-        // return response
-        return response()->json([
-            "data" => Product::findOrFail($request->id)
-        ]);
+
+        return redirect(route('product.index'))->with('success', 'Data Updated successfully.');
+        // // return response
+        // return response()->json([
+        //     "data" => Product::findOrFail($request->id)
+        // ]);
     }
 
     public function destroy($id)

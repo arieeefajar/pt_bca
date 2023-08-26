@@ -78,13 +78,14 @@
                                             <th class="text-center">{{ $index + 1 }}</th>
                                             <td class="text-center" style="display:none;"><a href="javascript:void(0);"
                                                     class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td>{{ $data->nama_produk }}</td>
-                                            <td>{{ $data->jenis }}</td>
+                                            <td class="text-center">{{ $data->nama_produk }}</td>
+                                            <td class="text-center">{{ $data->jenis }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data->id }}">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $data->id }}">Remove</button>
+                                                    data-bs-target="#deleteRecordModal{{ $data->id }}"
+                                                    onclick="deleteData({{ $data['id'] }})">Remove</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -129,7 +130,9 @@
                             <label for="phone-field" class="form-label">Jenis</label>
                             <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman">
                                 <option selected disabled>Pilih jenis produk</option>
-                                <option value="1">Contoh</option>
+                                @foreach ($dataJenisTanaman as $data)
+                                    <option value="{{ $data->id }}">{{ $data->jenis }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -156,46 +159,39 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form action="{{ route('user.update', $data->id) }}" method="POST">
+                    <form action="{{ route('product.update', $data->id) }}" method="POST">
                         @csrf
                         @method('POST')
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="customername-field" class="form-label">Username</label>
-                                <input type="text" id="customername-field" name="name"
-                                    value="{{ $data->name }}" class="form-control" placeholder="Masukkan Username"
-                                    required />
+
+                                <div class="mb-3" id="modal-id" style="display: none;">
+                                    <label for="id-field" class="form-label">ID</label>
+                                    <input type="text" name="id" id="id" value="{{ $data['id'] }}"
+                                        class="form-control" placeholder="ID" readonly />
+                                </div>
+
+                                <label for="customername-field" class="form-label">Nama Produk</label>
+                                <input type="text" id="nama_produk" name="nama_produk"
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    value="{{ $data->nama_produk }}" placeholder="Masukkan nama produk" required />
                             </div>
 
-                            <div class="mb-3">
-                                <label for="email-field" class="form-label">Email</label>
-                                <input type="email" id="email-field" name="email" value="{{ $data->email }}"
-                                    class="form-control" placeholder="Masukan Email" required />
-                            </div>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
                             <div class="mb-3">
-                                <label class="form-label">Alamat</label>
-                                <input type="text" id="alamat-field" name="alamat" value="{{ $data->alamat }}"
-                                    class="form-control" placeholder="Masukan Alamat" required />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="phone-field" class="form-label">No.Hp</label>
-                                <input type="text" id="phone-field" name="no_telp" value="{{ $data->no_telp }}"
-                                    class="form-control" placeholder="Masukan No.HP" required />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="phone-field" class="form-label">Role</label>
-                                <select class="form-select mb-3" name="role" id="role">
-                                    <option selected disabled>Pilih Role Pengguna</option>
-                                    <option value="supper-admin" {{ $data->role === 'supper-admin' ? 'selected' : '' }}>
-                                        Supper Admin</option>
-                                    <option value="admin" {{ $data->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                    <option value="executive" {{ $data->role === 'executive' ? 'selected' : '' }}>
-                                        Executive</option>
-                                    <option value="user" {{ $data->role === 'user' ? 'selected' : '' }}>Surveyor
-                                    </option>
+                                <label for="phone-field" class="form-label">Jenis</label>
+                                <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman">
+                                    <option selected disabled>Pilih jenis produk</option>
+                                    @foreach ($dataJenisTanaman as $data)
+                                        <option value="{{ $data->id }}">
+                                            {{ $data->jenis }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -229,11 +225,11 @@
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                             <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                            <form action="{{ route('user.destroy', $data->id) }}" method="POST"
+                            <form action="{{ route('product.destroy', $data->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type=" button" class="btn w-sm btn-danger "
+                                <button type=" submit" class="btn w-sm btn-danger "
                                     id="delete-record{{ $data->id }}">Ya, Hapus!</button>
                             </form>
                         </div>
@@ -242,4 +238,27 @@
             </div>
         </div>
     @endforeach
+@endsection
+
+@section('otherJs')
+    <script>
+        const setEdit = (data) => {
+            console.log(data);
+            $('#id-edit').val(data.id);
+            $('#nama-edit').val(data.nama);
+        }
+
+        const clearEdit = () => {
+            $('#id-edit').val(data.id);
+            $('#nama-edit').val(data.nama);
+        }
+
+        const deleteData = (id) => {
+            console.log(id);
+            $('#confirm-delete-data').click(function(e) {
+                e.preventDefault();
+                window.location.href = `/customer/destroy/${id}`
+            });
+        }
+    </script>
 @endsection
