@@ -11,7 +11,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-
+        $dataProduct = Product::all();
+        return view('admin.product', compact('dataProduct'));
     }
 
     public function store(Request $request)

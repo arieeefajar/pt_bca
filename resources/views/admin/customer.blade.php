@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('title', 'Data Perusahaan')
-@section('menu', 'Data Perusahaan')
+@section('title', 'Data Customer')
+@section('menu', 'Data Customer')
 @section('submenu', 'Master')
 
 @section('content')
@@ -41,7 +41,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Data Perusahaan</h4>
+                    <h4 class="card-title mb-0">Data Customer</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
@@ -51,7 +51,7 @@
                                 <div>
                                     <button type="button" class="btn btn-warning add-btn" data-bs-toggle="modal"
                                         id="create-btn" data-bs-target="#modalTambah"><i
-                                            class="ri-add-line align-bottom me-1"></i> Tambah Perusahaan</button>
+                                            class="ri-add-line align-bottom me-1"></i> Tambah Customer</button>
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -69,7 +69,11 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Nama Perusahaan</th>
+                                        <th class="text-center" data-sort="customer_name">Nama Customer</th>
+                                        <th class="text-center" data-sort="customer_name">Jenis</th>
+                                        <th class="text-center" data-sort="customer_name">Provinsi</th>
+                                        <th class="text-center" data-sort="customer_name">Kota</th>
+                                        <th class="text-center" data-sort="customer_name">Area</th>
                                         <th class="text-center" data-sort="action">Action</th>
                                     </tr>
                                 </thead>
@@ -77,13 +81,17 @@
                                     @foreach ($dataPerusahaan as $key => $data)
                                         <tr>
                                             <th class="text-center">{{ $key + 1 }}</th>
-                                            <td>{{ $data['nama'] }}</td>
+                                            <td class="text-center">{{ $data['nama'] }}</td>
+                                            <td class="text-center">{{ $data['jenis'] }}</td>
+                                            <td class="text-center">{{ $data['provinsi'] }}</td>
+                                            <td class="text-center">{{ $data['kota'] }}</td>
+                                            <td class="text-center">{{ $data['area'] }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#showModal"
+                                                    data-bs-target="#showModal{{ $data['id'] }}"
                                                     onclick="setEdit({{ $data }})">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal"
+                                                    data-bs-target="#deleteRecordModal{{ $data['id'] }}"
                                                     onclick="deleteData({{ $data['id'] }})">Remove</button>
                                             </td>
                                         </tr>
@@ -91,6 +99,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         {{-- <div class="table-responsive table-card mt-3 mb-1">
                             <table class="table table-bordered align-middle table-nowrap" id="customerTable">
                                 <thead class="table-light">
@@ -153,7 +162,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-light p-3">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Perusahaan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Customer</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
@@ -162,15 +171,52 @@
                     @csrf
                     <div class="modal-body">
 
-                        <div class="mb-3" id="modal-id" style="display: none;">
-                            <label for="id-field" class="form-label">ID</label>
-                            <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label">Nama Customer</label>
+                            <input type="text" name="nama" id="customername-field" class="form-control"
+                                placeholder="Masukan Nama Customer..." required />
                         </div>
 
                         <div class="mb-3">
-                            <label for="customername-field" class="form-label">Nama Perusahaan</label>
-                            <input type="text" name="nama" id="customername-field" class="form-control"
-                                placeholder="Masukan Nama Perusahaan..." required />
+                            <label class="form-label">Jenis</label>
+                            <select class="form-select mb-3" name="jenis" id="jenis">
+                                <option selected disabled>Pilih Jenis</option>
+                                <option value="dealer">Dealer</option>
+                                <option value="master_dealer">Master Dealer</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Provinsi</label>
+                            <select class="form-select mb-3" name="provinsi" id="provinsi">
+                                <option selected disabled>Pilih Provinsi</option>
+                                <option value="contoh">Contoh</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Kota</label>
+                            <select class="form-select mb-3" name="kota" id="kota">
+                                <option selected disabled>Pilih Kota</option>
+                                <option value="contoh">Contoh</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Area</label>
+                            <select class="form-select mb-3" name="area" id="area">
+                                <option selected disabled>Pilih Area</option>
+                                <option value="contoh">Contoh</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Amm</label>
+                            <select class="form-select mb-3" name="amm" id="amm">
+                                <option selected disabled>Pilih Amm</option>
+                                <option value="contoh">Contoh</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -184,68 +230,127 @@
         </div>
     </div>
 
-    {{-- modal edit --}}
-    <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-light p-3">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Perusahaan</h5>
-                    <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close" id="close-modal"></button>
+    @foreach ($dataPerusahaan as $data)
+        {{-- modal edit --}}
+        <div class="modal fade" id="showModal{{ $data['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light p-3">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Perusahaan</h5>
+                        <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close" id="close-modal"></button>
+                    </div>
+                    <form action="{{ route('customer.update', $data->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="modal-body">
+
+                            <div class="mb-3" id="modal-id" style="display: none;">
+                                <label for="id-field" class="form-label">ID</label>
+                                <input type="text" name="id" id="id" value="{{ $data['id'] }}"
+                                    class="form-control" placeholder="ID" readonly />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="customername-field" class="form-label">Nama Customer</label>
+                                <input type="text" name="nama" value="{{ $data['nama'] }}" id="nama"
+                                    class="form-control" placeholder="Masukan Nama Customer..." required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Jenis</label>
+                                <select class="form-select mb-3" name="jenis" id="jenis">
+                                    <option selected disabled>Pilih Jenis</option>
+                                    <option value="dealer" {{ $data->jenis === 'dealer' ? 'selected' : '' }}>Dealer
+                                    </option>
+                                    <option value="master_dealer"
+                                        {{ $data->jenis === 'master_dealer' ? 'selected' : '' }}>Master Dealer</option>
+                                    <option value="lainnya" {{ $data->jenis === 'lainnya' ? 'selected' : '' }}>Lainnya
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Provinsi</label>
+                                <select class="form-select mb-3" name="provinsi" id="provinsi">
+                                    <option selected disabled>Pilih Provinsi</option>
+                                    <option value="contoh" {{ $data->provinsi === 'contoh' ? 'selected' : '' }}>Contoh
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Kota</label>
+                                <select class="form-select mb-3" name="kota" id="kota">
+                                    <option selected disabled>Pilih Kota</option>
+                                    <option value="contoh" {{ $data->kota === 'contoh' ? 'selected' : '' }}>Contoh
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Area</label>
+                                <select class="form-select mb-3" name="area" id="area">
+                                    <option selected disabled>Pilih Area</option>
+                                    <option value="contoh" {{ $data->area === 'contoh' ? 'selected' : '' }}>Contoh
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Amm</label>
+                                <select class="form-select mb-3" name="amm" id="amm">
+                                    <option selected disabled>Pilih Amm</option>
+                                    <option value="contoh" {{ $data->amm === 'contoh' ? 'selected' : '' }}>Contoh</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                                    onclick="clearEdit()">Close</button>
+                                <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <form action="{{ route('customer.create') }}" method="POST">
-                    @csrf
+            </div>
+        </div>
+
+        {{-- modal delete --}}
+        <div class="modal fade zoomIn" id="deleteRecordModal{{ $data['id'] }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="btn-close"></button>
+                    </div>
                     <div class="modal-body">
-
-                        <div class="mb-3" id="modal-id" style="display: none;">
-                            <label for="id-field" class="form-label">ID</label>
-                            <input type="text" id="id-edit" name="id" class="form-control" placeholder="ID"
-                                readonly />
+                        <div class="mt-2 text-center">
+                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                                <h4>Anda Yakin ?</h4>
+                                <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
+                            </div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="customername-field" class="form-label">Nama Perusahaan</label>
-                            <input type="text" id="nama-edit" name="nama" class="form-control"
-                                placeholder="Masukan Nama Perusahaan..." required />
+                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
+                            <form action="{{ route('customer.destroy', $data->id) }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn w-sm btn-danger"
+                                    id="confirm-delete-data{{ $data->id }}">Ya,
+                                    Hapus!</button>
+                            </form>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="hstack gap-2 justify-content-end">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal"
-                                onclick="clearEdit()">Close</button>
-                            <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    {{-- modal delete --}}
-    <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="btn-close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Anda Yakin ?</h4>
-                            <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn w-sm btn-danger " id="confirm-delete-data">Ya, Hapus!</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 
 @endsection
 
