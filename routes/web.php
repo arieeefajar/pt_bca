@@ -86,7 +86,7 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
         Route::post('/store', [CustomerController::class, 'store'])->name('customer.create');
         Route::post('/update', [CustomerController::class, 'update'])->name('customer.update');
-        Route::get('/destroy/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+        Route::delete('{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
     });
 
     // posisi routes
