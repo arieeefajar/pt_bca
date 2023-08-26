@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\JenisTanamanController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\WilayahController;
+use App\Http\Controllers\Admin\WilayahSurveyController;
 use App\Http\Controllers\KuisionerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +35,20 @@ Route::prefix('produk')->group(function(){
     Route::post('/store', [ProductController::class, 'store']);
     Route::post('/update', [ProductController::class, 'update']);
     Route::get('/destroy/{id}', [ProductController::class, 'destroy']);
+});
+
+Route::prefix('wilayah')->group(function(){
+    Route::get('/', [WilayahController::class, 'index']);
+    Route::post('/store', [WilayahController::class, 'store']);
+    Route::post('/update', [WilayahController::class, 'update']);
+    Route::get('/destroy/{id}', [WilayahController::class, 'destroy']);
+});
+
+Route::prefix('wilayah_survey')->group(function(){
+    Route::get('/', [WilayahSurveyController::class, 'index']);
+    Route::post('/store', [WilayahSurveyController::class, 'store']);
+    Route::post('/update', [WilayahSurveyController::class, 'update']);
+    Route::get('/destroy/{id}', [WilayahSurveyController::class, 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
