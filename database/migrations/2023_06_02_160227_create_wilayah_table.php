@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('wilayah', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('koordinat');
             $table->timestamps();
         });
     }

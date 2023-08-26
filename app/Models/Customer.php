@@ -17,8 +17,8 @@ class Customer extends Model
         'jenis',
         'provinsi',
         'kota',
-        'area',
-        'amm',
+        'wilayah_id',
+        'koordinat',
     ];
 
     public function penyimpanan()

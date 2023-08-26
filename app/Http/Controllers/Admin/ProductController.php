@@ -90,10 +90,12 @@ class ProductController extends Controller
             // delete
             Product::findOrFail($id)->delete();
 
+            return redirect(route('product.index'))->with('success', 'Data Delete successfully.');
+
             // return response
-            return response()->json([
-                'message' => 'data berhasil dihapus'
-            ]);
+            // return response()->json([
+            //     'message' => 'data berhasil dihapus'
+            // ]);
         } catch (\Throwable $th) {
 
             // return error

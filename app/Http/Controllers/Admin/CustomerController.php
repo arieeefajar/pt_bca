@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,7 +13,8 @@ class CustomerController extends Controller
     public function index()
     {
         $dataPerusahaan = Customer::all();
-        return view('admin.customer', compact('dataPerusahaan'));
+        $dataArea = Wilayah::all();
+        return view('admin.customer', compact('dataPerusahaan', 'dataArea'));
     }
 
     public function store(Request $request)
@@ -25,7 +27,7 @@ class CustomerController extends Controller
             'provinsi.required' => 'Provinsi harus diisi.',
             'kota.required' => 'Kota harus diisi.',
             'area.required' => 'Area harus diisi.',
-            'amm.required' => 'Amm harus diisi.',
+            'koordinat.required' => 'Koordinat harus diisi.',
         ];
 
         $validator = Validator::make($request->all(), [
@@ -33,8 +35,8 @@ class CustomerController extends Controller
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
             'provinsi' => 'required|string|max:20',
             'kota' => 'required|string|max:30',
-            'area' => 'required|string|max:20',
-            'amm' => 'required|string|max:7',
+            'area' => 'required|string|max:255',
+            'koordinat' => 'required|string|max:100',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -46,8 +48,8 @@ class CustomerController extends Controller
             'jenis' => $request->jenis,
             'provinsi' => $request->provinsi,
             'kota' => $request->kota,
-            'area' => $request->area,
-            'amm' => $request->amm,
+            'wilayah_id' => $request->area,
+            'koordinat' => $request->koordinat,
         ]);
 
         return redirect(route('customer.index'))->with('success', 'Data created successfully.');
@@ -56,23 +58,21 @@ class CustomerController extends Controller
     public function update(Request $request)
     {
         $customMessages = [
-            'id.required' => 'ID Error',
             'nama.required' => 'Nama harus diisi.',
             'jenis.required' => 'Jenis harus diisi.',
             'provinsi.required' => 'Provinsi harus diisi.',
             'kota.required' => 'Kota harus diisi.',
             'area.required' => 'Area harus diisi.',
-            'amm.required' => 'Amm harus diisi.',
+            'koordinat.required' => 'Koordinat harus diisi.',
         ];
 
         $validator = Validator::make($request->all(), [
-            'id' => 'required|string',
             'nama' => 'required|string|max:255',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
             'provinsi' => 'required|string|max:20',
             'kota' => 'required|string|max:30',
-            'area' => 'required|string|max:20',
-            'amm' => 'required|string|max:7',
+            'area' => 'required|string|max:255',
+            'koordinat' => 'required|string|max:100',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -86,7 +86,7 @@ class CustomerController extends Controller
             'provinsi' => $request->provinsi,
             'kota' => $request->kota,
             'area' => $request->area,
-            'amm' => $request->amm,
+            'koordinat' => $request->koordinat,
         ]);
 
         return redirect(route('customer.index'))->with('success', 'Data Updated successfully.');

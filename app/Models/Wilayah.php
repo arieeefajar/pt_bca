@@ -14,5 +14,6 @@ class Wilayah extends Model
     protected $fillable = [
         'id',
         'nama',
+        'koordinat',
     ];
 }

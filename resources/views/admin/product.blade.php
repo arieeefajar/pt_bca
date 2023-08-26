@@ -73,6 +73,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{-- @dd($dataProduct) --}}
                                     @foreach ($dataProduct as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
@@ -84,8 +85,8 @@
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data->id }}">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $data->id }}"
-                                                    onclick="deleteData({{ $data['id'] }})">Remove</button>
+                                                    data-bs-target="#deletedModal"
+                                                    onclick="deleteData({{ $data->id }})">Remove</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -150,6 +151,7 @@
 
     <!-- edit-modal -->
     @foreach ($dataProduct as $data)
+        {{-- @dd($data); --}}
         <div class="modal fade" id="showModal{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -186,10 +188,11 @@
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">Jenis</label>
                                 <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman">
-                                    <option selected disabled>Pilih jenis produk</option>
-                                    @foreach ($dataJenisTanaman as $data)
-                                        <option value="{{ $data->id }}">
-                                            {{ $data->jenis }}
+                                    <option disabled>Pilih jenis produk</option>
+                                    @foreach ($dataJenisTanaman as $dataJenis)
+                                        <option value="{{ $dataJenis->id }}"
+                                            {{ $dataJenis->id == $data->id_jenis_tanaman ? 'selected' : '' }}>
+                                            {{ $dataJenis->jenis }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -205,39 +208,34 @@
                 </div>
             </div>
         </div>
+    @endforeach
 
-        <!-- delete-modal -->
-        <div class="modal fade zoomIn" id="deleteRecordModal{{ $data->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="btn-close"></button>
+    <!-- delete-modal -->
+    <div class="modal fade zoomIn" id="deletedModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 text-center">
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                            <h4>Anda Yakin ?</h4>
+                            <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <div class="mt-2 text-center">
-                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                <h4>Anda Yakin ?</h4>
-                                <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                            <form action="{{ route('product.destroy', $data->id) }}" method="POST"
-                                style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type=" submit" class="btn w-sm btn-danger "
-                                    id="delete-record{{ $data->id }}">Ya, Hapus!</button>
-                            </form>
-                        </div>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" id="confirm-delete-data" class="btn w-sm btn-danger ">Ya,
+                            Hapus!</button>
                     </div>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
 @endsection
 
 @section('otherJs')
@@ -257,7 +255,7 @@
             console.log(id);
             $('#confirm-delete-data').click(function(e) {
                 e.preventDefault();
-                window.location.href = `/customer/destroy/${id}`
+                window.location.href = `/produk/destroy/${id}`
             });
         }
     </script>

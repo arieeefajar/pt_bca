@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->string('provinsi');
             $table->string('kota');
             $table->unsignedBigInteger('wilayah_id');
+            $table->string('koordinat');
             $table->foreign('wilayah_id')->references('id')->on('wilayah');
-            $table->string('amm');
             $table->timestamps();
         });
     }
