@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PenyimpananController;
 use App\Http\Controllers\Admin\PosisiController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\JenisTanamanController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardSurveyerController;
 use App\Http\Controllers\User\FormPesaingController;
@@ -95,6 +97,22 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::post('/store', [PosisiController::class, 'store'])->name('posisi.create');
         Route::post('/update', [PosisiController::class, 'update'])->name('posisi.update');
         Route::get('/destroy/{id}', [PosisiController::class, 'destroy'])->name('posisi.destroy');
+    });
+
+    //product routes
+    Route::prefix('produk')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('product.index');
+        Route::post('/store', [ProductController::class, 'store'])->name('product.create');
+        Route::post('/update', [ProductController::class, 'update'])->name('product.update');
+        Route::get('/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    });
+
+    //jenis tamanan routes
+    Route::prefix('jenisTanaman')->group(function () {
+        Route::get('/', [JenisTanamanController::class, 'index'])->name('jenisTanaman.index');
+        Route::post('/store', [JenisTanamanController::class, 'store'])->name('jenisTanaman.create');
+        Route::post('/update', [JenisTanamanController::class, 'update'])->name('jenisTanaman.update');
+        Route::delete('{id}', [JenisTanamanController::class, 'destroy'])->name('jenisTanaman.destroy');
     });
 
     // detail penyimpanan routes

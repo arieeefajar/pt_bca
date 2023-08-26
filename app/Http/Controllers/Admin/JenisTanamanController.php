@@ -11,7 +11,8 @@ class JenisTanamanController extends Controller
 {
     public function index()
     {
-
+        $dataJenisTanaman = JenisTanaman::all();
+        return view('admin.jenisTanaman', compact('dataJenisTanaman'));
     }
 
     // create
@@ -38,10 +39,11 @@ class JenisTanamanController extends Controller
             'awdawda' => $request->jenis
         ]);
 
+        return redirect()->route('jenisTanaman.index')->with('success', 'Jenis Tanaman created successfully.');
         // return response
-        return response()->json([
-            "data" => $result
-        ]);
+        // return response()->json([
+        //     "data" => $result
+        // ]);
     }
 
     // update
@@ -69,27 +71,32 @@ class JenisTanamanController extends Controller
             'jenis' => $request->jenis
         ]);
 
+        return redirect(route('jenisTanaman.index'))->with('success', 'Data Updated successfully.');
         // return response
-        return response()->json([
-            "data" => JenisTanaman::findOrFail($request->id)
-        ]);
+        // return response()->json([
+        //     "data" => JenisTanaman::findOrFail($request->id)
+        // ]);
     }
 
     // delete
     public function destroy($id)
     {
-        try {
-            // delete
-            JenisTanaman::findOrFail($id)->delete();
 
-            // return response
-            return response()->json([
-                'message' => 'data berhasil dihapus'
-            ]);
-        } catch (\Throwable $th) {
+        $dataDelete = JenisTanaman::findOrFail($id);
+        $dataDelete->delete();
+        return redirect(route('jenisTanaman.index'))->with('success', 'Data Deleted successfully.');
+        // try {
+        //     // delete
+        //     JenisTanaman::findOrFail($id)->delete();
 
-            // return error
-            return response()->json($th);
-        }
+        //     // return response
+        //     return response()->json([
+        //         'message' => 'data berhasil dihapus'
+        //     ]);
+        // } catch (\Throwable $th) {
+
+        //     // return error
+        //     return response()->json($th);
+        // }
     }
 }

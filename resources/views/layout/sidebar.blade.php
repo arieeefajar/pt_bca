@@ -69,16 +69,24 @@
                                     </li>
                                 @endif
                                 <li class="nav-item">
-                                    <a href="{{ route('jenisKuisioner.index') }}" class="nav-link" data-key="t-chat"> <i
-                                            class="ri-honour-line"></i>Jenis Kuisioner</a>
-                                </li>
-                                <li class="nav-item">
                                     <a href={{ route('kuisioner.index') }} class="nav-link" data-key="t-mailbox"> <i
                                             class="ri-file-3-line"></i><span><span></span>Kuisioner</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ route('jenisKuisioner.index') }}" class="nav-link" data-key="t-chat"> <i
+                                            class="ri-honour-line"></i>Jenis Kuisioner</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href={{ route('detailKuisioner.index') }} class="nav-link"
                                         data-key="t-ecommerce"> <i class="ri-file-text-line"></i>Detail Kuisioner</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ route('product.index') }} class="nav-link" data-key="t-ecommerce"> <i
+                                            class="ri-product-hunt-line"></i>Produk</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ route('jenisTanaman.index') }} class="nav-link" data-key="t-ecommerce">
+                                        <i class="ri-plant-line"></i>Jenis Tanaman</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href={{ route('customer.index') }} class="nav-link" data-key="t-projects"> <i
