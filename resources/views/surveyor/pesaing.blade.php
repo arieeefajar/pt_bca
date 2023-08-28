@@ -37,12 +37,15 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3"><label class="form-label">Produk Kami :</label>
-                                            <select class="form-select mb-3" required name="produk_kita" id="">
+                                            <select class="form-select mb-3" required name="produk_kita" id="produkSelect"
+                                                onchange="updateSelectedDeskripsi()">
                                                 <option value="" selected disabled>Pilih Produk</option>
-                                                <option value="produk1">Contoh Produk 1</option>
-                                                <option value="produk2">Contoh Produk 2</option>
-                                                <option value="produk3">Contoh Produk 3</option>
-                                                <option value="produk4">Contoh Produk 4</option>
+                                                @foreach ($dataProduk as $value)
+                                                    <option value="{{ $value->nama_produk }}"
+                                                        data-deskripsi="{{ $value->nama_produk }}">
+                                                        {{ $value->nama_produk }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <textarea class="form-control" required name="deskripsi_produk" id="" cols="30" rows="5"></textarea>
                                         </div>
@@ -93,6 +96,29 @@
         </div><!--end col-->
     </div>
     <script>
+        const produkSelect = document.getElementById('produkSelect');
+
+        function updateSelectedDeskripsi() {
+            var selectedOption = produkSelect.options[produkSelect.selectedIndex];
+            var deskripsiProduk = selectedOption.getAttribute('data-deskripsi');
+
+            console.log(deskripsiProduk);
+
+            // selectedDeskripsiProduk.textContent = "Deskripsi Produk: " + deskripsiProduk;
+        }
+
+        // function getGeoLocation() {
+        //     const successCallback = (position) => {
+        //         console.log(position);
+        //     };
+
+        //     const errorCallback = (error) => {
+        //         console.log(error);
+        //     };
+
+        //     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        // }
+
         function getLocation() {
             return new Promise((resolve, reject) => {
                 if (navigator.geolocation) {

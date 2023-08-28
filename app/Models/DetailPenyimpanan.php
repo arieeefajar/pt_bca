@@ -28,7 +28,7 @@ class DetailPenyimpanan extends Model
         // cek apakah ada data penyimpanan dengan id surveyor dan toko yang di kunjungi pada bulan ini
         $records = Penyimpanan::whereBetween('created_at', [$firstDay, $lastDay])
             ->where('surveyor_id', Auth::user()->id)
-            // ->where('perusahaan_id', $request->cookie('selectedTokoId')) //ambil data dari cookies
+            ->where('customer_id', $request->cookie('selectedTokoId')) //ambil data dari cookies
             ->get()
             ->toArray();
 
@@ -36,7 +36,7 @@ class DetailPenyimpanan extends Model
         if (count($records) == 0) {
             $penyimpananCreate = new Penyimpanan();
             $penyimpananCreate->surveyor_id = Auth::user()->id;
-            $penyimpananCreate->perusahaan_id = 2; //ambil data dari cookies
+            $penyimpananCreate->customer_id = $request->cookie('selectedTokoId'); //ambil data dari cookies
             $penyimpananCreate->status = 2; // 1=true, 2=false
             $penyimpananCreate->save();
 

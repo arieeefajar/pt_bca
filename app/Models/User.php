@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -44,6 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getCustommer()
+    {
+        $customers = Customer::select('customer.id', 'customer.nama')
+            ->leftJoin('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
+            ->leftJoin('wilayah_survey', 'wilayah.id', '=', 'wilayah_survey.wilayah_id')
+            ->leftJoin('users', 'wilayah_survey.surveyor_id', '=', 'users.id')
+            ->where('users.role', '=', 'user')
+            ->where('users.id', '=', Auth::user()->id)
+            ->get();
+
+        return $customers;
+    }
 
     public function penyimpanan()
     {
