@@ -58,5 +58,6 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return $response;
+        // // return view('auth.login');
     }
 }
