@@ -129,8 +129,8 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 Route::middleware(['auth', 'surveyor'])->group(function () {
 
     //menu routes
-    Route::get('menu', [DashboardController::class, 'menu'])->name('menu.index');
-    Route::get('set-store', [DashboardController::class, 'setStore'])->name('surveyor.setStore');
+    Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name('menu.index');
+    Route::get('set-store', [DashboardSurveyerController::class, 'setStore'])->name('surveyor.setStore');
 
     // kuisioner routes
     // kuisioner kepusan pelanggan

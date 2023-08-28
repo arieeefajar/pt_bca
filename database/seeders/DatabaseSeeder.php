@@ -17,6 +17,12 @@ class DatabaseSeeder extends Seeder
             JenisKuisionerSeeder::class,
             DetailKuisionerSeeder::class,
             UserSeeder::class,
+            WilayahSeeder::class,
+            CustommerSeeder::class,
+            JenisTanamanSeeder::class,
+            ProductSeeder::class,
+            WilayahSurvey::class,
+            CustomerProductSeeder::class,
         ]);
     }
 }

@@ -191,7 +191,7 @@
                             <label class="form-label">Provinsi</label>
                             <select class="form-select mb-3" name="provinsi" id="provinsi">
                                 <option selected disabled>Pilih Provinsi</option>
-                                <option value="contoh">Contoh</option>
+                                <option value="Jawa Timur">Jawa Timur</option>
                             </select>
                         </div>
 
@@ -199,7 +199,7 @@
                             <label class="form-label">Kota</label>
                             <select class="form-select mb-3" name="kota" id="kota">
                                 <option selected disabled>Pilih Kota</option>
-                                <option value="contoh">Contoh</option>
+                                <option value="Jember">Jeber</option>
                             </select>
                         </div>
 
@@ -273,18 +273,16 @@
                             <div class="mb-3">
                                 <label class="form-label">Provinsi</label>
                                 <select class="form-select mb-3" name="provinsi" id="provinsi">
-                                    <option selected disabled>Pilih Provinsi</option>
-                                    <option value="contoh" {{ $data->provinsi === 'contoh' ? 'selected' : '' }}>Contoh
-                                    </option>
+                                    <option disabled>Pilih Provinsi</option>
+                                    <option selected value="Jawa Timur">Jawa Timur</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Kota</label>
                                 <select class="form-select mb-3" name="kota" id="kota">
-                                    <option selected disabled>Pilih Kota</option>
-                                    <option value="contoh" {{ $data->kota === 'contoh' ? 'selected' : '' }}>Contoh
-                                    </option>
+                                    <option disabled>Pilih Kota</option>
+                                    <option selected value="Jember">Jeber</option>
                                 </select>
                             </div>
 
@@ -292,10 +290,11 @@
                                 <label class="form-label">Area</label>
                                 <select class="form-select mb-3" name="area" id="area">
                                     <option selected disabled>Pilih Area</option>
-                                    @foreach ($dataArea as $dataArea)
+                                    @foreach ($dataArea as $valueArea)
+                                        {{-- @dd($valueArea) --}}
                                         <option value="{{ $data->id }}"
-                                            {{ $dataArea->id === $data->wilayah_id ? 'selected' : '' }}>
-                                            {{ $dataArea->nama }}</option>
+                                            {{ $valueArea->id === $data->wilayah_id ? 'selected' : '' }}>
+                                            {{ $valueArea->nama }}</option>
                                     @endforeach
                                     </option>
                                 </select>
