@@ -45,7 +45,7 @@
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
                                             <td class="text-center">{{ $data->surveyor->name }}</td>
-                                            <td class="text-center">{{ $data->perusahaan->nama }}</td>
+                                            <td class="text-center">{{ $data->customer->nama }}</td>
                                             {{-- <td class="text-center">580-464-4694</td>
                                         <td class="text-center">Jember</td>
                                         <td class="text-center">PT BISI Internasional Tbk</td>

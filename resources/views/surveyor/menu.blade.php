@@ -280,15 +280,13 @@
     </div><!-- end row -->
     <script>
         function anu() {
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Warning",
-                    text: "Data Kuisioner sudah di isi",
-                    icon: "warning",
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
+            Swal.fire({
+                title: "Warning",
+                text: "Data Kuisioner sudah di isi",
+                icon: "warning",
+                confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                buttonsStyling: false,
+                showCloseButton: true
             });
         }
     </script>
