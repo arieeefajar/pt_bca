@@ -139,11 +139,11 @@
                             <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('laporan.index') }}">
                             <i class="bx bxs-report"></i><span data-key="t-tables">Laporan</span>
                         </a>
-                    </li>
+                    </li> --}}
                 @endif
             </ul>
         </div>

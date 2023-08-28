@@ -12,7 +12,7 @@ class PenyimpananController extends Controller
     public function index()
     {
 
-        $dataPenyimpanan = Penyimpanan::with('perusahaan', 'surveyor')->get();
+        $dataPenyimpanan = Penyimpanan::with('customer', 'surveyor')->get();
         // dd($dataPenyimpanan);
         return view('admin.penyimpanan', compact('dataPenyimpanan'));
     }
