@@ -20,14 +20,14 @@
                 <div class="card-body">
                     <div id="customerList">
                         <div class="row g-4 mb-3">
-                            <div class="col-sm-auto">
+                            {{-- <div class="col-sm-auto">
                                 <div>
                                     <button type="button" class="btn btn-warning add-btn" data-bs-toggle="modal"
                                         id="create-btn" data-bs-target="#modalTambah"><i
                                             class="ri-add-line align-bottom me-1"></i> Tambah Detail Kuisioners</button>
                                 </div>
-                            </div>
-                            <div class="col-sm">
+                            </div> --}}
+                            <div class="col-sm-auto">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
                                         <input type="text" class="form-control search" placeholder="Search...">
@@ -46,7 +46,7 @@
                                         <th class="text-center" data-sort="customer_name">Jenis Kuisioner</th>
                                         <th class="text-center" data-sort="email">Pertanyaan</th>
                                         <th class="text-center" data-sort="email">Jenis Jawaban</th>
-                                        <th class="text-center" data-sort="action">Action</th>
+                                        {{-- <th class="text-center" data-sort="action">Action</th> --}}
                                     </tr>
                                     </tr>
                                 </thead>
@@ -60,14 +60,14 @@
                                             <td class="text-center">
                                                 {{ $data->jenis_jawaban == 1 ? 'Skala Evaluasi' : ($data->jenis_jawaban == 2 ? 'Skala Pendapat' : 'Tanggapan Terbuka') }}
                                             </td>
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal"
                                                     onclick="setEdit({{ $data }})">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#deleteRecordModal"
                                                     onclick="deleteData({{ $data->id }})">Remove</button>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

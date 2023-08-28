@@ -16,15 +16,15 @@
                 <div class="card-body">
                     <div id="customerList">
                         <div class="row g-4 mb-3">
-                            <div class="col-sm-auto">
+                            {{-- <div class="col-sm-auto">
                                 <div>
-                                    {{-- add data --}}
+                                    add data
                                     <button type="button" class="btn btn-warning add-btn" data-bs-toggle="modal"
                                         id="create-btn" data-bs-target="#modalTambah"><i
                                             class="ri-add-line align-bottom me-1"></i> Tambah Kuisioners</button>
                                 </div>
-                            </div>
-                            <div class="col-sm">
+                            </div> --}}
+                            <div class="col-sm-auto">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
                                         <input type="text" class="form-control search" placeholder="Search...">
@@ -41,7 +41,7 @@
                                         <th class="text-center" data_sort="no">No</th>
                                         <th class="text-center" data-sort="customer_name">Nama Kuisioner</th>
                                         <th class="text-center" data-sort="email">Status</th>
-                                        <th class="text-center" data-sort="action">Action</th>
+                                        {{-- <th class="text-center" data-sort="action">Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,7 +55,7 @@
                                                 <span
                                                     class="badge rounded-pill bg-success">{{ $data->status == 1 ? 'Ditampilkan' : 'Tidak Ditampilkan' }}</span>
                                             </td>
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal"
                                                     onclick="showEdit({{ $data }})">Edit</button>
@@ -63,7 +63,7 @@
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#deleteRecordModal"
                                                     onclick="showDelete({{ $data->id }})">Remove</button>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -205,8 +205,8 @@
 
                         <div class="mb-3" id="modal-id" style="display: none;">
                             <label for="id-field-edit" class="form-label">ID</label>
-                            <input type="text" id="id-field-edit" name="id" class="form-control"
-                                placeholder="ID" readonly />
+                            <input type="text" id="id-field-edit" name="id" class="form-control" placeholder="ID"
+                                readonly />
                         </div>
 
                         <div class="mb-3">
