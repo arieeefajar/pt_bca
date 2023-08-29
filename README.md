@@ -29,7 +29,7 @@
 
 - Migrate and seeder
 ```bash
-  php artisan Migrate
+  php artisan migrate
   php artisan gb:seed --class=DatabaseSeeder
 ```
 
