@@ -127,10 +127,10 @@
                                     <a href={{ route('customer.index') }} class="nav-link" data-key="t-projects"> <i
                                             class="ri-team-line"></i>Customer</a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href={{ route('posisi.index') }} class="nav-link" data-key="t-tasks"> <i
                                             class="ri-vip-crown-line"></i>Posisi</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>
