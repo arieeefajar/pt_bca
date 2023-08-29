@@ -43,7 +43,7 @@ class KuisonerAnalisisPesaingController extends Controller
             'cost' => 'required',
             'easy_channel' => 'required',
             'policy' => 'required',
-            'find_substitution' => 'required',
+            'find_subtitution' => 'required',
             'competitive_price' => 'required',
             'supplier_choice' => 'required',
             'change_price' => 'required',
@@ -52,12 +52,12 @@ class KuisonerAnalisisPesaingController extends Controller
             'dominant' => 'required',
             'contribution' => 'required',
             'difference_desire' => 'required',
-            'customer_movement' => 'required',
+            'customor_movement' => 'required',
             'price_sensitivity' => 'required',
             'quality_than_price' => 'required',
             'trend_competition' => 'required',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {

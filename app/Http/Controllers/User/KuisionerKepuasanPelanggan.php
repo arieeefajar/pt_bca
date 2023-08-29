@@ -19,6 +19,8 @@ class KuisionerKepuasanPelanggan extends Controller
     public function store(Request $request)
     {
 
+        // dd($request->all());
+
         $customMessages = [
             'required' => ':attribute harus diisi.',
             'numeric' => ':attribute harus berupa angka.',
@@ -40,8 +42,8 @@ class KuisionerKepuasanPelanggan extends Controller
             'growing_power' => 'required',
             'genetic_purity' => 'required',
             'pest_resistance' => 'required',
-            'suitability_image_result' => 'required',
-            'suitability_result_request' => 'required',
+            'suitablelity_image_result' => 'required',
+            'suitablelity_result_request' => 'required',
             'satisfaction_result' => 'required',
             'technical_ability' => 'required',
             'visit_intensity' => 'required',
