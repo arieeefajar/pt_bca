@@ -16,7 +16,22 @@
             }
         }
     </style>
-    {{-- @dd($dataPertanyaan) --}}
+
+    @if ($errors->any())
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    title: "Error",
+                    text: "{{ $errors->all()[0] }}",
+                    icon: "error",
+                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                    buttonsStyling: false,
+                    showCloseButton: true
+                });
+            });
+        </script>
+    @endif
+
     <div class="row">
         <div class="col">
             <div class="card">

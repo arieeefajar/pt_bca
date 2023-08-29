@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class KuisionerKekuatanKelemahanPesaing extends Controller
 {
@@ -26,6 +27,51 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
 
     public function store(Request $request)
     {
+
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'numeric' => ':attribute harus berupa angka.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'position_pov' => 'required',
+            'deep' => 'required',
+            'distribution_line' => 'required',
+            'line_power' => 'required',
+            'line_ability' => 'required',
+            'marketing_skill' => 'required',
+            'dev_skill' => 'required',
+            'advanced_tech' => 'required',
+            'fasility_flexibility' => 'required',
+            'scale_up_skill' => 'required',
+            'material_cost' => 'required',
+            'copyrights' => 'required',
+            'rnd_ability' => 'required',
+            'staff_skill' => 'required',
+            'resource_access' => 'required',
+            'cash_flow' => 'required',
+            'capital_capacity' => 'required',
+            'trust_management' => 'required',
+            'vision_mission' => 'required',
+            'consistency_organization_structure' => 'required',
+            'lead_quality' => 'required',
+            'management_ability' => 'required',
+            'functional_ability' => 'required',
+            'measurement_ability' => 'required',
+            'movement_response' => 'required',
+            'response_to_change' => 'required',
+            'competition_ability' => 'required',
+            'support_change' => 'required',
+            'strengthening_ability' => 'required',
+            'special_treatment' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ], $customMessages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kekuatan_kelemahan');

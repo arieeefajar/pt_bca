@@ -7,6 +7,7 @@ use App\Models\DetailPenyimpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class KuisionerKepuasanPelanggan extends Controller
 {
@@ -17,7 +18,47 @@ class KuisionerKepuasanPelanggan extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'numeric' => ':attribute harus berupa angka.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'information' => 'required',
+            'price_comparison' => 'required',
+            'variety_previlege' => 'required',
+            'packaging_view' => 'required',
+            'getting_easy' => 'required',
+            'satisfaction' => 'required',
+            'image_view' => 'required',
+            'material_amount' => 'required',
+            'promotion_quantity' => 'required',
+            'promotion_quality' => 'required',
+            'seed_purity' => 'required',
+            'vigor' => 'required',
+            'growing_power' => 'required',
+            'genetic_purity' => 'required',
+            'pest_resistance' => 'required',
+            'suitability_image_result' => 'required',
+            'suitability_result_request' => 'required',
+            'satisfaction_result' => 'required',
+            'technical_ability' => 'required',
+            'visit_intensity' => 'required',
+            'communication_intensity' => 'required',
+            'skill_credibility' => 'required',
+            'influence_of_officer' => 'required',
+            'communication_skill' => 'required',
+            'verification_speed' => 'required',
+            'completion_speed' => 'required',
+            'handling' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ], $customMessages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kepuasan');
