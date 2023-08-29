@@ -4,9 +4,22 @@
 @section('submenu', 'Form Survey')
 
 @section('content')
-    {{-- @push('styles')
-<link href="{{ asset('admin_assets/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
-@endpush --}}
+
+    @if ($errors->any())
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    title: "Error",
+                    text: "{{ $errors->all()[0] }}",
+                    icon: "error",
+                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                    buttonsStyling: false,
+                    showCloseButton: true
+                });
+            });
+        </script>
+    @endif
+
     <div class="row">
         <div class="col-xxl-6">
             <div class="card">
@@ -57,14 +70,14 @@
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
                                         {{-- <input type="text" class="form-control" required name="iklim" id="iklim"> --}}
-                                        <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5"></textarea>
+                                        <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
                                         {{-- <input type="text" class="form-control" required name="event" id="event"> --}}
-                                        <textarea class="form-control" name="evet" id="evet" cols="30" rows="5"></textarea>
+                                        <textarea class="form-control" name="evet" id="evet" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                             </div>

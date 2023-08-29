@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class FormPesaingController extends Controller
 {
@@ -20,7 +21,25 @@ class FormPesaingController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->all());
+        $customMessages = [
+            'required' => 'Kolom :attribute harus diisi.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'produk_kita' => 'required',
+            'deskripsi_produk' => 'required',
+            'produk_pesaing' => 'required',
+            'deskripsi_produk_pesaing' => 'required',
+            'keunggulan_pesaing' => 'required',
+            'pemasaran_pesaing' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ], $customMessages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');

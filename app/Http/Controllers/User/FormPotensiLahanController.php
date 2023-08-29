@@ -7,6 +7,7 @@ use App\Models\DetailPenyimpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class FormPotensiLahanController extends Controller
 {
@@ -19,6 +20,23 @@ class FormPotensiLahanController extends Controller
     {
 
         // dd($request->all());
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'keunggulan_umum' => 'required',
+            'keunggulan_produk' => 'required',
+            'keunggulan_kompetitor' => 'required',
+            'iklim' => 'required',
+            'evet' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ], $customMessages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_lahan');

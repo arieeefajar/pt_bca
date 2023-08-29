@@ -8,6 +8,7 @@ use App\Models\DetailPenyimpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class KuisonerAnalisisPesaingController extends Controller
 {
@@ -21,6 +22,47 @@ class KuisonerAnalisisPesaingController extends Controller
 
     public function store(Request $request)
     {
+
+        $customMessages = [
+            'required' => 'Kolom :attribute harus diisi.',
+            'numeric' => 'Kolom :attribute harus berupa angka.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'competitor' => 'required',
+            'new_competitor' => 'required',
+            'substitution' => 'required',
+            'supplier' => 'required',
+            'buyer' => 'required',
+            'any_competitor' => 'required',
+            'difference' => 'required',
+            'easy_out' => 'required',
+            'quantity' => 'required',
+            'clear_difference' => 'required',
+            'big_capital' => 'required',
+            'cost' => 'required',
+            'easy_channel' => 'required',
+            'policy' => 'required',
+            'find_substitution' => 'required',
+            'competitive_price' => 'required',
+            'supplier_choice' => 'required',
+            'change_price' => 'required',
+            'any_substitution' => 'required',
+            'competitive_tendencies' => 'required',
+            'dominant' => 'required',
+            'contribution' => 'required',
+            'difference_desire' => 'required',
+            'customer_movement' => 'required',
+            'price_sensitivity' => 'required',
+            'quality_than_price' => 'required',
+            'trend_competition' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ], $customMessages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_analisis');
