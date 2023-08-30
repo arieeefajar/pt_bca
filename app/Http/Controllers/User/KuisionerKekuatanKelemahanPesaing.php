@@ -167,7 +167,14 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             'api_id' => $responJson['id']
         ]);
 
-        return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
+        if (Penyimpanan::hasDonePenyimpanan($request)) {
+            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+            $penyimpanan->status = '1';
+            $penyimpanan->save();
+        }
+
+        alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
+        return redirect()->route('menu.index');
 
     }
 }

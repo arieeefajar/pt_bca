@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailPenyimpanan;
+use App\Models\Penyimpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -79,6 +80,13 @@ class FormPotensiLahanController extends Controller
             'api_id' => $responJson['id']
         ]);
 
-        return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
+        if (Penyimpanan::hasDonePenyimpanan($request)) {
+            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+            $penyimpanan->status = '1';
+            $penyimpanan->save();
+        }
+
+        alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
+        return redirect()->route('menu.index');
     }
 }
