@@ -9,15 +9,14 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}">
+    <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> -->
+    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
 
     <!-- plugin css -->
-    <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Sweet Alert css-->
-    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- gridjs css -->
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/libs/gridjs/theme/mermaid.min.css') }}">
