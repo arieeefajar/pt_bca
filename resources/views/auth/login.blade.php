@@ -4,12 +4,12 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Login</title>
+    <title>Sistem Informasi Market Intellegence</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
 
     <!-- Layout config Js -->
     <script src="{{ asset('admin_assets/assets/js/layout.js') }}"></script>
@@ -33,7 +33,8 @@
             <div class="bg-overlay"></div>
 
             <div class="shape">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 1440 120">
                     <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
                 </svg>
             </div>
@@ -46,9 +47,9 @@
                     <div class="col-lg-12">
                         <div class="text-center mt-sm-0 mb-0 text-white-50">
                             <div>
-                                <a href="index.html" class="d-inline-block auth-logo">
-                                    <!-- <img src="{{ asset('admin_assets/assets/images/logo-light.png') }}" alt="" height="20"> -->
-                                    <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="120" height="120">
+                                <a href="{{ route('login') }}" class="d-inline-block auth-logo">
+                                    <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="120"
+                                        height="120">
                                 </a>
                             </div>
                         </div>
@@ -70,7 +71,9 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email" placeholder="Masukan email" name="email" required value="{{ old('email') }}">
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Masukan email" name="email" required
+                                                value="{{ old('email') }}">
                                         </div>
 
                                         <div class="mb-3">
@@ -80,19 +83,24 @@
                                             </div>
                                             <label class="form-label" for="password">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" required class="form-control pe-5" placeholder="Enter password" id="password" name="password">
-                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id=""><i class="ri-eye-fill align-middle"></i></button>
+                                                <input type="password" required class="form-control pe-5"
+                                                    placeholder="Enter password" id="password" name="password">
+                                                <button
+                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
+                                                    type="button" id=""><i
+                                                        class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="auth-remember-check">
                                             <label class="form-check-label" for="auth-remember-check">Remember
                                                 me</label>
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                            <button class="btn btn-primary w-100" type="submit">Sign In</button>
                                         </div>
                                     </form>
                                 </div>

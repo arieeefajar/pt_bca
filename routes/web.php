@@ -20,6 +20,7 @@ use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
 use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +116,21 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::delete('{id}', [JenisTanamanController::class, 'destroy'])->name('jenisTanaman.destroy');
     });
 
+    //jumlah surveyor route
+    Route::get('dataSurveyor', [DashboardController::class, 'dataSurveyor'])->name('dataSurveyor.index');
+
+    //jumlah executive route
+    Route::get('dataExecutive', [DashboardController::class, 'dataExecutive'])->name('dataExecutive.index');
+
+    //jumlah admin route
+    Route::get('dataAdmin', [DashboardController::class, 'dataAdmin'])->name('dataAdmin.index');
+
+    //jumlah target toko route
+    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko'])->name('dataTargetToko.index');
+
+    //jumlah target toko route
+    Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko'])->name('dataSurveyToko.index');
+
     // detail penyimpanan routes
     Route::get('penyimpanan', [PenyimpananController::class, 'index'])->name('penyimpanan.index');
 
@@ -162,4 +178,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
         Route::get('/', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
         Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
     });
+
+    // Data List Target Toko
+    route::get('listTargetToko', [DashboardController::class, 'listTargetToko'])->name('listTargetToko.index');
+
+    // Data List Hasil Survey
+    route::get('listHasilSurvey', [DashboardController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
 });

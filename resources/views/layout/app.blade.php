@@ -9,7 +9,8 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}">
+    <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> -->
+    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
 
     <!-- plugin css -->
     <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
@@ -655,6 +656,8 @@
 
     <!-- prismjs plugin -->
     <script src="{{ asset('admin_assets/assets/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/libs/list.js/list.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
     <!-- gridjs js -->
     <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script>
