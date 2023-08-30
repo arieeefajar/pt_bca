@@ -21,29 +21,11 @@
     <link href="{{ asset('admin_assets/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('admin_assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Sweet Alert css-->
-    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet"
-        type="text/css" />
 
 
 </head>
 
 <body>
-    {{-- @dd($errors->any()) --}}
-    @if ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
 
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
@@ -90,7 +72,8 @@
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="email"
-                                                placeholder="Masukan email" name="email" value="{{ old('email') }}">
+                                                placeholder="Masukan email" name="email" required
+                                                value="{{ old('email') }}">
                                         </div>
 
                                         <div class="mb-3">
@@ -100,7 +83,7 @@
                                             </div>
                                             <label class="form-label" for="password">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5"
+                                                <input type="password" required class="form-control pe-5"
                                                     placeholder="Enter password" id="password" name="password">
                                                 <button
                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
@@ -169,8 +152,8 @@
     <script src="{{ asset('admin_assets/assets/js/pages/particles.app.js') }}"></script>
     <!-- password-addon init -->
     <script src="{{ asset('admin_assets/assets/js/pages/password-addon.init.js') }}"></script>
-    <!-- Sweet Alerts js -->
-    <script src="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    @include('sweetalert::alert')
 </body>
 
 </html>

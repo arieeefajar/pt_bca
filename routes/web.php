@@ -20,6 +20,7 @@ use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
 use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,8 +87,8 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     // customer routes
     Route::prefix('customer')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
-        Route::post('/store', [CustomerController::class, 'store'])->name('customer.create');
-        Route::post('/update', [CustomerController::class, 'update'])->name('customer.update');
+        Route::post('/', [CustomerController::class, 'store'])->name('customer.create');
+        Route::post('/{id}', [CustomerController::class, 'update'])->name('customer.update');
         Route::delete('{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
     });
 
@@ -102,16 +103,16 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     //product routes
     Route::prefix('produk')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('product.index');
-        Route::post('/store', [ProductController::class, 'store'])->name('product.create');
-        Route::post('/update', [ProductController::class, 'update'])->name('product.update');
-        Route::get('/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+        Route::post('/', [ProductController::class, 'store'])->name('product.create');
+        Route::post('/{id}', [ProductController::class, 'update'])->name('product.update');
+        Route::delete('{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     });
 
     //jenis tamanan routes
     Route::prefix('jenisTanaman')->group(function () {
         Route::get('/', [JenisTanamanController::class, 'index'])->name('jenisTanaman.index');
-        Route::post('/store', [JenisTanamanController::class, 'store'])->name('jenisTanaman.create');
-        Route::post('/update', [JenisTanamanController::class, 'update'])->name('jenisTanaman.update');
+        Route::post('/', [JenisTanamanController::class, 'store'])->name('jenisTanaman.create');
+        Route::post('/{id}', [JenisTanamanController::class, 'update'])->name('jenisTanaman.update');
         Route::delete('{id}', [JenisTanamanController::class, 'destroy'])->name('jenisTanaman.destroy');
     });
 
@@ -177,4 +178,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
         Route::get('/', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
         Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
     });
+
+    // Data List Target Toko
+    route::get('listTargetToko', [DashboardController::class, 'listTargetToko'])->name('listTargetToko.index');
+
+    // Data List Hasil Survey
+    route::get('listHasilSurvey', [DashboardController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
 });

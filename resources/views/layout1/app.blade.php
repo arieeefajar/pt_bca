@@ -12,8 +12,7 @@
     <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}">
 
     <!-- plugin css -->
-    <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Unicons CDN Link for Icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
@@ -33,12 +32,10 @@
     <link href="{{ asset('admin_assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- plugin css -->
-    <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Sweet Alert css-->
-    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -657,6 +654,11 @@
 
     <!-- prismjs plugin -->
     <script src="{{ asset('admin_assets/assets/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/libs/list.js/list.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
+
+    <!-- listjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script>
 
     <!-- gridjs js -->
     <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script>
@@ -678,6 +680,8 @@
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+
+    @include('sweetalert::alert')
 </body>
 
 </html>

@@ -9,7 +9,8 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}">
+    <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> -->
+    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
 
     <!-- plugin css -->
     <link href="{{ asset('admin_assets/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
@@ -679,8 +680,7 @@
     <!-- Sweet alert init js-->
     <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
 
-    <!-- listjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script>
+    @include('sweetalert::alert')
 
     @yield('otherJs')
 </body>

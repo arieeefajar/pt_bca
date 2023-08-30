@@ -63,4 +63,16 @@ class DashboardController extends Controller
         $dataPerusahaan = Customer::all();
         return view('admin.dataSurveyToko', compact('dataPerusahaan'));
     }
+
+    public function listTargetToko()
+    {
+        $dataPerusahaan = Customer::all();
+        return view('surveyor.listTargetToko', compact('dataPerusahaan'));
+    }
+
+    public function listHasilSurvey()
+    {
+        $dataPerusahaan = Customer::all();
+        return view('surveyor.listHasilSurvey', compact('dataPerusahaan'));
+    }
 }
