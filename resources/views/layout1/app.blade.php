@@ -680,6 +680,8 @@
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+
+    @include('sweetalert::alert')
 </body>
 
 </html>

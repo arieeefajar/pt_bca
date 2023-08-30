@@ -5,34 +5,6 @@
 
 @section('content')
 
-@if (session('success'))
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        Swal.fire({
-            title: "Good job!",
-            text: "{{ session('success') }}",
-            icon: "success",
-            confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-            buttonsStyling: false,
-            showCloseButton: true
-        });
-    });
-</script>
-@elseif (session('error'))
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        Swal.fire({
-            title: "Warning",
-            text: "{{ session('error') }}",
-            icon: "warning",
-            confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-            buttonsStyling: false,
-            showCloseButton: true
-        });
-    });
-</script>
-@endif
-
 <style>
     .card {
         width: 100%;

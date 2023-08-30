@@ -34,37 +34,6 @@
                         <div class="table-responsive table-card mb-1 mt-3">
                             <table class="table align-middle mb-0">
                                 <thead class="table-light">
-                                    @if (session('success'))
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                Swal.fire({
-                                                    title: "Good job!",
-                                                    text: "{{ session('success') }}",
-                                                    icon: "success",
-                                                    showCancelButton: true,
-                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                                                    buttonsStyling: false,
-                                                    showCloseButton: true
-                                                });
-                                            });
-                                        </script>
-                                    @elseif ($errors->any())
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                Swal.fire({
-                                                    title: "Error",
-                                                    text: "{{ $errors->all()[0] }}",
-                                                    icon: "error",
-                                                    showCancelButton: true,
-                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                                                    buttonsStyling: false,
-                                                    showCloseButton: true
-                                                });
-                                            });
-                                        </script>
-                                    @endif
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
                                         <th class="text-center" data-sort="customer_name">Nama Produk</th>
@@ -85,8 +54,8 @@
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data->id }}">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deletedModal"
-                                                    onclick="deleteData({{ $data->id }})">Remove</button>
+                                                    data-bs-target="#deletedModal{{ $data->id }}"
+                                                    onclick="">Remove</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -149,9 +118,8 @@
         </div>
     </div>
 
-    <!-- edit-modal -->
     @foreach ($dataProduct as $data)
-        {{-- @dd($data); --}}
+        <!-- edit-modal -->
         <div class="modal fade" id="showModal{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -166,12 +134,6 @@
                         @method('POST')
                         <div class="modal-body">
                             <div class="mb-3">
-
-                                <div class="mb-3" id="modal-id" style="display: none;">
-                                    <label for="id-field" class="form-label">ID</label>
-                                    <input type="text" name="id" id="id" value="{{ $data['id'] }}"
-                                        class="form-control" placeholder="ID" readonly />
-                                </div>
 
                                 <label for="customername-field" class="form-label">Nama Produk</label>
                                 <input type="text" id="nama_produk" name="nama_produk"
@@ -208,55 +170,37 @@
                 </div>
             </div>
         </div>
-    @endforeach
 
-    <!-- delete-modal -->
-    <div class="modal fade zoomIn" id="deletedModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="btn-close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Anda Yakin ?</h4>
-                            <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
-                        </div>
+        <!-- delete-modal -->
+        <div class="modal fade zoomIn" id="deletedModal{{ $data->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="btn-close"></button>
                     </div>
-                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" id="confirm-delete-data" class="btn w-sm btn-danger ">Ya,
-                            Hapus!</button>
+                    <div class="modal-body">
+                        <div class="mt-2 text-center">
+                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                                <h4>Anda Yakin ?</h4>
+                                <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
+                            <form action="{{ route('product.destroy', $data->id) }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type=" button" class="btn w-sm btn-danger "
+                                    id="delete-record{{ $data->id }}">Ya, Hapus!</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
-
-@section('otherJs')
-    <script>
-        const setEdit = (data) => {
-            console.log(data);
-            $('#id-edit').val(data.id);
-            $('#nama-edit').val(data.nama);
-        }
-
-        const clearEdit = () => {
-            $('#id-edit').val(data.id);
-            $('#nama-edit').val(data.nama);
-        }
-
-        const deleteData = (id) => {
-            console.log(id);
-            $('#confirm-delete-data').click(function(e) {
-                e.preventDefault();
-                window.location.href = `/produk/destroy/${id}`
-            });
-        }
-    </script>
+    @endforeach
 @endsection
