@@ -115,6 +115,21 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::delete('{id}', [JenisTanamanController::class, 'destroy'])->name('jenisTanaman.destroy');
     });
 
+    //jumlah surveyor route
+    Route::get('dataSurveyor', [DashboardController::class, 'dataSurveyor'])->name('dataSurveyor.index');
+
+    //jumlah executive route
+    Route::get('dataExecutive', [DashboardController::class, 'dataExecutive'])->name('dataExecutive.index');
+
+    //jumlah admin route
+    Route::get('dataAdmin', [DashboardController::class, 'dataAdmin'])->name('dataAdmin.index');
+
+    //jumlah target toko route
+    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko'])->name('dataTargetToko.index');
+
+    //jumlah target toko route
+    Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko'])->name('dataSurveyToko.index');
+
     // detail penyimpanan routes
     Route::get('penyimpanan', [PenyimpananController::class, 'index'])->name('penyimpanan.index');
 

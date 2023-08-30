@@ -655,6 +655,8 @@
 
     <!-- prismjs plugin -->
     <script src="{{ asset('admin_assets/assets/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/libs/list.js/list.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
     <!-- gridjs js -->
     <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script>
@@ -676,6 +678,9 @@
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+
+    <!-- listjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script>
 
     @yield('otherJs')
 </body>
