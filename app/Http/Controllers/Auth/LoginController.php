@@ -22,13 +22,13 @@ class LoginController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->role == 'supper-admin') {
-                return redirect()->route('superAdmin.dashboard')->withErrors('Anda sudah melakukan login sebelumnya');
+                return redirect()->route('superAdmin.dashboard');
             } elseif ($user->role == 'admin') {
-                return redirect()->route('admin.dashboard')->withErrors('Anda sudah melakukan login sebelumnya');
+                return redirect()->route('admin.dashboard');
             } elseif ($user->role == 'executive') {
-                return redirect()->route('executive.dashboard')->withErrors('Anda sudah melakukan login sebelumnya');
+                return redirect()->route('executive.dashboard');
             } elseif ($user->role == 'user') {
-                return redirect()->route('surveyor.dashboard')->withErrors('Anda sudah melakukan login sebelumnya');
+                return redirect()->route('surveyor.dashboard');
             }
         }
 
@@ -46,7 +46,10 @@ class LoginController extends Controller
         ], $customMessages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+
+            // example toast
+            toast($validator->messages()->all()[0], 'warning')->position('top')->autoClose(3000);
+            return redirect()->back()->withInput();
         }
 
         // Validasi berhasil, lanjutkan dengan percobaan otentikasi
@@ -57,19 +60,24 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if ($user->role == 'supper-admin') {
-                return redirect()->route('superAdmin.dashboard')->with('success', 'Login berhasil');
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                return redirect()->route('superAdmin.dashboard');
             } elseif ($user->role == 'admin') {
-                return redirect()->route('admin.dashboard')->with('success', 'Login berhasil');
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                return redirect()->route('admin.dashboard');
             } elseif ($user->role == 'executive') {
-                return redirect()->route('executive.dashboard')->with('success', 'Login berhasil');
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                return redirect()->route('executive.dashboard');
             } elseif ($user->role == 'user') {
-                return redirect()->route('surveyor.dashboard')->with('success', 'Login berhasil');
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                return redirect()->route('surveyor.dashboard');
             }
 
             abort(403, 'Unauthorized');
         } else {
             // Login gagal
-            return back()->withErrors('Login gagal')->withInput();
+            toast('login gagal', 'error')->position('top')->autoClose(3000);
+            return back()->withInput();
         }
     }
 

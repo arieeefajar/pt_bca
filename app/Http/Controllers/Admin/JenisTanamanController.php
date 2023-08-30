@@ -11,92 +11,101 @@ class JenisTanamanController extends Controller
 {
     public function index()
     {
+        // get data jenis tanaman
         $dataJenisTanaman = JenisTanaman::all();
+
+        // retrun view
         return view('admin.jenisTanaman', compact('dataJenisTanaman'));
     }
 
-    // create
     public function store(Request $request)
     {
         // custom message validate
         $customMessages = [
-            'jenis.required' => 'Jenis harus diisi.',
+            'required' => ':attribute harus diisi.',
+            'max' => ':attribute melebihi :max karakter'
         ];
 
         // validate
         $validator = Validator::make($request->all(), [
-            'jenis' => 'required|string|max:255',
+            'jenis' => 'required|string|max:30',
         ], $customMessages);
 
         // check validator
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()->back()->withInput();
         }
 
-        // create
-        $result = JenisTanaman::create([
-            'jenis' => $request->jenis,
-            'awdawda' => $request->jenis
-        ]);
+        // create new jenis tanaman data
+        $jenis = new JenisTanaman();
+        $jenis->jenis = $request->jenis;
 
-        return redirect()->route('jenisTanaman.index')->with('success', 'Jenis Tanaman created successfully.');
-        // return response
-        // return response()->json([
-        //     "data" => $result
-        // ]);
+        // execute
+        try {
+            $jenis->save();
+            alert()->success('Berhasil', 'Berhasil menambahkan data jenis tanaman baru');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', $th);
+            return redirect()->back();
+        }
     }
 
-    // update
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // custom message validate
         $customMessages = [
-            'id.required' => 'Error ID',
-            'jenis.required' => 'Jenis harus diisi.',
+            'required' => ':attribute harus diisi.',
+            'max' => ':attribute melebihi :max karakter'
         ];
 
         // validate
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'jenis' => 'required|string|max:255',
+            'jenis' => 'required|string|max:30',
         ], $customMessages);
 
         // check validator
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()->back();
         }
 
-        // update
-        $result = JenisTanaman::findOrFail($request->id)->update([
-            'jenis' => $request->jenis
-        ]);
+        // get jenis data from id
+        $jenis = JenisTanaman::findOrFail($id);
+        $jenis->jenis = $request->jenis;
 
-        return redirect(route('jenisTanaman.index'))->with('success', 'Data Updated successfully.');
-        // return response
-        // return response()->json([
-        //     "data" => JenisTanaman::findOrFail($request->id)
-        // ]);
+        // execute update
+        try {
+            $jenis->save();
+            alert()->success('Berhasil', 'Berhasil mengubah data jenis tanaman');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', $th);
+            return redirect()->back();
+        }
     }
 
-    // delete
     public function destroy($id)
     {
 
-        $dataDelete = JenisTanaman::findOrFail($id);
-        $dataDelete->delete();
-        return redirect(route('jenisTanaman.index'))->with('success', 'Data Deleted successfully.');
-        // try {
-        //     // delete
-        //     JenisTanaman::findOrFail($id)->delete();
+        // get jenis data from id
+        $jenis = JenisTanaman::findOrFail($id);
 
-        //     // return response
-        //     return response()->json([
-        //         'message' => 'data berhasil dihapus'
-        //     ]);
-        // } catch (\Throwable $th) {
+        // if user data not exists
+        if (!$jenis) {
+            alert()->error('Gagal', 'User tidak di temukan');
+            return redirect()->back();
+        }
 
-        //     // return error
-        //     return response()->json($th);
-        // }
+        // execute delete
+        try {
+            $jenis->delete();
+            alert()->success('Berhasil', 'Berhasil menghapus data jenis tanaman');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', $th);
+            return redirect()->back();
+        }
     }
 }
