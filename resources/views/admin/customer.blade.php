@@ -4,39 +4,6 @@
 @section('submenu', 'Master')
 
 @section('content')
-
-    @if (session('success'))
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Success",
-                    text: "{{ session('success') }}",
-                    icon: "success",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @elseif ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -91,8 +58,7 @@
                                                     data-bs-target="#showModal{{ $data['id'] }}"
                                                     onclick="setEdit({{ $data }})">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $data['id'] }}"
-                                                    onclick="deleteData({{ $data['id'] }})">Remove</button>
+                                                    data-bs-target="#deleteRecordModal{{ $data['id'] }}">Remove</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -245,12 +211,6 @@
                         @method('POST')
                         <div class="modal-body">
 
-                            <div class="mb-3" id="modal-id" style="display: none;">
-                                <label for="id-field" class="form-label">ID</label>
-                                <input type="text" name="id" id="id" value="{{ $data['id'] }}"
-                                    class="form-control" placeholder="ID" readonly />
-                            </div>
-
                             <div class="mb-3">
                                 <label for="customername-field" class="form-label">Nama Customer</label>
                                 <input type="text" name="nama" value="{{ $data['nama'] }}" id="nama"
@@ -292,7 +252,7 @@
                                     <option selected disabled>Pilih Area</option>
                                     @foreach ($dataArea as $valueArea)
                                         {{-- @dd($valueArea) --}}
-                                        <option value="{{ $data->id }}"
+                                        <option value="{{ $valueArea->id }}"
                                             {{ $valueArea->id === $data->wilayah_id ? 'selected' : '' }}>
                                             {{ $valueArea->nama }}</option>
                                     @endforeach
@@ -307,8 +267,7 @@
                         </div>
                         <div class="modal-footer">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal"
-                                    onclick="clearEdit()">Close</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                             </div>
                         </div>
@@ -340,9 +299,7 @@
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn w-sm btn-danger"
-                                    id="confirm-delete-data{{ $data->id }}">Ya,
-                                    Hapus!</button>
+                                <button type="submit" class="btn w-sm btn-danger">Ya,Hapus!</button>
                             </form>
                         </div>
                     </div>
@@ -351,27 +308,4 @@
         </div>
     @endforeach
 
-@endsection
-
-@section('otherJs')
-    <script>
-        const setEdit = (data) => {
-            console.log(data);
-            $('#id-edit').val(data.id);
-            $('#nama-edit').val(data.nama);
-        }
-
-        const clearEdit = () => {
-            $('#id-edit').val(data.id);
-            $('#nama-edit').val(data.nama);
-        }
-
-        const deleteData = (id) => {
-            console.log(id);
-            $('#confirm-delete-data').click(function(e) {
-                e.preventDefault();
-                window.location.href = `/customer/destroy/${id}`
-            });
-        }
-    </script>
 @endsection

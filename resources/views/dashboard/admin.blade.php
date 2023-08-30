@@ -5,38 +5,6 @@
 
 @section('content')
 
-    @if (session('success'))
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Good job!",
-                    text: "{{ session('success') }}",
-                    icon: "success",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @elseif ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">

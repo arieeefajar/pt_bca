@@ -34,37 +34,6 @@
                         <div class="table-responsive table-card mb-1 mt-3">
                             <table class="table align-middle mb-0">
                                 <thead class="table-light">
-                                    @if (session('success'))
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                Swal.fire({
-                                                    title: "Good job!",
-                                                    text: "{{ session('success') }}",
-                                                    icon: "success",
-                                                    showCancelButton: true,
-                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                                                    buttonsStyling: false,
-                                                    showCloseButton: true
-                                                });
-                                            });
-                                        </script>
-                                    @elseif ($errors->any())
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                Swal.fire({
-                                                    title: "Error",
-                                                    text: "{{ $errors->all()[0] }}",
-                                                    icon: "error",
-                                                    showCancelButton: true,
-                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                                                    buttonsStyling: false,
-                                                    showCloseButton: true
-                                                });
-                                            });
-                                        </script>
-                                    @endif
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
                                         <th class="text-center" data-sort="customer_name">Username</th>
