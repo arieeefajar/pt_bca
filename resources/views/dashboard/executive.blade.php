@@ -17,7 +17,7 @@
                                 <div>
                                     <p class="fw-semibold text-muted mb-0">Jumlah Target Toko</p>
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                            data-target="28.05">0</span>k
+                                            data-target="{{ $dataJumlah['targetToko'] }}">0</span>
                                     </h2>
                                     <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
                                             <i class="ri-arrow-up-line align-middle"></i> 16.24 %
@@ -45,7 +45,7 @@
                                 <div>
                                     <p class="fw-semibold text-muted mb-0">Jumlah Toko yang sudah di Survey</p>
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                            data-target="28.05">0</span>k
+                                            data-target="{{ $dataJumlah['surveyToko'] }}">0</span>
                                     </h2>
                                     <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
                                             <i class="ri-arrow-up-line align-middle"></i> 16.24 %
