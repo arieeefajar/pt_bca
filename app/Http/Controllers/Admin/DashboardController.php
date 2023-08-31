@@ -14,8 +14,18 @@ class DashboardController extends Controller
 {
     public function supperAdmin()
     {
-        // Auth::logout();
-        return view('dashboard.supperAdmin');
+        $dataJumlah = [
+            'surveyor' => User::where('role', 'user')->get()->count(),
+            'executive' => User::where('role', 'executive')->get()->count(),
+            'admin' => User::where('role', 'admin')->get()->count(),
+            'targetToko' => Customer::all()->count(),
+            'surveyToko' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
+                ->where('penyimpanan.status', 1)
+                ->select('customer.nama')
+                ->get()->count(),
+        ];
+
+        return view('dashboard.supperAdmin', compact('dataJumlah'));
     }
 
     public function admin()
@@ -54,13 +64,19 @@ class DashboardController extends Controller
 
     public function dataTargetToko()
     {
-        $dataPerusahaan = Customer::all();
+        $dataPerusahaan = Customer::join('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
+            ->select('customer.id', 'customer.nama', 'customer.jenis', 'customer.provinsi', 'customer.kota', 'wilayah.nama AS wilayah_nama')
+            ->get();
         return view('admin.dataTargetToko', compact('dataPerusahaan'));
     }
 
     public function dataSurveyToko()
     {
-        $dataPerusahaan = Customer::all();
+        $dataPerusahaan = Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
+        ->join('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
+        ->where('penyimpanan.status', 1)
+        ->select('customer.id', 'customer.nama', 'customer.jenis', 'customer.provinsi', 'customer.kota', 'wilayah.nama AS wilayah_nama')
+        ->get();
         return view('admin.dataSurveyToko', compact('dataPerusahaan'));
     }
 

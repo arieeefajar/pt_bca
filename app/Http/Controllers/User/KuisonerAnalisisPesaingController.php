@@ -62,7 +62,8 @@ class KuisonerAnalisisPesaingController extends Controller
         ], $customMessages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()->back()->withInput();
         }
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
@@ -70,7 +71,8 @@ class KuisonerAnalisisPesaingController extends Controller
 
         // cek apakah sudah ada detail penyimpanan dengan jenis pertanyaan yang sama
         if ($cekDetailPenyimpanan) {
-            return redirect()->route('menu.index')->with('error', 'Data Kuisioner sudah ada');
+            alert()->warning('Gagal', 'Data form sudah ada');
+            return redirect()->route('menu.index');
         }
 
         $endPointApi = 'http://103.175.216.72/api/simi/competitor-analys';
@@ -118,8 +120,7 @@ class KuisonerAnalisisPesaingController extends Controller
             "surveyor" => Auth::user()->id,
             "location" => [
                 "latitude" => $latitude,
-                //number *
-                "longtitude" => $longitude //number *
+                "longtitude" => $longitude
             ],
             "competitor" => [$competitor],
             "new_competitor" => [$new_competitor],

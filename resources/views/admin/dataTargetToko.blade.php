@@ -80,7 +80,7 @@
                                                 <td class="email">{{ $data->jenis }}</td>
                                                 <td class="phone">{{ $data->provinsi }}</td>
                                                 <td class="date">{{ $data->kota }}</td>
-                                                <td class="wilayah">{{ $data->wilayah_id }}</td>
+                                                <td class="wilayah">{{ $data->wilayah_nama }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
