@@ -1,14 +1,26 @@
-@extends('layout1.app')
+@extends('layout.app')
 @section('title', 'Jawaban Kepuasan Pelanggan')
 @section('menu', 'Kepuasan Pelanggan')
 @section('submenu', 'Detail Jawaban')
 
 @section('content')
+<style>
+    @media(max-width:480px) {
+
+        .th_pertanyaan_kk {
+            width: 130px;
+        }
+
+        td {
+            font-size: 12px;
+        }
+    }
+</style>
 <div class="row">
     <div class="col">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Jawaban Kepuasan Pelanggan</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Detail Jawaban</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
