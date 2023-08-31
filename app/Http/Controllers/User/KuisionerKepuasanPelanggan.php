@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailPenyimpanan;
+use App\Models\Penyimpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -18,8 +19,6 @@ class KuisionerKepuasanPelanggan extends Controller
 
     public function store(Request $request)
     {
-
-        // dd($request->all());
 
         $customMessages = [
             'required' => ':attribute harus diisi.',
@@ -59,7 +58,8 @@ class KuisionerKepuasanPelanggan extends Controller
         ], $customMessages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()->back()->withInput();
         }
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
@@ -67,7 +67,8 @@ class KuisionerKepuasanPelanggan extends Controller
 
         // cek apakah sudah ada detail penyimpanan dengan jenis pertanyaan yang sama
         if ($cekDetailPenyimpanan) {
-            return redirect()->route('menu.index')->with('error', 'Data Kuisioner sudah ada');
+            alert()->warning('Gagal', 'Data form sudah ada');
+            return redirect()->route('menu.index');
         }
 
         $endPointApi = 'http://103.175.216.72/api/simi/customer';
@@ -104,15 +105,12 @@ class KuisionerKepuasanPelanggan extends Controller
         $latitude = floatval($request->latitude);
         $longitude = floatval($request->longitude);
 
-        // dd($latitude, $longitude);
-
         // post api
         $response = Http::post($endPointApi, [
             'surveyor' => Auth::user()->id,
             'location' => [
                 "latitude" => $latitude,
-                //number *
-                "longtitude" => $longitude //number *
+                "longtitude" => $longitude
             ],
             "information" => $information,
             "price_comparison" => $price_comparison,
@@ -151,6 +149,13 @@ class KuisionerKepuasanPelanggan extends Controller
             'api_id' => $responJson['id']
         ]);
 
-        return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
+        if (Penyimpanan::hasDonePenyimpanan($request)) {
+            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+            $penyimpanan->status = '1';
+            $penyimpanan->save();
+        }
+
+        alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
+        return redirect()->route('menu.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailPenyimpanan;
+use App\Models\Penyimpanan;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,8 @@ class FormPesaingController extends Controller
         ], $customMessages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()->back()->withInput();
         }
 
 
@@ -46,7 +48,8 @@ class FormPesaingController extends Controller
 
         // cek apakah sudah ada detail penyimpanan dengan jenis pertanyaan yang sama
         if ($cekDetailPenyimpanan) {
-            return redirect()->route('menu.index')->with('error', 'Data Form sudah ada');
+            alert()->warning('Gagal', 'Data form sudah ada');
+            return redirect()->route('menu.index');
         }
 
         $endPointApi = 'http://103.175.216.72/api/simi/retail';
@@ -82,7 +85,13 @@ class FormPesaingController extends Controller
             'api_id' => $responJson['id']
         ]);
 
-        return redirect()->route('menu.index')->with('success', 'Data kuisioner berhasil di simpan');
+        if (Penyimpanan::hasDonePenyimpanan($request)) {
+            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+            $penyimpanan->status = '1';
+            $penyimpanan->save();
+        }
 
+        alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
+        return redirect()->route('menu.index');
     }
 }
