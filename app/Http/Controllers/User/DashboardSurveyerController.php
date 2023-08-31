@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailPenyimpanan;
+use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,18 @@ class DashboardSurveyerController extends Controller
     public function index(Request $request)
     {
         $dataCustommer = User::getCustommer();
+        $dataJumlah = [
+            'surveyor' => User::where('role', 'user')->get()->count(),
+            'executive' => User::where('role', 'executive')->get()->count(),
+            'admin' => User::where('role', 'admin')->get()->count(),
+            'targetToko' => Customer::all()->count(),
+            'surveyToko' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
+                ->where('penyimpanan.status', 1)
+                ->select('customer.nama')
+                ->get()->count(),
+        ];
 
-        return view('surveyor.dashboard', compact('dataCustommer'));
+        return view('surveyor.dashboard', compact('dataCustommer', 'dataJumlah'));
     }
 
     public function menu(Request $request)
