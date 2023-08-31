@@ -52,7 +52,7 @@ Route::get('/jawaban-kepuasan-pelanggan', [PenyimpananController::class, 'jawaba
 Route::get('/jawaban-kekuatan-kelemahan', [PenyimpananController::class, 'jawaban_kekuatanKelemahan'])->name('jawaban_kekuatanKelemahan.index');
 Route::get('/jawaban-analisis-pesaing', [PenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
 Route::get('/jawaban-potensi-lahan', [PenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
-
+Route::get('/jawaban-survey-pesaing', [PenyimpananController::class, 'jawaban_surveyPesaing'])->name('jawaban_surveyPesaing.index');
 
 // route only super admin & admin
 Route::middleware(['auth', 'superAndAdmin'])->group(function () {

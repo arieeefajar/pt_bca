@@ -36,4 +36,9 @@ class PenyimpananController extends Controller
     {
         return view('admin.detailjawaban.f_potensiLahan');
     }
+
+    public function jawaban_surveyPesaing()
+    {
+        return view('admin.detailjawaban.f_surveyPesaing');
+    }
 }
