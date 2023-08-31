@@ -73,10 +73,10 @@ class DashboardController extends Controller
     public function dataSurveyToko()
     {
         $dataPerusahaan = Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
-        ->join('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
-        ->where('penyimpanan.status', 1)
-        ->select('customer.id', 'customer.nama', 'customer.jenis', 'customer.provinsi', 'customer.kota', 'wilayah.nama AS wilayah_nama')
-        ->get();
+            ->join('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
+            ->where('penyimpanan.status', 1)
+            ->select('customer.id', 'customer.nama', 'customer.jenis', 'customer.provinsi', 'customer.kota', 'wilayah.nama AS wilayah_nama')
+            ->get();
         return view('admin.dataSurveyToko', compact('dataPerusahaan'));
     }
 
