@@ -20,18 +20,13 @@ class SupperAndAdminView
             if ($request != 'super-admin-dashboard' || $request != 'admin-dashboard' || $request != 'executive-dashboard' || $request != 'surveyor-dashboard') {
                 return $next($request);
             }
-
-            if (Auth::user()->role == 'supper-admin') {
-                return redirect()->route('superAdmin.dashboard');
-            } elseif (Auth::user()->role == 'admin') {
-                return redirect()->route('admin.dashboard');
-            } elseif (Auth::user()->role == 'executive') {
-                return redirect()->route('executive.dashboard');
-            } elseif (Auth::user()->role == 'user') {
-                return redirect()->route('surveyor.dashboard');
-            }
         }
 
+        if (Auth::user()->role == 'executive') {
+            return redirect()->route('executive.dashboard');
+        } elseif (Auth::user()->role == 'user') {
+            return redirect()->route('surveyor.dashboard');
+        }
 
         abort(403, 'Unauthorized');
     }
