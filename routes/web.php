@@ -48,6 +48,7 @@ Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index'])
 
 //tes route
 Route::get('/tes', [DashboardController::class, 'tes'])->name('tes.index');
+Route::get('/jawabanK_kepuasan', [PenyimpananController::class, 'jawabanK_kepuasan'])->name('jawabanK_kepuasan.index');
 
 // route only super admin & admin
 Route::middleware(['auth', 'superAndAdmin'])->group(function () {
