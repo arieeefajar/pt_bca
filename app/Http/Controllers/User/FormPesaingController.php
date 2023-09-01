@@ -15,7 +15,7 @@ class FormPesaingController extends Controller
 {
     public function index(Request $request)
     {
-        $dataProduk = Product::getProductCustomer($request);
+        $dataProduk = Product::all();
         return view('surveyor.pesaing', compact('dataProduk'));
     }
 
