@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
@@ -15,9 +16,11 @@ class CustomerController extends Controller
         // get perusahaan and area data
         $dataPerusahaan = Customer::all();
         $dataArea = Wilayah::all();
+        $dataProvinsi = Wilayah::getProvinsi();
+        $dataKota = Wilayah::getKota();
+        // dd($dataProvinsi);
 
-        // return view
-        return view('admin.customer', compact('dataPerusahaan', 'dataArea'));
+        return view('admin.customer', compact('dataPerusahaan', 'dataArea', 'dataProvinsi', 'dataKota'));
     }
 
     public function store(Request $request)
@@ -120,5 +123,12 @@ class CustomerController extends Controller
             alert()->error('Gagal', $th);
             return redirect()->back();
         }
+    }
+
+    public function getKota($id)
+    {
+        $endPointApi = 'https://emsifa.github.io/api-wilayah-indonesia/api/regencies/' . $id . '.json';
+        $dataAnswer = Http::get($endPointApi)->json();
+        return response()->json($dataAnswer);
     }
 }

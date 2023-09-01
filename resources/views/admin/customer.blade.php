@@ -137,51 +137,64 @@
                     @csrf
                     <div class="modal-body">
 
+                        {{-- nama cus --}}
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Customer</label>
                             <input type="text" name="nama" id="customername-field" class="form-control"
                                 placeholder="Masukan Nama Customer..." required />
                         </div>
 
+                        {{-- jenis --}}
                         <div class="mb-3">
                             <label class="form-label">Jenis</label>
-                            <select class="form-select mb-3" name="jenis" id="jenis">
-                                <option selected disabled>Pilih Jenis</option>
+                            <select required class="form-select mb-3" name="jenis" id="jenis">
+                                <option value="" selected disabled>Pilih Jenis</option>
                                 <option value="dealer">Dealer</option>
                                 <option value="master_dealer">Master Dealer</option>
                                 <option value="lainnya">Lainnya</option>
                             </select>
                         </div>
 
+                        {{-- profinsi --}}
                         <div class="mb-3">
                             <label class="form-label">Provinsi</label>
-                            <select class="form-select mb-3" name="provinsi" id="provinsi">
-                                <option selected disabled>Pilih Provinsi</option>
-                                <option value="Jawa Timur">Jawa Timur</option>
+                            <select required class="form-select mb-3" name="provinsi" id="provinsi">
+                                <option value="" selected disabled>Pilih Provinsi</option>
+                                <option value="JAWA TIMUR">JAWA TIMUR</option>
+                                {{-- @foreach ($dataProvinsi as $value)
+                                    <option idProvinsi="{{ $value['id'] }}" value="{{ $value['name'] }}">
+                                        {{ $value['name'] }}</option>
+                                @endforeach --}}
                             </select>
                         </div>
 
+                        {{-- kota --}}
                         <div class="mb-3">
                             <label class="form-label">Kota</label>
-                            <select class="form-select mb-3" name="kota" id="kota">
-                                <option selected disabled>Pilih Kota</option>
-                                <option value="Jember">Jeber</option>
+                            <select required class="form-select mb-3" name="kota" id="add_kota">
+                                {{-- <option value="" disabled selected>Pilih Provinsi Terlebih Dahulu</option> --}}
+                                <option value="" selected disabled>Pilih Kota</option>
+                                @foreach ($dataKota as $value)
+                                    <option value="{{ $value['name'] }}">{{ $value['name'] }}</option>
+                                @endforeach
                             </select>
                         </div>
 
+                        {{-- area --}}
                         <div class="mb-3">
                             <label class="form-label">Area</label>
-                            <select class="form-select mb-3" name="area" id="area">
-                                <option selected disabled>Pilih Area</option>
+                            <select required class="form-select mb-3" name="area" id="area">
+                                <option value="" selected disabled>Pilih Area</option>
                                 @foreach ($dataArea as $data)
                                     <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
 
+                        {{-- koordinat --}}
                         <div class="mb-3">
                             <label class="form-label">Koordinat</label>
-                            <textarea class="form-control" name="koordinat" id="evet" cols="30" rows="5"></textarea>
+                            <textarea required class="form-control" name="koordinat" id="evet" cols="30" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -219,7 +232,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Jenis</label>
-                                <select class="form-select mb-3" name="jenis" id="jenis">
+                                <select class="form-select mb-3" name="jenis" id="jenis" required>
                                     <option selected disabled>Pilih Jenis</option>
                                     <option value="dealer" {{ $data->jenis === 'dealer' ? 'selected' : '' }}>Dealer
                                     </option>
@@ -232,26 +245,29 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Provinsi</label>
-                                <select class="form-select mb-3" name="provinsi" id="provinsi">
+                                <select class="form-select mb-3" name="provinsi" id="provinsi" required>
                                     <option disabled>Pilih Provinsi</option>
-                                    <option selected value="Jawa Timur">Jawa Timur</option>
+                                    <option selected value="Jawa Timur">JAWA TIMUR</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Kota</label>
-                                <select class="form-select mb-3" name="kota" id="kota">
-                                    <option disabled>Pilih Kota</option>
-                                    <option selected value="Jember">Jeber</option>
+                                <select required class="form-select mb-3" name="kota" id="edit_kota" required>
+                                    <option value="" disabled>Pilih Kota</option>
+                                    @foreach ($dataKota as $value)
+                                        <option value="{{ $value['name'] }}"
+                                            {{ $data->kota === $value['name'] ? 'selected' : '' }}>{{ $value['name'] }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Area</label>
-                                <select class="form-select mb-3" name="area" id="area">
+                                <select class="form-select mb-3" name="area" id="area" required>
                                     <option selected disabled>Pilih Area</option>
                                     @foreach ($dataArea as $valueArea)
-                                        {{-- @dd($valueArea) --}}
                                         <option value="{{ $valueArea->id }}"
                                             {{ $valueArea->id === $data->wilayah_id ? 'selected' : '' }}>
                                             {{ $valueArea->nama }}</option>
@@ -262,7 +278,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Koordinat</label>
-                                <textarea class="form-control" name="koordinat" id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
+                                <textarea class="form-control" name="koordinat" required id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -308,4 +324,37 @@
         </div>
     @endforeach
 
+
+    {{-- JANGAN DIHAPUS --}}
+
+    {{-- <script>
+        const provinsi = document.getElementById('provinsi');
+
+        function setKota() {
+            var selectedOption = provinsi.options[provinsi.selectedIndex];
+            var idProvinsi = selectedOption.getAttribute('idProvinsi');
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('getkota', '') }}" + "/" + idProvinsi,
+                dataType: "json",
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Loading...',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+
+                    });
+                },
+                success: function(response) {
+                    var bodyKota = '<option value="" selected disabled>Pilih Kota</option>';
+                    for (let index = 0; index < response.length; index++) {
+                        bodyKota += `<option value="${response[index].name}">${response[index].name}</option>`
+                    }
+                    $('#add_kota').html(bodyKota);
+                    Swal.close();
+                }
+            });
+        }
+    </script> --}}
 @endsection

@@ -23,6 +23,7 @@ class FormPesaingController extends Controller
             toast('Form survey sudah diisikan', 'error')->position('top')->autoClose(3000);
             return back()->withInput();
         } else {
+            $dataProduk = Product::all();
             return view('surveyor.pesaing', compact('dataProduk'));
         }
     }
