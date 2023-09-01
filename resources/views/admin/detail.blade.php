@@ -29,7 +29,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="email">Pertanyaan</th>
+                                        <th class="text-center" data-sort="email">Jenis Kuisioner</th>
                                         <th class="text-center" data-sort="phone">Jawaban</th>
                                     </tr>
                                 </thead>
@@ -37,8 +37,37 @@
                                     @foreach ($dataDetail as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center">{{ $data->pertanyaan }}</td>
-                                            <td class="text-center">{{ $data->api_id }}</td>
+                                            <td class="text-center">
+                                                @if ($data->pertanyaan === 'k_kepuasan')
+                                                    Kuisoner Kepuasan Pelanggan
+                                                @elseif ($data->pertanyaan === 'k_analisis')
+                                                    Kuisoner Analisis Pesaing
+                                                @elseif ($data->pertanyaan === 'k_kekuatan_kelemahan')
+                                                    Kuisoner Kekuatan Dan Kelemahan Pesaing
+                                                @elseif ($data->pertanyaan === 'form_lahan')
+                                                    Form Potensi Lahan
+                                                @elseif ($data->pertanyaan === 'form_pesaing')
+                                                    Form Analisis Pesaing
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
+                                                @if ($data->pertanyaan === 'k_kepuasan')
+                                                    <a href="/jawaban-kepuasan-pelanggan/{{ $data->api_id }}"
+                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
+                                                @elseif ($data->pertanyaan === 'k_analisis')
+                                                    <a href="/jawaban-analisis-pesaing/{{ $data->api_id }}"
+                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
+                                                @elseif ($data->pertanyaan === 'k_kekuatan_kelemahan')
+                                                    <a href="/jawaban-kekuatan-kelemahan/{{ $data->api_id }}"
+                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
+                                                @elseif ($data->pertanyaan === 'form_lahan')
+                                                    <a href="/jawaban-potensi-lahan/{{ $data->api_id }}"
+                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
+                                                @elseif ($data->pertanyaan === 'form_pesaing')
+                                                    {{-- code here --}}
+                                                @endif
+
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

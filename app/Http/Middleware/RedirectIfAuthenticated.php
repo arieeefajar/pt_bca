@@ -21,6 +21,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                toast('Anda sudah login sebelumnya', 'warning')->position('top')->autoClose(3000);
                 return redirect(RouteServiceProvider::HOME);
             }
         }

@@ -13,12 +13,34 @@ class DetailPenyimpananController extends Controller
     {
 
         $dataDetail = DetailPenyimpanan::where('penyimpanan_id', $id)->get();
-        // dd($dataDetail);
-        $apiId = '64ef510d5f34884e0e7b8dd1';
-        $endPointApi = 'http://103.175.216.72/api/simi/customer/' . $apiId;
-
-        $dataAnswerCustomer = Http::get($endPointApi)->json()['data'];
-        dd($dataAnswerCustomer);
         return view('admin.detail', compact('dataDetail'));
+    }
+
+    public function jawaban_kepuasanPelanggan($apiId)
+    {
+        $endPointApi = 'http://103.175.216.72/api/simi/customer/' . $apiId;
+        $dataAnswer = Http::get($endPointApi)->json()['data'];
+        return view('admin.detailjawaban.k_kepuasan', compact('dataAnswer'));
+    }
+
+    public function jawaban_kekuatanKelemahan($apiId)
+    {
+        $endPointApi = 'http://103.175.216.72/api/simi/competitor-identifier/' . $apiId;
+        $dataAnswer = Http::get($endPointApi)->json()['data'];
+        return view('admin.detailjawaban.k_kekuatanKelemahan', compact('dataAnswer'));
+    }
+
+    public function jawaban_analisisPesaing($apiId)
+    {
+        $endPointApi = 'http://103.175.216.72/api/simi/competitor-analys/' . $apiId;
+        $dataAnswer = Http::get($endPointApi)->json()['data'];
+        return view('admin.detailjawaban.k_analisisPesaing', compact('dataAnswer'));
+    }
+
+    public function jawaban_potensiLahan($apiId)
+    {
+        $endPointApi = 'http://103.175.216.72/api/simi/potentional-area/' . $apiId;
+        $dataAnswer = Http::get($endPointApi)->json()['data'];
+        return view('admin.detailjawaban.f_potensiLahan', compact('dataAnswer'));
     }
 }
