@@ -52,6 +52,7 @@ Route::get('/jawaban-kepuasan-pelanggan/{apiId}', [DetailPenyimpananController::
 Route::get('/jawaban-kekuatan-kelemahan/{apiId}', [DetailPenyimpananController::class, 'jawaban_kekuatanKelemahan'])->name('jawaban_kekuatanKelemahan.index');
 Route::get('/jawaban-analisis-pesaing/{apiId}', [DetailPenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
 Route::get('/jawaban-potensi-lahan/{apiId}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
+Route::get('/jawaban-form-analisis-pesaing/{apiId}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
 
 
 // route only super admin & admin

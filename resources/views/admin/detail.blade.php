@@ -64,7 +64,8 @@
                                                     <a href="/jawaban-potensi-lahan/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @elseif ($data->pertanyaan === 'form_pesaing')
-                                                    {{-- code here --}}
+                                                    <a href="/jawaban-form-analisis-pesaing/{{ $data->api_id }}"
+                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @endif
 
                                             </td>
