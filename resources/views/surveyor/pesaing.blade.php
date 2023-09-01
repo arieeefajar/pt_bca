@@ -97,15 +97,14 @@
                                         <textarea class="form-control" name="pemasaran_pesaing" id="" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                                </div>
                             </div>
                         </div>
 
                         <input type="hidden" name="latitude" id="latitude_field">
                         <input type="hidden" name="longitude" id="longitude_field">
-
-                        <div class="text-center mt-3">
-                            <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
-                        </div>
                     </form>
                 </div><!-- end card-body -->
             </div><!-- end card -->
