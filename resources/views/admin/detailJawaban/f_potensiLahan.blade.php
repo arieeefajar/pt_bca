@@ -7,6 +7,9 @@
 <div class="row">
     <div class="col-xxl-6">
         <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Detail Jawaban</h4>
+            </div><!-- end card header -->
             <div class="card-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -29,19 +32,19 @@
                                 <label class="form-label">Standar Keunggulan Umum</label>
                                 {{-- <input type="text" class="form-control" required name="keunggulan_umum"
                                         id="keunggulan_umum"> --}}
-                                <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required></textarea>
+                                <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required readonly></textarea>
                             </div>
                             <div class="content col"><br>
                                 <label class="form-label">Keunggulan Produk Kita</label>
                                 {{-- <input type="text" class="form-control" required name="keunggulan_produk"
                                         id="keunggulan_produk"> --}}
-                                <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required></textarea>
+                                <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required readonly></textarea>
                             </div>
                             <div class="content col"><br>
                                 <label class="form-label">Keunggulan Kompetitor</label>
                                 {{-- <input type="text" class="form-control" required name="keunggulan_kompetitor"
                                         id="keunggulan_kompetitor"> --}}
-                                <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5" required></textarea>
+                                <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5" required readonly></textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="keunggulan-kompetitif" role="tabpanel" aria-labelledby="keunggulan-tab"> <br>
@@ -49,14 +52,14 @@
                                 <div class="content col">
                                     <label class="form-label">Iklim</label>
                                     {{-- <input type="text" class="form-control" required name="iklim" id="iklim"> --}}
-                                    <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required></textarea>
+                                    <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required readonly></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="content col">
                                     <label class="form-label">Event pasar atau perayaan</label>
                                     {{-- <input type="text" class="form-control" required name="event" id="event"> --}}
-                                    <textarea class="form-control" name="evet" id="evet" cols="30" rows="5" required></textarea>
+                                    <textarea class="form-control" name="evet" id="evet" cols="30" rows="5" required readonly></textarea>
                                 </div>
                             </div>
                         </div>
@@ -65,9 +68,9 @@
                     <input type="hidden" name="latitude" id="latitude_field">
                     <input type="hidden" name="longitude" id="longitude_field">
 
-                    <div class="text-center mt-3">
+                    <!-- <div class="text-center mt-3">
                         <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
-                    </div>
+                    </div> -->
                 </form>
             </div><!-- end card-body -->
         </div><!-- end card -->

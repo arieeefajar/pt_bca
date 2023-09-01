@@ -20,24 +20,24 @@
                     </div>
                     <div class="mb-2">
                         <label for="">Siapa saja pesaing perusahaan ?</label>
-                        <input type="text" class="form-control" name="competitor" id="">
+                        <input type="text" class="form-control" name="competitor" id="" readonly>
                     </div>
                     <div class="mb-2">
                         <label for="">Siapa saja pendatang baru yang dapat mengancam perusahaan ?</label>
-                        <input type="text" class="form-control" name="new_competitor" id="">
+                        <input type="text" class="form-control" name="new_competitor" id="" readonly>
                     </div>
                     <div class="mb-2">
                         <label for="">Siapa saja pembuat produk (produsen) substitusi pengganti produk
                             perusahaan ?</label>
-                        <input type="text" class="form-control" name="substitution" id="">
+                        <input type="text" class="form-control" name="substitution" id="" readonly>
                     </div>
                     <div class="mb-2">
                         <label for="">Siapa saja pemasok perusahaan ?</label>
-                        <input type="text" class="form-control" name="supplier" id="">
+                        <input type="text" class="form-control" name="supplier" id="" readonly>
                     </div>
                     <div class="mb-4">
                         <label for="">Siapa saja pembeli perusahaan ?</label>
-                        <input type="text" class="form-control" name="buyer" id="">
+                        <input type="text" class="form-control" name="buyer" id="" readonly>
                     </div>
 
                     <div class="live-preview">
