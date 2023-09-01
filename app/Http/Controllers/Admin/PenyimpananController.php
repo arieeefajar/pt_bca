@@ -12,8 +12,8 @@ class PenyimpananController extends Controller
     public function index()
     {
         $dataPenyimpanan = Penyimpanan::with('customer', 'surveyor')
-        ->where('status', '1')
-        ->get();
+            ->where('status', '1')
+            ->get();
         return view('admin.penyimpanan', compact('dataPenyimpanan'));
     }
 }
