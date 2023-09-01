@@ -55,7 +55,8 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->alamat }}</td>
                                             <td class="text-center">{{ $user->no_telp }}</td>
-                                            <td class="text-center">{{ $user->role }}</td>
+                                            <td class="text-center">{{ $user->role === 'user' ? 'surveyor' : $user->role }}
+                                            </td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $user->id }}">Edit</button>
@@ -120,7 +121,9 @@
                         {{-- no hp --}}
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">No.Hp</label>
-                            <input type="text" name="no_telp" id="no_telp" class="form-control"
+                            <input
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                type="number" maxlength="16" name="no_telp" id="no_telp" class="form-control"
                                 placeholder="Masukan No.HP" required />
                         </div>
 
@@ -132,7 +135,7 @@
                                 <option value="supper-admin">Supper Admin</option>
                                 <option value="admin">Admin</option>
                                 <option value="executive">Executive</option>
-                                <option value="user">User</option>
+                                <option value="user">Surveyor</option>
                             </select>
                         </div>
 
@@ -184,8 +187,11 @@
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">No.Hp</label>
-                                <input type="text" id="phone-field" name="no_telp" value="{{ $user->no_telp }}"
-                                    class="form-control" placeholder="Masukan No.HP" required />
+                                <input
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    type="number" maxlength="16" id="phone-field" name="no_telp"
+                                    value="{{ $user->no_telp }}" class="form-control" placeholder="Masukan No.HP"
+                                    required />
                             </div>
 
                             <div class="mb-3">
