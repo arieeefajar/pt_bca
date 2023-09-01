@@ -12,9 +12,17 @@ use Illuminate\Support\Facades\Validator;
 
 class KuisionerKepuasanPelanggan extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('surveyor.kepuasanPelanggan');
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $k_pelanggan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kepuasan');
+
+        if ($k_pelanggan) {
+            toast('Kuisioner sudah diisikan', 'error')->position('top')->autoClose(3000);
+            return back()->withInput();
+        } else {
+            return view('surveyor.kepuasanPelanggan');
+        }
     }
 
     public function store(Request $request)

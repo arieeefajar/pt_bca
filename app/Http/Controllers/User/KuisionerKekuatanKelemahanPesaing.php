@@ -19,10 +19,15 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
     {
         $model_detail_kuisioner = new DetailKuisioner();
         $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $k_kekuatan_kelemahan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kekuatan_kelemahan');
 
-        // dd($request->cookie('selectedTokoId'));
-
-        return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
+        if ($k_kekuatan_kelemahan) {
+            toast('Kuisioner sudah diisikan', 'error')->position('top')->autoClose(3000);
+            return back()->withInput();
+        } else {
+            return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
+        }
     }
 
     public function store(Request $request)
@@ -174,6 +179,5 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
 
         alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
         return redirect()->route('menu.index');
-
     }
 }

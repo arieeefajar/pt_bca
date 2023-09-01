@@ -16,7 +16,15 @@ class FormPesaingController extends Controller
     public function index(Request $request)
     {
         $dataProduk = Product::getProductCustomer($request);
-        return view('surveyor.pesaing', compact('dataProduk'));
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $form_pesaing = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');
+
+        if ($form_pesaing) {
+            toast('Form survey sudah diisikan', 'error')->position('top')->autoClose(3000);
+            return back()->withInput();
+        } else {
+            return view('surveyor.pesaing', compact('dataProduk'));
+        }
     }
 
     public function store(Request $request)

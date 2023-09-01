@@ -13,12 +13,19 @@ use Illuminate\Support\Facades\Validator;
 
 class KuisonerAnalisisPesaingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $model_detail_kuisioner = new DetailKuisioner();
         $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Pesaing');
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $k_analisis = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_analisis');
 
-        return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
+        if ($k_analisis) {
+            toast('Kuisioner sudah diisikan', 'error')->position('top')->autoClose(3000);
+            return back()->withInput();
+        } else {
+            return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
+        }
     }
 
     public function store(Request $request)
