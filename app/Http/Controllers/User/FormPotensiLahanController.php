@@ -12,9 +12,17 @@ use Illuminate\Support\Facades\Validator;
 
 class FormPotensiLahanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('surveyor.potensiLahan');
+        $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
+        $form_lahan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_lahan');
+
+        if ($form_lahan) {
+            toast('Form survey sudah diisikan', 'error')->position('top')->autoClose(3000);
+            return back()->withInput();
+        } else {
+            return view('surveyor.potensiLahan');
+        }
     }
 
     public function store(Request $request)
