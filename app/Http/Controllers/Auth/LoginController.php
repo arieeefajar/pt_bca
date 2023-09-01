@@ -18,20 +18,6 @@ class LoginController extends Controller
 
     public function prosesLogin(Request $request)
     {
-
-        if (Auth::check()) {
-            $user = Auth::user();
-            if ($user->role == 'supper-admin') {
-                return redirect()->route('superAdmin.dashboard');
-            } elseif ($user->role == 'admin') {
-                return redirect()->route('admin.dashboard');
-            } elseif ($user->role == 'executive') {
-                return redirect()->route('executive.dashboard');
-            } elseif ($user->role == 'user') {
-                return redirect()->route('surveyor.dashboard');
-            }
-        }
-
         // custom message validate
         $customMessages = [
             'email.required' => 'Email harus diisi.',
@@ -51,7 +37,6 @@ class LoginController extends Controller
             toast($validator->messages()->all()[0], 'warning')->position('top')->autoClose(3000);
             return redirect()->back()->withInput();
         }
-
         // Validasi berhasil, lanjutkan dengan percobaan otentikasi
         $credentials = $request->only('email', 'password');
 
