@@ -77,7 +77,7 @@
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
                                         {{-- <input type="text" class="form-control" required name="event" id="event"> --}}
-                                        <textarea class="form-control" name="evet" id="evet" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" name="event" id="evet" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
