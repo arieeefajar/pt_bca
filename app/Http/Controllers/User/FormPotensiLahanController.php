@@ -38,7 +38,7 @@ class FormPotensiLahanController extends Controller
             'keunggulan_produk' => 'required',
             'keunggulan_kompetitor' => 'required',
             'iklim' => 'required',
-            'evet' => 'required',
+            'event' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
         ], $customMessages);
