@@ -64,7 +64,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                                    <p class="text-muted">Sign in to continue to SIMI.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form action="{{ route('prosesLogin') }}" method="POST">
@@ -78,7 +78,7 @@
 
                                         <div class="mb-3">
                                             <div class="float-end">
-                                                <a href="auth-pass-reset-basic.html" class="text-muted">Forgot
+                                                <a href="" class="text-muted">Forgot
                                                     password?</a>
                                             </div>
                                             <label class="form-label" for="password">Password</label>
@@ -87,17 +87,17 @@
                                                     placeholder="Enter password" id="password" name="password">
                                                 <button
                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
-                                                    type="button" id=""><i
+                                                    type="button" id="password-addon"><i
                                                         class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
 
-                                        <div class="form-check">
+                                        {{-- <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="auth-remember-check">
                                             <label class="form-check-label" for="auth-remember-check">Remember
                                                 me</label>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="mt-4">
                                             <button class="btn btn-primary w-100" type="submit">Sign In</button>

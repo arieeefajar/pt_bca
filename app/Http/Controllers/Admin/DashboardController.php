@@ -30,12 +30,32 @@ class DashboardController extends Controller
 
     public function admin()
     {
-        return view('dashboard.admin');
+        $dataJumlah = [
+            'surveyor' => User::where('role', 'user')->get()->count(),
+            'executive' => User::where('role', 'executive')->get()->count(),
+            'admin' => User::where('role', 'admin')->get()->count(),
+            'targetToko' => Customer::all()->count(),
+            'surveyToko' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
+                ->where('penyimpanan.status', 1)
+                ->select('customer.nama')
+                ->get()->count(),
+        ];
+        return view('dashboard.admin', compact('dataJumlah'));
     }
 
     public function executive()
     {
-        return view('dashboard.executive');
+        $dataJumlah = [
+            'surveyor' => User::where('role', 'user')->get()->count(),
+            'executive' => User::where('role', 'executive')->get()->count(),
+            'admin' => User::where('role', 'admin')->get()->count(),
+            'targetToko' => Customer::all()->count(),
+            'surveyToko' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
+                ->where('penyimpanan.status', 1)
+                ->select('customer.nama')
+                ->get()->count(),
+        ];
+        return view('dashboard.executive', compact('dataJumlah'));
     }
 
     public function dataSurveyor()

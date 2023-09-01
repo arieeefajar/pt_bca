@@ -80,4 +80,12 @@ class LoginController extends Controller
         return $response;
         // // return view('auth.login');
     }
+
+    public function clearSelectedTokoCookie()
+    {
+        $response = new \Illuminate\Http\Response(redirect('/surveyor-dashboard'));
+        $response->cookie(Cookie::forget('selectedTokoId'));
+
+        return $response;
+    }
 }

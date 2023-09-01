@@ -26,14 +26,14 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab" href="#perbandingan-produk"
-                                role="tab" aria-selected="true">
+                            <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab"
+                                href="#karakteristik-varietas" role="tab" aria-selected="true">
                                 Karakteristik Varietas
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="keunggulan-tab" data-bs-toggle="tab" href="#keunggulan-kompetitif"
-                                role="tab" aria-selected="false">
+                            <a class="nav-link" id="keunggulan-tab" data-bs-toggle="tab" href="#musim-tanam" role="tab"
+                                aria-selected="false">
                                 Musim Tanam
                             </a>
                         </li>
@@ -42,7 +42,7 @@
                     <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
                         @csrf
                         <div class="tab-content text-muted">
-                            <div class="tab-pane fade show active" id="perbandingan-produk" role="tabpanel"
+                            <div class="tab-pane fade show active" id="karakteristik-varietas" role="tabpanel"
                                 aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>
                                 <div class="content col">
                                     <label class="form-label">Standar Keunggulan Umum</label>
@@ -64,8 +64,8 @@
                                         required></textarea>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="keunggulan-kompetitif" role="tabpanel"
-                                aria-labelledby="keunggulan-tab"> <br>
+                            <div class="tab-pane fade" id="musim-tanam" role="tabpanel" aria-labelledby="keunggulan-tab">
+                                <br>
                                 <div class="row mb-3">
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
@@ -80,15 +80,14 @@
                                         <textarea class="form-control" name="evet" id="evet" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                                </div>
                             </div>
                         </div>
 
                         <input type="hidden" name="latitude" id="latitude_field">
                         <input type="hidden" name="longitude" id="longitude_field">
-
-                        <div class="text-center mt-3">
-                            <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
-                        </div>
                     </form>
                 </div><!-- end card-body -->
             </div><!-- end card -->
