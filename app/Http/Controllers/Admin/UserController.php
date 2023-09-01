@@ -33,7 +33,7 @@ class UserController extends Controller
             'required' => ':attribute harus diisi.',
             'numeric' => ':attribute harus berupa angka.',
             'email' => ':attribute harus menggunakan format email',
-            'unique' => 'Email sudah digunakan.',
+            'unique' => ':attribut sudah digunakan.',
             'min' => ':attribute minimal :min karakter.',
             'in' => ':attribute tidak valid.',
         ];
