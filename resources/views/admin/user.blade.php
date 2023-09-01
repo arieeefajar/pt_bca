@@ -4,6 +4,7 @@
 @section('submenu', 'Master')
 
 @section('content')
+    {{-- content --}}
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -66,94 +67,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table table-bordered align-middle table-nowrap" id="customerTable">
-                                <thead class="table-light">
-                                    @if (session('success'))
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                Swal.fire({
-                                                    title: "Good job!",
-                                                    text: "{{ session('success') }}",
-                                                    icon: "success",
-                                                    showCancelButton: true,
-                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                                                    buttonsStyling: false,
-                                                    showCloseButton: true
-                                                });
-                                            });
-                                        </script>
-                                    @elseif ($errors->any())
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                Swal.fire({
-                                                    title: "Error",
-                                                    text: "{{ $errors->all()[0] }}",
-                                                    icon: "error",
-                                                    showCancelButton: true,
-                                                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                                                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                                                    buttonsStyling: false,
-                                                    showCloseButton: true
-                                                });
-                                            });
-                                        </script>
-                                    @endif
-                                    <tr>
-                                        <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Username</th>
-                                        <th class="text-center" data-sort="email">Email</th>
-                                        <th class="text-center" data-sort="phone">Alamat</th>
-                                        <th class="text-center" data-sort="date">No.HP</th>
-                                        <th class="text-center" data-sort="date">Role</th>
-                                        <th class="text-center" data-sort="action">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list form-check-all">
-                                    @foreach ($users as $index => $user)
-                                        <tr>
-                                            <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center" style="display:none;"><a href="javascript:void(0);"
-                                                    class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->alamat }}</td>
-                                            <td class="text-center">{{ $user->no_telp }}</td>
-                                            <td class="text-center">{{ $user->role }}</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $user->id }}">Edit</button>
-                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $user->id }}">Remove</button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="noresult" style="display: none">
-                                <div class="text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                    </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                        orders for you search.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end">
-                            <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="#">
-                                    Next
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>
@@ -162,7 +75,7 @@
         <!-- end col -->
     </div>
 
-    <!-- add-modal -->
+    {{-- add modal --}}
     <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -175,6 +88,7 @@
                     @csrf
                     <div class="modal-body">
 
+                        {{-- username --}}
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Username</label>
                             <input type="text" id="name" name="name"
@@ -182,40 +96,39 @@
                                 placeholder="Masukkan Username" required />
                         </div>
 
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
+                        {{-- email --}}
                         <div class="mb-3">
                             <label for="email-field" class="form-label">Email</label>
                             <input type="email" name="email" id="email" class="form-control"
                                 placeholder="Masukan Email" required />
                         </div>
 
+                        {{-- password --}}
                         <div class="mb-3">
                             <label for="email-field" class="form-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control"
                                 placeholder="Masukan Password" required />
                         </div>
 
+                        {{-- alamat --}}
                         <div class="mb-3">
                             <label class="form-label">Alamat</label>
                             <input type="text" name="alamat" id="alamat" class="form-control"
                                 placeholder="Masukan Alamat" required />
                         </div>
 
+                        {{-- no hp --}}
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">No.Hp</label>
                             <input type="text" name="no_telp" id="no_telp" class="form-control"
                                 placeholder="Masukan No.HP" required />
                         </div>
 
+                        {{-- role --}}
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Role</label>
-                            <select class="form-select mb-3" name="role" id="role">
-                                <option selected disabled>Pilih Role Pengguna</option>
+                            <select class="form-select mb-3" required name="role" id="role">
+                                <option value="" selected disabled>Pilih Role Pengguna</option>
                                 <option value="supper-admin">Supper Admin</option>
                                 <option value="admin">Admin</option>
                                 <option value="executive">Executive</option>
@@ -235,8 +148,8 @@
         </div>
     </div>
 
-    <!-- edit-modal -->
     @foreach ($users as $user)
+        <!-- edit-modal -->
         <div class="modal fade" id="showModal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

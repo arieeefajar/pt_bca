@@ -146,6 +146,8 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 
     // laporan routes
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+
+    Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
 });
 
 // route only surveyour
