@@ -34,7 +34,7 @@ class UserController extends Controller
             'numeric' => ':attribute harus berupa angka.',
             'email' => ':attribute harus menggunakan format email',
             'unique' => 'Email sudah digunakan.',
-            'min' => 'Password minimal 8 karakter.',
+            'min' => ':attribute minimal :min karakter.',
             'in' => ':attribute tidak valid.',
         ];
 
@@ -43,7 +43,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|string|min:8',
             'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|string|max:15',
+            'no_telp' => 'required|string|min:11|max:16',
             'role' => 'required|in:supper-admin,admin,executive,user',
         ], $customMessages);
 
@@ -87,7 +87,7 @@ class UserController extends Controller
             'name' => 'required|string|max:40',
             'email' => 'required|email|max:40',
             'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|string|max:15',
+            'no_telp' => 'required|string|max:16',
             'role' => 'required|in:supper-admin,admin,executive,user',
         ], $customMessages);
 
