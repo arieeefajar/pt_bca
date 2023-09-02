@@ -111,4 +111,9 @@ class DashboardController extends Controller
         $dataPerusahaan = Customer::all();
         return view('surveyor.listHasilSurvey', compact('dataPerusahaan'));
     }
+
+    public function tes()
+    {
+        return view('layout1.tes');
+    }
 }

@@ -75,6 +75,9 @@
                                         <textarea class="form-control" name="deskripsi_produk_pesaing" id="" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary" id="next-tab">Next</button>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="keunggulan-kompetitif" role="tabpanel"
                                 aria-labelledby="keunggulan-tab"> <br>
@@ -85,6 +88,9 @@
                                             required> --}}
                                         <textarea class="form-control" name="keunggulan_pesaing" id="" cols="30" rows="5" required></textarea>
                                     </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary" id="next-tab">Next</button>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="aktivitas-pemasaran-pesaing" role="tabpanel"
@@ -110,6 +116,7 @@
             </div><!-- end card -->
         </div><!--end col-->
     </div>
+
     <script>
         const produkSelect = document.getElementById('produkSelect');
 
@@ -176,6 +183,37 @@
             } catch (error) {
                 console.log("Error:", error);
             }
-        }
+        };
+
+        // Tangkap tombol "Next" dengan menggunakan ID
+        var nextButton = document.getElementById('next-tab');
+
+        // Tambahkan event listener untuk mengatur tab berikutnya saat tombol diklik
+        nextButton.addEventListener('click', function() {
+            // Dapatkan tab aktif saat ini
+            var activeTab = document.querySelector('.nav-link.active');
+
+            // Temukan tab berikutnya dengan menggunakan nextElementSibling
+            var nextTab = activeTab.nextElementSibling;
+
+            // Jika ada tab berikutnya, pindahkan ke tab tersebut
+            if (nextTab) {
+                // Hapus kelas "active" dari tab aktif saat ini
+                activeTab.classList.remove('active');
+
+                // Tambahkan kelas "active" ke tab berikutnya
+                nextTab.classList.add('active');
+
+                // Dapatkan ID tab-pane yang sesuai dengan ID tab yang aktif
+                var activeTabId = activeTab.getAttribute('aria-controls');
+                var nextTabId = nextTab.getAttribute('aria-controls');
+
+                // Sembunyikan tab-pane yang sesuai dengan tab aktif saat ini
+                document.getElementById(activeTabId).classList.remove('show', 'active');
+
+                // Tampilkan tab-pane yang sesuai dengan tab berikutnya
+                document.getElementById(nextTabId).classList.add('show', 'active');
+            }
+        });
     </script>
 @endsection
