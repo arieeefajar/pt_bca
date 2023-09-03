@@ -49,11 +49,11 @@ Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index'])
 
 //tes route
 Route::get('/tes', [DashboardController::class, 'tes'])->name('tes.index');
-Route::get('/jawaban-kepuasan-pelanggan/{apiId}', [DetailPenyimpananController::class, 'jawaban_kepuasanPelanggan'])->name('jawaban_kepuasanPelanggan.index');
-Route::get('/jawaban-kekuatan-kelemahan/{apiId}', [DetailPenyimpananController::class, 'jawaban_kekuatanKelemahan'])->name('jawaban_kekuatanKelemahan.index');
-Route::get('/jawaban-analisis-pesaing/{apiId}', [DetailPenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
-Route::get('/jawaban-potensi-lahan/{apiId}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
-Route::get('/jawaban-form-analisis-pesaing/{apiId}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
+Route::get('/jawaban-kepuasan-pelanggan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_kepuasanPelanggan'])->name('jawaban_kepuasanPelanggan.index');
+Route::get('/jawaban-kekuatan-kelemahan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_kekuatanKelemahan'])->name('jawaban_kekuatanKelemahan.index');
+Route::get('/jawaban-analisis-pesaing/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
+Route::get('/jawaban-potensi-lahan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
+Route::get('/jawaban-form-analisis-pesaing/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
 
 
 // route only super admin & admin

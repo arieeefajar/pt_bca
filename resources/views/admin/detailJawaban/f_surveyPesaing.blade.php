@@ -1,7 +1,9 @@
 @extends('layout.app')
 @section('title', 'Jawaban Survey Pesaing')
 @section('menu', 'Survey Pesaing')
-@section('submenu', 'Detail Jawaban')
+@section('submenu')
+    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+@endsection
 
 @section('content')
     <div class="row">
