@@ -1,7 +1,9 @@
 @extends('layout.app')
 @section('title', 'Jawaban Kekuatan Kelemahan Pesaing')
 @section('menu', 'Kekuatan Kelemahan Pesaing')
-@section('submenu', 'Detail Jawaban')
+@section('submenu')
+    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+@endsection
 
 @section('content')
     <style>

@@ -30,20 +30,34 @@ class UserController extends Controller
     {
 
         $customMessages = [
-            'required' => ':attribute harus diisi.',
-            'numeric' => ':attribute harus berupa angka.',
-            'email' => ':attribute harus menggunakan format email',
-            'unique' => ':attribut sudah digunakan.',
-            'min' => ':attribute minimal :min karakter.',
-            'in' => ':attribute tidak valid.',
+            'name.required' => 'Username harus di isi',
+            'name.max' => 'Username maximal :max karakter',
+
+            'email.required' => 'Email harus di isi',
+            'email.email' => 'Email harus menggunakan format email',
+            'email.unique' => 'Email sudah digunakan',
+            'email.max' => 'Email maximal :max karakter',
+
+            'password.required' => 'Password harus di isi',
+            'password.min' => 'Password minimal :min karakter',
+
+            'alamat.required' => 'Alamat harus di isi',
+            'alamat.max' => 'Alamat maximal :max karakter',
+
+            'no_telp.required' => 'No Telepon harus di isi',
+            'no_telp.min' => 'No Telepon minimal :min karakter',
+            'no_telp.max' => 'No Telepon maximal :max karakter',
+
+            'role.required' => 'Role harus di isi',
+            'role.in' => 'Role tidak valid',
         ];
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|string|min:8',
-            'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|string|min:11|max:16',
+            'name' => 'required|max:30',
+            'email' => 'required|email|unique:users|max:40',
+            'password' => 'required|min:8',
+            'alamat' => 'required|max:255',
+            'no_telp' => 'required|min:11|max:16',
             'role' => 'required|in:supper-admin,admin,executive,user',
         ], $customMessages);
 

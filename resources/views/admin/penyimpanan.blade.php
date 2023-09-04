@@ -30,14 +30,9 @@
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
                                         <th class="text-center" data-sort="customer_name">Surveyor</th>
-                                        <th class="text-center" data-sort="email">Perusahaan Asal</th>
+                                        <th class="text-center" data-sort="email">Customer</th>
+                                        <th class="text-center" data-sort="email">Status</th>
                                         <th class="text-center" data-sort="email">Aksi</th>
-                                        {{-- <th class="text-center" data-sort="phone">Umur</th>
-                                        <th class="text-center" data-sort="date">No.Telepon</th>
-                                        <th class="text-center" data-sort="date">Daerah</th>
-                                        <th class="text-center" data-sort="date">Perusahaan</th>
-                                        <th class="text-center" data-sort="date">Posisi</th>
-                                        <th class="text-center" data-sort="action">Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,21 +41,19 @@
                                             <th class="text-center">{{ $index + 1 }}</th>
                                             <td class="text-center">{{ $data->surveyor->name }}</td>
                                             <td class="text-center">{{ $data->customer->nama }}</td>
-                                            {{-- <td class="text-center">580-464-4694</td>
-                                        <td class="text-center">Jember</td>
-                                        <td class="text-center">PT BISI Internasional Tbk</td>
-                                        <td class="text-center">Master Dealer</td> --}}
+                                            <td class="text-center">
+                                                @if ($data->status === '1')
+                                                    <span class="badge rounded-pill bg-success">Lengkap</span>
+                                                @else
+                                                    <span class="badge rounded-pill bg-danger">Belum Lengkap</span>
+                                                @endif
+                                            </td>
                                             <td class="text-center">
                                                 <div class="d-flex gap-2 justify-content-center">
                                                     <div class="detail">
                                                         <a href="/detail-penyimpanan/{{ $data->id }}"
                                                             class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                     </div>
-                                                    {{-- <div class="remove">
-                                                    <button class="btn btn-sm btn-danger remove-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Remove</button>
-                                                </div> --}}
                                                 </div>
                                             </td>
                                         </tr>
@@ -69,67 +62,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="customerTable">
-                            <thead class="table-light">
-                                <tr>
-                                    <th class="text-center" data_sort="no">No</th>
-                                    <th class="text-center" data-sort="customer_name">Nama</th>
-                                    <th class="text-center" data-sort="email">Alamat</th>
-                                    <th class="text-center" data-sort="phone">Umur</th>
-                                    <th class="text-center" data-sort="date">No.Telepon</th>
-                                    <th class="text-center" data-sort="date">Daerah</th>
-                                    <th class="text-center" data-sort="date">Perusahaan</th>
-                                    <th class="text-center" data-sort="date">Posisi</th>
-                                    <th class="text-center" data-sort="action">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="list form-check-all">
-                                <tr>
-                                    <th class="text-center">1</th>
-                                    <td class="text-center" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="text-center">Mary Cousar</td>
-                                    <td class="text-center">Mastrip</td>
-                                    <td class="text-center">20</td>
-                                    <td class="text-center">580-464-4694</td>
-                                    <td class="text-center">Jember</td>
-                                    <td class="text-center">PT BISI Internasional Tbk</td>
-                                    <td class="text-center">Master Dealer</td>
-                                    <td class="text-center">
-                                        <div class="d-flex gap-2">
-                                            <div class="detail">
-                                                <a href="/detail-penyimpanan" class="btn btn-sm btn-primary edit-item-btn">Detail</a>
-                                            </div>
-                                            <div class="remove">
-                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="noresult" style="display: none">
-                            <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                </lord-icon>
-                                <h5 class="mt-2">Sorry! No Result Found</h5>
-                                <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                    orders for you search.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-end">
-                        <div class="pagination-wrap hstack gap-2">
-                            <a class="page-item pagination-prev disabled" href="#">
-                                Previous
-                            </a>
-                            <ul class="pagination listjs-pagination mb-0"></ul>
-                            <a class="page-item pagination-next" href="#">
-                                Next
-                            </a>
-                        </div>
-                    </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>

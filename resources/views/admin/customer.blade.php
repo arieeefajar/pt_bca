@@ -4,6 +4,7 @@
 @section('submenu', 'Master')
 
 @section('content')
+    {{-- @dd($dataPerusahaan); --}}
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -40,7 +41,6 @@
                                         <th class="text-center" data-sort="customer_name">Jenis</th>
                                         <th class="text-center" data-sort="customer_name">Provinsi</th>
                                         <th class="text-center" data-sort="customer_name">Kota</th>
-                                        <th class="text-center" data-sort="customer_name">Area</th>
                                         <th class="text-center" data-sort="action">Action</th>
                                     </tr>
                                 </thead>
@@ -52,11 +52,12 @@
                                             <td class="text-center">{{ $data['jenis'] }}</td>
                                             <td class="text-center">{{ $data['provinsi'] }}</td>
                                             <td class="text-center">{{ $data['kota'] }}</td>
-                                            <td class="text-center">{{ $data['wilayah_id'] }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data['id'] }}"
                                                     onclick="setEdit({{ $data }})">Edit</button>
+                                                <button class="btn btn-sm btn-info edit-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#showDetail{{ $data['id'] }}">Detail</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#deleteRecordModal{{ $data['id'] }}">Remove</button>
                                             </td>
@@ -64,6 +65,28 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="noresult" style="display: none">
+                                <div class="text-center">
+                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                    </lord-icon>
+                                    <h5 class="mt-2">Sorry! No Result Found</h5>
+                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
+                                        orders for you search.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <div class="pagination-wrap hstack gap-2">
+                                <a class="page-item pagination-prev disabled" href="#">
+                                    Previous
+                                </a>
+                                <ul class="pagination listjs-pagination mb-0"></ul>
+                                <a class="page-item pagination-next" href="#">
+                                    Next
+                                </a>
+                            </div>
                         </div>
 
                         {{-- <div class="table-responsive table-card mt-3 mb-1">
@@ -288,6 +311,41 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        {{-- modal detail --}}
+        <div class="modal fade" id="showDetail{{ $data['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light p-3">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Perusahaan</h5>
+                        <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close" id="close-modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        {{-- Area --}}
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label">Wilayah</label>
+                            <input type="text" name="nama" value="{{ $data->wilayah->nama }}" id="nama"
+                                class="form-control" placeholder="Masukan Nama Customer..." required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Koordinat</label>
+                            <textarea class="form-control" name="koordinat" required id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

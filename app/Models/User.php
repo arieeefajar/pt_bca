@@ -52,9 +52,15 @@ class User extends Authenticatable
             ->leftJoin('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
             ->leftJoin('wilayah_survey', 'wilayah.id', '=', 'wilayah_survey.wilayah_id')
             ->leftJoin('users', 'wilayah_survey.surveyor_id', '=', 'users.id')
+            ->leftJoin('penyimpanan', function ($join) {
+                $join->on('penyimpanan.customer_id', '=', 'customer.id')
+                    ->where('penyimpanan.status', '=', 1);
+            })
             ->where('users.role', '=', 'user')
-            ->where('users.id', '=', Auth::user()->id)
+            ->where('users.id', '=', 4)
+            ->whereNull('penyimpanan.id')
             ->get();
+
 
         return $customers;
     }

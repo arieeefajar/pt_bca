@@ -1,7 +1,9 @@
 @extends('layout.app')
 @section('title', 'Data Detail Penyimpanan')
 @section('menu', 'Data Detail Penyimpanan')
-@section('submenu', 'Penyimpanan')
+@section('submenu')
+    <a href="{{ route('penyimpanan.index') }}">Penyimpanan</a>
+@endsection
 
 @section('content')
     <div class="row">
@@ -52,19 +54,19 @@
                                             </td>
                                             <td class="text-center">
                                                 @if ($data->pertanyaan === 'k_kepuasan')
-                                                    <a href="/jawaban-kepuasan-pelanggan/{{ $data->api_id }}"
+                                                    <a href="/jawaban-kepuasan-pelanggan/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @elseif ($data->pertanyaan === 'k_analisis')
-                                                    <a href="/jawaban-analisis-pesaing/{{ $data->api_id }}"
+                                                    <a href="/jawaban-analisis-pesaing/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @elseif ($data->pertanyaan === 'k_kekuatan_kelemahan')
-                                                    <a href="/jawaban-kekuatan-kelemahan/{{ $data->api_id }}"
+                                                    <a href="/jawaban-kekuatan-kelemahan/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @elseif ($data->pertanyaan === 'form_lahan')
-                                                    <a href="/jawaban-potensi-lahan/{{ $data->api_id }}"
+                                                    <a href="/jawaban-potensi-lahan/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @elseif ($data->pertanyaan === 'form_pesaing')
-                                                    <a href="/jawaban-form-analisis-pesaing/{{ $data->api_id }}"
+                                                    <a href="/jawaban-form-analisis-pesaing/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @endif
 

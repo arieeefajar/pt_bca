@@ -14,7 +14,7 @@ class CustomerController extends Controller
     public function index()
     {
         // get perusahaan and area data
-        $dataPerusahaan = Customer::all();
+        $dataPerusahaan = Customer::with('wilayah')->get();
         $dataArea = Wilayah::all();
         $dataProvinsi = Wilayah::getProvinsi();
         $dataKota = Wilayah::getKota();
