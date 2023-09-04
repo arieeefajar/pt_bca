@@ -1,7 +1,10 @@
 @extends('layout.app')
 @section('title', 'Jawaban Potensi Lahan')
 @section('menu', 'Potensi Lahan')
-@section('submenu', 'Detail Jawaban')
+@section('submenu')
+    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+@endsection
+
 
 @section('content')
     <div class="row">
@@ -77,8 +80,8 @@
                             <input type="hidden" name="longitude" id="longitude_field">
 
                             <!-- <div class="text-center mt-3">
-                                <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
-                            </div> -->
+                                        <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                                    </div> -->
                         </form>
                     @endforeach
                 </div><!-- end card-body -->

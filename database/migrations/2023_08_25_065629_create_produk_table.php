@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_produk');
+            $table->string('nama_produk')->unique();
             $table->unsignedBigInteger('id_jenis_tanaman');
             $table->foreign('id_jenis_tanaman')->references('id')->on('jenis_tanaman');
             $table->timestamps();

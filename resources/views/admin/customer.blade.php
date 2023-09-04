@@ -4,6 +4,7 @@
 @section('submenu', 'Master')
 
 @section('content')
+    {{-- @dd($dataPerusahaan); --}}
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -40,7 +41,6 @@
                                         <th class="text-center" data-sort="customer_name">Jenis</th>
                                         <th class="text-center" data-sort="customer_name">Provinsi</th>
                                         <th class="text-center" data-sort="customer_name">Kota</th>
-                                        <th class="text-center" data-sort="customer_name">Area</th>
                                         <th class="text-center" data-sort="action">Action</th>
                                     </tr>
                                 </thead>
@@ -52,11 +52,12 @@
                                             <td class="text-center">{{ $data['jenis'] }}</td>
                                             <td class="text-center">{{ $data['provinsi'] }}</td>
                                             <td class="text-center">{{ $data['kota'] }}</td>
-                                            <td class="text-center">{{ $data['wilayah_id'] }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data['id'] }}"
                                                     onclick="setEdit({{ $data }})">Edit</button>
+                                                <button class="btn btn-sm btn-info edit-item-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#showDetail{{ $data['id'] }}">Detail</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#deleteRecordModal{{ $data['id'] }}">Remove</button>
                                             </td>
@@ -310,6 +311,41 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        {{-- modal detail --}}
+        <div class="modal fade" id="showDetail{{ $data['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light p-3">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Perusahaan</h5>
+                        <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close" id="close-modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        {{-- Area --}}
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label">Wilayah</label>
+                            <input type="text" name="nama" value="{{ $data->wilayah->nama }}" id="nama"
+                                class="form-control" placeholder="Masukan Nama Customer..." required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Koordinat</label>
+                            <textarea class="form-control" name="koordinat" required id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

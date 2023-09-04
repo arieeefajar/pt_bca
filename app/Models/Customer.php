@@ -26,6 +26,11 @@ class Customer extends Model
         return $this->hashMany(Penyimpanan::class, 'id', 'perusahaan_id');
     }
 
+    public function wilayah()
+    {
+        return $this->belongsTo(Wilayah::class, 'wilayah_id', 'id');
+    }
+
     public static function getNamaToko($id)
     {
         $namaToko = Customer::select('nama')->where('id', $id)->first()->nama;

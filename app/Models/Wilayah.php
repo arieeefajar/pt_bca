@@ -18,13 +18,20 @@ class Wilayah extends Model
         'koordinat',
     ];
 
-    public static function getProvinsi(){
+    public function customer()
+    {
+        return $this->hashMany(Customer::class, 'id', 'wilayah_id');
+    }
+
+    public static function getProvinsi()
+    {
         $endPointApi = 'https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json';
         $dataAnswer = Http::get($endPointApi)->json();
         return $dataAnswer;
     }
 
-    public static function getKota(){
+    public static function getKota()
+    {
         $endPointApi = 'https://emsifa.github.io/api-wilayah-indonesia/api/regencies/35.json';
         $dataAnswer = Http::get($endPointApi)->json();
         return $dataAnswer;

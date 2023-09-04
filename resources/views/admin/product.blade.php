@@ -119,8 +119,8 @@
 
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Jenis</label>
-                            <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman">
-                                <option selected disabled>Pilih jenis produk</option>
+                            <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required>
+                                <option value="" selected disabled>Pilih jenis produk</option>
                                 @foreach ($dataJenisTanaman as $data)
                                     <option value="{{ $data->id }}">{{ $data->jenis }}</option>
                                 @endforeach
@@ -170,8 +170,8 @@
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">Jenis</label>
-                                <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman">
-                                    <option disabled>Pilih jenis produk</option>
+                                <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required>
+                                    <option disabled value="">Pilih jenis produk</option>
                                     @foreach ($dataJenisTanaman as $dataJenis)
                                         <option value="{{ $dataJenis->id }}"
                                             {{ $dataJenis->id == $data->id_jenis_tanaman ? 'selected' : '' }}>
