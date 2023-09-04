@@ -21,18 +21,18 @@
                                             class="ri-add-line align-bottom me-1"></i> Tambah Customer</button>
                                 </div>
                             </div>
-                            <div class="col-sm">
+                            {{-- <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
                                         <input type="text" class="form-control search" placeholder="Search...">
                                         <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
-                        <div class="table-responsive table-card mb-1 mt-3">
-                            <table class="table align-middle mb-0">
+                        <div class="table-responsive mb-1 mt-3">
+                            <table class="table align-middle mb-0" id="myTable">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
@@ -357,4 +357,9 @@
             });
         }
     </script> --}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable(); // Gantilah "myTable" dengan ID tabel Anda.
+        });
+    </script>
 @endsection

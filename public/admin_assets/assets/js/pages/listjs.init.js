@@ -84,6 +84,7 @@ var isValue = isCount.body.firstElementChild.innerHTML,
     editBtn = document.getElementById("edit-btn"),
     removeBtns = document.getElementsByClassName("remove-item-btn"),
     editBtns = document.getElementsByClassName("edit-item-btn");
+
 function filterContact(e) {
     var t = e;
     customerList.filter(function (e) {

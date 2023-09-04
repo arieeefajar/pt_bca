@@ -34,8 +34,15 @@
     <!-- custom Css-->
     <link href="{{ asset('admin_assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/datatables/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/datatables/css/dataTables.min.css') }}">
+
     {{-- jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!-- jQuery (diperlukan oleh DataTables) -->
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
 
 </head>
@@ -679,6 +686,13 @@
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+
+    <!-- listjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="{{ 'vendor/datatables/js/jquery.dataTables.min.js' }}"></script>
+    <script type="text/javascript" src="{{ 'vendor/datatables/js/dataTables.bootstrap4.min.js' }}"></script>
 
     @include('sweetalert::alert')
 
