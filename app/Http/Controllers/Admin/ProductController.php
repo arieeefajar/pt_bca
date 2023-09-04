@@ -26,12 +26,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $customMessages = [
-            'required' => ':attribute harus diisi.',
-            'max' => ':attribute max 50 kata.',
+            'nama_produk.required' => 'Nama produk harus di isi',
+            'nama_produk.unique' => 'Nama produk sudah digunakan',
+            'nama_produk.max' => 'Nama produk maksimal :max kata',
+
+            'jenis_tanaman.required' => 'Jenis tanaman harus di isi',
         ];
 
         $validator = Validator::make($request->all(), [
-            'nama_produk' => 'required|string|max:50',
+            'nama_produk' => 'required|unique:produk|max:50',
             'jenis_tanaman' => 'required',
         ], $customMessages);
 
