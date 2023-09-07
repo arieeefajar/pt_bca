@@ -59,27 +59,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="noresult" style="display: none">
-                                <div class="text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                    </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                        orders for you search.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="#">
-                                    Next
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div><!-- end card -->
@@ -107,44 +86,54 @@
                             <label for="customername-field" class="form-label">Username</label>
                             <input type="text" id="name" name="name"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Masukkan Username" required />
+                                placeholder="Masukkan Username" required
+                                oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
+                                oninput="setCustomValidity('')" />
                         </div>
 
                         {{-- email --}}
                         <div class="mb-3">
                             <label for="email-field" class="form-label">Email</label>
                             <input type="email" name="email" id="email" class="form-control"
-                                placeholder="Masukan Email" required />
+                                placeholder="Masukan Email" required
+                                oninvalid="this.setCustomValidity('Masukkan email yang berisi &quot@&quot. Contoh: admin@gmail.com')"
+                                oninput="setCustomValidity('')" />
                         </div>
 
                         {{-- password --}}
                         <div class="mb-3">
                             <label for="email-field" class="form-label">Password</label>
-                            <input type="password" name="password" id="password_add" class="form-control"
-                                placeholder="Masukan Password" required />
-                            <p class="d-none text-danger" id="password_add_require">hidden</p>
+                            <input type="password" minlength="8" name="password" id="password" class="form-control"
+                                placeholder="Masukan Password" required
+                                oninvalid="this.setCustomValidity('Password tidak boleh kosong dan minimal password 8 karakter')"
+                                oninput="setCustomValidity('')" />
                         </div>
 
                         {{-- alamat --}}
                         <div class="mb-3">
                             <label class="form-label">Alamat</label>
                             <input type="text" name="alamat" id="alamat" class="form-control"
-                                placeholder="Masukan Alamat" required />
+                                placeholder="Masukan Alamat" required
+                                oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"
+                                oninput="setCustomValidity('')" />
                         </div>
 
                         {{-- no hp --}}
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">No.Hp</label>
                             <input
-                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                type="number" maxlength="16" name="no_telp" id="no_telp" class="form-control"
-                                placeholder="Masukan No.HP" required />
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); setCustomValidity('')"
+                                type="number" maxlength="13" name="no_telp" id="no_telp" class="form-control"
+                                placeholder="Masukan No.HP" required
+                                oninvalid="this.setCustomValidity('No.Hp tidak boleh kosong')" />
                         </div>
 
                         {{-- role --}}
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Role</label>
-                            <select class="form-select mb-3" required name="role" id="role">
+                            <select class="form-select mb-3" required name="role" id="role"
+                                oninvalid="this.setCustomValidity('Harap pilih role pengguna')"
+                                oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Role Pengguna</option>
                                 <option value="supper-admin">Supper Admin</option>
                                 <option value="admin">Admin</option>
@@ -157,7 +146,7 @@
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" onclick="submitForm('form_add')" class="btn btn-primary">Tambah
+                            <button type="submit" class="btn btn-primary">Tambah
                                 Pengguna</button>
                         </div>
                     </div>
@@ -185,33 +174,40 @@
                                 <label for="customername-field" class="form-label">Username</label>
                                 <input type="text" id="customername-field" name="name"
                                     value="{{ $user->name }}" class="form-control" placeholder="Masukkan Username"
-                                    required />
+                                    required oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
+                                    oninput="setCustomValidity('')" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="email-field" class="form-label">Email</label>
                                 <input type="email" id="email-field" name="email" value="{{ $user->email }}"
-                                    class="form-control" placeholder="Masukan Email" required />
+                                    class="form-control" placeholder="Masukan Email" required
+                                    oninvalid="this.setCustomValidity('Masukkan email yang berisi &quot@&quot. Contoh: admin@gmail.com')"
+                                    oninput="setCustomValidity('')" />
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
                                 <input type="text" id="alamat-field" name="alamat" value="{{ $user->alamat }}"
-                                    class="form-control" placeholder="Masukan Alamat" required />
+                                    class="form-control" placeholder="Masukan Alamat" required
+                                    oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"
+                                    oninput="setCustomValidity('')" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">No.Hp</label>
                                 <input
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); setCustomValidity('')"
                                     type="number" maxlength="16" id="phone-field" name="no_telp"
                                     value="{{ $user->no_telp }}" class="form-control" placeholder="Masukan No.HP"
-                                    required />
+                                    required oninvalid="this.setCustomValidity('No.Hp tidak boleh kosong')" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">Role</label>
-                                <select class="form-select mb-3" name="role" id="role">
+                                <select class="form-select mb-3" name="role" id="role"
+                                    oninvalid="this.setCustomValidity('Harap pilih role pengguna')"
+                                    oninput="setCustomValidity('')">
                                     <option selected disabled>Pilih Role Pengguna</option>
                                     <option value="supper-admin" {{ $user->role === 'supper-admin' ? 'selected' : '' }}>
                                         Supper Admin</option>

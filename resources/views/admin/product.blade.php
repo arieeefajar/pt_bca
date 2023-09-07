@@ -51,27 +51,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="noresult" style="display: none">
-                                <div class="text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                    </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                        orders for you search.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="#">
-                                    Next
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div><!-- end card -->
@@ -98,7 +77,9 @@
                             <label for="customername-field" class="form-label">Nama Produk</label>
                             <input type="text" id="nama_produk" name="nama_produk"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Masukkan nama produk" required />
+                                placeholder="Masukkan nama produk" required
+                                oninvalid="this.setCustomValidity('Harap isi nama produk')"
+                                oninput="setCustomValidity('')" />
                         </div>
 
                         @error('name')
@@ -109,7 +90,9 @@
 
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Jenis</label>
-                            <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required>
+                            <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required
+                                oninvalid="this.setCustomValidity('Harap pilih jenis produk')"
+                                oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih jenis produk</option>
                                 @foreach ($dataJenisTanaman as $data)
                                     <option value="{{ $data->id }}">{{ $data->jenis }}</option>
@@ -149,7 +132,9 @@
                                 <label for="customername-field" class="form-label">Nama Produk</label>
                                 <input type="text" id="nama_produk" name="nama_produk"
                                     class="form-control @error('name') is-invalid @enderror"
-                                    value="{{ $data->nama_produk }}" placeholder="Masukkan nama produk" required />
+                                    value="{{ $data->nama_produk }}" placeholder="Masukkan nama produk" required
+                                    oninvalid="this.setCustomValidity('Harap isi nama produk')"
+                                    oninput="setCustomValidity('')" />
                             </div>
 
                             @error('name')
@@ -160,7 +145,9 @@
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">Jenis</label>
-                                <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required>
+                                <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required
+                                    oninvalid="this.setCustomValidity('Harap pilih jenis produk')"
+                                    oninput="setCustomValidity('')">
                                     <option disabled value="">Pilih jenis produk</option>
                                     @foreach ($dataJenisTanaman as $dataJenis)
                                         <option value="{{ $dataJenis->id }}"

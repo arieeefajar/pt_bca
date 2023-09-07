@@ -47,27 +47,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="noresult" style="display: none">
-                                <div class="text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                    </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                        orders for you search.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="#">
-                                    Next
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div><!-- end card -->
@@ -94,7 +73,9 @@
                             <label for="customername-field" class="form-label">Jenis Tanaman</label>
                             <input type="text" id="jenis" name="jenis"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Masukkan nama jenis tanaman" required />
+                                placeholder="Masukkan nama jenis tanaman" required
+                                oninvalid="this.setCustomValidity('Harap isi jenis tanaman')"
+                                oninput="setCustomValidity('')" />
                         </div>
 
                         @error('name')
@@ -141,7 +122,9 @@
                                 <label for="customername-field" class="form-label">Jenis Tanaman</label>
                                 <input type="text" id="customername-field" name="jenis"
                                     value="{{ $data->jenis }}" class="form-control"
-                                    placeholder="Masukkan nama jenis tanaman" required />
+                                    placeholder="Masukkan nama jenis tanaman" required
+                                    oninvalid="this.setCustomValidity('Harap isi jenis tanaman')"
+                                    oninput="setCustomValidity('')" />
                             </div>
                         </div>
                         <div class="modal-footer">
