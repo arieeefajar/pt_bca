@@ -4,108 +4,6 @@
 @section('submenu', 'Master')
 
 @section('content')
-    {{-- content --}}
-    {{-- <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">Data User</h4>
-                </div><!-- end card header -->
-
-                <div class="card-body">
-                    <div id="customerList">
-                        <div class="row g-4 mb-3">
-                            <div class="col-sm-auto">
-                                <div>
-                                    <button type="button" class="btn btn-warning add-btn" data-bs-toggle="modal"
-                                        id="create-btn" data-bs-target="#modalTambah"><i
-                                            class="ri-add-line align-bottom me-1"></i> Tambah Pengguna</button>
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
-                                    <div class="search-box ms-2">
-                                        <input type="text" class="form-control search" placeholder="Search...">
-                                        <i class="ri-search-line search-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table align-middle table-nowrap" id="customerTable">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th scope="col" style="width: 50px;">No</th>
-                                        <th class="sort" data-sort="customer_name">Username</th>
-                                        <th class="sort" data-sort="email">Email</th>
-                                        <th class="sort" data-sort="date">Alamat</th>
-                                        <th class="sort" data-sort="phone">No.Hp</th>
-                                        <th class="sort" data-sort="status">Role</th>
-                                        <th class="sort" data-sort="action">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list form-check-all">
-                                    @foreach ($users as $index => $user)
-                                        <tr>
-                                            <th scope="row">{{ $index + 1 }}</th>
-                                            <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                                    class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td class="customer_name">{{ $user->name }}</td>
-                                            <td class="email">{{ $user->email }}</td>
-                                            <td class="date">{{ $user->alamat }}</td>
-                                            <td class="phone">{{ $user->no_telp }}</td>
-                                            <td class="status">{{ $user->role === 'user' ? 'surveyor' : $user->role }}</td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    <div class="edit">
-                                                        <button class="btn btn-sm btn-success edit-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#showModal{{ $user->id }}">Edit</button>
-                                                    </div>
-                                                    <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal{{ $user->id }}">Remove</button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="noresult" style="display: none">
-                                <div class="text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                    </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                        orders for you search.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end">
-                            <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="#">
-                                    Next
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end card -->
-            </div>
-            <!-- end col -->
-        </div>
-        <!-- end col -->
-    </div> --}}
-    <!-- end row -->
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -123,14 +21,6 @@
                                             class="ri-add-line align-bottom me-1"></i> Tambah Pengguna</button>
                                 </div>
                             </div>
-                            {{-- <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
-                                    <div class="search-box ms-2">
-                                        <input type="text" class="form-control search" placeholder="Search...">
-                                        <i class="ri-search-line search-icon"></i>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
 
                         <div class="table-responsive mb-1 mt-3">
@@ -208,7 +98,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form method="POST" action="{{ route('user.index') }}">
+                <form method="POST" action="{{ route('user.index') }}" id="form_add">
                     @csrf
                     <div class="modal-body">
 
@@ -230,8 +120,9 @@
                         {{-- password --}}
                         <div class="mb-3">
                             <label for="email-field" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control"
+                            <input type="password" name="password" id="password_add" class="form-control"
                                 placeholder="Masukan Password" required />
+                            <p class="d-none text-danger" id="password_add_require">hidden</p>
                         </div>
 
                         {{-- alamat --}}
@@ -266,7 +157,8 @@
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Tambah Pengguna</button>
+                            <button type="button" onclick="submitForm('form_add')" class="btn btn-primary">Tambah
+                                Pengguna</button>
                         </div>
                     </div>
                 </form>

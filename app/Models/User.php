@@ -57,7 +57,7 @@ class User extends Authenticatable
                     ->where('penyimpanan.status', '=', 1);
             })
             ->where('users.role', '=', 'user')
-            ->where('users.id', '=', 4)
+            ->where('users.id', '=', Auth::user()->id)
             ->whereNull('penyimpanan.id')
             ->get();
 
