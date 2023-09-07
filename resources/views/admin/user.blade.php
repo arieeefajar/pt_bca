@@ -193,7 +193,7 @@
 
                         {{-- username --}}
                         <div class="mb-3">
-                            <label for="customername-field" class="form-label">Username</label>
+                            <label for="name" class="form-label">Username</label>
                             <input type="text" id="name" name="name"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
                                 placeholder="Masukkan Username" required
@@ -203,7 +203,7 @@
 
                         {{-- email --}}
                         <div class="mb-3">
-                            <label for="email-field" class="form-label">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" name="email" id="email" class="form-control"
                                 placeholder="Masukan Email" required
                                 oninvalid="this.setCustomValidity('Masukkan email yang berisi &quot@&quot. Contoh: admin@gmail.com')"
@@ -212,16 +212,15 @@
 
                         {{-- password --}}
                         <div class="mb-3">
-                            <label for="email-field" class="form-label">Password</label>
+                            <label for="password" class="form-label">Password</label>
                             <input type="password" minlength="8" name="password" id="password" class="form-control"
-                                placeholder="Masukan Password" required
-                                oninvalid="this.setCustomValidity('Password tidak boleh kosong dan minimal password 8 karakter')"
-                                oninput="setCustomValidity('')" />
+                                placeholder="Masukan Password" required oninvalid="validatePassword(this);"
+                                oninput="validatePassword(this);" />
                         </div>
 
                         {{-- alamat --}}
                         <div class="mb-3">
-                            <label class="form-label">Alamat</label>
+                            <label class="alamat">Alamat</label>
                             <input type="text" name="alamat" id="alamat" class="form-control"
                                 placeholder="Masukan Alamat" required
                                 oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"
@@ -230,12 +229,11 @@
 
                         {{-- no hp --}}
                         <div class="mb-3">
-                            <label for="phone-field" class="form-label">No.Hp</label>
-                            <input
-                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); setCustomValidity('')"
-                                type="number" maxlength="13" name="no_telp" id="no_telp" class="form-control"
-                                placeholder="Masukan No.HP" required
-                                oninvalid="this.setCustomValidity('No.Hp tidak boleh kosong')" />
+                            <label for="no_telp" class="form-label">No.Hp</label>
+                            <input type="tel" name="no_telp" id="no_telp" class="form-control"
+                                placeholder="Masukan No.HP" required pattern="(\+62|62|0)8[1-9][0-9]{8,9}$"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
+                                oninvalid="validateInput(this);" />
                         </div>
 
                         {{-- role --}}
@@ -306,11 +304,11 @@
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">No.Hp</label>
-                                <input
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); setCustomValidity('')"
-                                    type="number" maxlength="16" id="phone-field" name="no_telp"
-                                    value="{{ $user->no_telp }}" class="form-control" placeholder="Masukan No.HP"
-                                    required oninvalid="this.setCustomValidity('No.Hp tidak boleh kosong')" />
+                                <input type="tel" name="no_telp" id="no_telp" class="form-control"
+                                    placeholder="Masukan No.HP" value="{{ $user->no_telp }}" required
+                                    pattern="(\+62|62|0)8[1-9][0-9]{9,10}$"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
+                                    oninvalid="validateInput(this);" />
                             </div>
 
                             <div class="mb-3">
@@ -377,5 +375,25 @@
         $(document).ready(function() {
             $('#myTable').DataTable(); // Gantilah "myTable" dengan ID tabel Anda.
         });
+
+        function validateInput(input) {
+            if (input.validity.valueMissing) {
+                input.setCustomValidity('No Hp tidak boleh kosong.');
+            } else if (input.validity.patternMismatch) {
+                input.setCustomValidity('Nomor telepon tidak valid. Silakan masukkan nomor telepon yang benar.');
+            } else {
+                input.setCustomValidity('');
+            }
+        };
+
+        function validatePassword(input) {
+            if (input.validity.valueMissing) {
+                input.setCustomValidity('Password tidak boleh kosong.');
+            } else if (input.value.length < 8) {
+                input.setCustomValidity('Password kurang dari 8 karakter.');
+            } else {
+                input.setCustomValidity('');
+            }
+        }
     </script>
 @endsection
