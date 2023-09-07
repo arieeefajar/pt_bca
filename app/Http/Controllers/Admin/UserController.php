@@ -19,7 +19,7 @@ class UserController extends Controller
 
         // call data users where role in roles array and order by asc
         $users = User::whereIn('role', $roles)
-            ->orderBy('role', 'asc')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         // return view
@@ -83,7 +83,7 @@ class UserController extends Controller
             return redirect()->back();
         } catch (\Throwable $th) {
             alert()->error('Gagal', $th);
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
 

@@ -75,9 +75,8 @@
 
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Produk</label>
-                            <input type="text" id="nama_produk" name="nama_produk"
-                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Masukkan nama produk" required
+                            <input type="text" id="nama_produk" name="nama_produk" class="form-control"
+                                value="{{ old('nama_produk') }}" placeholder="Masukkan nama produk" required
                                 oninvalid="this.setCustomValidity('Harap isi nama produk')"
                                 oninput="setCustomValidity('')" />
                         </div>
@@ -95,7 +94,9 @@
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih jenis produk</option>
                                 @foreach ($dataJenisTanaman as $data)
-                                    <option value="{{ $data->id }}">{{ $data->jenis }}</option>
+                                    <option value="{{ $data->id }}"
+                                        {{ old('jenis_tanaman') == $data->id ? 'selected' : '' }}>{{ $data->jenis }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

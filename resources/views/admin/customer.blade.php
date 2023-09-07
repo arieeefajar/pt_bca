@@ -141,8 +141,8 @@
                         {{-- nama cus --}}
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Customer</label>
-                            <input type="text" name="nama" id="customername-field" class="form-control"
-                                placeholder="Masukan Nama Customer..." required
+                            <input type="text" name="nama" value="{{ old('nama') }}" id="customername-field"
+                                class="form-control" placeholder="Masukan Nama Customer..." required
                                 oninvalid="this.setCustomValidity('Harap isi nama customer')"
                                 oninput="setCustomValidity('')" />
                         </div>
@@ -154,9 +154,10 @@
                                 oninvalid="this.setCustomValidity('Harap pilih jenis customer')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Jenis</option>
-                                <option value="dealer">Dealer</option>
-                                <option value="master_dealer">Master Dealer</option>
-                                <option value="lainnya">Lainnya</option>
+                                <option value="dealer" {{ old('jenis') == 'dealer' ? 'selected' : '' }}>Dealer</option>
+                                <option value="master_dealer" {{ old('jenis') == 'master_dealer' ? 'selected' : '' }}>
+                                    Master Dealer</option>
+                                <option value="lainnya" {{ old('jenis') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                             </select>
                         </div>
 
@@ -167,7 +168,8 @@
                                 oninvalid="this.setCustomValidity('Harap pilih provinsi customer')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Provinsi</option>
-                                <option value="JAWA TIMUR">JAWA TIMUR</option>
+                                <option value="JAWA TIMUR" {{ old('provinsi') == 'JAWA TIMUR' ? 'selected' : '' }}>JAWA
+                                    TIMUR</option>
                                 {{-- @foreach ($dataProvinsi as $value)
                                     <option idProvinsi="{{ $value['id'] }}" value="{{ $value['name'] }}">
                                         {{ $value['name'] }}</option>
@@ -184,7 +186,9 @@
                                 {{-- <option value="" disabled selected>Pilih Provinsi Terlebih Dahulu</option> --}}
                                 <option value="" selected disabled>Pilih Kota</option>
                                 @foreach ($dataKota as $value)
-                                    <option value="{{ $value['name'] }}">{{ $value['name'] }}</option>
+                                    <option value="{{ $value['name'] }}"
+                                        {{ old('kota') == $value['name'] ? 'selected' : '' }}>{{ $value['name'] }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -197,7 +201,8 @@
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Area</option>
                                 @foreach ($dataArea as $data)
-                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                    <option value="{{ $data->id }}" {{ old('area') == $data->id ? 'selected' : '' }}>
+                                        {{ $data->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -206,7 +211,7 @@
                         <div class="mb-3">
                             <label class="form-label">Koordinat</label>
                             <textarea required class="form-control" name="koordinat" id="evet" cols="30" rows="5"
-                                oninvalid="this.setCustomValidity('Harap masukkan titik koordinat customer')" oninput="setCustomValidity('')"></textarea>
+                                oninvalid="this.setCustomValidity('Harap masukkan titik koordinat customer')" oninput="setCustomValidity('')">{{ old('koordinat') }}</textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

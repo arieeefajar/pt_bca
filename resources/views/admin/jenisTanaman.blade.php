@@ -71,9 +71,8 @@
 
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Jenis Tanaman</label>
-                            <input type="text" id="jenis" name="jenis"
-                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Masukkan nama jenis tanaman" required
+                            <input type="text" id="jenis" name="jenis" class="form-control"
+                                value="{{ old('jenis') }}" placeholder="Masukkan nama jenis tanaman" required
                                 oninvalid="this.setCustomValidity('Harap isi jenis tanaman')"
                                 oninput="setCustomValidity('')" />
                         </div>

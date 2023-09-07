@@ -85,8 +85,7 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Username</label>
                             <input type="text" id="name" name="name"
-                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Masukkan Username" required
+                                class="form-control" value="{{ old('name') }}" placeholder="Masukkan Username" required
                                 oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
                                 oninput="setCustomValidity('')" />
                         </div>
@@ -94,8 +93,8 @@
                         {{-- email --}}
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" id="email" class="form-control"
-                                placeholder="Masukan Email" required
+                            <input type="email" name="email" value="{{ old('email') }}" id="email"
+                                class="form-control" placeholder="Masukan Email" required
                                 oninvalid="this.setCustomValidity('Masukkan email yang berisi &quot@&quot. Contoh: admin@gmail.com')"
                                 oninput="setCustomValidity('')" />
                         </div>
@@ -112,7 +111,7 @@
                         <div class="mb-3">
                             <label class="alamat">Alamat</label>
                             <input type="text" name="alamat" id="alamat" class="form-control"
-                                placeholder="Masukan Alamat" required
+                                placeholder="Masukan Alamat" value="{{ old('alamat') }}" required
                                 oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"
                                 oninput="setCustomValidity('')" />
                         </div>
@@ -121,7 +120,8 @@
                         <div class="mb-3">
                             <label for="no_telp" class="form-label">No.Hp</label>
                             <input type="tel" name="no_telp" id="no_telp" class="form-control"
-                                placeholder="Masukan No.HP" required pattern="(\+62|62|0)8[1-9][0-9]{8,9}$"
+                                value="{{ old('no_telp') }}" placeholder="Masukan No.HP" required
+                                pattern="(\+62|62|0)8[1-9][0-9]{8,9}$"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
                                 oninvalid="validateInput(this);" />
                         </div>
@@ -133,10 +133,12 @@
                                 oninvalid="this.setCustomValidity('Harap pilih role pengguna')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Role Pengguna</option>
-                                <option value="supper-admin">Supper Admin</option>
-                                <option value="admin">Admin</option>
-                                <option value="executive">Executive</option>
-                                <option value="user">Surveyor</option>
+                                <option value="supper-admin" {{ old('role') == 'supper-admin' ? 'selected' : '' }}>Supper
+                                    Admin</option>
+                                <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="executive" {{ old('role') == 'executive' ? 'selected' : '' }}>Executive
+                                </option>
+                                <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>Surveyor</option>
                             </select>
                         </div>
 
