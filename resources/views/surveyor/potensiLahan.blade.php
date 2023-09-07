@@ -5,6 +5,13 @@
 
 @section('content')
 
+    {{-- <style>
+        .btn-blue {
+            background-color: blue !important;
+            color: white !important;
+        }
+    </style> --}}
+
     @if ($errors->any())
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -21,6 +28,73 @@
     @endif
 
     <div class="row">
+        <div class="col-xxl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div id="formContainer">
+                        <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
+                            @csrf
+                            <div id="step1">
+                                <div class="card-header">
+                                    <div class="progres-bar" role="progressbar">
+                                        <h4 class="card-title mb-0">Karakteristik Varietas</h4>
+                                    </div>
+                                </div><!-- end card header -->
+
+                                <div class="content col mt-3">
+                                    <label class="form-label">Standar Keunggulan Umum</label>
+                                    <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required></textarea>
+                                </div>
+                                <div class="content col mt-3">
+                                    <label class="form-label">Keunggulan Produk Kita</label>
+                                    <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required></textarea>
+                                </div>
+                                <div class="content col mt-3">
+                                    <label class="form-label">Keunggulan Kompetitor</label>
+                                    <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5"
+                                        required></textarea>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-primary" id="nextButton"
+                                        onclick="nextStep(1)">Next</button>
+                                </div>
+                            </div>
+
+                            <div id="step2" style="display: none;">
+                                <div class="card-header">
+                                    <div class="progres-bar" role="progressbar">
+                                        <h4 class="card-title mb-0">Musim Tanam</h4>
+                                    </div>
+                                </div><!-- end card header -->
+
+                                <div class="row mb-3 mt-3">
+                                    <div class="content col">
+                                        <label class="form-label">Iklim</label>
+                                        <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="content col">
+                                        <label class="form-label">Event pasar atau perayaan</label>
+                                        <textarea class="form-control" name="event" id="evet" cols="30" rows="5" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
+                                    <button type="button" onclick="submit_form()" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="latitude" id="latitude_field">
+                            <input type="hidden" name="longitude" id="longitude_field">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="row">
         <div class="col-xxl-6">
             <div class="card">
                 <div class="card-body">
@@ -46,20 +120,14 @@
                                 aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>
                                 <div class="content col">
                                     <label class="form-label">Standar Keunggulan Umum</label>
-                                    {{-- <input type="text" class="form-control" required name="keunggulan_umum"
-                                        id="keunggulan_umum"> --}}
                                     <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="content col"><br>
                                     <label class="form-label">Keunggulan Produk Kita</label>
-                                    {{-- <input type="text" class="form-control" required name="keunggulan_produk"
-                                        id="keunggulan_produk"> --}}
                                     <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="content col"><br>
                                     <label class="form-label">Keunggulan Kompetitor</label>
-                                    {{-- <input type="text" class="form-control" required name="keunggulan_kompetitor"
-                                        id="keunggulan_kompetitor"> --}}
                                     <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5"
                                         required></textarea>
                                 </div>
@@ -69,14 +137,12 @@
                                 <div class="row mb-3">
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
-                                        {{-- <input type="text" class="form-control" required name="iklim" id="iklim"> --}}
                                         <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
-                                        {{-- <input type="text" class="form-control" required name="event" id="event"> --}}
                                         <textarea class="form-control" name="event" id="evet" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
@@ -92,10 +158,8 @@
                 </div><!-- end card-body -->
             </div><!-- end card -->
         </div><!--end col-->
-    </div>
-    {{-- @push('scripts')
-        <script src="{{ asset('admin_assets/assets/js/script.js') }}"></script>
-    @endpush --}}
+    </div> --}}
+
     <script>
         function getLocation() {
             return new Promise((resolve, reject) => {
@@ -139,6 +203,86 @@
                 }
             } catch (error) {
                 console.log("Error:", error);
+            }
+        };
+
+        let currentStep = 1;
+
+        function setProgress(value) {
+            const progressBar = document.querySelector(".progress-bar");
+            progressBar.style.width = value + "%";
+            progressBar.setAttribute("aria-valuenow", value);
+
+            // Mengubah warna tombol sesuai dengan progres
+            const buttons = document.querySelectorAll(".btn-ku");
+            const buttonsLength = buttons.length;
+            for (let i = 0; i < buttonsLength; i++) {
+                if (i * 50 < value) {
+                    buttons[i].classList.remove("btn-light");
+                    buttons[i].classList.add("btn-primary");
+                } else if (i * 50 === value) {
+                    buttons[i].classList.remove("btn-primary");
+                    buttons[i].classList.add("btn-light");
+                } else {
+                    buttons[i].classList.remove("btn-primary");
+                    buttons[i].classList.remove("btn-light");
+                }
+            }
+        }
+
+        const textarea1 = document.getElementById("keunggulan_umum");
+        const textarea2 = document.getElementById("keunggulan_produk");
+        const textarea3 = document.getElementById("keunggulan_kompetitor");
+        const nextButton = document.getElementById("nextButton");
+
+        // Fungsi untuk mengatur status tombol "Next"
+        function toggleNextButton() {
+            if (textarea1.validity.valueMissing || textarea2.validity.valueMissing || textarea3.validity.valueMissing) {
+                nextButton.disabled = true;
+            } else {
+                nextButton.disabled = false;
+            }
+
+        }
+
+        // Panggil fungsi saat textarea diubah
+        textarea1.addEventListener("input", toggleNextButton);
+        textarea2.addEventListener("input", toggleNextButton);
+        textarea3.addEventListener("input", toggleNextButton);
+
+        // Panggil fungsi saat halaman dimuat untuk mengatur status awal
+        toggleNextButton();
+
+        function nextStep(step) {
+            if (step === 1) {
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+                currentStep = 2;
+                setProgress(50);
+            } else if (step === 2) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "block";
+                currentStep = 3;
+                setProgress(100);
+            }
+        }
+
+        function prevStep(step) {
+            if (step === 1) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step1").style.display = "block";
+                currentStep = 1;
+                setProgress(0);
+            } else if (step === 2) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step1").style.display = "block";
+                currentStep = 1;
+                setProgress(0);
+            } else if (step === 3) {
+                document.getElementById("step3").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+                currentStep = 2;
+                setProgress(50);
             }
         }
     </script>
