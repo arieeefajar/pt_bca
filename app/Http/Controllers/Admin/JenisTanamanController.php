@@ -12,7 +12,7 @@ class JenisTanamanController extends Controller
     public function index()
     {
         // get data jenis tanaman
-        $dataJenisTanaman = JenisTanaman::all();
+        $dataJenisTanaman = JenisTanaman::orderBy('created_at', 'desc')->get();
 
         // retrun view
         return view('admin.jenisTanaman', compact('dataJenisTanaman'));
@@ -48,7 +48,7 @@ class JenisTanamanController extends Controller
             return redirect()->back();
         } catch (\Throwable $th) {
             alert()->error('Gagal', $th);
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
 

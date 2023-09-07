@@ -11,7 +11,9 @@ class PenyimpananController extends Controller
 {
     public function index()
     {
-        $dataPenyimpanan = Penyimpanan::with('customer', 'surveyor')->get();
+        $dataPenyimpanan = Penyimpanan::with('customer', 'surveyor')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('admin.penyimpanan', compact('dataPenyimpanan'));
     }
 }
