@@ -15,17 +15,12 @@ class JenisTanamanSeeder extends Seeder
     {
         $jenisTanamanData = [
             [
-                'jenis' => 'Jagung Manis',
+                'jenis' => 'JAGUNG MANIS',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'jenis' => 'Jagung Merah',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'jenis' => 'Jagung Unggul',
+                'jenis' => 'JAGUNG HIBRIDA',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

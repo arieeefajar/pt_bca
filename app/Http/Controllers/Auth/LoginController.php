@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,14 @@ class LoginController extends Controller
             toast($validator->messages()->all()[0], 'warning')->position('top')->autoClose(3000);
             return redirect()->back()->withInput();
         }
+
+        // cek email
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            toast('Email tidak terdaftar', 'error')->position('top')->autoClose(3000);
+            return redirect()->back()->withInput();
+        }
+
         // Validasi berhasil, lanjutkan dengan percobaan otentikasi
         $credentials = $request->only('email', 'password');
 
@@ -61,7 +70,7 @@ class LoginController extends Controller
             abort(403, 'Unauthorized');
         } else {
             // Login gagal
-            toast('login gagal', 'error')->position('top')->autoClose(3000);
+            toast('Email atau password salah', 'error')->position('top')->autoClose(3000);
             return back()->withInput();
         }
     }

@@ -13,27 +13,22 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $produkData = [
-            [
-                'nama_produk' => 'Phantom Merah',
-                'id_jenis_tanaman' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nama_produk' => 'Jamernak',
-                'id_jenis_tanaman' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nama_produk' => 'Odin',
-                'id_jenis_tanaman' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ];
 
-        Product::insert($produkData);
+        // betras
+        for ($i = 1; $i <= 10; $i++) {
+            Product::create(
+                [
+                    'nama_produk' => 'BETRAS ' . $i,
+                    'id_jenis_tanaman' => 2,
+                ],
+            );
+        }
+
+        Product::create(
+            ['nama_produk' => 'ASIA 86 F1', 'id_jenis_tanaman' => 1,
+            ],
+            ['nama_produk' => 'MANISE', 'id_jenis_tanaman' => 1,
+            ],
+        );
     }
 }
