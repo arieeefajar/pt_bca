@@ -14,7 +14,10 @@ class ProductController extends Controller
     {
 
         // get data product
-        $dataProduct = JenisTanaman::join('produk', 'jenis_tanaman.id', '=', 'produk.id_jenis_tanaman')->select('produk.id as id', 'produk.nama_produk', 'jenis_tanaman.id as id_jenis_tanaman', 'jenis_tanaman.jenis')->get();
+        $dataProduct = JenisTanaman::join('produk', 'jenis_tanaman.id', '=', 'produk.id_jenis_tanaman')
+            ->select('produk.id as id', 'produk.nama_produk', 'jenis_tanaman.id as id_jenis_tanaman', 'jenis_tanaman.jenis')
+            ->orderBy('produk.created_at', 'desc')
+            ->get();
 
         // get data jenis tanaman from data input in view
         $dataJenisTanaman = JenisTanaman::all();
