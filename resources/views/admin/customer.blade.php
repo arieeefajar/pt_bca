@@ -210,8 +210,9 @@
                         {{-- koordinat --}}
                         <div class="mb-3">
                             <label class="form-label">Koordinat</label>
-                            <textarea required class="form-control" name="koordinat" id="evet" cols="30" rows="5"
-                                oninvalid="this.setCustomValidity('Harap masukkan titik koordinat customer')" oninput="setCustomValidity('')">{{ old('koordinat') }}</textarea>
+                            <textarea required class="form-control" maxlength="1000" name="koordinat" id="evet" cols="30"
+                                rows="5" oninvalid="this.setCustomValidity('Harap masukkan titik koordinat customer')"
+                                oninput="setCustomValidity('')">{{ old('koordinat') }}</textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -21,7 +21,7 @@
     @endif
 
     <div class="row">
-        <col-xxl-6>
+        <div class="col-xxl-12">
             <div class="card">
                 <div class="card-body">
                     <div id="formContainer">
@@ -46,8 +46,8 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <textarea class="form-control" placeholder="Masukan minimal 10 karakter" required name="deskripsi_produk"
-                                                id="deskripsiProdukKita" cols="30" minlength="10" rows="5"></textarea>
+                                            <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" required
+                                                name="deskripsi_produk" id="deskripsiProdukKita" cols="30" minlength="10" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -56,7 +56,7 @@
                                             <input type="text" name="produk_pesaing" id="produkPesaing"
                                                 class="form-control" required placeholder="Masukan nama produk pesaing">
                                         </div>
-                                        <textarea class="form-control" name="deskripsi_produk_pesaing" id="deskripsiProdukPesaing"
+                                        <textarea class="form-control" maxlength="1000" name="deskripsi_produk_pesaing" id="deskripsiProdukPesaing"
                                             placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                 <div class="row mt-3">
                                     <div class="content col">
                                         <label class="form-label">Apa saja keunggulan pesaing :</label>
-                                        <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="keunggulan_pesaing"
+                                        <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_pesaing"
                                             id="keunggulanPesaing" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
@@ -97,13 +97,14 @@
                                 <div class="row mt-3">
                                     <div class="content col">
                                         <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
-                                        <textarea class="form-control" name="pemasaran_pesaing" id="pemasaranPesaing" placeholder="Masukan minimal 10 karakter"
-                                            cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" maxlength="1000" name="pemasaran_pesaing" id="pemasaranPesaing"
+                                            placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
                                     <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
-                                    <button type="button" onclick="submit_form()" class="btn btn-success">Submit</button>
+                                    <button type="button" id="submitButton" onclick="submit_form()"
+                                        class="btn btn-success">Submit</button>
                                 </div>
                             </div>
 
@@ -113,7 +114,7 @@
                     </div>
                 </div>
             </div>
-        </col-xxl-6>
+        </div>
     </div>
 
     <script>
@@ -191,7 +192,7 @@
         const textarea3 = document.getElementById("produkPesaing");
         const textarea4 = document.getElementById("deskripsiProdukPesaing");
         const textarea5 = document.getElementById("keunggulanPesaing");
-        // const textarea6 = document.getElementById("pemasaran");
+        const textarea6 = document.getElementById("pemasaranPesaing");
         const nextButton = document.getElementById("nextButton");
 
         // Fungsi untuk mengatur status tombol "Next"
@@ -203,6 +204,7 @@
 
             // Validasi untuk set kedua input
             const isSet2Valid = !textarea5.validity.valueMissing && textarea5.value.length >= 10;
+            const isSet3Valid = !textarea6.validity.valueMissing && textarea6.value.length >= 10;
 
             // Validasi tambahan untuk memeriksa panjang teks textarea1, textarea3, dan textarea4
             const isSet1LengthValid = textarea2.value.length >= 10 &&
@@ -214,6 +216,8 @@
             // Aktifkan atau nonaktifkan tombol "NextButton1" berdasarkan validasi set kedua
             nextButton1.disabled = !isSet2Valid;
 
+            submitButton.disabled = !isSet3Valid;
+
         }
 
         // Panggil fungsi saat textarea diubah
@@ -222,6 +226,7 @@
         textarea3.addEventListener("input", toggleNextButton);
         textarea4.addEventListener("input", toggleNextButton);
         textarea5.addEventListener("input", toggleNextButton);
+        textarea6.addEventListener("input", toggleNextButton);
 
         // Panggil fungsi saat halaman dimuat untuk mengatur status awal
         toggleNextButton();
