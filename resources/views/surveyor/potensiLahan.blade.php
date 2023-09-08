@@ -43,16 +43,18 @@
 
                                 <div class="content col mt-3">
                                     <label class="form-label">Standar Keunggulan Umum</label>
-                                    <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required></textarea>
+                                    <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="keunggulan_umum" id="keunggulan_umum"
+                                        cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="content col mt-3">
                                     <label class="form-label">Keunggulan Produk Kita</label>
-                                    <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required></textarea>
+                                    <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="keunggulan_produk" id="keunggulan_produk"
+                                        cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="content col mt-3">
                                     <label class="form-label">Keunggulan Kompetitor</label>
-                                    <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5"
-                                        required></textarea>
+                                    <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="keunggulan_kompetitor"
+                                        id="keunggulan_kompetitor" cols="30" rows="5" required></textarea>
                                 </div>
                                 <div class="text-center mt-3">
                                     <button type="button" class="btn btn-primary" id="nextButton"
@@ -70,19 +72,22 @@
                                 <div class="row mb-3 mt-3">
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
-                                        <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="iklim" id="iklim" cols="30"
+                                            rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
-                                        <textarea class="form-control" name="event" id="evet" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="event" id="event" cols="30"
+                                            rows="5" required></textarea>
                                     </div>
                                 </div>
 
                                 <div class="text-center mt-3">
                                     <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
-                                    <button type="button" onclick="submit_form()" class="btn btn-success">Submit</button>
+                                    <button type="button" id="submitButton" onclick="submit_form()"
+                                        class="btn btn-success">Submit</button>
                                 </div>
                             </div>
                             <input type="hidden" name="latitude" id="latitude_field">
@@ -233,22 +238,38 @@
         const textarea1 = document.getElementById("keunggulan_umum");
         const textarea2 = document.getElementById("keunggulan_produk");
         const textarea3 = document.getElementById("keunggulan_kompetitor");
+        const textarea4 = document.getElementById("iklim");
+        const textarea5 = document.getElementById("event");
         const nextButton = document.getElementById("nextButton");
+        const submitButton = document.getElementById("submitButton");
 
         // Fungsi untuk mengatur status tombol "Next"
         function toggleNextButton() {
-            if (textarea1.validity.valueMissing || textarea2.validity.valueMissing || textarea3.validity.valueMissing) {
-                nextButton.disabled = true;
-            } else {
-                nextButton.disabled = false;
-            }
 
+            // Validasi untuk set pertama input
+            const isSet1Valid = !(textarea1.validity.valueMissing || textarea2.validity.valueMissing || textarea3
+                .validity.valueMissing);
+
+            const isSet2Valid = !(textarea4.validity.valueMissing || textarea5.validity.valueMissing);
+
+            // Validasi panjang teks untuk textarea1, textarea2, dan textarea3
+            const isSet1LengthValid = textarea1.value.length >= 10 &&
+                textarea2.value.length >= 10 &&
+                textarea3.value.length >= 10;
+
+            const isSet2LengthValid = textarea4.value.length >= 10 && textarea5.value.length >= 10;
+
+            // Aktifkan atau nonaktifkan tombol "Next" berdasarkan validasi set pertama
+            nextButton.disabled = !(isSet1Valid && isSet1LengthValid);
+            submitButton.disabled = !(isSet2Valid && isSet2LengthValid);
         }
 
         // Panggil fungsi saat textarea diubah
         textarea1.addEventListener("input", toggleNextButton);
         textarea2.addEventListener("input", toggleNextButton);
         textarea3.addEventListener("input", toggleNextButton);
+        textarea4.addEventListener("input", toggleNextButton);
+        textarea5.addEventListener("input", toggleNextButton);
 
         // Panggil fungsi saat halaman dimuat untuk mengatur status awal
         toggleNextButton();

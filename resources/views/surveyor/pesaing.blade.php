@@ -46,7 +46,8 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <textarea class="form-control" required name="deskripsi_produk" id="deskripsiProdukKita" cols="30" rows="5"></textarea>
+                                            <textarea class="form-control" placeholder="Masukan minimal 10 karakter" required name="deskripsi_produk"
+                                                id="deskripsiProdukKita" cols="30" minlength="10" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -55,8 +56,8 @@
                                             <input type="text" name="produk_pesaing" id="produkPesaing"
                                                 class="form-control" required placeholder="Masukan nama produk pesaing">
                                         </div>
-                                        <textarea class="form-control" name="deskripsi_produk_pesaing" id="deskripsiProdukPesaing" cols="30" rows="5"
-                                            required></textarea>
+                                        <textarea class="form-control" name="deskripsi_produk_pesaing" id="deskripsiProdukPesaing"
+                                            placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -75,7 +76,8 @@
                                 <div class="row mt-3">
                                     <div class="content col">
                                         <label class="form-label">Apa saja keunggulan pesaing :</label>
-                                        <textarea class="form-control" name="keunggulan_pesaing" id="keunggulanPesaing" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" placeholder="Masukan minimal 10 karakter" name="keunggulan_pesaing"
+                                            id="keunggulanPesaing" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -95,7 +97,8 @@
                                 <div class="row mt-3">
                                     <div class="content col">
                                         <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
-                                        <textarea class="form-control" name="pemasaran_pesaing" id="" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" name="pemasaran_pesaing" id="pemasaranPesaing" placeholder="Masukan minimal 10 karakter"
+                                            cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -188,22 +191,28 @@
         const textarea3 = document.getElementById("produkPesaing");
         const textarea4 = document.getElementById("deskripsiProdukPesaing");
         const textarea5 = document.getElementById("keunggulanPesaing");
+        // const textarea6 = document.getElementById("pemasaran");
         const nextButton = document.getElementById("nextButton");
 
         // Fungsi untuk mengatur status tombol "Next"
         function toggleNextButton() {
-            if (textarea1.validity.valueMissing || textarea2.validity.valueMissing || textarea3.validity.valueMissing ||
-                textarea4.validity.valueMissing) {
-                nextButton.disabled = true;
-            } else {
-                nextButton.disabled = false;
-            }
 
-            if (textarea5.validity.valueMissing) {
-                nextButton1.disabled = true;
-            } else {
-                nextButton1.disabled = false;
-            }
+            // Validasi untuk set pertama input
+            const isSet1Valid = !(textarea1.validity.valueMissing || textarea2.validity.valueMissing ||
+                textarea3.validity.valueMissing || textarea4.validity.valueMissing);
+
+            // Validasi untuk set kedua input
+            const isSet2Valid = !textarea5.validity.valueMissing && textarea5.value.length >= 10;
+
+            // Validasi tambahan untuk memeriksa panjang teks textarea1, textarea3, dan textarea4
+            const isSet1LengthValid = textarea2.value.length >= 10 &&
+                textarea4.value.length >= 10;
+
+            // Aktifkan atau nonaktifkan tombol "Next" berdasarkan validasi set pertama
+            nextButton.disabled = !(isSet1Valid && isSet1LengthValid);
+
+            // Aktifkan atau nonaktifkan tombol "NextButton1" berdasarkan validasi set kedua
+            nextButton1.disabled = !isSet2Valid;
 
         }
 
