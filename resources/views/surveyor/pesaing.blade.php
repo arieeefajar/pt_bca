@@ -21,36 +21,19 @@
     @endif
 
     <div class="row">
-        <div class="col-xxl-6">
+        <col-xxl-6>
             <div class="card">
                 <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab" href="#perbandingan-produk"
-                                role="tab" aria-selected="true">
-                                Perbandingan Produk
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="keunggulan-tab" data-bs-toggle="tab" href="#keunggulan-kompetitif"
-                                role="tab" aria-selected="false">
-                                Keunggulan Kompetitif
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="aktivitas-tab" data-bs-toggle="tab" href="#aktivitas-pemasaran-pesaing"
-                                role="tab" aria-selected="false">
-                                Aktivitas Pemasaran Pesaing
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <form action="{{ route('formPesaing.create') }}" method="POST" id="myForm">
-                        @csrf
-                        <div class="tab-content text-muted">
-                            <div class="tab-pane fade show active" id="perbandingan-produk" role="tabpanel"
-                                aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>
-                                <div class="row">
+                    <div id="formContainer">
+                        <form action="{{ route('formPesaing.create') }}" method="POST" id="myForm">
+                            @csrf
+                            <div id="step1">
+                                <div class="card-header">
+                                    <div class="progres-bar" role="progressbar">
+                                        <h4 class="card-title mb-0">Karakteristik Varietas</h4>
+                                    </div>
+                                </div><!-- end card header -->
+                                <div class="row mt-3">
                                     <div class="col-md-6">
                                         <div class="mb-3"><label class="form-label">Produk Kami :</label>
                                             <select class="form-select mb-3" required name="produk_kita" id="produkSelect"
@@ -63,58 +46,71 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <textarea class="form-control" required name="deskripsi_produk" id="" cols="30" rows="5"></textarea>
+                                            <textarea class="form-control" required name="deskripsi_produk" id="deskripsiProdukKita" cols="30" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Produk Pesaing</label>
-                                            <input type="text" name="produk_pesaing" class="form-control" required
-                                                placeholder="Masukan nama produk pesaing">
+                                            <input type="text" name="produk_pesaing" id="produkPesaing"
+                                                class="form-control" required placeholder="Masukan nama produk pesaing">
                                         </div>
-                                        <textarea class="form-control" name="deskripsi_produk_pesaing" id="" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" name="deskripsi_produk_pesaing" id="deskripsiProdukPesaing" cols="30" rows="5"
+                                            required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
-                                    <button class="btn btn-primary" id="next-tab">Next</button>
+                                    <button type="button" class="btn btn-primary" id="nextButton"
+                                        onclick="nextStep(1)">Next</button>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="keunggulan-kompetitif" role="tabpanel"
-                                aria-labelledby="keunggulan-tab"> <br>
-                                <div class="row">
+
+                            <div id="step2" style="display: none;">
+                                <div class="card-header">
+                                    <div class="progres-bar" role="progressbar">
+                                        <h4 class="card-title mb-0">Keunggulan Kompetitif</h4>
+                                    </div>
+                                </div><!-- end card header -->
+
+                                <div class="row mt-3">
                                     <div class="content col">
                                         <label class="form-label">Apa saja keunggulan pesaing :</label>
-                                        {{-- <input type="text" class="form-control" name="keunggulan_pesaing" id=""
-                                            required> --}}
-                                        <textarea class="form-control" name="keunggulan_pesaing" id="" cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" name="keunggulan_pesaing" id="keunggulanPesaing" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
-                                    <button class="btn btn-primary" id="next-tab">Next</button>
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Previous</button>
+                                    <button type="button" class="btn btn-primary" id="nextButton1"
+                                        onclick="nextStep(2)">Next</button>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="aktivitas-pemasaran-pesaing" role="tabpanel"
-                                aria-labelledby="aktivitas-tab"><br>
-                                <div class="row">
+
+                            <div id="step3" style="display: none;">
+                                <div class="card-header">
+                                    <div class="progres-bar" role="progressbar">
+                                        <h4 class="card-title mb-0">Aktivitas Pemasaran Pesaing</h4>
+                                    </div>
+                                </div><!-- end card header -->
+
+                                <div class="row mt-3">
                                     <div class="content col">
                                         <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
-                                        {{-- <input type="text" class="form-control" name="pemasaran_pesaing" id=""
-                                            required> --}}
                                         <textarea class="form-control" name="pemasaran_pesaing" id="" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
-                                    <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
+                                    <button type="button" onclick="submit_form()" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
-                        </div>
 
-                        <input type="hidden" name="latitude" id="latitude_field">
-                        <input type="hidden" name="longitude" id="longitude_field">
-                    </form>
-                </div><!-- end card-body -->
-            </div><!-- end card -->
-        </div><!--end col-->
+                            <input type="hidden" name="latitude" id="latitude_field">
+                            <input type="hidden" name="longitude" id="longitude_field">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </col-xxl-6>
     </div>
 
     <script>
@@ -185,35 +181,71 @@
             }
         };
 
-        // Tangkap tombol "Next" dengan menggunakan ID
-        var nextButton = document.getElementById('next-tab');
+        let currentStep = 1;
 
-        // Tambahkan event listener untuk mengatur tab berikutnya saat tombol diklik
-        nextButton.addEventListener('click', function() {
-            // Dapatkan tab aktif saat ini
-            var activeTab = document.querySelector('.nav-link.active');
+        const textarea1 = document.getElementById("produkSelect");
+        const textarea2 = document.getElementById("deskripsiProdukKita");
+        const textarea3 = document.getElementById("produkPesaing");
+        const textarea4 = document.getElementById("deskripsiProdukPesaing");
+        const textarea5 = document.getElementById("keunggulanPesaing");
+        const nextButton = document.getElementById("nextButton");
 
-            // Temukan tab berikutnya dengan menggunakan nextElementSibling
-            var nextTab = activeTab.nextElementSibling;
-
-            // Jika ada tab berikutnya, pindahkan ke tab tersebut
-            if (nextTab) {
-                // Hapus kelas "active" dari tab aktif saat ini
-                activeTab.classList.remove('active');
-
-                // Tambahkan kelas "active" ke tab berikutnya
-                nextTab.classList.add('active');
-
-                // Dapatkan ID tab-pane yang sesuai dengan ID tab yang aktif
-                var activeTabId = activeTab.getAttribute('aria-controls');
-                var nextTabId = nextTab.getAttribute('aria-controls');
-
-                // Sembunyikan tab-pane yang sesuai dengan tab aktif saat ini
-                document.getElementById(activeTabId).classList.remove('show', 'active');
-
-                // Tampilkan tab-pane yang sesuai dengan tab berikutnya
-                document.getElementById(nextTabId).classList.add('show', 'active');
+        // Fungsi untuk mengatur status tombol "Next"
+        function toggleNextButton() {
+            if (textarea1.validity.valueMissing || textarea2.validity.valueMissing || textarea3.validity.valueMissing ||
+                textarea4.validity.valueMissing) {
+                nextButton.disabled = true;
+            } else {
+                nextButton.disabled = false;
             }
-        });
+
+            if (textarea5.validity.valueMissing) {
+                nextButton1.disabled = true;
+            } else {
+                nextButton1.disabled = false;
+            }
+
+        }
+
+        // Panggil fungsi saat textarea diubah
+        textarea1.addEventListener("input", toggleNextButton);
+        textarea2.addEventListener("input", toggleNextButton);
+        textarea3.addEventListener("input", toggleNextButton);
+        textarea4.addEventListener("input", toggleNextButton);
+        textarea5.addEventListener("input", toggleNextButton);
+
+        // Panggil fungsi saat halaman dimuat untuk mengatur status awal
+        toggleNextButton();
+
+        function nextStep(step) {
+            if (step === 1) {
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+                currentStep = 2;
+            } else if (step === 2) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "block";
+                currentStep = 3;
+            }
+        }
+
+        function prevStep(step) {
+            if (step === 1) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "none";
+                document.getElementById("step1").style.display = "block";
+                currentStep = 1;
+            } else if (step === 2) {
+                document.getElementById("step2").style.display = "block";
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step3").style.display = "none";
+                currentStep = 2;
+            } else if (step === 3) {
+                document.getElementById("step3").style.display = "block";
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step1").style.display = "none";
+                currentStep = 3;
+            }
+        }
     </script>
 @endsection
