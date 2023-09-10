@@ -205,7 +205,12 @@
 
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable(); // Gantilah "myTable" dengan ID tabel Anda.
+            $('#myTable').DataTable({
+                columnDefs: [{
+                    targets: '_all', // Menonaktifkan urutan untuk semua kolom
+                    sortable: false
+                }]
+            });
         });
     </script>
 @endsection

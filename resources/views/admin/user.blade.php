@@ -27,7 +27,7 @@
                             <table class="table align-middle mb-0" id="myTable">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="text-center" data_sort="no">No</th>
+                                        <th class="text-center" data-sort="no">No</th>
                                         <th class="text-center" data-sort="customer_name">Username</th>
                                         <th class="text-center" data-sort="email">Email</th>
                                         <th class="text-center" data-sort="phone">Alamat</th>
@@ -84,8 +84,8 @@
                         {{-- username --}}
                         <div class="mb-3">
                             <label for="name" class="form-label">Username</label>
-                            <input type="text" id="name" name="name"
-                                class="form-control" value="{{ old('name') }}" placeholder="Masukkan Username" required
+                            <input type="text" id="name" name="name" class="form-control"
+                                value="{{ old('name') }}" placeholder="Masukkan Username" required
                                 oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
                                 oninput="setCustomValidity('')" />
                         </div>
@@ -265,8 +265,14 @@
 
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable(); // Gantilah "myTable" dengan ID tabel Anda.
+            $('#myTable').DataTable({
+                columnDefs: [{
+                    targets: '_all', // Menonaktifkan urutan untuk semua kolom
+                    sortable: false
+                }]
+            });
         });
+
 
         function validateInput(input) {
             if (input.validity.valueMissing) {
