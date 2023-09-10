@@ -13,19 +13,9 @@
 
                 <div class="card-body">
                     <div id="customerList">
-                        <div class="row g-4 mb-3">
-                            <div class="col-sm-auto">
-                                <div class="d-flex justify-content-sm-end">
-                                    <div class="search-box ms-2">
-                                        <input type="text" class="form-control search" placeholder="Search...">
-                                        <i class="ri-search-line search-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="table-responsive table-card mb-1 mt-3">
-                            <table class="table align-middle mb-0">
+                        <div class="table-responsive mb-1 mt-3">
+                            <table class="table align-middle mb-0" id="myTable">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data_sort="no">No</th>
@@ -94,4 +84,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                columnDefs: [{
+                    targets: '_all', // Menonaktifkan urutan untuk semua kolom
+                    sortable: false
+                }]
+            });
+        });
+    </script>
 @endsection
