@@ -97,4 +97,9 @@ class LoginController extends Controller
 
         return $response;
     }
+
+    public function lupaPassword()
+    {
+        return view('auth.lupaPassword');
+    }
 }

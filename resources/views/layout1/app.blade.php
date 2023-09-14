@@ -39,6 +39,13 @@
     <!-- Sweet Alert css-->
     <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet"
         type="text/css" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/DataTables/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/DataTables/css/dataTables.bulma.min.css') }}">
+
+    {{-- jquery --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -149,6 +156,10 @@
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="{{ asset('vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/DataTables/js/dataTables.bootstrap4.min.js') }}"></script>
 
     @include('sweetalert::alert')
 </body>

@@ -4,12 +4,12 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Sistem Informasi Market Intellegence</title>
+    <title>Reset Password | Velzon - Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
+    <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}">
 
     <!-- Layout config Js -->
     <script src="{{ asset('admin_assets/assets/js/layout.js') }}"></script>
@@ -47,8 +47,8 @@
                     <div class="col-lg-12">
                         <div class="text-center mt-sm-0 mb-0 text-white-50">
                             <div>
-                                <a href="{{ route('login') }}" class="d-inline-block auth-logo">
-                                    <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="120"
+                                <a href="index.html" class="d-inline-block auth-logo">
+                                    <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt=""
                                         height="120">
                                 </a>
                             </div>
@@ -59,55 +59,45 @@
 
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
-                        <div class="card mt-0">
+                        <div class="card mt-2">
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to SIMI.</p>
+                                    <h5 class="text-primary">Forgot Password?</h5>
+                                    <p class="text-muted">Reset password</p>
+
+                                    <lord-icon src="https://cdn.lordicon.com/rhvddzym.json" trigger="loop"
+                                        colors="primary:#0ab39c" class="avatar-xl">
+                                    </lord-icon>
+
                                 </div>
-                                <div class="p-2 mt-4">
-                                    <form action="{{ route('prosesLogin') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
+
+                                <div class="alert alert-borderless alert-warning text-center mb-2 mx-2" role="alert">
+                                    Enter your email and instructions will be sent to you!
+                                </div>
+                                <div class="p-2">
+                                    <form>
+                                        <div class="mb-4">
+                                            <label class="form-label">Email</label>
                                             <input type="email" class="form-control" id="email"
-                                                placeholder="Masukan email" name="email" required
-                                                value="{{ old('email') }}">
+                                                placeholder="Enter Email">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <div class="float-end">
-                                                <a href="{{ route('lupaPassword') }}" class="text-muted">Forgot
-                                                    password?</a>
-                                            </div>
-                                            <label class="form-label" for="password">Password</label>
-                                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" required class="form-control pe-5"
-                                                    placeholder="Enter password" id="password" name="password">
-                                                <button
-                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
-                                                    type="button" id="password-addon"><i
-                                                        class="ri-eye-fill align-middle"></i></button>
-                                            </div>
+                                        <div class="text-center mt-4">
+                                            <button class="btn btn-success w-100" type="submit">Send Reset
+                                                Link</button>
                                         </div>
-
-                                        {{-- <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="auth-remember-check">
-                                            <label class="form-check-label" for="auth-remember-check">Remember
-                                                me</label>
-                                        </div> --}}
-
-                                        <div class="mt-4">
-                                            <button class="btn btn-primary w-100" type="submit">Sign In</button>
-                                        </div>
-                                    </form>
+                                    </form><!-- end form -->
                                 </div>
                             </div>
                             <!-- end card body -->
                         </div>
                         <!-- end card -->
+
+                        <div class="mt-4 text-center">
+                            <p class="mb-0">Wait, I remember my password... <a href="{{ route('login') }}"
+                                    class="fw-bold text-primary text-decoration-underline"> Click here </a> </p>
+                        </div>
 
                     </div>
                 </div>
@@ -148,12 +138,9 @@
 
     <!-- particles js -->
     <script src="{{ asset('admin_assets/assets/libs/particles.js/particles.js') }}"></script>
+
     <!-- particles app js -->
     <script src="{{ asset('admin_assets/assets/js/pages/particles.app.js') }}"></script>
-    <!-- password-addon init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/password-addon.init.js') }}"></script>
-
-    @include('sweetalert::alert')
 </body>
 
 </html>

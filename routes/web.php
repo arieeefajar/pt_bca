@@ -40,6 +40,7 @@ Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('g
 Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin')->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/clear-selected-toko-cookie', [LoginController::class, 'clearSelectedTokoCookie'])->name('clearCookie');
+Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
 // dashboard
 Route::get('/super-admin-dashboard', [DashboardController::class, 'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');

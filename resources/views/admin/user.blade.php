@@ -40,8 +40,6 @@
                                     @foreach ($users as $index => $user)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            {{-- <td class="text-center" style="display:none;"><a href="javascript:void(0);"
-                                                    class="fw-medium link-primary">#VZ2101</a></td> --}}
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->alamat }}</td>
