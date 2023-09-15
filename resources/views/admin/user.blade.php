@@ -117,7 +117,7 @@
                         {{-- no hp --}}
                         <div class="mb-3">
                             <label for="no_telp" class="form-label">No.Hp</label>
-                            <input type="tel" name="no_telp" id="no_telp" class="form-control"
+                            <input type="tel" name="no_telp" maxlength="13" id="no_telp" class="form-control"
                                 value="{{ old('no_telp') }}" placeholder="Masukan No.HP" required
                                 pattern="(\+62|62|0)8[1-9][0-9]{8,9}$"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
@@ -194,7 +194,7 @@
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">No.Hp</label>
-                                <input type="tel" name="no_telp" id="no_telp" class="form-control"
+                                <input type="tel" name="no_telp" maxlength="13" id="no_telp" class="form-control"
                                     placeholder="Masukan No.HP" value="{{ $user->no_telp }}" required
                                     pattern="(\+62|62|0)8[1-9][0-9]{9,10}$"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"

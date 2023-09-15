@@ -60,9 +60,19 @@
                                             placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
+                                <div class="row g-4 mb-3">
+                                    <div class="col-sm">
+                                        <div class="d-flex justify-content-sm-end">
+                                            <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
+                                                <button type="button" class="btn btn-primary add-btn">Kembali</button>
+                                            </a>
+                                            <button type="button" class="btn btn-success" id="nextButton"
+                                                onclick="nextStep(1)">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="text-center mt-3">
-                                    <button type="button" class="btn btn-primary" id="nextButton"
-                                        onclick="nextStep(1)">Next</button>
+
                                 </div>
                             </div>
 
@@ -80,10 +90,15 @@
                                             id="keunggulanPesaing" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
-                                <div class="text-center mt-3">
-                                    <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Previous</button>
-                                    <button type="button" class="btn btn-primary" id="nextButton1"
-                                        onclick="nextStep(2)">Next</button>
+                                <div class="row g-4 mt-3">
+                                    <div class="col-sm">
+                                        <div class="d-flex justify-content-sm-end">
+                                            <button type="button" class="btn btn-secondary" style="margin-right: 10px;"
+                                                onclick="prevStep(1)">Previous</button>
+                                            <button type="button" class="btn btn-success" id="nextButton1"
+                                                onclick="nextStep(2)">Next</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -101,10 +116,15 @@
                                             placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
-                                <div class="text-center mt-3">
-                                    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
-                                    <button type="button" id="submitButton" onclick="submit_form()"
-                                        class="btn btn-success">Submit</button>
+                                <div class="row g-4 mt-3">
+                                    <div class="col-sm">
+                                        <div class="d-flex justify-content-sm-end">
+                                            <button type="button" class="btn btn-secondary" style="margin-right: 10px;"
+                                                onclick="prevStep(2)">Previous</button>
+                                            <button type="button" id="submitButton" onclick="submit_form()"
+                                                class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
