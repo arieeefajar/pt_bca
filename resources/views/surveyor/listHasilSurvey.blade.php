@@ -20,12 +20,12 @@
                                 <table class="table align-middle table-nowrap" id="myTable">
                                     <thead class="table-light text-center">
                                         <tr>
-                                            <th scope="col" data-sort="no">No</th>
-                                            <th class="sort" data-sort="customer_name">Nama</th>
-                                            <th class="sort" data-sort="email">Jenis</th>
-                                            <th class="sort" data-sort="phone">Provinsi</th>
-                                            <th class="sort" data-sort="date">Kota</th>
-                                            <th class="sort" data-sort="status">Wilayah</th>
+                                            <th scope="text-center" data-sort="no">No</th>
+                                            <th class="text-center" data-sort="customer_name">Nama</th>
+                                            <th class="text-center" data-sort="email">Jenis</th>
+                                            <th class="text-center" data-sort="phone">Provinsi</th>
+                                            <th class="text-center" data-sort="date">Kota</th>
+                                            <th class="text-center" data-sort="status">Wilayah</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all text-center">
