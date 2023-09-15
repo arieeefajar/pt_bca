@@ -360,10 +360,16 @@
                                 <input type="hidden" name="latitude" id="latitude_field">
                                 <input type="hidden" name="longitude" id="longitude_field">
 
-
-                                <div class="text-center mt-4">
-                                    <button type="button" onclick="submit_form()"
-                                        class="btn btn-primary">Submit</button>
+                                <div class="row g-4 mb-3">
+                                    <div class="col-sm">
+                                        <div class="d-flex justify-content-sm-end">
+                                            <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
+                                                <button type="button" class="btn btn-primary add-btn">Kembali</button>
+                                            </a>
+                                            <button type="button" onclick="submit_form()"
+                                                class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
