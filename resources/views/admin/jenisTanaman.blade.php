@@ -41,7 +41,7 @@
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $data->id }}">Edit</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $data->id }}">Remove</button>
+                                                    data-bs-target="#deleteRecordModal{{ $data->id }}">Hapus</button>
                                             </td>
                                         </tr>
                                     @endforeach

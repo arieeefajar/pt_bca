@@ -59,7 +59,7 @@
                                                 <button class="btn btn-sm btn-info edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#showDetail{{ $data['id'] }}">Detail</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $data['id'] }}">Remove</button>
+                                                    data-bs-target="#deleteRecordModal{{ $data['id'] }}">Hapus</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -423,7 +423,12 @@
     </script> --}}
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable(); // Gantilah "myTable" dengan ID tabel Anda.
+            $('#myTable').DataTable({
+                columnDefs: [{
+                    targets: '_all', // Menonaktifkan urutan untuk semua kolom
+                    sortable: false
+                }]
+            });
         });
     </script>
 @endsection
