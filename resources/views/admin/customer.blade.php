@@ -134,7 +134,8 @@
                         id="close-modal"></button>
                 </div>
 
-                <form action="{{ route('customer.create') }}" method="POST" id="myForm">
+                <form action="{{ route('customer.create') }}" class="needs-validation" novalidate method="POST"
+                    id="myForm">
                     @csrf
                     <div class="modal-body">
 
@@ -142,29 +143,31 @@
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Customer</label>
                             <input type="text" name="nama" value="{{ old('nama') }}" id="customername-field"
-                                class="form-control" placeholder="Masukan Nama Customer..." required
-                                oninvalid="this.setCustomValidity('Harap isi nama customer')"
-                                oninput="setCustomValidity('')" />
+                                class="form-control" placeholder="Masukan Nama Customer..." required />
+                            <div class="invalid-feedback">
+                                Harap isi nama customer.
+                            </div>
                         </div>
 
                         {{-- jenis --}}
                         <div class="mb-3">
                             <label class="form-label">Jenis</label>
-                            <select required class="form-select mb-3" name="jenis" id="jenis"
-                                oninvalid="this.setCustomValidity('Harap pilih jenis customer')"
-                                oninput="setCustomValidity('')">
+                            <select required class="form-select" name="jenis" id="jenis">
                                 <option value="" selected disabled>Pilih Jenis</option>
                                 <option value="dealer" {{ old('jenis') == 'dealer' ? 'selected' : '' }}>Dealer</option>
                                 <option value="master_dealer" {{ old('jenis') == 'master_dealer' ? 'selected' : '' }}>
                                     Master Dealer</option>
                                 <option value="lainnya" {{ old('jenis') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                             </select>
+                            <div class="invalid-feedback mb-3">
+                                Harap pilih jenis customer.
+                            </div>
                         </div>
 
                         {{-- profinsi --}}
                         <div class="mb-3">
                             <label class="form-label">Provinsi</label>
-                            <select required class="form-select mb-3" name="provinsi" id="provinsi"
+                            <select required class="form-select" name="provinsi" id="provinsi"
                                 oninvalid="this.setCustomValidity('Harap pilih provinsi customer')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Provinsi</option>
@@ -175,14 +178,15 @@
                                         {{ $value['name'] }}</option>
                                 @endforeach --}}
                             </select>
+                            <div class="invalid-feedback mb-3">
+                                Harap pilih provinsi.
+                            </div>
                         </div>
 
                         {{-- kota --}}
                         <div class="mb-3">
                             <label class="form-label">Kota</label>
-                            <select required class="form-select mb-3" name="kota" id="add_kota"
-                                oninvalid="this.setCustomValidity('Harap pilih kota customer')"
-                                oninput="setCustomValidity('')">
+                            <select required class="form-select" name="kota" id="add_kota">
                                 {{-- <option value="" disabled selected>Pilih Provinsi Terlebih Dahulu</option> --}}
                                 <option value="" selected disabled>Pilih Kota</option>
                                 @foreach ($dataKota as $value)
@@ -191,12 +195,15 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <div class="invalid-feedback mb-3">
+                                Harap pilih kota.
+                            </div>
                         </div>
 
                         {{-- area --}}
                         <div class="mb-3">
                             <label class="form-label">Area</label>
-                            <select required class="form-select mb-3" name="area" id="area"
+                            <select required class="form-select" name="area" id="area"
                                 oninvalid="this.setCustomValidity('Harap pilih area customer')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Area</option>
@@ -205,14 +212,19 @@
                                         {{ $data->nama }}</option>
                                 @endforeach
                             </select>
+                            <div class="invalid-feedback mb-3">
+                                Harap pilih area.
+                            </div>
                         </div>
 
                         {{-- koordinat --}}
                         <div class="mb-3">
                             <label class="form-label">Koordinat</label>
                             <textarea required class="form-control" maxlength="1000" name="koordinat" id="evet" cols="30"
-                                rows="5" oninvalid="this.setCustomValidity('Harap masukkan titik koordinat customer')"
-                                oninput="setCustomValidity('')">{{ old('koordinat') }}</textarea>
+                                rows="5">{{ old('koordinat') }}</textarea>
+                            <div class="invalid-feedback mb-3">
+                                Harap masukan titik koordinat.
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -237,7 +249,8 @@
                         <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close" id="close-modal"></button>
                     </div>
-                    <form action="{{ route('customer.update', $data->id) }}" method="POST">
+                    <form action="{{ route('customer.update', $data->id) }}" class="needs-validation" novalidate
+                        method="POST">
                         @csrf
                         @method('POST')
                         <div class="modal-body">
@@ -245,16 +258,15 @@
                             <div class="mb-3">
                                 <label for="customername-field" class="form-label">Nama Customer</label>
                                 <input type="text" name="nama" value="{{ $data['nama'] }}" id="nama"
-                                    class="form-control" placeholder="Masukan Nama Customer..." required
-                                    oninvalid="this.setCustomValidity('Harap isi nama customer')"
-                                    oninput="setCustomValidity('')" />
+                                    class="form-control" placeholder="Masukan Nama Customer..." required />
+                                <div class="invalid-feedback">
+                                    Harap isi nama customer.
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Jenis</label>
-                                <select class="form-select mb-3" name="jenis" id="jenis" required
-                                    oninvalid="this.setCustomValidity('Harap pilih jenis customer')"
-                                    oninput="setCustomValidity('')">
+                                <select class="form-select" name="jenis" id="jenis" required>
                                     <option selected disabled>Pilih Jenis</option>
                                     <option value="dealer" {{ $data->jenis === 'dealer' ? 'selected' : '' }}>Dealer
                                     </option>
@@ -263,23 +275,25 @@
                                     <option value="lainnya" {{ $data->jenis === 'lainnya' ? 'selected' : '' }}>Lainnya
                                     </option>
                                 </select>
+                                <div class="invalid-feedback mb-3">
+                                    Harap pilih jenis customer.
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Provinsi</label>
-                                <select class="form-select mb-3" name="provinsi" id="provinsi" required
-                                    oninvalid="this.setCustomValidity('Harap pilih provinsi customer')"
-                                    oninput="setCustomValidity('')">
+                                <select class="form-select" name="provinsi" id="provinsi" required>
                                     <option disabled>Pilih Provinsi</option>
                                     <option selected value="Jawa Timur">JAWA TIMUR</option>
                                 </select>
+                                <div class="invalid-feedback mb-3">
+                                    Harap pilih provinsi.
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Kota</label>
-                                <select required class="form-select mb-3" name="kota" id="edit_kota" required
-                                    oninvalid="this.setCustomValidity('Harap pilih kota customer')"
-                                    oninput="setCustomValidity('')">
+                                <select required class="form-select" name="kota" id="edit_kota" required>
                                     <option value="" disabled>Pilih Kota</option>
                                     @foreach ($dataKota as $value)
                                         <option value="{{ $value['name'] }}"
@@ -287,13 +301,14 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                <div class="invalid-feedback mb-3">
+                                    Harap pilih kota.
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Area</label>
-                                <select class="form-select mb-3" name="area" id="area" required
-                                    oninvalid="this.setCustomValidity('Harap pilih area customer')"
-                                    oninput="setCustomValidity('')">
+                                <select class="form-select" name="area" id="area" required>
                                     <option selected disabled>Pilih Area</option>
                                     @foreach ($dataArea as $valueArea)
                                         <option value="{{ $valueArea->id }}"
@@ -302,12 +317,17 @@
                                     @endforeach
                                     </option>
                                 </select>
+                                <div class="invalid-feedback mb-3">
+                                    Harap pilih area.
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Koordinat</label>
-                                <textarea class="form-control" name="koordinat" required id="evet" cols="30" rows="5"
-                                    oninvalid="this.setCustomValidity('Harap masukkan titik koordinat customer')" oninput="setCustomValidity('')">{{ $data->koordinat }}</textarea>
+                                <textarea class="form-control" name="koordinat" required id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
+                                <div class="invalid-feedback mb-3">
+                                    Harap masukan titik koordinat.
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
