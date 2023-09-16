@@ -65,23 +65,24 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form method="POST" action="{{ route('jenisTanaman.create') }}">
+                <form method="POST" action="{{ route('jenisTanaman.create') }}" class="needs-validation" novalidate>
                     @csrf
                     <div class="modal-body">
 
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Jenis Tanaman</label>
                             <input type="text" id="jenis" name="jenis" class="form-control"
-                                value="{{ old('jenis') }}" placeholder="Masukkan nama jenis tanaman" required
-                                oninvalid="this.setCustomValidity('Harap isi jenis tanaman')"
-                                oninput="setCustomValidity('')" />
+                                value="{{ old('jenis') }}" placeholder="Masukkan nama jenis tanaman" required />
+                            <div class="invalid-feedback">
+                                Harap isi nama jenis produk.
+                            </div>
                         </div>
 
-                        @error('name')
+                        {{-- @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                        @enderror --}}
 
                     </div>
                     <div class="modal-footer">
@@ -106,7 +107,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form action="{{ route('jenisTanaman.update', $data->id) }}" method="POST">
+                    <form action="{{ route('jenisTanaman.update', $data->id) }}" class="needs-validation" novalidate
+                        method="POST">
                         @csrf
                         @method('POST')
                         <div class="modal-body">
@@ -119,11 +121,11 @@
 
                             <div class="mb-3">
                                 <label for="customername-field" class="form-label">Jenis Tanaman</label>
-                                <input type="text" id="customername-field" name="jenis"
-                                    value="{{ $data->jenis }}" class="form-control"
-                                    placeholder="Masukkan nama jenis tanaman" required
-                                    oninvalid="this.setCustomValidity('Harap isi jenis tanaman')"
-                                    oninput="setCustomValidity('')" />
+                                <input type="text" id="customername-field" name="jenis" value="{{ $data->jenis }}"
+                                    class="form-control" placeholder="Masukkan nama jenis tanaman" required />
+                                <div class="invalid-feedback">
+                                    Harap isi nama jenis produk.
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
