@@ -75,7 +75,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form method="POST" action="{{ route('user.index') }}" id="form_add">
+                <form method="POST" action="{{ route('user.index') }}" class="needs-validation" novalidate id="form_add">
                     @csrf
                     <div class="modal-body">
 
@@ -83,35 +83,40 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Username</label>
                             <input type="text" id="name" name="name" class="form-control"
-                                value="{{ old('name') }}" placeholder="Masukkan Username" required
-                                oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
-                                oninput="setCustomValidity('')" />
+                                value="{{ old('name') }}" placeholder="Masukkan Username" required />
+                            <div class="invalid-feedback">
+                                Username tidak boleh kosong.
+                            </div>
                         </div>
 
                         {{-- email --}}
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" name="email" value="{{ old('email') }}" id="email"
-                                class="form-control" placeholder="Masukan Email" required
-                                oninvalid="this.setCustomValidity('Masukkan email yang berisi &quot@&quot. Contoh: admin@gmail.com')"
-                                oninput="setCustomValidity('')" />
+                                class="form-control" placeholder="Masukan Email" required />
+                            <div class="invalid-feedback">
+                                Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Raju@gmail.com
+                            </div>
                         </div>
 
                         {{-- password --}}
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" minlength="8" name="password" id="password" class="form-control"
-                                placeholder="Masukan Password" required oninvalid="validatePassword(this);"
-                                oninput="validatePassword(this);" />
+                                placeholder="Masukan Password" required />
+                            <div class="invalid-feedback">
+                                Password tidak boleh kosong.
+                            </div>
                         </div>
 
                         {{-- alamat --}}
                         <div class="mb-3">
                             <label class="alamat">Alamat</label>
                             <input type="text" name="alamat" id="alamat" class="form-control"
-                                placeholder="Masukan Alamat" value="{{ old('alamat') }}" required
-                                oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"
-                                oninput="setCustomValidity('')" />
+                                placeholder="Masukan Alamat" value="{{ old('alamat') }}" required />
+                            <div class="invalid-feedback">
+                                Alamat tidak boleh kosong.
+                            </div>
                         </div>
 
                         {{-- no hp --}}
@@ -122,12 +127,15 @@
                                 pattern="(\+62|62|0)8[1-9][0-9]{8,9}$"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
                                 oninvalid="validateInput(this);" />
+                            <div class="invalid-feedback">
+                                No.Hp tidak boleh kosong.
+                            </div>
                         </div>
 
                         {{-- role --}}
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Role</label>
-                            <select class="form-select mb-3" required name="role" id="role"
+                            <select class="form-select" required name="role" id="role"
                                 oninvalid="this.setCustomValidity('Harap pilih role pengguna')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Role Pengguna</option>
@@ -138,6 +146,9 @@
                                 </option>
                                 <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>Surveyor</option>
                             </select>
+                            <div class="invalid-feedback mb-3">
+                                Pilih role pengguna.
+                            </div>
                         </div>
 
                     </div>
@@ -164,32 +175,35 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form action="{{ route('user.update', $user->id) }}" method="POST">
+                    <form action="{{ route('user.update', $user->id) }}" class="needs-validation" novalidate
+                        method="POST">
                         @csrf
                         @method('POST')
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="customername-field" class="form-label">Username</label>
-                                <input type="text" id="customername-field" name="name"
-                                    value="{{ $user->name }}" class="form-control" placeholder="Masukkan Username"
-                                    required oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
-                                    oninput="setCustomValidity('')" />
+                                <label for="name" class="form-label">Username</label>
+                                <input type="text" id="name" name="name" class="form-control"
+                                    value="{{ $user->name }}" placeholder="Masukkan Username" required />
+                                <div class="invalid-feedback">
+                                    Username tidak boleh kosong.
+                                </div>
                             </div>
-
                             <div class="mb-3">
                                 <label for="email-field" class="form-label">Email</label>
                                 <input type="email" id="email-field" name="email" value="{{ $user->email }}"
-                                    class="form-control" placeholder="Masukan Email" required
-                                    oninvalid="this.setCustomValidity('Masukkan email yang berisi &quot@&quot. Contoh: admin@gmail.com')"
-                                    oninput="setCustomValidity('')" />
+                                    class="form-control" placeholder="Masukan Email" required />
+                                <div class="invalid-feedback">
+                                    Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Raju@gmail.com
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
                                 <input type="text" id="alamat-field" name="alamat" value="{{ $user->alamat }}"
-                                    class="form-control" placeholder="Masukan Alamat" required
-                                    oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"
-                                    oninput="setCustomValidity('')" />
+                                    class="form-control" placeholder="Masukan Alamat" required />
+                                <div class="invalid-feedback">
+                                    Alamat tidak boleh kosong.
+                                </div>
                             </div>
 
                             <div class="mb-3">
@@ -199,11 +213,14 @@
                                     pattern="(\+62|62|0)8[1-9][0-9]{9,10}$"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
                                     oninvalid="validateInput(this);" />
+                                <div class="invalid-feedback">
+                                    No.Hp tidak boleh kosong.
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">Role</label>
-                                <select class="form-select mb-3" name="role" id="role"
+                                <select class="form-select" name="role" id="role"
                                     oninvalid="this.setCustomValidity('Harap pilih role pengguna')"
                                     oninput="setCustomValidity('')">
                                     <option selected disabled>Pilih Role Pengguna</option>
@@ -215,6 +232,9 @@
                                     <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>Surveyor
                                     </option>
                                 </select>
+                                <div class="invalid-feedback mb-3">
+                                    Pilih role pengguna.
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
