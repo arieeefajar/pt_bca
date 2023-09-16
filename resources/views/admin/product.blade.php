@@ -69,29 +69,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form method="POST" action="{{ route('product.create') }}">
+                <form method="POST" action="{{ route('product.create') }}" class="needs-validation" novalidate>
                     @csrf
                     <div class="modal-body">
 
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Nama Produk</label>
                             <input type="text" id="nama_produk" name="nama_produk" class="form-control"
-                                value="{{ old('nama_produk') }}" placeholder="Masukkan nama produk" required
-                                oninvalid="this.setCustomValidity('Harap isi nama produk')"
-                                oninput="setCustomValidity('')" />
+                                value="{{ old('nama_produk') }}" placeholder="Masukkan nama produk" required />
+                            <div class="invalid-feedback">
+                                Harap isi nama produk.
+                            </div>
                         </div>
 
-                        @error('name')
+                        {{-- @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                        @enderror --}}
 
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Jenis</label>
-                            <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required
-                                oninvalid="this.setCustomValidity('Harap pilih jenis produk')"
-                                oninput="setCustomValidity('')">
+                            <select class="form-select" name="jenis_tanaman" id="jenis_tanaman" required>
                                 <option value="" selected disabled>Pilih jenis produk</option>
                                 @foreach ($dataJenisTanaman as $data)
                                     <option value="{{ $data->id }}"
@@ -99,6 +98,9 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <div class="invalid-feedback mb-3">
+                                Pilih jenis produk.
+                            </div>
                         </div>
 
                     </div>
@@ -124,7 +126,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form action="{{ route('product.update', $data->id) }}" method="POST">
+                    <form action="{{ route('product.update', $data->id) }}" class="needs-validation" novalidate
+                        method="POST">
                         @csrf
                         @method('POST')
                         <div class="modal-body">
@@ -133,22 +136,21 @@
                                 <label for="customername-field" class="form-label">Nama Produk</label>
                                 <input type="text" id="nama_produk" name="nama_produk"
                                     class="form-control @error('name') is-invalid @enderror"
-                                    value="{{ $data->nama_produk }}" placeholder="Masukkan nama produk" required
-                                    oninvalid="this.setCustomValidity('Harap isi nama produk')"
-                                    oninput="setCustomValidity('')" />
+                                    value="{{ $data->nama_produk }}" placeholder="Masukkan nama produk" required />
+                                <div class="invalid-feedback">
+                                    Harap isi nama produk.
+                                </div>
                             </div>
 
-                            @error('name')
+                            {{-- @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
 
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">Jenis</label>
-                                <select class="form-select mb-3" name="jenis_tanaman" id="jenis_tanaman" required
-                                    oninvalid="this.setCustomValidity('Harap pilih jenis produk')"
-                                    oninput="setCustomValidity('')">
+                                <select class="form-select" name="jenis_tanaman" id="jenis_tanaman" required>
                                     <option disabled value="">Pilih jenis produk</option>
                                     @foreach ($dataJenisTanaman as $dataJenis)
                                         <option value="{{ $dataJenis->id }}"
@@ -157,6 +159,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                <div class="invalid-feedback mb-3">
+                                    Pilih jenis produk.
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
