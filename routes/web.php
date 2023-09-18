@@ -194,4 +194,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // Data List Hasil Survey
     route::get('listHasilSurvey', [DashboardController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
+
+    // Profile
+    route::get('profile', [DashboardSurveyerController::class, 'profile'])->name('profileSurveyor');
 });
