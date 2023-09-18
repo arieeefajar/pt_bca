@@ -66,4 +66,9 @@ class DashboardSurveyerController extends Controller
         $store = $request->input('store');
         return redirect()->route('menu.index')->withCookie(cookie('selectedTokoId', $store, 1440));
     }
+
+    public function profile()
+    {
+        return view('surveyor.profile');
+    }
 }
