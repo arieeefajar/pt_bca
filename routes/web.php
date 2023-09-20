@@ -162,6 +162,12 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('getKecamatan/{id}', [CustomerController::class, 'getKecamatan'])->name('getkecamatan');
     Route::get('getKelurahan/{id}', [CustomerController::class, 'getKelurahan'])->name('getkelurahan');
     Route::get('getAllLocation/{id_kelurahan}', [CustomerController::class, 'getProvinsi'])->name('getAllLocation');
+
+    //Profile
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profileAdmin');
+        Route::post('/{id}', [ProfileControllerAdmin::class, 'update'])->name('profileUpdateAdmin');
+    });
 });
 
 Route::post('/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('profileUpdatePassword');
