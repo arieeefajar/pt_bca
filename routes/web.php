@@ -12,13 +12,16 @@ use App\Http\Controllers\Admin\PosisiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\JenisTanamanController;
+use App\Http\Controllers\Admin\ProfileControllerAdmin;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController as ControllersProfileController;
 use App\Http\Controllers\User\DashboardSurveyerController;
 use App\Http\Controllers\User\FormPesaingController;
 use App\Http\Controllers\User\FormPotensiLahanController;
 use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
 use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
+use App\Http\Controllers\User\ProfileControllerSurveyor;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -149,6 +152,12 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
     Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
+
+    //Profile
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profileAdmin');
+        Route::post('/{id}', [ProfileControllerAdmin::class, 'update'])->name('profileUpdateAdmin');
+    });
 });
 
 // route only surveyour
@@ -196,5 +205,8 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
     route::get('listHasilSurvey', [DashboardController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
 
     // Profile
-    route::get('profile', [DashboardSurveyerController::class, 'profile'])->name('profileSurveyor');
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profileSurveyor');
+        Route::post('/{id}', [ProfileControllerSurveyor::class, 'ubahPassword'])->name('profileUpdate');
+    });
 });

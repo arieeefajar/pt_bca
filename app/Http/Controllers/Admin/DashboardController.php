@@ -112,8 +112,8 @@ class DashboardController extends Controller
         return view('surveyor.listHasilSurvey', compact('dataPerusahaan'));
     }
 
-    public function tes()
+    public function profileAdmin()
     {
-        return view('layout1.tes');
+        return view('admin.profile');
     }
 }
