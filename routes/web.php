@@ -164,9 +164,10 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('getAllLocation/{id_kelurahan}', [CustomerController::class, 'getProvinsi'])->name('getAllLocation');
 
     //Profile
-    Route::prefix('profile')->group(function () {
-        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profileAdmin');
-        Route::post('/{id}', [ProfileControllerAdmin::class, 'update'])->name('profileUpdateAdmin');
+    Route::prefix('profileAdmin')->group(function () {
+        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
+        Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update');
+        Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update');
     });
 });
 
