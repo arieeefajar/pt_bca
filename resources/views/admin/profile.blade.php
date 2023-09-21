@@ -129,7 +129,7 @@
                 <div class="card-body p-4">
                     <div class="tab-content">
                         <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                            <form action="{{ route('profileUpdateAdmin', Auth::user()->id) }}" method="POST">
+                            <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <div class="row">
@@ -137,7 +137,8 @@
                                         <div class="mb-3">
                                             <label for="firstnameInput" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="firstnameInput"
-                                                placeholder="Enter your firstname" value="{{ Auth::user()->name }}">
+                                                placeholder="Enter your firstname" name="name"
+                                                value="{{ Auth::user()->name }}">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -145,7 +146,8 @@
                                         <div class="mb-3">
                                             <label for="phonenumberInput" class="form-label">No.Hp</label>
                                             <input type="text" class="form-control" id="phonenumberInput"
-                                                placeholder="Enter your phone number" value="{{ Auth::user()->no_telp }}">
+                                                placeholder="Enter your phone number" name="no_telp"
+                                                value="{{ Auth::user()->no_telp }}">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -153,7 +155,8 @@
                                         <div class="mb-3">
                                             <label for="emailInput" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="emailInput"
-                                                placeholder="Enter your email" value="{{ Auth::user()->email }}">
+                                                placeholder="Enter your email" name="email"
+                                                value="{{ Auth::user()->email }}">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -242,7 +245,7 @@
                                     <div class="col-lg-12">
                                         <div class="hstack gap-2 justify-content-end">
                                             <button type="submit" class="btn btn-primary">Ubah</button>
-                                            <button type="button" class="btn btn-soft-success">Batal</button>
+                                            <button type="button" class="btn btn-soft-danger">Batal</button>
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -252,21 +255,23 @@
                         </div>
                         <!--end tab-pane-->
                         <div class="tab-pane" id="changePassword" role="tabpanel">
-                            <form action="javascript:void(0);">
+                            <form action="{{ route('profileUpdatePassword', Auth::user()->id) }}" method="POST">
+                                @csrf
+                                @method('POST')
                                 <div class="row g-2">
                                     <div class="col-lg-4">
                                         <div>
                                             <label for="oldpasswordInput" class="form-label">Password Lama*</label>
-                                            <input type="password" class="form-control" id="oldpasswordInput"
-                                                placeholder="Masukan password sebelumnya">
+                                            <input type="password" name="old_password" class="form-control"
+                                                id="oldpasswordInput" placeholder="Masukan password sebelumnya">
                                         </div>
                                     </div>
                                     <!--end col-->
                                     <div class="col-lg-4">
                                         <div>
                                             <label for="newpasswordInput" class="form-label">Password Baru*</label>
-                                            <input type="password" class="form-control" id="newpasswordInput"
-                                                placeholder="Masukan password baru">
+                                            <input type="password" name="new_password" class="form-control"
+                                                id="newpasswordInput" placeholder="Masukan password baru">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -274,8 +279,8 @@
                                         <div>
                                             <label for="confirmpasswordInput" class="form-label">Konfirmasi
                                                 Password*</label>
-                                            <input type="password" class="form-control" id="confirmpasswordInput"
-                                                placeholder="Konfirmasi password">
+                                            <input type="password" name="confirm_password" class="form-control"
+                                                id="confirmpasswordInput" placeholder="Konfirmasi password">
                                         </div>
                                     </div>
                                     <!--end col-->

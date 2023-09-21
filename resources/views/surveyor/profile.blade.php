@@ -129,7 +129,7 @@
                 <div class="card-body p-4">
                     <div class="tab-content">
                         <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                            <form action="{{ route('profileUpdate', Auth::user()->id) }}" method="POST">
+                            <form action="{{ route('profile.Update', Auth::user()->id) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <div class="row">
@@ -252,7 +252,7 @@
                         </div>
                         <!--end tab-pane-->
                         <div class="tab-pane" id="changePassword" role="tabpanel">
-                            <form action="{{ route('profileUpdate', Auth::user()->id) }}" method="POST">
+                            <form action="{{ route('password.Update', Auth::user()->id) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <div class="row g-2">

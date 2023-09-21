@@ -59,7 +59,6 @@ Route::get('/jawaban-analisis-pesaing/{idDetail}/{apiId}', [DetailPenyimpananCon
 Route::get('/jawaban-potensi-lahan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
 Route::get('/jawaban-form-analisis-pesaing/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
 
-
 // route only super admin & admin
 Route::middleware(['auth', 'superAndAdmin'])->group(function () {
 
@@ -154,11 +153,14 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
 
     //Profile
-    Route::prefix('profile')->group(function () {
-        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profileAdmin');
-        Route::post('/{id}', [ProfileControllerAdmin::class, 'update'])->name('profileUpdateAdmin');
+    Route::prefix('profileAdmin')->group(function () {
+        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
+        Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update');
+        Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update');
     });
 });
+
+Route::post('/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('profileUpdatePassword');
 
 // route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
@@ -206,7 +208,8 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // Profile
     Route::prefix('profile')->group(function () {
-        Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profileSurveyor');
-        Route::post('/{id}', [ProfileControllerSurveyor::class, 'ubahPassword'])->name('profileUpdate');
+        Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profile.Surveyor');
+        Route::post('/profile/{id}', [ProfileControllerSurveyor::class, 'profileUpdate'])->name('profile.Update');
+        Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword'])->name('password.Update');
     });
 });

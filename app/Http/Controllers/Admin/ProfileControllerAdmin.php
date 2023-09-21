@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProfileControllerAdmin extends Controller
 {
@@ -48,6 +51,48 @@ class ProfileControllerAdmin extends Controller
         try {
             $user->save();
             alert()->success('Berhasil', 'Berhasil mengubah data user');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', $th);
+            return redirect()->back();
+        }
+    }
+
+    public function ubahPassword(Request $request)
+    {
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'numeric' => ':attribute harus berupa angka.',
+            'email' => ':attribute harus menggunakan format email',
+            'unique' => 'Email sudah digunakan.',
+            'in' => ':attribute tidak valid.',
+            'same' => ':attribute tidak sesuai',
+        ];
+
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'new_password' => 'required|min:6',
+            'confirm_password' => 'required|same:new_password',
+        ], $customMessages);
+
+        $user = User::findOrFail(Auth::user()->id);
+
+        if ($validator->fails()) {
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()->back();
+        }
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            alert()->error('Gagal', 'Kata sandi lama tidak sesuai.');
+            return redirect()->back();
+        }
+
+        $user->password = Hash::make($request->new_password);
+        // execute edit
+        try {
+            $user->save();
+            alert()->success('Berhasil', 'Kata sandi berhasil diubah.');
             return redirect()->back();
         } catch (\Throwable $th) {
             alert()->error('Gagal', $th);
