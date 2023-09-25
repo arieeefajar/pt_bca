@@ -95,7 +95,7 @@
                             <input type="email" name="email" value="{{ old('email') }}" id="email"
                                 class="form-control" placeholder="Masukan Email" required />
                             <div class="invalid-feedback">
-                                Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Raju@gmail.com
+                                Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Admin@gmail.com
                             </div>
                         </div>
 
