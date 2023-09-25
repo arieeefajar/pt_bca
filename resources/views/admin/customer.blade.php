@@ -49,7 +49,7 @@
                                         <tr>
                                             <th class="text-center">{{ $key + 1 }}</th>
                                             <td class="text-center">{{ $data['nama'] }}</td>
-                                            <td class="text-center">{{ $data['jenis'] }}</td>
+                                            <td class="text-center">{{ formatJenis($data->jenis) }}</td>
                                             <td class="text-center">{{ $data['provinsi'] }}</td>
                                             <td class="text-center">{{ $data['kota'] }}</td>
                                             <td class="text-center">
@@ -66,56 +66,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        {{-- <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table table-bordered align-middle table-nowrap" id="customerTable">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Nama Perusahaan</th>
-                                        <th class="text-center" data-sort="action">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list form-check-all">
-                                    @foreach ($dataPerusahaan as $key => $data)
-                                        <tr>
-                                            <th class="text-center">{{ $key + 1 }}</th>
-                                            <td>{{ $data['nama'] }}</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#showModal"
-                                                    onclick="setEdit({{ $data }})">Edit</button>
-                                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal"
-                                                    onclick="deleteData({{ $data['id'] }})">Remove</button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="noresult" style="display: none">
-                                <div class="text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                        colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                    </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                        orders for you search.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end">
-                            <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="#">
-                                    Next
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                 </div><!-- end card -->
             </div>
