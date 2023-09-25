@@ -64,7 +64,7 @@
                                             <tr>
                                                 <th class="text-center">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->nama }}</td>
-                                                <td class="email">{{ $data->jenis }}</td>
+                                                <td class="email">{{ formatJenis($data->jenis) }}</td>
                                                 <td class="phone">{{ $data->provinsi }}</td>
                                                 <td class="date">{{ $data->kota }}</td>
                                                 <td class="wilayah">{{ $data->wilayah_nama }}</td>
