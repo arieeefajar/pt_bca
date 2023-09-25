@@ -69,6 +69,7 @@ class LoginController extends Controller
 
             abort(403, 'Unauthorized');
         } else {
+
             // Login gagal
             toast('Email atau password salah', 'error')->position('top')->autoClose(3000);
             return back()->withInput();
