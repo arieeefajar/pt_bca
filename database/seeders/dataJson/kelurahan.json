@@ -1,0 +1,1405 @@
+{
+    "name": "JAWA TIMUR",
+    "kota": [
+        {
+            "name": "JEMBER",
+            "kecamatan": [
+                {
+                    "name": "JOMBANG",
+                    "kelurahan": [
+                        {
+                            "name": "PADOMASAN",
+                            "latitude": -8.2279925,
+                            "longtitude": 113.3153099
+                        },
+                        {
+                            "name": "KETING",
+                            "latitude": -8.2604926,
+                            "longtitude": 113.3128268
+                        },
+                        {
+                            "name": "JOMBANG",
+                            "latitude": -8.247562,
+                            "longtitude": 113.3307603
+                        },
+                        {
+                            "name": "NGAMPELREJO",
+                            "latitude": -8.208267,
+                            "longtitude": 113.3473253
+                        },
+                        {
+                            "name": "WRINGINAGUNG",
+                            "latitude": -8.2033283,
+                            "longtitude": 113.3217279
+                        },
+                        {
+                            "name": "SARIMULYO",
+                            "latitude": -8.1965629,
+                            "longtitude": 113.3252779
+                        }
+                    ]
+                },
+                {
+                    "name": "KENCONG",
+                    "kelurahan": [
+                        {
+                            "name": "CAKRU",
+                            "latitude": -8.284817,
+                            "longtitude": 113.3113603
+                        },
+                        {
+                            "name": "PASEBAN",
+                            "latitude": -8.3108389,
+                            "longtitude": 113.3078529
+                        },
+                        {
+                            "name": "KRATON",
+                            "latitude": -8.2952264,
+                            "longtitude": 113.3175955
+                        },
+                        {
+                            "name": "KENCONG",
+                            "latitude": -8.264859,
+                            "longtitude": 113.327435
+                        },
+                        {
+                            "name": "WONOREJO",
+                            "latitude": -8.286793,
+                            "longtitude": 113.341928
+                        }
+                    ]
+                },
+                {
+                    "name": "SUMBERBARU",
+                    "kelurahan": [
+                        {
+                            "name": "JAMINTORO",
+                            "latitude": -8.0630324,
+                            "longtitude": 113.3488598
+                        },
+                        {
+                            "name": "JATIROTO",
+                            "latitude": -8.087217,
+                            "longtitude": 113.3422414
+                        },
+                        {
+                            "name": "KALIGLAGAH",
+                            "latitude": -8.0390155,
+                            "longtitude": 113.3613033
+                        },
+                        {
+                            "name": "JAMBESARI",
+                            "latitude": -8.012582,
+                            "longtitude": 113.3763238
+                        },
+                        {
+                            "name": "YOSORATI",
+                            "latitude": -8.1220979,
+                            "longtitude": 113.3416689
+                        },
+                        {
+                            "name": "SUMBERAGUNG",
+                            "latitude": -8.1715535,
+                            "longtitude": 113.3695068
+                        },
+                        {
+                            "name": "GELANG",
+                            "latitude": -8.058987,
+                            "longtitude": 113.381707
+                        },
+                        {
+                            "name": "ROWOTENGAH",
+                            "latitude": -8.1437945,
+                            "longtitude": 113.3797823
+                        },
+                        {
+                            "name": "PRINGGOWIRAWAN",
+                            "latitude": -8.121132,
+                            "longtitude": 113.3971313
+                        },
+                        {
+                            "name": "KARANGBAYAT",
+                            "latitude": -8.0673605,
+                            "longtitude": 113.393225
+                        }
+                    ]
+                },
+                {
+                    "name": "GUMUKMAS",
+                    "kelurahan": [
+                        {
+                            "name": "KEPANJEN",
+                            "latitude": -8.3560225,
+                            "longtitude": 113.3299359
+                        },
+                        {
+                            "name": "MAYANGAN",
+                            "latitude": -8.3603364,
+                            "longtitude": 113.3541949
+                        },
+                        {
+                            "name": "GUMUKMAS",
+                            "latitude": -8.3132721,
+                            "longtitude": 113.3732154
+                        },
+                        {
+                            "name": "MENAMPU",
+                            "latitude": -8.3341329,
+                            "longtitude": 113.3730985
+                        },
+                        {
+                            "name": "TEMBOKREJO",
+                            "latitude": -8.2821945,
+                            "longtitude": 113.4125863
+                        },
+                        {
+                            "name": "PURWOASRI",
+                            "latitude": -8.29407,
+                            "longtitude": 113.3933602
+                        },
+                        {
+                            "name": "BAGOREJO",
+                            "latitude": -8.3094929,
+                            "longtitude": 113.4138198
+                        },
+                        {
+                            "name": "KARANGREJO",
+                            "latitude": -8.3323495,
+                            "longtitude": 113.4102953
+                        }
+                    ]
+                },
+                {
+                    "name": "UMBULSARI",
+                    "kelurahan": [
+                        {
+                            "name": "SUKORENO",
+                            "latitude": -8.2508551,
+                            "longtitude": 113.3763919
+                        },
+                        {
+                            "name": "SIDOREJO",
+                            "latitude": -8.2172355,
+                            "longtitude": 113.3924638
+                        },
+                        {
+                            "name": "GUNUNGSARI",
+                            "latitude": -8.2585136,
+                            "longtitude": 113.4109852
+                        },
+                        {
+                            "name": "GADINGREJO",
+                            "latitude": -8.227148,
+                            "longtitude": 113.3961118
+                        },
+                        {
+                            "name": "UMBULREJO",
+                            "latitude": -8.2269706,
+                            "longtitude": 113.4310722
+                        },
+                        {
+                            "name": "UMBULSARI",
+                            "latitude": -8.2476895,
+                            "longtitude": 113.4249898
+                        },
+                        {
+                            "name": "TANJUNGSARI",
+                            "latitude": -8.2724926,
+                            "longtitude": 113.4319193
+                        },
+                        {
+                            "name": "TEGALWANGI",
+                            "latitude": -8.2504861,
+                            "longtitude": 113.4515719
+                        },
+                        {
+                            "name": "PALERAN",
+                            "latitude": -8.2349696,
+                            "longtitude": 113.4666203
+                        },
+                        {
+                            "name": "MUNDUREJO",
+                            "latitude": -8.2339985,
+                            "longtitude": 113.3818303
+                        }
+                    ]
+                },
+                {
+                    "name": "TANGGUL",
+                    "kelurahan": [
+                        {
+                            "name": "TANGGULKULON",
+                            "latitude": -8.1590327,
+                            "longtitude": 113.4466156
+                        },
+                        {
+                            "name": "TANGGULWETAN",
+                            "latitude": -8.1759215,
+                            "longtitude": 113.4439168
+                        },
+                        {
+                            "name": "PATEMON",
+                            "latitude": -8.1441424,
+                            "longtitude": 113.4295289
+                        },
+                        {
+                            "name": "DARUNGAN",
+                            "latitude": -8.0820193,
+                            "longtitude": 113.4361212
+                        },
+                        {
+                            "name": "MANGGISAN",
+                            "latitude": -8.0778878,
+                            "longtitude": 113.4109907
+                        },
+                        {
+                            "name": "SELODAKON",
+                            "latitude": -8.1429915,
+                            "longtitude": 113.4780249
+                        },
+                        {
+                            "name": "KRAMAT SUKOHARJO",
+                            "latitude": -8.0802798,
+                            "longtitude": 113.3840222
+                        },
+                        {
+                            "name": "KLATAKAN",
+                            "latitude": -8.193152,
+                            "longtitude": 113.4602998
+                        }
+                    ]
+                },
+                {
+                    "name": "SEMBORO",
+                    "kelurahan": [
+                        {
+                            "name": "PONDOKJOYO",
+                            "latitude": -8.158937,
+                            "longtitude": 113.3949109
+                        },
+                        {
+                            "name": "PONDOKDALEM",
+                            "latitude": -8.127612,
+                            "longtitude": 113.4131068
+                        },
+                        {
+                            "name": "REJOAGUNG",
+                            "latitude": -8.196662,
+                            "longtitude": 113.3962158
+                        },
+                        {
+                            "name": "SEMBORO",
+                            "latitude": -8.1972174,
+                            "longtitude": 113.4209008
+                        },
+                        {
+                            "name": "SIDOMEKAR",
+                            "latitude": -8.222496,
+                            "longtitude": 113.4225524
+                        },
+                        {
+                            "name": "SIDOMULYO",
+                            "latitude": -8.1712219,
+                            "longtitude": 113.4058354
+                        }
+                    ]
+                },
+                {
+                    "name": "PUGER",
+                    "kelurahan": [
+                        {
+                            "name": "MLOKOREJO",
+                            "latitude": -8.3071646,
+                            "longtitude": 113.4385353
+                        },
+                        {
+                            "name": "MOJOMULYO",
+                            "latitude": -8.366561,
+                            "longtitude": 113.4073253
+                        },
+                        {
+                            "name": "MOJOSARI",
+                            "latitude": -8.3635695,
+                            "longtitude": 113.4267739
+                        },
+                        {
+                            "name": "PUGERKULON",
+                            "latitude": -8.4799953,
+                            "longtitude": 113.3041739
+                        },
+                        {
+                            "name": "WRINGINTELU",
+                            "latitude": -8.2834046,
+                            "longtitude": 113.4510373
+                        },
+                        {
+                            "name": "KASIYAN",
+                            "latitude": -8.3185136,
+                            "longtitude": 113.4535802
+                        },
+                        {
+                            "name": "BAGON",
+                            "latitude": -8.2939765,
+                            "longtitude": 113.4641643
+                        },
+                        {
+                            "name": "KASIYAN TIMUR",
+                            "latitude": -8.318457,
+                            "longtitude": 113.4609404
+                        },
+                        {
+                            "name": "WONOSARI",
+                            "latitude": -8.318543,
+                            "longtitude": 113.4843189
+                        },
+                        {
+                            "name": "JAMBEARUM",
+                            "latitude": -8.2988321,
+                            "longtitude": 113.4809303
+                        },
+                        {
+                            "name": "GRENDEN",
+                            "latitude": 8.3437,
+                            "longtitude": 113.4472303
+                        },
+                        {
+                            "name": "PUGERWETAN",
+                            "latitude": -8.3570161,
+                            "longtitude": 113.4669243
+                        }
+                    ]
+                },
+                {
+                    "name": "BANGSALSARI",
+                    "kelurahan": [
+                        {
+                            "name": "CURAHKALONG",
+                            "latitude": -8.1279468,
+                            "longtitude": 113.4485267
+                        },
+                        {
+                            "name": "GAMBIRONO",
+                            "latitude": -8.2046044,
+                            "longtitude": 113.4828679
+                        },
+                        {
+                            "name": "BANGSALSARI",
+                            "latitude": -8.2046854,
+                            "longtitude": 113.5075309
+                        },
+                        {
+                            "name": "TUGUSARI",
+                            "latitude": -8.1526941,
+                            "longtitude": 113.5082269
+                        },
+                        {
+                            "name": "KARANGSONO",
+                            "latitude": -8.2386104,
+                            "longtitude": 113.4877178
+                        },
+                        {
+                            "name": "SUKOREJO",
+                            "latitude": -8.237216,
+                            "longtitude": 113.5038513
+                        },
+                        {
+                            "name": "LANGKAP",
+                            "latitude": -8.2068771,
+                            "longtitude": 113.5281093
+                        },
+                        {
+                            "name": "TISNOGAMBAR",
+                            "latitude": -8.2042935,
+                            "longtitude": 113.5201079
+                        },
+                        {
+                            "name": "PETUNG",
+                            "latitude": -8.2097226,
+                            "longtitude": 113.5553962
+                        },
+                        {
+                            "name": "BANJARSARI",
+                            "latitude": -8.1673904,
+                            "longtitude": 113.5521503
+                        },
+                        {
+                            "name": "BADEAN",
+                            "latitude": -8.0697977,
+                            "longtitude": 113.4946827
+                        }
+                    ]
+                },
+                {
+                    "name": "BALUNG",
+                    "kelurahan": [
+                        {
+                            "name": "KARANGDUREN",
+                            "latitude": -8.2666537,
+                            "longtitude": 113.4778352
+                        },
+                        {
+                            "name": "KARANG SEMANDING",
+                            "latitude": -8.2610625,
+                            "longtitude": 113.4912012
+                        },
+                        {
+                            "name": "TUTUL",
+                            "latitude": -8.2812936,
+                            "longtitude": 113.4870323
+                        },
+                        {
+                            "name": "BALUNGKULON",
+                            "latitude": -8.298948,
+                            "longtitude": 113.5012053
+                        },
+                        {
+                            "name": "BALUNGLOR",
+                            "latitude": -8.2687746,
+                            "longtitude": 113.5213769
+                        },
+                        {
+                            "name": "BALUNGKIDUL",
+                            "latitude": -8.2950911,
+                            "longtitude": 113.5305453
+                        },
+                        {
+                            "name": "CURAHLELE",
+                            "latitude": -8.2413016,
+                            "longtitude": 113.5266084
+                        },
+                        {
+                            "name": "GUMELAR",
+                            "latitude": -8.2521385,
+                            "longtitude": 113.5340839
+                        }
+                    ]
+                },
+                {
+                    "name": "WULUHAN",
+                    "kelurahan": [
+                        {
+                            "name": "LOJEJER",
+                            "latitude": -8.3866704,
+                            "longtitude": 113.4758869
+                        },
+                        {
+                            "name": "AMPEL",
+                            "latitude": -8.3594595,
+                            "longtitude": 113.5123438
+                        },
+                        {
+                            "name": "TAMANSARI",
+                            "latitude": -8.321147,
+                            "longtitude": 113.5106263
+                        },
+                        {
+                            "name": "DUKUHDEMPOK",
+                            "latitude": -8.3315055,
+                            "longtitude": 113.5196493
+                        },
+                        {
+                            "name": "GLUNDENGAN",
+                            "latitude": -8.2943354,
+                            "longtitude": 113.5448253
+                        },
+                        {
+                            "name": "TANJUNGREJO",
+                            "latitude": -8.345398,
+                            "longtitude": 113.5322439
+                        },
+                        {
+                            "name": "KESILIR",
+                            "latitude": -8.3449374,
+                            "longtitude": 113.5383145
+                        }
+                    ]
+                },
+                {
+                    "name": "AMBULU",
+                    "kelurahan": [
+                        {
+                            "name": "TEGALSARI",
+                            "latitude": -8.3473756,
+                            "longtitude": 113.5793088
+                        },
+                        {
+                            "name": "SABRANG",
+                            "latitude": -8.4060799,
+                            "longtitude": 113.55086
+                        },
+                        {
+                            "name": "SUMBEREJO",
+                            "latitude": -8.4150369,
+                            "longtitude": 113.5328044
+                        },
+                        {
+                            "name": "AMBULU",
+                            "latitude": -8.3461421,
+                            "longtitude": 113.5999373
+                        },
+                        {
+                            "name": "KARANGANYAR",
+                            "latitude": -8.322416,
+                            "longtitude": 113.5925569
+                        },
+                        {
+                            "name": "ANDONGSARI",
+                            "latitude": -8.3768125,
+                            "longtitude": 113.6177849
+                        },
+                        {
+                            "name": "PONTANG",
+                            "latitude": -8.3484275,
+                            "longtitude": 113.6238163
+                        }
+                    ]
+                },
+                {
+                    "name": "RAMBIPUJI",
+                    "kelurahan": [
+                        {
+                            "name": "NOGOSARI",
+                            "latitude": -8.2554579,
+                            "longtitude": 113.5444094
+                        },
+                        {
+                            "name": "CURAHMALANG",
+                            "latitude": -8.2410931,
+                            "longtitude": 113.5589787
+                        },
+                        {
+                            "name": "ROWOTAMTU",
+                            "latitude": -8.227403,
+                            "longtitude": 113.5639688
+                        },
+                        {
+                            "name": "KALIWINING",
+                            "latitude": -8.2235594,
+                            "longtitude": 113.5728414
+                        },
+                        {
+                            "name": "PECORO",
+                            "latitude": -8.2026045,
+                            "longtitude": 113.5727358
+                        },
+                        {
+                            "name": "RAMBIPUJI",
+                            "latitude": -8.2114961,
+                            "longtitude": 113.5947853
+                        },
+                        {
+                            "name": "GUGUT",
+                            "latitude": -8.1819166,
+                            "longtitude": 113.5939802
+                        },
+                        {
+                            "name": "RAMBIGUNDAM",
+                            "latitude": -8.1946182,
+                            "longtitude": 113.6057402
+                        }
+                    ]
+                },
+                {
+                    "name": "PANTI",
+                    "kelurahan": [
+                        {
+                            "name": "PAKIS",
+                            "latitude": -8.0722108,
+                            "longtitude": 113.5091052
+                        },
+                        {
+                            "name": "KEMUNINGSARI LOR",
+                            "latitude": -8.162267,
+                            "longtitude": 113.5795303
+                        },
+                        {
+                            "name": "PANTI",
+                            "latitude": -8.135636,
+                            "longtitude": 113.5739529
+                        },
+                        {
+                            "name": "GLAGAHWERO",
+                            "latitude": -8.1819386,
+                            "longtitude": 113.6113637
+                        },
+                        {
+                            "name": "SUCI",
+                            "latitude": -8.0627333,
+                            "longtitude": 113.5369822
+                        },
+                        {
+                            "name": "KEMIRI",
+                            "latitude": -8.0477933,
+                            "longtitude": 113.5696322
+                        },
+                        {
+                            "name": "SERUT",
+                            "latitude": -8.1472604,
+                            "longtitude": 113.6219268
+                        }
+                    ]
+                },
+                {
+                    "name": "SUKORAMBI",
+                    "kelurahan": [
+                        {
+                            "name": "JUBUNG",
+                            "latitude": -8.199903,
+                            "longtitude": 113.6165299
+                        },
+                        {
+                            "name": "DUKUHMENCEK",
+                            "latitude": -8.164478,
+                            "longtitude": 113.6295158
+                        },
+                        {
+                            "name": "SUKORAMBI",
+                            "latitude": -8.1330935,
+                            "longtitude": 113.6168524
+                        },
+                        {
+                            "name": "KARANGPRING",
+                            "latitude": -8.1096025,
+                            "longtitude": 113.6173284
+                        },
+                        {
+                            "name": "KLUNGKUNG",
+                            "latitude": -8.0794185,
+                            "longtitude": 113.63196
+                        }
+                    ]
+                },
+                {
+                    "name": "JENGGAWAH",
+                    "kelurahan": [
+                        {
+                            "name": "KEMUNINGSARIKIDUL",
+                            "latitude": -8.2941616,
+                            "longtitude": 113.5838098
+                        },
+                        {
+                            "name": "WONOJATI",
+                            "latitude": -8.2789945,
+                            "longtitude": 113.6271618
+                        },
+                        {
+                            "name": "JENGGAWAH",
+                            "latitude": -8.2601591,
+                            "longtitude": 113.6485933
+                        },
+                        {
+                            "name": "KERTONEGORO",
+                            "latitude": -8.3002511,
+                            "longtitude": 113.5912504
+                        },
+                        {
+                            "name": "SRUNI",
+                            "latitude": -8.3074301,
+                            "longtitude": 113.6296353
+                        },
+                        {
+                            "name": "JATISARI",
+                            "latitude": -8.318831,
+                            "longtitude": 113.6173443
+                        },
+                        {
+                            "name": "JATIMULYO",
+                            "latitude": -8.3249677,
+                            "longtitude": 113.6488202
+                        },
+                        {
+                            "name": "CANGKRING",
+                            "latitude": -8.2878806,
+                            "longtitude": 113.6412033
+                        }
+                    ]
+                },
+                {
+                    "name": "AJUNG",
+                    "kelurahan": [
+                        {
+                            "name": "SUKAMAKMUR",
+                            "latitude": -8.241327,
+                            "longtitude": 113.6246004
+                        },
+                        {
+                            "name": "MANGARAN",
+                            "latitude": -8.2648591,
+                            "longtitude": 113.6007793
+                        },
+                        {
+                            "name": "PANCAKARYA",
+                            "latitude": -8.215327,
+                            "longtitude": 113.6226234
+                        },
+                        {
+                            "name": "AJUNG",
+                            "latitude": -8.215084,
+                            "longtitude": 113.6480543
+                        },
+                        {
+                            "name": "KLOMPANGAN",
+                            "latitude": -8.2367455,
+                            "longtitude": 113.6440363
+                        },
+                        {
+                            "name": "WIROWONGSO",
+                            "latitude": -8.2267704,
+                            "longtitude": 113.6756143
+                        },
+                        {
+                            "name": "ROWOINDAH",
+                            "latitude": -8.2156691,
+                            "longtitude": 113.7080292
+                        }
+                    ]
+                },
+                {
+                    "name": "TEMPUREJO",
+                    "kelurahan": [
+                        {
+                            "name": "SIDODADI",
+                            "latitude": -8.356764,
+                            "longtitude": 113.6571764
+                        },
+                        {
+                            "name": "TEMPUREJO",
+                            "latitude": -8.3054809,
+                            "longtitude": 113.6760934
+                        },
+                        {
+                            "name": "ANDONGREJO",
+                            "latitude": -8.4521525,
+                            "longtitude": 113.6252371
+                        },
+                        {
+                            "name": "PONDOKREJO",
+                            "latitude": -8.3374455,
+                            "longtitude": 113.6705069
+                        },
+                        {
+                            "name": "WONOASRI",
+                            "latitude": -8.380217,
+                            "longtitude": 113.6753598
+                        },
+                        {
+                            "name": "CURAHNONGKO",
+                            "latitude": -8.4391881,
+                            "longtitude": 113.5946366
+                        },
+                        {
+                            "name": "CURAHTAKIR",
+                            "latitude": -8.3331499,
+                            "longtitude": 113.7028334
+                        },
+                        {
+                            "name": "SANENREJO",
+                            "latitude": -8.3788929,
+                            "longtitude": 113.7437549
+                        }
+                    ]
+                },
+                {
+                    "name": "KALIWATES",
+                    "kelurahan": [
+                        {
+                            "name": "MANGLI",
+                            "latitude": -8.1917339,
+                            "longtitude": 113.6280688
+                        },
+                        {
+                            "name": "SEMPUSARI",
+                            "latitude": -8.1873726,
+                            "longtitude": 113.6482773
+                        },
+                        {
+                            "name": "KEBONAGUNG",
+                            "latitude": -8.1527585,
+                            "longtitude": 113.6528228
+                        },
+                        {
+                            "name": "KALIWATES",
+                            "latitude": -8.1822957,
+                            "longtitude": 113.6659843
+                        },
+                        {
+                            "name": "JEMBERKIDUL",
+                            "latitude": -8.1769486,
+                            "longtitude": 113.6802632
+                        },
+                        {
+                            "name": "KEPATIHAN",
+                            "latitude": -8.174946,
+                            "longtitude": 113.6898962
+                        },
+                        {
+                            "name": "TEGALBESAR",
+                            "latitude": -8.1989734,
+                            "longtitude": 113.6696094
+                        }
+                    ]
+                },
+                {
+                    "name": "PATRANG",
+                    "kelurahan": [
+                        {
+                            "name": "BANJARSENGON",
+                            "latitude": -8.1211916,
+                            "longtitude": 113.67044
+                        },
+                        {
+                            "name": "JUMERTO",
+                            "latitude": -8.1379471,
+                            "longtitude": 113.6844494
+                        },
+                        {
+                            "name": "GEBANG",
+                            "latitude": -8.1670235,
+                            "longtitude": 113.6866302
+                        },
+                        {
+                            "name": "SLAWU",
+                            "latitude": -8.1482718,
+                            "longtitude": 113.685534
+                        },
+                        {
+                            "name": "BINTORO",
+                            "latitude": -8.1369075,
+                            "longtitude": 113.7080954
+                        },
+                        {
+                            "name": "JEMBERLOR",
+                            "latitude": -8.1583869,
+                            "longtitude": 113.7052984
+                        },
+                        {
+                            "name": "PATRANG",
+                            "latitude": -8.153569,
+                            "longtitude": 113.7113112
+                        },
+                        {
+                            "name": "BARATAN",
+                            "latitude": -8.1345428,
+                            "longtitude": 113.7288682
+                        }
+                    ]
+                },
+                {
+                    "name": "SUMBERSARI",
+                    "kelurahan": [
+                        {
+                            "name": "KEBONSARI",
+                            "latitude": -8.1842147,
+                            "longtitude": 113.7006379
+                        },
+                        {
+                            "name": "SUMBERSARI",
+                            "latitude": -8.1725534,
+                            "longtitude": 113.7161598
+                        },
+                        {
+                            "name": "KRANJINGAN",
+                            "latitude": -8.2065516,
+                            "longtitude": 113.7204278
+                        },
+                        {
+                            "name": "KARANGREJO",
+                            "latitude": -8.1944411,
+                            "longtitude": 113.7237203
+                        },
+                        {
+                            "name": "TEGALGEDE",
+                            "latitude": -8.1544543,
+                            "longtitude": 113.7198467
+                        },
+                        {
+                            "name": "WIROLEGI",
+                            "latitude": -8.1871486,
+                            "longtitude": 113.7371813
+                        },
+                        {
+                            "name": "ANTIROGO",
+                            "latitude": -8.1466278,
+                            "longtitude": 113.7510799
+                        }
+                    ]
+                },
+                {
+                    "name": "ARJASA",
+                    "kelurahan": [
+                        {
+                            "name": "KEMUNINGLOR",
+                            "latitude": -8.1148596,
+                            "longtitude": 113.5703952
+                        },
+                        {
+                            "name": "DARSONO",
+                            "latitude": -8.1179437,
+                            "longtitude": 113.7313751
+                        },
+                        {
+                            "name": "ARJASA",
+                            "latitude": -8.1159531,
+                            "longtitude": 113.7368119
+                        },
+                        {
+                            "name": "CANDIJATI",
+                            "latitude": -8.1003392,
+                            "longtitude": 113.75248
+                        },
+                        {
+                            "name": "BITING",
+                            "latitude": -8.1155645,
+                            "longtitude": 113.7603261
+                        },
+                        {
+                            "name": "KAMAL",
+                            "latitude": -8.1050594,
+                            "longtitude": 113.74892
+                        }
+                    ]
+                },
+                {
+                    "name": "MUMBULSARI",
+                    "kelurahan": [
+                        {
+                            "name": "LENGKONG",
+                            "latitude": -8.2434104,
+                            "longtitude": 113.7086809
+                        },
+                        {
+                            "name": "KAWANGREJO",
+                            "latitude": -8.2714603,
+                            "longtitude": 113.6990852
+                        },
+                        {
+                            "name": "TAMANSARI",
+                            "latitude": -8.2808502,
+                            "longtitude": 113.7210928
+                        },
+                        {
+                            "name": "MUMBULSARI",
+                            "latitude": -8.2807159,
+                            "longtitude": 113.703068
+                        },
+                        {
+                            "name": "SUCO",
+                            "latitude": -8.2650426,
+                            "longtitude": 113.7463059
+                        },
+                        {
+                            "name": "LAMPEJI",
+                            "latitude": -8.2409329,
+                            "longtitude": 113.7539294
+                        },
+                        {
+                            "name": "KARANG KEDAWUNG",
+                            "latitude": -8.2147609,
+                            "longtitude": 113.7687489
+                        }
+                    ]
+                },
+                {
+                    "name": "PAKUSARI",
+                    "kelurahan": [
+                        {
+                            "name": "PATEMON",
+                            "latitude": -8.128846,
+                            "longtitude": 113.738217
+                        },
+                        {
+                            "name": "BEDADUNG",
+                            "latitude": -8.1320578,
+                            "longtitude": 113.7566117
+                        },
+                        {
+                            "name": "SUMBERPINANG",
+                            "latitude": -8.1596345,
+                            "longtitude": 113.7635867
+                        },
+                        {
+                            "name": "SUBO",
+                            "latitude": -8.1422436,
+                            "longtitude": 113.7781115
+                        },
+                        {
+                            "name": "KERTOSARI",
+                            "latitude": -8.184129,
+                            "longtitude": 113.7639954
+                        },
+                        {
+                            "name": "JATIAN",
+                            "latitude": -8.1564258,
+                            "longtitude": 113.7944012
+                        },
+                        {
+                            "name": "PAKUSARI",
+                            "latitude": -8.1770477,
+                            "longtitude": 113.7742476
+                        }
+                    ]
+                },
+                {
+                    "name": "JELBUK",
+                    "kelurahan": [
+                        {
+                            "name": "SUCOPANGEPOK",
+                            "latitude": -8.0556716,
+                            "longtitude": 113.7339338
+                        },
+                        {
+                            "name": "PANDUMAN",
+                            "latitude": -8.0815323,
+                            "longtitude": 113.7456772
+                        },
+                        {
+                            "name": "SUKOJEMBER",
+                            "latitude": -8.0600071,
+                            "longtitude": 113.7660536
+                        },
+                        {
+                            "name": "JELBUK",
+                            "latitude": -8.0851878,
+                            "longtitude": 113.7226243
+                        },
+                        {
+                            "name": "SUKOWIRYO",
+                            "latitude": -8.0849666,
+                            "longtitude": 113.6608212
+                        },
+                        {
+                            "name": "SUGERKIDUL",
+                            "latitude": -8.0520069,
+                            "longtitude": 113.7774031
+                        }
+                    ]
+                },
+                {
+                    "name": "MAYANG",
+                    "kelurahan": [
+                        {
+                            "name": "MRAWAN",
+                            "latitude": -8.1932627,
+                            "longtitude": 113.472338
+                        },
+                        {
+                            "name": "MAYANG",
+                            "latitude": -8.1773499,
+                            "longtitude": 113.7936011
+                        },
+                        {
+                            "name": "SEPUTIH",
+                            "latitude": -8.1986361,
+                            "longtitude": 113.7844841
+                        },
+                        {
+                            "name": "TEGALWARU",
+                            "latitude": -8.1839912,
+                            "longtitude": 113.7987585
+                        },
+                        {
+                            "name": "TEGALREJO",
+                            "latitude": -8.1839429,
+                            "longtitude": 113.7807337
+                        },
+                        {
+                            "name": "SUMBERKEJAYAN",
+                            "latitude": -8.1768379,
+                            "longtitude": 113.8304293
+                        },
+                        {
+                            "name": "SIDOMUKTI",
+                            "latitude": -8.2041398,
+                            "longtitude": 113.8259298
+                        }
+                    ]
+                },
+                {
+                    "name": "KALISAT",
+                    "kelurahan": [
+                        {
+                            "name": "GUMUKSARI",
+                            "latitude": -8.1233854,
+                            "longtitude": 113.7765736
+                        },
+                        {
+                            "name": "SUKORENO",
+                            "latitude": -8.1721358,
+                            "longtitude": 113.4344921
+                        },
+                        {
+                            "name": "PATEMPURAN",
+                            "latitude": -8.1142866,
+                            "longtitude": 113.7968497
+                        },
+                        {
+                            "name": "SUMBERKALONG",
+                            "latitude": -8.0864522,
+                            "longtitude": 113.6466294
+                        },
+                        {
+                            "name": "SUMBERJERUK",
+                            "latitude": -8.0854619,
+                            "longtitude": 113.3993551
+                        },
+                        {
+                            "name": "GLAGAHWERO",
+                            "latitude": -8.1559347,
+                            "longtitude": 113.6300356
+                        },
+                        {
+                            "name": "KALISAT",
+                            "latitude": -8.1265984,
+                            "longtitude": 113.8064116
+                        },
+                        {
+                            "name": "AJUNG",
+                            "latitude": -8.1685437,
+                            "longtitude": 113.6562379
+                        },
+                        {
+                            "name": "PLALANGAN",
+                            "latitude": -8.1411606,
+                            "longtitude": 113.8245973
+                        },
+                        {
+                            "name": "GAMBIRAN",
+                            "latitude": -8.1549679,
+                            "longtitude": 113.5213373
+                        },
+                        {
+                            "name": "SUMBERKETEMPA",
+                            "latitude": -8.1542215,
+                            "longtitude": 113.521336
+                        },
+                        {
+                            "name": "SEBANEN",
+                            "latitude": -8.100358,
+                            "longtitude": 113.8187124
+                        }
+                    ]
+                },
+                {
+                    "name": "LEDOKOMBO",
+                    "kelurahan": [
+                        {
+                            "name": "LEMBENGAN",
+                            "latitude": -8.1518665,
+                            "longtitude": 113.8285936
+                        },
+                        {
+                            "name": "SUREN",
+                            "latitude": -8.1518182,
+                            "longtitude": 113.8105688
+                        },
+                        {
+                            "name": "KARANGPAITON",
+                            "latitude": -8.1077228,
+                            "longtitude": 113.838951
+                        },
+                        {
+                            "name": "SUMBERANGET",
+                            "latitude": -8.1124479,
+                            "longtitude": 113.8424473
+                        },
+                        {
+                            "name": "SUKOGIDRI",
+                            "latitude": -8.1085141,
+                            "longtitude": 113.8613978
+                        },
+                        {
+                            "name": "LEDOKOMBO",
+                            "latitude": -8.1205789,
+                            "longtitude": 113.8582988
+                        },
+                        {
+                            "name": "SUMBERLESUNG",
+                            "latitude": -8.1405602,
+                            "longtitude": 113.8669018
+                        },
+                        {
+                            "name": "SUMBERSALAK",
+                            "latitude": -8.15781,
+                            "longtitude": 113.877889
+                        },
+                        {
+                            "name": "SLATENG",
+                            "latitude": -8.1120627,
+                            "longtitude": 113.8888191
+                        },
+                        {
+                            "name": "SUMBERBULUS",
+                            "latitude": -8.1421502,
+                            "longtitude": 113.8932467
+                        }
+                    ]
+                },
+                {
+                    "name": "SUKOWONO",
+                    "kelurahan": [
+                        {
+                            "name": "SUMBERWRINGIN",
+                            "latitude": -8.0720117,
+                            "longtitude": 113.6568069
+                        },
+                        {
+                            "name": "SUKOKERTO",
+                            "latitude": -8.0529053,
+                            "longtitude": 113.8121867
+                        },
+                        {
+                            "name": "SUMBERWARU",
+                            "latitude": -8.0836203,
+                            "longtitude": 113.2380387
+                        },
+                        {
+                            "name": "SUKOWONO",
+                            "latitude": -8.0501269,
+                            "longtitude": 113.7580701
+                        },
+                        {
+                            "name": "BALETBARU",
+                            "latitude": -8.0731905,
+                            "longtitude": 113.8310037
+                        },
+                        {
+                            "name": "SUKOREJO",
+                            "latitude": -8.0812937,
+                            "longtitude": 113.8252611
+                        },
+                        {
+                            "name": "SUKOSARI",
+                            "latitude": -8.0842182,
+                            "longtitude": 113.8402975
+                        },
+                        {
+                            "name": "ARJASA",
+                            "latitude": -8.0727503,
+                            "longtitude": 113.8549622
+                        },
+                        {
+                            "name": "SUMBERDANTI",
+                            "latitude": -8.0520568,
+                            "longtitude": 113.8599256
+                        },
+                        {
+                            "name": "POCANGAN",
+                            "latitude": -8.0303877,
+                            "longtitude": 113.8478471
+                        },
+                        {
+                            "name": "DAWUHANMANGLI",
+                            "latitude": -8.0519328,
+                            "longtitude": 113.8398495
+                        },
+                        {
+                            "name": "MOJOGEMI",
+                            "latitude": -8.0582876,
+                            "longtitude": 113.7956703
+                        }
+                    ]
+                },
+                {
+                    "name": "SILO",
+                    "kelurahan": [
+                        {
+                            "name": "SEMPOLAN",
+                            "latitude": -8.1718651,
+                            "longtitude": 113.7189281
+                        },
+                        {
+                            "name": "HARJOMULYO",
+                            "latitude": -8.2528426,
+                            "longtitude": 113.8174531
+                        },
+                        {
+                            "name": "KARANGHARJO",
+                            "latitude": -8.2520706,
+                            "longtitude": 113.8319648
+                        },
+                        {
+                            "name": "SILO",
+                            "latitude": -8.2155165,
+                            "longtitude": 113.850509
+                        },
+                        {
+                            "name": "PACE",
+                            "latitude": -8.2652113,
+                            "longtitude": 113.8563976
+                        },
+                        {
+                            "name": "MULYOREJO",
+                            "latitude": -8.3329522,
+                            "longtitude": 113.8349116
+                        },
+                        {
+                            "name": "SUMBERJATI",
+                            "latitude": -8.1866238,
+                            "longtitude": 113.8736024
+                        },
+                        {
+                            "name": "GARAHAN",
+                            "latitude": -8.2105735,
+                            "longtitude": 113.8895754
+                        },
+                        {
+                            "name": "SIDOMULYO",
+                            "latitude": -8.2239181,
+                            "longtitude": 113.9238216
+                        }
+                    ]
+                },
+                {
+                    "name": "SUMBERJAMBE",
+                    "kelurahan": [
+                        {
+                            "name": "PLEREAN",
+                            "latitude": -8.0492525,
+                            "longtitude": 113.8695322
+                        },
+                        {
+                            "name": "SUMBERPAKEM",
+                            "latitude": -8.0577337,
+                            "longtitude": 113.8723281
+                        },
+                        {
+                            "name": "PRINGGONDANI",
+                            "latitude": -8.0309135,
+                            "longtitude": 113.8944273
+                        },
+                        {
+                            "name": "RANDUAGUNG",
+                            "latitude": -8.0902313,
+                            "longtitude": 113.8747598
+                        },
+                        {
+                            "name": "CUMEDAK",
+                            "latitude": -8.1009943,
+                            "longtitude": 113.8914144
+                        },
+                        {
+                            "name": "SUMBERJAMBE",
+                            "latitude": -8.0679788,
+                            "longtitude": 113.8960519
+                        },
+                        {
+                            "name": "GUNUNGMALANG",
+                            "latitude": -8.0980165,
+                            "longtitude": 113.9015243
+                        },
+                        {
+                            "name": "JAMBEARUM",
+                            "latitude": -8.0426528,
+                            "longtitude": 113.9148508
+                        },
+                        {
+                            "name": "ROWOSARI",
+                            "latitude": -8.0761678,
+                            "longtitude": 113.9190807
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

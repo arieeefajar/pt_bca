@@ -1,0 +1,1192 @@
+{
+    "employees": [
+        {
+            "NIP": "1301-0107",
+            "Name": "Abd Madina",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2010-0414",
+            "Name": "Abdul Aziz",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2006-0376",
+            "Name": "Abdul Haris",
+            "Area": "NT02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1901-0278",
+            "Name": "Abdul Mutalib",
+            "Area": "KL03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2210-0616",
+            "Name": "Abdullah",
+            "Area": "KL03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1112-0069",
+            "Name": "Achmad Anang Ma'ruf",
+            "Area": "JW11",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1703-0213",
+            "Name": "Achmad Jasuli",
+            "Area": "JW11",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2201-0549",
+            "Name": "Achmad Kusaeri Hidayat",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1302-0110",
+            "Name": "Achmad Munawar Marpaung",
+            "Area": "NT02",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1705-0220",
+            "Name": "Aditia Rista Saputra",
+            "Area": "JW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2202-0562",
+            "Name": "Adnan",
+            "Area": "SW01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1708-0227",
+            "Name": "Agis Pratama",
+            "Area": "SM02",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2007-0380",
+            "Name": "Agus Setiawan",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0712",
+            "Name": "Ahmad Novan Hidayatullah",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2004-0349",
+            "Name": "Ahmad Rizal",
+            "Area": "SM08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1112-0068",
+            "Name": "Ahmad Sodikin",
+            "Area": "KL01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2107-0510",
+            "Name": "Aji Prasetio",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2202-0564",
+            "Name": "Allvi Ferdian",
+            "Area": "BL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1902-0285",
+            "Name": "Alvian Abara",
+            "Area": "SM05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0607",
+            "Name": "Andi Fajarwanto",
+            "Area": "JW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2005-0368",
+            "Name": "Andika Prasetya",
+            "Area": "KL02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2004-0350",
+            "Name": "Andri Kusuma Sp",
+            "Area": "SM10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2108-0517",
+            "Name": "Anton Sulaiman",
+            "Area": "SM04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2304-0657",
+            "Name": "Anuar Lawe",
+            "Area": "SW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0717",
+            "Name": "Apriyanti",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0801-0023",
+            "Name": "Arif Tri Handoko",
+            "Area": "TS02",
+            "Position": "Sales Executive"
+        },
+        {
+            "NIP": "2007-0382",
+            "Name": "Aris Ferdiansah Yoga Saputra",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0603-0011",
+            "Name": "Arizonaldi",
+            "Area": "SM03",
+            "Position": "Sales Executive"
+        },
+        {
+            "NIP": "0912-0048",
+            "Name": "Armeinsyah Pane",
+            "Area": "SM08",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1704-0215",
+            "Name": "Asep Sutisna",
+            "Area": "JW08",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2111-0538",
+            "Name": "Asmedi",
+            "Area": "SM06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1301-0108",
+            "Name": "Asruddin",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2004-0357",
+            "Name": "Azmi Fauzi",
+            "Area": "PP01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1904-0298",
+            "Name": "Bambang Prambudi",
+            "Area": "MK01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2203-0573",
+            "Name": "Basrun",
+            "Area": "SM05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1608-0196",
+            "Name": "Budi Irwanto",
+            "Area": "SM05",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2303-0651",
+            "Name": "Bustami",
+            "Area": "SM10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1609-0200",
+            "Name": "Cayadi Santosa",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1012-0059",
+            "Name": "Cepi Faisal Husaini",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1809-0267",
+            "Name": "Chosim Irmanto",
+            "Area": "JW10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2006-0372",
+            "Name": "Danang Hariyanto",
+            "Area": "JW05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2109-0523",
+            "Name": "Darmansyah",
+            "Area": "SW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0718",
+            "Name": "Darto",
+            "Area": "SM10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1310-0117",
+            "Name": "Dede Jaenudin",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2308-0695",
+            "Name": "Dedi Kurniawan",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1007-0052",
+            "Name": "Denden Bunyamin",
+            "Area": "BL01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1701-0205",
+            "Name": "Devi Kurnia",
+            "Area": "JW07",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "0906-0043",
+            "Name": "Didin Samsudin",
+            "Area": "JW10",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2109-0528",
+            "Name": "Doni Saputra",
+            "Area": "SM04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2307-0683",
+            "Name": "Eko Bambang Irawan",
+            "Area": "SW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1212-0095",
+            "Name": "Eko Maryanto",
+            "Area": "SM04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1701-0208",
+            "Name": "Eko Setiawan",
+            "Area": "JW05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0613",
+            "Name": "Eko Sishadi",
+            "Area": "JW11",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2304-0667",
+            "Name": "Eko Yuli Pramudi",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0719",
+            "Name": "Elfan Felani",
+            "Area": "KL04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2208-0599",
+            "Name": "Endar Albary",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2101-0443",
+            "Name": "Eri Bayu Ardika",
+            "Area": "JW11",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1808-0262",
+            "Name": "Eric Bastian",
+            "Area": "KL03",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2302-0646",
+            "Name": "Fahrul Ahmad Nasir",
+            "Area": "MK01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2206-0589",
+            "Name": "Fajar Nur Zakarya",
+            "Area": "KL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1907-0313",
+            "Name": "Fajar Purwoko",
+            "Area": "JW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2105-0480",
+            "Name": "Fari Purno Hadi Sunyoto",
+            "Area": "KL02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1601-0188",
+            "Name": "Febrianto N.Hi Topae",
+            "Area": "SW02",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2106-0494",
+            "Name": "Firman Agung Nugraha",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1102-0061",
+            "Name": "Galih Isndhari Ratna Putra",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0385",
+            "Name": "Ganes Rondi Anarkhi",
+            "Area": "SM02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2103-0454",
+            "Name": "Gazali",
+            "Area": "SM04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1907-0310",
+            "Name": "Hakim Akbar Al Ghaniy",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1610-0202",
+            "Name": "Haldi Gustiandi",
+            "Area": "NT01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2112-0546",
+            "Name": "Hangga Parnianto",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0801-0025",
+            "Name": "Hasan",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2201-0559",
+            "Name": "Heri Yuhana",
+            "Area": "SW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0395",
+            "Name": "Heru Purnama",
+            "Area": "JW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2006-0375",
+            "Name": "Hidayah Syeh Mauludin",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2208-0598",
+            "Name": "Hilalun Najmi Zarista",
+            "Area": "SM06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2307-0686",
+            "Name": "Ibnu Agung Fisabilillah",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0606",
+            "Name": "Ibnu Khamdun",
+            "Area": "JW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1301-0106",
+            "Name": "Ikhwan Sadid Al Batsi",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2308-0694",
+            "Name": "Ilham Arief Rachman Hadi",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1905-0300",
+            "Name": "Ilham Fajar Sutrisno",
+            "Area": "SM01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2307-0682",
+            "Name": "Ilham Muchtar As'ari",
+            "Area": "JW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1712-0234",
+            "Name": "Ilham Sah",
+            "Area": "SM08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1411-0156",
+            "Name": "Imam Hidayat",
+            "Area": "JW05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2302-0650",
+            "Name": "Imam Nurohim",
+            "Area": "MK01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2004-0359",
+            "Name": "Indra Lesmana",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2302-0645",
+            "Name": "Indry Wahyuni",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2012-0426",
+            "Name": "Iqbal Prasetio",
+            "Area": "SM08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0698",
+            "Name": "Ismail",
+            "Area": "SW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2304-0659",
+            "Name": "Ivan Yustri Adi",
+            "Area": "TS01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1411-0151",
+            "Name": "Jaelani",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2012-0428",
+            "Name": "Jaenal Muslihat",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1903-0288",
+            "Name": "Januar Ramdani",
+            "Area": "NT01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0901-0036",
+            "Name": "Jazliwarman",
+            "Area": "SM06",
+            "Position": "Sales Executive"
+        },
+        {
+            "NIP": "1410-0148",
+            "Name": "Jefri",
+            "Area": "SW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1411-0158",
+            "Name": "Jiwa Putra Kis Pramana",
+            "Area": "NT01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2307-0681",
+            "Name": "Jumantoro Widodo",
+            "Area": "BL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1711-0229",
+            "Name": "Junaidi (NT)",
+            "Area": "NT01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2101-0429",
+            "Name": "Khoiril Akbar",
+            "Area": "SM08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1605-0191",
+            "Name": "Koko Sudarmawan",
+            "Area": "JW03",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2303-0655",
+            "Name": "La Ode Jumadil, S.P.",
+            "Area": "SW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2106-0495",
+            "Name": "Lutfi Abdul Gani",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2001-0344",
+            "Name": "M. Nasir",
+            "Area": "SM03",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2205-0584",
+            "Name": "M. Ridwan Susanto",
+            "Area": "SM09",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2306-0677",
+            "Name": "M. Zendi Gustrinata",
+            "Area": "SM04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2302-0644",
+            "Name": "Maiza Asmi",
+            "Area": "SM06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2208-0602",
+            "Name": "Malikul Bahri",
+            "Area": "SM09",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0612",
+            "Name": "Malin Dipinto",
+            "Area": "SM06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1604-0189",
+            "Name": "Manman Budiman",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2112-0545",
+            "Name": "Marbawi",
+            "Area": "SM10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2204-0578",
+            "Name": "Masruri",
+            "Area": "JW05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2204-0579",
+            "Name": "Maulana Saputra",
+            "Area": "SM10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1011-0058",
+            "Name": "Mei Andi Syahputra",
+            "Area": "SM09",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1410-0146",
+            "Name": "Mhd Ilham Husni",
+            "Area": "SM08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2205-0583",
+            "Name": "Micho Sandeka Rachman",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1904-0296",
+            "Name": "Moch. Ariful Muqorrobin",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2306-0672",
+            "Name": "Moch. Zakiyuddin Saepurrohman",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2009-0411",
+            "Name": "Moh. Ikbal T. Olii",
+            "Area": "SW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0811-0034",
+            "Name": "Mohammad Asrori Rampuji",
+            "Area": "TS01",
+            "Position": "Sales Executive"
+        },
+        {
+            "NIP": "1411-0157",
+            "Name": "Mohammad Iqbal Agustiana",
+            "Area": "NT02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2011-0420",
+            "Name": "Mohd. Akbar",
+            "Area": "SM03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2009-0409",
+            "Name": "Mualif Asrori Hasan",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2303-0653",
+            "Name": "Muh. Saleh",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2109-0526",
+            "Name": "Muhamad Adim",
+            "Area": "SM02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2306-0673",
+            "Name": "Muhamad As'ad Ansharullah",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2010-0416",
+            "Name": "Muhamad Cali",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2004-0358",
+            "Name": "Muhamad Fuad Albar",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0614",
+            "Name": "Muhamad Raka Maulana Yusuf",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0389",
+            "Name": "Muhammad Amin Prabowo",
+            "Area": "KL02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2108-0518",
+            "Name": "Muhammad Faizun Anam",
+            "Area": "JW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2204-0581",
+            "Name": "Muhammad Khairuddin",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0716",
+            "Name": "Muhammad Lutfhi Mudhoffar",
+            "Area": "JW07",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2306-0676",
+            "Name": "Muhammad Muis",
+            "Area": "SM02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1606-0193",
+            "Name": "Muhammad Naufal Shahab",
+            "Area": "KL02",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1906-0307",
+            "Name": "Muhammad Nizar",
+            "Area": "KL02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0608",
+            "Name": "Muhammad Nur Badrussalam",
+            "Area": "JW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1105-0063",
+            "Name": "Muhammad Rojikin",
+            "Area": "JW11",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2108-0516",
+            "Name": "Muhammad Shofil Lubab",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1909-0317",
+            "Name": "Muhammad Yavi Ilham",
+            "Area": "KL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0715",
+            "Name": "Muhlas Prasetyo",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2203-0577",
+            "Name": "Mustajab",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2207-0597",
+            "Name": "Nabil",
+            "Area": "JW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0392",
+            "Name": "Nasrul Dabutar",
+            "Area": "SM09",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0381",
+            "Name": "Nur Hidayat",
+            "Area": "JW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2308-0693",
+            "Name": "Nur Muhamad Rabani",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0705",
+            "Name": "Nuraeni",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2209-0604",
+            "Name": "Nurul Hardianti",
+            "Area": "SW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1301-0099",
+            "Name": "Ponidi",
+            "Area": "SW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1803-0243",
+            "Name": "Pujianto",
+            "Area": "JW02",
+            "Position": "Product Development Executive"
+        },
+        {
+            "NIP": "1402-0128",
+            "Name": "Purna Irawan",
+            "Area": "KL04",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2309-0713",
+            "Name": "Rachmad Agung Syah Putra",
+            "Area": "JW01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1804-0250",
+            "Name": "Rachmat Hidayat",
+            "Area": "KL04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0714",
+            "Name": "Raga Putra Kispramana",
+            "Area": "NT01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2104-0476",
+            "Name": "Rayendra Usman",
+            "Area": "SM05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1809-0266",
+            "Name": "Renzi Kanda Prayuda",
+            "Area": "SM05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2106-0503",
+            "Name": "Rian Jovi Prayogi",
+            "Area": "JW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1604-0190",
+            "Name": "Ribut Andi Mariyanto",
+            "Area": "SM04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2011-0419",
+            "Name": "Ricky Sikwandy",
+            "Area": "SM03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1903-0289",
+            "Name": "Ridwan Ginting",
+            "Area": "SM09",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0379",
+            "Name": "Riswandi Hamzah",
+            "Area": "SW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1807-0256",
+            "Name": "Rudy Hermawan",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2103-0452",
+            "Name": "Sain Muhammad Alfian",
+            "Area": "KL03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0699",
+            "Name": "Saleh Umar Sodik",
+            "Area": "SM03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1703-0211",
+            "Name": "Sam an Hamdani, S.Kom",
+            "Area": "BL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2201-0550",
+            "Name": "Sansan Irsan Abdul Malik",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1901-0283",
+            "Name": "Saparuddin",
+            "Area": "SW03",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1808-0261",
+            "Name": "Saryo",
+            "Area": "SM02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1810-0269",
+            "Name": "Setyo Cahyo Nugroho",
+            "Area": "JW04",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1905-0305",
+            "Name": "Suandi Haris Padillah",
+            "Area": "KL03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0383",
+            "Name": "Suheri",
+            "Area": "JW10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1811-0277",
+            "Name": "Sumarno",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0603-0008",
+            "Name": "Supardi",
+            "Area": "PROYEK",
+            "Position": "Project Manager"
+        },
+        {
+            "NIP": "2203-0576",
+            "Name": "Supriansyah",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1008-0053",
+            "Name": "Suryaman",
+            "Area": "KL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1206-0083",
+            "Name": "Sutandi",
+            "Area": "SW04",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "0603-0006",
+            "Name": "Suwadi",
+            "Area": "JW01",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1610-0201",
+            "Name": "Syarif Ilham",
+            "Area": "KL02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2202-0570",
+            "Name": "Tamrin",
+            "Area": "SW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0603-0009",
+            "Name": "Tatang Santang",
+            "Area": "JW06",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1708-0223",
+            "Name": "Taufik Hidayat",
+            "Area": "JW02",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2304-0656",
+            "Name": "Teguh Adriyanto",
+            "Area": "JW04",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2309-0726",
+            "Name": "Teuku Muhammad Abdul Khalis",
+            "Area": "NT01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2109-0522",
+            "Name": "Thontowi Jauhari",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1102-0062",
+            "Name": "Tri Adi Purna",
+            "Area": "JW06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2304-0663",
+            "Name": "Tri Wahyu Tegar Pamungkas",
+            "Area": "JW11",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2305-0670",
+            "Name": "Trisno Sami Andoko",
+            "Area": "SM06",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2001-0346",
+            "Name": "Usen Chaerudin",
+            "Area": "JW08",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1910-0321",
+            "Name": "Wahyu Hadi Pratama",
+            "Area": "SM05",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2306-0671",
+            "Name": "Wawan Syamsul",
+            "Area": "SW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "1705-0219",
+            "Name": "Wesul Kurni",
+            "Area": "JW10",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2005-0366",
+            "Name": "Windo Baharko Ginting",
+            "Area": "SM09",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2006-0399",
+            "Name": "Wira Andrianto",
+            "Area": "SM10",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "2208-0600",
+            "Name": "Wiro Manileth",
+            "Area": "SW03",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2304-0665",
+            "Name": "Yofta Bagus Nusantara Adji",
+            "Area": "JW02",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "0901-0037",
+            "Name": "Yohar Bahrus Salam",
+            "Area": "JW05",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1503-0171",
+            "Name": "Yospiq Mirizal",
+            "Area": "SM04",
+            "Position": "Marketing Executive"
+        },
+        {
+            "NIP": "1308-0115",
+            "Name": "Yulhari Binarto",
+            "Area": "SM01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2304-0658",
+            "Name": "Yutsyak Maulana Arief",
+            "Area": "BL01",
+            "Position": "Marketing Support"
+        },
+        {
+            "NIP": "2007-0394",
+            "Name": "Zainuddin Hamid",
+            "Area": "SM06",
+            "Position": "Marketing Support"
+        }
+    ]
+}
