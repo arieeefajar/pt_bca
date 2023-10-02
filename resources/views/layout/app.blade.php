@@ -647,7 +647,7 @@
     <script src="{{ asset('admin_assets/assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/plugins.js') }}"></script>
-    {{-- <script src="{{ asset('admin_assets/assets/js/script.js') }}"></script> --}}
+    <script src="{{ asset('admin_assets/assets/js/script.js') }}"></script>
 
     <!-- apexcharts -->
     <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>

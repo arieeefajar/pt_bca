@@ -148,7 +148,11 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     // laporan routes
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
+    // get data wilayah
     Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
+    Route::get('getKecamatan/{id}', [CustomerController::class, 'getKecamatan'])->name('getkecamatan');
+    Route::get('getKelurahan/{id}', [CustomerController::class, 'getKelurahan'])->name('getkelurahan');
+    Route::get('getAllLocation/{id_kelurahan}', [CustomerController::class, 'getProvinsi'])->name('getAllLocation');
 });
 
 // route only surveyour

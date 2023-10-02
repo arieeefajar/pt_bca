@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
+use App\Models\Kota;
+use App\Models\Provinsi;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -14,15 +18,13 @@ class CustomerController extends Controller
     public function index()
     {
         // get perusahaan and area data
-        $dataPerusahaan = Customer::with('wilayah')
+        $dataPerusahaan = Customer::with('kelurahan')
             ->orderBy('created_at', 'desc')
             ->get();
-        $dataArea = Wilayah::all();
-        $dataProvinsi = Wilayah::getProvinsi();
-        $dataKota = Wilayah::getKota();
-        // dd($dataProvinsi);
+        $provinsi = Provinsi::all();
+        // dd($provinsi);
 
-        return view('admin.customer', compact('dataPerusahaan', 'dataArea', 'dataProvinsi', 'dataKota'));
+        return view('admin.customer', compact('dataPerusahaan', 'provinsi'));
     }
 
     public function store(Request $request)
@@ -36,9 +38,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
-            'provinsi' => 'required|string|max:20',
-            'kota' => 'required|string|max:30',
-            'area' => 'required|string|max:255',
+            'kelurahan' => 'required|string|max:255',
             'koordinat' => 'required|string|max:100',
         ], $customMessages);
 
@@ -52,9 +52,7 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->nama = $request->nama;
         $customer->jenis = $request->jenis;
-        $customer->provinsi = $request->provinsi;
-        $customer->kota = $request->kota;
-        $customer->wilayah_id = $request->area;
+        $customer->kelurahan_id = $request->kelurahan;
         $customer->koordinat = $request->koordinat;
 
         // execute
@@ -79,9 +77,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
-            'provinsi' => 'required|string|max:20',
-            'kota' => 'required|string|max:30',
-            'area' => 'required|string|max:255',
+            'kelurahan' => 'required|string|max:255',
             'koordinat' => 'required|string|max:100',
         ], $customMessages);
 
@@ -95,9 +91,7 @@ class CustomerController extends Controller
         $dataEdit = Customer::findOrFail($id);
         $dataEdit->nama = $request->nama;
         $dataEdit->jenis = $request->jenis;
-        $dataEdit->provinsi = $request->provinsi;
-        $dataEdit->kota = $request->kota;
-        $dataEdit->wilayah_id = $request->area;
+        $dataEdit->kelurahan_id = $request->kelurahan;
         $dataEdit->koordinat = $request->koordinat;
 
         // execute update
@@ -129,8 +123,54 @@ class CustomerController extends Controller
 
     public function getKota($id)
     {
-        $endPointApi = 'https://emsifa.github.io/api-wilayah-indonesia/api/regencies/' . $id . '.json';
-        $dataAnswer = Http::get($endPointApi)->json();
-        return response()->json($dataAnswer);
+        $dataKota = Kota::where('provinsi_id', $id)->get();
+        return response()->json([
+            'success' => true,
+            'data' => $dataKota
+        ]);
+    }
+
+    public function getKecamatan($id)
+    {
+        $dataKecamatan = Kecamatan::where('kota_id', $id)->get();
+        return response()->json([
+            'success' => true,
+            'data' => $dataKecamatan
+        ]);
+    }
+
+    public function getKelurahan($id)
+    {
+        $dataKelurahan = Kelurahan::where('kecamatan_id', $id)->get();
+        return response()->json([
+            'success' => true,
+            'data' => $dataKelurahan
+        ]);
+    }
+
+    public function getProvinsi($id_kelurahan)
+    {
+        $dataWilayah = Kelurahan::with('kecamatan', 'kecamatan.kota', 'kecamatan.kota.provinsi')->where('id', $id_kelurahan)->get();
+
+        foreach ($dataWilayah as $value) {
+            $idSelected = (object) array(
+                'kelurahan' => $value->id,
+                'kecamatan' => $value->kecamatan->id,
+                'kota' => $value->kecamatan->kota->id,
+                'provinsi' => $value->kecamatan->kota->provinsi->id,
+            );
+        }
+
+        $allData = [
+            'kota' => Kota::where('provinsi_id', $idSelected->provinsi)->get(),
+            'kecamatan' => Kecamatan::where('kota_id', $idSelected->kota)->get(),
+            'kelurahan' => Kelurahan::where('kecamatan_id', $idSelected->kecamatan)->get()
+        ];
+
+        $idSelected->allData = $allData;
+        return response()->json([
+            'success' => true,
+            'data' => $idSelected
+        ]);
     }
 }

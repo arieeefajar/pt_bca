@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('wilayah_survey', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('wilayah_id');
-            $table->foreign('wilayah_id')->references('id')->on('wilayah');
+            $table->unsignedBigInteger('kelurahan_id');
+            $table->foreign('kelurahan_id')->references('id')->on('kelurahan');
             $table->unsignedBigInteger('surveyor_id');
             $table->foreign('surveyor_id')->references('id')->on('users');
             $table->dateTime('start_day');
