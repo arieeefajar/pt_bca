@@ -17,7 +17,7 @@ class Customer extends Model
         'jenis',
         'provinsi',
         'kota',
-        'wilayah_id',
+        'kelurahan_id',
         'koordinat',
     ];
 
@@ -26,9 +26,9 @@ class Customer extends Model
         return $this->hashMany(Penyimpanan::class, 'id', 'perusahaan_id');
     }
 
-    public function wilayah()
+    public function kelurahan()
     {
-        return $this->belongsTo(Wilayah::class, 'wilayah_id', 'id');
+        return $this->belongsTo(Kelurahan::class, 'kelurahan_id', 'id');
     }
 
     public static function getNamaToko($id)
