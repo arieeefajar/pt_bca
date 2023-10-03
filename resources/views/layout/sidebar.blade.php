@@ -136,6 +136,10 @@
                                         <a href="{{ route('user.index') }}" class="nav-link"> <i
                                                 class="ri-user-line"></i>User</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('dataSurveyor.index') }}" class="nav-link"> <i
+                                                class="ri-group-line"></i>Surveyor</a>
+                                    </li>
                                 @endif
                                 <li class="nav-item">
                                     <a class="nav-link menu-link" href="#kuisioner" data-bs-toggle="collapse"
@@ -147,22 +151,15 @@
                                             <li class="nav-item">
                                                 <a href="{{ route('kuisioner.index') }}" class="nav-link"
                                                     data-key="t-chat">Data Kuisioner</a>
-                                                {{-- <a href="{{ route('kuisioner.index') }}" class="nav-link"
-                                            data-key="t-chat"> <i class="ri-file-3-line"></i>Kuisioner</a> --}}
                                             </li>
                                             <li class="nav-item">
                                                 <a href="{{ route('jenisKuisioner.index') }}" class="nav-link"
                                                     data-key="t-chat"></i>Jenis Kuisioner</a>
-                                                {{-- <a href="{{ route('jenisKuisioner.index') }}" class="nav-link"
-                                            data-key="t-chat"> <i class="ri-honour-line"></i>Jenis Kuisioner</a> --}}
                                             </li>
                                             <li class="nav-item">
                                                 <a href={{ route('detailKuisioner.index') }} class="nav-link"
                                                     data-key="t-ecommerce"></i>Detail
                                                     Kuisioner</a>
-                                                {{-- <a href={{ route('detailKuisioner.index') }} class="nav-link"
-                                            data-key="t-ecommerce"> <i class="ri-file-text-line"></i>Detail
-                                            Kuisioner</a> --}}
                                             </li>
                                         </ul>
                                     </div>
@@ -177,16 +174,11 @@
                                             <li class="nav-item">
                                                 <a href={{ route('product.index') }} class="nav-link"
                                                     data-key="t-ecommerce">Data Produk</a>
-                                                {{-- <a href={{ route('product.index') }} class="nav-link"
-                                            data-key="t-ecommerce"> <i class="ri-product-hunt-line"></i>Produk</a> --}}
                                             </li>
 
                                             <li class="nav-item">
                                                 <a href={{ route('jenisTanaman.index') }} class="nav-link"
                                                     data-key="t-ecommerce">Jenis Tanaman</a>
-                                                {{-- <a href={{ route('jenisTanaman.index') }} class="nav-link"
-                                            data-key="t-ecommerce">
-                                            <i class="ri-plant-line"></i>Jenis Tanaman</a> --}}
                                             </li>
                                         </ul>
                                     </div>
@@ -195,9 +187,6 @@
                                     <a href={{ route('customer.index') }} class="nav-link" data-key="t-projects"> <i
                                             class="ri-team-line"></i>Customer</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href={{ route('posisi.index') }} class="nav-link" data-key="t-tasks"> <i class="ri-vip-crown-line"></i>Posisi</a>
-                </li> --}}
                             </ul>
                         </div>
                     </li>
@@ -206,11 +195,6 @@
                             <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('laporan.index') }}">
-        <i class="bx bxs-report"></i><span data-key="t-tables">Laporan</span>
-        </a>
-        </li> --}}
                 @endif
             </ul>
         </div>

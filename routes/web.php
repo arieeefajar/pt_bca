@@ -174,8 +174,6 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('getAllLocation/{id_kelurahan}', [CustomerController::class, 'getProvinsi'])->name('getAllLocation');
 });
 
-Route::post('/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('profileUpdatePassword');
-
 // route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
 
