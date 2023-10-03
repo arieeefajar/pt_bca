@@ -116,4 +116,9 @@ class DashboardController extends Controller
     {
         return view('admin.profile');
     }
+
+    public function tes()
+    {
+        return view('layout1.tes');
+    }
 }

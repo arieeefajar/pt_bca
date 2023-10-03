@@ -160,8 +160,6 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     });
 });
 
-Route::post('/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('profileUpdatePassword');
-
 // route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
 

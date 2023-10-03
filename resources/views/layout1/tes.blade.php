@@ -26,6 +26,11 @@
     <!-- custom Css-->
     <link href="{{ asset('admin_assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+</head>
+
 
 </head>
 
@@ -1992,7 +1997,8 @@
                                             <label for="validationCustom04" class="form-label">State</label>
                                             <select class="form-select" id="validationCustom04" required>
                                                 <option selected disabled value="">Choose...</option>
-                                                <option>...</option>
+                                                <option>contoh</option>
+                                                <option>contoh1</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 Please select a valid state.
@@ -2636,6 +2642,12 @@
     <script src="{{ asset('admin_assets/assets/js/app.js') }}"></script>
 
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#validationCustom04").select2();
+        })
+    </script>
 </body>
 
 </html>
