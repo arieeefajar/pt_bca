@@ -10,9 +10,9 @@
                 <div class="card-header align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">Form Kuisioner</h4>
                 </div><!-- end card header -->
-                <div id="step1">
-                    <div class="card-body">
-                        <form action="">
+                <form action="">
+                    <div id="step1">
+                        <div class="card-body">
                             <div class="col-md-12">
                                 <label for="">Bagaimana sistem penjualan produk benih jagung di kios ini?
                                 </label>
@@ -53,12 +53,10 @@
                                         onclick="nextStep(1)">Next</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
-                <div id="step2" style="display: none;">
-                    <div class="card-body">
-                        <form action="">
+                    <div id="step2" style="display: none;">
+                        <div class="card-body">
                             <div class="col-md-12">
                                 <label for="">Darimana sajakah asal produsen pemasok benih jagung yang dijual di
                                     kios ini?
@@ -73,14 +71,16 @@
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label for="">Berapa harga eceran terendah per sachet dari setiap benih jagung yang
+                                <label for="">Berapa harga eceran terendah per sachet dari setiap benih jagung
+                                    yang
                                     dijual?
                                 </label>
                                 <textarea name="" id="" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label for="">Apakah saudara mengenal distributor yang menitipkan produknya? (Nama &
+                                <label for="">Apakah saudara mengenal distributor yang menitipkan produknya?
+                                    (Nama &
                                     Alamat)
                                 </label>
                                 <textarea name="" id="" cols="30" rows="5" maxlength="1000"
@@ -94,12 +94,10 @@
                                         onclick="nextStep(2)">Next</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
-                <div id="step3" style="display: none;">
-                    <div class="card-body">
-                        <form action="">
+                    <div id="step3" style="display: none;">
+                        <div class="card-body">
                             <div class="col-md-12">
                                 <label for="">Apakah distributor merek benih jagung menawarkan program tertentu
                                     yang terkait dengan bonus penjualan (reward) atau potongan harga (cost discount)?
@@ -115,7 +113,8 @@
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label for="">Apakah saudara menerapkan program volume matriks pada penjualan benih
+                                <label for="">Apakah saudara menerapkan program volume matriks pada penjualan
+                                    benih
                                     jagung? (Bonus sachet)
                                 </label>
                                 <textarea name="" id="" cols="30" rows="5" maxlength="1000"
@@ -136,9 +135,9 @@
                                         class="btn btn-success">Submit</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
