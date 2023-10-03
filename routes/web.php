@@ -150,6 +150,7 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     // laporan routes
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
+    // get data wilayah
     Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
 
     //Profile
@@ -158,6 +159,19 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update');
         Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update');
     });
+    Route::get('getKecamatan/{id}', [CustomerController::class, 'getKecamatan'])->name('getkecamatan');
+    Route::get('getKelurahan/{id}', [CustomerController::class, 'getKelurahan'])->name('getkelurahan');
+    Route::get('getAllLocation/{id_kelurahan}', [CustomerController::class, 'getProvinsi'])->name('getAllLocation');
+
+    //Profile
+    Route::prefix('profileAdmin')->group(function () {
+        Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
+        Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update');
+        Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update');
+    });
+    Route::get('getKecamatan/{id}', [CustomerController::class, 'getKecamatan'])->name('getkecamatan');
+    Route::get('getKelurahan/{id}', [CustomerController::class, 'getKelurahan'])->name('getkelurahan');
+    Route::get('getAllLocation/{id_kelurahan}', [CustomerController::class, 'getProvinsi'])->name('getAllLocation');
 });
 
 // route only surveyour

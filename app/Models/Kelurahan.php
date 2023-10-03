@@ -6,17 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 
-class Wilayah extends Model
+class Kelurahan extends Model
 {
     use HasFactory;
 
-    protected $table = 'wilayah';
+    protected $table = 'kelurahan';
 
     protected $fillable = [
         'id',
+        'kecamatan_id',
         'nama',
-        'koordinat',
+        'latitude',
+        'langitude',
     ];
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id', 'id');
+    }
 
     public function customer()
     {

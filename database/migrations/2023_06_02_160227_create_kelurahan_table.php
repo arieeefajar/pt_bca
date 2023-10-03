@@ -4,19 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('customer', function (Blueprint $table) {
+        Schema::create('kelurahan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('kecamatan_id');
+            $table->foreign('kecamatan_id')->references('id')->on('kecamatan');
             $table->string('nama');
-            $table->enum('jenis', array('dealer','master_dealer','lainnya'));
-            $table->unsignedBigInteger('kelurahan_id');
-            $table->foreign('kelurahan_id')->references('id')->on('kelurahan');
-            $table->string('koordinat');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('perusahaan');
+        Schema::dropIfExists('kelurahan');
     }
 };
