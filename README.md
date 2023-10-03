@@ -27,6 +27,12 @@
   php artisan key:generate  
 ```
 
+- Setup env
+```bash
+  add the code to the bottom line of the env
+  PYTHON_END_POINT = "end point api py"
+```
+
 - Migrate and seeder
 ```bash
   php artisan migrate

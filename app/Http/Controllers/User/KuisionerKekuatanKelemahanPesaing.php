@@ -69,8 +69,8 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             'support_change' => 'required',
             'strengthening_ability' => 'required',
             'special_treatment' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -88,7 +88,7 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = 'http://103.175.216.72/api/simi/competitor-identifier';
+        $endPointApi = env('PYTHON_END_POINT').'competitor-identifier';
 
         // data answer
         $position_pov = intval($request->position_pov);
@@ -121,8 +121,12 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $support_change = intval($request->support_change);
         $strengthening_ability = intval($request->strengthening_ability);
         $special_treatment = intval($request->special_treatment);
-        $latitude = floatval($request->latitude);
-        $longitude = floatval($request->longitude);
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        
+        
+        $latitude = 12345;
+        $longitude = -123456;
 
         // post api
         $response = Http::post($endPointApi, [
