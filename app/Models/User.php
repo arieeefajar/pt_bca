@@ -49,8 +49,8 @@ class User extends Authenticatable
     public static function getCustommer()
     {
         $customers = Customer::select('customer.id', 'customer.nama')
-            ->leftJoin('wilayah', 'customer.wilayah_id', '=', 'wilayah.id')
-            ->leftJoin('wilayah_survey', 'wilayah.id', '=', 'wilayah_survey.wilayah_id')
+            ->leftJoin('kelurahan', 'customer.kelurahan_id', '=', 'kelurahan.id')
+            ->leftJoin('wilayah_survey', 'kelurahan.id', '=', 'wilayah_survey.kelurahan_id')
             ->leftJoin('users', 'wilayah_survey.surveyor_id', '=', 'users.id')
             ->leftJoin('penyimpanan', function ($join) {
                 $join->on('penyimpanan.customer_id', '=', 'customer.id')
