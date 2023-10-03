@@ -20,6 +20,7 @@ use App\Http\Controllers\User\FormPesaingController;
 use App\Http\Controllers\User\FormPotensiLahanController;
 use App\Http\Controllers\User\KuisionerKekuatanKelemahanPesaing;
 use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
+use App\Http\Controllers\User\KuisionerSkalaPasarProduk;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use App\Http\Controllers\User\ProfileControllerSurveyor;
 use Illuminate\Support\Facades\Route;
@@ -198,6 +199,12 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
     Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
         Route::get('/', [KuisionerKekuatanKelemahanPesaing::class, 'index'])->name('KekuatanDanKelemahanPesaing.index');
         Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
+    });
+
+    // kuisioner skala pasar produk
+    Route::prefix('skala-pasar-produk')->group(function () {
+        Route::get('/', [KuisionerSkalaPasarProduk::class, 'index'])->name('SkalaPasarProduk.index');
+        // Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
     });
 
     //form survey

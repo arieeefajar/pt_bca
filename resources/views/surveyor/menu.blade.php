@@ -180,6 +180,29 @@
                     </div><!-- end col -->
                 @endif
 
+                <div class="col-xl-4">
+                    <a href="{{ route('SkalaPasarProduk.index') }}">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <span class="avatar-title bg-soft-info text-info rounded-2 fs-2">
+                                            <i class="ri-file-text-line text-info"></i>
+                                        </span>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <p class="text-uppercase fw-semibold text-truncate text-muted mb-3"></p>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <h4 class="fs-4 flex-grow-1 mb-0">Kuisioner Skala Pasar Produk
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end card body -->
+                        </div>
+                    </a>
+                </div><!-- end col -->
+
                 @if ($form_lahan)
                     <div class="col-xl-4">
                         <a onclick="">
@@ -285,7 +308,7 @@
         </div><!-- end col -->
 
         {{-- btn pilih toko --}}
-        <div class="text-center mt-3">
+        <div class="text-center mt-3 mb-3">
             <form action="{{ route('clearCookie') }}" method="POST">
                 @csrf
                 <button class="btn btn-primary" type="submit">Pilih Toko</button>
