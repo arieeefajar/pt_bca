@@ -39,8 +39,8 @@ class FormPotensiLahanController extends Controller
             'keunggulan_kompetitor' => 'required',
             'iklim' => 'required',
             'event' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -57,15 +57,18 @@ class FormPotensiLahanController extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = 'http://103.175.216.72/api/simi/potentional-area';
+        $endPointApi = 'http://192.168.1.45:8000/potentional-area';
 
         $keunggulan_umum = $request->keunggulan_umum;
         $keunggulan_produk = $request->keunggulan_produk;
         $keunggulan_kompetitor = $request->keunggulan_kompetitor;
         $iklim = $request->iklim;
         $event = $request->event;
-        $latitude = $request->latitude;
-        $longitude = $request->longitude;
+        // $latitude = $request->latitude;
+        // $longitude = $request->longitude;
+
+        $latitude = 1234;
+        $longitude = -34567;
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,

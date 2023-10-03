@@ -42,8 +42,8 @@ class FormPesaingController extends Controller
             'deskripsi_produk_pesaing' => 'required',
             'keunggulan_pesaing' => 'required',
             'pemasaran_pesaing' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -61,7 +61,7 @@ class FormPesaingController extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = 'http://103.175.216.72/api/simi/retail';
+        $endPointApi = 'http://192.168.1.45:8000/retail';
 
         // data send
         $produk_kita = $request->produk_kita . ", " . $request->deskripsi_produk;
@@ -69,8 +69,11 @@ class FormPesaingController extends Controller
 
         $keunggulan_pesaing = $request->keunggulan_pesaing;
         $pemasaran_pesaing = $request->pemasaran_pesaing;
-        $latitude = $request->latitude;
-        $longitude = $request->longitude;
+        // $latitude = $request->latitude;
+        // $longitude = $request->longitude;
+
+        $latitude = 123456;
+        $longitude = -2143567;
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\JenisTanamanController;
 use App\Http\Controllers\Admin\ProfileControllerAdmin;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\getCustommerBCA;
 use App\Http\Controllers\ProfileController as ControllersProfileController;
 use App\Http\Controllers\User\DashboardSurveyerController;
 use App\Http\Controllers\User\FormPesaingController;
@@ -224,3 +225,5 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
         Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword'])->name('password.Update');
     });
 });
+
+Route::get('get_custommer', [getCustommerBCA::class, 'index']);

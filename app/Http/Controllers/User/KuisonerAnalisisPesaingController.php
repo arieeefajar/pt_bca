@@ -64,10 +64,12 @@ class KuisonerAnalisisPesaingController extends Controller
             'price_sensitivity' => 'required',
             'quality_than_price' => 'required',
             'trend_competition' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
+
+        // dd($request->all());
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
             return redirect()->back()->withInput();
@@ -82,7 +84,7 @@ class KuisonerAnalisisPesaingController extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = 'http://103.175.216.72/api/simi/competitor-analys';
+        $endPointApi = 'http://192.168.1.45:8000/competitor-analys';
 
         // convert function
         $convert = function ($params) {
@@ -119,8 +121,11 @@ class KuisonerAnalisisPesaingController extends Controller
         $price_sensitivity = $convert($request->price_sensitivity);
         $quality_than_price = $convert($request->quality_than_price);
         $trend_competition = $convert($request->trend_competition);
-        $latitude = floatval($request->latitude);
-        $longitude = floatval($request->longitude);
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+
+        $latitude = 12345;
+        $longitude = -12345;
 
 
         $response = Http::post($endPointApi, [
@@ -159,6 +164,7 @@ class KuisonerAnalisisPesaingController extends Controller
         ]);
 
         $responJson = $response->json();
+        // dd($responJson);
 
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,

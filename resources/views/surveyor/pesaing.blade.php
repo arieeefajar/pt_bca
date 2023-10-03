@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div id="formContainer">
-                        <form action="{{ route('formPesaing.create') }}" method="POST" id="myForm">
+                        <form action="{{ route('formPesaing.create') }}" method="POST" id="myFormPesaing">
                             @csrf
                             <div id="step1">
                                 <div class="card-header">
@@ -175,12 +175,13 @@
         }
 
         async function submit_form() {
+            // alert('wokdowakodkawodkoaw')
             try {
-                const coords = await getLocation();
-                document.getElementById("latitude_field").value = coords.latitude;
-                document.getElementById("longitude_field").value = coords.longitude;
+                // const coords = await getLocation();
+                // document.getElementById("latitude_field").value = coords.latitude;
+                // document.getElementById("longitude_field").value = coords.longitude;
 
-                var form = document.getElementById('myForm');
+                var form = document.getElementById('myFormPesaing');
                 var inputs = form.querySelectorAll('input, select, textarea');
                 var isValid = true;
 

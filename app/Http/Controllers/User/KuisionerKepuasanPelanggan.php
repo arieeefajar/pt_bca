@@ -61,8 +61,8 @@ class KuisionerKepuasanPelanggan extends Controller
             'verification_speed' => 'required',
             'completion_speed' => 'required',
             'handling' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -79,7 +79,8 @@ class KuisionerKepuasanPelanggan extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = 'http://103.175.216.72/api/simi/customer';
+        // $endPointApi = 'http://103.175.216.72/api/simi/customer';
+        $endPointApi = 'http://192.168.1.45:8000/customer';
 
         // data answer
         $information = intval($request->information);
@@ -110,8 +111,11 @@ class KuisionerKepuasanPelanggan extends Controller
         $completion_speed = intval($request->completion_speed);
         $handling = intval($request->handling);
 
-        $latitude = floatval($request->latitude);
-        $longitude = floatval($request->longitude);
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+
+        $latitude = 1234;
+        $longitude = -123123;
 
         // post api
         $response = Http::post($endPointApi, [
