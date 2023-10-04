@@ -71,6 +71,10 @@
                                         class="nav-link">Kekuatan
                                         dan Kelemahan Pesaing</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('SkalaPasarProduk.index') }}" class="nav-link">Skala Pasar
+                                        Produk</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
