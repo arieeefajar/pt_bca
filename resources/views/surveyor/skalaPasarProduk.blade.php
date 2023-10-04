@@ -16,34 +16,27 @@
                             <div class="col-md-12">
                                 <label for="">Bagaimana sistem penjualan produk benih jagung di kios ini?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BagaimanaSistem" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa merek benih jagung yang dijual?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BerapaMerek" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa sachet dari setiap merek benih jagung yang dijual?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BerapaSachet" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Kapan periode setiap merek benih jagung dipasok?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="KapanPeriode" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
-                            {{-- <div class="col-md-12 mt-3">
-                                <label for="">Darimana sajakah asal produsen pemasok benih jagung yang dijual di
-                                    kios ini?
-                                </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
-                            </div> --}}
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">
                                     <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
@@ -61,13 +54,13 @@
                                 <label for="">Darimana sajakah asal produsen pemasok benih jagung yang dijual di
                                     kios ini?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="DarimanaSajakah" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa gram rata-rata berat per sachet benih jagung?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BerapaGram" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
@@ -75,7 +68,7 @@
                                     yang
                                     dijual?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BerapaHarga" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
@@ -83,7 +76,7 @@
                                     (Nama &
                                     Alamat)
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="ApakahSaudara" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
@@ -102,14 +95,14 @@
                                 <label for="">Apakah distributor merek benih jagung menawarkan program tertentu
                                     yang terkait dengan bonus penjualan (reward) atau potongan harga (cost discount)?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="ApakahDistributor" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara menerapkan program khusus terkait sistem penjualan
                                     benih jagung?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BenihJagung" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
@@ -117,14 +110,14 @@
                                     benih
                                     jagung? (Bonus sachet)
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="BonusSachet" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah kios ini menerima pasokan benih jagung hanya pada saat
                                     mendekati musim tanam saja atau jangka waktu tertentu (bulan)?
                                 </label>
-                                <textarea name="" id="" cols="30" rows="5" maxlength="1000"
+                                <textarea name="" id="ApakahKios" cols="30" rows="5" maxlength="1000"
                                     placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
@@ -146,49 +139,61 @@
     <script>
         let currentStep = 1;
 
-        const textarea1 = document.getElementById("produkSelect");
-        const textarea2 = document.getElementById("deskripsiProdukKita");
-        const textarea3 = document.getElementById("produkPesaing");
-        const textarea4 = document.getElementById("deskripsiProdukPesaing");
-        const textarea5 = document.getElementById("keunggulanPesaing");
-        const textarea6 = document.getElementById("pemasaranPesaing");
+        const textarea1 = document.getElementById("BagaimanaSistem");
+        const textarea2 = document.getElementById("BerapaMerek");
+        const textarea3 = document.getElementById("BerapaSachet");
+        const textarea4 = document.getElementById("KapanPeriode");
+        const textarea5 = document.getElementById("DarimanaSajakah");
+        const textarea6 = document.getElementById("BerapaGram");
+        const textarea7 = document.getElementById("BerapaHarga");
+        const textarea8 = document.getElementById("ApakahSaudara");
+        const textarea9 = document.getElementById("ApakahDistributor");
+        const textarea10 = document.getElementById("BenihJagung");
+        const textarea11 = document.getElementById("BonusSachet");
+        const textarea12 = document.getElementById("ApakahKios");
         const nextButton = document.getElementById("nextButton");
+        const nextButton1 = document.getElementById("nextButton1");
+        const submitButton = document.getElementById("submitButton");
 
-        // Fungsi untuk mengatur status tombol "Next"
         function toggleNextButton() {
+            const isTextarea1Valid = !textarea1.validity.valueMissing && textarea1.value.length >= 10;
+            const isTextarea2Valid = !textarea2.validity.valueMissing && textarea2.value.length >= 10;
+            const isTextarea3Valid = !textarea3.validity.valueMissing && textarea3.value.length >= 10;
+            const isTextarea4Valid = !textarea4.validity.valueMissing && textarea4.value.length >= 10;
+            const isTextarea5Valid = !textarea5.validity.valueMissing && textarea5.value.length >= 10;
+            const isTextarea6Valid = !textarea6.validity.valueMissing && textarea6.value.length >= 10;
+            const isTextarea7Valid = !textarea7.validity.valueMissing && textarea7.value.length >= 10;
+            const isTextarea8Valid = !textarea8.validity.valueMissing && textarea8.value.length >= 10;
+            const isTextarea9Valid = !textarea9.validity.valueMissing && textarea9.value.length >= 10;
+            const isTextarea10Valid = !textarea10.validity.valueMissing && textarea10.value.length >= 10;
+            const isTextarea11Valid = !textarea11.validity.valueMissing && textarea11.value.length >= 10;
+            const isTextarea12Valid = !textarea12.validity.valueMissing && textarea12.value.length >= 10;
 
-            // Validasi untuk set pertama input
-            const isSet1Valid = !(textarea1.validity.valueMissing || textarea2.validity.valueMissing ||
-                textarea3.validity.valueMissing || textarea4.validity.valueMissing);
+            // Tombol akan aktif jika semua textarea memenuhi validasi
+            nextButton.disabled = !(isTextarea1Valid && isTextarea2Valid && isTextarea3Valid && isTextarea4Valid);
 
-            // Validasi untuk set kedua input
-            const isSet2Valid = !textarea5.validity.valueMissing && textarea5.value.length >= 10;
-            const isSet3Valid = !textarea6.validity.valueMissing && textarea6.value.length >= 10;
+            // Tombol akan aktif jika semua textarea memenuhi validasi
+            nextButton1.disabled = !(isTextarea5Valid && isTextarea6Valid && isTextarea7Valid && isTextarea8Valid);
 
-            // Validasi tambahan untuk memeriksa panjang teks textarea1, textarea3, dan textarea4
-            const isSet1LengthValid = textarea2.value.length >= 10 &&
-                textarea4.value.length >= 10;
-
-            // Aktifkan atau nonaktifkan tombol "Next" berdasarkan validasi set pertama
-            nextButton.disabled = !(isSet1Valid && isSet1LengthValid);
-
-            // Aktifkan atau nonaktifkan tombol "NextButton1" berdasarkan validasi set kedua
-            nextButton1.disabled = !isSet2Valid;
-
-            submitButton.disabled = !isSet3Valid;
-
+            submitButton.disabled = !(isTextarea9Valid && isTextarea10Valid && isTextarea11Valid && isTextarea12Valid);
         }
 
-        // Panggil fungsi saat textarea diubah
         textarea1.addEventListener("input", toggleNextButton);
         textarea2.addEventListener("input", toggleNextButton);
         textarea3.addEventListener("input", toggleNextButton);
         textarea4.addEventListener("input", toggleNextButton);
         textarea5.addEventListener("input", toggleNextButton);
         textarea6.addEventListener("input", toggleNextButton);
+        textarea7.addEventListener("input", toggleNextButton);
+        textarea8.addEventListener("input", toggleNextButton);
+        textarea9.addEventListener("input", toggleNextButton);
+        textarea10.addEventListener("input", toggleNextButton);
+        textarea11.addEventListener("input", toggleNextButton);
+        textarea12.addEventListener("input", toggleNextButton);
 
         // Panggil fungsi saat halaman dimuat untuk mengatur status awal
         toggleNextButton();
+
 
         function nextStep(step) {
             if (step === 1) {
