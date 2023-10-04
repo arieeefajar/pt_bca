@@ -30,18 +30,28 @@
     <div class="row">
         <div class="col-xxl-12">
             <div class="card">
-                <div class="card-body">
-                    <div id="formContainer">
-                        <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
-                            @csrf
-                            <div id="step1">
-                                <div class="card-header">
-                                    <div class="progres-bar" role="progressbar">
-                                        <h4 class="card-title mb-0">Karakteristik Varietas</h4>
-                                    </div>
-                                </div><!-- end card header -->
-
-                                <div class="content col mt-3">
+                <div id="formContainer">
+                    <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
+                        @csrf
+                        <div id="step1">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab"
+                                            href="#perbandingan-produk" role="tab" aria-selected="true">
+                                            Karakteristik Varietas
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" id="keunggulan-tab" data-bs-toggle="tab"
+                                            href="#keunggulan-kompetitif" role="tab" aria-selected="false">
+                                            Musim Tanam
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="content col">
                                     <label class="form-label">Standar Keunggulan Umum</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_umum"
                                         id="keunggulan_umum" cols="30" rows="5" required></textarea>
@@ -68,15 +78,27 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="step2" style="display: none;">
-                                <div class="card-header">
-                                    <div class="progres-bar" role="progressbar">
-                                        <h4 class="card-title mb-0">Musim Tanam</h4>
-                                    </div>
-                                </div><!-- end card header -->
-
-                                <div class="row mb-3 mt-3">
+                        <div id="step2" style="display: none;">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" id="perbandingan-tab" data-bs-toggle="tab"
+                                            href="#perbandingan-produk" role="tab" aria-selected="true">
+                                            Karakteristik Varietas
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="keunggulan-tab" data-bs-toggle="tab"
+                                            href="#keunggulan-kompetitif" role="tab" aria-selected="false">
+                                            Musim Tanam
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="iklim" id="iklim"
@@ -86,8 +108,8 @@
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
-                                        <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="event" id="event"
-                                            cols="30" rows="5" required></textarea>
+                                        <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="event"
+                                            id="event" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row g-4 mt-3">
@@ -100,84 +122,28 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center mt-3">
-
-                                </div>
-                            </div>
-                            <input type="hidden" name="latitude" id="latitude_field">
-                            <input type="hidden" name="longitude" id="longitude_field">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- <div class="row">
-        <div class="col-xxl-6">
-            <div class="card">
-                <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab"
-                                href="#karakteristik-varietas" role="tab" aria-selected="true">
-                                Karakteristik Varietas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="keunggulan-tab" data-bs-toggle="tab" href="#musim-tanam" role="tab"
-                                aria-selected="false">
-                                Musim Tanam
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
-                        @csrf
-                        <div class="tab-content text-muted">
-                            <div class="tab-pane fade show active" id="karakteristik-varietas" role="tabpanel"
-                                aria-labelledby="perbandingan-tab" style="margin-bottom: 20px;"><br>
-                                <div class="content col">
-                                    <label class="form-label">Standar Keunggulan Umum</label>
-                                    <textarea class="form-control" name="keunggulan_umum" id="keunggulan_umum" cols="30" rows="5" required></textarea>
-                                </div>
-                                <div class="content col"><br>
-                                    <label class="form-label">Keunggulan Produk Kita</label>
-                                    <textarea class="form-control" name="keunggulan_produk" id="keunggulan_produk" cols="30" rows="5" required></textarea>
-                                </div>
-                                <div class="content col"><br>
-                                    <label class="form-label">Keunggulan Kompetitor</label>
-                                    <textarea class="form-control" name="keunggulan_kompetitor" id="keunggulan_kompetitor" cols="30" rows="5"
-                                        required></textarea>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="musim-tanam" role="tabpanel" aria-labelledby="keunggulan-tab">
-                                <br>
-                                <div class="row mb-3">
-                                    <div class="content col">
-                                        <label class="form-label">Iklim</label>
-                                        <textarea class="form-control" name="iklim" id="iklim" cols="30" rows="5" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="content col">
-                                        <label class="form-label">Event pasar atau perayaan</label>
-                                        <textarea class="form-control" name="event" id="evet" cols="30" rows="5" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="text-center mt-3">
-                                    <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
-                                </div>
                             </div>
                         </div>
 
                         <input type="hidden" name="latitude" id="latitude_field">
                         <input type="hidden" name="longitude" id="longitude_field">
                     </form>
-                </div><!-- end card-body -->
-            </div><!-- end card -->
-        </div><!--end col-->
-    </div> --}}
+                </div>
+            </div>
+
+            {{-- <div class="card">
+                <div class="card-body">
+                    <div id="formContainer">
+                        <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
+                            @csrf
+                            <input type="hidden" name="latitude" id="latitude_field">
+                            <input type="hidden" name="longitude" id="longitude_field">
+                        </form>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </div>
 
     <script>
         function getLocation() {

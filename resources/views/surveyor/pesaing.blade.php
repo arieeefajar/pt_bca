@@ -23,17 +23,33 @@
     <div class="row">
         <div class="col-xxl-12">
             <div class="card">
-                <div class="card-body">
-                    <div id="formContainer">
-                        <form action="{{ route('formPesaing.create') }}" method="POST" id="myFormPesaing">
-                            @csrf
-                            <div id="step1">
-                                <div class="card-header">
-                                    <div class="progres-bar" role="progressbar">
-                                        <h4 class="card-title mb-0">Karakteristik Varietas</h4>
-                                    </div>
-                                </div><!-- end card header -->
-                                <div class="row mt-3">
+                <div id="formContainer">
+                    <form action="{{ route('formPesaing.create') }}" method="POST" id="myFormPesaing">
+                        @csrf
+                        <div id="step1">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                            Perbandingan Produk
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" id="keunggulan-tab" data-bs-toggle="tab"
+                                            href="#keunggulan-kompetitif" role="tab" aria-selected="false">
+                                            Keunggulan Kompetitif
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" id="aktivitas-tab" data-bs-toggle="tab"
+                                            href="#aktivitas-pemasaran-pesaing" role="tab" aria-selected="false">
+                                            Aktivitas Pemasaran Pesaing
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3"><label class="form-label">Produk Kami :</label>
                                             <select class="form-select mb-3" required name="produk_kita" id="produkSelect"
@@ -60,7 +76,7 @@
                                             placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
                                     </div>
                                 </div>
-                                <div class="row g-4 mb-3">
+                                <div class="row g-4 mt-3 mb-3">
                                     <div class="col-sm">
                                         <div class="d-flex justify-content-sm-end">
                                             <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
@@ -71,19 +87,34 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center mt-3">
-
-                                </div>
                             </div>
+                        </div>
 
-                            <div id="step2" style="display: none;">
-                                <div class="card-header">
-                                    <div class="progres-bar" role="progressbar">
-                                        <h4 class="card-title mb-0">Keunggulan Kompetitif</h4>
-                                    </div>
-                                </div><!-- end card header -->
-
-                                <div class="row mt-3">
+                        <div id="step2" style="display: none;">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" data-bs-toggle="tab" role="tab"
+                                            aria-selected="true">
+                                            Perbandingan Produk
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="keunggulan-tab" data-bs-toggle="tab"
+                                            href="#keunggulan-kompetitif" role="tab" aria-selected="false">
+                                            Keunggulan Kompetitif
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" id="aktivitas-tab" data-bs-toggle="tab"
+                                            href="#aktivitas-pemasaran-pesaing" role="tab" aria-selected="false">
+                                            Aktivitas Pemasaran Pesaing
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Apa saja keunggulan pesaing :</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_pesaing"
@@ -101,15 +132,33 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="step3" style="display: none;">
-                                <div class="card-header">
-                                    <div class="progres-bar" role="progressbar">
-                                        <h4 class="card-title mb-0">Aktivitas Pemasaran Pesaing</h4>
-                                    </div>
-                                </div><!-- end card header -->
-
-                                <div class="row mt-3">
+                        <div id="step3" style="display: none;">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" data-bs-toggle="tab" role="tab"
+                                            aria-selected="true">
+                                            Perbandingan Produk
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" id="keunggulan-tab" data-bs-toggle="tab"
+                                            href="#keunggulan-kompetitif" role="tab" aria-selected="false">
+                                            Keunggulan Kompetitif
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="aktivitas-tab" data-bs-toggle="tab"
+                                            href="#aktivitas-pemasaran-pesaing" role="tab" aria-selected="false">
+                                            Aktivitas Pemasaran Pesaing
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
                                         <textarea class="form-control" maxlength="1000" name="pemasaran_pesaing" id="pemasaranPesaing"
@@ -127,13 +176,25 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <input type="hidden" name="latitude" id="latitude_field">
+                        <input type="hidden" name="longitude" id="longitude_field">
+                    </form>
+                </div>
+            </div>
+
+            {{-- <div class="card">
+                <div class="card-body">
+                    <div id="formContainer">
+                        <form action="{{ route('formPesaing.create') }}" method="POST" id="myFormPesaing">
+                            @csrf
                             <input type="hidden" name="latitude" id="latitude_field">
                             <input type="hidden" name="longitude" id="longitude_field">
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
