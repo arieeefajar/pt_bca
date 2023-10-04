@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Provinsi;
+use App\Models\User;
 use App\Models\Wilayah_survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,86 +13,55 @@ class WilayahSurveyController extends Controller
 {
     public function index()
     {
-        // return response
-        return response()->json([
-            "data" => Wilayah_survey::all()
-        ]);
+        $dataSurveyor = Wilayah_survey::getWilayahSurvey();
+        $provinsi = Provinsi::all();
+
+        return view('admin.dataSurveyor', compact('dataSurveyor', 'provinsi'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // custom message validate
         $customMessages = [
-            'wilayah.required' => 'Wilayah harus diisi.',
-            'surveyor.required' => 'Surveyor harus diisi.',
-            'start_day.required' => 'Start day harus diisi.',
-            'end_day.required' => 'End day harus diisi.',
+            'kota.required' => 'Wilayah harus diisi.',
         ];
 
         // validate
-        $validator = Validator::make($request->all(), [
-            'wilayah' => 'required|numeric',
-            'surveyor' => 'required|numeric',
-            'start_day' => 'required',
-            'end_day' => 'required',
-        ], $customMessages);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'kota' => 'required',
+            ],
+            $customMessages
+        );
 
         // check validator
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            alert()->error('Gagal', $validator->messages()->all()[0]);
+            return redirect()
+                ->back()
+                ->withInput();
         }
 
         // create
-        $result = Wilayah_survey::create([
-            'wilayah_id' => $request->wilayah,
-            'surveyor_id' => $request->surveyor,
-            'start_day' => $request->start_day,
-            'end_day' => $request->end_day,
-        ]);
+        $wilayahSurvey = Wilayah_survey::where('surveyor_id', $id)->first();
 
-        // return response
-        return response()->json([
-            "data" => $result
-        ]);
-    }
-
-    public function update(Request $request)
-    {
-        // custom message validate
-        $customMessages = [
-            'id.required' => 'Error ID.',
-            'wilayah.required' => 'Wilayah harus diisi.',
-            'surveyor.required' => 'Surveyor harus diisi.',
-            'start_day.required' => 'Start day harus diisi.',
-            'end_day.required' => 'End day harus diisi.',
-        ];
-
-        // validate
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'wilayah' => 'required|numeric',
-            'surveyor' => 'required|numeric',
-            'start_day' => 'required',
-            'end_day' => 'required',
-        ], $customMessages);
-
-        // check validator
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        try {
+            if (!$wilayahSurvey) {
+                Wilayah_survey::create([
+                    'kota_id' => $request->kota,
+                    'surveyor_id' => $id,
+                ]);
+            } else {
+                $wilayahSurvey->kota_id = $request->kota;
+                $wilayahSurvey->save();
+            }
+            alert()->success('Berhasil', 'Berhasil set wilayah survey');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', $th[0]);
+            return redirect()->back();
         }
-
-        // update
-        $result = Wilayah_survey::findOrFail($request->id)->update([
-            'wilayah_id' => $request->wilayah,
-            'surveyor_id' => $request->surveyor,
-            'start_day' => $request->start_day,
-            'end_day' => $request->end_day,
-        ]);
-
-        // return response
-        return response()->json([
-            "data" => Wilayah_survey::findOrFail($request->id)
-        ]);
     }
 
     public function destroy($id)
@@ -101,10 +72,9 @@ class WilayahSurveyController extends Controller
 
             // return response
             return response()->json([
-                'message' => 'data berhasil dihapus'
+                'message' => 'data berhasil dihapus',
             ]);
         } catch (\Throwable $th) {
-
             // return error
             return response()->json($th);
         }

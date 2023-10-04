@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('nama');
             $table->enum('jenis', array('dealer','master_dealer','lainnya'));
-            $table->unsignedBigInteger('kelurahan_id');
-            $table->foreign('kelurahan_id')->references('id')->on('kelurahan');
+            $table->unsignedBigInteger('kota_id');
+            $table->foreign('kota_id')->references('id')->on('kota');
             $table->string('koordinat');
             $table->timestamps();
         });

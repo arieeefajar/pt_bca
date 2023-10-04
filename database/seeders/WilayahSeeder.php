@@ -17,37 +17,30 @@ class WilayahSeeder extends Seeder
      */
     public function run(): void
     {
-        $pathJson = base_path('database/seeders/dataJson/kelurahan.json');
+
+        // provinsi
+        $pathJson = base_path('database/seeders/dataJson/provinces.json');
         $readJson = file_get_contents($pathJson);
         $jsonData = [json_decode($readJson, true)];
 
-        foreach ($jsonData as $provinsi) {
-            $dataProvinsi = new Provinsi();
-            $dataProvinsi->nama = $provinsi['name'];
-            $dataProvinsi->save();
+        foreach ($jsonData[0] as $provinsi) {
+            Provinsi::create([
+                'id' => $provinsi['id'],
+                'nama' => $provinsi['name']
+            ]);
+        }
 
-            foreach ($provinsi['kota'] as $kota) {
-                $dataKota = new Kota();
-                $dataKota->provinsi_id = $dataProvinsi->id;
-                $dataKota->nama = $kota['name'];
-                $dataKota->save();
+        // kota
+        $pathJson = base_path('database/seeders/dataJson/regencies.json');
+        $readJson = file_get_contents($pathJson);
+        $jsonData = [json_decode($readJson, true)];
 
-                foreach ($kota['kecamatan'] as $kecamatan) {
-                    $dataKecamatan = new Kecamatan();
-                    $dataKecamatan->kota_id = $dataKota->id;
-                    $dataKecamatan->nama = $kecamatan['name'];
-                    $dataKecamatan->save();
-
-                    foreach ($kecamatan['kelurahan'] as $kelurahan) {
-                        $dataKelurahan = new Kelurahan();
-                        $dataKelurahan->kecamatan_id = $dataKecamatan->id;
-                        $dataKelurahan->nama = $kelurahan['name'];
-                        $dataKelurahan->latitude = $kelurahan['latitude'];
-                        $dataKelurahan->longitude = $kelurahan['longtitude'];
-                        $dataKelurahan->save();
-                    }
-                }
-            }
+        foreach ($jsonData[0] as $kota) {
+            Kota::create([
+                'id' => $kota['id'],
+                'provinsi_id' => $kota['province_id'],
+                'nama' => $kota['name']
+            ]);
         }
     }
 }

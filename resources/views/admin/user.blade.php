@@ -28,8 +28,9 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data-sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Username</th>
-                                        <th class="text-center" data-sort="email">Email</th>
+                                        <th class="text-center" data-sort="customer_name">Name</th>
+                                        <th class="text-center" data-sort="email">NIP</th>
+                                        <th class="text-center" data-sort="email">Position</th>
                                         <th class="text-center" data-sort="phone">Alamat</th>
                                         <th class="text-center" data-sort="date">No.HP</th>
                                         <th class="text-center" data-sort="date">Role</th>
@@ -40,10 +41,11 @@
                                     @foreach ($users as $index => $user)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->alamat }}</td>
-                                            <td class="text-center">{{ $user->no_telp }}</td>
+                                            <td class="text-center">{{ $user->name }}</td>
+                                            <td class="text-center">{{ $user->nip }}</td>
+                                            <td class="text-center">{{ !$user->position ? '-' : $user->position }}</td>
+                                            <td class="text-center">{{ !$user->alamat ? '-' : $user->alamat }}</td>
+                                            <td class="text-center">{{ !$user->no_telp ? '-' : $user->no_telp }}</td>
                                             <td class="text-center">
                                                 {{ $user->role === 'user' ? 'surveyor' : $user->role }}
                                             </td>
@@ -81,21 +83,21 @@
 
                         {{-- username --}}
                         <div class="mb-3">
-                            <label for="name" class="form-label">Username</label>
+                            <label for="name" class="form-label">Name</label>
                             <input type="text" id="name" name="name" class="form-control"
                                 value="{{ old('name') }}" placeholder="Masukkan Username" required />
                             <div class="invalid-feedback">
-                                Username tidak boleh kosong.
+                                Name tidak boleh kosong.
                             </div>
                         </div>
 
-                        {{-- email --}}
+                        {{-- nip --}}
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}" id="email"
-                                class="form-control" placeholder="Masukan Email" required />
+                            <label for="nip" class="form-label">NIP</label>
+                            <input type="text" name="nip" value="{{ old('nip') }}" id="nip"
+                                class="form-control" placeholder="Masukan Nip" required />
                             <div class="invalid-feedback">
-                                Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Admin@gmail.com
+                                NIP tidak boleh kosong.
                             </div>
                         </div>
 
@@ -181,7 +183,7 @@
                         @method('POST')
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Username</label>
+                                <label for="name" class="form-label">Name</label>
                                 <input type="text" id="name" name="name" class="form-control"
                                     value="{{ $user->name }}" placeholder="Masukkan Username" required />
                                 <div class="invalid-feedback">
@@ -189,11 +191,11 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="email-field" class="form-label">Email</label>
-                                <input type="email" id="email-field" name="email" value="{{ $user->email }}"
-                                    class="form-control" placeholder="Masukan Email" required />
+                                <label for="email-field" class="form-label">NIP</label>
+                                <input type="nip" id="nip-field" name="nip" value="{{ $user->nip }}"
+                                    class="form-control" placeholder="Masukan NIP" required />
                                 <div class="invalid-feedback">
-                                    Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Raju@gmail.com
+                                    NIP tidak boleh kosong.
                                 </div>
                             </div>
 

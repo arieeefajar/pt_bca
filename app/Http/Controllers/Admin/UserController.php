@@ -33,10 +33,9 @@ class UserController extends Controller
             'name.required' => 'Username harus di isi',
             'name.max' => 'Username maximal :max karakter',
 
-            'email.required' => 'Email harus di isi',
-            'email.email' => 'Email harus menggunakan format email',
-            'email.unique' => 'Email sudah digunakan',
-            'email.max' => 'Email maximal :max karakter',
+            'nip.required' => 'Email harus di isi',
+            'nip.unique' => 'Email sudah digunakan',
+            'nip.max' => 'Email maximal :max karakter',
 
             'password.required' => 'Password harus di isi',
             'password.min' => 'Password minimal :min karakter',
@@ -54,7 +53,7 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:30',
-            'email' => 'required|email|unique:users|max:40',
+            'nip' => 'required|unique:users|max:40',
             'password' => 'required|min:8',
             'alamat' => 'required|max:255',
             'no_telp' => 'required|min:11|max:16',
@@ -70,7 +69,7 @@ class UserController extends Controller
         // create new user data
         $user = new User();
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->nip = $request->nip;
         $user->password = Hash::make($request->password);
         $user->alamat = $request->alamat;
         $user->no_telp = $request->no_telp;
@@ -92,14 +91,13 @@ class UserController extends Controller
         $customMessages = [
             'required' => ':attribute harus diisi.',
             'numeric' => ':attribute harus berupa angka.',
-            'email' => ':attribute harus menggunakan format email',
-            'unique' => 'Email sudah digunakan.',
+            'unique' => 'NIP sudah digunakan.',
             'in' => ':attribute tidak valid.',
         ];
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:40',
-            'email' => 'required|email|max:40',
+            'nip' => 'required|unique:users|max:40',
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:16',
             'role' => 'required|in:supper-admin,admin,executive,user',
@@ -114,7 +112,7 @@ class UserController extends Controller
         // get user data from id
         $user = User::findOrFail($id);
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->nip = $request->nip;
         $user->alamat = $request->alamat;
         $user->no_telp = $request->no_telp;
         $user->role = $request->role;

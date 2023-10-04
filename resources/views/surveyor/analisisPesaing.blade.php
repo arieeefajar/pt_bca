@@ -306,8 +306,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Apakah pembeli dapat dengan mudah berganti penjual tanpa
-                                                konsekuensi tertentu seperti harga dan kualitas ?</td>
+                                            <td>Apakah produk yang diinginkan oleh calon pembeli tidak berbeda
+                                                jauh di antara pesaing-pesaing di dalam industri perusahaan ?</td>
                                             <td align="center">
                                                 <input type="radio" name="difference_desire" value="1">
                                             </td>
@@ -316,7 +316,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Apakah pembeli sangat sensitif terhadap perubahan harga ?</td>
+                                            <td>Apakah pembeli dapat dengan mudah berganti penjual tanpa
+                                                konsekuensi tertentu seperti harga dan kualitas ?</td>
                                             <td align="center">
                                                 <input type="radio" name="customor_movement" value="1">
                                             </td>

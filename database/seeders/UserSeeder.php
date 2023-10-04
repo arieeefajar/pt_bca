@@ -15,21 +15,46 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'super admin', 'email' => 'superadmin@gmail.com', 'password' => Hash::make('12345678'), 'alamat' => 'polije', 'no_telp' => '081233764580', 'role' => 'supper-admin'],
-            ['name' => 'admin', 'email' => 'admin@gmail.com', 'password' => Hash::make('12345678'), 'alamat' => 'polije', 'no_telp' => '081233764580', 'role' => 'admin'],
-            ['name' => 'executive', 'email' => 'executive@gmail.com', 'password' => Hash::make('12345678'), 'alamat' => 'polije', 'no_telp' => '081233764580', 'role' => 'executive'],
-            ['name' => 'surveyor', 'email' => 'surveyor@gmail.com', 'password' => Hash::make('12345678'), 'alamat' => 'polije', 'no_telp' => '081233764580', 'role' => 'user'],
-            ['name' => 'surveyor2', 'email' => 'surveyor2@gmail.com', 'password' => Hash::make('12345678'), 'alamat' => 'polije', 'no_telp' => '081233764580', 'role' => 'user']
+            [
+                'name' => 'super admin',
+                'nip' => 'super-admin',
+                'password' => Hash::make('super-admin'),
+                'role' => 'supper-admin',
+            ],
+            [
+                'name' => 'admin',
+                'nip' => 'admin',
+                'password' => Hash::make('admin'),
+                'role' => 'admin',
+            ],
+            [
+                'name' => 'executive',
+                'nip' => 'executive',
+                'password' => Hash::make('executive'),
+                'role' => 'executive',
+            ],
         ];
 
         foreach ($data as $value) {
             User::create([
                 'name' => $value['name'],
-                'email' => $value['email'],
+                'nip' => $value['nip'],
                 'password' => $value['password'],
-                'alamat' => $value['alamat'],
-                'no_telp' => $value['no_telp'],
                 'role' => $value['role'],
+            ]);
+        }
+
+        $pathJson = base_path('database/seeders/dataJson/pegawai.json');
+        $readJson = file_get_contents($pathJson);
+        $jsonData = [json_decode($readJson, true)];
+
+        foreach ($jsonData[0]['employees'] as $user) {
+            User::create([
+                'name' => $user['Name'],
+                'nip' => $user['NIP'],
+                'position' => $user['Position'],
+                'password' => Hash::make($user['NIP']),
+                'role' => 'user',
             ]);
         }
     }

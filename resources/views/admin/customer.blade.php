@@ -32,7 +32,7 @@
                                         <th class="text-center" data-sort="customer_name">Nama Customer</th>
                                         <th class="text-center" data-sort="customer_name">Jenis</th>
                                         <th class="text-center" data-sort="customer_name">Provinsi</th>
-                                        <th class="text-center" data-sort="customer_name">Kelurahan</th>
+                                        <th class="text-center" data-sort="customer_name">Kota</th>
                                         <th class="text-center" data-sort="action">Action</th>
                                     </tr>
                                 </thead>
@@ -42,8 +42,8 @@
                                             <th class="text-center">{{ $key + 1 }}</th>
                                             <td class="text-center">{{ $data->nama }}</td>
                                             <td class="text-center">{{ $data->jenis }}</td>
-                                            <td class="text-center">{{ $data->provinsi }}</td>
-                                            <td class="text-center">{{ $data->kelurahan->nama }}</td>
+                                            <td class="text-center">{{ $data->kota->provinsi->nama }}</td>
+                                            <td class="text-center">{{ $data->kota->nama }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                                     data-bs-target="#modalEdit"
@@ -134,32 +134,6 @@
                             </div>
                         </div>
 
-                        {{-- kecamatan --}}
-                        <div class="mb-3">
-                            <label class="form-label">Kecamatan</label>
-                            <select required class="form-select" name="kecamatan" id="add_kecamatan"
-                                oninvalid="this.setCustomValidity('Harap pilih area customer')"
-                                oninput="setCustomValidity('')">
-                                <option value="" selected disabled>Pilih Kota Terlebih Dahulu</option>
-                            </select>
-                            <div class="invalid-feedback mb-3">
-                                Harap pilih kecamatan.
-                            </div>
-                        </div>
-
-                        {{-- Kelurahan --}}
-                        <div class="mb-3">
-                            <label class="form-label">Kelurahan</label>
-                            <select required class="form-select" name="kelurahan" id="add_kelurahan"
-                                oninvalid="this.setCustomValidity('Harap pilih area customer')"
-                                oninput="setCustomValidity('')">
-                                <option value="" selected disabled>Pilih kecamatan Terlebih Dahulu</option>
-                            </select>
-                            <div class="invalid-feedback mb-3">
-                                Harap pilih Kelurahan.
-                            </div>
-                        </div>
-
                         {{-- koordinat --}}
                         <div class="mb-3">
                             <label class="form-label">Koordinat</label>
@@ -246,32 +220,6 @@
                             </div>
                         </div>
 
-                        {{-- kecamatan --}}
-                        <div class="mb-3">
-                            <label class="form-label">Kecamatan</label>
-                            <select required class="form-select" name="kecamatan" id="edit_kecamatan"
-                                oninvalid="this.setCustomValidity('Harap pilih area customer')"
-                                oninput="setCustomValidity('')">
-                                <option value="" selected disabled>Pilih Kota Terlebih Dahulu</option>
-                            </select>
-                            <div class="invalid-feedback mb-3">
-                                Harap pilih kecamatan.
-                            </div>
-                        </div>
-
-                        {{-- Kelurahan --}}
-                        <div class="mb-3">
-                            <label class="form-label">Kelurahan</label>
-                            <select required class="form-select" name="kelurahan" id="edit_kelurahan"
-                                oninvalid="this.setCustomValidity('Harap pilih area customer')"
-                                oninput="setCustomValidity('')">
-                                <option value="" selected disabled>Pilih kecamatan Terlebih Dahulu</option>
-                            </select>
-                            <div class="invalid-feedback mb-3">
-                                Harap pilih Kelurahan.
-                            </div>
-                        </div>
-
                         {{-- koordinat --}}
                         <div class="mb-3">
                             <label class="form-label">Koordinat</label>
@@ -310,7 +258,7 @@
                         {{-- Area --}}
                         <div class="mb-3">
                             <label for="customername-field" class="form-label">Wilayah</label>
-                            <input type="text" name="nama" value="" id="nama" class="form-control"
+                            <input type="text" name="nama" value="{{ $data->kota->nama }}" id="nama" class="form-control"
                                 placeholder="Masukan Nama Customer..." required />
                         </div>
 
@@ -378,16 +326,6 @@
         $("#add_provinsi").change(function() {
             setProvinsi('#add_provinsi', "#add_kota") // format paramater : "#idElement"
         });
-
-        // set kota
-        $("#add_kota").change(function() {
-            setKota('#add_kota', "#add_kecamatan") // format paramater : "#idElement"
-        });
-
-        // set kecamatan
-        $("#add_kecamatan").change(function() {
-            setKecamatan('#add_kecamatan', "#add_kelurahan") // format paramater : "#idElement"
-        });
         /////////////////// end function add data ///////////////////
 
         /////////////////// this function for edtit data ///////////////////
@@ -396,17 +334,13 @@
             document.getElementById('formEdit').action = "{{ route('customer.update', ['id' => '/']) }}/" + data.id;
 
             // set value in modal edit
-
-
-            ajax('get', "{{ route('getAllLocation', ['id_kelurahan' => '/']) }}/" + data.kelurahan_id, function(
+            ajax('get', "{{ route('getAllLocation', ['id_kelurahan' => '/']) }}/" + data.kota_id, function(
                 response) { //  ajax(methos, url, callback)
 
                 if (response.success) {
                     const dataSelect = response.data // get data array
-
-                    const dataKota = dataSelect.allData.kota
-                    const dataKecamatan = dataSelect.allData.kecamatan
-                    const dataKelurahan = dataSelect.allData.kelurahan
+                    const dataKota = dataSelect.listKota
+                    console.log(dataSelect);
 
                     /////////////////// fill in the dropdown data ///////////////////
                     // kota
@@ -415,32 +349,14 @@
                         bodyKota += `<option value="${dataKota[index].id}">${dataKota[index].nama}</option>`
                     }
                     $('#edit_kota').html(bodyKota);
-
-                    // kecamatan
-                    let bodyKecamatan = '<option value="" selected disabled>Pilih Kecamatan</option>';
-                    for (let index = 0; index < dataKecamatan.length; index++) {
-                        bodyKecamatan +=
-                            `<option value="${dataKecamatan[index].id}">${dataKecamatan[index].nama}</option>`
-                    }
-                    $('#edit_kecamatan').html(bodyKecamatan);
-
-                    // kelurahan
-                    let bodyKelurahan = '<option value="" selected disabled>Pilih Kelurahan</option>';
-                    for (let index = 0; index < dataKelurahan.length; index++) {
-                        bodyKelurahan +=
-                            `<option value="${dataKelurahan[index].id}">${dataKelurahan[index].nama}</option>`
-                    }
-                    $('#edit_kelurahan').html(bodyKelurahan);
                     /////////////////// end fill in the dropdown data ///////////////////
 
 
-                    /////////////////// set data ///////////////////
+                    // /////////////////// set data ///////////////////
                     $("#edit_custommer").val(data.nama);
                     $("#edit_jenis").val(data.jenis);
-                    $("#edit_provinsi").val(dataSelect.provinsi);
-                    $("#edit_kota").val(dataSelect.kota);
-                    $("#edit_kecamatan").val(dataSelect.kecamatan);
-                    $("#edit_kelurahan").val(dataSelect.kelurahan);
+                    $("#edit_provinsi").val(dataSelect.provinsi_id);
+                    $("#edit_kota").val(dataSelect.id);
                     $("#edit_koordinat").html(data.koordinat);
                     /////////////////// end set data selected dropdown ///////////////////
 
@@ -450,16 +366,6 @@
 
         $("#edit_provinsi").change(function() {
             setProvinsi('#edit_provinsi', "#edit_kota") // format paramater : "#idElement"
-        });
-
-        // set kota
-        $("#edit_kota").change(function() {
-            setKota('#edit_kota', "#edit_kecamatan") // format paramater : "#idElement"
-        });
-
-        // set kecamatan
-        $("#edit_kecamatan").change(function() {
-            setKecamatan('#edit_kecamatan', "#edit_kelurahan") // format paramater : "#idElement"
         });
         /////////////////// end function edtit data ///////////////////
 
@@ -475,42 +381,6 @@
                         bodyKota += `<option value="${data[index].id}">${data[index].nama}</option>`
                     }
                     $(idElementSet).html(bodyKota); // set content
-                }
-            })
-        }
-
-        function setKota(idElement, idElementSet) {
-            const selectedItem = $(idElement).children("option:selected").val(); // get value select
-            const url = "{{ route('getkecamatan', '') }}" + "/" + selectedItem; // url route
-
-            ajax('get', url, function(response) { //  ajax(methos, url, callback)
-
-                if (response.success) {
-                    const data = response.data // get data array
-                    let bodyKecamatan =
-                        '<option value="" selected disabled>Pilih Kecamatan</option>'; // content html
-                    for (let index = 0; index < data.length; index++) {
-                        bodyKecamatan += `<option value="${data[index].id}">${data[index].nama}</option>`
-                    }
-                    $(idElementSet).html(bodyKecamatan); // set content
-                }
-            })
-        }
-
-        function setKecamatan(idElement, idElementSet) {
-            const selectedItem = $(idElement).children("option:selected").val(); // get value select
-            const url = "{{ route('getkelurahan', '') }}" + "/" + selectedItem; // url route
-
-            ajax('get', url, function(response) { //  ajax(methos, url, callback)
-
-                if (response.success) {
-                    const data = response.data // get data array
-                    let bodyKelurahan =
-                        '<option value="" selected disabled>Pilih Kelurahan</option>'; // content html
-                    for (let index = 0; index < data.length; index++) {
-                        bodyKelurahan += `<option value="${data[index].id}">${data[index].nama}</option>`
-                    }
-                    $(idElementSet).html(bodyKelurahan); // set content
                 }
             })
         }

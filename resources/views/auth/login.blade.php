@@ -70,10 +70,10 @@
                                     <form action="{{ route('prosesLogin') }}" method="POST">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email"
-                                                placeholder="Masukan email" name="email" required
-                                                value="{{ old('email') }}">
+                                            <label for="nip" class="form-label">NIP</label>
+                                            <input type="text" class="form-control" id="email"
+                                                placeholder="Masukan email" name="nip" required
+                                                value="{{ old('nip') }}">
                                         </div>
 
                                         <div class="mb-3">
