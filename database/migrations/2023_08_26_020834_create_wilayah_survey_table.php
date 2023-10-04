@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('wilayah_survey', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('kelurahan_id');
-            $table->foreign('kelurahan_id')->references('id')->on('kelurahan');
+            $table->unsignedBigInteger('kota_id');
+            $table->foreign('kota_id')->references('id')->on('kota');
             $table->unsignedBigInteger('surveyor_id');
             $table->foreign('surveyor_id')->references('id')->on('users');
-            $table->dateTime('start_day');
-            $table->dateTime('end_day');
+            $table->dateTime('start_day')->nullable();
+            $table->dateTime('end_day')->nullable();
             $table->timestamps();
         });
     }

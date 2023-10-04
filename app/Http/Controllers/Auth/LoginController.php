@@ -21,14 +21,13 @@ class LoginController extends Controller
     {
         // custom message validate
         $customMessages = [
-            'email.required' => 'Email harus diisi.',
-            'email.email' => 'Email harus berformat @gmail.com.',
+            'nip.required' => 'NIP harus diisi.',
             'password.required' => 'Password harus diisi.',
         ];
 
         // validate
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
+            'nip' => 'required',
             'password' => 'required',
         ], $customMessages);
 
@@ -40,14 +39,14 @@ class LoginController extends Controller
         }
 
         // cek email
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('nip', $request->nip)->first();
         if (!$user) {
-            toast('Email tidak terdaftar', 'error')->position('top')->autoClose(3000);
+            toast('NIP tidak terdaftar', 'error')->position('top')->autoClose(3000);
             return redirect()->back()->withInput();
         }
 
         // Validasi berhasil, lanjutkan dengan percobaan otentikasi
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('nip', 'password');
 
         if (Auth::attempt($credentials)) {
             // Login berhasil

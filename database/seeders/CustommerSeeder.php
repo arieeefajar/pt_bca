@@ -17,7 +17,7 @@ class CustommerSeeder extends Seeder
             [
                 'nama' => 'Maju jaya',
                 'jenis' => 'dealer',
-                'kelurahan_id' => 1,
+                'kota_id' => 3509,
                 'koordinat' => '-7.2575, 112.7521',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -25,7 +25,7 @@ class CustommerSeeder extends Seeder
             [
                 'nama' => 'Raja bibit',
                 'jenis' => 'dealer',
-                'kelurahan_id' => 1,
+                'kota_id' => 3509,
                 'koordinat' => '-7.2575, 112.7530',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -33,7 +33,7 @@ class CustommerSeeder extends Seeder
             [
                 'nama' => 'Sahabat Petani',
                 'jenis' => 'master_dealer',
-                'kelurahan_id' => 2,
+                'kota_id' => 3509,
                 'koordinat' => '-8.1724, 113.7005',
                 'created_at' => now(),
                 'updated_at' => now(),

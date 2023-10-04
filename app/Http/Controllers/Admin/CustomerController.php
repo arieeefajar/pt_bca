@@ -18,11 +18,11 @@ class CustomerController extends Controller
     public function index()
     {
         // get perusahaan and area data
-        $dataPerusahaan = Customer::with('kelurahan')
+        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')
             ->orderBy('created_at', 'desc')
             ->get();
         $provinsi = Provinsi::all();
-        // dd($provinsi);
+        // dd($dataPerusahaan);
 
         return view('admin.customer', compact('dataPerusahaan', 'provinsi'));
     }
@@ -38,7 +38,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
-            'kelurahan' => 'required|string|max:255',
+            'kota' => 'required|string|max:255',
             'koordinat' => 'required|string|max:100',
         ], $customMessages);
 
@@ -52,7 +52,7 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->nama = $request->nama;
         $customer->jenis = $request->jenis;
-        $customer->kelurahan_id = $request->kelurahan;
+        $customer->kota_id = $request->kota;
         $customer->koordinat = $request->koordinat;
 
         // execute
@@ -77,7 +77,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
-            'kelurahan' => 'required|string|max:255',
+            'kota' => 'required|string|max:255',
             'koordinat' => 'required|string|max:100',
         ], $customMessages);
 
@@ -91,7 +91,7 @@ class CustomerController extends Controller
         $dataEdit = Customer::findOrFail($id);
         $dataEdit->nama = $request->nama;
         $dataEdit->jenis = $request->jenis;
-        $dataEdit->kelurahan_id = $request->kelurahan;
+        $dataEdit->kota_id = $request->kota;
         $dataEdit->koordinat = $request->koordinat;
 
         // execute update
@@ -148,29 +148,14 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function getProvinsi($id_kelurahan)
+    public function getProvinsi($id_kota)
     {
-        $dataWilayah = Kelurahan::with('kecamatan', 'kecamatan.kota', 'kecamatan.kota.provinsi')->where('id', $id_kelurahan)->get();
-
-        foreach ($dataWilayah as $value) {
-            $idSelected = (object) array(
-                'kelurahan' => $value->id,
-                'kecamatan' => $value->kecamatan->id,
-                'kota' => $value->kecamatan->kota->id,
-                'provinsi' => $value->kecamatan->kota->provinsi->id,
-            );
-        }
-
-        $allData = [
-            'kota' => Kota::where('provinsi_id', $idSelected->provinsi)->get(),
-            'kecamatan' => Kecamatan::where('kota_id', $idSelected->kota)->get(),
-            'kelurahan' => Kelurahan::where('kecamatan_id', $idSelected->kecamatan)->get()
-        ];
-
-        $idSelected->allData = $allData;
+        $dataWilayah = Kota::with('provinsi')->where('id', $id_kota)->get()->first();
+        $listKota = Kota::where('provinsi_id', $dataWilayah->provinsi->id)->get();
+        $dataWilayah->listKota = $listKota;
         return response()->json([
             'success' => true,
-            'data' => $idSelected
+            'data' => $dataWilayah
         ]);
     }
 }
