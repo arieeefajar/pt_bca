@@ -16,6 +16,10 @@ class Provinsi extends Model
         'nama',
     ];
 
+    protected $primaryKey = 'id'; // or null
+
+    public $incrementing = false;
+
     public function kota(){
         return $this->hasMany(Kota::class, 'id', 'provinsi_id');
     }

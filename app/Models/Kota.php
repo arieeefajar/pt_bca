@@ -17,13 +17,12 @@ class Kota extends Model
         'nama',
     ];
 
+    protected $primaryKey = 'id'; // or null
+
+    public $incrementing = false;
+
     public function provinsi()
     {
         return $this->belongsTo(Provinsi::class, 'provinsi_id', 'id');
-    }
-
-    public function kecamatan()
-    {
-        return $this->hashMany(Kecamatan::class, 'id', 'kota_id');
     }
 }

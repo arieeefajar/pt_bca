@@ -15,9 +15,7 @@ class Customer extends Model
         'id',
         'nama',
         'jenis',
-        'provinsi',
-        'kota',
-        'kelurahan_id',
+        'kota_id',
         'koordinat',
     ];
 
@@ -26,9 +24,9 @@ class Customer extends Model
         return $this->hashMany(Penyimpanan::class, 'id', 'perusahaan_id');
     }
 
-    public function kelurahan()
+    public function kota()
     {
-        return $this->belongsTo(Kelurahan::class, 'kelurahan_id', 'id');
+        return $this->belongsTo(Kota::class, 'kota_id', 'id');
     }
 
     public static function getNamaToko($id)
