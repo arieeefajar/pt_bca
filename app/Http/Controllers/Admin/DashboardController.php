@@ -126,6 +126,6 @@ class DashboardController extends Controller
 
     public function tes()
     {
-        return view('layout1.tes');
+        return view('admin.detailJawaban.k_skalaPasarProduk');
     }
 }
