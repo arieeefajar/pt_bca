@@ -7,6 +7,8 @@ use App\Models\DetailPenyimpanan;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardSurveyerController extends Controller
 {
@@ -29,6 +31,12 @@ class DashboardSurveyerController extends Controller
             return view('surveyor.menu', compact('k_pelanggan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar', 'namaToko'));
         }
         $dataCustommer = User::getCustommer();
+
+        // Mendapatkan tanggal awal bulan ini
+        $startDate = Carbon::now()->startOfMonth()->format('Y-m-d').' 00:00:00';
+
+        // Mendapatkan tanggal akhir bulan ini
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d').' 23:59:59';
         $dataJumlah = [
             'surveyor' => User::where('role', 'user')->get()->count(),
             'executive' => User::where('role', 'executive')->get()->count(),
@@ -36,6 +44,8 @@ class DashboardSurveyerController extends Controller
             'targetToko' => Customer::all()->count(),
             'surveyToko' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
                 ->where('penyimpanan.status', 1)
+                ->where('penyimpanan.surveyor_id', Auth::user()->id)
+                ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
                 ->select('customer.nama')
                 ->get()->count(),
         ];

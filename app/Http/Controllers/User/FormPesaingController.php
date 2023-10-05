@@ -43,16 +43,14 @@ class FormPesaingController extends Controller
             'deskripsi_produk_pesaing' => 'required',
             'keunggulan_pesaing' => 'required',
             'pemasaran_pesaing' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
             return redirect()->back()->withInput();
         }
-
-        // todo $produk_pesaing = explode(", ", $request->produk_pesaing);
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');
@@ -64,7 +62,6 @@ class FormPesaingController extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT').'retail';
-        // dd($endPointApi);
 
         // data send
         $produk_kita = $request->produk_kita;
@@ -76,8 +73,6 @@ class FormPesaingController extends Controller
         $pemasaran_pesaing = $request->pemasaran_pesaing;
         $latitude = $request->latitude;
         $longitude = $request->longitude;
-
-        dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,
@@ -96,7 +91,6 @@ class FormPesaingController extends Controller
         ]);
 
         $responJson = $response->json();
-        // dd($responJson);
 
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,

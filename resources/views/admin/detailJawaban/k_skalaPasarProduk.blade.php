@@ -2,7 +2,7 @@
 @section('title', 'Jawaban Skala Pasar Produk')
 @section('menu', 'Skala Pasar Produk')
 @section('submenu')
-    {{-- <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a> --}}
+    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
 @endsection
 
 @section('content')
@@ -20,30 +20,30 @@
                                     di kios ini?
                                 </label>
                                 <textarea name="sales_system" id="BagaimanaSistem" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('sales_system') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['sales_system'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa merek benih jagung yang dijual?
                                 </label>
                                 <textarea name="how_many_brands" id="BerapaMerek" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('how_many_brands') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['how_many_brands'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa sachet dari setiap merek benih jagung
                                     yang dijual?
                                 </label>
                                 <textarea name="quantity_of_product" id="BerapaSachet" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('quantity_of_product') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['quantity_of_product'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Kapan periode setiap merek benih jagung dipasok?
                                 </label>
                                 <textarea name="supply_period" id="KapanPeriode" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('supply_period') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['supply_period'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">
-                                    <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
+                                    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}" style="margin-right: 10px;">
                                         <button type="button" class="btn btn-primary add-btn">Kembali</button>
                                     </a>
                                     <button type="button" class="btn btn-success" id="nextButton"
@@ -60,14 +60,14 @@
                                     kios ini?
                                 </label>
                                 <textarea name="producer_locaitons" id="DarimanaSajakah" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('producer_locaitons') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['producer_locaitons'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa gram rata-rata berat per sachet benih
                                     jagung?
                                 </label>
                                 <textarea name="weight_product" id="BerapaGram" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('weight_product') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['weight_product'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa harga eceran terendah per sachet dari
@@ -76,7 +76,7 @@
                                     dijual?
                                 </label>
                                 <textarea name="lowest_price" id="BerapaHarga" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('lowest_price') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['lowest_price'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara mengenal distributor yang
@@ -85,7 +85,7 @@
                                     Alamat)
                                 </label>
                                 <textarea name="know_distributor" id="ApakahSaudara" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('know_distributor') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['know_distributor'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">
@@ -106,7 +106,7 @@
                                     (cost discount)?
                                 </label>
                                 <textarea name="rewards_or_discount" id="ApakahDistributor" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('rewards_or_discount') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['rewards_or_discount'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara menerapkan program khusus terkait
@@ -114,7 +114,7 @@
                                     benih jagung?
                                 </label>
                                 <textarea name="sales_system_application" id="BenihJagung" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('sales_system_application') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['sales_system_application'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara menerapkan program volume matriks
@@ -123,7 +123,7 @@
                                     jagung? (Bonus sachet)
                                 </label>
                                 <textarea name="matrix_volume" id="BonusSachet" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('matrix_volume') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['matrix_volume'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah kios ini menerima pasokan benih jagung
@@ -131,7 +131,7 @@
                                     mendekati musim tanam saja atau jangka waktu tertentu (bulan)?
                                 </label>
                                 <textarea name="suply_term" id="ApakahKios" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('suply_term') }}</textarea>
+                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ $dataAnswer[0]['suply_term'] }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">

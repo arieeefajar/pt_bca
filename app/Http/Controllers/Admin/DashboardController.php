@@ -190,17 +190,36 @@ class DashboardController extends Controller
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi')
             ->orderBy('created_at', 'desc')
             ->get();
-        $provinsi = Provinsi::all();
-        return view('surveyor.listTargetToko', compact('dataPerusahaan', 'provinsi'));
+        return view('surveyor.listTargetToko', compact('dataPerusahaan'));
     }
 
     public function listHasilSurvey()
     {
-        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')
-            ->orderBy('created_at', 'desc')
+
+        // Mendapatkan tanggal awal bulan ini
+        $startDate = Carbon::now()->startOfMonth()->format('Y-m-d').' 00:00:00';
+
+        // Mendapatkan tanggal akhir bulan ini
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d').' 23:59:59';
+        
+        $dataPerusahaan = Customer::join(
+            'penyimpanan',
+            'customer.id',
+            '=',
+            'penyimpanan.customer_id'
+        )
+            ->join('kota', 'customer.kota_id', '=', 'kota.id')
+            ->join('provinsi', 'kota.provinsi_id', '=', 'provinsi.id')
+            ->where('penyimpanan.surveyor_id', Auth::user()->id)
+            ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
+            ->select(
+                'customer.nama',
+                'customer.jenis',
+                'provinsi.nama AS provinsi',
+                'kota.nama AS kota'
+            )
             ->get();
-        $provinsi = Provinsi::all();
-        return view('surveyor.listHasilSurvey', compact('dataPerusahaan', 'provinsi'));
+        return view('surveyor.listHasilSurvey', compact('dataPerusahaan'));
     }
 
     public function profileAdmin()

@@ -29,8 +29,8 @@
                                     @foreach ($dataPenyimpanan as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center">{{ $data->surveyor->name }}</td>
-                                            <td class="text-center">{{ $data->customer->nama }}</td>
+                                            <td class="text-center">{{ $data->surveyor }}</td>
+                                            <td class="text-center">{{ $data->customer }}</td>
                                             <td class="text-center">
                                                 @if ($data->status === '1')
                                                     <span class="badge rounded-pill bg-success">Lengkap</span>

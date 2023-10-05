@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
     public function login()
     {
-        // dd(Auth::user());
+        // dd(env('PYTHON_END_POINT'));
         return view('auth.login');
     }
 
