@@ -1906,133 +1906,148 @@
 
             <div class="page-content">
                 <div class="container-fluid">
-
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-xxl-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title mb-0">Add, Edit & Remove</h4>
+                                <div class="card-header align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">Kuisioner Skala Pasar Produk</h4>
                                 </div><!-- end card header -->
-
-                                <div class="card-body">
-                                    <div class="row g-4 mb-3">
-                                        <div class="col-sm">
-                                            <div>
-                                                <button type="button" class="btn btn-warning add-btn"
-                                                    data-bs-toggle="modal" id="create-btn"
-                                                    data-bs-target="#modalTambah"><i
-                                                        class="ri-add-line align-bottom me-1"></i> Tambah
-                                                    Pengguna</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="modalTambah" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Pengguna
-                                                    </h5>
-                                                    <button type="button" class="btn-close"
-                                                        data-bs-dismiss="modal" aria-label="Close"
-                                                        id="close-modal"></button>
-                                                </div>
-                                                <form method="POST" action="" id="form_add"
-                                                    class="needs-validation" novalidate>
-                                                    <div class="col-md-12">
-                                                        <label for="username" class="form-label">Username</label>
-                                                        <input type="text" class="form-control" id="username"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please choose a username.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 mt-3 mb-3">
-                                                        <button class="btn btn-primary" type="submit">Submit
-                                                            form</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form class="row g-3 needs-validation" novalidate>
-                                        <div class="col-md-4">
-                                            <label for="validationCustom01" class="form-label">First name</label>
-                                            <input type="text" class="form-control" id="validationCustom01"
-                                                value="Mark" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="validationCustom02" class="form-label">Last name</label>
-                                            <input type="text" class="form-control" id="validationCustom02"
-                                                value="Otto" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="validationCustomUsername"
-                                                class="form-label">Username</label>
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" class="form-control"
-                                                    id="validationCustomUsername"
-                                                    aria-describedby="inputGroupPrepend" required>
-                                                <div class="invalid-feedback">
-                                                    Please choose a username.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom03" class="form-label">City</label>
-                                            <input type="text" class="form-control" id="validationCustom03"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please provide a valid city.
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="validationCustom04" class="form-label">State</label>
-                                            <select class="form-select" id="validationCustom04" required>
-                                                <option selected disabled value="">Choose...</option>
-                                                <option>contoh</option>
-                                                <option>contoh1</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Please select a valid state.
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="validationCustom05" class="form-label">Zip</label>
-                                            <input type="text" class="form-control" id="validationCustom05"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please provide a valid zip.
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="invalidCheck" required>
-                                                <label class="form-check-label" for="invalidCheck">
-                                                    Agree to terms and conditions
+                                <form action="">
+                                    <div id="step1">
+                                        <div class="card-body">
+                                            <div class="col-md-12">
+                                                <label for="">Bagaimana sistem penjualan produk benih jagung
+                                                    di kios ini?
                                                 </label>
-                                                <div class="invalid-feedback">
-                                                    You must agree before submitting.
+                                                <textarea name="sales_system" id="BagaimanaSistem" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('sales_system') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Berapa merek benih jagung yang dijual?
+                                                </label>
+                                                <textarea name="how_many_brands" id="BerapaMerek" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('how_many_brands') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Berapa sachet dari setiap merek benih jagung
+                                                    yang dijual?
+                                                </label>
+                                                <textarea name="quantity_of_product" id="BerapaSachet" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('quantity_of_product') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Kapan periode setiap merek benih jagung dipasok?
+                                                </label>
+                                                <textarea name="supply_period" id="KapanPeriode" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('supply_period') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3 mb-3">
+                                                <div class="d-flex justify-content-sm-end">
+                                                    <a href="{{ route('menu.index') }}"
+                                                        style="margin-right: 10px;">
+                                                        <button type="button"
+                                                            class="btn btn-primary add-btn">Kembali</button>
+                                                    </a>
+                                                    <button type="button" class="btn btn-success" id="nextButton"
+                                                        onclick="nextStep(1)">Next</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                    </div>
+                                    <div id="step2" style="display: none;">
+                                        <div class="card-body">
+                                            <div class="col-md-12">
+                                                <label for="">Darimana sajakah asal produsen pemasok benih
+                                                    jagung yang dijual di
+                                                    kios ini?
+                                                </label>
+                                                <textarea name="producer_locaitons" id="DarimanaSajakah" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('producer_locaitons') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Berapa gram rata-rata berat per sachet benih
+                                                    jagung?
+                                                </label>
+                                                <textarea name="weight_product" id="BerapaGram" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('weight_product') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Berapa harga eceran terendah per sachet dari
+                                                    setiap benih jagung
+                                                    yang
+                                                    dijual?
+                                                </label>
+                                                <textarea name="lowest_price" id="BerapaHarga" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('lowest_price') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Apakah saudara mengenal distributor yang
+                                                    menitipkan produknya?
+                                                    (Nama &
+                                                    Alamat)
+                                                </label>
+                                                <textarea name="know_distributor" id="ApakahSaudara" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('know_distributor') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3 mb-3">
+                                                <div class="d-flex justify-content-sm-end">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        style="margin-right: 10px;"
+                                                        onclick="prevStep(1)">Previous</button>
+                                                    <button type="button" class="btn btn-success"
+                                                        id="nextButton1" onclick="nextStep(2)">Next</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </form>
-                                </div><!-- end card -->
+                                    </div>
+                                    <div id="step3" style="display: none;">
+                                        <div class="card-body">
+                                            <div class="col-md-12">
+                                                <label for="">Apakah distributor merek benih jagung menawarkan
+                                                    program tertentu
+                                                    yang terkait dengan bonus penjualan (reward) atau potongan harga
+                                                    (cost discount)?
+                                                </label>
+                                                <textarea name="rewards_or_discount" id="ApakahDistributor" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('rewards_or_discount') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Apakah saudara menerapkan program khusus terkait
+                                                    sistem penjualan
+                                                    benih jagung?
+                                                </label>
+                                                <textarea name="sales_system_application" id="BenihJagung" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('sales_system_application') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Apakah saudara menerapkan program volume matriks
+                                                    pada penjualan
+                                                    benih
+                                                    jagung? (Bonus sachet)
+                                                </label>
+                                                <textarea name="matrix_volume" id="BonusSachet" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('matrix_volume') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <label for="">Apakah kios ini menerima pasokan benih jagung
+                                                    hanya pada saat
+                                                    mendekati musim tanam saja atau jangka waktu tertentu (bulan)?
+                                                </label>
+                                                <textarea name="suply_term" id="ApakahKios" cols="30" rows="5" maxlength="1000"
+                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('suply_term') }}</textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-3 mb-3">
+                                                <div class="d-flex justify-content-sm-end">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        style="margin-right: 10px;"
+                                                        onclick="prevStep(2)">Previous</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <!-- end col -->
                         </div>
-                        <!-- end col -->
                     </div>
 
                 </div>
@@ -2644,9 +2659,48 @@
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
-            $("#validationCustom04").select2();
-        })
+        let currentStep = 1;
+
+        function nextStep(step) {
+            if (step === 1) {
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+                currentStep = 2;
+            } else if (step === 2) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "block";
+                currentStep = 3;
+            }
+        }
+
+        function prevStep(step) {
+            if (step === 1) {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "none";
+                document.getElementById("step1").style.display = "block";
+                currentStep = 1;
+            } else if (step === 2) {
+                document.getElementById("step2").style.display = "block";
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step3").style.display = "none";
+                currentStep = 2;
+            } else if (step === 3) {
+                document.getElementById("step3").style.display = "block";
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step1").style.display = "none";
+                currentStep = 3;
+            }
+        }
+
+        function disableAllTextarea() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                textarea.disabled = true;
+            });
+        }
+
+        // Panggil fungsi untuk menonaktifkan semua textarea
+        disableAllTextarea();
     </script>
 </body>
 
