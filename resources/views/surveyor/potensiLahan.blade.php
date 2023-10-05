@@ -162,9 +162,9 @@
         async function submit_form() {
             // alert('aowkoakwokwa');
             try {
-                // const coords = await getLocation();
-                // document.getElementById("latitude_field").value = coords.latitude;
-                // document.getElementById("longitude_field").value = coords.longitude;
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
 
                 var form = document.getElementById('myForm');
                 var inputs = form.querySelectorAll('input, select, textarea');

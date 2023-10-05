@@ -80,6 +80,7 @@ class KuisionerSkalaPasarProduk extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'competitor-questionnaire';
+        // dd($endPointApi);
 
         // data send
         $sales_system = $request->sales_system;
@@ -94,11 +95,10 @@ class KuisionerSkalaPasarProduk extends Controller
         $sales_system_application = $request->sales_system_application;
         $matrix_volume = $request->matrix_volume;
         $suply_term = $request->suply_term;
-        // $latitude = $request->latitude;
-        // $longitude = $request->longitude;
-
-        $latitude = 123456;
-        $longitude = -2143567;
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
+        
+        dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             'surveyor' => Auth::user()->id,
