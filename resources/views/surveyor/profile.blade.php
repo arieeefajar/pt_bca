@@ -135,7 +135,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="firstnameInput" class="form-label">Username</label>
+                                            <label for="firstnameInput" class="form-label">Name</label>
                                             <input type="text" name="name" class="form-control" id="firstnameInput"
                                                 placeholder="Enter your firstname" value="{{ Auth::user()->name }}">
                                         </div>
@@ -151,9 +151,9 @@
                                     <!--end col-->
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="emailInput" class="form-label">Email</label>
-                                            <input type="email" name="email" class="form-control" id="emailInput"
-                                                placeholder="Enter your email" value="{{ Auth::user()->email }}">
+                                            <label for="emailInput" class="form-label">NIP</label>
+                                            <input type="text" readonly class="form-control" id="emailInput"
+                                                placeholder="Enter your email" value="{{ Auth::user()->nip }}">
                                         </div>
                                     </div>
                                     <!--end col-->

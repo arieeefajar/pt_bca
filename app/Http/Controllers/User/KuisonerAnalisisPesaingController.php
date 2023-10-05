@@ -92,11 +92,11 @@ class KuisonerAnalisisPesaingController extends Controller
         };
 
         // data answer fieldlist
-        $competitor = $request->competitor;
-        $new_competitor = $request->new_competitor;
-        $substitution = $request->substitution;
-        $supplier = $request->supplier;
-        $buyer = $request->buyer;
+        $competitor = explode(", ", $request->competitor);
+        $new_competitor = explode(", ", $request->new_competitor);
+        $substitution = explode(", ", $request->substitution);
+        $supplier = explode(", ", $request->supplier);
+        $buyer = explode(", ", $request->buyer);
 
         // data answer true false
         $any_competitor = $convert($request->any_competitor);

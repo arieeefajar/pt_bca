@@ -334,7 +334,7 @@
             document.getElementById('formEdit').action = "{{ route('customer.update', ['id' => '/']) }}/" + data.id;
 
             // set value in modal edit
-            ajax('get', "{{ route('getAllLocation', ['id_kelurahan' => '/']) }}/" + data.kota_id, function(
+            ajax('get', "{{ route('getAllLocation', ['id_kota' => '/']) }}/" + data.kota_id, function(
                 response) { //  ajax(methos, url, callback)
 
                 if (response.success) {
