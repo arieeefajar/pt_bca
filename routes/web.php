@@ -96,6 +96,10 @@ Route::get('/jawaban-form-analisis-pesaing/{idDetail}/{apiId}', [
     DetailPenyimpananController::class,
     'jawaban_form_analisisPesaing',
 ])->name('jawaban_form_analisisPesaing.index');
+Route::get('/jawaban-skala-pasar/{idDetail}/{apiId}', [
+    DetailPenyimpananController::class,
+    'jawaban_skala_pasar',
+])->name('jawaban_skala_pasar.index');
 
 // route only super admin & admin
 Route::middleware(['auth', 'superAndAdmin'])->group(function () {

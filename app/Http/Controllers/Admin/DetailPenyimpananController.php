@@ -51,4 +51,11 @@ class DetailPenyimpananController extends Controller
         $dataAnswer = [Http::get($endPointApi)->json()['data']];
         return view('admin.detailJawaban.f_surveyPesaing', compact('dataAnswer', 'idDetail'));
     }
+
+    public function jawaban_skala_pasar($idDetail, $apiId)
+    {
+        $endPointApi = env('PYTHON_END_POINT').'competitor-questionnaire/' . $apiId;
+        $dataAnswer = [Http::get($endPointApi)->json()['data']];
+        return view('admin.detailJawaban.k_skalaPasarProduk', compact('dataAnswer', 'idDetail'));
+    }
 }

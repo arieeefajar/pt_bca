@@ -71,7 +71,8 @@
                                                     <a href="/jawaban-form-analisis-pesaing/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @elseif ($data->pertanyaan === 'skala_pasar')
-                                                    Belum Tersedia
+                                                    <a href="/jawaban-skala-pasar/{{ $idDetail }}/{{ $data->api_id }}"
+                                                        class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                 @endif
 
                                             </td>
