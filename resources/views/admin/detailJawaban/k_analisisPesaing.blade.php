@@ -16,8 +16,7 @@
                 <div class="card-body">
                     {{-- @dd($dataAnswer) --}}
                     @foreach ($dataAnswer as $data)
-                        <form id="form_body" action="{{ route('analisisPesaing.create') }}" method="POST">
-                            @csrf
+                        <form id="form_body" action="">
                             {{-- pertanyaan Gambaran Umum --}}
                             <div class="bg-soft-primary p-2 mb-3">
                                 <h6 class="">Gambaran Umum Perusahaan</h6>
@@ -25,7 +24,7 @@
                             <div class="mb-2">
                                 <label for="">Siapa saja pesaing perusahaan ?</label>
                                 <?php
-                                $competitors = $data['competitor'][0];
+                                $competitors = $data['competitor'];
                                 $pesaing_perusahaan = implode(', ', $competitors);
                                 ?>
                                 <input type="text" class="form-control" name="competitor" id=""
@@ -34,7 +33,7 @@
                             <div class="mb-2">
                                 <label for="">Siapa saja pendatang baru yang dapat mengancam perusahaan ?</label>
                                 <?php
-                                $competitors = $data['new_competitor'][0];
+                                $competitors = $data['new_competitor'];
                                 $pendatang_baru = implode(', ', $competitors);
                                 ?>
                                 <input type="text" class="form-control" name="new_competitor" id=""
@@ -44,7 +43,7 @@
                                 <label for="">Siapa saja pembuat produk (produsen) substitusi pengganti produk
                                     perusahaan ?</label>
                                 <?php
-                                $competitors = $data['substitution'][0];
+                                $competitors = $data['substitution'];
                                 $substitusi = implode(', ', $competitors);
                                 ?>
                                 <input type="text" class="form-control" name="substitution" id=""
@@ -53,7 +52,7 @@
                             <div class="mb-2">
                                 <label for="">Siapa saja pemasok perusahaan ?</label>
                                 <?php
-                                $competitors = $data['supplier'][0];
+                                $competitors = $data['supplier'];
                                 $pemasok = implode(', ', $competitors);
                                 ?>
                                 <input type="text" class="form-control" name="supplier" id=""
@@ -62,7 +61,7 @@
                             <div class="mb-4">
                                 <label for="">Siapa saja pembeli perusahaan ?</label>
                                 <?php
-                                $competitors = $data['buyer'][0];
+                                $competitors = $data['buyer'];
                                 $pembeli = implode(', ', $competitors);
                                 ?>
                                 <input type="text" class="form-control" name="buyer" id=""

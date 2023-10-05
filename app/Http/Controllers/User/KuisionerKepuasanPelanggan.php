@@ -110,12 +110,10 @@ class KuisionerKepuasanPelanggan extends Controller
         $verification_speed = intval($request->verification_speed);
         $completion_speed = intval($request->completion_speed);
         $handling = intval($request->handling);
+        $latitude = floatval($request->latitude);
+        $longitude = floatval($request->longitude);
 
-        // $latitude = floatval($request->latitude);
-        // $longitude = floatval($request->longitude);
-
-        $latitude = 1234;
-        $longitude = -123123;
+        // dd($latitude, $longitude);
 
         // post api
         $response = Http::post($endPointApi, [
@@ -154,6 +152,7 @@ class KuisionerKepuasanPelanggan extends Controller
         ]);
 
         $responJson = $response->json();
+        // dd($responJson);
 
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,

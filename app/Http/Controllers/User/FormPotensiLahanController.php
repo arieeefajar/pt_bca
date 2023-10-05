@@ -65,11 +65,10 @@ class FormPotensiLahanController extends Controller
         $keunggulan_kompetitor = $request->keunggulan_kompetitor;
         $iklim = $request->iklim;
         $event = $request->event;
-        // $latitude = $request->latitude;
-        // $longitude = $request->longitude;
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
 
-        $latitude = 1234;
-        $longitude = -34567;
+        // dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,

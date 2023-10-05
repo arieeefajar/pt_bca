@@ -10,7 +10,8 @@
                 <div class="card-header align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">Form Kuisioner</h4>
                 </div><!-- end card header -->
-                <form action="">
+                <form action="{{ route('SkalaPasarProduk.create') }}" method="POST" id="myForm">
+                    @csrf
                     <div id="step1">
                         <div class="card-body">
                             <div class="col-md-12">
@@ -130,6 +131,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <input type="hidden" name="latitude" id="latitude_field">
+                    <input type="hidden" name="longitude" id="longitude_field">
                 </form>
             </div>
         </div>
@@ -137,6 +141,51 @@
     </div>
 
     <script>
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        position => resolve(position.coords),
+                        error => reject(error)
+                    );
+                } else {
+                    reject("Geolocation is not supported by this browser.");
+                }
+            });
+        }
+
+        async function submit_form() {
+            // alert('aowkoakwokwa');
+            try {
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
+
+                var form = document.getElementById('myForm');
+                var inputs = form.querySelectorAll('input, select, textarea');
+                var isValid = true;
+
+                inputs.forEach(function(input) {
+                    if (input.required && input.value.trim() === '') {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (form) {
+                    if (isValid) {
+                        await form.submit();
+                    }
+                } else {
+                    console.log("Form element not found.");
+                }
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        };
+
         let currentStep = 1;
 
         const textarea1 = document.getElementById("BagaimanaSistem");

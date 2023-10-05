@@ -50,6 +50,8 @@
                                                     Form Potensi Lahan
                                                 @elseif ($data->pertanyaan === 'form_pesaing')
                                                     Form Analisis Pesaing
+                                                @elseif ($data->pertanyaan === 'skala_pasar')
+                                                    Kuisioner Skala Pasar Produk
                                                 @endif
                                             </td>
                                             <td class="text-center">
@@ -68,6 +70,8 @@
                                                 @elseif ($data->pertanyaan === 'form_pesaing')
                                                     <a href="/jawaban-form-analisis-pesaing/{{ $idDetail }}/{{ $data->api_id }}"
                                                         class="btn btn-sm btn-primary edit-item-btn">Detail</a>
+                                                @elseif ($data->pertanyaan === 'skala_pasar')
+                                                    Belum Tersedia
                                                 @endif
 
                                             </td>
