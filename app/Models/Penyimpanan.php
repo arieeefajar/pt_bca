@@ -16,6 +16,7 @@ class Penyimpanan extends Model
         'surveyor_id',
         'perusahaan_id',
         'status',
+        'created_at'
     ];
 
     public static function hasDonePenyimpanan($request)

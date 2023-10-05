@@ -17,6 +17,7 @@ class DetailPenyimpanan extends Model
         'penyimpanan_id',
         'pertanyaan',
         'api_id',
+        'created_at'
     ];
 
     public static function getIdPenyimpanan($request)

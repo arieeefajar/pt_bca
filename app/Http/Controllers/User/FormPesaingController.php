@@ -65,9 +65,11 @@ class FormPesaingController extends Controller
         $endPointApi = env('PYTHON_END_POINT').'retail';
 
         // data send
-        $produk_kita = $request->produk_kita . ", " . $request->deskripsi_produk;
-        $produk_pesaing = $request->produk_pesaing . ", " . $request->deskripsi_produk_pesaing;
+        $produk_kita = $request->produk_kita;
+        $produk_pesaing = explode(", ", $request->produk_pesaing);
 
+        $deskripsi_produk = $request->deskripsi_produk;
+        $deskripsi_produk_pesaing = $request->deskripsi_produk_pesaing;
         $keunggulan_pesaing = $request->keunggulan_pesaing;
         $pemasaran_pesaing = $request->pemasaran_pesaing;
         // $latitude = $request->latitude;
@@ -82,9 +84,11 @@ class FormPesaingController extends Controller
                 "latitude" => $latitude,
                 "longtitude" => $longitude
             ],
+            "our_product" => $produk_kita,
+            "competitor_product" => $produk_pesaing,
             "answer" => [
-                $produk_kita,
-                $produk_pesaing,
+                $deskripsi_produk,
+                $deskripsi_produk_pesaing,
                 $keunggulan_pesaing,
                 $pemasaran_pesaing
             ]

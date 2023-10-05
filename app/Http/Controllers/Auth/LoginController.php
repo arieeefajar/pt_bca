@@ -78,24 +78,21 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         // Hapus cookie selectedTokoId
-        $response = new \Illuminate\Http\Response(redirect('/'));
-        $response->cookie(Cookie::forget('selectedTokoId'));
+        Cookie::queue(Cookie::forget('selectedTokoId'));
 
         //function logout
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return $response;
+        return redirect('/');;
         // // return view('auth.login');
     }
 
     public function clearSelectedTokoCookie()
     {
-        $response = new \Illuminate\Http\Response(redirect('/surveyor-dashboard'));
-        $response->cookie(Cookie::forget('selectedTokoId'));
-
-        return $response;
+        Cookie::queue(Cookie::forget('selectedTokoId'));
+        return redirect('/surveyor-dashboard');
     }
 
     public function lupaPassword()
