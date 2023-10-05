@@ -135,7 +135,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="firstnameInput" class="form-label">Username</label>
+                                            <label for="firstnameInput" class="form-label">Name</label>
                                             <input type="text" class="form-control" id="firstnameInput"
                                                 placeholder="Enter your firstname" name="name"
                                                 value="{{ Auth::user()->name }}">
@@ -153,10 +153,10 @@
                                     <!--end col-->
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="emailInput" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="emailInput"
-                                                placeholder="Enter your email" name="email"
-                                                value="{{ Auth::user()->email }}">
+                                            <label for="emailInput" class="form-label">NIP</label>
+                                            <input type="text" class="form-control" readonly id="emailInput"
+                                                placeholder="Enter your nip"
+                                                value="{{ Auth::user()->nip }}">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -255,7 +255,7 @@
                         </div>
                         <!--end tab-pane-->
                         <div class="tab-pane" id="changePassword" role="tabpanel">
-                            <form action="{{ route('profileUpdatePassword', Auth::user()->id) }}" method="POST">
+                            <form action="{{ route('password.update', Auth::user()->id) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <div class="row g-2">

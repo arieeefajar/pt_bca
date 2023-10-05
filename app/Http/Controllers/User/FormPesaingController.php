@@ -51,6 +51,7 @@ class FormPesaingController extends Controller
             return redirect()->back()->withInput();
         }
 
+        // todo $produk_pesaing = explode(", ", $request->produk_pesaing);
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');

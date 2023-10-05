@@ -24,29 +24,49 @@
                             </div>
                             <div class="mb-2">
                                 <label for="">Siapa saja pesaing perusahaan ?</label>
+                                <?php
+                                $competitors = $data['competitor'][0];
+                                $pesaing_perusahaan = implode(', ', $competitors);
+                                ?>
                                 <input type="text" class="form-control" name="competitor" id=""
-                                    value="{{ $data['competitor'][0] }}" readonly>
+                                    value="{{ $pesaing_perusahaan }}" readonly>
                             </div>
                             <div class="mb-2">
                                 <label for="">Siapa saja pendatang baru yang dapat mengancam perusahaan ?</label>
+                                <?php
+                                $competitors = $data['new_competitor'][0];
+                                $pendatang_baru = implode(', ', $competitors);
+                                ?>
                                 <input type="text" class="form-control" name="new_competitor" id=""
-                                    value="{{ $data['new_competitor'][0] }}" readonly>
+                                    value="{{ $pendatang_baru }}" readonly>
                             </div>
                             <div class="mb-2">
                                 <label for="">Siapa saja pembuat produk (produsen) substitusi pengganti produk
                                     perusahaan ?</label>
+                                <?php
+                                $competitors = $data['substitution'][0];
+                                $substitusi = implode(', ', $competitors);
+                                ?>
                                 <input type="text" class="form-control" name="substitution" id=""
-                                    value="{{ $data['substitution'][0] }}" readonly>
+                                    value="{{ $substitusi }}" readonly>
                             </div>
                             <div class="mb-2">
                                 <label for="">Siapa saja pemasok perusahaan ?</label>
+                                <?php
+                                $competitors = $data['supplier'][0];
+                                $pemasok = implode(', ', $competitors);
+                                ?>
                                 <input type="text" class="form-control" name="supplier" id=""
-                                    value="{{ $data['supplier'][0] }}" readonly>
+                                    value="{{ $pemasok }}" readonly>
                             </div>
                             <div class="mb-4">
                                 <label for="">Siapa saja pembeli perusahaan ?</label>
+                                <?php
+                                $competitors = $data['buyer'][0];
+                                $pembeli = implode(', ', $competitors);
+                                ?>
                                 <input type="text" class="form-control" name="buyer" id=""
-                                    value="{{ $data['buyer'][0] }}" readonly>
+                                    value="{{ $pembeli }}" readonly>
                             </div>
 
                             <div class="live-preview">

@@ -22,14 +22,11 @@ class ProfileControllerAdmin extends Controller
         $customMessages = [
             'required' => ':attribute harus diisi.',
             'numeric' => ':attribute harus berupa angka.',
-            'email' => ':attribute harus menggunakan format email',
-            'unique' => 'Email sudah digunakan.',
             'in' => ':attribute tidak valid.',
         ];
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:40',
-            'email' => 'required|email|max:40',
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:16',
         ], $customMessages);
@@ -43,7 +40,6 @@ class ProfileControllerAdmin extends Controller
         // get user data from id
         $user = User::findOrFail($id);
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->no_telp = $request->no_telp;
 
@@ -72,7 +68,7 @@ class ProfileControllerAdmin extends Controller
         // Validasi input
         $validator = Validator::make($request->all(), [
             'old_password' => 'required',
-            'new_password' => 'required|min:6',
+            'new_password' => 'required|min:8',
             'confirm_password' => 'required|same:new_password',
         ], $customMessages);
 
