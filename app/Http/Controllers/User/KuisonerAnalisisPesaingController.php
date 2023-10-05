@@ -32,7 +32,7 @@ class KuisonerAnalisisPesaingController extends Controller
     {
 
         $customMessages = [
-            'required' => 'Kolom :attribute harus diisi.',
+            'required' => 'Harap lengkapi kuisioner.',
             'numeric' => 'Kolom :attribute harus berupa angka.',
         ];
 
@@ -84,7 +84,7 @@ class KuisonerAnalisisPesaingController extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = env('PYTHON_END_POINT').'competitor-analys';
+        $endPointApi = env('PYTHON_END_POINT') . 'competitor-analys';
 
         // convert function
         $convert = function ($params) {

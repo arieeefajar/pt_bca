@@ -34,7 +34,7 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
     {
 
         $customMessages = [
-            'required' => ':attribute harus diisi.',
+            'required' => ':Harap lengkapi kuisioner.',
             'numeric' => ':attribute harus berupa angka.',
         ];
 
@@ -88,7 +88,7 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             return redirect()->route('menu.index');
         }
 
-        $endPointApi = env('PYTHON_END_POINT').'competitor-identifier';
+        $endPointApi = env('PYTHON_END_POINT') . 'competitor-identifier';
 
         // data answer
         $position_pov = intval($request->position_pov);
@@ -123,8 +123,8 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $special_treatment = intval($request->special_treatment);
         // $latitude = floatval($request->latitude);
         // $longitude = floatval($request->longitude);
-        
-        
+
+
         $latitude = 12345;
         $longitude = -123456;
 

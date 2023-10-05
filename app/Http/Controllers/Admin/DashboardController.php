@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Penyimpanan;
 use App\Models\Customer;
+use App\Models\Provinsi;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -186,14 +187,20 @@ class DashboardController extends Controller
 
     public function listTargetToko()
     {
-        $dataPerusahaan = Customer::all();
-        return view('surveyor.listTargetToko', compact('dataPerusahaan'));
+        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $provinsi = Provinsi::all();
+        return view('surveyor.listTargetToko', compact('dataPerusahaan', 'provinsi'));
     }
 
     public function listHasilSurvey()
     {
-        $dataPerusahaan = Customer::all();
-        return view('surveyor.listHasilSurvey', compact('dataPerusahaan'));
+        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $provinsi = Provinsi::all();
+        return view('surveyor.listHasilSurvey', compact('dataPerusahaan', 'provinsi'));
     }
 
     public function profileAdmin()

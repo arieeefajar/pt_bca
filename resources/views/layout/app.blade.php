@@ -165,6 +165,7 @@
     <script type="text/javascript" src="{{ asset('vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/DataTables/js/dataTables.bootstrap4.min.js') }}"></script>
 
+    {{-- form validate --}}
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
 
     <!-- profile-setting init js -->

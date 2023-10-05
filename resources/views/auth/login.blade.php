@@ -93,13 +93,6 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="auth-remember-check">
-                                            <label class="form-check-label" for="auth-remember-check">Remember
-                                                me</label>
-                                        </div> --}}
-
                                         <div class="mt-4">
                                             <button class="btn btn-primary w-100" type="submit">Sign In</button>
                                         </div>
@@ -127,8 +120,7 @@
                             <p class="mb-0 text-muted">&copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i>
-                                by Themesbrand
+                                </script> SIMI.
                             </p>
                         </div>
                     </div>

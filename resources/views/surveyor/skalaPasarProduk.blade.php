@@ -16,26 +16,26 @@
                             <div class="col-md-12">
                                 <label for="">Bagaimana sistem penjualan produk benih jagung di kios ini?
                                 </label>
-                                <textarea name="" id="BagaimanaSistem" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="sales_system" id="BagaimanaSistem" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('sales_system') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa merek benih jagung yang dijual?
                                 </label>
-                                <textarea name="" id="BerapaMerek" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="how_many_brands" id="BerapaMerek" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('how_many_brands') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa sachet dari setiap merek benih jagung yang dijual?
                                 </label>
-                                <textarea name="" id="BerapaSachet" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="quantity_of_product" id="BerapaSachet" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('quantity_of_product') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Kapan periode setiap merek benih jagung dipasok?
                                 </label>
-                                <textarea name="" id="KapanPeriode" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="supply_period" id="KapanPeriode" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('supply_period') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">
@@ -54,30 +54,30 @@
                                 <label for="">Darimana sajakah asal produsen pemasok benih jagung yang dijual di
                                     kios ini?
                                 </label>
-                                <textarea name="" id="DarimanaSajakah" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="producer_locaitons" id="DarimanaSajakah" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('producer_locaitons') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa gram rata-rata berat per sachet benih jagung?
                                 </label>
-                                <textarea name="" id="BerapaGram" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="weight_product" id="BerapaGram" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('weight_product') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Berapa harga eceran terendah per sachet dari setiap benih jagung
                                     yang
                                     dijual?
                                 </label>
-                                <textarea name="" id="BerapaHarga" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="lowest_price" id="BerapaHarga" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('lowest_price') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara mengenal distributor yang menitipkan produknya?
                                     (Nama &
                                     Alamat)
                                 </label>
-                                <textarea name="" id="ApakahSaudara" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="know_distributor" id="ApakahSaudara" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('know_distributor') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">
@@ -95,30 +95,30 @@
                                 <label for="">Apakah distributor merek benih jagung menawarkan program tertentu
                                     yang terkait dengan bonus penjualan (reward) atau potongan harga (cost discount)?
                                 </label>
-                                <textarea name="" id="ApakahDistributor" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="rewards_or_discount" id="ApakahDistributor" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('rewards_or_discount') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara menerapkan program khusus terkait sistem penjualan
                                     benih jagung?
                                 </label>
-                                <textarea name="" id="BenihJagung" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="sales_system_application" id="BenihJagung" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('sales_system_application') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah saudara menerapkan program volume matriks pada penjualan
                                     benih
                                     jagung? (Bonus sachet)
                                 </label>
-                                <textarea name="" id="BonusSachet" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="matrix_volume" id="BonusSachet" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('matrix_volume') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Apakah kios ini menerima pasokan benih jagung hanya pada saat
                                     mendekati musim tanam saja atau jangka waktu tertentu (bulan)?
                                 </label>
-                                <textarea name="" id="ApakahKios" cols="30" rows="5" maxlength="1000"
-                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control"></textarea>
+                                <textarea name="suply_term" id="ApakahKios" cols="30" rows="5" maxlength="1000"
+                                    placeholder="Masukan minimal 10 karakter" maxlength="1000" class="form-control">{{ old('suply_term') }}</textarea>
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">

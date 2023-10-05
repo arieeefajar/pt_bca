@@ -29,7 +29,7 @@ class KuisionerKepuasanPelanggan extends Controller
     {
 
         $customMessages = [
-            'required' => ':attribute harus diisi.',
+            'required' => ':Harap lengkapi kuisioner.',
             'numeric' => ':attribute harus berupa angka.',
         ];
 
@@ -80,7 +80,7 @@ class KuisionerKepuasanPelanggan extends Controller
         }
 
         // $endPointApi = 'http://103.175.216.72/api/simi/customer';
-        $endPointApi = env('PYTHON_END_POINT').'customer';
+        $endPointApi = env('PYTHON_END_POINT') . 'customer';
 
         // data answer
         $information = intval($request->information);

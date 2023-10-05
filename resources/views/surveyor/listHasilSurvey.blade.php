@@ -25,7 +25,6 @@
                                             <th class="text-center" data-sort="email">Jenis</th>
                                             <th class="text-center" data-sort="phone">Provinsi</th>
                                             <th class="text-center" data-sort="date">Kota</th>
-                                            <th class="text-center" data-sort="status">Wilayah</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all text-center">
@@ -34,9 +33,8 @@
                                                 <th scope="row">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->nama }}</td>
                                                 <td class="email">{{ $data->jenis }}</td>
-                                                <td class="phone">{{ $data->provinsi }}</td>
-                                                <td class="date">{{ $data->kota }}</td>
-                                                <td class="status">{{ $data->wilayah_id }}</td>
+                                                <td class="phone">{{ $data->kota->provinsi->nama }}</td>
+                                                <td class="date">{{ $data->kota->nama }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

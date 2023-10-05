@@ -20,12 +20,11 @@
                                 <table class="table align-middle table-nowrap" id="myTable">
                                     <thead class="table-light text-center">
                                         <tr>
-                                            <th scope="col" data-sort="no">No</th>
-                                            <th class="sort" data-sort="customer_name">Nama</th>
-                                            <th class="sort" data-sort="email">Jenis</th>
-                                            <th class="sort" data-sort="phone">Provinsi</th>
-                                            <th class="sort" data-sort="date">Kota</th>
-                                            <th class="sort" data-sort="status">Wilayah</th>
+                                            <th class="text-center" data-sort="no">No</th>
+                                            <th class="text-center" data-sort="customer_name">Nama</th>
+                                            <th class="text-center" data-sort="email">Jenis</th>
+                                            <th class="text-center" data-sort="phone">Provinsi</th>
+                                            <th class="text-center" data-sort="date">Kota</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all text-center">
@@ -34,9 +33,8 @@
                                                 <th scope="row">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->nama }}</td>
                                                 <td class="email">{{ $data->jenis }}</td>
-                                                <td class="phone">{{ $data->provinsi }}</td>
-                                                <td class="date">{{ $data->kota }}</td>
-                                                <td class="status">{{ $data->wilayah_id }}</td>
+                                                <td class="phone">{{ $data->kota->provinsi->nama }}</td>
+                                                <td class="date">{{ $data->kota->nama }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
