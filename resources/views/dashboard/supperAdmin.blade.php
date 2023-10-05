@@ -19,9 +19,6 @@
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                             data-target="{{ $dataJumlah['surveyor'] }}">0</span>
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -47,9 +44,6 @@
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                             data-target="{{ $dataJumlah['executive'] }}">0</span>
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -75,9 +69,6 @@
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                             data-target="{{ $dataJumlah['admin'] }}">0</span>
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -103,9 +94,6 @@
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                             data-target="{{ $dataJumlah['targetToko'] }}">0</span>
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -131,9 +119,6 @@
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                             data-target="{{ $dataJumlah['surveyToko'] }}">0</span>
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">

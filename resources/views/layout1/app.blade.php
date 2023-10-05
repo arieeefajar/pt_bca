@@ -164,6 +164,9 @@
     <!-- profile-setting init js -->
     <script src="{{ asset('admin_assets/assets/js/pages/profile-setting.init.js') }}"></script>
 
+    {{-- form validate --}}
+    <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
+
     @include('sweetalert::alert')
 </body>
 

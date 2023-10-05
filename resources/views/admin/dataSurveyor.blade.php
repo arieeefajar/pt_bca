@@ -5,7 +5,7 @@
 
 @section('content')
 
-    {{-- @dd($provinsi) --}}
+    {{-- @dd($dataSurveyor) --}}
 
     @if (session('success'))
         <script>
@@ -55,8 +55,8 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="sort" data-sort="customer_name">Username</th>
-                                            <th class="sort" data-sort="email">Email</th>
+                                            <th class="sort" data-sort="customer_name">Name</th>
+                                            <th class="sort" data-sort="email">NIP</th>
                                             <th class="sort" data-sort="date">Wilayah</th>
                                             <th class="sort" data-sort="date">Aksi</th>
                                         </tr>
@@ -66,7 +66,7 @@
                                             <tr>
                                                 <th class="text-center">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->name }}</td>
-                                                <td class="email">{{ $data->email }}</td>
+                                                <td class="email">{{ $data->nip }}</td>
                                                 <td class="">{{ $data->wilayah === null ? '-' : $data->wilayah }}</td>
                                                 <td class="date">
                                                     <button class="btn btn-sm btn-primary edit-item-btn"
@@ -91,7 +91,7 @@
         <!-- end row -->
     </div>
 
-    <!-- edit-modal -->
+    <!-- set-modal -->
     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -173,18 +173,19 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="email-field" class="form-label">Email</label>
-                                <input type="email" id="email-field" name="email" value="{{ $user->email }}"
-                                    class="form-control" readonly placeholder="Masukan Email" required />
+                                <label for="nip-field" class="form-label">NIP</label>
+                                <input type="nip" id="nip-field" name="nip" value="{{ $user->nip }}"
+                                    class="form-control" readonly placeholder="Masukan NIP" required />
                                 <div class="invalid-feedback">
-                                    Email tidak boleh kosong. Masukkan email yang berisi &quot@&quot. Contoh: Raju@gmail.com
+                                    NIP tidak boleh kosong.
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
-                                <input type="text" id="alamat-field" name="alamat" value="{{ $user->alamat }}"
-                                    class="form-control" readonly placeholder="Masukan Alamat" required />
+                                <input type="text" id="alamat-field" name="alamat"
+                                    value="{{ !$user->alamat ? '-' : $user->alamat }}" class="form-control" readonly
+                                    placeholder="Masukan Alamat" required />
                                 <div class="invalid-feedback">
                                     Alamat tidak boleh kosong.
                                 </div>
@@ -193,8 +194,9 @@
                             <div class="mb-3">
                                 <label for="phone-field" class="form-label">No.Hp</label>
                                 <input type="tel" readonly name="no_telp" maxlength="13" id="no_telp"
-                                    class="form-control" placeholder="Masukan No.HP" value="{{ $user->no_telp }}"
-                                    required pattern="(\+62|62|0)8[1-9][0-9]{9,10}$"
+                                    class="form-control" placeholder="Masukan No.HP"
+                                    value="{{ !$user->no_telp ? '-' : $user->no_telp }}" required
+                                    pattern="(\+62|62|0)8[1-9][0-9]{9,10}$"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
                                     oninvalid="validateInput(this);" />
                                 <div class="invalid-feedback">
