@@ -58,7 +58,7 @@
                                                 @foreach ($dataProduk as $value)
                                                     <option
                                                         {{ old('produk_kita') == $value->nama_produk ? 'selected' : '' }}
-                                                        value="{{ $value->nama_produk }}"
+                                                        value="{{ $value->id }}"
                                                         data-deskripsi="{{ $value->nama_produk }}">
                                                         {{ $value->nama_produk }}
                                                     </option>
@@ -241,9 +241,9 @@
         async function submit_form() {
             // alert('wokdowakodkawodkoaw')
             try {
-                // const coords = await getLocation();
-                // document.getElementById("latitude_field").value = coords.latitude;
-                // document.getElementById("longitude_field").value = coords.longitude;
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
 
                 var form = document.getElementById('myFormPesaing');
                 var inputs = form.querySelectorAll('input, select, textarea');

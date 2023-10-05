@@ -16,11 +16,12 @@ class Penyimpanan extends Model
         'surveyor_id',
         'perusahaan_id',
         'status',
+        'created_at'
     ];
 
     public static function hasDonePenyimpanan($request)
     {
-        $answer_type = ['k_kepuasan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing'];
+        $answer_type = ['k_kepuasan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar'];
 
         foreach ($answer_type as $value) {
             $data = Penyimpanan::leftJoin('detail_penyimpanan', 'penyimpanan.id', '=', 'detail_penyimpanan.penyimpanan_id')

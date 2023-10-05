@@ -882,9 +882,9 @@
 
         async function submit_form() {
             try {
-                // const coords = await getLocation();
-                // document.getElementById("latitude_field").value = coords.latitude;
-                // document.getElementById("longitude_field").value = coords.longitude;
+                const coords = await getLocation();
+                document.getElementById("latitude_field").value = coords.latitude;
+                document.getElementById("longitude_field").value = coords.longitude;
 
                 // Pastikan elemen dengan ID form_body adalah elemen <form> yang benar
                 const form = document.getElementById("form_body");

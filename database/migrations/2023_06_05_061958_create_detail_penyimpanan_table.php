@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('detail_penyimpanan', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('penyimpanan_id');
-            $table->enum('pertanyaan', ['k_kepuasan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing']);
+            $table->enum('pertanyaan', ['k_kepuasan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar']);
             $table->string('api_id');
             $table->timestamps();
         });

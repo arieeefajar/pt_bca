@@ -366,7 +366,9 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
         Route::get('/', [KuisionerSkalaPasarProduk::class, 'index'])->name(
             'SkalaPasarProduk.index'
         );
-        // Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
+        Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name(
+            'SkalaPasarProduk.create'
+        );
     });
 
     //form survey

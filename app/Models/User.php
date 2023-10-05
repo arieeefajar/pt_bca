@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -33,10 +34,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * The attributes that should be cast.
@@ -49,19 +47,32 @@ class User extends Authenticatable
 
     public static function getCustommer()
     {
+        // Mendapatkan tanggal awal bulan ini
+        $startDate = Carbon::now()->startOfMonth()->format('Y-m-d').' 00:00:00';
+        // dd($startDate);
+
+        // Mendapatkan tanggal akhir bulan ini
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d').' 23:59:59';
+
         $customers = Customer::select('customer.id', 'customer.nama')
             ->leftJoin('kota', 'customer.kota_id', '=', 'kota.id')
-            ->leftJoin('wilayah_survey', 'kota.id', '=', 'wilayah_survey.kota_id')
+            ->leftJoin(
+                'wilayah_survey',
+                'kota.id',
+                '=',
+                'wilayah_survey.kota_id'
+            )
             ->leftJoin('users', 'wilayah_survey.surveyor_id', '=', 'users.id')
-            ->leftJoin('penyimpanan', function ($join) {
-                $join->on('penyimpanan.customer_id', '=', 'customer.id')
-                    ->where('penyimpanan.status', '=', 1);
+            ->leftJoin('penyimpanan', function ($join) use ($startDate, $endDate) {
+                $join
+                    ->on('penyimpanan.customer_id', '=', 'customer.id')
+                    ->where('penyimpanan.status', '=', 1)
+                    ->whereBetween('penyimpanan.created_at', [$startDate, $endDate]);
             })
             ->where('users.role', '=', 'user')
             ->where('users.id', '=', Auth::user()->id)
             ->whereNull('penyimpanan.id')
             ->get();
-
 
         return $customers;
     }

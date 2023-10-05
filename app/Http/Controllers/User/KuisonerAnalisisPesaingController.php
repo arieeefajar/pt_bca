@@ -121,12 +121,10 @@ class KuisonerAnalisisPesaingController extends Controller
         $price_sensitivity = $convert($request->price_sensitivity);
         $quality_than_price = $convert($request->quality_than_price);
         $trend_competition = $convert($request->trend_competition);
-        // $latitude = floatval($request->latitude);
-        // $longitude = floatval($request->longitude);
+        $latitude = floatval($request->latitude);
+        $longitude = floatval($request->longitude);
 
-        $latitude = 12345;
-        $longitude = -12345;
-
+        // dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,
@@ -134,11 +132,11 @@ class KuisonerAnalisisPesaingController extends Controller
                 "latitude" => $latitude,
                 "longtitude" => $longitude
             ],
-            "competitor" => [$competitor],
-            "new_competitor" => [$new_competitor],
-            "substitution" => [$substitution],
-            "supplier" => [$supplier],
-            "buyer" => [$buyer],
+            "competitor" => $competitor,
+            "new_competitor" => $new_competitor,
+            "substitution" => $substitution,
+            "supplier" => $supplier,
+            "buyer" => $buyer,
             "any_competitor" => $any_competitor,
             "difference" => $difference,
             "easy_out" => $easy_out,

@@ -56,7 +56,6 @@
                                             <th class="sort" data-sort="email">Jenis</th>
                                             <th class="sort" data-sort="phone">Provinsi</th>
                                             <th class="sort" data-sort="date">Kota</th>
-                                            <th class="sort" data-sort="date">Wilayah</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
@@ -67,7 +66,6 @@
                                                 <td class="email">{{ formatJenis($data->jenis) }}</td>
                                                 <td class="phone">{{ $data->provinsi }}</td>
                                                 <td class="date">{{ $data->kota }}</td>
-                                                <td class="wilayah">{{ $data->wilayah_nama }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

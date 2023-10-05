@@ -52,8 +52,8 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="sort" data-sort="customer_name">Username</th>
-                                            <th class="sort" data-sort="email">Email</th>
+                                            <th class="sort" data-sort="customer_name">Name</th>
+                                            <th class="sort" data-sort="email">NIP</th>
                                             <th class="sort" data-sort="phone">Alamat</th>
                                             <th class="sort" data-sort="date">No.Hp</th>
                                         </tr>
@@ -63,9 +63,9 @@
                                             <tr>
                                                 <th class="text-center">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->name }}</td>
-                                                <td class="email">{{ $data->email }}</td>
-                                                <td class="phone">{{ $data->alamat }}</td>
-                                                <td class="date">{{ $data->no_telp }}</td>
+                                                <td class="email">{{ $data->nip }}</td>
+                                                <td class="phone">{{ !$data->alamat ? '-' : $data->alamat }}</td>
+                                                <td class="date">{{ !$data->no_telp ? '-' : $data->no_telp }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

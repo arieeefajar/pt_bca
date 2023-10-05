@@ -121,12 +121,10 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $support_change = intval($request->support_change);
         $strengthening_ability = intval($request->strengthening_ability);
         $special_treatment = intval($request->special_treatment);
-        // $latitude = floatval($request->latitude);
-        // $longitude = floatval($request->longitude);
+        $latitude = floatval($request->latitude);
+        $longitude = floatval($request->longitude);
 
-
-        $latitude = 12345;
-        $longitude = -123456;
+        // dd($latitude, $longitude);
 
         // post api
         $response = Http::post($endPointApi, [
