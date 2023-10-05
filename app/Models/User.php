@@ -49,12 +49,11 @@ class User extends Authenticatable
     {
         // Mendapatkan tanggal awal bulan ini
         $startDate = Carbon::now()->startOfMonth()->format('Y-m-d').' 00:00:00';
-        // dd($startDate);
 
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d').' 23:59:59';
 
-        $customers = Customer::select('customer.id', 'customer.nama')
+        $customer = Customer::select('customer.id', 'customer.nama', 'penyimpanan.surveyor_id')
             ->leftJoin('kota', 'customer.kota_id', '=', 'kota.id')
             ->leftJoin(
                 'wilayah_survey',
@@ -73,6 +72,24 @@ class User extends Authenticatable
             ->where('users.id', '=', Auth::user()->id)
             ->whereNull('penyimpanan.id')
             ->get();
+            
+        $customers = [];
+            // get data penyimpanan yang ada sebagian jawaban
+        foreach ($customer as $value) {
+            $data = Penyimpanan::where('customer_id', '=', $value->id)
+            ->whereNot('surveyor_id', '=', Auth::user()->id)
+            ->first();
+            if ($data) {
+                $dataDetail = DetailPenyimpanan::where('penyimpanan_id', '=', $data->id)->first();
+                if (!$dataDetail) {
+                    array_push($customers, $value);
+                    // dd($data, $dataDetail);
+                }
+            }else{
+                array_push($customers, $value);
+            }
+        }
+        // dd($customers);
 
         return $customers;
     }

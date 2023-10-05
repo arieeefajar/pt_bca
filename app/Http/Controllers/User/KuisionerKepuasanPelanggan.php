@@ -61,8 +61,8 @@ class KuisionerKepuasanPelanggan extends Controller
             'verification_speed' => 'required',
             'completion_speed' => 'required',
             'handling' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -79,7 +79,6 @@ class KuisionerKepuasanPelanggan extends Controller
             return redirect()->route('menu.index');
         }
 
-        // $endPointApi = 'http://103.175.216.72/api/simi/customer';
         $endPointApi = env('PYTHON_END_POINT') . 'customer';
 
         // data answer
@@ -112,8 +111,6 @@ class KuisionerKepuasanPelanggan extends Controller
         $handling = intval($request->handling);
         $latitude = floatval($request->latitude);
         $longitude = floatval($request->longitude);
-
-        // dd($latitude, $longitude);
 
         // post api
         $response = Http::post($endPointApi, [
@@ -152,7 +149,6 @@ class KuisionerKepuasanPelanggan extends Controller
         ]);
 
         $responJson = $response->json();
-        // dd($responJson);
 
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,

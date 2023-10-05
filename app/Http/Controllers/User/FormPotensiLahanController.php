@@ -29,7 +29,6 @@ class FormPotensiLahanController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->all());
         $customMessages = [
             'required' => ':attribute harus diisi.',
         ];
@@ -40,8 +39,8 @@ class FormPotensiLahanController extends Controller
             'keunggulan_kompetitor' => 'required',
             'iklim' => 'required',
             'event' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -67,8 +66,6 @@ class FormPotensiLahanController extends Controller
         $event = $request->event;
         $latitude = $request->latitude;
         $longitude = $request->longitude;
-
-        // dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,

@@ -64,12 +64,11 @@ class KuisonerAnalisisPesaingController extends Controller
             'price_sensitivity' => 'required',
             'quality_than_price' => 'required',
             'trend_competition' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ], $customMessages);
 
 
-        // dd($request->all());
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
             return redirect()->back()->withInput();
@@ -124,7 +123,6 @@ class KuisonerAnalisisPesaingController extends Controller
         $latitude = floatval($request->latitude);
         $longitude = floatval($request->longitude);
 
-        // dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             "surveyor" => Auth::user()->id,
@@ -162,7 +160,6 @@ class KuisonerAnalisisPesaingController extends Controller
         ]);
 
         $responJson = $response->json();
-        // dd($responJson);
 
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,

@@ -33,8 +33,8 @@
                                                 <th scope="row">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->nama }}</td>
                                                 <td class="email">{{ $data->jenis }}</td>
-                                                <td class="phone">{{ $data->kota->provinsi->nama }}</td>
-                                                <td class="date">{{ $data->kota->nama }}</td>
+                                                <td class="phone">{{ $data->provinsi }}</td>
+                                                <td class="date">{{ $data->kota }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

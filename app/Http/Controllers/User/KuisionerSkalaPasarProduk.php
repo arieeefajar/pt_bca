@@ -53,9 +53,8 @@ class KuisionerSkalaPasarProduk extends Controller
                 'sales_system_application' => 'required|string',
                 'matrix_volume' => 'required|string',
                 'suply_term' => 'required|string',
-
-                // 'latitude' => 'required',
-                // 'longitude' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required',
             ],
             $customMessages
         );
@@ -98,7 +97,6 @@ class KuisionerSkalaPasarProduk extends Controller
         $latitude = $request->latitude;
         $longitude = $request->longitude;
         
-        dd($latitude, $longitude);
 
         $response = Http::post($endPointApi, [
             'surveyor' => Auth::user()->id,
@@ -121,6 +119,7 @@ class KuisionerSkalaPasarProduk extends Controller
         ]);
 
         $responJson = $response->json();
+        // dd($responJson);
 
         DetailPenyimpanan::create([
             'penyimpanan_id' => $idPenyimpanan,

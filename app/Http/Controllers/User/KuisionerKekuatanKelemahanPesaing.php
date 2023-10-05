@@ -69,15 +69,14 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             'support_change' => 'required',
             'strengthening_ability' => 'required',
             'special_treatment' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
             return redirect()->back()->withInput();
         }
-
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kekuatan_kelemahan');
@@ -123,8 +122,6 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $special_treatment = intval($request->special_treatment);
         $latitude = floatval($request->latitude);
         $longitude = floatval($request->longitude);
-
-        // dd($latitude, $longitude);
 
         // post api
         $response = Http::post($endPointApi, [
