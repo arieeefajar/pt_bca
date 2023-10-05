@@ -56,24 +56,27 @@
                                                 onchange="updateSelectedDeskripsi()">
                                                 <option value="" selected disabled>Pilih Produk</option>
                                                 @foreach ($dataProduk as $value)
-                                                    <option value="{{ $value->nama_produk }}"
+                                                    <option
+                                                        {{ old('produk_kita') == $value->nama_produk ? 'selected' : '' }}
+                                                        value="{{ $value->nama_produk }}"
                                                         data-deskripsi="{{ $value->nama_produk }}">
                                                         {{ $value->nama_produk }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                             <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" required
-                                                name="deskripsi_produk" id="deskripsiProdukKita" cols="30" minlength="10" rows="5"></textarea>
+                                                name="deskripsi_produk" id="deskripsiProdukKita" cols="30" minlength="10" rows="5">{{ old('deskripsi_produk') }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Produk Pesaing</label>
                                             <input type="text" name="produk_pesaing" id="produkPesaing"
-                                                class="form-control" required placeholder="Masukan nama produk pesaing">
+                                                class="form-control" value="{{ old('produk_pesaing') }}" required
+                                                placeholder="Masukan nama produk pesaing">
                                         </div>
                                         <textarea class="form-control" maxlength="1000" name="deskripsi_produk_pesaing" id="deskripsiProdukPesaing"
-                                            placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
+                                            placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required>{{ old('deskripsi_produk_pesaing') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row g-4 mt-3 mb-3">
@@ -118,7 +121,7 @@
                                     <div class="content col">
                                         <label class="form-label">Apa saja keunggulan pesaing :</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_pesaing"
-                                            id="keunggulanPesaing" cols="30" rows="5" required></textarea>
+                                            id="keunggulanPesaing" cols="30" rows="5" required>{{ old('keunggulan_pesaing') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row g-4 mt-3">
@@ -162,7 +165,7 @@
                                     <div class="content col">
                                         <label class="form-label">Apa saja aktivitas pemasaran pesaing :</label>
                                         <textarea class="form-control" maxlength="1000" name="pemasaran_pesaing" id="pemasaranPesaing"
-                                            placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required></textarea>
+                                            placeholder="Masukan minimal 10 karakter" cols="30" rows="5" required>{{ old('pemasaran_pesaing') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row g-4 mt-3">

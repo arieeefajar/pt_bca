@@ -36,24 +36,29 @@
                         </div>
                         <div class="mb-2">
                             <label for="">Siapa saja pesaing perusahaan ?</label>
-                            <input type="text" class="form-control" name="competitor" id="">
+                            <input type="text" value="{{ old('competitor') }}" class="form-control" name="competitor"
+                                id="">
                         </div>
                         <div class="mb-2">
                             <label for="">Siapa saja pendatang baru yang dapat mengancam perusahaan ?</label>
-                            <input type="text" class="form-control" name="new_competitor" id="">
+                            <input type="text" value="{{ old('new_competitor') }}" class="form-control"
+                                name="new_competitor" id="">
                         </div>
                         <div class="mb-2">
                             <label for="">Siapa saja pembuat produk (produsen) substitusi pengganti produk
                                 perusahaan ?</label>
-                            <input type="text" class="form-control" name="substitution" id="">
+                            <input type="text" value="{{ old('substitution') }}" class="form-control" name="substitution"
+                                id="">
                         </div>
                         <div class="mb-2">
                             <label for="">Siapa saja pemasok perusahaan ?</label>
-                            <input type="text" class="form-control" name="supplier" id="">
+                            <input type="text" value="{{ old('supplier') }}" class="form-control" name="supplier"
+                                id="">
                         </div>
                         <div class="mb-4">
                             <label for="">Siapa saja pembeli perusahaan ?</label>
-                            <input type="text" class="form-control" name="buyer" id="">
+                            <input type="text" value="{{ old('buyer') }}" class="form-control" name="buyer"
+                                id="">
                         </div>
 
                         <div class="live-preview">
@@ -76,29 +81,35 @@
                                         <tr>
                                             <td>Apakah terdapat banyak pesaing di dalam pasar ?</td>
                                             <td align="center">
-                                                <input type="radio" name="any_competitor" value="1">
+                                                <input type="radio" {{ old('any_competitor') == '1' ? 'checked' : '' }}
+                                                    name="any_competitor" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="any_competitor" value="2">
+                                                <input type="radio" {{ old('any_competitor') == '2' ? 'checked' : '' }}
+                                                    name="any_competitor" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah produk perusahaan dapat dibedakan dengan produk-produk pesaing ?</td>
                                             <td align="center">
-                                                <input type="radio" name="difference" value="1">
+                                                <input type="radio" {{ old('difference') == '1' ? 'checked' : '' }}
+                                                    name="difference" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="difference" value="2">
+                                                <input type="radio" {{ old('difference') == '2' ? 'checked' : '' }}
+                                                    name="difference" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah tiap-tiap perusahaan dapat dengan mudah keluar dari persaingan pasar
                                                 ?</td>
                                             <td align="center">
-                                                <input type="radio" name="easy_out" value="1">
+                                                <input type="radio" {{ old('easy_out') == '1' ? 'checked' : '' }}
+                                                    name="easy_out" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="easy_out" value="2">
+                                                <input type="radio" {{ old('easy_out') == '2' ? 'checked' : '' }}
+                                                    name="easy_out" value="2">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -121,60 +132,72 @@
                                             <td>Apakah diperlukan produksi dalam jumlah besar untuk mencapai skala ekonomis
                                                 ?</td>
                                             <td align="center">
-                                                <input type="radio" name="quantity" value="1">
+                                                <input type="radio" {{ old('quantity') == '1' ? 'checked' : '' }}
+                                                    name="quantity" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="quantity" value="2">
+                                                <input type="radio" {{ old('quantity') == '2' ? 'checked' : '' }}
+                                                    name="quantity" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah produk perusahaan dapat dibedakan dengan jelas dibanding produk
                                                 pesaing ?</td>
                                             <td align="center">
-                                                <input type="radio" name="clear_difference" value="1">
+                                                <input type="radio" {{ old('clear_difference') == '1' ? 'checked' : '' }}
+                                                    name="clear_difference" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="clear_difference" value="2">
+                                                <input type="radio" {{ old('clear_difference') == '2' ? 'checked' : '' }}
+                                                    name="clear_difference" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah diperlukan modal besar untuk memulai bisnis dalam
                                                 industri ini ?</td>
                                             <td align="center">
-                                                <input type="radio" name="big_capital" value="1">
+                                                <input type="radio" {{ old('big_capital') == '1' ? 'checked' : '' }}
+                                                    name="big_capital" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="big_capital" value="2">
+                                                <input type="radio" {{ old('big_capital') == '2' ? 'checked' : '' }}
+                                                    name="big_capital" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah perusahaan mempunyai keunggulan biaya yang tidak
                                                 tergantung ukuran produksi dibandingkan pendatang baru ?</td>
                                             <td align="center">
-                                                <input type="radio" name="cost" value="1">
+                                                <input type="radio" {{ old('cost') == '1' ? 'checked' : '' }}
+                                                    name="cost" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="cost" value="2">
+                                                <input type="radio" {{ old('cost') == '2' ? 'checked' : '' }}
+                                                    name="cost" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah pendatang baru dapat dengan mudah memakai saluran
                                                 distribusi yang telah ada ?</td>
                                             <td align="center">
-                                                <input type="radio" name="easy_channel" value="1">
+                                                <input type="radio" {{ old('easy_channel') == '1' ? 'checked' : '' }}
+                                                    name="easy_channel" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="easy_channel" value="2">
+                                                <input type="radio" {{ old('easy_channel') == '2' ? 'checked' : '' }}
+                                                    name="easy_channel" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah kebijakan pemerintah memudahkan pendatang baru untuk masuk ke dalam
                                                 industri ?</td>
                                             <td align="center">
-                                                <input type="radio" name="policy" value="1">
+                                                <input type="radio" {{ old('policy') == '1' ? 'checked' : '' }}
+                                                    name="policy" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="policy" value="2">
+                                                <input type="radio" {{ old('policy') == '2' ? 'checked' : '' }}
+                                                    name="policy" value="2">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -198,20 +221,28 @@
                                             <td>Apakah pembeli dapat dengan mudah menemukan barang substitusi yang dapat
                                                 menggantikan fungsi dari produk perusahaan di dalam pasar ?</td>
                                             <td align="center">
-                                                <input type="radio" name="find_subtitution" value="1">
+                                                <input type="radio"
+                                                    {{ old('find_subtitution') == '1' ? 'checked' : '' }}
+                                                    name="find_subtitution" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="find_subtitution" value="2">
+                                                <input type="radio"
+                                                    {{ old('find_subtitution') == '2' ? 'checked' : '' }}
+                                                    name="find_subtitution" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Jika ya, apakah harga produk substitusi tersebut bersaing dengan produk
                                                 perusahaan ?</td>
                                             <td align="center">
-                                                <input type="radio" name="competitive_price" value="1">
+                                                <input type="radio"
+                                                    {{ old('competitive_price') == '1' ? 'checked' : '' }}
+                                                    name="competitive_price" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="competitive_price" value="2">
+                                                <input type="radio"
+                                                    {{ old('competitive_price') == '2' ? 'checked' : '' }}
+                                                    name="competitive_price" value="2">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -233,50 +264,64 @@
                                         <tr>
                                             <td>Apakah perusahaan memiliki banyak pilihan dalam menentukan pemasok ?</td>
                                             <td align="center">
-                                                <input type="radio" name="supplier_choice" value="1">
+                                                <input type="radio" {{ old('supplier_choice') == '1' ? 'checked' : '' }}
+                                                    name="supplier_choice" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="supplier_choice" value="2">
+                                                <input type="radio" {{ old('supplier_choice') == '2' ? 'checked' : '' }}
+                                                    name="supplier_choice" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah perusahaan bebas untuk berganti pemasok tanpa konsekuensi tertentu,
                                                 seperti biaya perggantian, harga dan kualitas ?</td>
                                             <td align="center">
-                                                <input type="radio" name="change_price" value="1">
+                                                <input type="radio" {{ old('change_price') == '1' ? 'checked' : '' }}
+                                                    name="change_price" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="change_price" value="2">
+                                                <input type="radio" {{ old('change_price') == '2' ? 'checked' : '' }}
+                                                    name="change_price" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah terdapat barang substitusi tertentu bagi perusahaan selain produk
                                                 pemasok ?</td>
                                             <td align="center">
-                                                <input type="radio" name="any_substitution" value="1">
+                                                <input type="radio"
+                                                    {{ old('any_substitution') == '1' ? 'checked' : '' }}
+                                                    name="any_substitution" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="any_substitution" value="2">
+                                                <input type="radio"
+                                                    {{ old('any_substitution') == '2' ? 'checked' : '' }}
+                                                    name="any_substitution" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah ada kecenderungan bagi pemasok untuk bersaing secara langsung dengan
                                                 cara masuk ke dalam industri ?</td>
                                             <td align="center">
-                                                <input type="radio" name="competitive_tendencies" value="1">
+                                                <input type="radio"
+                                                    {{ old('competitive_tendencies') == '1' ? 'checked' : '' }}
+                                                    name="competitive_tendencies" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="competitive_tendencies" value="2">
+                                                <input type="radio"
+                                                    {{ old('competitive_tendencies') == '2' ? 'checked' : '' }}
+                                                    name="competitive_tendencies" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah perusahaan dan/atau industrinya adalah kelompok pembeli dominan bagi
                                                 kelompok pemasok ?</td>
                                             <td align="center">
-                                                <input type="radio" name="dominant" value="1">
+                                                <input type="radio" {{ old('dominant') == '1' ? 'checked' : '' }}
+                                                    name="dominant" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="dominant" value="2">
+                                                <input type="radio" {{ old('dominant') == '2' ? 'checked' : '' }}
+                                                    name="dominant" value="2">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -299,59 +344,81 @@
                                             <td>Apakah tiap pembeli memberikan kontribusi yang besar terhadap total
                                                 penjualan perusahaan ?</td>
                                             <td align="center">
-                                                <input type="radio" name="contribution" value="1">
+                                                <input type="radio" {{ old('contribution') == '1' ? 'checked' : '' }}
+                                                    name="contribution" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="contribution" value="2">
+                                                <input type="radio" {{ old('contribution') == '2' ? 'checked' : '' }}
+                                                    name="contribution" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah produk yang diinginkan oleh calon pembeli tidak berbeda
                                                 jauh di antara pesaing-pesaing di dalam industri perusahaan ?</td>
                                             <td align="center">
-                                                <input type="radio" name="difference_desire" value="1">
+                                                <input type="radio"
+                                                    {{ old('difference_desire') == '1' ? 'checked' : '' }}
+                                                    name="difference_desire" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="difference_desire" value="2">
+                                                <input type="radio"
+                                                    {{ old('difference_desire') == '2' ? 'checked' : '' }}
+                                                    name="difference_desire" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah pembeli dapat dengan mudah berganti penjual tanpa
                                                 konsekuensi tertentu seperti harga dan kualitas ?</td>
                                             <td align="center">
-                                                <input type="radio" name="customor_movement" value="1">
+                                                <input type="radio"
+                                                    {{ old('customor_movement') == '1' ? 'checked' : '' }}
+                                                    name="customor_movement" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="customor_movement" value="2">
+                                                <input type="radio"
+                                                    {{ old('customor_movement') == '2' ? 'checked' : '' }}
+                                                    name="customor_movement" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah pembeli sangat sensitif terhadap perubahan harga ?</td>
                                             <td align="center">
-                                                <input type="radio" name="price_sensitivity" value="1">
+                                                <input type="radio"
+                                                    {{ old('price_sensitivity') == '1' ? 'checked' : '' }}
+                                                    name="price_sensitivity" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="price_sensitivity" value="2">
+                                                <input type="radio"
+                                                    {{ old('price_sensitivity') == '2' ? 'checked' : '' }}
+                                                    name="price_sensitivity" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah calon pembeli lebih mementingkan kualitas daripada harga dalam
                                                 pembelian ?</td>
                                             <td align="center">
-                                                <input type="radio" name="quality_than_price" value="1">
+                                                <input type="radio"
+                                                    {{ old('quality_than_price') == '1' ? 'checked' : '' }}
+                                                    name="quality_than_price" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="quality_than_price" value="2">
+                                                <input type="radio"
+                                                    {{ old('quality_than_price') == '2' ? 'checked' : '' }}
+                                                    name="quality_than_price" value="2">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apakah ada kecenderungan bagi pembeli masuk ke dalam industri perusahaan
                                                 untuk bersaing langsung ?</td>
                                             <td align="center">
-                                                <input type="radio" name="trend_competition" value="1">
+                                                <input type="radio"
+                                                    {{ old('trend_competition') == '1' ? 'checked' : '' }}
+                                                    name="trend_competition" value="1">
                                             </td>
                                             <td align="center">
-                                                <input type="radio" name="trend_competition" value="2">
+                                                <input type="radio"
+                                                    {{ old('trend_competition') == '2' ? 'checked' : '' }}
+                                                    name="trend_competition" value="2">
                                             </td>
                                         </tr>
                                     </tbody>

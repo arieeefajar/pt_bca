@@ -54,17 +54,17 @@
                                 <div class="content col">
                                     <label class="form-label">Standar Keunggulan Umum</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_umum"
-                                        id="keunggulan_umum" cols="30" rows="5" required></textarea>
+                                        id="keunggulan_umum" cols="30" rows="5" required>{{ old('keunggulan_umum') }}</textarea>
                                 </div>
                                 <div class="content col mt-3">
                                     <label class="form-label">Keunggulan Produk Kita</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_produk"
-                                        id="keunggulan_produk" cols="30" rows="5" required></textarea>
+                                        id="keunggulan_produk" cols="30" rows="5" required>{{ old('keunggulan_produk') }}</textarea>
                                 </div>
                                 <div class="content col mt-3">
                                     <label class="form-label">Keunggulan Kompetitor</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_kompetitor"
-                                        id="keunggulan_kompetitor" cols="30" rows="5" required></textarea>
+                                        id="keunggulan_kompetitor" cols="30" rows="5" required>{{ old('keunggulan_kompetitor') }}</textarea>
                                 </div>
                                 <div class="row g-4 mt-3">
                                     <div class="col-sm">
@@ -102,14 +102,14 @@
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="iklim" id="iklim"
-                                            cols="30" rows="5" required></textarea>
+                                            cols="30" rows="5" required>{{ old('iklim') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="event"
-                                            id="event" cols="30" rows="5" required></textarea>
+                                            id="event" cols="30" rows="5" required>{{ old('event') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row g-4 mt-3">
