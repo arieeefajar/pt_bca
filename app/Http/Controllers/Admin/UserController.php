@@ -37,6 +37,10 @@ class UserController extends Controller
             'nip.unique' => 'Email sudah digunakan',
             'nip.max' => 'Email maximal :max karakter',
 
+            'posisi.required' => 'posisi harus di isi',
+            'posisi.max' => 'posisi maximal :max karakter',
+            'posisi.string' => 'posisi harus berupa text',
+
             'password.required' => 'Password harus di isi',
             'password.min' => 'Password minimal :min karakter',
 
@@ -54,6 +58,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:30',
             'nip' => 'required|unique:users|max:40',
+            'posisi' => 'required|string|max:30',
             'password' => 'required|min:8',
             'alamat' => 'required|max:255',
             'no_telp' => 'required|min:11|max:16',
@@ -70,6 +75,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->nip = $request->nip;
+        $user->position = $request->posisi;
         $user->password = Hash::make($request->password);
         $user->alamat = $request->alamat;
         $user->no_telp = $request->no_telp;
@@ -97,7 +103,7 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:40',
-            'nip' => 'required|unique:users|max:40',
+            'posisi' => 'required|string|max:30',
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:16',
             'role' => 'required|in:supper-admin,admin,executive,user',
@@ -112,7 +118,7 @@ class UserController extends Controller
         // get user data from id
         $user = User::findOrFail($id);
         $user->name = $request->name;
-        $user->nip = $request->nip;
+        $user->position = $request->posisi;
         $user->alamat = $request->alamat;
         $user->no_telp = $request->no_telp;
         $user->role = $request->role;

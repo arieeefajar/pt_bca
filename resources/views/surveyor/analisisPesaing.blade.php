@@ -425,8 +425,8 @@
                                 </table>
 
                                 {{-- geolocation --}}
-                                <input type="hidden" name="latitude" id="latitude_field">
-                                <input type="hidden" name="longitude" id="longitude_field">
+                                {{-- <input type="hidden" name="latitude" id="latitude_field">
+                                <input type="hidden" name="longitude" id="longitude_field"> --}}
 
                                 <div class="row g-4 mb-3">
                                     <div class="col-sm">
@@ -448,24 +448,24 @@
     </div>
 
     <script>
-        function getLocation() {
-            return new Promise((resolve, reject) => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        position => resolve(position.coords),
-                        error => reject(error)
-                    );
-                } else {
-                    reject("Geolocation is not supported by this browser.");
-                }
-            });
-        }
+        // function getLocation() {
+        //     return new Promise((resolve, reject) => {
+        //         if (navigator.geolocation) {
+        //             navigator.geolocation.getCurrentPosition(
+        //                 position => resolve(position.coords),
+        //                 error => reject(error)
+        //             );
+        //         } else {
+        //             reject("Geolocation is not supported by this browser.");
+        //         }
+        //     });
+        // }
 
         async function submit_form() {
             try {
-                const coords = await getLocation();
-                document.getElementById("latitude_field").value = coords.latitude;
-                document.getElementById("longitude_field").value = coords.longitude;
+                // const coords = await getLocation();
+                // document.getElementById("latitude_field").value = coords.latitude;
+                // document.getElementById("longitude_field").value = coords.longitude;
 
                 // Pastikan elemen dengan ID form_body adalah elemen <form> yang benar
                 const form = document.getElementById("form_body");

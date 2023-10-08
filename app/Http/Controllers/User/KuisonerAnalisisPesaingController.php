@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DetailKuisioner;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
@@ -64,8 +65,8 @@ class KuisonerAnalisisPesaingController extends Controller
             'price_sensitivity' => 'required',
             'quality_than_price' => 'required',
             'trend_competition' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
 
@@ -84,6 +85,13 @@ class KuisonerAnalisisPesaingController extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'competitor-analys';
+
+        // latitude & longitude
+        $koordinat = Customer::select('koordinat')
+            ->where('id', $request->cookie('selectedTokoId'))
+            ->first()
+            ->koordinat;
+        $koordinat = explode(", ", $koordinat);
 
         // convert function
         $convert = function ($params) {
@@ -120,60 +128,67 @@ class KuisonerAnalisisPesaingController extends Controller
         $price_sensitivity = $convert($request->price_sensitivity);
         $quality_than_price = $convert($request->quality_than_price);
         $trend_competition = $convert($request->trend_competition);
-        $latitude = floatval($request->latitude);
-        $longitude = floatval($request->longitude);
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        $latitude = floatval($koordinat[0]);
+        $longitude = floatval($koordinat[1]);
 
 
-        $response = Http::post($endPointApi, [
-            "surveyor" => Auth::user()->id,
-            "location" => [
-                "latitude" => $latitude,
-                "longtitude" => $longitude
-            ],
-            "competitor" => $competitor,
-            "new_competitor" => $new_competitor,
-            "substitution" => $substitution,
-            "supplier" => $supplier,
-            "buyer" => $buyer,
-            "any_competitor" => $any_competitor,
-            "difference" => $difference,
-            "easy_out" => $easy_out,
-            "quantity" => $quantity,
-            "clear_difference" => $clear_difference,
-            "big_capital" => $big_capital,
-            "cost" => $cost,
-            "easy_channel" => $easy_channel,
-            "policy" => $policy,
-            "find_subtitution" => $find_subtitution,
-            "competitive_price" => $competitive_price,
-            "supplier_choice" => $supplier_choice,
-            "change_price" => $change_price,
-            "any_substitution" => $any_substitution,
-            "competitive_tendencies" => $competitive_tendencies,
-            "dominant" => $dominant,
-            "contribution" => $contribution,
-            "difference_desire" => $difference_desire,
-            "customor_movement" => $customor_movement,
-            "price_sensitivity" => $price_sensitivity,
-            "quality_than_price" => $quality_than_price,
-            "trend_competition" => $trend_competition
-        ]);
-
-        $responJson = $response->json();
-
-        DetailPenyimpanan::create([
-            'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'k_analisis',
-            'api_id' => $responJson['id']
-        ]);
-
-        if (Penyimpanan::hasDonePenyimpanan($request)) {
-            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
-            $penyimpanan->status = '1';
-            $penyimpanan->save();
+        try {
+            $response = Http::post($endPointApi, [
+                "surveyor" => Auth::user()->id,
+                "location" => [
+                    "latitude" => $latitude,
+                    "longtitude" => $longitude
+                ],
+                "competitor" => $competitor,
+                "new_competitor" => $new_competitor,
+                "substitution" => $substitution,
+                "supplier" => $supplier,
+                "buyer" => $buyer,
+                "any_competitor" => $any_competitor,
+                "difference" => $difference,
+                "easy_out" => $easy_out,
+                "quantity" => $quantity,
+                "clear_difference" => $clear_difference,
+                "big_capital" => $big_capital,
+                "cost" => $cost,
+                "easy_channel" => $easy_channel,
+                "policy" => $policy,
+                "find_subtitution" => $find_subtitution,
+                "competitive_price" => $competitive_price,
+                "supplier_choice" => $supplier_choice,
+                "change_price" => $change_price,
+                "any_substitution" => $any_substitution,
+                "competitive_tendencies" => $competitive_tendencies,
+                "dominant" => $dominant,
+                "contribution" => $contribution,
+                "difference_desire" => $difference_desire,
+                "customor_movement" => $customor_movement,
+                "price_sensitivity" => $price_sensitivity,
+                "quality_than_price" => $quality_than_price,
+                "trend_competition" => $trend_competition
+            ]);
+    
+            $responJson = $response->json();
+    
+            DetailPenyimpanan::create([
+                'penyimpanan_id' => $idPenyimpanan,
+                'pertanyaan' => 'k_analisis',
+                'api_id' => $responJson['id']
+            ]);
+    
+            if (Penyimpanan::hasDonePenyimpanan($request)) {
+                $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+                $penyimpanan->status = '1';
+                $penyimpanan->save();
+            }
+    
+            alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
+            return redirect()->route('menu.index');
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
+            return redirect()->route('menu.index');
         }
-
-        alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
-        return redirect()->route('menu.index');
     }
 }

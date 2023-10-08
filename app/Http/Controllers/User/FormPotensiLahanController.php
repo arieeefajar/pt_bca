@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
 use App\Models\Product;
@@ -39,8 +40,8 @@ class FormPotensiLahanController extends Controller
             'keunggulan_kompetitor' => 'required',
             'iklim' => 'required',
             'event' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -59,44 +60,58 @@ class FormPotensiLahanController extends Controller
 
         $endPointApi = env('PYTHON_END_POINT').'potentional-area';
 
+        // latitude & longitude
+        $koordinat = Customer::select('koordinat')
+            ->where('id', $request->cookie('selectedTokoId'))
+            ->first()
+            ->koordinat;
+        $koordinat = explode(", ", $koordinat);
+
         $keunggulan_umum = $request->keunggulan_umum;
         $keunggulan_produk = $request->keunggulan_produk;
         $keunggulan_kompetitor = $request->keunggulan_kompetitor;
         $iklim = $request->iklim;
         $event = $request->event;
-        $latitude = $request->latitude;
-        $longitude = $request->longitude;
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        $latitude = floatval($koordinat[0]);
+        $longitude = floatval($koordinat[1]);
 
-        $response = Http::post($endPointApi, [
-            "surveyor" => Auth::user()->id,
-            "location" => [
-                "latitude" => $latitude,
-                "longtitude" => $longitude
-            ],
-            "answer" => [
-                $keunggulan_umum,
-                $keunggulan_produk,
-                $keunggulan_kompetitor,
-                $iklim,
-                $event
-            ]
-        ]);
-
-        $responJson = $response->json();
-
-        DetailPenyimpanan::create([
-            'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'form_lahan',
-            'api_id' => $responJson['id']
-        ]);
-
-        if (Penyimpanan::hasDonePenyimpanan($request)) {
-            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
-            $penyimpanan->status = '1';
-            $penyimpanan->save();
+        try {
+            $response = Http::post($endPointApi, [
+                "surveyor" => Auth::user()->id,
+                "location" => [
+                    "latitude" => $latitude,
+                    "longtitude" => $longitude
+                ],
+                "answer" => [
+                    $keunggulan_umum,
+                    $keunggulan_produk,
+                    $keunggulan_kompetitor,
+                    $iklim,
+                    $event
+                ]
+            ]);
+    
+            $responJson = $response->json();
+    
+            DetailPenyimpanan::create([
+                'penyimpanan_id' => $idPenyimpanan,
+                'pertanyaan' => 'form_lahan',
+                'api_id' => $responJson['id']
+            ]);
+    
+            if (Penyimpanan::hasDonePenyimpanan($request)) {
+                $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+                $penyimpanan->status = '1';
+                $penyimpanan->save();
+            }
+    
+            alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
+            return redirect()->route('menu.index');
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
+            return redirect()->route('menu.index');
         }
-
-        alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
-        return redirect()->route('menu.index');
     }
 }
