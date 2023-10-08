@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
 use App\Models\Product;
@@ -43,10 +44,12 @@ class FormPesaingController extends Controller
             'deskripsi_produk_pesaing' => 'required',
             'keunggulan_pesaing' => 'required',
             'pemasaran_pesaing' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
+        $name = "rif'an";
+        $query = "SELECT * FROM anu WHERE = '$name'";
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
             return redirect()->back()->withInput();
@@ -63,6 +66,13 @@ class FormPesaingController extends Controller
 
         $endPointApi = env('PYTHON_END_POINT').'retail';
 
+        // latitude & longitude
+        $koordinat = Customer::select('koordinat')
+            ->where('id', $request->cookie('selectedTokoId'))
+            ->first()
+            ->koordinat;
+        $koordinat = explode(", ", $koordinat);
+
         // data send
         $produk_kita = $request->produk_kita;
         $produk_pesaing = explode(", ", $request->produk_pesaing);
@@ -71,40 +81,47 @@ class FormPesaingController extends Controller
         $deskripsi_produk_pesaing = $request->deskripsi_produk_pesaing;
         $keunggulan_pesaing = $request->keunggulan_pesaing;
         $pemasaran_pesaing = $request->pemasaran_pesaing;
-        $latitude = $request->latitude;
-        $longitude = $request->longitude;
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        $latitude = floatval($koordinat[0]);
+        $longitude = floatval($koordinat[1]);
 
-        $response = Http::post($endPointApi, [
-            "surveyor" => Auth::user()->id,
-            "location" => [
-                "latitude" => $latitude,
-                "longtitude" => $longitude
-            ],
-            "our_product" => $produk_kita,
-            "competitor_product" => $produk_pesaing,
-            "answer" => [
-                $deskripsi_produk,
-                $deskripsi_produk_pesaing,
-                $keunggulan_pesaing,
-                $pemasaran_pesaing
-            ]
-        ]);
-
-        $responJson = $response->json();
-
-        DetailPenyimpanan::create([
-            'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'form_pesaing',
-            'api_id' => $responJson['id']
-        ]);
-
-        if (Penyimpanan::hasDonePenyimpanan($request)) {
-            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
-            $penyimpanan->status = '1';
-            $penyimpanan->save();
+        try {
+            $response = Http::post($endPointApi, [
+                "surveyor" => Auth::user()->id,
+                "location" => [
+                    "latitude" => $latitude,
+                    "longtitude" => $longitude
+                ],
+                "our_product" => $produk_kita,
+                "competitor_product" => $produk_pesaing,
+                "answer" => [
+                    $deskripsi_produk,
+                    $deskripsi_produk_pesaing,
+                    $keunggulan_pesaing,
+                    $pemasaran_pesaing
+                ]
+            ]);
+    
+            $responJson = $response->json();
+    
+            DetailPenyimpanan::create([
+                'penyimpanan_id' => $idPenyimpanan,
+                'pertanyaan' => 'form_pesaing',
+                'api_id' => $responJson['id']
+            ]);
+    
+            if (Penyimpanan::hasDonePenyimpanan($request)) {
+                $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+                $penyimpanan->status = '1';
+                $penyimpanan->save();
+            }
+    
+            alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
+            return redirect()->route('menu.index');
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
+            return redirect()->route('menu.index');
         }
-
-        alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
-        return redirect()->route('menu.index');
     }
 }

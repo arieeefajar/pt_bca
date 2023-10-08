@@ -49,9 +49,11 @@
                                                     data-bs-target="#modalEdit"
                                                     onclick="setEdit({{ $data }})">Edit</button>
                                                 <button class="btn btn-sm btn-info edit-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#showDetail{{ $data['id'] }}">Detail</button>
+                                                    data-bs-target="#showDetail"
+                                                    onclick="showDetail('{{ $data->kota->nama }}', '{{ $data->koordinat }}')">Detail</button>
                                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal{{ $data['id'] }}">Hapus</button>
+                                                    data-bs-target="#deleteModal"
+                                                    onclick="showDelete('{{ $data['id'] }}')">Hapus</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -135,14 +137,28 @@
                         </div>
 
                         {{-- koordinat --}}
-                        <div class="mb-3">
-                            <label class="form-label">Koordinat</label>
-                            <textarea required class="form-control" maxlength="1000" name="koordinat" id="evet" cols="30"
-                                rows="5">{{ old('koordinat') }}</textarea>
-                            <div class="invalid-feedback mb-3">
-                                Harap masukan titik koordinat.
+                        <label class=""">Koordinat</label>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input type="text" name="latitude" value="{{ old('latitude') }}"
+                                    class="form-control" oninput="this.value = this.value.replace(/[^0-9.-]/g, '');"
+                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$" placeholder="Latitude..."
+                                    required />
+                                <div class="invalid-feedback">
+                                    Harap isi latitude dengan benar.
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" name="longitude" value="{{ old('longitude') }}"
+                                    class="form-control" oninput="this.value = this.value.replace(/[^0-9.-]/g, '');"
+                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$" placeholder="Longitude..."
+                                    required />
+                                <div class="invalid-feedback">
+                                    Harap isi longitude dengan benar.
+                                </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
@@ -221,12 +237,27 @@
                         </div>
 
                         {{-- koordinat --}}
-                        <div class="mb-3">
-                            <label class="form-label">Koordinat</label>
-                            <textarea required class="form-control" maxlength="1000" name="koordinat" id="edit_koordinat" cols="30"
-                                rows="5">{{ old('koordinat') }}</textarea>
-                            <div class="invalid-feedback mb-3">
-                                Harap masukan titik koordinat.
+                        <label class=""">Koordinat</label>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input type="text" name="latitude" class="form-control" placeholder="Latitude..."
+                                    id="latitude_edit" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9.-]/g, '');"
+                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$"
+                                    required />
+                                <div class="invalid-feedback">
+                                    Harap isi latitude dengan benar.
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" name="longitude" class="form-control" placeholder="Longitude..."
+                                    id="longitude_edit" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9.-]/g, '');"
+                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$"
+                                    required />
+                                <div class="invalid-feedback">
+                                    Harap isi longitude dengan benar.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,73 +272,70 @@
         </div>
     </div>
 
-    @foreach ($dataPerusahaan as $data)
-        {{-- modal detail --}}
-        <div class="modal fade" id="showDetail{{ $data['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-light p-3">
-                        <h5 class="modal-title" id="exampleModalLabel">Detail Perusahaan</h5>
-                        <button type="button" onclick="clearEdit()" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close" id="close-modal"></button>
-                    </div>
-
-                    <div class="modal-body">
-
-                        {{-- Area --}}
-                        <div class="mb-3">
-                            <label for="customername-field" class="form-label">Wilayah</label>
-                            <input type="text" name="nama" value="{{ $data->kota->nama }}" id="nama" class="form-control"
-                                placeholder="Masukan Nama Customer..." required />
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Koordinat</label>
-                            <textarea class="form-control" name="koordinat" required id="evet" cols="30" rows="5">{{ $data->koordinat }}</textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="hstack gap-2 justify-content-end">
-                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
+    {{-- modal delete --}}
+    <div class="modal fade zoomIn" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="btn-close"></button>
                 </div>
-            </div>
-        </div>
-
-        {{-- modal delete --}}
-        <div class="modal fade zoomIn" id="deleteRecordModal{{ $data['id'] }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="btn-close"></button>
+                <div class="modal-body">
+                    <div class="mt-2 text-center">
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                            <h4>Anda Yakin ?</h4>
+                            <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <div class="mt-2 text-center">
-                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                <h4>Anda Yakin ?</h4>
-                                <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
-                            <form action="{{ route('customer.destroy', $data->id) }}" method="POST"
-                                style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn w-sm btn-danger">Ya,Hapus!</button>
-                            </form>
-                        </div>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Tutup</button>
+                        <form action="" id="formDelete" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn w-sm btn-danger">Ya,Hapus!</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
+
+    {{-- modal detail --}}
+    <div class="modal fade" id="showDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light p-3">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Perusahaan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="close-modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    {{-- Area --}}
+                    <div class="mb-3">
+                        <label for="customername-field" class="form-label">Wilayah</label>
+                        <input type="text" name="nama" id="wilayah_detail" class="form-control" readonly
+                            placeholder="Masukan Nama Customer..." style="background-color: white" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Koordinat</label>
+                        <textarea class="form-control" readonly name="koordinat" required id="koordinat_detail" cols="30"
+                            rows="5" style="background-color: white"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('otherJs')
@@ -357,7 +385,10 @@
                     $("#edit_jenis").val(data.jenis);
                     $("#edit_provinsi").val(dataSelect.provinsi_id);
                     $("#edit_kota").val(dataSelect.id);
-                    $("#edit_koordinat").html(data.koordinat);
+
+                    const koordinat = data.koordinat.split(", ");
+                    $("#latitude_edit").val(koordinat[0]);
+                    $("#longitude_edit").val(koordinat[1]);
                     /////////////////// end set data selected dropdown ///////////////////
 
                 }
@@ -383,6 +414,19 @@
                     $(idElementSet).html(bodyKota); // set content
                 }
             })
+        }
+
+        /////////////////// show modal delete ///////////////////
+        function showDelete(id) {
+            const form = document.getElementById("formDelete");
+            form.action = "{{ route('customer.destroy', ['id' => '/']) }}/" + id;
+        }
+
+        /////////////////// show modal detail ///////////////////
+        function showDetail(kota, koordinat) {
+            // console.log(id);
+            document.getElementById("wilayah_detail").value = kota;
+            document.getElementById("koordinat_detail").value = koordinat;
         }
     </script>
 @endsection

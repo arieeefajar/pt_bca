@@ -205,45 +205,33 @@
         const produkSelect = document.getElementById('produkSelect');
 
         function updateSelectedDeskripsi() {
-            var selectedOption = produkSelect.options[produkSelect.selectedIndex];
-            var deskripsiProduk = selectedOption.getAttribute('data-deskripsi');
+            // var selectedOption = produkSelect.options[produkSelect.selectedIndex];
+            // var deskripsiProduk = selectedOption.getAttribute('data-deskripsi');
 
-            console.log(deskripsiProduk);
+            // console.log(deskripsiProduk);
 
             // selectedDeskripsiProduk.textContent = "Deskripsi Produk: " + deskripsiProduk;
         }
 
-        // function getGeoLocation() {
-        //     const successCallback = (position) => {
-        //         console.log(position);
-        //     };
-
-        //     const errorCallback = (error) => {
-        //         console.log(error);
-        //     };
-
-        //     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        // function getLocation() {
+        //     return new Promise((resolve, reject) => {
+        //         if (navigator.geolocation) {
+        //             navigator.geolocation.getCurrentPosition(
+        //                 position => resolve(position.coords),
+        //                 error => reject(error)
+        //             );
+        //         } else {
+        //             reject("Geolocation is not supported by this browser.");
+        //         }
+        //     });
         // }
-
-        function getLocation() {
-            return new Promise((resolve, reject) => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        position => resolve(position.coords),
-                        error => reject(error)
-                    );
-                } else {
-                    reject("Geolocation is not supported by this browser.");
-                }
-            });
-        }
 
         async function submit_form() {
             // alert('wokdowakodkawodkoaw')
             try {
-                const coords = await getLocation();
-                document.getElementById("latitude_field").value = coords.latitude;
-                document.getElementById("longitude_field").value = coords.longitude;
+                // const coords = await getLocation();
+                // document.getElementById("latitude_field").value = coords.latitude;
+                // document.getElementById("longitude_field").value = coords.longitude;
 
                 var form = document.getElementById('myFormPesaing');
                 var inputs = form.querySelectorAll('input, select, textarea');

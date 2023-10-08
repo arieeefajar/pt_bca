@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Customer;
 use App\Models\DetailKuisioner;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
@@ -69,8 +70,8 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             'support_change' => 'required',
             'strengthening_ability' => 'required',
             'special_treatment' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -88,6 +89,13 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'competitor-identifier';
+        
+        // latitude & longitude
+        $koordinat = Customer::select('koordinat')
+            ->where('id', $request->cookie('selectedTokoId'))
+            ->first()
+            ->koordinat;
+        $koordinat = explode(", ", $koordinat);
 
         // data answer
         $position_pov = intval($request->position_pov);
@@ -120,63 +128,70 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $support_change = intval($request->support_change);
         $strengthening_ability = intval($request->strengthening_ability);
         $special_treatment = intval($request->special_treatment);
-        $latitude = floatval($request->latitude);
-        $longitude = floatval($request->longitude);
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        $latitude = floatval($koordinat[0]);
+        $longitude = floatval($koordinat[1]);
 
         // post api
-        $response = Http::post($endPointApi, [
-            'surveyor' => Auth::user()->id,
-            'location' => [
-                "latitude" => $latitude,
-                "longtitude" => $longitude
-            ],
-            'position_pov' => $position_pov,
-            'deep' => $deep,
-            'distribution_line' => $distribution_line,
-            'line_power' => $line_power,
-            'line_ability' => $line_ability,
-            'marketing_skill' => $marketing_skill,
-            'dev_skill' => $dev_skill,
-            'advanced_tech' => $advanced_tech,
-            'fasility_flexibility' => $fasility_flexibility,
-            'scale_up_skill' => $scale_up_skill,
-            'material_cost' => $material_cost,
-            'copyrights' => $copyrights,
-            'rnd_ability' => $rnd_ability,
-            'staff_skill' => $staff_skill,
-            'resource_access' => $resource_access,
-            'cash_flow' => $cash_flow,
-            'capital_capacity' => $capital_capacity,
-            'trust_management' => $trust_management,
-            'vision_mission' => $vision_mission,
-            'consistency_organization_structure' => $consistency_organization_structure,
-            'lead_quality' => $lead_quality,
-            'management_ability' => $management_ability,
-            'functional_ability' => $functional_ability,
-            'measurement_ability' => $measurement_ability,
-            'movement_response' => $movement_response,
-            'response_to_change' => $response_to_change,
-            'competition_ability' => $competition_ability,
-            'support_change' => $support_change,
-            'strengthening_ability' => $strengthening_ability,
-            'special_treatment' => $special_treatment,
-        ]);
-
-        $responJson = $response->json();
-
-        DetailPenyimpanan::create([
-            'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'k_kekuatan_kelemahan',
-            'api_id' => $responJson['id']
-        ]);
-
-        if (Penyimpanan::hasDonePenyimpanan($request)) {
-            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
-            $penyimpanan->status = '1';
-            $penyimpanan->save();
+        try {
+            $response = Http::post($endPointApi, [
+                'surveyor' => Auth::user()->id,
+                'location' => [
+                    "latitude" => $latitude,
+                    "longtitude" => $longitude
+                ],
+                'position_pov' => $position_pov,
+                'deep' => $deep,
+                'distribution_line' => $distribution_line,
+                'line_power' => $line_power,
+                'line_ability' => $line_ability,
+                'marketing_skill' => $marketing_skill,
+                'dev_skill' => $dev_skill,
+                'advanced_tech' => $advanced_tech,
+                'fasility_flexibility' => $fasility_flexibility,
+                'scale_up_skill' => $scale_up_skill,
+                'material_cost' => $material_cost,
+                'copyrights' => $copyrights,
+                'rnd_ability' => $rnd_ability,
+                'staff_skill' => $staff_skill,
+                'resource_access' => $resource_access,
+                'cash_flow' => $cash_flow,
+                'capital_capacity' => $capital_capacity,
+                'trust_management' => $trust_management,
+                'vision_mission' => $vision_mission,
+                'consistency_organization_structure' => $consistency_organization_structure,
+                'lead_quality' => $lead_quality,
+                'management_ability' => $management_ability,
+                'functional_ability' => $functional_ability,
+                'measurement_ability' => $measurement_ability,
+                'movement_response' => $movement_response,
+                'response_to_change' => $response_to_change,
+                'competition_ability' => $competition_ability,
+                'support_change' => $support_change,
+                'strengthening_ability' => $strengthening_ability,
+                'special_treatment' => $special_treatment,
+            ]);
+    
+            $responJson = $response->json();
+    
+            DetailPenyimpanan::create([
+                'penyimpanan_id' => $idPenyimpanan,
+                'pertanyaan' => 'k_kekuatan_kelemahan',
+                'api_id' => $responJson['id']
+            ]);
+    
+            if (Penyimpanan::hasDonePenyimpanan($request)) {
+                $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+                $penyimpanan->status = '1';
+                $penyimpanan->save();
+            }
+    
+            alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
+            return redirect()->route('menu.index');
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
+            return redirect()->route('menu.index');
         }
-
-        alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
-        return redirect()->route('menu.index');
     }
 }

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             JenisTanamanSeeder::class,
             ProductSeeder::class,
             WilayahSurvey::class,
-            CustomerProductSeeder::class,
+            // CustomerProductSeeder::class,
         ]);
     }
 }

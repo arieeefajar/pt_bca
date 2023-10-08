@@ -33,13 +33,15 @@ class CustomerController extends Controller
         $customMessages = [
             'required' => ':attribute harus diisi.',
             'max' => ':attribute melebihi :max karakter.',
+            'string' =>':attribute harus berupa string.'
         ];
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
             'kota' => 'required|string|max:255',
-            'koordinat' => 'required|string|max:100',
+            'latitude' => 'required|string|max:30',
+            'longitude' => 'required|string|max:30',
         ], $customMessages);
 
         // check validator
@@ -53,7 +55,9 @@ class CustomerController extends Controller
         $customer->nama = $request->nama;
         $customer->jenis = $request->jenis;
         $customer->kota_id = $request->kota;
-        $customer->koordinat = $request->koordinat;
+
+        $koordinat = $request->latitude.', '.$request->longitude;
+        $customer->koordinat = $koordinat;
 
         // execute
         try {
@@ -72,13 +76,15 @@ class CustomerController extends Controller
         $customMessages = [
             'required' => ':attribute harus diisi.',
             'max' => ':attribute melebihi :max karakter.',
+            'string' =>':attribute harus berupa string.'
         ];
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
             'jenis' => 'required|in:dealer,master_dealer,lainnya',
             'kota' => 'required|string|max:255',
-            'koordinat' => 'required|string|max:100',
+            'latitude' => 'required|string|max:30',
+            'longitude' => 'required|string|max:30',
         ], $customMessages);
 
         // check validator
@@ -92,7 +98,9 @@ class CustomerController extends Controller
         $dataEdit->nama = $request->nama;
         $dataEdit->jenis = $request->jenis;
         $dataEdit->kota_id = $request->kota;
-        $dataEdit->koordinat = $request->koordinat;
+        
+        $koordinat = $request->latitude.', '.$request->longitude;
+        $dataEdit->koordinat = $koordinat;
 
         // execute update
         try {

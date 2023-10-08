@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
 use Illuminate\Http\Request;
@@ -53,8 +54,8 @@ class KuisionerSkalaPasarProduk extends Controller
                 'sales_system_application' => 'required|string',
                 'matrix_volume' => 'required|string',
                 'suply_term' => 'required|string',
-                'latitude' => 'required',
-                'longitude' => 'required',
+                // 'latitude' => 'required',
+                // 'longitude' => 'required',
             ],
             $customMessages
         );
@@ -79,7 +80,13 @@ class KuisionerSkalaPasarProduk extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'competitor-questionnaire';
-        // dd($endPointApi);
+        
+        // latitude & longitude
+        $koordinat = Customer::select('koordinat')
+            ->where('id', $request->cookie('selectedTokoId'))
+            ->first()
+            ->koordinat;
+        $koordinat = explode(", ", $koordinat);
 
         // data send
         $sales_system = $request->sales_system;
@@ -94,46 +101,53 @@ class KuisionerSkalaPasarProduk extends Controller
         $sales_system_application = $request->sales_system_application;
         $matrix_volume = $request->matrix_volume;
         $suply_term = $request->suply_term;
-        $latitude = $request->latitude;
-        $longitude = $request->longitude;
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        $latitude = floatval($koordinat[0]);
+        $longitude = floatval($koordinat[1]);
         
 
-        $response = Http::post($endPointApi, [
-            'surveyor' => Auth::user()->id,
-            'location' => [
-                'latitude' => $latitude,
-                'longtitude' => $longitude,
-            ],
-            'sales_system' => $sales_system,
-            'how_many_brands' => $how_many_brands,
-            'quantity_of_product' => $quantity_of_product,
-            'supply_period' => $supply_period,
-            'producer_locaitons' => $producer_locaitons,
-            'weight_product' => $weight_product,
-            'lowest_price' => $lowest_price,
-            'know_distributor' => $know_distributor,
-            'rewards_or_discount' => $rewards_or_discount,
-            'sales_system_application' => $sales_system_application,
-            'matrix_volume' => $matrix_volume,
-            'suply_term' => $suply_term,
-        ]);
-
-        $responJson = $response->json();
-        // dd($responJson);
-
-        DetailPenyimpanan::create([
-            'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'skala_pasar',
-            'api_id' => $responJson['id'],
-        ]);
-
-        if (Penyimpanan::hasDonePenyimpanan($request)) {
-            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
-            $penyimpanan->status = '1';
-            $penyimpanan->save();
+        try {
+            $response = Http::post($endPointApi, [
+                'surveyor' => Auth::user()->id,
+                'location' => [
+                    'latitude' => $latitude,
+                    'longtitude' => $longitude,
+                ],
+                'sales_system' => $sales_system,
+                'how_many_brands' => $how_many_brands,
+                'quantity_of_product' => $quantity_of_product,
+                'supply_period' => $supply_period,
+                'producer_locaitons' => $producer_locaitons,
+                'weight_product' => $weight_product,
+                'lowest_price' => $lowest_price,
+                'know_distributor' => $know_distributor,
+                'rewards_or_discount' => $rewards_or_discount,
+                'sales_system_application' => $sales_system_application,
+                'matrix_volume' => $matrix_volume,
+                'suply_term' => $suply_term,
+            ]);
+    
+            $responJson = $response->json();
+            // dd($responJson);
+    
+            DetailPenyimpanan::create([
+                'penyimpanan_id' => $idPenyimpanan,
+                'pertanyaan' => 'skala_pasar',
+                'api_id' => $responJson['id'],
+            ]);
+    
+            if (Penyimpanan::hasDonePenyimpanan($request)) {
+                $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+                $penyimpanan->status = '1';
+                $penyimpanan->save();
+            }
+    
+            alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
+            return redirect()->route('menu.index');
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
+            return redirect()->route('menu.index');
         }
-
-        alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
-        return redirect()->route('menu.index');
     }
 }

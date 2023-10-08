@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
 use Illuminate\Http\Request;
@@ -27,7 +28,6 @@ class KuisionerKepuasanPelanggan extends Controller
 
     public function store(Request $request)
     {
-
         $customMessages = [
             'required' => ':Harap lengkapi kuisioner.',
             'numeric' => ':attribute harus berupa angka.',
@@ -61,8 +61,8 @@ class KuisionerKepuasanPelanggan extends Controller
             'verification_speed' => 'required',
             'completion_speed' => 'required',
             'handling' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ], $customMessages);
 
         if ($validator->fails()) {
@@ -80,6 +80,13 @@ class KuisionerKepuasanPelanggan extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'customer';
+
+        // latitude & longitude
+        $koordinat = Customer::select('koordinat')
+            ->where('id', $request->cookie('selectedTokoId'))
+            ->first()
+            ->koordinat;
+        $koordinat = explode(", ", $koordinat);
 
         // data answer
         $information = intval($request->information);
@@ -109,60 +116,67 @@ class KuisionerKepuasanPelanggan extends Controller
         $verification_speed = intval($request->verification_speed);
         $completion_speed = intval($request->completion_speed);
         $handling = intval($request->handling);
-        $latitude = floatval($request->latitude);
-        $longitude = floatval($request->longitude);
+        // $latitude = floatval($request->latitude);
+        // $longitude = floatval($request->longitude);
+        $latitude = floatval($koordinat[0]);
+        $longitude = floatval($koordinat[1]);
 
         // post api
-        $response = Http::post($endPointApi, [
-            'surveyor' => Auth::user()->id,
-            'location' => [
-                "latitude" => $latitude,
-                "longtitude" => $longitude
-            ],
-            "information" => $information,
-            "price_comparison" => $price_comparison,
-            "variety_previlege" => $variety_previlege,
-            "packaging_view" => $packaging_view,
-            "getting_easy" => $getting_easy,
-            "satisfaction" => $satisfaction,
-            "image_view" => $image_view,
-            "material_amount" => $material_amount,
-            "promotion_quantity" => $promotion_quantity,
-            "promotion_quality" => $promotion_quality,
-            "seed_purity" => $seed_purity,
-            "vigor" => $vigor,
-            "growing_power" => $growing_power,
-            "genetic_purity" => $genetic_purity,
-            "pest_resistance" => $pest_resistance,
-            "suitablelity_image_result" => $suitablelity_image_result,
-            "suitablelity_result_request" => $suitablelity_result_request,
-            "satisfaction_result" => $satisfaction_result,
-            "technical_ability" => $technical_ability,
-            "visit_intensity" => $visit_intensity,
-            "communication_intensity" => $communication_intensity,
-            "skill_credibility" => $skill_credibility,
-            "influence_of_officer" => $influence_of_officer,
-            "communication_skill" => $communication_skill,
-            "verification_speed" => $verification_speed,
-            "completion_speed" => $completion_speed,
-            "handling" => $handling
-        ]);
-
-        $responJson = $response->json();
-
-        DetailPenyimpanan::create([
-            'penyimpanan_id' => $idPenyimpanan,
-            'pertanyaan' => 'k_kepuasan',
-            'api_id' => $responJson['id']
-        ]);
-
-        if (Penyimpanan::hasDonePenyimpanan($request)) {
-            $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
-            $penyimpanan->status = '1';
-            $penyimpanan->save();
+        try {
+            $response = Http::post($endPointApi, [
+                'surveyor' => Auth::user()->id,
+                'location' => [
+                    "latitude" => $latitude,
+                    "longtitude" => $longitude
+                ],
+                "information" => $information,
+                "price_comparison" => $price_comparison,
+                "variety_previlege" => $variety_previlege,
+                "packaging_view" => $packaging_view,
+                "getting_easy" => $getting_easy,
+                "satisfaction" => $satisfaction,
+                "image_view" => $image_view,
+                "material_amount" => $material_amount,
+                "promotion_quantity" => $promotion_quantity,
+                "promotion_quality" => $promotion_quality,
+                "seed_purity" => $seed_purity,
+                "vigor" => $vigor,
+                "growing_power" => $growing_power,
+                "genetic_purity" => $genetic_purity,
+                "pest_resistance" => $pest_resistance,
+                "suitablelity_image_result" => $suitablelity_image_result,
+                "suitablelity_result_request" => $suitablelity_result_request,
+                "satisfaction_result" => $satisfaction_result,
+                "technical_ability" => $technical_ability,
+                "visit_intensity" => $visit_intensity,
+                "communication_intensity" => $communication_intensity,
+                "skill_credibility" => $skill_credibility,
+                "influence_of_officer" => $influence_of_officer,
+                "communication_skill" => $communication_skill,
+                "verification_speed" => $verification_speed,
+                "completion_speed" => $completion_speed,
+                "handling" => $handling
+            ]);
+    
+            $responJson = $response->json();
+    
+            DetailPenyimpanan::create([
+                'penyimpanan_id' => $idPenyimpanan,
+                'pertanyaan' => 'k_kepuasan',
+                'api_id' => $responJson['id']
+            ]);
+    
+            if (Penyimpanan::hasDonePenyimpanan($request)) {
+                $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
+                $penyimpanan->status = '1';
+                $penyimpanan->save();
+            }
+    
+            alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
+            return redirect()->route('menu.index');
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
+            return redirect()->route('menu.index');
         }
-
-        alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
-        return redirect()->route('menu.index');
     }
 }
