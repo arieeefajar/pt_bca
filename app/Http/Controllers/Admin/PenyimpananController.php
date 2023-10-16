@@ -25,7 +25,7 @@ class PenyimpananController extends Controller
                 array_push($dataPenyimpanan, $value);
             }
         }
-
+        // dd($dataPenyimpananRaw);
         return view('admin.penyimpanan', compact('dataPenyimpanan'));
     }
 }

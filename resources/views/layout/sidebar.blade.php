@@ -195,6 +195,11 @@
                             <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('laporan.index') }}">
+                            <i class="ri-hard-drive-2-line"></i> <span data-key="t-layouts">Laporan</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>
