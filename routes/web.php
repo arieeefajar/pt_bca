@@ -283,6 +283,9 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('laporan', [LaporanController::class, 'index'])->name(
         'laporan.index'
     );
+    Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name(
+        'laporan.jawaban'
+    );
 
     //Profile
     Route::prefix('profileAdmin')->group(function () {
