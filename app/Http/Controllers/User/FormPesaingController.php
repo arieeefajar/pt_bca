@@ -14,18 +14,35 @@ use Illuminate\Support\Facades\Validator;
 
 class FormPesaingController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $api_id = null)
     {
-        $dataProduk = Product::getProductCustomer($request);
+        $dataProduk = Product::all();
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $form_pesaing = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');
+        
+        $dataAnswer = null;
 
-        if ($form_pesaing) {
-            toast('Form survey sudah diisikan', 'error')->position('top')->autoClose(3000);
-            return back()->withInput();
+        // kika jawaban sudah ada dan ada api id
+        if ($form_pesaing && $api_id) {
+            $endPointApi =
+                env('PYTHON_END_POINT') . 'retail/' . $api_id;
+            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+            // dd($dataAnswer);
+            return view('surveyor.pesaing',
+                compact('dataAnswer', 'dataProduk')
+            );
+        }
+        // ketika jawaban sudah ada dan user memaksa masuk lewat url
+        elseif ($form_pesaing) {
+            toast('Form survey sudah diisikan', 'error')
+                ->position('top')
+                ->autoClose(3000);
+            return redirect()->route('menu.index');
         } else {
-            $dataProduk = Product::all();
-            return view('surveyor.pesaing', compact('dataProduk'));
+            return view(
+                'surveyor.pesaing',
+                compact('dataAnswer', 'dataProduk')
+            );
         }
     }
 

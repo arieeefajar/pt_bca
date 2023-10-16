@@ -64,6 +64,7 @@ class DashboardSurveyerController extends Controller
         $form_lahan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_lahan');
         $form_pesaing = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');
         $skala_pasar = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'skala_pasar');
+        // dd($k_analisis, $k_kekuatan_kelemahan, $form_lahan, $form_pesaing, $skala_pasar);
 
         return view('surveyor.menu', compact('k_pelanggan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar', 'namaToko'));
     }

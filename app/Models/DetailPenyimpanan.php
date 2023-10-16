@@ -56,7 +56,7 @@ class DetailPenyimpanan extends Model
         $firstDay = $startDate->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         $lastDay = $startDate->endOfMonth()->format('Y-m-d') . ' 23:59:59';
 
-        $records = DetailPenyimpanan::select('id')
+        $records = DetailPenyimpanan::select('id', 'api_id')
             ->whereBetween('created_at', [$firstDay, $lastDay])
             ->where('penyimpanan_id', $idPenyimpanan)
             ->where('pertanyaan', $jenis)

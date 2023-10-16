@@ -14,18 +14,27 @@ use Illuminate\Support\Facades\Validator;
 
 class KuisonerAnalisisPesaingController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $api_id = null)
     {
-        $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Analisis Pesaing');
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $k_analisis = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_analisis');
 
-        if ($k_analisis) {
-            toast('Kuisioner sudah diisikan', 'error')->position('top')->autoClose(3000);
-            return back()->withInput();
+        $dataAnswer = null;
+
+        // kika jawaban sudah ada dan ada api id
+        if ($k_analisis && $api_id) {
+            $endPointApi = env('PYTHON_END_POINT') . 'competitor-analys/' . $api_id;
+            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+            return view('surveyor.analisisPesaing', compact('dataAnswer'));
+        }
+        // ketika jawaban sudah ada dan user memaksa masuk lewat url
+        elseif ($k_analisis) {
+            toast('Form survey sudah diisikan', 'error')
+                ->position('top')
+                ->autoClose(3000);
+            return redirect()->route('menu.index');
         } else {
-            return view('surveyor.analisisPesaing', compact('dataPertanyaan'));
+            return view('surveyor.analisisPesaing', compact('dataAnswer'));
         }
     }
 

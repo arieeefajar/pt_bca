@@ -5,26 +5,11 @@
 
 @section('content')
 
-    @if ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
-
     <div class="row">
         <div class="col-xxl-12">
             <div class="card">
                 <div id="formContainer">
-                    <form action="{{ route('formPesaing.create') }}" method="POST" id="myFormPesaing">
+                    <form action="{{ !$dataAnswer ? route('formPesaing.create') : '' }}" method="POST" id="myFormPesaing">
                         @csrf
                         <div id="step1">
                             <div class="card-header">
@@ -173,8 +158,10 @@
                                         <div class="d-flex justify-content-sm-end">
                                             <button type="button" class="btn btn-secondary" style="margin-right: 10px;"
                                                 onclick="prevStep(2)">Previous</button>
-                                            <button type="button" id="submitButton" onclick="submit_form()"
-                                                class="btn btn-success">Submit</button>
+                                            @if (!$dataAnswer)
+                                                <button type="button" id="submitButton" onclick="submit_form()"
+                                                    class="btn btn-success">Submit</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -202,6 +189,29 @@
     </div>
 
     <script>
+        @if ($dataAnswer)
+            let dataAnswer = @json($dataAnswer);
+            document.getElementById('produkSelect').value = dataAnswer.our_product;
+            document.getElementById('produkPesaing').value = dataAnswer.competitor_product.join(', ');
+            document.getElementById('deskripsiProdukKita').value = dataAnswer.answer[0];
+            document.getElementById('deskripsiProdukPesaing').value = dataAnswer.answer[1];
+            document.getElementById('keunggulanPesaing').value = dataAnswer.answer[2];
+            document.getElementById('pemasaranPesaing').value = dataAnswer.answer[3];
+
+
+            const form = document.getElementById('myFormPesaing')
+            const inputs = form.querySelectorAll('textarea, input, options');
+            const selectElements = form.querySelectorAll('select');
+
+            selectElements.forEach((selectElement) => {
+                selectElement.disabled = true; // Mengatur elemen select menjadi non-interaktif
+            });
+
+            inputs.forEach((input) => {
+                input.readOnly = true
+            })
+        @endif
+
         const produkSelect = document.getElementById('produkSelect');
 
         function updateSelectedDeskripsi() {

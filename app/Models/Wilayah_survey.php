@@ -35,4 +35,11 @@ class Wilayah_survey extends Model
             ->where('users.role', '=', 'user')
             ->get();
     }
+
+    public function kota(){
+        return $this->belongsTo(Kota::class, 'kota_id', 'id');
+    }
+    public function surveyor(){
+        return $this->belongsTo(User::class, 'surveyor_id', 'id');
+    }
 }

@@ -33,6 +33,12 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('executive'),
                 'role' => 'executive',
             ],
+            [
+                'name' => 'Polije',
+                'nip' => 'mfpolije',
+                'password' => Hash::make('12345678'),
+                'role' => 'user',
+            ],
         ];
 
         foreach ($data as $value) {

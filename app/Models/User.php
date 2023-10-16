@@ -48,12 +48,22 @@ class User extends Authenticatable
     public static function getCustommer()
     {
         // Mendapatkan tanggal awal bulan ini
-        $startDate = Carbon::now()->startOfMonth()->format('Y-m-d').' 00:00:00';
+        $startDate =
+            Carbon::now()
+                ->startOfMonth()
+                ->format('Y-m-d') . ' 00:00:00';
 
         // Mendapatkan tanggal akhir bulan ini
-        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d').' 23:59:59';
+        $endDate =
+            Carbon::now()
+                ->endOfMonth()
+                ->format('Y-m-d') . ' 23:59:59';
 
-        $customer = Customer::select('customer.id', 'customer.nama', 'penyimpanan.surveyor_id')
+        $customer = Customer::select(
+            'customer.id',
+            'customer.nama',
+            'penyimpanan.surveyor_id'
+        )
             ->leftJoin('kota', 'customer.kota_id', '=', 'kota.id')
             ->leftJoin(
                 'wilayah_survey',
@@ -62,30 +72,40 @@ class User extends Authenticatable
                 'wilayah_survey.kota_id'
             )
             ->leftJoin('users', 'wilayah_survey.surveyor_id', '=', 'users.id')
-            ->leftJoin('penyimpanan', function ($join) use ($startDate, $endDate) {
+            ->leftJoin('penyimpanan', function ($join) use (
+                $startDate,
+                $endDate
+            ) {
                 $join
                     ->on('penyimpanan.customer_id', '=', 'customer.id')
                     ->where('penyimpanan.status', '=', 1)
-                    ->whereBetween('penyimpanan.created_at', [$startDate, $endDate]);
+                    ->whereBetween('penyimpanan.created_at', [
+                        $startDate,
+                        $endDate,
+                    ]);
             })
             ->where('users.role', '=', 'user')
             ->where('users.id', '=', Auth::user()->id)
             ->whereNull('penyimpanan.id')
             ->get();
-            
+
         $customers = [];
-            // get data penyimpanan yang ada sebagian jawaban
+        // get data penyimpanan yang ada sebagian jawaban
         foreach ($customer as $value) {
             $data = Penyimpanan::where('customer_id', '=', $value->id)
-            ->whereNot('surveyor_id', '=', Auth::user()->id)
-            ->first();
+                ->whereNot('surveyor_id', '=', Auth::user()->id)
+                ->first();
             if ($data) {
-                $dataDetail = DetailPenyimpanan::where('penyimpanan_id', '=', $data->id)->first();
+                $dataDetail = DetailPenyimpanan::where(
+                    'penyimpanan_id',
+                    '=',
+                    $data->id
+                )->first();
                 if (!$dataDetail) {
                     array_push($customers, $value);
                     // dd($data, $dataDetail);
                 }
-            }else{
+            } else {
                 array_push($customers, $value);
             }
         }
@@ -96,6 +116,11 @@ class User extends Authenticatable
 
     public function penyimpanan()
     {
-        return $this->hashMany(Penyimpanan::class, 'id', 'surveyor_id');
+        return $this->hasMany(Penyimpanan::class, 'surveyor_id', 'id');
+    }
+
+    public function wilayah_survey()
+    {
+        return $this->hasMany(Wilayah_survey::class, 'surveyor_id', 'id');
     }
 }

@@ -11,6 +11,8 @@
 
     <!-- leaflet Css -->
     <link href="{{ asset('admin_assets/assets/libs/leaflet/leaflet.css') }}" rel="stylesheet" type="text/css" />
+    {{-- leaflet Css Extend --}}
+    <link rel="stylesheet" href="{{ asset('admin_assets/assets/js/leafletExtend/Control.FullScreen.js') }}">
 
     <!-- App favicon -->
     <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> -->
@@ -181,6 +183,37 @@
     @include('sweetalert::alert')
 
     @yield('otherJs')
+
+    <script>
+        var inactivityTimeout = 900000 // 10 menit (dalam milidetik)
+        var activityTimer
+
+        function resetTimer() {
+            clearTimeout(activityTimer)
+            activityTimer = setTimeout(logoutUser, inactivityTimeout)
+        }
+
+        function logoutUser() {
+            // Tambahkan logika logout di sini
+            // Contoh: window.location.href = '/logout';
+            Swal.fire({
+                title: 'Info',
+                text: 'Sesi anda telah habis, harap login kembali',
+                icon: 'warning', // Anda bisa mengganti "success" dengan "error", "warning", dll.
+                confirmButtonText: 'OK',
+            }).then((result) => {
+                if (result.isDismissed || result.isConfirmed) {
+                    $('#formLogout').trigger('submit');
+                }
+            })
+        }
+
+        // Tambahkan event listener untuk pergerakan mouse dan tindakan pengguna lainnya
+        $(document).on('mousemove click', resetTimer)
+
+        // Mulai timer saat aplikasi dimuat
+        resetTimer()
+    </script>
 </body>
 
 </html>
