@@ -243,6 +243,9 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::post('/{id}', [WilayahSurveyController::class, 'store'])->name(
             'dataSurveyor.create'
         );
+        Route::delete('{id}', [WilayahSurveyController::class, 'destroy'])->name(
+            'dataSurveyor.delete'
+        );
     });
 
     //jumlah executive route
@@ -335,7 +338,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
     // kuisioner routes
     // kuisioner kepusan pelanggan
     Route::prefix('kepuasan-pelanggan')->group(function () {
-        Route::get('/', [KuisionerKepuasanPelanggan::class, 'index'])->name(
+        Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name(
             'kepuasanPelanggan.index'
         );
         Route::post('/store', [
@@ -346,7 +349,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner analisis pesaing
     Route::prefix('analisis-pesaing')->group(function () {
-        Route::get('/', [
+        Route::get('/{api_id?}', [
             KuisonerAnalisisPesaingController::class,
             'index',
         ])->name('analisisPesaing.index');
@@ -358,7 +361,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner kekuatan dan kelemahan pesaing
     Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
-        Route::get('/', [
+        Route::get('/{api_id?}', [
             KuisionerKekuatanKelemahanPesaing::class,
             'index',
         ])->name('KekuatanDanKelemahanPesaing.index');
@@ -370,7 +373,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner skala pasar produk
     Route::prefix('skala-pasar-produk')->group(function () {
-        Route::get('/', [KuisionerSkalaPasarProduk::class, 'index'])->name(
+        Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class, 'index'])->name(
             'SkalaPasarProduk.index'
         );
         Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name(
@@ -380,7 +383,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     //form survey
     Route::prefix('pesaing')->group(function () {
-        Route::get('/', [FormPesaingController::class, 'index'])->name(
+        Route::get('/{api_id?}', [FormPesaingController::class, 'index'])->name(
             'formPesaing.index'
         );
         Route::post('/', [FormPesaingController::class, 'store'])->name(
@@ -390,7 +393,7 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // form pesaing
     Route::prefix('potensi-lahan')->group(function () {
-        Route::get('/', [FormPotensiLahanController::class, 'index'])->name(
+        Route::get('/{api_id?}', [FormPotensiLahanController::class, 'index'])->name(
             'formPotensiLahan.index'
         );
         Route::post('/store', [

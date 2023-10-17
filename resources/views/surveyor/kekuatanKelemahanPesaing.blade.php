@@ -17,21 +17,6 @@
         }
     </style>
 
-    @if ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
-
     <div class="row">
         <div class="col">
             <div class="card">
@@ -51,7 +36,9 @@
                     </div>
                     <div class="live-preview">
                         <div class="table-responsive">
-                            <form id="form_body" action="{{ route('KekuatanDanKelemahanPesaing.create') }}" method="POST">
+                            <form id="form_body"
+                                action="{{ !$dataAnswer ? route('KekuatanDanKelemahanPesaing.create') : '' }}"
+                                method="POST">
                                 @csrf
                                 {{-- pertanyaan Produk --}}
                                 <table class="table table-bordered align-middle  mb-3 table_nowrap">
@@ -1051,8 +1038,10 @@
                                             <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
                                                 <button type="button" class="btn btn-primary add-btn">Kembali</button>
                                             </a>
-                                            <button type="button" onclick="submit_form()"
-                                                class="btn btn-success">Submit</button>
+                                            @if (!$dataAnswer)
+                                                <button type="button" onclick="submit_form()"
+                                                    class="btn btn-success">Submit</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -1065,6 +1054,30 @@
     </div>
 
     <script>
+        @if ($dataAnswer)
+            let dataAnswer = @json($dataAnswer);
+
+            // console.log(typeof(dataAnswer.buyer) == "object" && ('awjdioawjdoiawj'));
+            // console.log(typeof(dataAnswer.any_competitor) == "boolean" && ('awjdioawjdoiawj'));
+            for (var key in dataAnswer) {
+                if (dataAnswer.hasOwnProperty(key)) {
+                    const inputs = document.querySelectorAll(`input[name="${key}"]`);
+                    for (var i = 0; i < inputs.length; i++) {
+                        if (inputs[i].value == dataAnswer[key]) {
+                            inputs[i].checked = true;
+                        }
+                    }
+                }
+            }
+
+            const form = document.getElementById('form_body')
+            const radioButtons = form.querySelectorAll('input[type="radio"]');
+
+            radioButtons.forEach((radioButton) => {
+                radioButton.disabled = true;
+            });
+        @endif
+
         // function getLocation() {
         //     return new Promise((resolve, reject) => {
         //         if (navigator.geolocation) {

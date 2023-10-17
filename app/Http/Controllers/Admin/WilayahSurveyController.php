@@ -13,7 +13,35 @@ class WilayahSurveyController extends Controller
 {
     public function index()
     {
-        $dataSurveyor = Wilayah_survey::getWilayahSurvey();
+        $dataSurveyor = User::where('role', 'user')->get();
+        $dataWilayah = User::select(
+            'users.id',
+            'wilayah_survey.id AS id_survey',
+            'provinsi.nama AS provinsi',
+            'kota.nama AS kota'
+        )
+            ->join(
+                'wilayah_survey',
+                'users.id',
+                '=',
+                'wilayah_survey.surveyor_id'
+            )
+            ->join('kota', 'wilayah_survey.kota_id', '=', 'kota.id')
+            ->join('provinsi', 'kota.provinsi_id', '=', 'provinsi.id')
+            ->get();
+
+        foreach ($dataSurveyor as $keyUser => $valUser) {
+            $tmpWilayah = [];
+            foreach ($dataWilayah as $keyWilayah => $valWilayah) {
+                if ($valUser->id === $valWilayah->id) {
+                    array_push($tmpWilayah, $valWilayah);
+                }
+            }
+            if (count($tmpWilayah) === 0) {
+                $tmpWilayah = null;
+            }
+            $dataSurveyor[$keyUser]->wilayah = $tmpWilayah;
+        }
         $provinsi = Provinsi::all();
 
         return view('admin.dataSurveyor', compact('dataSurveyor', 'provinsi'));
@@ -43,19 +71,20 @@ class WilayahSurveyController extends Controller
                 ->withInput();
         }
 
-        // create
-        $wilayahSurvey = Wilayah_survey::where('surveyor_id', $id)->first();
+        $validateUnique = Wilayah_survey::where('surveyor_id', $id)
+            ->where('kota_id', $request->kota)
+            ->get();
+        if (count($validateUnique) > 0) {
+            alert()->info('Gagal', 'Wilayah survey sudah ada');
+            return redirect()->back();
+        }
 
+        // create
         try {
-            if (!$wilayahSurvey) {
-                Wilayah_survey::create([
-                    'kota_id' => $request->kota,
-                    'surveyor_id' => $id,
-                ]);
-            } else {
-                $wilayahSurvey->kota_id = $request->kota;
-                $wilayahSurvey->save();
-            }
+            Wilayah_survey::create([
+                'kota_id' => $request->kota,
+                'surveyor_id' => $id,
+            ]);
             alert()->success('Berhasil', 'Berhasil set wilayah survey');
             return redirect()->back();
         } catch (\Throwable $th) {
@@ -64,19 +93,15 @@ class WilayahSurveyController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         try {
-            // delete
             Wilayah_survey::findOrFail($id)->delete();
-
-            // return response
-            return response()->json([
-                'message' => 'data berhasil dihapus',
-            ]);
+            alert()->success('Berhasil', 'Berhasil menghapus wilayah survey');
+            return redirect()->back();
         } catch (\Throwable $th) {
-            // return error
-            return response()->json($th);
+            alert()->error('Gagal', $th[0]);
+            return redirect()->back();
         }
     }
 }

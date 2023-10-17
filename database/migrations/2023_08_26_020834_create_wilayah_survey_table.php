@@ -17,8 +17,6 @@ return new class extends Migration
             $table->foreign('kota_id')->references('id')->on('kota');
             $table->unsignedBigInteger('surveyor_id');
             $table->foreign('surveyor_id')->references('id')->on('users');
-            $table->dateTime('start_day')->nullable();
-            $table->dateTime('end_day')->nullable();
             $table->timestamps();
         });
     }

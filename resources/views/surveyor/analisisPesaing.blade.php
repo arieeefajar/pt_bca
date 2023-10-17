@@ -28,7 +28,7 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    <form id="form_body" action="{{ route('analisisPesaing.create') }}" method="POST">
+                    <form id="form_body" action="{{ !$dataAnswer ? route('analisisPesaing.create') : '' }}" method="POST">
                         @csrf
                         {{-- pertanyaan Gambaran Umum --}}
                         <div class="bg-soft-primary p-2 mb-3">
@@ -434,8 +434,10 @@
                                             <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
                                                 <button type="button" class="btn btn-primary add-btn">Kembali</button>
                                             </a>
-                                            <button type="button" onclick="submit_form()"
-                                                class="btn btn-success">Submit</button>
+                                            @if (!$dataAnswer)
+                                                <button type="button" onclick="submit_form()"
+                                                    class="btn btn-success">Submit</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -448,6 +450,41 @@
     </div>
 
     <script>
+        @if ($dataAnswer)
+            let dataAnswer = @json($dataAnswer);
+
+            // console.log(typeof(dataAnswer.buyer) == "object" && ('awjdioawjdoiawj'));
+            // console.log(typeof(dataAnswer.any_competitor) == "boolean" && ('awjdioawjdoiawj'));
+            for (var key in dataAnswer) {
+                if (dataAnswer.hasOwnProperty(key)) {
+                    const inputs = document.querySelectorAll(`input[name="${key}"]`);
+                    if (typeof(dataAnswer[key]) == "boolean") {
+                        for (var i = 0; i < inputs.length; i++) {
+                            if (inputs[i].value == (dataAnswer[key] ? '1' : '2')) {
+                                inputs[i].checked = true;
+                            }
+                        }
+                    } else if (typeof(dataAnswer[key]) == "object") {
+                        for (var i = 0; i < inputs.length; i++) {
+                            inputs[i].value = dataAnswer[key].join(', ');
+                        }
+                    }
+                }
+            }
+
+            const form = document.getElementById('form_body')
+            const radioButtons = form.querySelectorAll('input[type="radio"]');
+            const texts = form.querySelectorAll('input[type="text"]');
+
+            radioButtons.forEach((radioButton) => {
+                radioButton.disabled = true;
+            });
+
+            texts.forEach((input) => {
+                input.readOnly = true
+            })
+        @endif
+
         // function getLocation() {
         //     return new Promise((resolve, reject) => {
         //         if (navigator.geolocation) {

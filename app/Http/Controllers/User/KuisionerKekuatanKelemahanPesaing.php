@@ -16,71 +16,98 @@ use Illuminate\Support\Facades\Validator;
 
 class KuisionerKekuatanKelemahanPesaing extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $api_id = null)
     {
-        $model_detail_kuisioner = new DetailKuisioner();
-        $dataPertanyaan = $model_detail_kuisioner->get_data_kuisioner('Kekuatan dan Kelemahan Pesaing');
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
-        $k_kekuatan_kelemahan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kekuatan_kelemahan');
+        $k_kekuatan_kelemahan = DetailPenyimpanan::hasDetailPenyimpanan(
+            $idPenyimpanan,
+            'k_kekuatan_kelemahan'
+        );
 
-        if ($k_kekuatan_kelemahan) {
-            toast('Kuisioner sudah diisikan', 'error')->position('top')->autoClose(3000);
-            return back()->withInput();
+        $dataAnswer = null;
+
+        // kika jawaban sudah ada dan ada api id
+        if ($k_kekuatan_kelemahan && $api_id) {
+            $endPointApi =
+                env('PYTHON_END_POINT') . 'competitor-identifier/' . $api_id;
+            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+            // dd($dataAnswer);
+            return view('surveyor.kekuatanKelemahanPesaing',
+                compact('dataAnswer')
+            );
+        }
+        // ketika jawaban sudah ada dan user memaksa masuk lewat url
+        elseif ($k_kekuatan_kelemahan) {
+            toast('Form survey sudah diisikan', 'error')
+                ->position('top')
+                ->autoClose(3000);
+            return redirect()->route('menu.index');
         } else {
-            return view('surveyor.kekuatanKelemahanPesaing', compact('dataPertanyaan'));
+            return view(
+                'surveyor.kekuatanKelemahanPesaing',
+                compact('dataAnswer')
+            );
         }
     }
 
     public function store(Request $request)
     {
-
         $customMessages = [
             'required' => ':Harap lengkapi kuisioner.',
             'numeric' => ':attribute harus berupa angka.',
         ];
 
-        $validator = Validator::make($request->all(), [
-            'position_pov' => 'required',
-            'deep' => 'required',
-            'distribution_line' => 'required',
-            'line_power' => 'required',
-            'line_ability' => 'required',
-            'marketing_skill' => 'required',
-            'dev_skill' => 'required',
-            'advanced_tech' => 'required',
-            'fasility_flexibility' => 'required',
-            'scale_up_skill' => 'required',
-            'material_cost' => 'required',
-            'copyrights' => 'required',
-            'rnd_ability' => 'required',
-            'staff_skill' => 'required',
-            'resource_access' => 'required',
-            'cash_flow' => 'required',
-            'capital_capacity' => 'required',
-            'trust_management' => 'required',
-            'vision_mission' => 'required',
-            'consistency_organization_structure' => 'required',
-            'lead_quality' => 'required',
-            'management_ability' => 'required',
-            'functional_ability' => 'required',
-            'measurement_ability' => 'required',
-            'movement_response' => 'required',
-            'response_to_change' => 'required',
-            'competition_ability' => 'required',
-            'support_change' => 'required',
-            'strengthening_ability' => 'required',
-            'special_treatment' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
-        ], $customMessages);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'position_pov' => 'required',
+                'deep' => 'required',
+                'distribution_line' => 'required',
+                'line_power' => 'required',
+                'line_ability' => 'required',
+                'marketing_skill' => 'required',
+                'dev_skill' => 'required',
+                'advanced_tech' => 'required',
+                'fasility_flexibility' => 'required',
+                'scale_up_skill' => 'required',
+                'material_cost' => 'required',
+                'copyrights' => 'required',
+                'rnd_ability' => 'required',
+                'staff_skill' => 'required',
+                'resource_access' => 'required',
+                'cash_flow' => 'required',
+                'capital_capacity' => 'required',
+                'trust_management' => 'required',
+                'vision_mission' => 'required',
+                'consistency_organization_structure' => 'required',
+                'lead_quality' => 'required',
+                'management_ability' => 'required',
+                'functional_ability' => 'required',
+                'measurement_ability' => 'required',
+                'movement_response' => 'required',
+                'response_to_change' => 'required',
+                'competition_ability' => 'required',
+                'support_change' => 'required',
+                'strengthening_ability' => 'required',
+                'special_treatment' => 'required',
+                // 'latitude' => 'required',
+                // 'longitude' => 'required',
+            ],
+            $customMessages
+        );
 
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
-            return redirect()->back()->withInput();
+            return redirect()
+                ->back()
+                ->withInput();
         }
 
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
-        $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kekuatan_kelemahan');
+        $cekDetailPenyimpanan = DetailPenyimpanan::hasDetailPenyimpanan(
+            $idPenyimpanan,
+            'k_kekuatan_kelemahan'
+        );
 
         // cek apakah sudah ada detail penyimpanan dengan jenis pertanyaan yang sama
         if ($cekDetailPenyimpanan) {
@@ -89,13 +116,12 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'competitor-identifier';
-        
+
         // latitude & longitude
         $koordinat = Customer::select('koordinat')
             ->where('id', $request->cookie('selectedTokoId'))
-            ->first()
-            ->koordinat;
-        $koordinat = explode(", ", $koordinat);
+            ->first()->koordinat;
+        $koordinat = explode(', ', $koordinat);
 
         // data answer
         $position_pov = intval($request->position_pov);
@@ -117,7 +143,9 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
         $capital_capacity = intval($request->capital_capacity);
         $trust_management = intval($request->trust_management);
         $vision_mission = intval($request->vision_mission);
-        $consistency_organization_structure = intval($request->consistency_organization_structure);
+        $consistency_organization_structure = intval(
+            $request->consistency_organization_structure
+        );
         $lead_quality = intval($request->lead_quality);
         $management_ability = intval($request->management_ability);
         $functional_ability = intval($request->functional_ability);
@@ -138,8 +166,8 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             $response = Http::post($endPointApi, [
                 'surveyor' => Auth::user()->id,
                 'location' => [
-                    "latitude" => $latitude,
-                    "longtitude" => $longitude
+                    'latitude' => $latitude,
+                    'longtitude' => $longitude,
                 ],
                 'position_pov' => $position_pov,
                 'deep' => $deep,
@@ -172,21 +200,21 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
                 'strengthening_ability' => $strengthening_ability,
                 'special_treatment' => $special_treatment,
             ]);
-    
+
             $responJson = $response->json();
-    
+
             DetailPenyimpanan::create([
                 'penyimpanan_id' => $idPenyimpanan,
                 'pertanyaan' => 'k_kekuatan_kelemahan',
-                'api_id' => $responJson['id']
+                'api_id' => $responJson['id'],
             ]);
-    
+
             if (Penyimpanan::hasDonePenyimpanan($request)) {
                 $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
                 $penyimpanan->status = '1';
                 $penyimpanan->save();
             }
-    
+
             alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
             return redirect()->route('menu.index');
         } catch (\Throwable $th) {

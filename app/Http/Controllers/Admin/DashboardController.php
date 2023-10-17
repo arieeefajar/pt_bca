@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Provinsi;
 use App\Models\User;
 use Carbon\Carbon;
+use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -104,7 +105,12 @@ class DashboardController extends Controller
                 ->get()
                 ->count(),
         ];
-        return view('dashboard.executive', compact('dataJumlah'));
+
+        $endPointApi = env('PYTHON_END_POINT').'ai';
+        $dataAI = [Http::get($endPointApi)->json()['data']];
+        // dd($dataAI);
+
+        return view('dashboard.executive', compact('dataJumlah', 'dataAI'));
     }
 
     public function dataSurveyor()

@@ -10,7 +10,7 @@
                 <div class="card-header align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">Form Kuisioner</h4>
                 </div><!-- end card header -->
-                <form action="{{ route('SkalaPasarProduk.create') }}" method="POST" id="myForm">
+                <form action="{{ !$dataAnswer ? route('SkalaPasarProduk.create') : '' }}" method="POST" id="myForm">
                     @csrf
                     <div id="step1">
                         <div class="card-body">
@@ -125,8 +125,10 @@
                                 <div class="d-flex justify-content-sm-end">
                                     <button type="button" class="btn btn-secondary" style="margin-right: 10px;"
                                         onclick="prevStep(2)">Previous</button>
-                                    <button type="button" id="submitButton" onclick="submit_form()"
-                                        class="btn btn-success">Submit</button>
+                                    @if (!$dataAnswer)
+                                        <button type="button" id="submitButton" onclick="submit_form()"
+                                            class="btn btn-success">Submit</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -140,6 +142,20 @@
     </div>
 
     <script>
+        @if ($dataAnswer)
+            let dataAnswer = @json($dataAnswer);
+
+            for (var key in dataAnswer) {
+                if (dataAnswer.hasOwnProperty(key)) {
+                    const inputs = document.querySelectorAll(`textarea[name="${key}"]`);
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].value = dataAnswer[key];
+                        inputs[i].readOnly = true;
+                    }
+                }
+            }
+        @endif
+
         // function getLocation() {
         //     return new Promise((resolve, reject) => {
         //         if (navigator.geolocation) {

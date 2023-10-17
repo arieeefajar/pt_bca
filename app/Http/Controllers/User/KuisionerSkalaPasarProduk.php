@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class KuisionerSkalaPasarProduk extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $api_id = null)
     {
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $k_skala_pasar = DetailPenyimpanan::hasDetailPenyimpanan(
@@ -21,13 +21,23 @@ class KuisionerSkalaPasarProduk extends Controller
             'skala_pasar'
         );
 
-        if ($k_skala_pasar) {
+        $dataAnswer = null;
+
+        // kika jawaban sudah ada dan ada api id
+        if ($k_skala_pasar && $api_id) {
+            $endPointApi =
+                env('PYTHON_END_POINT') . 'competitor-questionnaire/' . $api_id;
+            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+            return view('surveyor.skalaPasarProduk', compact('dataAnswer'));
+        }
+        // ketika jawaban sudah ada dan user memaksa masuk lewat url
+        elseif ($k_skala_pasar) {
             toast('Form survey sudah diisikan', 'error')
                 ->position('top')
                 ->autoClose(3000);
-            return back()->withInput();
+            return redirect()->route('menu.index');
         } else {
-            return view('surveyor.skalaPasarProduk');
+            return view('surveyor.skalaPasarProduk', compact('dataAnswer'));
         }
     }
 
@@ -80,13 +90,12 @@ class KuisionerSkalaPasarProduk extends Controller
         }
 
         $endPointApi = env('PYTHON_END_POINT') . 'competitor-questionnaire';
-        
+
         // latitude & longitude
         $koordinat = Customer::select('koordinat')
             ->where('id', $request->cookie('selectedTokoId'))
-            ->first()
-            ->koordinat;
-        $koordinat = explode(", ", $koordinat);
+            ->first()->koordinat;
+        $koordinat = explode(', ', $koordinat);
 
         // data send
         $sales_system = $request->sales_system;
@@ -105,7 +114,6 @@ class KuisionerSkalaPasarProduk extends Controller
         // $longitude = floatval($request->longitude);
         $latitude = floatval($koordinat[0]);
         $longitude = floatval($koordinat[1]);
-        
 
         try {
             $response = Http::post($endPointApi, [
@@ -127,22 +135,22 @@ class KuisionerSkalaPasarProduk extends Controller
                 'matrix_volume' => $matrix_volume,
                 'suply_term' => $suply_term,
             ]);
-    
+
             $responJson = $response->json();
             // dd($responJson);
-    
+
             DetailPenyimpanan::create([
                 'penyimpanan_id' => $idPenyimpanan,
                 'pertanyaan' => 'skala_pasar',
                 'api_id' => $responJson['id'],
             ]);
-    
+
             if (Penyimpanan::hasDonePenyimpanan($request)) {
                 $penyimpanan = Penyimpanan::findOrFail($idPenyimpanan);
                 $penyimpanan->status = '1';
                 $penyimpanan->save();
             }
-    
+
             alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
             return redirect()->route('menu.index');
         } catch (\Throwable $th) {

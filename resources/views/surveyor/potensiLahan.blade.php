@@ -4,34 +4,12 @@
 @section('submenu', 'Form Survey')
 
 @section('content')
-
-    {{-- <style>
-        .btn-blue {
-            background-color: blue !important;
-            color: white !important;
-        }
-    </style> --}}
-
-    @if ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
-
+    {{-- @dd($dataAnswer) --}}
     <div class="row">
         <div class="col-xxl-12">
             <div class="card">
                 <div id="formContainer">
-                    <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
+                    <form action="{{ !$dataAnswer ? route('formPotensiLahan.create') : '' }}" method="POST" id="myForm">
                         @csrf
                         <div id="step1">
                             <div class="card-header">
@@ -54,17 +32,17 @@
                                 <div class="content col">
                                     <label class="form-label">Standar Keunggulan Umum</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_umum"
-                                        id="keunggulan_umum" cols="30" rows="5" required>{{ old('keunggulan_umum') }}</textarea>
+                                        id="keunggulan_umum" cols="30" rows="5" required>{{ $dataAnswer ? $dataAnswer->answer[0] : old('keunggulan_umum') }}</textarea>
                                 </div>
                                 <div class="content col mt-3">
                                     <label class="form-label">Keunggulan Produk Kita</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_produk"
-                                        id="keunggulan_produk" cols="30" rows="5" required>{{ old('keunggulan_produk') }}</textarea>
+                                        id="keunggulan_produk" cols="30" rows="5" required>{{ $dataAnswer ? $dataAnswer->answer[1] : old('keunggulan_produk') }}</textarea>
                                 </div>
                                 <div class="content col mt-3">
                                     <label class="form-label">Keunggulan Kompetitor</label>
                                     <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="keunggulan_kompetitor"
-                                        id="keunggulan_kompetitor" cols="30" rows="5" required>{{ old('keunggulan_kompetitor') }}</textarea>
+                                        id="keunggulan_kompetitor" cols="30" rows="5" required>{{ $dataAnswer ? $dataAnswer->answer[2] : old('keunggulan_kompetitor') }}</textarea>
                                 </div>
                                 <div class="row g-4 mt-3">
                                     <div class="col-sm">
@@ -102,14 +80,14 @@
                                     <div class="content col">
                                         <label class="form-label">Iklim</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="iklim" id="iklim"
-                                            cols="30" rows="5" required>{{ old('iklim') }}</textarea>
+                                            cols="30" rows="5" required>{{ $dataAnswer ? $dataAnswer->answer[3] : old('iklim') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="content col">
                                         <label class="form-label">Event pasar atau perayaan</label>
                                         <textarea class="form-control" maxlength="1000" placeholder="Masukan minimal 10 karakter" name="event"
-                                            id="event" cols="30" rows="5" required>{{ old('event') }}</textarea>
+                                            id="event" cols="30" rows="5" required>{{ $dataAnswer ? $dataAnswer->answer[4] : old('event') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row g-4 mt-3">
@@ -117,8 +95,10 @@
                                         <div class="d-flex justify-content-sm-end">
                                             <button type="button" class="btn btn-secondary" style="margin-right: 10px;"
                                                 onclick="prevStep(2)">Previous</button>
-                                            <button type="button" id="submitButton" onclick="submit_form()"
-                                                class="btn btn-success">Submit</button>
+                                            @if (!$dataAnswer)
+                                                <button type="button" id="submitButton" onclick="submit_form()"
+                                                    class="btn btn-success">Submit</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -130,22 +110,19 @@
                     </form>
                 </div>
             </div>
-
-            {{-- <div class="card">
-                <div class="card-body">
-                    <div id="formContainer">
-                        <form action="{{ route('formPotensiLahan.create') }}" method="POST" id="myForm">
-                            @csrf
-                            <input type="hidden" name="latitude" id="latitude_field">
-                            <input type="hidden" name="longitude" id="longitude_field">
-                        </form>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 
     <script>
+        @if ($dataAnswer)
+            const form = document.getElementById('myForm')
+            const inputs = form.querySelectorAll('textarea');
+
+            inputs.forEach((input) => {
+                input.readOnly = true
+            })
+        @endif
+
         // function getLocation() {
         //     return new Promise((resolve, reject) => {
         //         if (navigator.geolocation) {

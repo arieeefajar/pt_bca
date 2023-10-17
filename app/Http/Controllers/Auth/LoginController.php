@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,8 @@ class LoginController extends Controller
     public function login()
     {
         // dd(env('PYTHON_END_POINT'));
+        // $data = Carbon::now()->format('d/n/Y H:i:s');
+        // dd($data);
         return view('auth.login');
     }
 
@@ -86,7 +89,6 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');;
-        // // return view('auth.login');
     }
 
     public function clearSelectedTokoCookie()

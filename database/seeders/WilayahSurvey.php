@@ -16,7 +16,7 @@ class WilayahSurvey extends Seeder
         $wilayahSurveyData = [
             [
                 'kota_id' => 3509,
-                'surveyor_id' => 42,
+                'surveyor_id' => 43,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

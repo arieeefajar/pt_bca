@@ -56,9 +56,8 @@
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th class="sort" data-sort="customer_name">Name</th>
-                                            <th class="sort" data-sort="email">NIP</th>
-                                            <th class="sort" data-sort="date">Wilayah</th>
-                                            <th class="sort" data-sort="date">Aksi</th>
+                                            <th class="text-center">NIP</th>
+                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
@@ -66,15 +65,11 @@
                                             <tr>
                                                 <th class="text-center">{{ $index + 1 }}</th>
                                                 <td class="customer_name">{{ $data->name }}</td>
-                                                <td class="email">{{ $data->nip }}</td>
-                                                <td class="">{{ $data->wilayah === null ? '-' : $data->wilayah }}</td>
-                                                <td class="date">
+                                                <td class="text-center">{{ $data->nip }}</td>
+                                                <td class="text-center">
                                                     <button class="btn btn-sm btn-primary edit-item-btn"
-                                                        data-bs-toggle="modal" data-bs-target="#showModal"
-                                                        onclick="getWilayah({{ $data }})">Set</button>
-                                                    <button class="btn btn-sm btn-success edit-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#detailModal{{ $data->id }}">Detail</button>
+                                                        data-bs-toggle="modal" data-bs-target="#showDetail"
+                                                        onclick="getDetailWilayah({{ $data }})">Set Wilayah</button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -91,27 +86,58 @@
         <!-- end row -->
     </div>
 
-    <!-- set-modal -->
+    <!-- show-detail-wilayah-set -->
+    <div class="modal fade" id="showDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light p-3">
+                    <h5 class="modal-title" id="tittleSetWilayah"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="close-modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#showModal">Set
+                            Wilayah</button>
+                    </div>
+
+                    <div class="table-responsive mt-3 mb-1">
+                        <table class="table align-middle table-nowrap" id="myTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-left">Provinsi</th>
+                                    <th class="text-center">Kota</th>
+                                    <th class="text-center" width="10%">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list form-check-all" id="content_detail_wilayah">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- set-wilayah -->
     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-light p-3">
-                    <h5 class="modal-title" id="exampleModalLabel">Set Wilayah</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="close-modal"></button>
+                    <h5 class="modal-title">Set Wilayah</h5>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#showDetail"
+                        aria-label="Close" id="close-modal"></button>
                 </div>
-                <form action="" id="formEdit" class="needs-validation" novalidate method="POST">
+                <form action="" id="formAdd" class="needs-validation" novalidate method="POST">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Username</label>
-                            <input type="text" id="name_surveyor" name="name_surveyor" class="form-control"
-                                value="" readonly placeholder="Masukkan Username" required />
-                            <div class="invalid-feedback">
-                                Username tidak boleh kosong.
-                            </div>
-                        </div>
-
                         <div class="mb-3">
                             <label for="phone-field" class="form-label">Provinsi</label>
                             <select class="form-select" required name="set_provinsi" id="set_provinsi"
@@ -132,8 +158,6 @@
                             <select class="form-select" required name="kota" id="set_kota"
                                 oninvalid="this.setCustomValidity('Harap pilih role pengguna')"
                                 oninput="setCustomValidity('')">
-                                <option selected disabled>Pilih Kota</option>
-                                <option value="">...</option>
                             </select>
                             <div class="invalid-feedback mb-3">
                                 Pilih Kota.
@@ -142,7 +166,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                data-bs-target="#showDetail">Close</button>
                             <button type="submit" class="btn btn-primary" id="submit_button">Set</button>
                         </div>
                     </div>
@@ -151,69 +176,36 @@
         </div>
     </div>
 
-    @foreach ($dataSurveyor as $user)
-        <!-- detail-modal -->
-        <div class="modal fade" id="detailModal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-light p-3">
-                        <h5 class="modal-title" id="exampleModalLabel">Detail Surveyor</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="close-modal"></button>
+    <!-- delete-modal -->
+    <div class="modal fade zoomIn" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#showDetail"
+                        aria-label="Close" id="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 text-center">
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                            <h4>Anda Yakin ?</h4>
+                            <p class="text-muted mx-4 mb-0">Anda Yakin Mau Menghapus Data Ini ?</p>
+                        </div>
                     </div>
-                    <form action="" class="needs-validation" novalidate method="POST">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Username</label>
-                                <input type="text" id="name" name="name" class="form-control"
-                                    value="{{ $user->name }}" readonly placeholder="Masukkan Username" required />
-                                <div class="invalid-feedback">
-                                    Username tidak boleh kosong.
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nip-field" class="form-label">NIP</label>
-                                <input type="nip" id="nip-field" name="nip" value="{{ $user->nip }}"
-                                    class="form-control" readonly placeholder="Masukan NIP" required />
-                                <div class="invalid-feedback">
-                                    NIP tidak boleh kosong.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Alamat</label>
-                                <input type="text" id="alamat-field" name="alamat"
-                                    value="{{ !$user->alamat ? '-' : $user->alamat }}" class="form-control" readonly
-                                    placeholder="Masukan Alamat" required />
-                                <div class="invalid-feedback">
-                                    Alamat tidak boleh kosong.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="phone-field" class="form-label">No.Hp</label>
-                                <input type="tel" readonly name="no_telp" maxlength="13" id="no_telp"
-                                    class="form-control" placeholder="Masukan No.HP"
-                                    value="{{ !$user->no_telp ? '-' : $user->no_telp }}" required
-                                    pattern="(\+62|62|0)8[1-9][0-9]{9,10}$"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
-                                    oninvalid="validateInput(this);" />
-                                <div class="invalid-feedback">
-                                    No.Hp tidak boleh kosong.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </form>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                        <button type="button" class="btn w-sm btn-light" data-bs-toggle="modal"
+                            data-bs-target="#showDetail">Tutup</button>
+                        <form action="" id="formDelete" method="POST" style="display: inline;">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn w-sm btn-danger">Ya, Hapus!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
 @endsection
 
 @section('otherJs')
@@ -227,21 +219,40 @@
             });
         });
 
-        function getWilayah(data) {
+        function getDetailWilayah(data) {
             console.log(data);
+            showSetWilayah(data)
 
-            // set action url form
-            document.getElementById('formEdit').action = "{{ route('dataSurveyor.create', ['id' => '/']) }}/" + data.id;
-            // setdata
-            $('#name_surveyor').val(data.name);
+            let content_body = ''
 
-            if (data.provinsi_id == null) {
-                $("#set_provinsi").prop("selectedIndex", 0).val();
+            if (data.wilayah) {
+                const dataLoop = data.wilayah
+
+                for (let i = 0; i < dataLoop.length; i++) {
+                    console.log(dataLoop[i].kota);
+                    content_body += `<tr>`
+                    content_body += `<th class="text-left">${dataLoop[i].provinsi}</th>`
+                    content_body += `<th class="text-center">${dataLoop[i].kota}</th>`
+                    content_body += `<td class="text-center">`
+                    content_body += `<button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="setDelete('${dataLoop[i].id_survey}')">Hapus</button>`
+                    content_body += `</td>`
+                    content_body += `</tr>`
+                }
+
+                $('#content_detail_wilayah').html(content_body);
             } else {
-                $('#set_provinsi').val(data.provinsi_id);
+                console.log('gaada');
             }
 
-            getKota(data.provinsi_id, data.kota_id);
+        }
+
+        function showSetWilayah(data) {
+            // set action url form
+            document.getElementById('formAdd').action = "{{ route('dataSurveyor.create', ['id' => '/']) }}/" + data.id;
+            // setdata
+            $('#tittleSetWilayah').html(data.name);
+            $("#set_provinsi").prop("selectedIndex", 0).val();
+            $('#set_kota').html('<option selected disabled>Pilih Kota</option><option value="">...</option>');
 
             $("#set_provinsi").change(function() {
                 getKota($("#set_provinsi").val()) // format paramater : "#idElement"
@@ -265,6 +276,10 @@
                     }
                 }
             })
+        }
+
+        function setDelete(id_survey) {
+            document.getElementById('formDelete').action = "{{ route('dataSurveyor.delete', ['id' => '/']) }}/" + id_survey;
         }
 
 

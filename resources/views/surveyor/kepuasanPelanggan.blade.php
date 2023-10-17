@@ -50,7 +50,8 @@
                             <li>5 (Sangat Puas)</li>
                         </ul>
                     </div>
-                    <form id="form_body" action="{{ route('kepuasanPelanggan.create') }}" method="POST">
+                    <form id="form_body" name="form_body" action="{{ !$dataAnswer ? route('kepuasanPelanggan.create') : '' }}"
+                        method="POST">
                         @csrf
                         <div class="live-preview">
 
@@ -853,8 +854,10 @@
                                             <a href="{{ route('menu.index') }}" style="margin-right: 10px;">
                                                 <button type="button" class="btn btn-primary add-btn">Kembali</button>
                                             </a>
-                                            <button type="button" onclick="submit_form()"
-                                                class="btn btn-success">Submit</button>
+                                            @if (!$dataAnswer)
+                                                <button type="button" onclick="submit_form()"
+                                                    class="btn btn-success">Submit</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -867,6 +870,28 @@
     </div>
 
     <script>
+        @if ($dataAnswer)
+            let dataAnswer = @json($dataAnswer);
+
+            for (var key in dataAnswer) {
+                if (dataAnswer.hasOwnProperty(key)) {
+                    const inputs = document.querySelectorAll(`input[name="${key}"]`);
+                    for (var i = 0; i < inputs.length; i++) {
+                        if (inputs[i].value == dataAnswer[key]) {
+                            inputs[i].checked = true;
+                        }
+                    }
+                }
+            }
+
+            const form = document.getElementById('form_body')
+            const radioButtons = form.querySelectorAll('input[type="radio"]');
+
+            radioButtons.forEach((radioButton) => {
+                radioButton.disabled = true;
+            });
+        @endif
+
         // function getLocation() {
         //     return new Promise((resolve, reject) => {
         //         if (navigator.geolocation) {

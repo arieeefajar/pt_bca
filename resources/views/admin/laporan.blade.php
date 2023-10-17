@@ -102,11 +102,49 @@
             if (value) {
                 const url = "{{ route('laporan.jawaban', ['type' => '/']) }}/" + value;
                 ajax('get', url, function(response) {
-                    // console.log(response);
+                    console.log(response);
+                    const penilaian_pelanggan = response.penilaian_pelanggan
+                    const perhitungan_index_aspek = response.perhitungan_index_aspek
                     //kosongkan konten sebelumnya
                     $('#dataDetail').empty();
                     $('#dataDetail1').empty();
 
+                    let kontenDataDetail = ''
+                    let countData = 1
+                    $.each(penilaian_pelanggan, function(key, value) {
+                        kontenDataDetail += `<tr>`
+                        kontenDataDetail += `<td class="text-center">${countData}</td>`
+                        kontenDataDetail += `<td class="text-center text-capitalize">${key.replace(/_/g, ' ')}</td>`
+                        kontenDataDetail += `<td class="text-center">${value['1'] != undefined ? value['1'] : '0'}</td>`
+                        kontenDataDetail += `<td class="text-center">${value['2'] != undefined ? value['2'] : '0'}</td>`
+                        kontenDataDetail += `<td class="text-center">${value['3'] != undefined ? value['3'] : '0'}</td>`
+                        kontenDataDetail += `<td class="text-center">${value['4'] != undefined ? value['4'] : '0'}</td>`
+                        kontenDataDetail += `<td class="text-center">${value['5'] != undefined ? value['5'] : '0'}</td>`
+                        kontenDataDetail += `<td class="text-center">${value['total'] != undefined ? value['total'] : '0'}</td>`
+                        kontenDataDetail += `</tr>`
+                        countData++
+                    });
+
+                    let kontenDataDetail1 = ''
+                    let countData1 = 1
+                    $.each(perhitungan_index_aspek, function(key, value) {
+                        kontenDataDetail1 += `<tr>`
+                        kontenDataDetail1 += `<td class="text-center">${countData1}</td>`
+                        kontenDataDetail1 += `<td class="text-center text-capitalize">${key.replace(/_/g, ' ')}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['1'] != undefined ? value['1'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['2'] != undefined ? value['2'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['3'] != undefined ? value['3'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['4'] != undefined ? value['4'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['5'] != undefined ? value['5'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['total'] != undefined ? value['total'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['index'] != undefined ? value['index'] : '0'}</td>`
+                        kontenDataDetail1 += `<td class="text-center">${value['kepuasan'] != undefined ? value['kepuasan'] : '0%'}</td>`
+                        kontenDataDetail1 += `</tr>`
+                        countData++
+                    });
+
+                    $('#dataDetail').append(kontenDataDetail);
+                    $('#dataDetail1').append(kontenDataDetail1);
                 })
             }
         }
