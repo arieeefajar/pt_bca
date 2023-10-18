@@ -243,9 +243,10 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::post('/{id}', [WilayahSurveyController::class, 'store'])->name(
             'dataSurveyor.create'
         );
-        Route::delete('{id}', [WilayahSurveyController::class, 'destroy'])->name(
-            'dataSurveyor.delete'
-        );
+        Route::delete('{id}', [
+            WilayahSurveyController::class,
+            'destroy',
+        ])->name('dataSurveyor.delete');
     });
 
     //jumlah executive route
@@ -286,9 +287,10 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::get('laporan', [LaporanController::class, 'index'])->name(
         'laporan.index'
     );
-    Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name(
-        'laporan.jawaban'
-    );
+    Route::get('laporan/{type}', [
+        LaporanController::class,
+        'jawaban_kuisioner',
+    ])->name('laporan.jawaban');
 
     //Profile
     Route::prefix('profileAdmin')->group(function () {
@@ -338,9 +340,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
     // kuisioner routes
     // kuisioner kepusan pelanggan
     Route::prefix('kepuasan-pelanggan')->group(function () {
-        Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name(
-            'kepuasanPelanggan.index'
-        );
+        Route::get('/{api_id?}', [
+            KuisionerKepuasanPelanggan::class,
+            'index',
+        ])->name('kepuasanPelanggan.index');
         Route::post('/store', [
             KuisionerKepuasanPelanggan::class,
             'store',
@@ -373,9 +376,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner skala pasar produk
     Route::prefix('skala-pasar-produk')->group(function () {
-        Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class, 'index'])->name(
-            'SkalaPasarProduk.index'
-        );
+        Route::get('/{api_id?}', [
+            KuisionerSkalaPasarProduk::class,
+            'index',
+        ])->name('SkalaPasarProduk.index');
         Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name(
             'SkalaPasarProduk.create'
         );
@@ -393,9 +397,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // form pesaing
     Route::prefix('potensi-lahan')->group(function () {
-        Route::get('/{api_id?}', [FormPotensiLahanController::class, 'index'])->name(
-            'formPotensiLahan.index'
-        );
+        Route::get('/{api_id?}', [
+            FormPotensiLahanController::class,
+            'index',
+        ])->name('formPotensiLahan.index');
         Route::post('/store', [
             FormPotensiLahanController::class,
             'store',

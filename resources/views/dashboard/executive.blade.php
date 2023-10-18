@@ -69,29 +69,15 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Maps Retail</h4>
+                        <h4 class="card-title mb-0">Maps Retail & Potensi Lahan</h4>
                     </div><!-- end card header -->
 
                     <div class="card-body">
-                        <div id="mapRetail" class="leaflet-map" style="height: 600px"></div>
+                        <div id="mapRetail" class="leaflet-map" style="height: 400px"></div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
             </div>
             <!-- end col -->
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Maps Potensi Lahan</h4>
-                    </div><!-- end card header -->
-
-                    <div class="card-body">
-                        <div id="mapPotensiLahan" class="leaflet-map" style="height: 600px"></div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-            </div>
         </div>
 
         {{-- <div class="row">
@@ -115,47 +101,67 @@
 @section('otherJs')
     <script>
         $(document).ready(function() {
-            let mapRetail = L.map('mapRetail').setView([-1.682604, 117.694631], 5);
-            let mapPotensiLahan = L.map('mapPotensiLahan').setView([-1.682604, 117.694631], 5);
-
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            var base = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
-                attribution: '© SIMI 2023'
-            }).addTo(mapRetail);
-
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© SIMI 2023'
-            }).addTo(mapPotensiLahan);
-
-            const dataAI_Retail = @json($dataAI[0]['retail_data']);
-            const dataAI_PotentialArea = @json($dataAI[0]['potential_area_data']);
-
-            const onMapClick = (index) => {
-                console.log(`onMapClick for index ${index}`);
-            };
-
-            dataAI_Retail.forEach((AI_Retail, index) => {
-                console.log(AI_Retail);
-                const area = `<h6 class="text-center" style="margin-bottom: -10px"><b>${AI_Retail.location.name}</b></h6>`
-                const header = `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Analisis Pesaing :</b></p>`
-                let wordCount = '<div class="d-flex"><p style="margin-right:10px">'
-                    
-                AI_Retail.monthly.forEach((content, index2) => {
-                    if (index2 == 5) {
-                        wordCount += `</p><p>- ${content.word}<br>`
-                    }else{
-                        wordCount += `- ${content.word}<br>`
-                    }
-                });
-                wordCount += '</p></div>'
-
-                const containerContent =
-                    `<div id="content">${area}${header}${wordCount}</div>`
-
-                var marker = L.marker([AI_Retail.location.latitude, AI_Retail.location.longtitude]).addTo(
-                    mapRetail).bindPopup(containerContent);
+                attribution: '© SIMI 2023',
             });
+
+            var mapRetail = L.map('mapRetail', {
+                layers: [base],
+                tap: false,
+                center: new L.LatLng(-1.682604, 117.694631),
+                zoom: 5,
+                fullscreenControl: true,
+                fullscreenControlOptions: { // optional
+                    title: "Show me the fullscreen !",
+                    titleCancel: "Exit fullscreen mode"
+                }
+            });
+
+            const dataArea = @json($dataArea);
+            // console.log(dataArea);
+            $.each(dataArea, function(index, value) {
+
+                const area = `<h6 class="text-center"><b>${index}</b></h6>`
+                const latitude = value.retail_data != undefined ? value.retail_data.location.latitude : value.potential_area_data.location.latitude
+                const longtitude = value.retail_data != undefined ? value.retail_data.location.longtitude : value.potential_area_data.location.longtitude
+
+                // potential area
+                let wordCountRetail = ''
+                if (value.retail_data != undefined) {
+                    const headerRetail = `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Analisis Pesaing :</b></p>`
+                    wordCountRetail = `${headerRetail}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
+                    $.each(value.retail_data.monthly, function(indexRetail, retail) {
+                        // console.log(retail);
+                        if (indexRetail == 5) {
+                            wordCountRetail += `</p><p>- ${retail.word}<br>`
+                        } else {
+                            wordCountRetail += `- ${retail.word}<br>`
+                        }
+                    });
+                    wordCountRetail += '</p></div>'
+                }
+
+                // retail
+                let wordCountPotentialArea = ''
+                if (value.potential_area_data != undefined) {
+                    const headerPotential = `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Potensi Lahan :</b></p>`
+                    wordCountPotentialArea = `${headerPotential}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
+                    $.each(value.potential_area_data.monthly, function(indexPotentialArea, potentialArea) {
+                        console.log(potentialArea);
+                        if (indexPotentialArea == 5) {
+                            wordCountPotentialArea += `</p><p>- ${potentialArea.word}<br>`
+                        } else {
+                            wordCountPotentialArea += `- ${potentialArea.word}<br>`
+                        }
+                    });
+                    wordCountPotentialArea += '</p></div>'
+                }
+
+                const containerContent =`<div id="content">${area}${wordCountRetail}${wordCountPotentialArea}</div>`
+                var marker = L.marker([latitude, longtitude]).addTo(mapRetail).bindPopup(containerContent);
+            });
+
         });
     </script>
 @endsection

@@ -12,7 +12,7 @@
     <!-- leaflet Css -->
     <link href="{{ asset('admin_assets/assets/libs/leaflet/leaflet.css') }}" rel="stylesheet" type="text/css" />
     {{-- leaflet Css Extend --}}
-    <link rel="stylesheet" href="{{ asset('admin_assets/assets/js/leafletExtend/Control.FullScreen.js') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/leafletExtend/Control.FullScreen.css') }}">
 
     <!-- App favicon -->
     <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> -->
@@ -175,7 +175,8 @@
 
     <!-- leaflet plugin -->
     <script src="{{ asset('admin_assets/assets/libs/leaflet/leaflet.js') }}"></script>
-
+    {{-- leaflet Css Extend --}}
+    <script src="{{ asset('admin_assets/assets/js/leafletExtend/Control.FullScreen.js') }}"></script>
     <!-- leaflet map.init -->
     {{-- <script src="{{ asset('admin_assets/assets/js/pages/leaflet-us-states.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/pages/leaflet-map.init.js') }}"></script> --}}

@@ -106,11 +106,42 @@ class DashboardController extends Controller
                 ->count(),
         ];
 
-        $endPointApi = env('PYTHON_END_POINT').'ai';
-        $dataAI = [Http::get($endPointApi)->json()['data']];
+        $endPointApi = env('PYTHON_END_POINT') . 'ai';
+        $dataAI = [Http::get($endPointApi)->json()['data']][0];
         // dd($dataAI);
 
-        return view('dashboard.executive', compact('dataJumlah', 'dataAI'));
+        $dataArea = [];
+        foreach ($dataAI['potential_area_data'] as $value) {
+            $dataArea[$value['location']['name']] = [];
+        }
+        
+        foreach ($dataAI['retail_data'] as $valueAI) {
+            foreach ($dataArea as $key => $valueArea) {
+                if ($key !== $valueAI['location']['name']) {
+                    $dataArea[$valueAI['location']['name']] = [];
+                }
+            }
+        }
+        // dd($dataArea);
+
+        // set data into data area
+        foreach ($dataArea as $keyArea => $valueArea) {
+            foreach ($dataAI['potential_area_data'] as $valueAI) {
+                if ($keyArea === $valueAI['location']['name']) {
+                    $dataArea[$keyArea]['potential_area_data'] = $valueAI;
+                }
+            }
+        }
+        foreach ($dataArea as $keyArea => $valueArea) {
+            foreach ($dataAI['retail_data'] as $valueAI) {
+                if ($keyArea === $valueAI['location']['name']) {
+                    $dataArea[$keyArea]['retail_data'] = $valueAI;
+                }
+            }
+        }
+        // dd($dataArea);
+
+        return view('dashboard.executive', compact('dataJumlah', 'dataArea'));
     }
 
     public function dataSurveyor()
@@ -201,13 +232,18 @@ class DashboardController extends Controller
 
     public function listHasilSurvey()
     {
-
         // Mendapatkan tanggal awal bulan ini
-        $startDate = Carbon::now()->startOfMonth()->format('Y-m-d').' 00:00:00';
+        $startDate =
+            Carbon::now()
+                ->startOfMonth()
+                ->format('Y-m-d') . ' 00:00:00';
 
         // Mendapatkan tanggal akhir bulan ini
-        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d').' 23:59:59';
-        
+        $endDate =
+            Carbon::now()
+                ->endOfMonth()
+                ->format('Y-m-d') . ' 23:59:59';
+
         $dataPerusahaan = Customer::join(
             'penyimpanan',
             'customer.id',
