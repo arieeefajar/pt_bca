@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class surveyorView
+class ExecutiveMiddleware
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class surveyorView
             return redirect('/');
         }
         
-        if (Auth::user()->role == 'user') {
+        if (Auth::user()->role == 'executive') {
             return $next($request);
         }
 

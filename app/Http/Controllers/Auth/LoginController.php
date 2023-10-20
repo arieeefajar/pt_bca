@@ -29,23 +29,34 @@ class LoginController extends Controller
         ];
 
         // validate
-        $validator = Validator::make($request->all(), [
-            'nip' => 'required',
-            'password' => 'required',
-        ], $customMessages);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nip' => 'required',
+                'password' => 'required',
+            ],
+            $customMessages
+        );
 
         if ($validator->fails()) {
-
             // example toast
-            toast($validator->messages()->all()[0], 'warning')->position('top')->autoClose(3000);
-            return redirect()->back()->withInput();
+            toast($validator->messages()->all()[0], 'warning')
+                ->position('top')
+                ->autoClose(3000);
+            return redirect()
+                ->back()
+                ->withInput();
         }
 
         // cek email
         $user = User::where('nip', $request->nip)->first();
         if (!$user) {
-            toast('NIP tidak terdaftar', 'error')->position('top')->autoClose(3000);
-            return redirect()->back()->withInput();
+            toast('NIP tidak terdaftar', 'error')
+                ->position('top')
+                ->autoClose(3000);
+            return redirect()
+                ->back()
+                ->withInput();
         }
 
         // Validasi berhasil, lanjutkan dengan percobaan otentikasi
@@ -56,39 +67,51 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if ($user->role == 'supper-admin') {
-                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                toast('Login berhasil', 'success')
+                    ->position('top')
+                    ->autoClose(3000);
                 return redirect()->route('superAdmin.dashboard');
             } elseif ($user->role == 'admin') {
-                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                toast('Login berhasil', 'success')
+                    ->position('top')
+                    ->autoClose(3000);
                 return redirect()->route('admin.dashboard');
             } elseif ($user->role == 'executive') {
-                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                toast('Login berhasil', 'success')
+                    ->position('top')
+                    ->autoClose(3000);
                 return redirect()->route('executive.dashboard');
             } elseif ($user->role == 'user') {
-                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
+                toast('Login berhasil', 'success')
+                    ->position('top')
+                    ->autoClose(3000);
                 return redirect()->route('surveyor.dashboard');
             }
 
             abort(403, 'Unauthorized');
         } else {
-
             // Login gagal
-            toast('Email atau password salah', 'error')->position('top')->autoClose(3000);
+            toast('Email atau password salah', 'error')
+                ->position('top')
+                ->autoClose(3000);
             return back()->withInput();
         }
     }
 
     public function logout(Request $request)
     {
-        // Hapus cookie selectedTokoId
-        Cookie::queue(Cookie::forget('selectedTokoId'));
+        // dd(Auth::check());
+        if (Auth::check()) {
+            // Hapus cookie selectedTokoId
+            Cookie::queue(Cookie::forget('selectedTokoId'));
 
-        //function logout
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            //function logout
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
 
-        return redirect('/');;
+        return redirect('/')->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate');;
     }
 
     public function clearSelectedTokoCookie()

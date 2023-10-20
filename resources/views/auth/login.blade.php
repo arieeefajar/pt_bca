@@ -77,10 +77,6 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <div class="float-end">
-                                                <a href="{{ route('lupaPassword') }}" class="text-muted">Forgot
-                                                    password?</a>
-                                            </div>
                                             <label class="form-label" for="password">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
                                                 <input type="password" value="{{ old('password') }}" required
@@ -102,7 +98,6 @@
                             <!-- end card body -->
                         </div>
                         <!-- end card -->
-
                     </div>
                 </div>
                 <!-- end row -->

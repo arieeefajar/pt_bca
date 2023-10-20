@@ -16,6 +16,11 @@ class SupperAndAdminView
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+
         if (Auth::user()->role == 'supper-admin' || Auth::user()->role == 'admin') {
             if ($request != 'super-admin-dashboard' || $request != 'admin-dashboard' || $request != 'executive-dashboard' || $request != 'surveyor-dashboard') {
                 return $next($request);
