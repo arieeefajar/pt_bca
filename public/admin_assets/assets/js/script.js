@@ -14,5 +14,13 @@ function ajax(method, url, callback) {
       Swal.close()
       callback(response)
     },
+    error: function (request) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error Response Server',
+        showConfirmButton: true,
+        timer: 15000,
+      })
+    },
   })
 }

@@ -168,37 +168,6 @@
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
 
     @include('sweetalert::alert')
-
-    <script>
-        var inactivityTimeout = 300000 // 10 menit (dalam milidetik)
-        var activityTimer
-
-        function resetTimer() {
-            clearTimeout(activityTimer)
-            activityTimer = setTimeout(logoutUser, inactivityTimeout)
-        }
-
-        function logoutUser() {
-            // Tambahkan logika logout di sini
-            // Contoh: window.location.href = '/logout';
-            Swal.fire({
-                title: 'Info',
-                text: 'Sesi anda telah habis, harap login kembali',
-                icon: 'warning', // Anda bisa mengganti "success" dengan "error", "warning", dll.
-                confirmButtonText: 'OK',
-            }).then((result) => {
-                if (result.isDismissed || result.isConfirmed) {
-                    $('#formLogout').trigger('submit');
-                }
-            })
-        }
-
-        // Tambahkan event listener untuk pergerakan mouse dan tindakan pengguna lainnya
-        $(document).on('mousemove click', resetTimer)
-
-        // Mulai timer saat aplikasi dimuat
-        resetTimer()
-    </script>
 </body>
 
 </html>

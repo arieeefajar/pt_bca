@@ -122,6 +122,11 @@
                             <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('laporan.index') }}">
+                            <i class="ri-hard-drive-2-line"></i> <span data-key="t-layouts">Laporan</span>
+                        </a>
+                    </li>
                 @endif
                 @if (Auth::user()->role != 'executive')
                     <li class="nav-item">
@@ -193,11 +198,6 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('penyimpanan.index') }}">
                             <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('laporan.index') }}">
-                            <i class="ri-hard-drive-2-line"></i> <span data-key="t-layouts">Laporan</span>
                         </a>
                     </li>
                 @endif

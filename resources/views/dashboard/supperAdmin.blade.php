@@ -134,7 +134,7 @@
             </div> <!-- end col-->
         </div> <!-- end row-->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
@@ -162,7 +162,7 @@
                 </div><!-- end card -->
             </div>
             <!-- end col -->
-        </div>
+        </div> --}}
 
         {{-- <div class="row">
             <div class="col-xl-6 col-md-6">
@@ -181,21 +181,4 @@
         </div> --}}
     </div>
 
-@endsection
-
-@section('otherJs')
-    <script>
-        var map = L.map('mapRetail').setView([-8.1721437, 113.7037681], 13);
-        var map1 = L.map('mapPotensiLahan').setView([-8.1721437, 113.7037681], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map1);
-    </script>
 @endsection
