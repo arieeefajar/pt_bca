@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/leafletExtend/Control.FullScreen.css') }}">
 
     <!-- App favicon -->
-    <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> -->
+    {{-- <!-- <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/favicon.ico') }}"> --> --}}
     <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
 
     <!-- plugin css -->
@@ -50,10 +50,13 @@
     <!-- jQuery (diperlukan oleh DataTables) -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
-
 </head>
 
 <body>
+
+    <div id="loading-overlay">
+        <label class="form-label loading">Loading...</label>
+    </div>
 
     <!-- Begin page -->
     <div id="layout-wrapper">
@@ -104,8 +107,6 @@
     </div>
     <!-- END layout-wrapper -->
 
-
-
     <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
@@ -128,8 +129,8 @@
     <script src="{{ asset('admin_assets/assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
 
-    <!-- Dashboard init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/dashboard-analytics.init.js') }}"></script>
+    {{-- <!-- Dashboard init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/dashboard-analytics.init.js') }}"></script> --}}
 
     <!-- App js -->
     <script src="{{ asset('admin_assets/assets/js/app.js') }}"></script>
@@ -139,29 +140,29 @@
     <script src="{{ asset('admin_assets/assets/libs/list.js/list.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
-    <!-- gridjs js -->
-    <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script>
+    {{-- <!-- gridjs js -->
+    <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script> --}}
 
-    <!-- gridjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/gridjs.init.js') }}"></script>
+    {{-- <!-- gridjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/gridjs.init.js') }}"></script> --}}
 
-    <!-- apexcharts -->
-    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <!-- apexcharts -->
+    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
-    <!-- piecharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script>
+    {{-- <!-- piecharts init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script> --}}
 
-    <!-- barcharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script>
+    {{-- <!-- barcharts init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script> --}}
 
     <!-- Sweet Alerts js -->
     <script src="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
-    <!-- Sweet alert init js-->
-    <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+    {{-- <!-- Sweet alert init js-->
+    <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script> --}}
 
-    <!-- listjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script>
+    {{-- <!-- listjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script> --}}
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" src="{{ asset('vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
@@ -170,8 +171,8 @@
     {{-- form validate --}}
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
 
-    <!-- profile-setting init js -->
-    <script src="{{ asset('admin_assets/assets/js/pages/profile-setting.init.js') }}"></script>
+    {{-- <!-- profile-setting init js -->
+    <script src="{{ asset('admin_assets/assets/js/pages/profile-setting.init.js') }}"></script> --}}
 
     <!-- leaflet plugin -->
     <script src="{{ asset('admin_assets/assets/libs/leaflet/leaflet.js') }}"></script>
@@ -180,6 +181,13 @@
     <!-- leaflet map.init -->
     {{-- <script src="{{ asset('admin_assets/assets/js/pages/leaflet-us-states.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/pages/leaflet-map.init.js') }}"></script> --}}
+
+    <script>
+        window.onload = function() {
+            // Sembunyikan elemen overlay saat halaman dimuat
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+    </script>
 
     @include('sweetalert::alert')
 

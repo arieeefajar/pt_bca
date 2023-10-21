@@ -19,13 +19,13 @@ class DashboardController extends Controller
         // Mendapatkan tanggal awal bulan ini
         $startDate =
             Carbon::now()
-                ->startOfMonth()
-                ->format('Y-m-d') . ' 00:00:00';
+            ->startOfMonth()
+            ->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate =
             Carbon::now()
-                ->endOfMonth()
-                ->format('Y-m-d') . ' 23:59:59';
+            ->endOfMonth()
+            ->format('Y-m-d') . ' 23:59:59';
 
         $dataJumlah = [
             'surveyor' => User::where('role', 'user')
@@ -114,7 +114,7 @@ class DashboardController extends Controller
         foreach ($dataAI['potential_area_data'] as $value) {
             $dataArea[$value['location']['name']] = [];
         }
-        
+
         foreach ($dataAI['retail_data'] as $valueAI) {
             foreach ($dataArea as $key => $valueArea) {
                 if ($key !== $valueAI['location']['name']) {
@@ -193,13 +193,13 @@ class DashboardController extends Controller
         // Mendapatkan tanggal awal bulan ini
         $startDate =
             Carbon::now()
-                ->startOfMonth()
-                ->format('Y-m-d') . ' 00:00:00';
+            ->startOfMonth()
+            ->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate =
             Carbon::now()
-                ->endOfMonth()
-                ->format('Y-m-d') . ' 23:59:59';
+            ->endOfMonth()
+            ->format('Y-m-d') . ' 23:59:59';
 
         $dataPerusahaan = Customer::join(
             'penyimpanan',
@@ -235,14 +235,14 @@ class DashboardController extends Controller
         // Mendapatkan tanggal awal bulan ini
         $startDate =
             Carbon::now()
-                ->startOfMonth()
-                ->format('Y-m-d') . ' 00:00:00';
+            ->startOfMonth()
+            ->format('Y-m-d') . ' 00:00:00';
 
         // Mendapatkan tanggal akhir bulan ini
         $endDate =
             Carbon::now()
-                ->endOfMonth()
-                ->format('Y-m-d') . ' 23:59:59';
+            ->endOfMonth()
+            ->format('Y-m-d') . ' 23:59:59';
 
         $dataPerusahaan = Customer::join(
             'penyimpanan',

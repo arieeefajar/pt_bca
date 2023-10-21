@@ -34,7 +34,7 @@
             </button>
 
             <!-- App Search-->
-            <form class="app-search d-none d-md-block">
+            {{-- <form class="app-search d-none d-md-block">
                 <div class="position-relative">
                     <input type="hidden" class="form-control" placeholder="Search..." autocomplete="off"
                         id="search-options" value="">
@@ -86,8 +86,8 @@
                             <!-- item -->
                             <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                 <div class="d-flex">
-                                    <img src="assets/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="admin_assets/assets/images/users/avatar-2.jpg"
+                                        class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                     <div class="flex-1">
                                         <h6 class="m-0">Angela Bernier</h6>
                                         <span class="fs-11 mb-0 text-muted">Manager</span>
@@ -124,7 +124,7 @@
                                 class="ri-arrow-right-line ms-1"></i></a>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
 
         <div class="d-flex align-items-center">

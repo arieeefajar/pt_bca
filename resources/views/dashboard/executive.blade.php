@@ -15,13 +15,10 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <p class="fw-semibold text-muted mb-0">Jumlah Target Toko</p>
-                                    <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                            data-target="{{ $dataJumlah['targetToko'] }}">0</span>
+                                    <p class="fw-semibold text-muted mb-0">Jumlah target toko</p>
+                                    <h2 class="mt-4 ff-secondary fw-bold">
+                                        {{ $dataJumlah['targetToko'] }}/20
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -43,13 +40,10 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <p class="fw-semibold text-muted mb-0">Jumlah Toko yang sudah di Survey</p>
-                                    <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                            data-target="{{ $dataJumlah['surveyToko'] }}">0</span>
+                                    <p class="fw-semibold text-muted mb-0">Jumlah belum selesai survey toko</p>
+                                    <h2 class="mt-4 ff-secondary fw-bold">
+                                        {{ $dataJumlah['surveyToko'] }}
                                     </h2>
-                                    <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                            <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                        </span> vs. previous month</p>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -123,14 +117,18 @@
             $.each(dataArea, function(index, value) {
 
                 const area = `<h6 class="text-center"><b>${index}</b></h6>`
-                const latitude = value.retail_data != undefined ? value.retail_data.location.latitude : value.potential_area_data.location.latitude
-                const longtitude = value.retail_data != undefined ? value.retail_data.location.longtitude : value.potential_area_data.location.longtitude
+                const latitude = value.retail_data != undefined ? value.retail_data.location.latitude :
+                    value.potential_area_data.location.latitude
+                const longtitude = value.retail_data != undefined ? value.retail_data.location.longtitude :
+                    value.potential_area_data.location.longtitude
 
                 // potential area
                 let wordCountRetail = ''
                 if (value.retail_data != undefined) {
-                    const headerRetail = `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Analisis Pesaing :</b></p>`
-                    wordCountRetail = `${headerRetail}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
+                    const headerRetail =
+                        `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Analisis Pesaing :</b></p>`
+                    wordCountRetail =
+                        `${headerRetail}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
                     $.each(value.retail_data.monthly, function(indexRetail, retail) {
                         // console.log(retail);
                         if (indexRetail == 5) {
@@ -145,8 +143,10 @@
                 // retail
                 let wordCountPotentialArea = ''
                 if (value.potential_area_data != undefined) {
-                    const headerPotential = `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Potensi Lahan :</b></p>`
-                    wordCountPotentialArea = `${headerPotential}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
+                    const headerPotential =
+                        `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Potensi Lahan :</b></p>`
+                    wordCountPotentialArea =
+                        `${headerPotential}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
                     $.each(value.potential_area_data.monthly, function(indexPotentialArea, potentialArea) {
                         console.log(potentialArea);
                         if (indexPotentialArea == 5) {
@@ -158,7 +158,8 @@
                     wordCountPotentialArea += '</p></div>'
                 }
 
-                const containerContent =`<div id="content">${area}${wordCountRetail}${wordCountPotentialArea}</div>`
+                const containerContent =
+                    `<div id="content">${area}${wordCountRetail}${wordCountPotentialArea}</div>`
                 var marker = L.marker([latitude, longtitude]).addTo(mapRetail).bindPopup(containerContent);
             });
 

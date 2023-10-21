@@ -50,6 +50,10 @@
 
 <body>
 
+    <div id="loading-overlay">
+        <label class="form-label loading">Loading...</label>
+    </div>
+
     <!-- Begin page -->
     <div id="layout-wrapper">
 
@@ -122,50 +126,57 @@
     <script src="{{ asset('admin_assets/assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
 
-    <!-- Dashboard init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/dashboard-analytics.init.js') }}"></script>
+    {{-- <!-- Dashboard init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/dashboard-analytics.init.js') }}"></script> --}}
 
-    <!-- App js -->
-    <script src="{{ asset('admin_assets/assets/js/app.js') }}"></script>
+    {{-- <!-- App js -->
+    <script src="{{ asset('admin_assets/assets/js/app.js') }}"></script> --}}
 
     <!-- prismjs plugin -->
     <script src="{{ asset('admin_assets/assets/libs/prismjs/prism.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/list.js/list.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
-    <!-- listjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script>
+    {{-- <!-- listjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script> --}}
 
-    <!-- gridjs js -->
-    <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script>
+    {{-- <!-- gridjs js -->
+    <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script> --}}
 
-    <!-- gridjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/gridjs.init.js') }}"></script>
+    {{-- <!-- gridjs init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/gridjs.init.js') }}"></script> --}}
 
-    <!-- apexcharts -->
-    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <!-- apexcharts -->
+    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
-    <!-- piecharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script>
+    {{-- <!-- piecharts init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script> --}}
 
-    <!-- barcharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script>
+    {{-- <!-- barcharts init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script> --}}
 
     <!-- Sweet Alerts js -->
     <script src="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
-    <!-- Sweet alert init js-->
-    <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script>
+    {{-- <!-- Sweet alert init js-->
+    <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script> --}}
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" src="{{ asset('vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/DataTables/js/dataTables.bootstrap4.min.js') }}"></script>
 
-    <!-- profile-setting init js -->
-    <script src="{{ asset('admin_assets/assets/js/pages/profile-setting.init.js') }}"></script>
+    {{-- <!-- profile-setting init js -->
+    <script src="{{ asset('admin_assets/assets/js/pages/profile-setting.init.js') }}"></script> --}}
 
     {{-- form validate --}}
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
+
+    <script>
+        window.onload = function() {
+            // Sembunyikan elemen overlay saat halaman dimuat
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+    </script>
 
     @include('sweetalert::alert')
 </body>

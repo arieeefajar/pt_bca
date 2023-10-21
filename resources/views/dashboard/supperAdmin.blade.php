@@ -91,8 +91,7 @@
                             <div class="d-flex justify-content-between">
                                 <div>
                                     <p class="fw-semibold text-muted mb-0">Jumlah Target Toko</p>
-                                    <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                            data-target="{{ $dataJumlah['targetToko'] }}">0</span>
+                                    <h2 class="mt-4 ff-secondary fw-bold">{{ $dataJumlah['targetToko'] }}/20
                                     </h2>
                                 </div>
                                 <div>

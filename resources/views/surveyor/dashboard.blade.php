@@ -31,14 +31,11 @@
                                         <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                                 data-target="{{ $dataJumlah['targetToko'] }}">0</span>
                                         </h2>
-                                        <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                                <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                            </span> vs. previous month</p>
                                     </div>
                                     <div>
                                         <div class="avatar-sm flex-shrink-0">
                                             <span class="avatar-title bg-soft-info rounded-circle fs-2">
-                                                <i data-feather="users" class="text-info"></i>
+                                                <i data-feather="home" class="text-info"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -59,9 +56,6 @@
                                         <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
                                                 data-target="{{ $dataJumlah['surveyToko'] }}">0</span>
                                         </h2>
-                                        <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
-                                                <i class="ri-arrow-up-line align-middle"></i> 16.24 %
-                                            </span> vs. previous month</p>
                                     </div>
                                     <div>
                                         <div class="avatar-sm flex-shrink-0">
@@ -76,22 +70,6 @@
                     </a>
                 </div>
             </div><!-- end row -->
-
-            {{-- <div class="row">
-                <div class="col-xl-6 col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title mb-0">Custom DataLabels Bar</h4>
-                        </div><!-- end card header -->
-
-                        <div class="card-body">
-                            <div id="custom_datalabels_bar"
-                                data-colors='["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-dark", "--vz-primary", "--vz-success", "--vz-secondary"]'
-                                class="apex-charts" dir="ltr"></div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
-                </div>
-            </div> --}}
 
         </div><!-- end col -->
     </div><!-- end row -->

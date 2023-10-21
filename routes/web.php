@@ -86,7 +86,7 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         Route::get('/', [KuisionerController::class, 'index'])->name('kuisioner.index');
         Route::post('/store', [KuisionerController::class, 'store'])->name('kuisioner.create');
         Route::post('/update', [KuisionerController::class, 'update'])->name('kuisioner.update');
-        Route::get('/destroy/{id}', [KuisionerController::class,'destroy',])->name('kuisioner.destroy');
+        Route::get('/destroy/{id}', [KuisionerController::class, 'destroy',])->name('kuisioner.destroy');
     });
 
     // detail kuisioner routes
@@ -133,59 +133,65 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     Route::prefix('dataSurveyor')->group(function () {
         Route::get('/', [WilayahSurveyController::class, 'index'])->name('dataSurveyor.index');
         Route::post('/{id}', [WilayahSurveyController::class, 'store'])->name('dataSurveyor.create');
-        Route::delete('{id}', [WilayahSurveyController::class,'destroy',])->name('dataSurveyor.delete');
+        Route::delete('{id}', [WilayahSurveyController::class, 'destroy',])->name('dataSurveyor.delete');
     });
 
     //jumlah executive route
-    Route::get('dataExecutive', [DashboardController::class,'dataExecutive',])->name('dataExecutive.index');
+    Route::get('dataExecutive', [DashboardController::class, 'dataExecutive',])->name('dataExecutive.index');
 
     //jumlah admin route
     Route::get('dataAdmin', [DashboardController::class, 'dataAdmin'])->name('dataAdmin.index');
 
     //jumlah target toko route
-    Route::get('dataTargetToko', [DashboardController::class,'dataTargetToko',])->name('dataTargetToko.index');
+    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko',])->name('dataTargetToko.index');
 
-    //jumlah target toko route
-    Route::get('dataSurveyToko', [DashboardController::class,'dataSurveyToko',])->name('dataSurveyToko.index');
+    //jumlah survey toko route
+    Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
 
     // detail penyimpanan routes
     Route::get('penyimpanan', [PenyimpananController::class, 'index'])->name('penyimpanan.index');
 
     // penyimpanan routes
-    Route::get('detail-penyimpanan/{id}', [DetailPenyimpananController::class,'index',])->name('detailPenyimpanan.index');
+    Route::get('detail-penyimpanan/{id}', [DetailPenyimpananController::class, 'index',])->name('detailPenyimpanan.index');
 
     //Profile
     Route::prefix('profileAdmin')->group(function () {
         Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
-        Route::post('/profile/{id}', [ProfileControllerAdmin::class,'update',])->name('profile.update');
-        Route::post('/password/{id}', [ProfileControllerAdmin::class,'ubahPassword',])->name('password.update');
+        Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update',])->name('profile.update');
+        Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword',])->name('password.update');
     });
 
     // get data wilayah
     Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
     Route::get('getKecamatan/{id}', [CustomerController::class, 'getKecamatan'])->name('getkecamatan');
     Route::get('getKelurahan/{id}', [CustomerController::class, 'getKelurahan'])->name('getkelurahan');
-    Route::get('getAllLocation/{id_kota}', [CustomerController::class,'getProvinsi',])->name('getAllLocation');
+    Route::get('getAllLocation/{id_kota}', [CustomerController::class, 'getProvinsi',])->name('getAllLocation');
 });
 
 // route only executive
 Route::middleware(['auth', 'access:executive'])->group(function () {
     // laporan routes
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
-    Route::get('laporan/{type}', [LaporanController::class,'jawaban_kuisioner'])->name('laporan.jawaban');
+    Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name('laporan.jawaban');
+
+    //jumlah target toko route
+    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko',])->name('dataTargetToko.index');
+
+    //jumlah survey toko route
+    Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
 });
 
 // route only surveyour
 Route::middleware(['auth', 'surveyor'])->group(function () {
     //menu routes
     Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name('menu.index');
-    Route::get('set-store', [DashboardSurveyerController::class,'setStore'])->name('surveyor.setStore');
+    Route::get('set-store', [DashboardSurveyerController::class, 'setStore'])->name('surveyor.setStore');
 
     // kuisioner routes
     // kuisioner kepusan pelanggan
     Route::prefix('kepuasan-pelanggan')->group(function () {
-        Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class,'index'])->name('kepuasanPelanggan.index');
-        Route::post('/store', [KuisionerKepuasanPelanggan::class,'store'])->name('kepuasanPelanggan.create');
+        Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
+        Route::post('/store', [KuisionerKepuasanPelanggan::class, 'store'])->name('kepuasanPelanggan.create');
     });
 
     // kuisioner analisis pesaing
@@ -196,13 +202,13 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // kuisioner kekuatan dan kelemahan pesaing
     Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
-        Route::get('/{api_id?}', [KuisionerKekuatanKelemahanPesaing::class,'index'])->name('KekuatanDanKelemahanPesaing.index');
-        Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class,'store'])->name('KekuatanDanKelemahanPesaing.create');
+        Route::get('/{api_id?}', [KuisionerKekuatanKelemahanPesaing::class, 'index'])->name('KekuatanDanKelemahanPesaing.index');
+        Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
     });
 
     // kuisioner skala pasar produk
     Route::prefix('skala-pasar-produk')->group(function () {
-        Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class,'index'])->name('SkalaPasarProduk.index');
+        Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class, 'index'])->name('SkalaPasarProduk.index');
         Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name('SkalaPasarProduk.create');
     });
 
@@ -214,20 +220,20 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
 
     // form pesaing
     Route::prefix('potensi-lahan')->group(function () {
-        Route::get('/{api_id?}', [FormPotensiLahanController::class,'index'])->name('formPotensiLahan.index');
-        Route::post('/store', [FormPotensiLahanController::class,'store'])->name('formPotensiLahan.create');
+        Route::get('/{api_id?}', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
+        Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
     });
 
     // Data List Target Toko
-    route::get('listTargetToko', [DashboardController::class,'listTargetToko'])->name('listTargetToko.index');
+    route::get('listTargetToko', [DashboardController::class, 'listTargetToko'])->name('listTargetToko.index');
 
     // Data List Hasil Survey
-    route::get('listHasilSurvey', [DashboardController::class,'listHasilSurvey'])->name('listHasilSurvey.index');
+    route::get('listHasilSurvey', [DashboardController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
 
     // Profile
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profile.Surveyor');
-        Route::post('/profile/{id}', [ProfileControllerSurveyor::class,'profileUpdate',])->name('profile.Update');
-        Route::post('/password/{id}', [ProfileControllerSurveyor::class,'ubahPassword',])->name('password.Update');
+        Route::post('/profile/{id}', [ProfileControllerSurveyor::class, 'profileUpdate',])->name('profile.Update');
+        Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword',])->name('password.Update');
     });
 });
