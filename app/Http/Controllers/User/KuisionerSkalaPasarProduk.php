@@ -25,10 +25,14 @@ class KuisionerSkalaPasarProduk extends Controller
 
         // kika jawaban sudah ada dan ada api id
         if ($k_skala_pasar && $api_id) {
-            $endPointApi =
-                env('PYTHON_END_POINT') . 'competitor-questionnaire/' . $api_id;
-            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
-            return view('surveyor.skalaPasarProduk', compact('dataAnswer'));
+            $endPointApi = env('PYTHON_END_POINT') . 'competitor-questionnaire/' . $api_id;
+            try {
+                $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+                return view('surveyor.skalaPasarProduk', compact('dataAnswer'));
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sesalahan server, gagal menampilkan jawaban');
+                return redirect()->route('menu.index');
+            }
         }
         // ketika jawaban sudah ada dan user memaksa masuk lewat url
         elseif ($k_skala_pasar) {
@@ -154,8 +158,8 @@ class KuisionerSkalaPasarProduk extends Controller
             alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
             return redirect()->route('menu.index');
         } catch (\Throwable $th) {
-            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
-            return redirect()->route('menu.index');
+            alert()->error('Gagal', 'Sesalahan server, gagal menambahkan kuisioner');
+            return redirect()->back()->withInput();
         }
     }
 }

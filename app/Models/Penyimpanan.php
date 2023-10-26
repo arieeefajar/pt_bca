@@ -14,7 +14,7 @@ class Penyimpanan extends Model
 
     protected $fillable = [
         'surveyor_id',
-        'perusahaan_id',
+        'customer_id',
         'status',
         'created_at'
     ];
@@ -42,6 +42,11 @@ class Penyimpanan extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
+
+    public function detail_penyimpanan()
+    {
+        return $this->hasMany(DetailPenyimpanan::class, 'penyimpanan_id', 'id');
     }
 
     public function surveyor()

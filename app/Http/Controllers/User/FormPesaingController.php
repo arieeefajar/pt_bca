@@ -24,13 +24,16 @@ class FormPesaingController extends Controller
 
         // kika jawaban sudah ada dan ada api id
         if ($form_pesaing && $api_id) {
-            $endPointApi =
-                env('PYTHON_END_POINT') . 'retail/' . $api_id;
-            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
-            // dd($dataAnswer);
-            return view('surveyor.pesaing',
-                compact('dataAnswer', 'dataProduk')
-            );
+            $endPointApi = env('PYTHON_END_POINT') . 'retail/' . $api_id;
+            try {
+                $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+                return view('surveyor.pesaing',
+                    compact('dataAnswer', 'dataProduk')
+                );
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sesalahan server, gagal menampilkan jawaban');
+                return redirect()->route('menu.index');
+            }
         }
         // ketika jawaban sudah ada dan user memaksa masuk lewat url
         elseif ($form_pesaing) {
@@ -65,8 +68,6 @@ class FormPesaingController extends Controller
             // 'longitude' => 'required',
         ], $customMessages);
 
-        $name = "rif'an";
-        $query = "SELECT * FROM anu WHERE = '$name'";
         if ($validator->fails()) {
             alert()->error('Gagal', $validator->messages()->all()[0]);
             return redirect()->back()->withInput();
@@ -137,8 +138,8 @@ class FormPesaingController extends Controller
             alert()->success('Berhasil', 'Berhasil menambahkan form kuisioner');
             return redirect()->route('menu.index');
         } catch (\Throwable $th) {
-            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
-            return redirect()->route('menu.index');
+            alert()->error('Gagal', 'Sesalahan server, gagal menambahkan kuisioner');
+            return redirect()->back()->withInput();
         }
     }
 }

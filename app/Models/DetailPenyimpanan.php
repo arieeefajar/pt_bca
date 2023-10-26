@@ -65,4 +65,9 @@ class DetailPenyimpanan extends Model
 
         return $records;
     }
+
+    public function penyimpanan()
+    {
+        return $this->belongsTo(Penyimpanan::class, 'penyimpanan_id', 'id');
+    }
 }

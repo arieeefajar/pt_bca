@@ -18,24 +18,31 @@
 
                             <div class="table-responsive mt-3 mb-1">
                                 <table class="table align-middle table-nowrap" id="myTable">
-                                    <thead class="table-light text-center">
+                                    <thead class="table-light">
                                         <tr>
-                                            <th scope="text-center" data-sort="no">No</th>
-                                            <th class="text-center" data-sort="customer_name">Nama</th>
-                                            <th class="text-center" data-sort="email">Jenis</th>
-                                            <th class="text-center" data-sort="phone">Provinsi</th>
-                                            <th class="text-center" data-sort="date">Kota</th>
+                                            <th class="text-center">No</th>
+                                            <th>Nama</th>
+                                            <th>Provinsi</th>
+                                            <th>Kota</th>
+                                            <th>Suerveyor</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="list form-check-all text-center">
+                                    <tbody class="list form-check-all">
                                         @foreach ($dataPerusahaan as $index => $data)
-                                            <tr>
-                                                <th scope="row">{{ $index + 1 }}</th>
-                                                <td class="customer_name">{{ $data->nama }}</td>
-                                                <td class="email">{{ $data->jenis }}</td>
-                                                <td class="phone">{{ $data->provinsi }}</td>
-                                                <td class="date">{{ $data->kota }}</td>
-                                            </tr>
+                                            @if ($data->status == 2)
+                                                <tr>
+                                                    <th>{{ $index + 1 }}</th>
+                                                    <td>{{ $data->nama }}</td>
+                                                    <td>{{ $data->kota->provinsi->nama }}</td>
+                                                    <td>{{ $data->kota->nama }}</td>
+                                                    <td>{{ $data->surveyor }}</td>
+                                                    <td>
+                                                        <span class="badge rounded-pill bg-warning">Belum Selesai
+                                                            Mengisi</span>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>

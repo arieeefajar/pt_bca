@@ -28,13 +28,16 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
 
         // kika jawaban sudah ada dan ada api id
         if ($k_kekuatan_kelemahan && $api_id) {
-            $endPointApi =
-                env('PYTHON_END_POINT') . 'competitor-identifier/' . $api_id;
-            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
-            // dd($dataAnswer);
-            return view('surveyor.kekuatanKelemahanPesaing',
-                compact('dataAnswer')
-            );
+            $endPointApi = env('PYTHON_END_POINT') . 'competitor-identifier/' . $api_id;
+            try {
+                $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+                return view('surveyor.kekuatanKelemahanPesaing',
+                    compact('dataAnswer')
+                );
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sesalahan server, gagal menampilkan jawaban');
+                return redirect()->route('menu.index');
+            }
         }
         // ketika jawaban sudah ada dan user memaksa masuk lewat url
         elseif ($k_kekuatan_kelemahan) {
@@ -218,8 +221,8 @@ class KuisionerKekuatanKelemahanPesaing extends Controller
             alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
             return redirect()->route('menu.index');
         } catch (\Throwable $th) {
-            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
-            return redirect()->route('menu.index');
+            alert()->error('Gagal', 'Sesalahan server, gagal menambahkan kuisioner');
+            return redirect()->back()->withInput();
         }
     }
 }

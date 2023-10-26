@@ -21,7 +21,7 @@ class Customer extends Model
 
     public function penyimpanan()
     {
-        return $this->hashMany(Penyimpanan::class, 'id', 'perusahaan_id');
+        return $this->hasMany(Penyimpanan::class, 'customer_id', 'id');
     }
 
     public function kota()

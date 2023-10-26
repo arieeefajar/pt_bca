@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class ExecutiveMiddleware
+class NonSurveyorAccess
 {
     /**
      * Handle an incoming request.
@@ -19,18 +19,14 @@ class ExecutiveMiddleware
         if (!Auth::check()) {
             return redirect('/');
         }
-        
-        if (Auth::user()->role == 'executive') {
-            return $next($request);
+
+        if (Auth::user()->role !== 'user') {
+            if ($request != 'super-admin-dashboard' || $request != 'admin-dashboard' || $request != 'executive-dashboard' || $request != 'surveyor-dashboard') {
+                return $next($request);
+            }
         }
 
-        if (Auth::user()->role == 'supper-admin') {
-            return redirect()->route('superAdmin.dashboard');
-        } elseif (Auth::user()->role == 'admin') {
-            return redirect()->route('admin.dashboard');
-        } elseif (Auth::user()->role == 'executive') {
-            return redirect()->route('executive.dashboard');
-        } elseif (Auth::user()->role == 'user') {
+        if (Auth::user()->role == 'user') {
             return redirect()->route('surveyor.dashboard');
         }
 

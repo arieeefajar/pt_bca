@@ -91,8 +91,15 @@
                             <div class="d-flex justify-content-between">
                                 <div>
                                     <p class="fw-semibold text-muted mb-0">Jumlah Target Toko</p>
-                                    <h2 class="mt-4 ff-secondary fw-bold">{{ $dataJumlah['targetToko'] }}/20
-                                    </h2>
+                                    <div class="d-flex mt-4">
+                                        <h2 class="ff-secondary fw-bold"><span class="counter-value"
+                                                data-target="{{ $dataJumlah['targetTokoSelesai'] }}">0</span>
+                                        </h2>
+                                        <h2 class="ff-secondary fw-bold">/</h2>
+                                        <h2 class="ff-secondary fw-bold"><span class="counter-value"
+                                                data-target="{{ $dataJumlah['targetToko'] }}">0</span>
+                                        </h2>
+                                    </div>
                                 </div>
                                 <div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -114,9 +121,9 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <p class="fw-semibold text-muted mb-0">Jumlah Toko yang sudah di Survey</p>
+                                    <p class="fw-semibold text-muted mb-0">Jumlah Belum Selesai Survey Toko</p>
                                     <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                            data-target="{{ $dataJumlah['surveyToko'] }}">0</span>
+                                            data-target="{{ $dataJumlah['targetTokoBlmSelesai'] }}">0</span>
                                     </h2>
                                 </div>
                                 <div>
@@ -132,52 +139,6 @@
                 </a>
             </div> <!-- end col-->
         </div> <!-- end row-->
-
-        {{-- <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Maps Retail</h4>
-                    </div><!-- end card header -->
-
-                    <div class="card-body">
-                        <div id="mapRetail" class="leaflet-map"></div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-            </div>
-            <!-- end col -->
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Maps Potensi Lahan</h4>
-                    </div><!-- end card header -->
-
-                    <div class="card-body">
-                        <div id="mapPotensiLahan" class="leaflet-map"></div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-            </div>
-            <!-- end col -->
-        </div> --}}
-
-        {{-- <div class="row">
-            <div class="col-xl-6 col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Data Hasil Survey</h4>
-                    </div><!-- end card header -->
-
-                    <div class="card-body">
-                        <div id="custom_datalabels_bar"
-                            data-colors='["--vz-primary", "--vz-secondary", "--vz-success", "--vz-info", "--vz-warning", "--vz-danger", "--vz-dark", "--vz-primary", "--vz-success", "--vz-secondary"]'
-                            class="apex-charts" dir="ltr"></div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-            </div>
-        </div> --}}
     </div>
 
 @endsection

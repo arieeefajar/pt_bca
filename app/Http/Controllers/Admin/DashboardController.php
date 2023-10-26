@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
 use App\Models\Customer;
 use App\Models\Provinsi;
@@ -16,130 +17,56 @@ class DashboardController extends Controller
 {
     public function supperAdmin()
     {
-        // Mendapatkan tanggal awal bulan ini
-        $startDate =
-            Carbon::now()
-            ->startOfMonth()
-            ->format('Y-m-d') . ' 00:00:00';
-        // Mendapatkan tanggal akhir bulan ini
-        $endDate =
-            Carbon::now()
-            ->endOfMonth()
-            ->format('Y-m-d') . ' 23:59:59';
-
-        $dataJumlah = [
-            'surveyor' => User::where('role', 'user')
-                ->get()
-                ->count(),
-            'executive' => User::where('role', 'executive')
-                ->get()
-                ->count(),
-            'admin' => User::where('role', 'admin')
-                ->get()
-                ->count(),
-            'targetToko' => Customer::all()->count(),
-            'surveyToko' => Customer::join(
-                'penyimpanan',
-                'customer.id',
-                '=',
-                'penyimpanan.customer_id'
-            )
-                ->where('penyimpanan.status', 1)
-                ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
-                ->select('customer.nama')
-                ->get()
-                ->count(),
-        ];
-
+        $dataJumlah = $this->dataForDashboard();
         return view('dashboard.supperAdmin', compact('dataJumlah'));
     }
 
     public function admin()
     {
-        $dataJumlah = [
-            'surveyor' => User::where('role', 'user')
-                ->get()
-                ->count(),
-            'executive' => User::where('role', 'executive')
-                ->get()
-                ->count(),
-            'admin' => User::where('role', 'admin')
-                ->get()
-                ->count(),
-            'targetToko' => Customer::all()->count(),
-            'surveyToko' => Customer::join(
-                'penyimpanan',
-                'customer.id',
-                '=',
-                'penyimpanan.customer_id'
-            )
-                ->where('penyimpanan.status', 1)
-                ->select('customer.nama')
-                ->get()
-                ->count(),
-        ];
+        $dataJumlah = $this->dataForDashboard();
         return view('dashboard.admin', compact('dataJumlah'));
     }
 
     public function executive()
     {
-        $dataJumlah = [
-            'surveyor' => User::where('role', 'user')
-                ->get()
-                ->count(),
-            'executive' => User::where('role', 'executive')
-                ->get()
-                ->count(),
-            'admin' => User::where('role', 'admin')
-                ->get()
-                ->count(),
-            'targetToko' => Customer::all()->count(),
-            'surveyToko' => Customer::join(
-                'penyimpanan',
-                'customer.id',
-                '=',
-                'penyimpanan.customer_id'
-            )
-                ->where('penyimpanan.status', 1)
-                ->select('customer.nama')
-                ->get()
-                ->count(),
-        ];
-
+        $dataJumlah = $this->dataForDashboard();
         $endPointApi = env('PYTHON_END_POINT') . 'ai';
-        $dataAI = [Http::get($endPointApi)->json()['data']][0];
-        // dd($dataAI);
-
         $dataArea = [];
-        foreach ($dataAI['potential_area_data'] as $value) {
-            $dataArea[$value['location']['name']] = [];
-        }
 
-        foreach ($dataAI['retail_data'] as $valueAI) {
-            foreach ($dataArea as $key => $valueArea) {
-                if ($key !== $valueAI['location']['name']) {
-                    $dataArea[$valueAI['location']['name']] = [];
-                }
-            }
-        }
-        // dd($dataArea);
+        try {
+            $dataAI = [Http::get($endPointApi)->json()['data']][0];
 
-        // set data into data area
-        foreach ($dataArea as $keyArea => $valueArea) {
-            foreach ($dataAI['potential_area_data'] as $valueAI) {
-                if ($keyArea === $valueAI['location']['name']) {
-                    $dataArea[$keyArea]['potential_area_data'] = $valueAI;
-                }
+            foreach ($dataAI['potential_area_data'] as $value) {
+                $dataArea[$value['location']['name']] = [];
             }
-        }
-        foreach ($dataArea as $keyArea => $valueArea) {
+
             foreach ($dataAI['retail_data'] as $valueAI) {
-                if ($keyArea === $valueAI['location']['name']) {
-                    $dataArea[$keyArea]['retail_data'] = $valueAI;
+                foreach ($dataArea as $key => $valueArea) {
+                    if ($key !== $valueAI['location']['name']) {
+                        $dataArea[$valueAI['location']['name']] = [];
+                    }
                 }
             }
+
+            // set data into data area
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['potential_area_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['potential_area_data'] = $valueAI;
+                    }
+                }
+            }
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['retail_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['retail_data'] = $valueAI;
+                    }
+                }
+            }
+
+        } catch (\Throwable $th) {
+            $dataArea = null;
         }
-        // dd($dataArea);
 
         return view('dashboard.executive', compact('dataJumlah', 'dataArea'));
     }
@@ -170,98 +97,58 @@ class DashboardController extends Controller
 
     public function dataTargetToko()
     {
-        $dataPerusahaan = Customer::join(
-            'kota',
-            'customer.kota_id',
-            '=',
-            'kota.id'
-        )
-            ->join('provinsi', 'kota.provinsi_id', '=', 'provinsi.id')
-            ->select(
-                'customer.id',
-                'customer.nama',
-                'customer.jenis',
-                'provinsi.nama AS provinsi',
-                'kota.nama AS kota'
-            )
-            ->get();
+        // Mendapatkan tanggal awal bulan ini
+        $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
+        // Mendapatkan tanggal akhir bulan ini
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+        
+        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
+        
+        foreach ($dataPerusahaan as $key => $value) {
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
+            $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
+            if ($detailPenyimpanan) {
+                if ($penyimpanan->status != 2) {
+                    $dataPerusahaan[$key]->status = 1;
+                    $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
+                } else {
+                    $dataPerusahaan[$key]->status = 2;
+                    $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
+                }
+            }else{
+                $dataPerusahaan[$key]->status = 3;
+                $dataPerusahaan[$key]->surveyor = '-';
+            }
+        }
         return view('admin.dataTargetToko', compact('dataPerusahaan'));
     }
 
     public function dataSurveyToko()
     {
-        // Mendapatkan tanggal awal bulan ini
-        $startDate =
-            Carbon::now()
-            ->startOfMonth()
-            ->format('Y-m-d') . ' 00:00:00';
+            // Mendapatkan tanggal awal bulan ini
+        $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
-        $endDate =
-            Carbon::now()
-            ->endOfMonth()
-            ->format('Y-m-d') . ' 23:59:59';
-
-        $dataPerusahaan = Customer::join(
-            'penyimpanan',
-            'customer.id',
-            '=',
-            'penyimpanan.customer_id'
-        )
-            ->join('kota', 'customer.kota_id', '=', 'kota.id')
-            ->join('provinsi', 'kota.provinsi_id', '=', 'provinsi.id')
-            ->where('penyimpanan.status', 1)
-            ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
-            ->select(
-                'customer.id',
-                'customer.nama',
-                'customer.jenis',
-                'provinsi.nama AS provinsi',
-                'kota.nama AS kota'
-            )
-            ->get();
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+        
+        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
+        
+        foreach ($dataPerusahaan as $key => $value) {
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
+            $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
+            if ($detailPenyimpanan) {
+                if ($penyimpanan->status != 2) {
+                    $dataPerusahaan[$key]->status = 1;
+                    $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
+                } else {
+                    $dataPerusahaan[$key]->status = 2;
+                    $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
+                }
+            }else{
+                $dataPerusahaan[$key]->status = 3;
+                $dataPerusahaan[$key]->surveyor = '-';
+            }
+        }
         return view('admin.dataSurveyToko', compact('dataPerusahaan'));
-    }
-
-    public function listTargetToko()
-    {
-        $dataPerusahaan = Customer::with('kota', 'kota.provinsi')
-            ->orderBy('created_at', 'desc')
-            ->get();
-        return view('surveyor.listTargetToko', compact('dataPerusahaan'));
-    }
-
-    public function listHasilSurvey()
-    {
-        // Mendapatkan tanggal awal bulan ini
-        $startDate =
-            Carbon::now()
-            ->startOfMonth()
-            ->format('Y-m-d') . ' 00:00:00';
-
-        // Mendapatkan tanggal akhir bulan ini
-        $endDate =
-            Carbon::now()
-            ->endOfMonth()
-            ->format('Y-m-d') . ' 23:59:59';
-
-        $dataPerusahaan = Customer::join(
-            'penyimpanan',
-            'customer.id',
-            '=',
-            'penyimpanan.customer_id'
-        )
-            ->join('kota', 'customer.kota_id', '=', 'kota.id')
-            ->join('provinsi', 'kota.provinsi_id', '=', 'provinsi.id')
-            ->where('penyimpanan.surveyor_id', Auth::user()->id)
-            ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
-            ->select(
-                'customer.nama',
-                'customer.jenis',
-                'provinsi.nama AS provinsi',
-                'kota.nama AS kota'
-            )
-            ->get();
-        return view('surveyor.listHasilSurvey', compact('dataPerusahaan'));
     }
 
     public function profileAdmin()
@@ -269,8 +156,31 @@ class DashboardController extends Controller
         return view('admin.profile');
     }
 
-    public function tes()
-    {
-        return view('admin.detailJawaban.k_skalaPasarProduk');
+    function dataForDashboard(){
+        // Mendapatkan tanggal awal bulan ini
+        $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
+        // Mendapatkan tanggal akhir bulan ini
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+
+        $dataJumlah = [
+            'surveyor' => User::where('role', 'user')->get()->count(),
+            'executive' => User::where('role', 'executive')->get()->count(),
+            'admin' => User::where('role', 'admin')->get()->count(),
+            'targetToko' => Customer::all()->count(),
+
+            'targetTokoBlmSelesai' => $dataPerusahaan = Customer::with('kota', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
+            ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })->has('penyimpanan.detail_penyimpanan')->get()->count(),
+            
+            'targetTokoSelesai' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
+                ->where('penyimpanan.status', 1)
+                ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
+                ->select('customer.nama')
+                ->get()
+                ->count(),
+        ];
+
+        return $dataJumlah;
     }
 }
