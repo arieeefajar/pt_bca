@@ -196,9 +196,58 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('penyimpanan.index') }}">
-                            <i class="ri-database-2-line"></i> <span data-key="t-layouts">Penyimpanan</span>
+                        <a class="nav-link menu-link" href="#sidebarApps1" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarApps">
+                            <i class="ri-database-2-line"></i> <span data-key="t-apps">Penyimpanan</span>
                         </a>
+                        <div class="collapse menu-dropdown" id="sidebarApps1">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="#kategori" data-bs-toggle="collapse"
+                                        role="button" aria-expanded="false" aria-controls="sidebarApps">
+                                        <i class="ri-file-text-line"></i> <span data-key="t-apps">By
+                                            Kategori</span>
+                                    </a>
+                                    <div class="collapse menu-dropdown" id="kategori">
+                                        <ul class="nav nav-sm flex-column">
+                                            <li class="nav-item">
+                                                <a href="{{ route('Kepuasan_Pelanggan.index') }}" class="nav-link"
+                                                    data-key="t-chat">Kepuasan
+                                                    Pelanggan</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{ route('Analisis_Pesaing.index') }}" class="nav-link"
+                                                    data-key="t-chat"></i>Analisis
+                                                    Pesaing</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{ route('Kepuasan_Pelanggan.index') }}" class="nav-link"
+                                                    data-key="t-ecommerce"></i>Kekuatan Kelemahan Pesaing</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{ route('Skala_Pasar_Produk.index') }}" class="nav-link"
+                                                    data-key="t-ecommerce"></i>Skala
+                                                    Pasar Produk</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{ route('Potensi_Lahan.index') }}" class="nav-link"
+                                                    data-key="t-ecommerce"></i>Potensi
+                                                    Lahan</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{ route('Survey_Pesaing.index') }}" class="nav-link"
+                                                    data-key="t-ecommerce"></i>Survey
+                                                    Pesaing</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ route('byToko.index') }} class="nav-link" data-key="t-projects">
+                                        <i class="ri-store-2-line"></i>By Toko</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 @endif
             </ul>
