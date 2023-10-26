@@ -52,20 +52,32 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="sort" data-sort="customer_name">Nama</th>
-                                            <th class="sort" data-sort="email">Jenis</th>
-                                            <th class="sort" data-sort="phone">Provinsi</th>
-                                            <th class="sort" data-sort="date">Kota</th>
+                                            <th>Nama</th>
+                                            <th>Jenis</th>
+                                            <th>Provinsi</th>
+                                            <th>Kota</th>
+                                            <th>Surveyor</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
                                         @foreach ($dataPerusahaan as $index => $data)
                                             <tr>
                                                 <th class="text-center">{{ $index + 1 }}</th>
-                                                <td class="customer_name">{{ $data->nama }}</td>
-                                                <td class="email">{{ formatJenis($data->jenis) }}</td>
-                                                <td class="phone">{{ $data->provinsi }}</td>
-                                                <td class="date">{{ $data->kota }}</td>
+                                                <td>{{ $data->nama }}</td>
+                                                <td>{{ formatJenis($data->jenis) }}</td>
+                                                <td>{{ $data->kota->provinsi->nama }}</td>
+                                                <td>{{ $data->kota->nama }}</td>
+                                                <td>{{ $data->surveyor }}</td>
+                                                <td>
+                                                    @if ($data->status == 1)
+                                                        <span class="badge rounded-pill bg-success">Selesai</span>
+                                                    @elseif ($data->status == 2)
+                                                        <span class="badge rounded-pill bg-warning">Belum Selesai Mengisi</span>
+                                                    @else
+                                                        <span class="badge rounded-pill bg-danger">Belum Mengisi</span>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

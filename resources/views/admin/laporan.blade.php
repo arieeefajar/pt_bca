@@ -18,7 +18,7 @@
                             <!-- Select -->
                             <div class="input-group">
                                 <select class="form-select" id="kuisioner" onchange="showjawaban(this)">
-                                    <option selected>Pilih...</option>
+                                    <option value="" selected>Pilih...</option>
                                     <option value="customer">Kepuasan Pelanggan</option>
                                     {{-- <option value="competitor-analys">Analisis Pesaing</option> --}}
                                     <option value="competitor-identifier">Kekuatan Kelemahan Pesaing</option>

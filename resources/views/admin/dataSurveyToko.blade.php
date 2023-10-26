@@ -4,39 +4,6 @@
 @section('submenu', 'Dashboard')
 
 @section('content')
-
-    @if (session('success'))
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Good job!",
-                    text: "{{ session('success') }}",
-                    icon: "success",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @elseif ($errors->any())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "Error",
-                    text: "{{ $errors->all()[0] }}",
-                    icon: "error",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                    cancelButtonClass: "btn btn-danger w-xs mt-2",
-                    buttonsStyling: false,
-                    showCloseButton: true
-                });
-            });
-        </script>
-    @endif
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -52,21 +19,28 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="sort" data-sort="customer_name">Nama</th>
-                                            <th class="sort" data-sort="email">Jenis</th>
-                                            <th class="sort" data-sort="phone">Provinsi</th>
-                                            <th class="sort" data-sort="date">Kota</th>
+                                            <th>Nama</th>
+                                            <th>Provinsi</th>
+                                            <th>Kota</th>
+                                            <th>Suerveyor</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
                                         @foreach ($dataPerusahaan as $index => $data)
-                                            <tr>
-                                                <th class="text-center">{{ $index + 1 }}</th>
-                                                <td class="customer_name">{{ $data->nama }}</td>
-                                                <td class="email">{{ formatJenis($data->jenis) }}</td>
-                                                <td class="phone">{{ $data->provinsi }}</td>
-                                                <td class="date">{{ $data->kota }}</td>
-                                            </tr>
+                                            @if ($data->status == 2)
+                                                <tr>
+                                                    <th>{{ $index + 1 }}</th>
+                                                    <td>{{ $data->nama }}</td>
+                                                    <td>{{ $data->kota->provinsi->nama }}</td>
+                                                    <td>{{ $data->kota->nama }}</td>
+                                                    <td>{{ $data->surveyor }}</td>
+                                                    <td>
+                                                        <span class="badge rounded-pill bg-warning">Belum Selesai
+                                                            Mengisi</span>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>

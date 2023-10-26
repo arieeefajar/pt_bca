@@ -26,8 +26,13 @@ class KuisionerKepuasanPelanggan extends Controller
         // kika jawaban sudah ada dan ada api id
         if ($k_pelanggan && $api_id) {
             $endPointApi = env('PYTHON_END_POINT') . 'customer/' . $api_id;
-            $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
-            return view('surveyor.kepuasanPelanggan', compact('dataAnswer'));
+            try {
+                $dataAnswer = (object) [Http::get($endPointApi)->json()['data']][0];
+                return view('surveyor.kepuasanPelanggan', compact('dataAnswer'));
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sesalahan server, gagal menampilkan jawaban');
+                return redirect()->route('menu.index');
+            }
         }
         // ketika jawaban sudah ada dan user memaksa masuk lewat url
         elseif ($k_pelanggan) {
@@ -201,9 +206,8 @@ class KuisionerKepuasanPelanggan extends Controller
             alert()->success('Berhasil', 'Berhasil menambahkan kuisioner');
             return redirect()->route('menu.index');
         } catch (\Throwable $th) {
-            dd($th);
-            alert()->error('Gagal', 'Gagal menambahkan kuisioner');
-            return redirect()->route('menu.index');
+            alert()->error('Gagal', 'Sesalahan server, gagal menambahkan kuisioner');
+            return redirect()->back()->withInput();
         }
     }
 }

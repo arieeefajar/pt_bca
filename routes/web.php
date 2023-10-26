@@ -39,7 +39,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-// Route::get('callApi', [TestApi::class, 'getDataKompetitorAnalys']);
+
+Route::middleware(['prevent-back-history'])->group(function () {
 
 //login routes
 Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
@@ -142,12 +143,6 @@ Route::middleware(['auth', 'superAndAdmin'])->group(function () {
     //jumlah admin route
     Route::get('dataAdmin', [DashboardController::class, 'dataAdmin'])->name('dataAdmin.index');
 
-    //jumlah target toko route
-    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko',])->name('dataTargetToko.index');
-
-    //jumlah survey toko route
-    Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
-
     // detail penyimpanan routes
     Route::get('penyimpanan', [PenyimpananController::class, 'index'])->name('penyimpanan.index');
 
@@ -174,10 +169,13 @@ Route::middleware(['auth', 'access:executive'])->group(function () {
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name('laporan.jawaban');
 
-    //jumlah target toko route
-    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko',])->name('dataTargetToko.index');
-
     //jumlah survey toko route
+    Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
+});
+
+// route other than surveyor
+Route::middleware(['auth', 'nonSurveyor'])->group(function () {
+    Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko',])->name('dataTargetToko.index');
     Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
 });
 
@@ -225,10 +223,10 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
     });
 
     // Data List Target Toko
-    route::get('listTargetToko', [DashboardController::class, 'listTargetToko'])->name('listTargetToko.index');
+    route::get('listTargetToko', [DashboardSurveyerController::class, 'listTargetToko'])->name('listTargetToko.index');
 
     // Data List Hasil Survey
-    route::get('listHasilSurvey', [DashboardController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
+    route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
 
     // Profile
     Route::prefix('profile')->group(function () {
@@ -236,4 +234,5 @@ Route::middleware(['auth', 'surveyor'])->group(function () {
         Route::post('/profile/{id}', [ProfileControllerSurveyor::class, 'profileUpdate',])->name('profile.Update');
         Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword',])->name('password.Update');
     });
+});
 });

@@ -21,6 +21,6 @@ class Provinsi extends Model
     public $incrementing = false;
 
     public function kota(){
-        return $this->hasMany(Kota::class, 'id', 'provinsi_id');
+        return $this->hasMany(Kota::class, 'provinsi_id', 'id');
     }
 }
