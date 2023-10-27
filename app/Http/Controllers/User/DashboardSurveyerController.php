@@ -21,6 +21,7 @@ class DashboardSurveyerController extends Controller
             alert()->warning('Peringatan', 'Anda belum menyelesaikan toko ini, jika ingin ganti toko klik pilih toko terlebih dahulu');
 
             $selectedTokoId = request()->cookie('selectedTokoId');
+            $kategoriToko = request()->cookie('kategoriToko');
             $namaToko = Customer::getNamaToko($selectedTokoId);
             $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
             $k_pelanggan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kepuasan');
@@ -37,7 +38,7 @@ class DashboardSurveyerController extends Controller
 
         $dataJumlah = $this->dataForDashboard();
 
-        return view('surveyor.dashboard', compact('dataCustommer', 'dataJumlah'));
+        return view('surveyor.dashboard', compact('dataCustommer', 'dataJumlah', 'kategoriToko'));
     }
 
     public function menu(Request $request)
@@ -96,7 +97,7 @@ class DashboardSurveyerController extends Controller
                     $dataPerusahaan[$key]->status = 2;
                     $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
                 }
-            }else{
+            } else {
                 $dataPerusahaan[$key]->status = 3;
                 $dataPerusahaan[$key]->surveyor = '-';
             }
@@ -128,7 +129,7 @@ class DashboardSurveyerController extends Controller
                     $dataPerusahaan[$key]->status = 2;
                     $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
                 }
-            }else{
+            } else {
                 $dataPerusahaan[$key]->status = 3;
                 $dataPerusahaan[$key]->surveyor = '-';
             }
@@ -141,7 +142,8 @@ class DashboardSurveyerController extends Controller
         return view('surveyor.profile');
     }
 
-    function dataForDashboard(){
+    function dataForDashboard()
+    {
         // Mendapatkan tanggal awal bulan ini
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
@@ -156,16 +158,16 @@ class DashboardSurveyerController extends Controller
                 })->get()->count(),
 
             'targetToko' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor')
-            ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
-                $query->where('surveyor_id', Auth::user()->id);
-            })->get()->count(),
+                ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
+                    $query->where('surveyor_id', Auth::user()->id);
+                })->get()->count(),
 
             'targetTokoBlmSelesai' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
-            ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
-                $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
-            })->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
-                $query->where('surveyor_id', Auth::user()->id);
-            })->has('penyimpanan.detail_penyimpanan')->get()->count(),
+                ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
+                    $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
+                })->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
+                    $query->where('surveyor_id', Auth::user()->id);
+                })->has('penyimpanan.detail_penyimpanan')->get()->count(),
         ];
 
         return $dataJumlah;
