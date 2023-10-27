@@ -21,7 +21,20 @@ class Penyimpanan extends Model
 
     public static function hasDonePenyimpanan($request)
     {
-        $answer_type = ['k_kepuasan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar'];
+        $kategory_custommer = request()->cookie('kategoriToko');
+        $answer_type = [];
+
+        if ($kategory_custommer == 'petani_pengguna'){
+            $answer_type = ['k_kepuasan', 'form_lahan', 'form_pesaing'];
+        } elseif ($kategory_custommer == 'kios') {
+            $answer_type = ['k_analisis', 'k_kekuatan_kelemahan','skala_pasar']; // form_lahan, form_pesaing => optional 
+        } elseif ($kategory_custommer == 'master_dealer') {
+            $answer_type = ['k_analisis', 'k_kekuatan_kelemahan','skala_pasar']; // form_lahan, form_pesaing => optional 
+        } elseif ($kategory_custommer == 'dealer') {
+            $answer_type = ['k_analisis', 'k_kekuatan_kelemahan','skala_pasar']; // form_lahan, form_pesaing => optional 
+        } elseif ($kategory_custommer == 'lahan_petani') {
+            $answer_type = ['form_lahan', 'form_pesaing'];
+        }
 
         foreach ($answer_type as $value) {
             $data = Penyimpanan::leftJoin('detail_penyimpanan', 'penyimpanan.id', '=', 'detail_penyimpanan.penyimpanan_id')
