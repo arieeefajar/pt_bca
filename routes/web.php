@@ -49,6 +49,11 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::post('/clear-selected-toko-cookie', [LoginController::class, 'clearSelectedTokoCookie'])->name('clearCookie');
     Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
+    //profile
+    Route::get('/profile', [ProfileControllerAdmin::class, 'index'])->name('profile')->middleware('auth');
+    Route::get('/profile-update/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update')->middleware('auth');
+    Route::get('/password-update/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update')->middleware('auth');
+
     // dashboard
     Route::get('/super-admin-dashboard', [DashboardController::class, 'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
     Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard')->middleware('auth', 'access:admin');
@@ -160,11 +165,11 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('detail-penyimpanan/{id}', [DetailPenyimpananController::class, 'index',])->name('detailPenyimpanan.index');
 
         //Profile
-        Route::prefix('profileAdmin')->group(function () {
-            Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
-            Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update',])->name('profile.update');
-            Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword',])->name('password.update');
-        });
+        // Route::prefix('profileAdmin')->group(function () {
+        //     Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
+        //     Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update',])->name('profile.update');
+        //     Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword',])->name('password.update');
+        // });
 
         // get data wilayah
         Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
@@ -239,10 +244,10 @@ Route::middleware(['prevent-back-history'])->group(function () {
         route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
 
         // Profile
-        Route::prefix('profile')->group(function () {
-            Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profile.Surveyor');
-            Route::post('/profile/{id}', [ProfileControllerSurveyor::class, 'profileUpdate',])->name('profile.Update');
-            Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword',])->name('password.Update');
-        });
+        // Route::prefix('profile')->group(function () {
+        //     Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profile.Surveyor');
+        //     Route::post('/profile/{id}', [ProfileControllerSurveyor::class, 'profileUpdate',])->name('profile.Update');
+        //     Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword',])->name('password.Update');
+        // });
     });
 });

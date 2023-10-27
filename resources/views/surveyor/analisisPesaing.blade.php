@@ -1,4 +1,4 @@
-@extends('layout1.app')
+@extends('layout.app')
 @section('title', 'Kuisioner Analisis Pesaing')
 @section('menu', 'Analisis Pesaing')
 @section('submenu', 'Kuisioner')

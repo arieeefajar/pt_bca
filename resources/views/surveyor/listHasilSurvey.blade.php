@@ -1,4 +1,4 @@
-@extends('layout1.app')
+@extends('layout.app')
 @section('title', 'List Hasil Survey')
 @section('menu', 'List Hasil Survey')
 @section('submenu', 'Dashboard')

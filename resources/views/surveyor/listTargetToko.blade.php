@@ -1,4 +1,4 @@
-@extends('layout1.app')
+@extends('layout.app')
 @section('title', 'List Target Toko')
 @section('menu', 'List Target Toko')
 @section('submenu', 'Dashboard')

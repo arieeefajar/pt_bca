@@ -65,7 +65,11 @@
             @include('layout.navbar')
         </header>
         <!-- ========== App Menu ========== -->
-        @include('layout.sidebar')
+        @if (Auth::user()->role == 'user')
+            @include('layout.sidebar1')
+        @else
+            @include('layout.sidebar')
+        @endif
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>

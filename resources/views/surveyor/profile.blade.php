@@ -1,4 +1,4 @@
-@extends('layout1.app')
+@extends('layout.app')
 @section('title', 'Profile')
 @section('menu', 'Ubah Profile')
 @section('submenu', 'Profile')

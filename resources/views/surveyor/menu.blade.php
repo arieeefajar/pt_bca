@@ -1,4 +1,4 @@
-@extends('layout1.app')
+@extends('layout.app')
 @section('title', 'Dashboard')
 @section('menu', $namaToko)
 @section('submenu', 'Analytics')
