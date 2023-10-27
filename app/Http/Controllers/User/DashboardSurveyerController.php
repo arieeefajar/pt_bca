@@ -16,6 +16,7 @@ class DashboardSurveyerController extends Controller
     public function index(Request $request)
     {
         $selectedTokoId = request()->cookie('selectedTokoId');
+        $kategoriToko = request()->cookie('kategoriToko');
         if (!is_null($selectedTokoId)) {
             alert()->warning('Peringatan', 'Anda belum menyelesaikan toko ini, jika ingin ganti toko klik pilih toko terlebih dahulu');
 
@@ -29,7 +30,7 @@ class DashboardSurveyerController extends Controller
             $form_pesaing = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'form_pesaing');
             $skala_pasar = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'skala_pasar');
 
-            return view('surveyor.menu', compact('k_pelanggan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar', 'namaToko'));
+            return view('surveyor.menu', compact('k_pelanggan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar', 'namaToko', 'kategoriToko'));
         }
 
         $dataCustommer = User::getCustommer();
@@ -42,6 +43,7 @@ class DashboardSurveyerController extends Controller
     public function menu(Request $request)
     {
         $selectedTokoId = request()->cookie('selectedTokoId');
+        $kategoriToko = request()->cookie('kategoriToko');
         $namaToko = Customer::getNamaToko($selectedTokoId);
         $idPenyimpanan = DetailPenyimpanan::getIdPenyimpanan($request);
         $k_pelanggan = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'k_kepuasan');
@@ -52,7 +54,7 @@ class DashboardSurveyerController extends Controller
         $skala_pasar = DetailPenyimpanan::hasDetailPenyimpanan($idPenyimpanan, 'skala_pasar');
         // dd($k_analisis, $k_kekuatan_kelemahan, $form_lahan, $form_pesaing, $skala_pasar);
 
-        return view('surveyor.menu', compact('k_pelanggan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar', 'namaToko'));
+        return view('surveyor.menu', compact('k_pelanggan', 'k_analisis', 'k_kekuatan_kelemahan', 'form_lahan', 'form_pesaing', 'skala_pasar', 'namaToko', 'kategoriToko'));
     }
 
     public function setStore(Request $request)
@@ -63,7 +65,11 @@ class DashboardSurveyerController extends Controller
             return redirect()->route('menu.index');
         }
         $store = $request->input('store');
-        return redirect()->route('menu.index')->withCookie(cookie('selectedTokoId', $store, 1440));
+        $kategori = Customer::where('id', $store)->value('jenis');
+        return redirect()->route('menu.index')->withCookies([
+            cookie('selectedTokoId', $store, 1440),
+            cookie('kategoriToko', $kategori, 1440)
+        ]);
     }
 
     // tampilkan semua status toko (belum di isi, belum selesai, selesai)

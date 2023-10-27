@@ -41,7 +41,7 @@
                                         <tr>
                                             <th class="text-center">{{ $key + 1 }}</th>
                                             <td class="text-center">{{ $data->nama }}</td>
-                                            <td class="text-center">{{ $data->jenis }}</td>
+                                            <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $data->jenis) }}</td>
                                             <td class="text-center">{{ $data->kota->provinsi->nama }}</td>
                                             <td class="text-center">{{ $data->kota->nama }}</td>
                                             <td class="text-center">
@@ -98,9 +98,11 @@
                             <label class="form-label">Jenis</label>
                             <select required class="form-select" name="jenis" id="jenis">
                                 <option value="" selected disabled>Pilih Jenis</option>
+                                <option value="petani_pengguna" {{ old('jenis') == 'petani_pengguna' ? 'selected' : '' }}>Petani Pengguna</option>
+                                <option value="master_dealer" {{ old('jenis') == 'master_dealer' ? 'selected' : '' }}>Master Dealer</option>
                                 <option value="dealer" {{ old('jenis') == 'dealer' ? 'selected' : '' }}>Dealer</option>
-                                <option value="master_dealer" {{ old('jenis') == 'master_dealer' ? 'selected' : '' }}>
-                                    Master Dealer</option>
+                                <option value="kios" {{ old('jenis') == 'kios' ? 'selected' : '' }}>Kios</option>
+                                <option value="lahan_petani" {{ old('jenis') == 'lahan_petani' ? 'selected' : '' }}>Lahan Petani</option>
                                 <option value="lainnya" {{ old('jenis') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                             </select>
                             <div class="invalid-feedback mb-3">
@@ -199,8 +201,11 @@
                             <label class="form-label">Jenis</label>
                             <select required class="form-select" name="jenis" id="edit_jenis">
                                 <option value="" selected disabled>Pilih Jenis</option>
-                                <option value="dealer">Dealer</option>
+                                <option value="petani_pengguna">Petani Pengguna</option>
                                 <option value="master_dealer">Master Dealer</option>
+                                <option value="dealer">Dealer</option>
+                                <option value="kios">Kios</option>
+                                <option value="lahan_petani">Lahan Petani</option>
                                 <option value="lainnya">Lainnya</option>
                             </select>
                             <div class="invalid-feedback mb-3">

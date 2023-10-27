@@ -4,7 +4,6 @@
 @section('submenu', 'Analytics')
 
 @section('content')
-
     <style>
         .card {
             width: 100%;

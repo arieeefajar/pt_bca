@@ -104,6 +104,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             // Hapus cookie selectedTokoId
             Cookie::queue(Cookie::forget('selectedTokoId'));
+            Cookie::queue(Cookie::forget('kategoriToko'));
 
             //function logout
             Auth::logout();
@@ -117,6 +118,7 @@ class LoginController extends Controller
     public function clearSelectedTokoCookie()
     {
         Cookie::queue(Cookie::forget('selectedTokoId'));
+        Cookie::queue(Cookie::forget('kategoriToko'));
         return redirect('/surveyor-dashboard');
     }
 

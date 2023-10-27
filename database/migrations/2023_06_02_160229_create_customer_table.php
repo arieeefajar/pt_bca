@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('customer', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->enum('jenis', array('dealer','master_dealer','lainnya'));
+            $table->enum('jenis', array('master_dealer', 'dealer', 'kios', 'petani_pengguna', 'lahan_petani', 'lainnya'));
             $table->unsignedBigInteger('kota_id');
             $table->foreign('kota_id')->references('id')->on('kota');
             $table->string('koordinat');
