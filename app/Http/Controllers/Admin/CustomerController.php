@@ -38,7 +38,7 @@ class CustomerController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
-            'jenis' => 'required|in:dealer,master_dealer,lainnya',
+            'jenis' => 'required|in:petani_pengguna,master_dealer,dealer,kios,lahan_petani,lainnya',
             'kota' => 'required|string|max:255',
             'latitude' => 'required|string|max:30',
             'longitude' => 'required|string|max:30',
@@ -81,7 +81,7 @@ class CustomerController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:40',
-            'jenis' => 'required|in:dealer,master_dealer,lainnya',
+            'jenis' => 'required|in:petani_pengguna,master_dealer,dealer,kios,lahan_petani,lainnya',
             'kota' => 'required|string|max:255',
             'latitude' => 'required|string|max:30',
             'longitude' => 'required|string|max:30',
