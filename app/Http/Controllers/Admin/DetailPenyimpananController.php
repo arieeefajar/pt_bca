@@ -17,9 +17,17 @@ class DetailPenyimpananController extends Controller
         return view('admin.detail', compact('dataDetail', 'idDetail'));
     }
     
-    public function jawaban_kepuasanPelanggan($idDetail, $apiId)
+    public function jawaban_kepuasanPelanggan(Request $request, $idDetail = null, $apiId = null)
     {
+        // by toko
         $endPointApi = env('PYTHON_END_POINT').'customer/' . $apiId;
+
+        // by kategory
+        if (count($request->segments()) === 2) {
+            $endPointApi = env('PYTHON_END_POINT').'customer/' . $request->segment(2);
+            $idDetail = 'kategori';
+        }
+
         try {
             $dataAnswer = [Http::get($endPointApi)->json()['data']];
             return view('admin.detailJawaban.k_kepuasan', compact('dataAnswer', 'idDetail'));
@@ -29,9 +37,16 @@ class DetailPenyimpananController extends Controller
         }
     }
 
-    public function jawaban_kekuatanKelemahan($idDetail, $apiId)
+    public function jawaban_kekuatanKelemahan(Request $request, $idDetail = null, $apiId = null)
     {
+        // by toko
         $endPointApi = env('PYTHON_END_POINT').'competitor-identifier/' . $apiId;
+
+        // by kategory
+        if (count($request->segments()) === 2) {
+            $endPointApi = env('PYTHON_END_POINT').'competitor-identifier/' . $request->segment(2);
+            $idDetail = 'kategori';
+        }
         try {
             $dataAnswer = [Http::get($endPointApi)->json()['data']];
             return view('admin.detailJawaban.k_kekuatanKelemahan', compact('dataAnswer', 'idDetail'));
@@ -41,9 +56,16 @@ class DetailPenyimpananController extends Controller
         }
     }
 
-    public function jawaban_analisisPesaing($idDetail, $apiId)
+    public function jawaban_analisisPesaing(Request $request, $idDetail = null, $apiId = null)
     {
+        // by toko
         $endPointApi = env('PYTHON_END_POINT').'competitor-analys/' . $apiId;
+
+        // by kategory
+        if (count($request->segments()) === 2) {
+            $endPointApi = env('PYTHON_END_POINT').'competitor-analys/' . $request->segment(2);
+            $idDetail = 'kategori';
+        }
         try {
             $dataAnswer = [Http::get($endPointApi)->json()['data']];
             return view('admin.detailJawaban.k_analisisPesaing', compact('dataAnswer', 'idDetail'));
@@ -53,9 +75,35 @@ class DetailPenyimpananController extends Controller
         }
     }
 
-    public function jawaban_potensiLahan($idDetail, $apiId)
+    public function jawaban_skala_pasar(Request $request, $idDetail = null, $apiId = null)
     {
+        // by toko
+        $endPointApi = env('PYTHON_END_POINT').'competitor-questionnaire/' . $apiId;
+
+        // by kategory
+        if (count($request->segments()) === 2) {
+            $endPointApi = env('PYTHON_END_POINT').'competitor-questionnaire/' . $request->segment(2);
+            $idDetail = 'kategori';
+        }
+        try {
+            $dataAnswer = [Http::get($endPointApi)->json()['data']];
+            return view('admin.detailJawaban.k_skalaPasarProduk', compact('dataAnswer', 'idDetail'));
+        } catch (\Throwable $th) {
+            alert()->error('Gagal', 'Terjadi kesalahan server');
+            return redirect()->back()->withInput();
+        }
+    }
+
+    public function jawaban_potensiLahan(Request $request, $idDetail = null, $apiId = null)
+    {
+        // by toko
         $endPointApi = env('PYTHON_END_POINT').'potentional-area/' . $apiId;
+
+        // by kategory
+        if (count($request->segments()) === 2) {
+            $endPointApi = env('PYTHON_END_POINT').'potentional-area/' . $request->segment(2);
+            $idDetail = 'kategori';
+        }
         try {
             $dataAnswer = [Http::get($endPointApi)->json()['data']];
             return view('admin.detailJawaban.f_potensiLahan', compact('dataAnswer', 'idDetail'));
@@ -65,24 +113,19 @@ class DetailPenyimpananController extends Controller
         }
     }
 
-    public function jawaban_form_analisisPesaing($idDetail, $apiId)
+    public function jawaban_form_analisisPesaing(Request $request, $idDetail = null, $apiId = null)
     {
+        // by toko
         $endPointApi = env('PYTHON_END_POINT').'retail/' . $apiId;
+
+        // by kategory
+        if (count($request->segments()) === 2) {
+            $endPointApi = env('PYTHON_END_POINT').'retail/' . $request->segment(2);
+            $idDetail = 'kategori';
+        }
         try {
             $dataAnswer = [Http::get($endPointApi)->json()['data']];
             return view('admin.detailJawaban.f_surveyPesaing', compact('dataAnswer', 'idDetail'));
-        } catch (\Throwable $th) {
-            alert()->error('Gagal', 'Terjadi kesalahan server');
-            return redirect()->back()->withInput();
-        }
-    }
-
-    public function jawaban_skala_pasar($idDetail, $apiId)
-    {
-        $endPointApi = env('PYTHON_END_POINT').'competitor-questionnaire/' . $apiId;
-        try {
-            $dataAnswer = [Http::get($endPointApi)->json()['data']];
-            return view('admin.detailJawaban.k_skalaPasarProduk', compact('dataAnswer', 'idDetail'));
         } catch (\Throwable $th) {
             alert()->error('Gagal', 'Terjadi kesalahan server');
             return redirect()->back()->withInput();
