@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\DetailPenyimpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -11,10 +10,6 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        $data = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
-                    ->where('pertanyaan', 'k_kepuasan')
-                    ->get();
-        dd($data);
         return view('admin.laporan');
     }
 

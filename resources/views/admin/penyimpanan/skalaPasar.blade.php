@@ -18,27 +18,28 @@
                             <table class="table align-middle mb-0" id="myTable">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Nama Toko</th>
-                                        <th class="text-center" data-sort="email">Aksi</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Nama Toko</th>
+                                        <th class="text-center">Tanggal</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($dataPenyimpanan as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center">{{ $data->surveyor }}</td>
+                                            <td class="text-center">{{ $data->penyimpanan->customer->nama }}</td>
+                                            <td class="text-center">{{ $data->created_at }}</td>
                                             <td class="text-center">
                                                 <div class="d-flex gap-2 justify-content-center">
                                                     <div class="detail">
-                                                        <a href="/detail-penyimpanan/{{ $data->id }}"
+                                                        <a href="/jawaban-skala-pasar/{{ $data->api_id }}"
                                                             class="btn btn-sm btn-primary edit-item-btn">Detail</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>

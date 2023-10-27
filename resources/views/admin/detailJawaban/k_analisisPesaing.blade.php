@@ -2,7 +2,11 @@
 @section('title', 'Jawaban Analisis Pesaing')
 @section('menu', 'Analisis Pesaing')
 @section('submenu')
-    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @if ($idDetail == 'kategori')
+        <a href="{{ route('Analisis_Pesaing.index') }}">By Kategory</a>
+    @else
+        <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @endif
 @endsection
 
 @section('content')
@@ -14,7 +18,6 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    {{-- @dd($dataAnswer) --}}
                     @foreach ($dataAnswer as $data)
                         <form id="form_body" action="">
                             {{-- pertanyaan Gambaran Umum --}}

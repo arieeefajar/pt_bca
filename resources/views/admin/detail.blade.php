@@ -1,8 +1,8 @@
 @extends('layout.app')
-@section('title', 'Data Detail Penyimpanan')
-@section('menu', 'Data Detail Penyimpanan')
+@section('title', 'Detail Penyimpanan')
+@section('menu', 'Detail Penyimpanan')
 @section('submenu')
-    <a href="{{ route('penyimpanan.index') }}">Penyimpanan</a>
+    <a href="{{ route('byToko.index') }}">Penyimpanan</a>
 @endsection
 
 @section('content')

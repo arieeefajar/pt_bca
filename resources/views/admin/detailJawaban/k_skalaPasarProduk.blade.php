@@ -2,7 +2,11 @@
 @section('title', 'Jawaban Skala Pasar Produk')
 @section('menu', 'Skala Pasar Produk')
 @section('submenu')
-    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @if ($idDetail == 'kategori')
+        <a href="{{ route('Skala_Pasar_Produk.index') }}">By Kategory</a>
+    @else
+        <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @endif
 @endsection
 
 @section('content')
@@ -43,7 +47,8 @@
                             </div>
                             <div class="col-md-12 mt-3 mb-3">
                                 <div class="d-flex justify-content-sm-end">
-                                    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}" style="margin-right: 10px;">
+                                    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}"
+                                        style="margin-right: 10px;">
                                         <button type="button" class="btn btn-primary add-btn">Kembali</button>
                                     </a>
                                     <button type="button" class="btn btn-success" id="nextButton"

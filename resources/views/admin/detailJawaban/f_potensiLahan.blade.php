@@ -2,7 +2,11 @@
 @section('title', 'Jawaban Potensi Lahan')
 @section('menu', 'Potensi Lahan')
 @section('submenu')
-    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @if ($idDetail == 'kategori')
+        <a href="{{ route('Potensi_Lahan.index') }}">By Kategory</a>
+    @else
+        <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @endif
 @endsection
 
 
@@ -80,8 +84,8 @@
                             <input type="hidden" name="longitude" id="longitude_field">
 
                             <!-- <div class="text-center mt-3">
-                                        <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
-                                    </div> -->
+                                            <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                                        </div> -->
                         </form>
                     @endforeach
                 </div><!-- end card-body -->
