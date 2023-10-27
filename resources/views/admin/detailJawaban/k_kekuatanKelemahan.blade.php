@@ -2,7 +2,11 @@
 @section('title', 'Jawaban Kekuatan Kelemahan Pesaing')
 @section('menu', 'Kekuatan Kelemahan Pesaing')
 @section('submenu')
-    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @if ($idDetail == 'kategori')
+        <a href="{{ route('Kekuatan_Kelemahan_Pesaing.index') }}">By Kategory</a>
+    @else
+        <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @endif
 @endsection
 
 @section('content')

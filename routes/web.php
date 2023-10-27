@@ -60,15 +60,6 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::get('/executive-dashboard', [DashboardController::class, 'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
     Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index'])->name('surveyor.dashboard')->middleware('auth', 'access:user');
 
-    //tes route
-    Route::get('/tes', [DashboardController::class, 'tes'])->name('tes.index');
-    Route::get('/jawaban-kepuasan-pelanggan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_kepuasanPelanggan'])->name('jawaban_kepuasanPelanggan.index');
-    Route::get('/jawaban-kekuatan-kelemahan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_kekuatanKelemahan'])->name('jawaban_kekuatanKelemahan.index');
-    Route::get('/jawaban-analisis-pesaing/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
-    Route::get('/jawaban-potensi-lahan/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
-    Route::get('/jawaban-form-analisis-pesaing/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
-    Route::get('/jawaban-skala-pasar/{idDetail}/{apiId}', [DetailPenyimpananController::class, 'jawaban_skala_pasar'])->name('jawaban_skala_pasar.index');
-
     // route only super admin & admin
     Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         //user routes
@@ -145,9 +136,10 @@ Route::middleware(['prevent-back-history'])->group(function () {
         //penyimpana rote berdasarkan kategori
         Route::prefix('penyimpanan')->group(function () {
             Route::get('byToko', [PenyimpananController::class, 'index'])->name('byToko.index');
+
             Route::get('Kepuasan_Pelanggan', [PenyimpananController::class, 'kepuasanPelanggan'])->name('Kepuasan_Pelanggan.index');
             Route::get('Analisis_Pesaing', [PenyimpananController::class, 'analisisPesaing'])->name('Analisis_Pesaing.index');
-            Route::get('Kekuatan_Kelemahan_Pesaing', [PenyimpananController::class, 'kepuasanPelanggan'])->name('Kekuatan_Kelemahan_Pesaing.index');
+            Route::get('Kekuatan_Kelemahan_Pesaing', [PenyimpananController::class, 'kekuatanKelemahan'])->name('Kekuatan_Kelemahan_Pesaing.index');
             Route::get('Skala_Pasar_Produk', [PenyimpananController::class, 'skalaPasarProduk'])->name('Skala_Pasar_Produk.index');
             Route::get('Potensi_Lahan', [PenyimpananController::class, 'potensiLahan'])->name('Potensi_Lahan.index');
             Route::get('Survey_Pesaing', [PenyimpananController::class, 'surveyPesaing'])->name('Survey_Pesaing.index');
@@ -158,11 +150,17 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         //jumlah admin route
         Route::get('dataAdmin', [DashboardController::class, 'dataAdmin'])->name('dataAdmin.index');
-
-        // detail penyimpanan routes
-
+        
         // penyimpanan routes
         Route::get('detail-penyimpanan/{id}', [DetailPenyimpananController::class, 'index',])->name('detailPenyimpanan.index');
+        
+        // detail penyimpanan routes
+        Route::get('/jawaban-kepuasan-pelanggan/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_kepuasanPelanggan'])->name('jawaban_kepuasanPelanggan.index');
+        Route::get('/jawaban-analisis-pesaing/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
+        Route::get('/jawaban-kekuatan-kelemahan/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_kekuatanKelemahan'])->name('jawaban_kekuatanKelemahan.index');
+        Route::get('/jawaban-skala-pasar/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_skala_pasar'])->name('jawaban_skala_pasar.index');
+        Route::get('/jawaban-potensi-lahan/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
+        Route::get('/jawaban-form-analisis-pesaing/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
 
         //Profile
         // Route::prefix('profileAdmin')->group(function () {

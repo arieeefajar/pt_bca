@@ -221,7 +221,7 @@
                                                     Pesaing</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="{{ route('Kepuasan_Pelanggan.index') }}" class="nav-link"
+                                                <a href="{{ route('Kekuatan_Kelemahan_Pesaing.index') }}" class="nav-link"
                                                     data-key="t-ecommerce"></i>Kekuatan Kelemahan Pesaing</a>
                                             </li>
                                             <li class="nav-item">

@@ -2,7 +2,11 @@
 @section('title', 'Jawaban Survey Pesaing')
 @section('menu', 'Survey Pesaing')
 @section('submenu')
-    <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @if ($idDetail == 'kategori')
+        <a href="{{ route('Survey_Pesaing.index') }}">By Kategory</a>
+    @else
+        <a href="{{ route('detailPenyimpanan.index', ['id' => $idDetail]) }}">Detail Jawaban</a>
+    @endif
 @endsection
 
 @section('content')
@@ -12,8 +16,8 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab" href="#perbandingan-produk"
-                                role="tab" aria-selected="true">
+                            <a class="nav-link active" id="perbandingan-tab" data-bs-toggle="tab"
+                                href="#perbandingan-produk" role="tab" aria-selected="true">
                                 Perbandingan Produk
                             </a>
                         </li>
