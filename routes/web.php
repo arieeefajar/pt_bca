@@ -51,8 +51,8 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
     //profile
     Route::get('/profile', [ProfileControllerAdmin::class, 'index'])->name('profile')->middleware('auth');
-    Route::get('/profile-update/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update')->middleware('auth');
-    Route::get('/password-update/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update')->middleware('auth');
+    Route::post('/profile-update/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update')->middleware('auth');
+    Route::post('/password-update/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update')->middleware('auth');
 
     // dashboard
     Route::get('/super-admin-dashboard', [DashboardController::class, 'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
@@ -150,10 +150,10 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         //jumlah admin route
         Route::get('dataAdmin', [DashboardController::class, 'dataAdmin'])->name('dataAdmin.index');
-        
+
         // penyimpanan routes
         Route::get('detail-penyimpanan/{id}', [DetailPenyimpananController::class, 'index',])->name('detailPenyimpanan.index');
-        
+
         // detail penyimpanan routes
         Route::get('/jawaban-kepuasan-pelanggan/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_kepuasanPelanggan'])->name('jawaban_kepuasanPelanggan.index');
         Route::get('/jawaban-analisis-pesaing/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_analisisPesaing'])->name('jawaban_analisisPesaing.index');
