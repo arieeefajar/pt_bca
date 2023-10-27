@@ -50,34 +50,7 @@
                     </li>
                 @endif
 
-                @if (!is_null($selectedTokoId))
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="ri-file-text-line"></i> <span data-key="t-apps">Kuisioner</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="sidebarApps">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="{{ route('kepuasanPelanggan.index') }}" class="nav-link">Kepuasan
-                                        Pelanggan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('analisisPesaing.index') }}" class="nav-link">Analisis
-                                        Pesaing</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('KekuatanDanKelemahanPesaing.index') }}"
-                                        class="nav-link">Kekuatan
-                                        dan Kelemahan Pesaing</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('SkalaPasarProduk.index') }}" class="nav-link">Skala Pasar
-                                        Produk</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                @if ($kategoriToko == 'lahan_petani')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarApps1" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
@@ -94,6 +67,58 @@
                             </ul>
                         </div>
                     </li>
+                @else
+                    @if (!is_null($selectedTokoId))
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="ri-file-text-line"></i> <span data-key="t-apps">Kuisioner</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarApps">
+                                <ul class="nav nav-sm flex-column">
+                                    @if ($kategoriToko == 'petani_pengguna')
+                                        <li class="nav-item">
+                                            <a href="{{ route('kepuasanPelanggan.index') }}" class="nav-link">Kepuasan
+                                                Pelanggan</a>
+                                        </li>
+                                    @elseif ($kategoriToko == 'kios' || $kategoriToko == 'master_dealer' || $kategoriToko == 'dealer')
+                                        <li class="nav-item">
+                                            <a href="{{ route('analisisPesaing.index') }}" class="nav-link">Analisis
+                                                Pesaing</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('KekuatanDanKelemahanPesaing.index') }}"
+                                                class="nav-link">Kekuatan
+                                                dan Kelemahan Pesaing</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('SkalaPasarProduk.index') }}" class="nav-link">Skala
+                                                Pasar
+                                                Produk</a>
+                                        </li>
+                                    @else
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarApps1" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="ri-survey-line"></i> <span data-key="t-apps">Form Survey</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarApps1">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('formPotensiLahan.index') }}" class="nav-link">Potensi
+                                            Lahan</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('formPesaing.index') }}" class="nav-link">Pesaing</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
                 @endif
             </ul>
         </div>
