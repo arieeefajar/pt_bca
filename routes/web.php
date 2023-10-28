@@ -199,40 +199,43 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('set-store', [DashboardSurveyerController::class, 'setStore'])->name('surveyor.setStore');
 
         // kuisioner routes
-        // kuisioner kepusan pelanggan
-        Route::prefix('kepuasan-pelanggan')->group(function () {
-            Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
-            Route::post('/store', [KuisionerKepuasanPelanggan::class, 'store'])->name('kepuasanPelanggan.create');
-        });
+        Route::middleware(['kuisionerRoleAccess'])->group(function (){
+            
+            // kuisioner kepusan pelanggan
+            Route::prefix('kepuasan-pelanggan')->group(function () {
+                Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
+                Route::post('/store', [KuisionerKepuasanPelanggan::class, 'store'])->name('kepuasanPelanggan.create');
+            });
 
-        // kuisioner analisis pesaing
-        Route::prefix('analisis-pesaing')->group(function () {
-            Route::get('/{api_id?}', [KuisonerAnalisisPesaingController::class, 'index'])->name('analisisPesaing.index');
-            Route::post('/store', [KuisonerAnalisisPesaingController::class, 'store'])->name('analisisPesaing.create');
-        });
+            // kuisioner analisis pesaing
+            Route::prefix('analisis-pesaing')->group(function () {
+                Route::get('/{api_id?}', [KuisonerAnalisisPesaingController::class, 'index'])->name('analisisPesaing.index');
+                Route::post('/store', [KuisonerAnalisisPesaingController::class, 'store'])->name('analisisPesaing.create');
+            });
 
-        // kuisioner kekuatan dan kelemahan pesaing
-        Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
-            Route::get('/{api_id?}', [KuisionerKekuatanKelemahanPesaing::class, 'index'])->name('KekuatanDanKelemahanPesaing.index');
-            Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
-        });
+            // kuisioner kekuatan dan kelemahan pesaing
+            Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
+                Route::get('/{api_id?}', [KuisionerKekuatanKelemahanPesaing::class, 'index'])->name('KekuatanDanKelemahanPesaing.index');
+                Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
+            });
 
-        // kuisioner skala pasar produk
-        Route::prefix('skala-pasar-produk')->group(function () {
-            Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class, 'index'])->name('SkalaPasarProduk.index');
-            Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name('SkalaPasarProduk.create');
-        });
+            // kuisioner skala pasar produk
+            Route::prefix('skala-pasar-produk')->group(function () {
+                Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class, 'index'])->name('SkalaPasarProduk.index');
+                Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name('SkalaPasarProduk.create');
+            });
 
-        //form survey
-        Route::prefix('pesaing')->group(function () {
-            Route::get('/{api_id?}', [FormPesaingController::class, 'index'])->name('formPesaing.index');
-            Route::post('/', [FormPesaingController::class, 'store'])->name('formPesaing.create');
-        });
+            //form survey
+            Route::prefix('pesaing')->group(function () {
+                Route::get('/{api_id?}', [FormPesaingController::class, 'index'])->name('formPesaing.index');
+                Route::post('/', [FormPesaingController::class, 'store'])->name('formPesaing.create');
+            });
 
-        // form pesaing
-        Route::prefix('potensi-lahan')->group(function () {
-            Route::get('/{api_id?}', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
-            Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
+            // form pesaing
+            Route::prefix('potensi-lahan')->group(function () {
+                Route::get('/{api_id?}', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
+                Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
+            });
         });
 
         // Data List Target Toko

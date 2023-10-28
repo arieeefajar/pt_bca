@@ -43,6 +43,9 @@ class DashboardSurveyerController extends Controller
 
     public function menu(Request $request)
     {
+        // dd($request->route()->getName());
+        // $anu = ['menu.index'];
+        // dd(in_array($request->route()->getName(), $anu));
         $selectedTokoId = request()->cookie('selectedTokoId');
         $kategoriToko = request()->cookie('kategoriToko');
         $namaToko = Customer::getNamaToko($selectedTokoId);
