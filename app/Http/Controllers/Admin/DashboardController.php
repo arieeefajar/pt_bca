@@ -112,7 +112,8 @@ class DashboardController extends Controller
         return view('dashboard.executive', compact('dataJumlah', 'dataArea'));
     }
 
-    public function getDataMaps(){
+    public function getDataMaps()
+    {
 
         $endPointApi = env('PYTHON_END_POINT') . 'ai';
         $dataArea = [];
@@ -190,7 +191,6 @@ class DashboardController extends Controller
             return response()->json([
                 'data' => $dataArea,
             ]);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'data' => null,
@@ -228,9 +228,9 @@ class DashboardController extends Controller
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
-        
+
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
-        
+
         foreach ($dataPerusahaan as $key => $value) {
             $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
             $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
@@ -242,7 +242,7 @@ class DashboardController extends Controller
                     $dataPerusahaan[$key]->status = 2;
                     $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
                 }
-            }else{
+            } else {
                 $dataPerusahaan[$key]->status = 3;
                 $dataPerusahaan[$key]->surveyor = '-';
             }
@@ -252,13 +252,13 @@ class DashboardController extends Controller
 
     public function dataSurveyToko()
     {
-            // Mendapatkan tanggal awal bulan ini
+        // Mendapatkan tanggal awal bulan ini
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
-        
+
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
-        
+
         foreach ($dataPerusahaan as $key => $value) {
             $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
             $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
@@ -270,7 +270,7 @@ class DashboardController extends Controller
                     $dataPerusahaan[$key]->status = 2;
                     $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
                 }
-            }else{
+            } else {
                 $dataPerusahaan[$key]->status = 3;
                 $dataPerusahaan[$key]->surveyor = '-';
             }
@@ -283,7 +283,8 @@ class DashboardController extends Controller
         return view('admin.profile');
     }
 
-    function dataForDashboard(){
+    function dataForDashboard()
+    {
         // Mendapatkan tanggal awal bulan ini
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
@@ -296,10 +297,10 @@ class DashboardController extends Controller
             'targetToko' => Customer::all()->count(),
 
             'targetTokoBlmSelesai' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
-            ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
-                $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
-            })->has('penyimpanan.detail_penyimpanan')->get()->count(),
-            
+                ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
+                    $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
+                })->has('penyimpanan.detail_penyimpanan')->get()->count(),
+
             'targetTokoSelesai' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
                 ->where('penyimpanan.status', 1)
                 ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])

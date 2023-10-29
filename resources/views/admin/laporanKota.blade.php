@@ -20,15 +20,19 @@
                                 <select class="form-select" id="kuisioner" onchange="showjawaban(this)">
                                     <option value="" selected disabled>Pilih...</option>
                                     <option value="customer">Kepuasan Pelanggan</option>
-                                    <option value="competitor-analys">Analisis Pesaing</option>
-                                    <option value="competitor-identifier">Kekuatan Kelemahan Pesaing</option>
+                                    {{-- <option value="competitor-analys">Analisis Pesaing</option> --}}
+                                    <option value="competitor-identifier">Kekuatan Kelemahan Pesaing
+                                    </option>
                                     {{-- <option value="competitor-questionnaire">Skala Pasar Produk</option> --}}
+                                    {{-- @foreach ($dataKuisioner as $data)
+                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                @endforeach --}}
                                 </select>
                             </div>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-nowrap" id="penilaianPelanggan">
+                            <table class="table table-bordered table-nowrap">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
@@ -38,21 +42,6 @@
                                         <th class="text-center">3</th>
                                         <th class="text-center">4</th>
                                         <th class="text-center">5</th>
-                                        <th class="text-center">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataDetail">
-                                </tbody>
-                            </table>
-
-                            <table class="table table-bordered table-nowrap" id="analisisPenilaianPelanggan"
-                                style="display: none">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">Ya</th>
-                                        <th class="text-center">Tidak</th>
                                         <th class="text-center">Total</th>
                                     </tr>
                                 </thead>
@@ -77,7 +66,7 @@
                 <div class="card-body">
                     <div id="table-search">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-nowrap" id="aspekIndex">
+                            <table class="table table-bordered table-nowrap">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
@@ -87,22 +76,6 @@
                                         <th class="text-center">3</th>
                                         <th class="text-center">4</th>
                                         <th class="text-center">5</th>
-                                        <th class="text-center">Total</th>
-                                        <th class="text-center">Index</th>
-                                        <th class="text-center">Kepuasan</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataDetail1">
-                                </tbody>
-                            </table>
-
-                            <table class="table table-bordered table-nowrap" id="analisisAspekIndex" style="display: none;">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">Ya</th>
-                                        <th class="text-center">Tidak</th>
                                         <th class="text-center">Total</th>
                                         <th class="text-center">Index</th>
                                         <th class="text-center">Kepuasan</th>

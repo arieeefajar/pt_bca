@@ -44,6 +44,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3"><label class="form-label">Produk Kami :</label>
+                                                <input type="text" class="form-control mb-3" readonly
+                                                    value="{{ $ourProduct }}">
                                                 {{-- <select class="form-select mb-3" required name="produk_kita" id="produkSelect" onchange="updateSelectedDeskripsi()"> --}}
                                                 {{-- <option value="" selected disabled>Pilih Produk</option>
                                             @foreach ($dataProduk as $value)
@@ -58,7 +60,9 @@
                                         <div class="col-md-6">
                                             {{-- <div class="mb-3"> --}}
                                             <label class="form-label">Produk Pesaing</label>
-                                            {{-- <input type="text" name="produk_pesaing" class="form-control" required placeholder="Masukan nama produk pesaing"> --}}
+                                            <input type="text" name="produk_pesaing" class="form-control mb-3" readonly
+                                                value="{{ $data['competitor_product'][0] }}"
+                                                placeholder="Masukan nama produk pesaing">
                                             {{-- </div> --}}
                                             <textarea class="form-control" name="deskripsi_produk_pesaing" id="" cols="30" rows="5" required
                                                 readonly>{{ $data['answer'][1] }}</textarea>
