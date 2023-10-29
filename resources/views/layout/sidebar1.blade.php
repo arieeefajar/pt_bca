@@ -38,6 +38,7 @@
             </div>
             @php
                 $selectedTokoId = request()->cookie('selectedTokoId');
+                $kategoriToko = request()->cookie('kategoriToko');
             @endphp
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>

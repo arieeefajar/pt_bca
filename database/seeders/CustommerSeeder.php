@@ -15,15 +15,15 @@ class CustommerSeeder extends Seeder
     {
         $customerData = [
             [
-                'nama' => 'Maju jaya',
-                'jenis' => 'dealer',
+                'nama' => 'Contoh MD',
+                'jenis' => 'master_dealer',
                 'kota_id' => 3509,
                 'koordinat' => '-8.168784, 113.703737',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama' => 'Raja bibit',
+                'nama' => 'Contoh Dealer',
                 'jenis' => 'dealer',
                 'kota_id' => 3509,
                 'koordinat' => '-8.169340, 113.700881',
@@ -31,8 +31,24 @@ class CustommerSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'nama' => 'Sahabat Petani',
-                'jenis' => 'master_dealer',
+                'nama' => 'Contoh Kios',
+                'jenis' => 'kios',
+                'kota_id' => 3509,
+                'koordinat' => '-8.172903, 113.703661',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Contoh Petani',
+                'jenis' => 'petani_pengguna',
+                'kota_id' => 3509,
+                'koordinat' => '-8.172903, 113.703661',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Contoh Lahan Petani',
+                'jenis' => 'lahan_petani',
                 'kota_id' => 3509,
                 'koordinat' => '-8.172903, 113.703661',
                 'created_at' => now(),

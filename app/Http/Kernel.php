@@ -69,5 +69,7 @@ class Kernel extends HttpKernel
         'surveyor' => \App\Http\Middleware\surveyorView::class,
         'nonSurveyor' => \App\Http\Middleware\NonSurveyorAccess::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
+
+        'kuisionerRoleAccess' => \App\Http\Middleware\RoleAccess::class,
     ];
 }

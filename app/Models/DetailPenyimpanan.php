@@ -45,6 +45,7 @@ class DetailPenyimpanan extends Model
             return ($idPenyimpanan);
         } else {
             $idPenyimpanan = $records[0]['id'];
+            Penyimpanan::findOrFail($idPenyimpanan)->touch();
             return ($idPenyimpanan);
         }
     }

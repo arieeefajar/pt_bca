@@ -50,18 +50,18 @@ class UserSeeder extends Seeder
             ]);
         }
 
-        $pathJson = base_path('database/seeders/dataJson/pegawai.json');
-        $readJson = file_get_contents($pathJson);
-        $jsonData = [json_decode($readJson, true)];
+        // $pathJson = base_path('database/seeders/dataJson/pegawai.json');
+        // $readJson = file_get_contents($pathJson);
+        // $jsonData = [json_decode($readJson, true)];
 
-        foreach ($jsonData[0]['employees'] as $user) {
-            User::create([
-                'name' => $user['Name'],
-                'nip' => $user['NIP'],
-                'position' => $user['Position'],
-                'password' => Hash::make($user['NIP']),
-                'role' => 'user',
-            ]);
-        }
+        // foreach ($jsonData[0]['employees'] as $user) {
+        //     User::create([
+        //         'name' => $user['Name'],
+        //         'nip' => $user['NIP'],
+        //         'position' => $user['Position'],
+        //         'password' => Hash::make($user['NIP']),
+        //         'role' => 'user',
+        //     ]);
+        // }
     }
 }
