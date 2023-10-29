@@ -25,7 +25,7 @@ class RoleAccess
         $jenisCustommer = request()->cookie('kategoriToko');
         
         // apabila belum pilih toko
-        if ($jenisCustommer != null) {
+        if (!$jenisCustommer) {
             return redirect()->back();
         }
         
@@ -35,8 +35,7 @@ class RoleAccess
         // kepuasan pelanggan
         if (in_array($routeName, $allowedRoutes_PetaniPengguna)) {
             if ($jenisCustommer === 'petani_pengguna') {
-                // return $next($request); // lanjutkan apabila petani pengguna
-                dd('kontol');
+                return $next($request); // lanjutkan apabila petani pengguna
             }
             return redirect()->back(); // tolak jika bukan petani pengguna
         }

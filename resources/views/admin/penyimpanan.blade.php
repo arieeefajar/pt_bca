@@ -15,22 +15,26 @@
                     <div id="customerList">
 
                         <div class="table-responsive mb-1 mt-3">
-                            <table class="table align-middle mb-0" id="myTable">
+                            <table class="table align-middle mb-0 text-capitalize" id="myTable">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="text-center" data_sort="no">No</th>
-                                        <th class="text-center" data-sort="customer_name">Surveyor</th>
-                                        <th class="text-center" data-sort="email">Customer</th>
-                                        <th class="text-center" data-sort="email">Status</th>
-                                        <th class="text-center" data-sort="email">Aksi</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Tanggal Survey</th>
+                                        <th class="text-center">Surveyor</th>
+                                        <th class="text-center">Customer</th>
+                                        <th class="text-center">Jenis</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($dataPenyimpanan as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
+                                            <td class="text-center">{{ $data->updated_at }}</td>
                                             <td class="text-center">{{ $data->surveyor }}</td>
                                             <td class="text-center">{{ $data->customer }}</td>
+                                            <td class="text-center">{{ Str::replace('_', ' ', $data->jenis) }}</td>
                                             <td class="text-center">
                                                 @if ($data->status === '1')
                                                     <span class="badge rounded-pill bg-success">Lengkap</span>

@@ -168,9 +168,9 @@ class DashboardController extends Controller
             'admin' => User::where('role', 'admin')->get()->count(),
             'targetToko' => Customer::all()->count(),
 
-            'targetTokoBlmSelesai' => $dataPerusahaan = Customer::with('kota', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
+            'targetTokoBlmSelesai' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
             ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
-                $query->whereBetween('created_at', [$startDate, $endDate]);
+                $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
             })->has('penyimpanan.detail_penyimpanan')->get()->count(),
             
             'targetTokoSelesai' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')

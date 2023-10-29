@@ -14,8 +14,8 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpananRaw = Penyimpanan::join('users', 'penyimpanan.surveyor_id', '=', 'users.id')
             ->join('customer', 'penyimpanan.customer_id', '=', 'customer.id')
-            ->select('penyimpanan.id', 'penyimpanan.created_at', 'penyimpanan.status', 'users.name AS surveyor', 'customer.nama AS customer')
-            ->orderBy('created_at', 'desc')
+            ->select('penyimpanan.id', 'penyimpanan.created_at', 'penyimpanan.status', 'users.name AS surveyor', 'customer.nama AS customer', 'customer.jenis', 'penyimpanan.updated_at')
+            ->orderBy('updated_at', 'desc')
             ->get();
 
         $dataPenyimpanan = [];
@@ -33,6 +33,7 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
                     ->where('pertanyaan', 'k_kepuasan')
+                    ->orderBy('created_at', 'desc')
                     ->get();
 
         return view('admin.penyimpanan.kepuasanPelanggan', compact('dataPenyimpanan'));
@@ -42,6 +43,7 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
                     ->where('pertanyaan', 'k_analisis')
+                    ->orderBy('created_at', 'desc')
                     ->get();
                     
         return view('admin.penyimpanan.analisisPesaing', compact('dataPenyimpanan'));
@@ -51,6 +53,7 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
                     ->where('pertanyaan', 'k_kekuatan_kelemahan')
+                    ->orderBy('created_at', 'desc')
                     ->get();
         return view('admin.penyimpanan.kekuatanKelemahan', compact('dataPenyimpanan'));
     }
@@ -59,6 +62,7 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
                     ->where('pertanyaan', 'skala_pasar')
+                    ->orderBy('created_at', 'desc')
                     ->get();
         return view('admin.penyimpanan.skalaPasar', compact('dataPenyimpanan'));
     }
@@ -67,6 +71,7 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
                     ->where('pertanyaan', 'form_lahan')
+                    ->orderBy('created_at', 'desc')
                     ->get();
         return view('admin.penyimpanan.potensiLahan', compact('dataPenyimpanan'));
     }
@@ -75,6 +80,7 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
                     ->where('pertanyaan', 'form_pesaing')
+                    ->orderBy('created_at', 'desc')
                     ->get();
         return view('admin.penyimpanan.surveyPesaing', compact('dataPenyimpanan'));
     }

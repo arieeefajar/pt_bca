@@ -7,6 +7,7 @@ use App\Models\DetailPenyimpanan;
 use App\Models\Customer;
 use App\Models\Penyimpanan;
 use App\Models\User;
+use App\Models\Wilayah_survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -83,14 +84,16 @@ class DashboardSurveyerController extends Controller
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+        $kota = Wilayah_survey::where('surveyor_id', Auth::user()->id)->pluck('kota_id')->toArray();
+        // dd($kota);
 
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor')
-            ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
-                $query->where('surveyor_id', Auth::user()->id);
+            ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate, $kota) {
+                $query->whereIn('kota_id', $kota);
             })->get();
 
         foreach ($dataPerusahaan as $key => $value) {
-            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('surveyor_id', Auth::user()->id)->where('customer_id', $value->id)->first();
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
             $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
             if ($detailPenyimpanan) {
                 if ($penyimpanan->status != 2) {
@@ -115,14 +118,16 @@ class DashboardSurveyerController extends Controller
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+        $kota = Wilayah_survey::where('surveyor_id', Auth::user()->id)->pluck('kota_id')->toArray();
 
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor')
-            ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
-                $query->where('surveyor_id', Auth::user()->id);
-            })->get();
+            ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate, $kota) {
+                $query->whereIn('kota_id', $kota);
+            })
+            ->orderBy('updated_at', 'desc')->get();
 
         foreach ($dataPerusahaan as $key => $value) {
-            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('surveyor_id', Auth::user()->id)->where('customer_id', $value->id)->first();
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
             $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
             if ($detailPenyimpanan) {
                 if ($penyimpanan->status != 2) {

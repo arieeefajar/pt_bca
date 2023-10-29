@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class Penyimpanan extends Model
@@ -36,12 +37,18 @@ class Penyimpanan extends Model
             $answer_type = ['form_lahan', 'form_pesaing'];
         }
 
+        // Mendapatkan tanggal awal bulan ini
+        $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
+        // Mendapatkan tanggal akhir bulan ini
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+        
         foreach ($answer_type as $value) {
             $data = Penyimpanan::leftJoin('detail_penyimpanan', 'penyimpanan.id', '=', 'detail_penyimpanan.penyimpanan_id')
                 ->select('penyimpanan.id AS id_penyimpanan', 'detail_penyimpanan.id AS id_detail_penyimpanan')
                 ->where('penyimpanan.surveyor_id', Auth::user()->id)
                 ->where('detail_penyimpanan.pertanyaan', $value)
                 ->where('penyimpanan.customer_id', $request->cookie('selectedTokoId'))
+                ->whereBetween('penyimpanan.created_at', [$startDate, $endDate])
                 ->get();
 
             if (count($data) <= 0) {
