@@ -182,8 +182,11 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name('laporan.jawaban');
 
-        //jumlah survey toko route
+        // jumlah survey toko route
         Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
+
+        // get data ai maps
+        Route::get('getMapsAi', [DashboardController::class,'getDataMaps'])->name('getMapsAi');
     });
 
     // route other than surveyor

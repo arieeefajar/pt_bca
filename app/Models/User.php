@@ -48,41 +48,19 @@ class User extends Authenticatable
     public static function getCustommer()
     {
         // Mendapatkan tanggal awal bulan ini
-        $startDate =
-            Carbon::now()
-                ->startOfMonth()
-                ->format('Y-m-d') . ' 00:00:00';
+        $startDate = Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
 
         // Mendapatkan tanggal akhir bulan ini
-        $endDate =
-            Carbon::now()
-                ->endOfMonth()
-                ->format('Y-m-d') . ' 23:59:59';
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
 
-        $customer = Customer::select(
-            'customer.id',
-            'customer.nama',
-            'penyimpanan.surveyor_id'
-        )
+        $customer = Customer::select('customer.id','customer.nama','penyimpanan.surveyor_id')
             ->leftJoin('kota', 'customer.kota_id', '=', 'kota.id')
-            ->leftJoin(
-                'wilayah_survey',
-                'kota.id',
-                '=',
-                'wilayah_survey.kota_id'
-            )
+            ->leftJoin('wilayah_survey', 'kota.id','=', 'wilayah_survey.kota_id')
             ->leftJoin('users', 'wilayah_survey.surveyor_id', '=', 'users.id')
-            ->leftJoin('penyimpanan', function ($join) use (
-                $startDate,
-                $endDate
-            ) {
-                $join
-                    ->on('penyimpanan.customer_id', '=', 'customer.id')
+            ->leftJoin('penyimpanan', function ($join) use ($startDate, $endDate) {
+                $join->on('penyimpanan.customer_id', '=', 'customer.id')
                     ->where('penyimpanan.status', '=', 1)
-                    ->whereBetween('penyimpanan.created_at', [
-                        $startDate,
-                        $endDate,
-                    ]);
+                    ->whereBetween('penyimpanan.created_at', [$startDate,$endDate]);
             })
             ->where('users.role', '=', 'user')
             ->where('users.id', '=', Auth::user()->id)
@@ -94,16 +72,12 @@ class User extends Authenticatable
         foreach ($customer as $value) {
             $data = Penyimpanan::where('customer_id', '=', $value->id)
                 ->whereNot('surveyor_id', '=', Auth::user()->id)
+                ->whereBetween('created_at', [$startDate,$endDate])
                 ->first();
             if ($data) {
-                $dataDetail = DetailPenyimpanan::where(
-                    'penyimpanan_id',
-                    '=',
-                    $data->id
-                )->first();
+                $dataDetail = DetailPenyimpanan::where('penyimpanan_id','=',$data->id)->first();
                 if (!$dataDetail) {
                     array_push($customers, $value);
-                    // dd($data, $dataDetail);
                 }
             } else {
                 array_push($customers, $value);

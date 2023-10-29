@@ -71,6 +71,53 @@ class DashboardController extends Controller
         return view('dashboard.executive', compact('dataJumlah', 'dataArea'));
     }
 
+    public function getDataMaps(){
+
+        $endPointApi = env('PYTHON_END_POINT') . 'ai';
+        $dataArea = [];
+
+        try {
+            $dataAI = [Http::get($endPointApi)->json()['data']][0];
+
+            foreach ($dataAI['potential_area_data'] as $value) {
+                $dataArea[$value['location']['name']] = [];
+            }
+
+            foreach ($dataAI['retail_data'] as $valueAI) {
+                foreach ($dataArea as $key => $valueArea) {
+                    if ($key !== $valueAI['location']['name']) {
+                        $dataArea[$valueAI['location']['name']] = [];
+                    }
+                }
+            }
+
+            // set data into data area
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['potential_area_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['potential_area_data'] = $valueAI;
+                    }
+                }
+            }
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['retail_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['retail_data'] = $valueAI;
+                    }
+                }
+            }
+
+            return response()->json([
+                'data' => $dataArea,
+            ]);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'data' => null,
+            ]);
+        }
+    }
+
     public function dataSurveyor()
     {
         $users = User::whereIn('role', ['user'])
