@@ -49,6 +49,9 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::post('/clear-selected-toko-cookie', [LoginController::class, 'clearSelectedTokoCookie'])->name('clearCookie');
     Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
+    //tes route
+    // Route::get('tes', [DashboardController::class, 'tes'])->name('tes')->middleware('guest');
+
     //profile
     Route::get('/profile', [ProfileControllerAdmin::class, 'index'])->name('profile')->middleware('auth');
     Route::post('/profile-update/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update')->middleware('auth');
@@ -162,13 +165,6 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('/jawaban-potensi-lahan/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_potensiLahan'])->name('jawaban_potensiLahan.index');
         Route::get('/jawaban-form-analisis-pesaing/{idDetail?}/{apiId?}', [DetailPenyimpananController::class, 'jawaban_form_analisisPesaing'])->name('jawaban_form_analisisPesaing.index');
 
-        //Profile
-        // Route::prefix('profileAdmin')->group(function () {
-        //     Route::get('/', [ProfileControllerAdmin::class, 'index'])->name('profile.index');
-        //     Route::post('/profile/{id}', [ProfileControllerAdmin::class, 'update',])->name('profile.update');
-        //     Route::post('/password/{id}', [ProfileControllerAdmin::class, 'ubahPassword',])->name('password.update');
-        // });
-
         // get data wilayah
         Route::get('getKota/{id}', [CustomerController::class, 'getKota'])->name('getkota');
         Route::get('getKecamatan/{id}', [CustomerController::class, 'getKecamatan'])->name('getkecamatan');
@@ -181,12 +177,13 @@ Route::middleware(['prevent-back-history'])->group(function () {
         // laporan routes
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name('laporan.jawaban');
+        Route::get('laporanKota', [LaporanController::class, 'laporanKota'])->name('laporan.kota');
 
         // jumlah survey toko route
         Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko',])->name('dataSurveyToko.index');
 
         // get data ai maps
-        Route::get('getMapsAi', [DashboardController::class,'getDataMaps'])->name('getMapsAi');
+        Route::get('getMapsAi', [DashboardController::class, 'getDataMaps'])->name('getMapsAi');
     });
 
     // route other than surveyor
@@ -202,8 +199,8 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('set-store', [DashboardSurveyerController::class, 'setStore'])->name('surveyor.setStore');
 
         // kuisioner routes
-        Route::middleware(['kuisionerRoleAccess'])->group(function (){
-            
+        Route::middleware(['kuisionerRoleAccess'])->group(function () {
+
             // kuisioner kepusan pelanggan
             Route::prefix('kepuasan-pelanggan')->group(function () {
                 Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
@@ -246,12 +243,5 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         // Data List Hasil Survey
         route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
-
-        // Profile
-        // Route::prefix('profile')->group(function () {
-        //     Route::get('/', [ProfileControllerSurveyor::class, 'index'])->name('profile.Surveyor');
-        //     Route::post('/profile/{id}', [ProfileControllerSurveyor::class, 'profileUpdate',])->name('profile.Update');
-        //     Route::post('/password/{id}', [ProfileControllerSurveyor::class, 'ubahPassword',])->name('password.Update');
-        // });
     });
 });

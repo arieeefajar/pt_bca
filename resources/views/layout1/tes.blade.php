@@ -1907,147 +1907,92 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xxl-12">
+                        <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Kuisioner Skala Pasar Produk</h4>
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">Penilaian Pelanggan</h4>
                                 </div><!-- end card header -->
-                                <form action="">
-                                    <div id="step1">
-                                        <div class="card-body">
-                                            <div class="col-md-12">
-                                                <label for="">Bagaimana sistem penjualan produk benih jagung
-                                                    di kios ini?
-                                                </label>
-                                                <textarea name="sales_system" id="BagaimanaSistem" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('sales_system') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Berapa merek benih jagung yang dijual?
-                                                </label>
-                                                <textarea name="how_many_brands" id="BerapaMerek" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('how_many_brands') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Berapa sachet dari setiap merek benih jagung
-                                                    yang dijual?
-                                                </label>
-                                                <textarea name="quantity_of_product" id="BerapaSachet" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('quantity_of_product') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Kapan periode setiap merek benih jagung dipasok?
-                                                </label>
-                                                <textarea name="supply_period" id="KapanPeriode" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('supply_period') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3 mb-3">
-                                                <div class="d-flex justify-content-sm-end">
-                                                    <a href="{{ route('menu.index') }}"
-                                                        style="margin-right: 10px;">
-                                                        <button type="button"
-                                                            class="btn btn-primary add-btn">Kembali</button>
-                                                    </a>
-                                                    <button type="button" class="btn btn-success" id="nextButton"
-                                                        onclick="nextStep(1)">Next</button>
-                                                </div>
+
+                                <div class="card-body">
+                                    <div id="table-search">
+                                        <div class="mb-3">
+                                            <label class="form-label">Pilih Kuisioner</label>
+                                            <!-- Select -->
+                                            <div class="input-group">
+                                                <select class="form-select" id="kuisioner"
+                                                    onchange="showjawaban(this)">
+                                                    <option value="" selected disabled>Pilih...</option>
+                                                    <option value="customer">Kepuasan Pelanggan</option>
+                                                    {{-- <option value="competitor-analys">Analisis Pesaing</option> --}}
+                                                    <option value="competitor-identifier">Kekuatan Kelemahan Pesaing
+                                                    </option>
+                                                    {{-- <option value="competitor-questionnaire">Skala Pasar Produk</option> --}}
+                                                    {{-- @foreach ($dataKuisioner as $data)
+                                                        <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                                    @endforeach --}}
+                                                </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div id="step2" style="display: none;">
-                                        <div class="card-body">
-                                            <div class="col-md-12">
-                                                <label for="">Darimana sajakah asal produsen pemasok benih
-                                                    jagung yang dijual di
-                                                    kios ini?
-                                                </label>
-                                                <textarea name="producer_locaitons" id="DarimanaSajakah" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('producer_locaitons') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Berapa gram rata-rata berat per sachet benih
-                                                    jagung?
-                                                </label>
-                                                <textarea name="weight_product" id="BerapaGram" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('weight_product') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Berapa harga eceran terendah per sachet dari
-                                                    setiap benih jagung
-                                                    yang
-                                                    dijual?
-                                                </label>
-                                                <textarea name="lowest_price" id="BerapaHarga" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('lowest_price') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Apakah saudara mengenal distributor yang
-                                                    menitipkan produknya?
-                                                    (Nama &
-                                                    Alamat)
-                                                </label>
-                                                <textarea name="know_distributor" id="ApakahSaudara" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('know_distributor') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3 mb-3">
-                                                <div class="d-flex justify-content-sm-end">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        style="margin-right: 10px;"
-                                                        onclick="prevStep(1)">Previous</button>
-                                                    <button type="button" class="btn btn-success"
-                                                        id="nextButton1" onclick="nextStep(2)">Next</button>
-                                                </div>
-                                            </div>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-nowrap">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th class="text-center">No</th>
+                                                        <th class="text-center">Jenis Pertanyaan</th>
+                                                        <th class="text-center">1</th>
+                                                        <th class="text-center">2</th>
+                                                        <th class="text-center">3</th>
+                                                        <th class="text-center">4</th>
+                                                        <th class="text-center">5</th>
+                                                        <th class="text-center">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="dataDetail">
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div id="step3" style="display: none;">
-                                        <div class="card-body">
-                                            <div class="col-md-12">
-                                                <label for="">Apakah distributor merek benih jagung menawarkan
-                                                    program tertentu
-                                                    yang terkait dengan bonus penjualan (reward) atau potongan harga
-                                                    (cost discount)?
-                                                </label>
-                                                <textarea name="rewards_or_discount" id="ApakahDistributor" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('rewards_or_discount') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Apakah saudara menerapkan program khusus terkait
-                                                    sistem penjualan
-                                                    benih jagung?
-                                                </label>
-                                                <textarea name="sales_system_application" id="BenihJagung" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('sales_system_application') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Apakah saudara menerapkan program volume matriks
-                                                    pada penjualan
-                                                    benih
-                                                    jagung? (Bonus sachet)
-                                                </label>
-                                                <textarea name="matrix_volume" id="BonusSachet" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('matrix_volume') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <label for="">Apakah kios ini menerima pasokan benih jagung
-                                                    hanya pada saat
-                                                    mendekati musim tanam saja atau jangka waktu tertentu (bulan)?
-                                                </label>
-                                                <textarea name="suply_term" id="ApakahKios" cols="30" rows="5" maxlength="1000"
-                                                    placeholder="Masukan jawaban disini" maxlength="1000" class="form-control">{{ old('suply_term') }}</textarea>
-                                            </div>
-                                            <div class="col-md-12 mt-3 mb-3">
-                                                <div class="d-flex justify-content-sm-end">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        style="margin-right: 10px;"
-                                                        onclick="prevStep(2)">Previous</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
                         </div>
+                        <!-- end col -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">Perhitungan Aspek Index</h4>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <div id="table-search">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-nowrap">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th class="text-center">No</th>
+                                                        <th class="text-center">Jenis Pertanyaan</th>
+                                                        <th class="text-center">1</th>
+                                                        <th class="text-center">2</th>
+                                                        <th class="text-center">3</th>
+                                                        <th class="text-center">4</th>
+                                                        <th class="text-center">5</th>
+                                                        <th class="text-center">Total</th>
+                                                        <th class="text-center">Index</th>
+                                                        <th class="text-center">Kepuasan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="dataDetail1">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div>
+                        <!-- end col -->
                     </div>
 
                 </div>
@@ -2701,6 +2646,78 @@
 
         // Panggil fungsi untuk menonaktifkan semua textarea
         disableAllTextarea();
+    </script>
+
+    <script>
+        function showjawaban(idJawaban) {
+            var value = idJawaban.value;
+            // console.log(value);
+
+            if (value) {
+                const url = "{{ route('laporan.jawaban', ['type' => '/']) }}/" + value;
+                ajax('get', url, function(response) {
+                    // console.log(response);
+                    const penilaian_pelanggan = response.penilaian_pelanggan
+                    const perhitungan_index_aspek = response.perhitungan_index_aspek
+                    //kosongkan konten sebelumnya
+                    $('#dataDetail').empty();
+                    $('#dataDetail1').empty();
+
+                    let kontenDataDetail = ''
+                    let countData = 1
+                    $.each(penilaian_pelanggan, function(key, value) {
+                        kontenDataDetail += `<tr>`
+                        kontenDataDetail += `<td class="text-center">${countData}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center text-capitalize">${key.replace(/_/g, ' ')}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center">${value['1'] != undefined ? value['1'] : '0'}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center">${value['2'] != undefined ? value['2'] : '0'}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center">${value['3'] != undefined ? value['3'] : '0'}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center">${value['4'] != undefined ? value['4'] : '0'}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center">${value['5'] != undefined ? value['5'] : '0'}</td>`
+                        kontenDataDetail +=
+                            `<td class="text-center">${value['total'] != undefined ? value['total'] : '0'}</td>`
+                        kontenDataDetail += `</tr>`
+                        countData++
+                    });
+
+                    let kontenDataDetail1 = ''
+                    let countData1 = 1
+                    $.each(perhitungan_index_aspek, function(key, value) {
+                        kontenDataDetail1 += `<tr>`
+                        kontenDataDetail1 += `<td class="text-center">${countData1}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center text-capitalize">${key.replace(/_/g, ' ')}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['1'] != undefined ? value['1'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['2'] != undefined ? value['2'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['3'] != undefined ? value['3'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['4'] != undefined ? value['4'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['5'] != undefined ? value['5'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['total'] != undefined ? value['total'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['index'] != undefined ? value['index'] : '0'}</td>`
+                        kontenDataDetail1 +=
+                            `<td class="text-center">${value['kepuasan'] != undefined ? value['kepuasan'] : '0%'}</td>`
+                        kontenDataDetail1 += `</tr>`
+                        countData1++
+                    });
+
+                    $('#dataDetail').append(kontenDataDetail);
+                    $('#dataDetail1').append(kontenDataDetail1);
+                })
+            }
+        }
     </script>
 </body>
 
