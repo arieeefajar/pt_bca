@@ -144,11 +144,11 @@
                         $.each(response.data, function(index, value) {
 
                             const area = `<h6 class="text-center"><b>${index}</b></h6>`
-                            const latitude = value.retail_data != undefined ? value.retail_data
-                                .location
-                                .latitude : value.potential_area_data.location.latitude
-                            const longtitude = value.retail_data != undefined ? value.retail_data
-                                .location.longtitude : value.potential_area_data.location.longtitude
+                            const locationName = btoa(value.location.name)
+                            const latitude = value.location.latitude
+                            const longtitude = value.location.longtitude
+
+                            console.log(value);
 
                             // potential area
                             let wordCountRetail = ''
@@ -188,8 +188,9 @@
                                 wordCountPotentialArea += '</p></div>'
                             }
 
-                            const containerContent =
-                                `<div id="content">${area}${wordCountRetail}${wordCountPotentialArea}</div>`
+                            let indexAspek = `<div class="w-100 text-center mt-3"><a class="btn btn-primary btn-sm mx-auto text-white text-capitalize" href="laporanDaerah/${locationName}">index aspek</a></div>`;
+
+                            const containerContent = `<div id="content">${area}${wordCountRetail}${wordCountPotentialArea}${indexAspek}</div>`
                             var marker = L.marker([latitude, longtitude]).addTo(mapAI).bindPopup(
                                 containerContent);
                         });
