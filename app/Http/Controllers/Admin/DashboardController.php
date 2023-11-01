@@ -36,6 +36,7 @@ class DashboardController extends Controller
         try {
             $dataAI = [Http::get($endPointApi)->json()['data']][0];
 
+            // set key berdasarkan wilayah
             foreach ($dataAI['potential_area_data'] as $value) {
                 $dataArea[$value['location']['name']] = [];
             }
@@ -48,7 +49,24 @@ class DashboardController extends Controller
                 }
             }
 
-            // set data into data area
+            foreach ($dataAI['customer_data'] as $valueAI) {
+                foreach ($dataArea as $key => $valueArea) {
+                    if ($key !== $valueAI['location']['name']) {
+                        $dataArea[$valueAI['location']['name']] = [];
+                    }
+                }
+            }
+
+            foreach ($dataAI['competitor_identifier_data'] as $valueAI) {
+                foreach ($dataArea as $key => $valueArea) {
+                    if ($key !== $valueAI['location']['name']) {
+                        $dataArea[$valueAI['location']['name']] = [];
+                    }
+                }
+            }
+
+            
+            // set data berdasarkan wilayah yang sudah di set
             foreach ($dataArea as $keyArea => $valueArea) {
                 foreach ($dataAI['potential_area_data'] as $valueAI) {
                     if ($keyArea === $valueAI['location']['name']) {
@@ -63,6 +81,30 @@ class DashboardController extends Controller
                     }
                 }
             }
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['customer_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['customer_data'] = ['location' => $valueAI['location']];
+                    }
+                }
+            }
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['competitor_identifier_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['competitor_identifier_data'] = ['location' => $valueAI['location']];
+                    }
+                }
+            }
+
+            foreach ($dataArea as $key => $values) {
+                foreach ($values as $value) {
+                    $dataArea[$key]['location'] = $value['location'];
+                    break;
+                }
+            }
+
+            // dd($dataArea);
+            
         } catch (\Throwable $th) {
             $dataArea = null;
         }
@@ -79,6 +121,7 @@ class DashboardController extends Controller
         try {
             $dataAI = [Http::get($endPointApi)->json()['data']][0];
 
+            // set key berdasarkan wilayah
             foreach ($dataAI['potential_area_data'] as $value) {
                 $dataArea[$value['location']['name']] = [];
             }
@@ -91,7 +134,24 @@ class DashboardController extends Controller
                 }
             }
 
-            // set data into data area
+            foreach ($dataAI['customer_data'] as $valueAI) {
+                foreach ($dataArea as $key => $valueArea) {
+                    if ($key !== $valueAI['location']['name']) {
+                        $dataArea[$valueAI['location']['name']] = [];
+                    }
+                }
+            }
+
+            foreach ($dataAI['competitor_identifier_data'] as $valueAI) {
+                foreach ($dataArea as $key => $valueArea) {
+                    if ($key !== $valueAI['location']['name']) {
+                        $dataArea[$valueAI['location']['name']] = [];
+                    }
+                }
+            }
+
+            
+            // set data berdasarkan wilayah yang sudah di set
             foreach ($dataArea as $keyArea => $valueArea) {
                 foreach ($dataAI['potential_area_data'] as $valueAI) {
                     if ($keyArea === $valueAI['location']['name']) {
@@ -104,6 +164,27 @@ class DashboardController extends Controller
                     if ($keyArea === $valueAI['location']['name']) {
                         $dataArea[$keyArea]['retail_data'] = $valueAI;
                     }
+                }
+            }
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['customer_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['customer_data'] = ['location' => $valueAI['location']];
+                    }
+                }
+            }
+            foreach ($dataArea as $keyArea => $valueArea) {
+                foreach ($dataAI['competitor_identifier_data'] as $valueAI) {
+                    if ($keyArea === $valueAI['location']['name']) {
+                        $dataArea[$keyArea]['competitor_identifier_data'] = ['location' => $valueAI['location']];
+                    }
+                }
+            }
+
+            foreach ($dataArea as $key => $values) {
+                foreach ($values as $value) {
+                    $dataArea[$key]['location'] = $value['location'];
+                    break;
                 }
             }
 

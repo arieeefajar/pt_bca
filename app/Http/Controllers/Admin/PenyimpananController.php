@@ -14,7 +14,9 @@ class PenyimpananController extends Controller
     {
         $dataPenyimpananRaw = Penyimpanan::join('users', 'penyimpanan.surveyor_id', '=', 'users.id')
             ->join('customer', 'penyimpanan.customer_id', '=', 'customer.id')
-            ->select('penyimpanan.id', 'penyimpanan.created_at', 'penyimpanan.status', 'users.name AS surveyor', 'customer.nama AS customer', 'customer.jenis', 'penyimpanan.updated_at')
+            ->join('kota', 'customer.kota_id', '=', 'kota.id')
+            ->join('provinsi', 'kota.provinsi_id', '=', 'provinsi.id')
+            ->select('penyimpanan.id', 'penyimpanan.created_at', 'penyimpanan.status', 'users.name AS surveyor', 'customer.nama AS customer', 'customer.jenis', 'penyimpanan.updated_at', 'kota.nama as kota', 'provinsi.nama as provinsi')
             ->orderBy('updated_at', 'desc')
             ->get();
 
@@ -31,7 +33,7 @@ class PenyimpananController extends Controller
 
     public function kepuasanPelanggan()
     {
-        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
+        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota', 'penyimpanan.customer.kota.provinsi')
                     ->where('pertanyaan', 'k_kepuasan')
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -41,7 +43,7 @@ class PenyimpananController extends Controller
 
     public function analisisPesaing()
     {
-        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
+        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota', 'penyimpanan.customer.kota.provinsi')
                     ->where('pertanyaan', 'k_analisis')
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -51,7 +53,7 @@ class PenyimpananController extends Controller
 
     public function kekuatanKelemahan()
     {
-        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
+        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota', 'penyimpanan.customer.kota.provinsi')
                     ->where('pertanyaan', 'k_kekuatan_kelemahan')
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -60,7 +62,7 @@ class PenyimpananController extends Controller
 
     public function skalaPasarProduk()
     {
-        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
+        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota', 'penyimpanan.customer.kota.provinsi')
                     ->where('pertanyaan', 'skala_pasar')
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -69,7 +71,7 @@ class PenyimpananController extends Controller
 
     public function potensiLahan()
     {
-        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
+        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota', 'penyimpanan.customer.kota.provinsi')
                     ->where('pertanyaan', 'form_lahan')
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -78,7 +80,7 @@ class PenyimpananController extends Controller
 
     public function surveyPesaing()
     {
-        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer')
+        $dataPenyimpanan = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota', 'penyimpanan.customer.kota.provinsi')
                     ->where('pertanyaan', 'form_pesaing')
                     ->orderBy('created_at', 'desc')
                     ->get();
