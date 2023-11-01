@@ -22,6 +22,8 @@
                                         <th class="text-center">Tanggal Survey</th>
                                         <th class="text-center">Surveyor</th>
                                         <th class="text-center">Customer</th>
+                                        <th class="text-center">Provinsi</th>
+                                        <th class="text-center">Kota</th>
                                         <th class="text-center">Jenis</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Aksi</th>
@@ -34,6 +36,8 @@
                                             <td class="text-center">{{ $data->updated_at }}</td>
                                             <td class="text-center">{{ $data->surveyor }}</td>
                                             <td class="text-center">{{ $data->customer }}</td>
+                                            <td class="text-center">{{ $data->provinsi }}</td>
+                                            <td class="text-center">{{ $data->kota }}</td>
                                             <td class="text-center">{{ Str::replace('_', ' ', $data->jenis) }}</td>
                                             <td class="text-center">
                                                 @if ($data->status === '1')

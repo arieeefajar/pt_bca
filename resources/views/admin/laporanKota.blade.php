@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Penilaian Pelanggan</h4>
+                    <h4 class="card-title mb-0">Penilaian Pelanggan / {{ $location_name }}</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
@@ -32,7 +32,9 @@
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-nowrap">
+
+                            {{-- table kepuasan --}}
+                            <table class="table table-bordered table-nowrap" id="kepuasanPelanggan" style="display: none">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
@@ -45,7 +47,69 @@
                                         <th class="text-center">Total</th>
                                     </tr>
                                 </thead>
-                                <tbody id="dataDetail">
+                                <tbody>
+                                    @if (count($customer_data) > 0)
+                                        @php
+                                            $num = 1;
+                                        @endphp
+                                        @foreach ($customer_data['penilaian_pelanggan'] as $key => $item)
+                                            <tr>
+                                                <td class="text-center">{{ $num }}</td>
+                                                <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $key) }}
+                                                </td>
+                                                <td class="text-center">{{ isset($item['1']) ? $item['1'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['2']) ? $item['2'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['3']) ? $item['3'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['4']) ? $item['4'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['5']) ? $item['5'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['total']) ? $item['total'] : '0' }}
+                                                </td>
+                                            </tr>
+                                            @php
+                                                $num++;
+                                            @endphp
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+
+                            {{-- table kekuatan kelemahan --}}
+                            <table class="table table-bordered table-nowrap" id="kekuatanKelemahan" style="display: none">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Jenis Pertanyaan</th>
+                                        <th class="text-center">1</th>
+                                        <th class="text-center">2</th>
+                                        <th class="text-center">3</th>
+                                        <th class="text-center">4</th>
+                                        <th class="text-center">5</th>
+                                        <th class="text-center">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (count($competitor_identifier_data) > 0)
+                                        @php
+                                            $num = 1;
+                                        @endphp
+                                        @foreach ($competitor_identifier_data['penilaian_pelanggan'] as $key => $item)
+                                            <tr>
+                                                <td class="text-center">{{ $num }}</td>
+                                                <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $key) }}
+                                                </td>
+                                                <td class="text-center">{{ isset($item['1']) ? $item['1'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['2']) ? $item['2'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['3']) ? $item['3'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['4']) ? $item['4'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['5']) ? $item['5'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['total']) ? $item['total'] : '0' }}
+                                                </td>
+                                            </tr>
+                                            @php
+                                                $num++;
+                                            @endphp
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -60,13 +124,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Perhitungan Aspek Index</h4>
+                    <h4 class="card-title mb-0">Perhitungan Aspek Index / {{ $location_name }}</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
                     <div id="table-search">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-nowrap">
+                            {{-- aspek kepuasan --}}
+                            <table class="table table-bordered table-nowrap" id="aspekKepuasan" style="display: none">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
@@ -81,7 +146,80 @@
                                         <th class="text-center">Kepuasan</th>
                                     </tr>
                                 </thead>
-                                <tbody id="dataDetail1">
+                                <tbody>
+                                    @if (count($customer_data) > 0)
+                                        @php
+                                            $num = 1;
+                                        @endphp
+                                        @foreach ($customer_data['perhitungan_index_aspek'] as $key => $item)
+                                            <tr>
+                                                <td class="text-center">{{ $num }}</td>
+                                                <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $key) }}
+                                                </td>
+                                                <td class="text-center">{{ isset($item['1']) ? $item['1'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['2']) ? $item['2'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['3']) ? $item['3'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['4']) ? $item['4'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['5']) ? $item['5'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['total']) ? $item['total'] : '0' }}
+                                                </td>
+                                                <td class="text-center">{{ isset($item['index']) ? $item['index'] : '0' }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ isset($item['kepuasan']) ? $item['kepuasan'] : '0' }}</td>
+                                            </tr>
+                                            @php
+                                                $num++;
+                                            @endphp
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+
+                            {{-- aspek kekuatan kelemahan --}}
+                            <table class="table table-bordered table-nowrap" id="aspekKekuatanKelemahan"
+                                style="display: none">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Jenis Pertanyaan</th>
+                                        <th class="text-center">1</th>
+                                        <th class="text-center">2</th>
+                                        <th class="text-center">3</th>
+                                        <th class="text-center">4</th>
+                                        <th class="text-center">5</th>
+                                        <th class="text-center">Total</th>
+                                        <th class="text-center">Index</th>
+                                        <th class="text-center">Kepuasan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (count($competitor_identifier_data) > 0)
+                                        @php
+                                            $num = 1;
+                                        @endphp
+                                        @foreach ($competitor_identifier_data['perhitungan_index_aspek'] as $key => $item)
+                                            <tr>
+                                                <td class="text-center">{{ $num }}</td>
+                                                <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $key) }}
+                                                </td>
+                                                <td class="text-center">{{ isset($item['1']) ? $item['1'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['2']) ? $item['2'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['3']) ? $item['3'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['4']) ? $item['4'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['5']) ? $item['5'] : '0' }}</td>
+                                                <td class="text-center">{{ isset($item['total']) ? $item['total'] : '0' }}
+                                                </td>
+                                                <td class="text-center">{{ isset($item['index']) ? $item['index'] : '0' }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ isset($item['kepuasan']) ? $item['kepuasan'] : '0' }}</td>
+                                            </tr>
+                                            @php
+                                                $num++;
+                                            @endphp
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -96,94 +234,38 @@
 
 @section('otherJs')
     <script>
+        $(document).ready(function() {
+            var table1 = document.getElementById('kepuasanPelanggan');;
+            var table2 = document.getElementById('kekuatanKelemahan');
+            var table3 = document.getElementById('aspekKepuasan');
+            var table4 = document.getElementById('aspekKekuatanKelemahan');
+
+            table1.style.display = 'table';
+            table3.style.display = 'table';
+            table2.style.display = 'none';
+            table4.style.display = 'none';
+
+            $('#kuisioner').val('customer');
+        });
+
         function showjawaban(idJawaban) {
             var value = idJawaban.value;
-            var table1 = document.getElementById('penilaianPelanggan');;
-            var table2 = document.getElementById('aspekIndex');
-            var table3 = document.getElementById('analisisPenilaianPelanggan');
-            var table4 = document.getElementById('analisisAspekIndex');
+            var table1 = document.getElementById('kepuasanPelanggan');;
+            var table2 = document.getElementById('kekuatanKelemahan');
+            var table3 = document.getElementById('aspekKepuasan');
+            var table4 = document.getElementById('aspekKekuatanKelemahan');
             // console.log(value);
 
-            if (value == 'competitor-analys') {
-                if (table1 && table2) {
-                    table1.style.display = 'none';
-                    table2.style.display = 'none';
-                    table3.style.display = 'table';
-                    table4.style.display = 'table';
-                } else {
-                    console.log("null");
-                }
-            } else {
-
+            if (value == 'customer') {
                 table1.style.display = 'table';
-                table2.style.display = 'table';
-                table3.style.display = 'none';
+                table3.style.display = 'table';
+                table2.style.display = 'none';
                 table4.style.display = 'none';
-
-                if (value) {
-                    const url = "{{ route('laporan.jawaban', ['type' => '/']) }}/" + value;
-                    ajax('get', url, function(response) {
-                        // console.log(response);
-                        const penilaian_pelanggan = response.penilaian_pelanggan
-                        const perhitungan_index_aspek = response.perhitungan_index_aspek
-                        //kosongkan konten sebelumnya
-                        $('#dataDetail').empty();
-                        $('#dataDetail1').empty();
-
-                        let kontenDataDetail = ''
-                        let countData = 1
-                        $.each(penilaian_pelanggan, function(key, value) {
-                            kontenDataDetail += `<tr>`
-                            kontenDataDetail += `<td class="text-center">${countData}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center text-capitalize">${key.replace(/_/g, ' ')}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center">${value['1'] != undefined ? value['1'] : '0'}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center">${value['2'] != undefined ? value['2'] : '0'}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center">${value['3'] != undefined ? value['3'] : '0'}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center">${value['4'] != undefined ? value['4'] : '0'}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center">${value['5'] != undefined ? value['5'] : '0'}</td>`
-                            kontenDataDetail +=
-                                `<td class="text-center">${value['total'] != undefined ? value['total'] : '0'}</td>`
-                            kontenDataDetail += `</tr>`
-                            countData++
-                        });
-
-                        let kontenDataDetail1 = ''
-                        let countData1 = 1
-                        $.each(perhitungan_index_aspek, function(key, value) {
-                            kontenDataDetail1 += `<tr>`
-                            kontenDataDetail1 += `<td class="text-center">${countData1}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center text-capitalize">${key.replace(/_/g, ' ')}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['1'] != undefined ? value['1'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['2'] != undefined ? value['2'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['3'] != undefined ? value['3'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['4'] != undefined ? value['4'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['5'] != undefined ? value['5'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['total'] != undefined ? value['total'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['index'] != undefined ? value['index'] : '0'}</td>`
-                            kontenDataDetail1 +=
-                                `<td class="text-center">${value['kepuasan'] != undefined ? value['kepuasan'] : '0%'}</td>`
-                            kontenDataDetail1 += `</tr>`
-                            countData1++
-                        });
-
-                        $('#dataDetail').append(kontenDataDetail);
-                        $('#dataDetail1').append(kontenDataDetail1);
-                    })
-                }
+            } else {
+                table2.style.display = 'table';
+                table4.style.display = 'table';
+                table1.style.display = 'none';
+                table3.style.display = 'none';
             }
         }
     </script>

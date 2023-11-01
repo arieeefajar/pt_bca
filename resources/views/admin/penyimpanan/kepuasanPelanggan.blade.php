@@ -19,8 +19,11 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
-                                        <th class="text-center">Nama Toko</th>
                                         <th class="text-center">Tanggal</th>
+                                        <th class="text-center">Nama Toko</th>
+                                        <th class="text-center">Jenis</th>
+                                        <th class="text-center">Provinsi</th>
+                                        <th class="text-center">Kota</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -28,8 +31,11 @@
                                     @foreach ($dataPenyimpanan as $index => $data)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center">{{ $data->penyimpanan->customer->nama }}</td>
                                             <td class="text-center">{{ $data->created_at }}</td>
+                                            <td class="text-center">{{ $data->penyimpanan->customer->nama }}</td>
+                                            <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $data->penyimpanan->customer->jenis) }}</td>
+                                            <td class="text-center">{{ $data->penyimpanan->customer->kota->nama }}</td>
+                                            <td class="text-center">{{ $data->penyimpanan->customer->kota->provinsi->nama }}</td>
                                             <td class="text-center">
                                                 <div class="d-flex gap-2 justify-content-center">
                                                     <div class="detail">
