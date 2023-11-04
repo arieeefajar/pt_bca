@@ -10,7 +10,7 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        return view('admin.laporan1');
+        return view('admin.laporan');
     }
 
     public function getKategoriKepuasan($category)
@@ -1012,6 +1012,12 @@ class LaporanController extends Controller
             $kualitasFinal = [];
             $layananFinal = [];
             $penangananFinal = [];
+
+            $totalProductFinal = [];
+            $totalPromosiFinal = [];
+            $totalKualitasFinal = [];
+            $totalLayananFinal = [];
+            $totalPenangananFinal = [];
             
             foreach ($dataAnswerLoop as $key => $dataAnswer) {
                 $dataAllKategory = $this->kepuasanDaerah($dataAnswer);
@@ -1075,8 +1081,7 @@ class LaporanController extends Controller
                         }
                     }
     
-                    $dataTotalAllKategory =
-                        $dataAllKategory['penilaian_pelanggan']['product']['total'];
+                    $dataTotalAllKategory = $dataAllKategory['penilaian_pelanggan']['product']['total'];
     
                     $information = $this->countValues($information);
                     $price_comparison = $this->countValues($price_comparison);
@@ -1227,8 +1232,11 @@ class LaporanController extends Controller
                         'Kemudahan dalam memperoleh / membeli Produk' => floatval($getting_easy['kepuasan']),
                         'Kepuasan memilih produk' => floatval($satisfaction['kepuasan']),
                         'Tampilan gambar pada kemasan produk' => floatval($image_view['kepuasan']),
+                        'anu' => $dataAllKategory['perhitungan_index_aspek']['product']['kepuasan'],
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalProductFinal, $total);
                     array_push($productFinal, $dataByCountIndex);
                 }
                 if ($category == 'promosi') {
@@ -1334,6 +1342,9 @@ class LaporanController extends Controller
                         'Kualitas kegiatan promosi yang dilaksanakan oleh petugas' => floatval($promotion_quality['kepuasan']),
                     ];
 
+                    $total = (int) array_sum($dataByCountIndex);
+
+                    array_push($totalPromosiFinal, $total);
                     array_push($promosiFinal, $dataByCountIndex);
                 }
                 if ($category == 'kualitas') {
@@ -1599,6 +1610,9 @@ class LaporanController extends Controller
                         'Kesesuaian hasil panen terhadap permintaan pasar' => floatval($suitablelity_result_request['kepuasan']),
                         'Kepuasan hasil panen produk' => floatval($satisfaction_result['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
+
+                    array_push($totalKualitasFinal, $total);
                     array_push($kualitasFinal, $dataByCountIndex);
                 }
                 if ($category == 'layanan') {
@@ -1802,6 +1816,9 @@ class LaporanController extends Controller
                         'Pengaruh keberadaan petugas lapang' => floatval($influence_of_officer['kepuasan']),
                         'Kemampuan teknis komunikasi petugas lapang' => floatval($communication_skill['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
+
+                    array_push($totalLayananFinal, $total);
                     array_push($layananFinal, $dataByCountIndex);
                 }
                 if ($category == 'penanganan') {
@@ -1899,27 +1916,28 @@ class LaporanController extends Controller
                         'Kecepatan verifikasi komplain pelanggan' => floatval($verification_speed['kepuasan']),
                         'Kecepatan penyelesaian komplain pelanggan' => floatval($completion_speed['kepuasan']),
                         'Penanganan komplain pelanggan' => floatval($handling['kepuasan']),
-                        
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalPenangananFinal, $total);
                     array_push($penangananFinal, $dataByCountIndex);
                 }
             }
 
             if ($category == 'product') {
-                return response()->json((object)$productFinal);
+                return response()->json([(object)$productFinal, (object)$totalProductFinal]);
             }
             if ($category == 'promosi') {
-                return response()->json((object)$promosiFinal);
+                return response()->json([(object)$promosiFinal, (object)$totalPromosiFinal]);
             }
             if ($category == 'kualitas') {
-                return response()->json((object)$kualitasFinal);
+                return response()->json([(object)$kualitasFinal, (object)$totalKualitasFinal]);
             }
             if ($category == 'layanan') {
-                return response()->json((object)$layananFinal);
+                return response()->json([(object)$layananFinal, (object)$totalLayananFinal]);
             }
             if ($category == 'penanganan') {
-                return response()->json((object)$penangananFinal);
+                return response()->json([(object)$penangananFinal, (object)$totalPenangananFinal]);
             }
 
         } catch (\Throwable $th) {
@@ -2552,6 +2570,7 @@ class LaporanController extends Controller
 
             $productFinal = [];
             $pemasaranFinal = [];
+            $distribusiFinal = [];
             $operasionalFinal = [];
             $risetFinal = [];
             $keuanganFinal = [];
@@ -2560,6 +2579,18 @@ class LaporanController extends Controller
             $intiFinal = [];
             $portofolioFinal = [];
             $lainnyaFinal = [];
+
+            $totalProductFinal = [];
+            $totalPemasaranFinal = [];
+            $totalDistribusiFinal = [];
+            $totalOperasionalFinal = [];
+            $totalRisetFinal = [];
+            $totalKeuanganFinal = [];
+            $totalOrganisasiFinal = [];
+            $totalManajerialFinal = [];
+            $totalIntiFinal = [];
+            $totalPortofolioFinal = [];
+            $totalLainnyaFinal = [];
             
             foreach ($dataAnswerLoop as $key => $dataAnswer) {
                 $dataAllKategory = $this->kekuatanKelemahanDaerah($dataAnswer);
@@ -2602,7 +2633,9 @@ class LaporanController extends Controller
                         'Kedudukan produk pesaing (dari sudut pandang pengguna) di setiap segmen pasar' => floatval($position_pov['kepuasan']),
                         'Luas dan dalamnya lini produk pesaing' => floatval($deep['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalProductFinal, $total);
                     array_push($productFinal, $dataByCountIndex);
                 }
                 if ($category == 'pemasaran') {
@@ -2643,8 +2676,69 @@ class LaporanController extends Controller
                         'Keterampilan pesaing pada masing-masing aspek bauran pemasaran' => floatval($marketing_skill['kepuasan']),
                         'Keterampilan pesaing dalam pengembangan produk baru' => floatval($dev_skill['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalPemasaranFinal, $total);
                     array_push($pemasaranFinal, $dataByCountIndex);
+                }
+                if ($category == 'distribusi') {
+                    $distribution_line = [];
+                    $line_power = [];
+                    $line_ability = [];
+    
+                    foreach ($dataAnswer as $value) {
+                        foreach ($value as $key => $value2) {
+                            if ($key === 'distribution_line') {
+                                array_push($distribution_line, $value2);
+                            }
+                        }
+                    }
+                    foreach ($dataAnswer as $value) {
+                        foreach ($value as $key => $value2) {
+                            if ($key === 'line_power') {
+                                array_push($line_power, $value2);
+                            }
+                        }
+                    }
+                    foreach ($dataAnswer as $value) {
+                        foreach ($value as $key => $value2) {
+                            if ($key === 'line_ability') {
+                                array_push($line_ability, $value2);
+                            }
+                        }
+                    }
+    
+                    $dataTotalAllKategory = $dataAllKategory['penilaian_pelanggan']['distribusi']['total'];
+    
+                    $distribution_line = $this->countValues($distribution_line);
+                    $line_power = $this->countValues($line_power);
+                    $line_ability = $this->countValues($line_ability);
+    
+                    $distribution_line5 = isset($distribution_line['5']) ? $distribution_line['5'] : 0;
+                    $distribution_line4 = isset($distribution_line['4']) ? $distribution_line['4'] : 0;
+                    $distribution_line3 = isset($distribution_line['3']) ? $distribution_line['3'] : 0;
+                    $distribution_line['kepuasan'] = number_format((($distribution_line5 + $distribution_line4 + $distribution_line3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+    
+                    $line_power5 = isset($line_power['5']) ? $line_power['5'] : 0;
+                    $line_power4 = isset($line_power['4']) ? $line_power['4'] : 0;
+                    $line_power3 = isset($line_power['3']) ? $line_power['3'] : 0;
+                    $line_power['kepuasan'] = number_format((($line_power5 + $line_power4 + $line_power3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    
+                    $line_ability5 = isset($line_ability['5']) ? $line_ability['5'] : 0;
+                    $line_ability4 = isset($line_ability['4']) ? $line_ability['4'] : 0;
+                    $line_ability3 = isset($line_ability['3']) ? $line_ability['3'] : 0;
+                    $line_ability['kepuasan'] = number_format((($line_ability5 + $line_ability4 + $line_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+    
+                    $dataByCountIndex = [
+                        'Kualitas saluran distribusi pesaing' => floatval($distribution_line['kepuasan']),
+                        'Kekuatan hubungan saluran distribusi yang dimiliki pesaing' => floatval($line_power['kepuasan']),
+                        'Kemampuan pesaing untuk melayani saluran distribusi' => floatval($line_ability['kepuasan']),
+                    ];
+
+                    $total = (int) array_sum($dataByCountIndex);
+
+                    array_push($totalDistribusiFinal, $total);
+                    array_push($distribusiFinal, $dataByCountIndex);
                 }
                 if ($category == 'operasional') {
                     $advanced_tech = [];
@@ -2714,7 +2808,9 @@ class LaporanController extends Controller
                         'Keterampilan pesaing dalam penambahan kapasitas, pengendalian kualitas, penggunaan fasilitas, dan peralatan' => floatval($scale_up_skill['kepuasan']),
                         'Akses dan biaya bahan baku yang dialokasikan pesaing' => floatval($material_cost['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalOperasionalFinal, $total);
                     array_push($operasionalFinal, $dataByCountIndex);
                 }
                 if ($category == 'riset') {
@@ -2785,6 +2881,9 @@ class LaporanController extends Controller
                         'Keterampilan staf divisi riset dan pengembangan pesaing' => floatval($staff_skill['kepuasan']),
                         'Akses pesaing ke sumber-sumber eksternal perusahaan untuk penguatan riset dan pengembangan' => floatval($resource_access['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
+
+                    array_push($totalRisetFinal, $total);
                     array_push($risetFinal, $dataByCountIndex);
                 }
                 if ($category == 'keuangan') {
@@ -2840,7 +2939,9 @@ class LaporanController extends Controller
                         'Kapasitas modal baru yang dimiliki pesaing untuk bisnis masa depan' => floatval($capital_capacity['kepuasan']),
                         'Kemampuan manajemen keuangan pesaing, termasuk negosiasi, mendapatkan modal, kredit, persediaan, serta piutang' => floatval($trust_management['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalKeuanganFinal, $total);
                     array_push($keuanganFinal, $dataByCountIndex);
                 }
                 if ($category == 'organisasi') {
@@ -2881,7 +2982,9 @@ class LaporanController extends Controller
                         'Keseragaman nilai dan kejelasan misi dan tujuan organisasi pesaing' => floatval($vision_mission['kepuasan']),
                         'Konsistensi struktur organisasi dengan strategi bisnis pesaing' => floatval($consistency_organization_structure['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalOrganisasiFinal, $total);
                     array_push($organisasiFinal, $dataByCountIndex);
                 }
                 if ($category == 'manajerial') {
@@ -2922,7 +3025,9 @@ class LaporanController extends Controller
                         'Kualitas kepemimpinan CEO pesaing - kemampuan Direktur Utama untuk memotivasi' => floatval($lead_quality['kepuasan']),
                         'Kemampuan manajemen perusahaan pesaing untuk mengkoordinasi fungsi atau kelompok fungsi tertentu (misalnya koordinasi pengembangan produk dengan riset)' => floatval($management_ability['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalManajerialFinal, $total);
                     array_push($manajerialFinal, $dataByCountIndex);
                 }
                 if ($category == 'inti') {
@@ -3008,7 +3113,9 @@ class LaporanController extends Controller
                         'Kemampuan pesaing dalam menyesuaikan diri dan merespon kondisi yang berubah di setiap bidang fungsional (misalnya menyesuaikan diri untuk bersaing dalam harga, mengelola lini produk yang lebih kompleks, menambah produk baru, bersaing dalam layanan, meningkatkan kegiatan pemasaran)' => floatval($response_to_change['kepuasan']),
                         'Kemampuan pesaing untuk bertahan dari perang persaingan yang berkepanjangan, yang mungkin akan menekan laba dan arus kas' => floatval($competition_ability['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalIntiFinal, $total);
                     array_push($intiFinal, $dataByCountIndex);
                 }
                 if ($category == 'portofolio') {
@@ -3049,7 +3156,9 @@ class LaporanController extends Controller
                         'Kemampuan pesaing untuk mendukung perubahan yang terencana dalam semua unit bisnisnya dalam bentuk sumber dana dan sumber daya lain' => floatval($support_change['kepuasan']),
                         'Kemampuan pesaing untuk melengkapi atau memperkokoh kekuatan unit bisnisnya' => floatval($strengthening_ability['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalPortofolioFinal, $total);
                     array_push($portofolioFinal, $dataByCountIndex);
                 }
                 if ($category == 'lainnya') {
@@ -3075,41 +3184,46 @@ class LaporanController extends Controller
                     $dataByCountIndex = [
                         'Perlakuan khusus atau akses pesaing ke lembaga pemerintahan' => floatval($special_treatment['kepuasan']),
                     ];
+                    $total = (int) array_sum($dataByCountIndex);
 
+                    array_push($totalLainnyaFinal, $total);
                     array_push($lainnyaFinal, $dataByCountIndex);
                 }
                 
             }
 
             if ($category == 'product') {
-                return response()->json((object)$productFinal, 200);
+                return response()->json([(object)$productFinal, (object)$totalProductFinal], 200);
             }
             if ($category == 'pemasaran') {
-                return response()->json((object)$pemasaranFinal, 200);
+                return response()->json([(object)$pemasaranFinal, (object)$totalPemasaranFinal], 200);
+            }
+            if ($category == 'distribusi') {
+                return response()->json([(object)$distribusiFinal, (object)$totalDistribusiFinal], 200);
             }
             if ($category == 'operasional') {
-                return response()->json((object)$operasionalFinal, 200);
+                return response()->json([(object)$operasionalFinal, (object)$totalOperasionalFinal], 200);
             }
             if ($category == 'riset') {
-                return response()->json((object)$risetFinal, 200);
+                return response()->json([(object)$risetFinal, (object)$totalRisetFinal], 200);
             }
             if ($category == 'keuangan') {
-                return response()->json((object)$keuanganFinal, 200);
+                return response()->json([(object)$keuanganFinal, (object)$totalKeuanganFinal], 200);
             }
             if ($category == 'organisasi') {
-                return response()->json((object)$organisasiFinal, 200);
+                return response()->json([(object)$organisasiFinal, (object)$totalOrganisasiFinal], 200);
             }
             if ($category == 'manajerial') {
-                return response()->json((object)$manajerialFinal, 200);
+                return response()->json([(object)$manajerialFinal, (object)$totalManajerialFinal], 200);
             }
             if ($category == 'inti') {
-                return response()->json((object)$intiFinal, 200);
+                return response()->json([(object)$intiFinal, (object)$totalIntiFinal], 200);
             }
             if ($category == 'portofolio') {
-                return response()->json((object)$portofolioFinal, 200);
+                return response()->json([(object)$portofolioFinal, (object)$totalPortofolioFinal], 200);
             }
             if ($category == 'lainnya') {
-                return response()->json((object)$lainnyaFinal, 200);
+                return response()->json([(object)$lainnyaFinal, (object)$totalLainnyaFinal], 200);
             }
 
         } catch (\Throwable $th) {
@@ -3124,53 +3238,7 @@ class LaporanController extends Controller
     public function laporanDaerah($daerah)
     {
         $location_name = base64_decode($daerah);
-        $endPointApi = env('PYTHON_END_POINT') . 'ai';
-        $customer_data = [];
-        $competitor_identifier_data = [];
-
-        try {
-            $dataAI = [Http::get($endPointApi)->json()['data']][0];
-
-            // set customer data berdasarkan daerah sesuai parameter
-            foreach ($dataAI['customer_data'] as $value) {
-                if ($value['location']['name'] === $location_name) {
-                    $customer_data = $value['answer'];
-                    break;
-                }
-            }
-
-            // set competitor identifier data berdasarkan daerah sesuai parameter
-            foreach ($dataAI['competitor_identifier_data'] as $value) {
-                if ($value['location']['name'] === $location_name) {
-                    $competitor_identifier_data = $value['answer'];
-                    break;
-                }
-            }
-
-            if (count($customer_data) > 0) {
-                $customer_data = $this->kepuasanDaerah($customer_data);
-            }
-
-            if (count($competitor_identifier_data) > 0) {
-                $competitor_identifier_data = $this->kekuatanKelemahanDaerah(
-                    $competitor_identifier_data
-                );
-            }
-
-            return view(
-                'admin.laporanKota',
-                compact(
-                    'customer_data',
-                    'competitor_identifier_data',
-                    'location_name'
-                )
-            );
-        } catch (\Throwable $th) {
-            alert()->error('Gagal', 'Terjadi kesalahan server');
-            return redirect()
-                ->back()
-                ->withInput();
-        }
+        return view('admin.laporanKota', compact('location_name'));
     }
 
     public function jawaban_kuisioner($type)
