@@ -384,10 +384,32 @@ Route::middleware(['prevent-back-history'])->group(function () {
         ])->name('getMapsAi');
 
         // get pertanyaan kepuasan
-        Route::get('getPertanyaanKepuasan/{category}', [
+        Route::get('getPertanyaanKepuasan/{category}/{area}', [
             LaporanController::class,
             'getPertanyaanKepuasan',
         ])->name('getPertanyaanKepuasan');
+        // berdasarkan jumlah responden
+        Route::get('getPertanyaanKepuasanByRespondents/{category}/{area}', [
+            LaporanController::class,
+            'getPertanyaanKepuasanByRespondents',
+        ])->name('getPertanyaanKepuasanByRespondents');
+
+        // get pertanyaan kekuatan kelemahan
+        Route::get('getPertanyaanKekuatanKelemahan/{category}/{area}', [
+            LaporanController::class,
+            'getPertanyaanKekuatanKelemahan',
+        ])->name('getPertanyaanKekuatanKelemahan');
+        // berdasarkan jumlah responden
+        Route::get('getPertanyaanKekuatanKelemahanByRespondents/{category}/{area}', [
+            LaporanController::class,
+            'getPertanyaanKekuatanKelemahanByRespondents',
+        ])->name('getPertanyaanKekuatanKelemahanByRespondents');
+
+        // berdasarkan jumlah responden
+        // Route::get('getPertanyaanKepuasanByRespondents/{category}/{area}', [
+        //     LaporanController::class,
+        //     'getPertanyaanKepuasanByRespondents',
+        // ])->name('getPertanyaanKepuasanByRespondents');
     });
 
     // route other than surveyor
