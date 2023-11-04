@@ -50,6 +50,17 @@
     <!-- jQuery (diperlukan oleh DataTables) -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 350px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -150,11 +161,14 @@
     {{-- <!-- gridjs init -->
     <script src="{{ asset('admin_assets/assets/js/pages/gridjs.init.js') }}"></script> --}}
 
-    {{-- <!-- apexcharts -->
-    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
+    <!-- apexcharts -->
+    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-    {{-- <!-- piecharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script> --}}
+    <!-- piecharts init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script>
+
+    <!-- radialbar charts init -->
+    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-radialbar.init.js') }}"></script>
 
     {{-- <!-- barcharts init -->
     <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script> --}}

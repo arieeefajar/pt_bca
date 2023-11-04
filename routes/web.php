@@ -384,6 +384,12 @@ Route::middleware(['prevent-back-history'])->group(function () {
         ])->name('getMapsAi');
 
         // get pertanyaan kepuasan
+        Route::get('getKategoriKepuasan/{category}', [
+            LaporanController::class,
+            'getKategoriKepuasan',
+        ])->name('getKategoriKepuasan');
+
+        // get pertanyaan kepuasan
         Route::get('getPertanyaanKepuasan/{category}', [
             LaporanController::class,
             'getPertanyaanKepuasan',

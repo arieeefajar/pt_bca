@@ -10,7 +10,22 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        return view('admin.laporan');
+        return view('admin.laporan1');
+    }
+
+    public function getKategoriKepuasan($category)
+    {
+        if ($category == 'customer') {
+            return response()->json([
+                'data' => [
+                    'product',
+                    'promosi',
+                    'kualitas',
+                    'layanan',
+                    'penanganan'
+                ]
+            ]);
+        }
     }
 
     public function getPertanyaanKepuasan($category)
