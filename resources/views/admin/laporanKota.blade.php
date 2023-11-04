@@ -1,16 +1,19 @@
 @extends('layout.app')
 @section('title', 'Laporan')
-@section('menu', 'Laporan')
-@section('submenu', 'Menu')
+@section('menu1')
+    <span>Penilaian Pelanggan / {{ $location_name }}</span>
+@endsection
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
+
+            {{-- card bar race --}}
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h4 class="card-title mb-0">Penilaian Pelanggan / {{ $location_name }}</h4>
+                            <h4 class="card-title mb-0 mt-3 text-capitalize" id="titleContent">Kepuasan / Product</h4>
                         </div>
                         <div class="col-sm-6 text-right">
                             <div style="float: right">
@@ -38,11 +41,21 @@
                                                                     Kepuasan Pelanggan
                                                                 </a>
                                                                 <ul class="dropdown-menu">
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas produk</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan petugas lapang</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan komplain pelanggan</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
+                                                                            produk</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
+                                                                            petugas lapang</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
+                                                                            komplain pelanggan</a></li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
@@ -60,17 +73,40 @@
                                                                     Kekuatan Kelemahan Pesaing
                                                                 </a>
                                                                 <ul class="dropdown-menu">
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('riset', '{{ $location_name }}')">Riset dan Pengembangan</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('manajerial', '{{ $location_name }}')">Kemampuan Manajerial</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('inti', '{{ $location_name }}')">Kemampuan Inti dan Menyesuaikan Diri dengan Perubahan</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('portofolio', '{{ $location_name }}')">Portofolio Pesaing</a></li>
-                                                                    <li><a class="dropdown-item" onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('riset', '{{ $location_name }}')">Riset
+                                                                            dan Pengembangan</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('manajerial', '{{ $location_name }}')">Kemampuan
+                                                                            Manajerial</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('inti', '{{ $location_name }}')">Kemampuan
+                                                                            Inti dan Menyesuaikan Diri dengan Perubahan</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('portofolio', '{{ $location_name }}')">Portofolio
+                                                                            Pesaing</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</a>
+                                                                    </li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
@@ -84,53 +120,35 @@
                         </div>
                     </div>
                 </div><!-- end card header -->
+                <div class="card-body">
+                    <div id="chartdiv" class="mb-3"></div>
+                </div><!-- end card-body -->
+            </div><!-- end card -->
 
+            {{-- card index --}}
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0 mt-3">Index Kepuasan</h4>
+                </div>
                 <div class="card-body">
                     <div id="table-search">
-                        <div id="chartdiv"></div>
+                        <div class="table-responsive">
 
-                        {{-- <div class="table-responsive">
-
-                            <table class="table table-bordered table-nowrap" id="kepuasanPelanggan" style="display: none">
+                            <table class="table table-bordered table-nowrap" id="kepuasanPelanggan">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">1</th>
-                                        <th class="text-center">2</th>
-                                        <th class="text-center">3</th>
-                                        <th class="text-center">4</th>
-                                        <th class="text-center">5</th>
-                                        <th class="text-center">Total</th>
+                                        <th>Pertanyaan</th>
+                                        <th class="text-center">Kepuasan</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @if (count($customer_data) > 0)
-                                        @php
-                                            $num = 1;
-                                        @endphp
-                                        @foreach ($customer_data['penilaian_pelanggan'] as $key => $item)
-                                            <tr>
-                                                <td class="text-center">{{ $num }}</td>
-                                                <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $key) }}
-                                                </td>
-                                                <td class="text-center">{{ isset($item['1']) ? $item['1'] : '0' }}</td>
-                                                <td class="text-center">{{ isset($item['2']) ? $item['2'] : '0' }}</td>
-                                                <td class="text-center">{{ isset($item['3']) ? $item['3'] : '0' }}</td>
-                                                <td class="text-center">{{ isset($item['4']) ? $item['4'] : '0' }}</td>
-                                                <td class="text-center">{{ isset($item['5']) ? $item['5'] : '0' }}</td>
-                                                <td class="text-center">{{ isset($item['total']) ? $item['total'] : '0' }}
-                                                </td>
-                                            </tr>
-                                            @php
-                                                $num++;
-                                            @endphp
-                                        @endforeach
-                                    @endif
+                                <tbody id="kepuasaPelanggan">
                                 </tbody>
+                                <thead class="table-light" id="kepuasaPelangganFooter">
+                                </thead>
                             </table>
 
-                            <table class="table table-bordered table-nowrap" id="kekuatanKelemahan" style="display: none">
+                            {{-- <table class="table table-bordered table-nowrap" id="kekuatanKelemahan">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center">No</th>
@@ -167,11 +185,11 @@
                                         @endforeach
                                     @endif
                                 </tbody>
-                            </table>
-                        </div> --}}
+                            </table> --}}
+                        </div>
                     </div>
-                </div><!-- end card-body -->
-            </div><!-- end card -->
+                </div>
+            </div>
         </div>
         <!-- end col -->
     </div>
@@ -183,7 +201,7 @@
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Micro.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Spirited.js"></script>
 
     <!-- Chart code -->
     <script>
@@ -192,26 +210,95 @@
         });
 
         function getDataCartKepuasan(kategory, daerah) {
+
+            $('#titleContent').html(`Kepuasan / ${kategory}`);
+
             const area = btoa(daerah)
-            const url = `{{ url('getPertanyaanKepuasanByRespondents/${kategory}/${area}') }}`;
+            const urlChart = `{{ url('getPertanyaanKepuasanByRespondents/${kategory}/${area}') }}`;
+            const urlTable = `{{ url('getPertanyaanKepuasan/${kategory}/${area}') }}`;
             $.ajax({
                 type: "get",
-                url: url,
+                url: urlChart,
                 dataType: "json",
                 success: function(response) {
                     startChart(response);
                 }
             });
-        }
-        function getDataCartKekuatanKelemahan(kategory, daerah) {
-            const area = btoa(daerah)
-            const url = `{{ url('getPertanyaanKekuatanKelemahanByRespondents/${kategory}/${area}') }}`;
             $.ajax({
                 type: "get",
-                url: url,
+                url: urlTable,
+                dataType: "json",
+                success: function(response) {
+                    let contentTable = ''
+                    let contentTableFooter = ''
+                    let no = 1;
+                    $.each(response[1], function(key, value) {
+                        contentTable += `<tr>`
+                        contentTable += `<td class="text-center">${no}</td>`
+                        contentTable += `<td>${key}</td>`
+                        contentTable += `<td class="text-center">${value}%</td>`
+                        contentTable += `</tr>`
+                        no++
+                    });
+
+                    contentTableFooter += `<tr>`
+                    contentTableFooter += `<th class="text-end" colspan="2">Total</th>`
+                    contentTableFooter += `<th class="text-center">${response[0]['Kepuasan']}%</th>`
+                    contentTableFooter += `</tr>`
+
+                    $('#kepuasaPelanggan').html(contentTable);
+                    $('#kepuasaPelangganFooter').html(contentTableFooter);
+                },
+                error: function(params) {
+                    $('#kepuasaPelanggan').html('');
+                    $('#kepuasaPelangganFooter').html('');
+                }
+            });
+        }
+
+        function getDataCartKekuatanKelemahan(kategory, daerah) {
+
+            $('#titleContent').html(`Kekuatan & Kelemahan / ${kategory}`);
+
+            const area = btoa(daerah)
+            const urlChart = `{{ url('getPertanyaanKekuatanKelemahanByRespondents/${kategory}/${area}') }}`;
+            const urlTable = `{{ url('getPertanyaanKekuatanKelemahan/${kategory}/${area}') }}`;
+            $.ajax({
+                type: "get",
+                url: urlChart,
                 dataType: "json",
                 success: function(response) {
                     startChart(response);
+                }
+            });
+            $.ajax({
+                type: "get",
+                url: urlTable,
+                dataType: "json",
+                success: function(response) {
+                    let contentTable = ''
+                    let contentTableFooter = ''
+                    let no = 1;
+                    $.each(response[1], function(key, value) {
+                        contentTable += `<tr>`
+                        contentTable += `<td class="text-center">${no}</td>`
+                        contentTable += `<td class="text-wrap">${key}</td>`
+                        contentTable += `<td class="text-center">${value}%</td>`
+                        contentTable += `</tr>`
+                        no++
+                    });
+
+                    contentTableFooter += `<tr>`
+                    contentTableFooter += `<th class="text-end" colspan="2">Total</th>`
+                    contentTableFooter += `<th class="text-center">${response[0]['Kepuasan']}%</th>`
+                    contentTableFooter += `</tr>`
+
+                    $('#kepuasaPelanggan').html(contentTable);
+                    $('#kepuasaPelangganFooter').html(contentTableFooter);
+                },
+                error: function(params) {
+                    $('#kepuasaPelanggan').html('');
+                    $('#kepuasaPelangganFooter').html('');
                 }
             });
         }
@@ -241,7 +328,7 @@
                 // Set themes
                 // https://www.amcharts.com/docs/v5/concepts/themes/
 
-                root.setThemes([am5themes_Animated.new(root)]);
+                root.setThemes([am5themes_Animated.new(root), am5themes_Spirited.new(root), ]);
 
                 // Create chart
                 // https://www.amcharts.com/docs/v5/charts/xy-chart/
