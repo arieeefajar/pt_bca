@@ -1254,7 +1254,7 @@ class LaporanController extends Controller
                     foreach ($dataByCountIndex as $key => $val) {
                         $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
                     }
-                    $dataSend = $this->customSort($dataByCountIndex);
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
 
                     $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
@@ -2035,12 +2035,16 @@ class LaporanController extends Controller
                 $deep5 = isset($deep['5']) ? $deep['5'] : 0;
                 $deep4 = isset($deep['4']) ? $deep['4'] : 0;
                 $deep3 = isset($deep['3']) ? $deep['3'] : 0;
-                $deep['kepuasan'] = number_format((($deep5 + $deep4 + $deep3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $deep['kepuasan'] = number_format((($deep5 + $deep4 + $deep3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Kedudukan produk pesaing (dari sudut pandang pengguna) di setiap segmen pasar' => floatval($position_pov['kepuasan']),
-                    'Luas dan dalamnya lini produk pesaing' => floatval($deep['kepuasan']),
+                    'Kedudukan produk pesaing (dari sudut pandang pengguna) di setiap segmen pasar' => $position_pov['kepuasan'],
+                    'Luas dan dalamnya lini produk pesaing' => $deep['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2086,23 +2090,27 @@ class LaporanController extends Controller
                 $distribution_line5 = isset($distribution_line['5']) ? $distribution_line['5'] : 0;
                 $distribution_line4 = isset($distribution_line['4']) ? $distribution_line['4'] : 0;
                 $distribution_line3 = isset($distribution_line['3']) ? $distribution_line['3'] : 0;
-                $distribution_line['kepuasan'] = number_format((($distribution_line5 + $distribution_line4 + $distribution_line3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $distribution_line['kepuasan'] = number_format((($distribution_line5 + $distribution_line4 + $distribution_line3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $line_power5 = isset($line_power['5']) ? $line_power['5'] : 0;
                 $line_power4 = isset($line_power['4']) ? $line_power['4'] : 0;
                 $line_power3 = isset($line_power['3']) ? $line_power['3'] : 0;
-                $line_power['kepuasan'] = number_format((($line_power5 + $line_power4 + $line_power3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $line_power['kepuasan'] = number_format((($line_power5 + $line_power4 + $line_power3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $line_ability5 = isset($line_ability['5']) ? $line_ability['5'] : 0;
                 $line_ability4 = isset($line_ability['4']) ? $line_ability['4'] : 0;
                 $line_ability3 = isset($line_ability['3']) ? $line_ability['3'] : 0;
-                $line_ability['kepuasan'] = number_format((($line_ability5 + $line_ability4 + $line_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $line_ability['kepuasan'] = number_format((($line_ability5 + $line_ability4 + $line_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Kualitas saluran distribusi pesaing' => floatval($distribution_line['kepuasan']),
-                    'Kekuatan hubungan saluran distribusi yang dimiliki pesaing' => floatval($line_power['kepuasan']),
-                    'Kemampuan pesaing untuk melayani saluran distribusi' => floatval($line_ability['kepuasan']),
+                    'Kualitas saluran distribusi pesaing' => $distribution_line['kepuasan'],
+                    'Kekuatan hubungan saluran distribusi yang dimiliki pesaing' => $line_power['kepuasan'],
+                    'Kemampuan pesaing untuk melayani saluran distribusi' => $line_ability['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2139,17 +2147,21 @@ class LaporanController extends Controller
                 $marketing_skill5 = isset($marketing_skill['5']) ? $marketing_skill['5'] : 0;
                 $marketing_skill4 = isset($marketing_skill['4']) ? $marketing_skill['4'] : 0;
                 $marketing_skill3 = isset($marketing_skill['3']) ? $marketing_skill['3'] : 0;
-                $marketing_skill['kepuasan'] = number_format((($marketing_skill5 + $marketing_skill4 + $marketing_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $marketing_skill['kepuasan'] = number_format((($marketing_skill5 + $marketing_skill4 + $marketing_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dev_skill5 = isset($dev_skill['5']) ? $dev_skill['5'] : 0;
                 $dev_skill4 = isset($dev_skill['4']) ? $dev_skill['4'] : 0;
                 $dev_skill3 = isset($dev_skill['3']) ? $dev_skill['3'] : 0;
-                $dev_skill['kepuasan'] = number_format((($dev_skill5 + $dev_skill4 + $dev_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $dev_skill['kepuasan'] = number_format((($dev_skill5 + $dev_skill4 + $dev_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Keterampilan pesaing pada masing-masing aspek bauran pemasaran' => floatval($marketing_skill['kepuasan']),
-                    'Keterampilan pesaing dalam pengembangan produk baru' => floatval($dev_skill['kepuasan']),
+                    'Keterampilan pesaing pada masing-masing aspek bauran pemasaran' => $marketing_skill['kepuasan'],
+                    'Keterampilan pesaing dalam pengembangan produk baru' => $dev_skill['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2204,29 +2216,33 @@ class LaporanController extends Controller
                 $advanced_tech5 = isset($advanced_tech['5']) ? $advanced_tech['5'] : 0;
                 $advanced_tech4 = isset($advanced_tech['4']) ? $advanced_tech['4'] : 0;
                 $advanced_tech3 = isset($advanced_tech['3']) ? $advanced_tech['3'] : 0;
-                $advanced_tech['kepuasan'] = number_format((($advanced_tech5 + $advanced_tech4 + $advanced_tech3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $advanced_tech['kepuasan'] = number_format((($advanced_tech5 + $advanced_tech4 + $advanced_tech3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $fasility_flexibility5 = isset($fasility_flexibility['5']) ? $fasility_flexibility['5'] : 0;
                 $fasility_flexibility4 = isset($fasility_flexibility['4']) ? $fasility_flexibility['4'] : 0;
                 $fasility_flexibility3 = isset($fasility_flexibility['3']) ? $fasility_flexibility['3'] : 0;
-                $fasility_flexibility['kepuasan'] = number_format((($fasility_flexibility5 + $fasility_flexibility4 + $fasility_flexibility3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $fasility_flexibility['kepuasan'] = number_format((($fasility_flexibility5 + $fasility_flexibility4 + $fasility_flexibility3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $scale_up_skill5 = isset($scale_up_skill['5']) ? $scale_up_skill['5'] : 0;
                 $scale_up_skill4 = isset($scale_up_skill['4']) ? $scale_up_skill['4'] : 0;
                 $scale_up_skill3 = isset($scale_up_skill['3']) ? $scale_up_skill['3'] : 0;
-                $scale_up_skill['kepuasan'] = number_format((($scale_up_skill5 + $scale_up_skill4 + $scale_up_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $scale_up_skill['kepuasan'] = number_format((($scale_up_skill5 + $scale_up_skill4 + $scale_up_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $material_cost5 = isset($material_cost['5']) ? $material_cost['5'] : 0;
                 $material_cost4 = isset($material_cost['4']) ? $material_cost['4'] : 0;
                 $material_cost3 = isset($material_cost['3']) ? $material_cost['3'] : 0;
-                $material_cost['kepuasan'] = number_format((($material_cost5 + $material_cost4 + $material_cost3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $material_cost['kepuasan'] = number_format((($material_cost5 + $material_cost4 + $material_cost3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Kecanggihan teknologi dari fasilitas dan peralatan yang dimiliki pesaing' => floatval($advanced_tech['kepuasan']),
-                    'Fleksibilitas fasilitas dan peralatan yang dimiliki pesaing' => floatval($fasility_flexibility['kepuasan']),
-                    'Keterampilan pesaing dalam penambahan kapasitas, pengendalian kualitas, penggunaan fasilitas, dan peralatan' => floatval($scale_up_skill['kepuasan']),
-                    'Akses dan biaya bahan baku yang dialokasikan pesaing' => floatval($material_cost['kepuasan']),
+                    'Kecanggihan teknologi dari fasilitas dan peralatan yang dimiliki pesaing' => $advanced_tech['kepuasan'],
+                    'Fleksibilitas fasilitas dan peralatan yang dimiliki pesaing' => $fasility_flexibility['kepuasan'],
+                    'Keterampilan pesaing dalam penambahan kapasitas, pengendalian kualitas, penggunaan fasilitas, dan peralatan' => $scale_up_skill['kepuasan'],
+                    'Akses dan biaya bahan baku yang dialokasikan pesaing' => $material_cost['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2281,29 +2297,33 @@ class LaporanController extends Controller
                 $copyrights5 = isset($copyrights['5']) ? $copyrights['5'] : 0;
                 $copyrights4 = isset($copyrights['4']) ? $copyrights['4'] : 0;
                 $copyrights3 = isset($copyrights['3']) ? $copyrights['3'] : 0;
-                $copyrights['kepuasan'] = number_format((($copyrights5 + $copyrights4 + $copyrights3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $copyrights['kepuasan'] = number_format((($copyrights5 + $copyrights4 + $copyrights3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $rnd_ability5 = isset($rnd_ability['5']) ? $rnd_ability['5'] : 0;
                 $rnd_ability4 = isset($rnd_ability['4']) ? $rnd_ability['4'] : 0;
                 $rnd_ability3 = isset($rnd_ability['3']) ? $rnd_ability['3'] : 0;
-                $rnd_ability['kepuasan'] = number_format((($rnd_ability5 + $rnd_ability4 + $rnd_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $rnd_ability['kepuasan'] = number_format((($rnd_ability5 + $rnd_ability4 + $rnd_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $staff_skill5 = isset($staff_skill['5']) ? $staff_skill['5'] : 0;
                 $staff_skill4 = isset($staff_skill['4']) ? $staff_skill['4'] : 0;
                 $staff_skill3 = isset($staff_skill['3']) ? $staff_skill['3'] : 0;
-                $staff_skill['kepuasan'] = number_format((($staff_skill5 + $staff_skill4 + $staff_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $staff_skill['kepuasan'] = number_format((($staff_skill5 + $staff_skill4 + $staff_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $resource_access5 = isset($resource_access['5']) ? $resource_access['5'] : 0;
                 $resource_access4 = isset($resource_access['4']) ? $resource_access['4'] : 0;
                 $resource_access3 = isset($resource_access['3']) ? $resource_access['3'] : 0;
-                $resource_access['kepuasan'] = number_format((($resource_access5 + $resource_access4 + $resource_access3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $resource_access['kepuasan'] = number_format((($resource_access5 + $resource_access4 + $resource_access3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Paten dan hak cipta yang dimiliki pesaing' => floatval($copyrights['kepuasan']),
-                    'Kemampuan internal perusahaan pesaing dalam proses riset dan pengembangan' => floatval($rnd_ability['kepuasan']),
-                    'Keterampilan staf divisi riset dan pengembangan pesaing' => floatval($staff_skill['kepuasan']),
-                    'Akses pesaing ke sumber-sumber eksternal perusahaan untuk penguatan riset dan pengembangan' => floatval($resource_access['kepuasan']),
+                    'Paten dan hak cipta yang dimiliki pesaing' => $copyrights['kepuasan'],
+                    'Kemampuan internal perusahaan pesaing dalam proses riset dan pengembangan' => $rnd_ability['kepuasan'],
+                    'Keterampilan staf divisi riset dan pengembangan pesaing' => $staff_skill['kepuasan'],
+                    'Akses pesaing ke sumber-sumber eksternal perusahaan untuk penguatan riset dan pengembangan' => $resource_access['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2349,23 +2369,27 @@ class LaporanController extends Controller
                 $cash_flow5 = isset($cash_flow['5']) ? $cash_flow['5'] : 0;
                 $cash_flow4 = isset($cash_flow['4']) ? $cash_flow['4'] : 0;
                 $cash_flow3 = isset($cash_flow['3']) ? $cash_flow['3'] : 0;
-                $cash_flow['kepuasan'] = number_format((($cash_flow5 + $cash_flow4 + $cash_flow3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $cash_flow['kepuasan'] = number_format((($cash_flow5 + $cash_flow4 + $cash_flow3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $capital_capacity5 = isset($capital_capacity['5']) ? $capital_capacity['5'] : 0;
                 $capital_capacity4 = isset($capital_capacity['4']) ? $capital_capacity['4'] : 0;
                 $capital_capacity3 = isset($capital_capacity['3']) ? $capital_capacity['3'] : 0;
-                $capital_capacity['kepuasan'] = number_format((($capital_capacity5 + $capital_capacity4 + $capital_capacity3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $capital_capacity['kepuasan'] = number_format((($capital_capacity5 + $capital_capacity4 + $capital_capacity3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $trust_management5 = isset($trust_management['5']) ? $trust_management['5'] : 0;
                 $trust_management4 = isset($trust_management['4']) ? $trust_management['4'] : 0;
                 $trust_management3 = isset($trust_management['3']) ? $trust_management['3'] : 0;
-                $trust_management['kepuasan'] = number_format((($trust_management5 + $trust_management4 + $trust_management3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $trust_management['kepuasan'] = number_format((($trust_management5 + $trust_management4 + $trust_management3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Arus kas pesaing' => floatval($cash_flow['kepuasan']),
-                    'Kapasitas modal baru yang dimiliki pesaing untuk bisnis masa depan' => floatval($capital_capacity['kepuasan']),
-                    'Kemampuan manajemen keuangan pesaing, termasuk negosiasi, mendapatkan modal, kredit, persediaan, serta piutang' => floatval($trust_management['kepuasan']),
+                    'Arus kas pesaing' => $cash_flow['kepuasan'],
+                    'Kapasitas modal baru yang dimiliki pesaing untuk bisnis masa depan' => $capital_capacity['kepuasan'],
+                    'Kemampuan manajemen keuangan pesaing, termasuk negosiasi, mendapatkan modal, kredit, persediaan, serta piutang' => $trust_management['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2402,17 +2426,21 @@ class LaporanController extends Controller
                 $vision_mission5 = isset($vision_mission['5']) ? $vision_mission['5'] : 0;
                 $vision_mission4 = isset($vision_mission['4']) ? $vision_mission['4'] : 0;
                 $vision_mission3 = isset($vision_mission['3']) ? $vision_mission['3'] : 0;
-                $vision_mission['kepuasan'] = number_format((($vision_mission5 + $vision_mission4 + $vision_mission3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $vision_mission['kepuasan'] = number_format((($vision_mission5 + $vision_mission4 + $vision_mission3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $consistency_organization_structure5 = isset($consistency_organization_structure['5']) ? $consistency_organization_structure['5'] : 0;
                 $consistency_organization_structure4 = isset($consistency_organization_structure['4']) ? $consistency_organization_structure['4'] : 0;
                 $consistency_organization_structure3 = isset($consistency_organization_structure['3']) ? $consistency_organization_structure['3'] : 0;
-                $consistency_organization_structure['kepuasan'] = number_format((($consistency_organization_structure5 + $consistency_organization_structure4 + $consistency_organization_structure3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $consistency_organization_structure['kepuasan'] = number_format((($consistency_organization_structure5 + $consistency_organization_structure4 + $consistency_organization_structure3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Keseragaman nilai dan kejelasan misi dan tujuan organisasi pesaing' => floatval($vision_mission['kepuasan']),
-                    'Konsistensi struktur organisasi dengan strategi bisnis pesaing' => floatval($consistency_organization_structure['kepuasan']),
+                    'Keseragaman nilai dan kejelasan misi dan tujuan organisasi pesaing' => $vision_mission['kepuasan'],
+                    'Konsistensi struktur organisasi dengan strategi bisnis pesaing' => $consistency_organization_structure['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2449,17 +2477,21 @@ class LaporanController extends Controller
                 $lead_quality5 = isset($lead_quality['5']) ? $lead_quality['5'] : 0;
                 $lead_quality4 = isset($lead_quality['4']) ? $lead_quality['4'] : 0;
                 $lead_quality3 = isset($lead_quality['3']) ? $lead_quality['3'] : 0;
-                $lead_quality['kepuasan'] = number_format((($lead_quality5 + $lead_quality4 + $lead_quality3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $lead_quality['kepuasan'] = number_format((($lead_quality5 + $lead_quality4 + $lead_quality3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $management_ability5 = isset($management_ability['5']) ? $management_ability['5'] : 0;
                 $management_ability4 = isset($management_ability['4']) ? $management_ability['4'] : 0;
                 $management_ability3 = isset($management_ability['3']) ? $management_ability['3'] : 0;
-                $management_ability['kepuasan'] = number_format((($management_ability5 + $management_ability4 + $management_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $management_ability['kepuasan'] = number_format((($management_ability5 + $management_ability4 + $management_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Kualitas kepemimpinan CEO pesaing - kemampuan Direktur Utama untuk memotivasi' => floatval($lead_quality['kepuasan']),
-                    'Kemampuan manajemen perusahaan pesaing untuk mengkoordinasi fungsi atau kelompok fungsi tertentu (misalnya koordinasi pengembangan produk dengan riset)' => floatval($management_ability['kepuasan']),
+                    'Kualitas kepemimpinan CEO pesaing - kemampuan Direktur Utama untuk memotivasi' => $lead_quality['kepuasan'],
+                    'Kemampuan manajemen perusahaan pesaing untuk mengkoordinasi fungsi atau kelompok fungsi tertentu (misalnya koordinasi pengembangan produk dengan riset)' => $management_ability['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2523,35 +2555,39 @@ class LaporanController extends Controller
                 $functional_ability5 = isset($functional_ability['5']) ? $functional_ability['5'] : 0;
                 $functional_ability4 = isset($functional_ability['4']) ? $functional_ability['4'] : 0;
                 $functional_ability3 = isset($functional_ability['3']) ? $functional_ability['3'] : 0;
-                $functional_ability['kepuasan'] = number_format((($functional_ability5 + $functional_ability4 + $functional_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $functional_ability['kepuasan'] = number_format((($functional_ability5 + $functional_ability4 + $functional_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $measurement_ability5 = isset($measurement_ability['5']) ? $measurement_ability['5'] : 0;
                 $measurement_ability4 = isset($measurement_ability['4']) ? $measurement_ability['4'] : 0;
                 $measurement_ability3 = isset($measurement_ability['3']) ? $measurement_ability['3'] : 0;
-                $measurement_ability['kepuasan'] = number_format((($measurement_ability5 + $measurement_ability4 + $measurement_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $measurement_ability['kepuasan'] = number_format((($measurement_ability5 + $measurement_ability4 + $measurement_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $movement_response5 = isset($movement_response['5']) ? $movement_response['5'] : 0;
                 $movement_response4 = isset($movement_response['4']) ? $movement_response['4'] : 0;
                 $movement_response3 = isset($movement_response['3']) ? $movement_response['3'] : 0;
-                $movement_response['kepuasan'] = number_format((($movement_response5 + $movement_response4 + $movement_response3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $movement_response['kepuasan'] = number_format((($movement_response5 + $movement_response4 + $movement_response3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $response_to_change5 = isset($response_to_change['5']) ? $response_to_change['5'] : 0;
                 $response_to_change4 = isset($response_to_change['4']) ? $response_to_change['4'] : 0;
                 $response_to_change3 = isset($response_to_change['3']) ? $response_to_change['3'] : 0;
-                $response_to_change['kepuasan'] = number_format((($response_to_change5 + $response_to_change4 + $response_to_change3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $response_to_change['kepuasan'] = number_format((($response_to_change5 + $response_to_change4 + $response_to_change3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $competition_ability5 = isset($competition_ability['5']) ? $competition_ability['5'] : 0;
                 $competition_ability4 = isset($competition_ability['4']) ? $competition_ability['4'] : 0;
                 $competition_ability3 = isset($competition_ability['3']) ? $competition_ability['3'] : 0;
-                $competition_ability['kepuasan'] = number_format((($competition_ability5 + $competition_ability4 + $competition_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $competition_ability['kepuasan'] = number_format((($competition_ability5 + $competition_ability4 + $competition_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
                     'Kemampuan pesaing dalam bidang fungsional' => floatval($functional_ability['kepuasan']),
                     'Kemampuan pesaing mengukur konsistensi dari strateginya' => floatval($measurement_ability['kepuasan']),
-                    'Kapasitas pesaing dalam menanggapi gerakan pihak lain (misalnya produk baru yang belum diperkenalkan, tetapi sudah siap untuk diluncurkan)' => floatval($movement_response['kepuasan']),
-                    'Kemampuan pesaing dalam menyesuaikan diri dan merespon kondisi yang berubah di setiap bidang fungsional (misalnya menyesuaikan diri untuk bersaing dalam harga, mengelola lini produk yang lebih kompleks, menambah produk baru, bersaing dalam layanan, meningkatkan kegiatan pemasaran)' => floatval($response_to_change['kepuasan']),
-                    'Kemampuan pesaing untuk bertahan dari perang persaingan yang berkepanjangan, yang mungkin akan menekan laba dan arus kas' => floatval($competition_ability['kepuasan']),
+                    'Kapasitas pesaing dalam menanggapi gerakan pihak lain (misalnya produk baru yang belum diperkenalkan, tetapi sudah siap untuk diluncurkan)' => $movement_response['kepuasan'],
+                    'Kemampuan pesaing dalam menyesuaikan diri dan merespon kondisi yang berubah di setiap bidang fungsional (misalnya menyesuaikan diri untuk bersaing dalam harga, mengelola lini produk yang lebih kompleks, menambah produk baru, bersaing dalam layanan, meningkatkan kegiatan pemasaran)' => $response_to_change['kepuasan'],
+                    'Kemampuan pesaing untuk bertahan dari perang persaingan yang berkepanjangan, yang mungkin akan menekan laba dan arus kas' => $competition_ability['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2588,17 +2624,21 @@ class LaporanController extends Controller
                 $support_change5 = isset($support_change['5']) ? $support_change['5'] : 0;
                 $support_change4 = isset($support_change['4']) ? $support_change['4'] : 0;
                 $support_change3 = isset($support_change['3']) ? $support_change['3'] : 0;
-                $support_change['kepuasan'] = number_format((($support_change5 + $support_change4 + $support_change3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $support_change['kepuasan'] = number_format((($support_change5 + $support_change4 + $support_change3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $strengthening_ability5 = isset($strengthening_ability['5']) ? $strengthening_ability['5'] : 0;
                 $strengthening_ability4 = isset($strengthening_ability['4']) ? $strengthening_ability['4'] : 0;
                 $strengthening_ability3 = isset($strengthening_ability['3']) ? $strengthening_ability['3'] : 0;
-                $strengthening_ability['kepuasan'] = number_format((($strengthening_ability5 + $strengthening_ability4 + $strengthening_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $strengthening_ability['kepuasan'] = number_format((($strengthening_ability5 + $strengthening_ability4 + $strengthening_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Kemampuan pesaing untuk mendukung perubahan yang terencana dalam semua unit bisnisnya dalam bentuk sumber dana dan sumber daya lain' => floatval($support_change['kepuasan']),
-                    'Kemampuan pesaing untuk melengkapi atau memperkokoh kekuatan unit bisnisnya' => floatval($strengthening_ability['kepuasan']),
+                    'Kemampuan pesaing untuk mendukung perubahan yang terencana dalam semua unit bisnisnya dalam bentuk sumber dana dan sumber daya lain' => $support_change['kepuasan'],
+                    'Kemampuan pesaing untuk melengkapi atau memperkokoh kekuatan unit bisnisnya' => $strengthening_ability['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2626,11 +2666,15 @@ class LaporanController extends Controller
                 $special_treatment5 = isset($special_treatment['5']) ? $special_treatment['5'] : 0;
                 $special_treatment4 = isset($special_treatment['4']) ? $special_treatment['4'] : 0;
                 $special_treatment3 = isset($special_treatment['3']) ? $special_treatment['3'] : 0;
-                $special_treatment['kepuasan'] = number_format((($special_treatment5 + $special_treatment4 + $special_treatment3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $special_treatment['kepuasan'] = number_format((($special_treatment5 + $special_treatment4 + $special_treatment3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
-                    'Perlakuan khusus atau akses pesaing ke lembaga pemerintahan' => floatval($special_treatment['kepuasan']),
+                    'Perlakuan khusus atau akses pesaing ke lembaga pemerintahan' => $special_treatment['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -2732,19 +2776,24 @@ class LaporanController extends Controller
                     $position_pov5 = isset($position_pov['5']) ? $position_pov['5'] : 0;
                     $position_pov4 = isset($position_pov['4']) ? $position_pov['4'] : 0;
                     $position_pov3 = isset($position_pov['3']) ? $position_pov['3'] : 0;
-                    $position_pov['kepuasan'] = number_format((($position_pov5 + $position_pov4 + $position_pov3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $position_pov['kepuasan'] = number_format((($position_pov5 + $position_pov4 + $position_pov3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $deep5 = isset($deep['5']) ? $deep['5'] : 0;
                     $deep4 = isset($deep['4']) ? $deep['4'] : 0;
                     $deep3 = isset($deep['3']) ? $deep['3'] : 0;
-                    $deep['kepuasan'] = number_format((($deep5 + $deep4 + $deep3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $deep['kepuasan'] = number_format((($deep5 + $deep4 + $deep3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
                         'Kedudukan Pesaing' => floatval($position_pov['kepuasan']),
                         'Lini Produk' => floatval($deep['kepuasan']),
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
 
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
                     array_push($totalProductFinal, $total);
                     array_push($productFinal, $dataByCountIndex);
                 }
@@ -2775,18 +2824,23 @@ class LaporanController extends Controller
                     $marketing_skill5 = isset($marketing_skill['5']) ? $marketing_skill['5'] : 0;
                     $marketing_skill4 = isset($marketing_skill['4']) ? $marketing_skill['4'] : 0;
                     $marketing_skill3 = isset($marketing_skill['3']) ? $marketing_skill['3'] : 0;
-                    $marketing_skill['kepuasan'] = number_format((($marketing_skill5 + $marketing_skill4 + $marketing_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $marketing_skill['kepuasan'] = number_format((($marketing_skill5 + $marketing_skill4 + $marketing_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dev_skill5 = isset($dev_skill['5']) ? $dev_skill['5'] : 0;
                     $dev_skill4 = isset($dev_skill['4']) ? $dev_skill['4'] : 0;
                     $dev_skill3 = isset($dev_skill['3']) ? $dev_skill['3'] : 0;
-                    $dev_skill['kepuasan'] = number_format((($dev_skill5 + $dev_skill4 + $dev_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $dev_skill['kepuasan'] = number_format((($dev_skill5 + $dev_skill4 + $dev_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Keterampilan Pesaing' => floatval($marketing_skill['kepuasan']),
-                        'Pengembangan Produk' => floatval($dev_skill['kepuasan']),
+                        'Keterampilan Pesaing' => $marketing_skill['kepuasan'],
+                        'Pengembangan Produk' => $dev_skill['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalPemasaranFinal, $total);
                     array_push($pemasaranFinal, $dataByCountIndex);
@@ -2827,25 +2881,30 @@ class LaporanController extends Controller
                     $distribution_line5 = isset($distribution_line['5']) ? $distribution_line['5'] : 0;
                     $distribution_line4 = isset($distribution_line['4']) ? $distribution_line['4'] : 0;
                     $distribution_line3 = isset($distribution_line['3']) ? $distribution_line['3'] : 0;
-                    $distribution_line['kepuasan'] = number_format((($distribution_line5 + $distribution_line4 + $distribution_line3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $distribution_line['kepuasan'] = number_format((($distribution_line5 + $distribution_line4 + $distribution_line3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $line_power5 = isset($line_power['5']) ? $line_power['5'] : 0;
                     $line_power4 = isset($line_power['4']) ? $line_power['4'] : 0;
                     $line_power3 = isset($line_power['3']) ? $line_power['3'] : 0;
-                    $line_power['kepuasan'] = number_format((($line_power5 + $line_power4 + $line_power3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $line_power['kepuasan'] = number_format((($line_power5 + $line_power4 + $line_power3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $line_ability5 = isset($line_ability['5']) ? $line_ability['5'] : 0;
                     $line_ability4 = isset($line_ability['4']) ? $line_ability['4'] : 0;
                     $line_ability3 = isset($line_ability['3']) ? $line_ability['3'] : 0;
-                    $line_ability['kepuasan'] = number_format((($line_ability5 + $line_ability4 + $line_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $line_ability['kepuasan'] = number_format((($line_ability5 + $line_ability4 + $line_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Kualitas Distribusi' => floatval($distribution_line['kepuasan']),
-                        'Hubungan Saluran' => floatval($line_power['kepuasan']),
-                        'Pelayanan Distribusi' => floatval($line_ability['kepuasan']),
+                        'Kualitas Distribusi' => $distribution_line['kepuasan'],
+                        'Hubungan Saluran' => $line_power['kepuasan'],
+                        'Pelayanan Distribusi' => $line_ability['kepuasan'],
                     ];
 
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalDistribusiFinal, $total);
                     array_push($distribusiFinal, $dataByCountIndex);
@@ -2895,30 +2954,35 @@ class LaporanController extends Controller
                     $advanced_tech5 = isset($advanced_tech['5']) ? $advanced_tech['5'] : 0;
                     $advanced_tech4 = isset($advanced_tech['4']) ? $advanced_tech['4'] : 0;
                     $advanced_tech3 = isset($advanced_tech['3']) ? $advanced_tech['3'] : 0;
-                    $advanced_tech['kepuasan'] = number_format((($advanced_tech5 + $advanced_tech4 + $advanced_tech3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $advanced_tech['kepuasan'] = number_format((($advanced_tech5 + $advanced_tech4 + $advanced_tech3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $fasility_flexibility5 = isset($fasility_flexibility['5']) ? $fasility_flexibility['5'] : 0;
                     $fasility_flexibility4 = isset($fasility_flexibility['4']) ? $fasility_flexibility['4'] : 0;
                     $fasility_flexibility3 = isset($fasility_flexibility['3']) ? $fasility_flexibility['3'] : 0;
-                    $fasility_flexibility['kepuasan'] = number_format((($fasility_flexibility5 + $fasility_flexibility4 + $fasility_flexibility3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $fasility_flexibility['kepuasan'] = number_format((($fasility_flexibility5 + $fasility_flexibility4 + $fasility_flexibility3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $scale_up_skill5 = isset($scale_up_skill['5']) ? $scale_up_skill['5'] : 0;
                     $scale_up_skill4 = isset($scale_up_skill['4']) ? $scale_up_skill['4'] : 0;
                     $scale_up_skill3 = isset($scale_up_skill['3']) ? $scale_up_skill['3'] : 0;
-                    $scale_up_skill['kepuasan'] = number_format((($scale_up_skill5 + $scale_up_skill4 + $scale_up_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $scale_up_skill['kepuasan'] = number_format((($scale_up_skill5 + $scale_up_skill4 + $scale_up_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $material_cost5 = isset($material_cost['5']) ? $material_cost['5'] : 0;
                     $material_cost4 = isset($material_cost['4']) ? $material_cost['4'] : 0;
                     $material_cost3 = isset($material_cost['3']) ? $material_cost['3'] : 0;
-                    $material_cost['kepuasan'] = number_format((($material_cost5 + $material_cost4 + $material_cost3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $material_cost['kepuasan'] = number_format((($material_cost5 + $material_cost4 + $material_cost3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Teknologi Pesaing' => floatval($advanced_tech['kepuasan']),
-                        'Fleksibilitas Pesaing' => floatval($fasility_flexibility['kepuasan']),
-                        'Keterampilan Pesaing' => floatval($scale_up_skill['kepuasan']),
-                        'Akses Bahan Baku' => floatval($material_cost['kepuasan']),
+                        'Teknologi Pesaing' => $advanced_tech['kepuasan'],
+                        'Fleksibilitas Pesaing' => $fasility_flexibility['kepuasan'],
+                        'Keterampilan Pesaing' => $scale_up_skill['kepuasan'],
+                        'Akses Bahan Baku' => $material_cost['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalOperasionalFinal, $total);
                     array_push($operasionalFinal, $dataByCountIndex);
@@ -2968,30 +3032,35 @@ class LaporanController extends Controller
                     $copyrights5 = isset($copyrights['5']) ? $copyrights['5'] : 0;
                     $copyrights4 = isset($copyrights['4']) ? $copyrights['4'] : 0;
                     $copyrights3 = isset($copyrights['3']) ? $copyrights['3'] : 0;
-                    $copyrights['kepuasan'] = number_format((($copyrights5 + $copyrights4 + $copyrights3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $copyrights['kepuasan'] = number_format((($copyrights5 + $copyrights4 + $copyrights3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $rnd_ability5 = isset($rnd_ability['5']) ? $rnd_ability['5'] : 0;
                     $rnd_ability4 = isset($rnd_ability['4']) ? $rnd_ability['4'] : 0;
                     $rnd_ability3 = isset($rnd_ability['3']) ? $rnd_ability['3'] : 0;
-                    $rnd_ability['kepuasan'] = number_format((($rnd_ability5 + $rnd_ability4 + $rnd_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $rnd_ability['kepuasan'] = number_format((($rnd_ability5 + $rnd_ability4 + $rnd_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $staff_skill5 = isset($staff_skill['5']) ? $staff_skill['5'] : 0;
                     $staff_skill4 = isset($staff_skill['4']) ? $staff_skill['4'] : 0;
                     $staff_skill3 = isset($staff_skill['3']) ? $staff_skill['3'] : 0;
-                    $staff_skill['kepuasan'] = number_format((($staff_skill5 + $staff_skill4 + $staff_skill3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $staff_skill['kepuasan'] = number_format((($staff_skill5 + $staff_skill4 + $staff_skill3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $resource_access5 = isset($resource_access['5']) ? $resource_access['5'] : 0;
                     $resource_access4 = isset($resource_access['4']) ? $resource_access['4'] : 0;
                     $resource_access3 = isset($resource_access['3']) ? $resource_access['3'] : 0;
-                    $resource_access['kepuasan'] = number_format((($resource_access5 + $resource_access4 + $resource_access3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $resource_access['kepuasan'] = number_format((($resource_access5 + $resource_access4 + $resource_access3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Paten Pesaing' => floatval($copyrights['kepuasan']),
-                        'Riset Internal Pesaing' => floatval($rnd_ability['kepuasan']),
-                        'Keterampilan Riset Pesaing' => floatval($staff_skill['kepuasan']),
-                        'Akses Riset Eksternal Pesaing' => floatval($resource_access['kepuasan']),
+                        'Paten Pesaing' => $copyrights['kepuasan'],
+                        'Riset Internal Pesaing' => $rnd_ability['kepuasan'],
+                        'Keterampilan Riset Pesaing' => $staff_skill['kepuasan'],
+                        'Akses Riset Eksternal Pesaing' => $resource_access['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalRisetFinal, $total);
                     array_push($risetFinal, $dataByCountIndex);
@@ -3032,24 +3101,29 @@ class LaporanController extends Controller
                     $cash_flow5 = isset($cash_flow['5']) ? $cash_flow['5'] : 0;
                     $cash_flow4 = isset($cash_flow['4']) ? $cash_flow['4'] : 0;
                     $cash_flow3 = isset($cash_flow['3']) ? $cash_flow['3'] : 0;
-                    $cash_flow['kepuasan'] = number_format((($cash_flow5 + $cash_flow4 + $cash_flow3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $cash_flow['kepuasan'] = number_format((($cash_flow5 + $cash_flow4 + $cash_flow3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $capital_capacity5 = isset($capital_capacity['5']) ? $capital_capacity['5'] : 0;
                     $capital_capacity4 = isset($capital_capacity['4']) ? $capital_capacity['4'] : 0;
                     $capital_capacity3 = isset($capital_capacity['3']) ? $capital_capacity['3'] : 0;
-                    $capital_capacity['kepuasan'] = number_format((($capital_capacity5 + $capital_capacity4 + $capital_capacity3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $capital_capacity['kepuasan'] = number_format((($capital_capacity5 + $capital_capacity4 + $capital_capacity3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $trust_management5 = isset($trust_management['5']) ? $trust_management['5'] : 0;
                     $trust_management4 = isset($trust_management['4']) ? $trust_management['4'] : 0;
                     $trust_management3 = isset($trust_management['3']) ? $trust_management['3'] : 0;
-                    $trust_management['kepuasan'] = number_format((($trust_management5 + $trust_management4 + $trust_management3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $trust_management['kepuasan'] = number_format((($trust_management5 + $trust_management4 + $trust_management3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Arus kas pesaing' => floatval($cash_flow['kepuasan']),
-                        'Modal Baru Pesaing' => floatval($capital_capacity['kepuasan']),
-                        'Manajemen Keuangan Pesaing' => floatval($trust_management['kepuasan']),
+                        'Arus kas pesaing' => $cash_flow['kepuasan'],
+                        'Modal Baru Pesaing' => $capital_capacity['kepuasan'],
+                        'Manajemen Keuangan Pesaing' => $trust_management['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalKeuanganFinal, $total);
                     array_push($keuanganFinal, $dataByCountIndex);
@@ -3081,18 +3155,23 @@ class LaporanController extends Controller
                     $vision_mission5 = isset($vision_mission['5']) ? $vision_mission['5'] : 0;
                     $vision_mission4 = isset($vision_mission['4']) ? $vision_mission['4'] : 0;
                     $vision_mission3 = isset($vision_mission['3']) ? $vision_mission['3'] : 0;
-                    $vision_mission['kepuasan'] = number_format((($vision_mission5 + $vision_mission4 + $vision_mission3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $vision_mission['kepuasan'] = number_format((($vision_mission5 + $vision_mission4 + $vision_mission3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $consistency_organization_structure5 = isset($consistency_organization_structure['5']) ? $consistency_organization_structure['5'] : 0;
                     $consistency_organization_structure4 = isset($consistency_organization_structure['4']) ? $consistency_organization_structure['4'] : 0;
                     $consistency_organization_structure3 = isset($consistency_organization_structure['3']) ? $consistency_organization_structure['3'] : 0;
-                    $consistency_organization_structure['kepuasan'] = number_format((($consistency_organization_structure5 + $consistency_organization_structure4 + $consistency_organization_structure3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $consistency_organization_structure['kepuasan'] = number_format((($consistency_organization_structure5 + $consistency_organization_structure4 + $consistency_organization_structure3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Misi Pesaing' => floatval($vision_mission['kepuasan']),
-                        'Struktur Organisasi Pesaing' => floatval($consistency_organization_structure['kepuasan']),
+                        'Misi Pesaing' => $vision_mission['kepuasan'],
+                        'Struktur Organisasi Pesaing' => $consistency_organization_structure['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalOrganisasiFinal, $total);
                     array_push($organisasiFinal, $dataByCountIndex);
@@ -3124,18 +3203,23 @@ class LaporanController extends Controller
                     $lead_quality5 = isset($lead_quality['5']) ? $lead_quality['5'] : 0;
                     $lead_quality4 = isset($lead_quality['4']) ? $lead_quality['4'] : 0;
                     $lead_quality3 = isset($lead_quality['3']) ? $lead_quality['3'] : 0;
-                    $lead_quality['kepuasan'] = number_format((($lead_quality5 + $lead_quality4 + $lead_quality3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $lead_quality['kepuasan'] = number_format((($lead_quality5 + $lead_quality4 + $lead_quality3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $management_ability5 = isset($management_ability['5']) ? $management_ability['5'] : 0;
                     $management_ability4 = isset($management_ability['4']) ? $management_ability['4'] : 0;
                     $management_ability3 = isset($management_ability['3']) ? $management_ability['3'] : 0;
-                    $management_ability['kepuasan'] = number_format((($management_ability5 + $management_ability4 + $management_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $management_ability['kepuasan'] = number_format((($management_ability5 + $management_ability4 + $management_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Kualitas Kepemimpinan CEO' => floatval($lead_quality['kepuasan']),
-                        'Kemampuan Manajemen Perusahaan' => floatval($management_ability['kepuasan']),
+                        'Kualitas Kepemimpinan CEO' => $lead_quality['kepuasan'],
+                        'Kemampuan Manajemen Perusahaan' => $management_ability['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalManajerialFinal, $total);
                     array_push($manajerialFinal, $dataByCountIndex);
@@ -3194,36 +3278,41 @@ class LaporanController extends Controller
                     $functional_ability5 = isset($functional_ability['5']) ? $functional_ability['5'] : 0;
                     $functional_ability4 = isset($functional_ability['4']) ? $functional_ability['4'] : 0;
                     $functional_ability3 = isset($functional_ability['3']) ? $functional_ability['3'] : 0;
-                    $functional_ability['kepuasan'] = number_format((($functional_ability5 + $functional_ability4 + $functional_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $functional_ability['kepuasan'] = number_format((($functional_ability5 + $functional_ability4 + $functional_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $measurement_ability5 = isset($measurement_ability['5']) ? $measurement_ability['5'] : 0;
                     $measurement_ability4 = isset($measurement_ability['4']) ? $measurement_ability['4'] : 0;
                     $measurement_ability3 = isset($measurement_ability['3']) ? $measurement_ability['3'] : 0;
-                    $measurement_ability['kepuasan'] = number_format((($measurement_ability5 + $measurement_ability4 + $measurement_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $measurement_ability['kepuasan'] = number_format((($measurement_ability5 + $measurement_ability4 + $measurement_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $movement_response5 = isset($movement_response['5']) ? $movement_response['5'] : 0;
                     $movement_response4 = isset($movement_response['4']) ? $movement_response['4'] : 0;
                     $movement_response3 = isset($movement_response['3']) ? $movement_response['3'] : 0;
-                    $movement_response['kepuasan'] = number_format((($movement_response5 + $movement_response4 + $movement_response3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $movement_response['kepuasan'] = number_format((($movement_response5 + $movement_response4 + $movement_response3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $response_to_change5 = isset($response_to_change['5']) ? $response_to_change['5'] : 0;
                     $response_to_change4 = isset($response_to_change['4']) ? $response_to_change['4'] : 0;
                     $response_to_change3 = isset($response_to_change['3']) ? $response_to_change['3'] : 0;
-                    $response_to_change['kepuasan'] = number_format((($response_to_change5 + $response_to_change4 + $response_to_change3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $response_to_change['kepuasan'] = number_format((($response_to_change5 + $response_to_change4 + $response_to_change3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $competition_ability5 = isset($competition_ability['5']) ? $competition_ability['5'] : 0;
                     $competition_ability4 = isset($competition_ability['4']) ? $competition_ability['4'] : 0;
                     $competition_ability3 = isset($competition_ability['3']) ? $competition_ability['3'] : 0;
-                    $competition_ability['kepuasan'] = number_format((($competition_ability5 + $competition_ability4 + $competition_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $competition_ability['kepuasan'] = number_format((($competition_ability5 + $competition_ability4 + $competition_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Kemampuan Fungsional' => floatval($functional_ability['kepuasan']),
-                        'Konsistensi Strategi' => floatval($measurement_ability['kepuasan']),
-                        'Kapasitas Responsif' => floatval($movement_response['kepuasan']),
-                        'Kemampuan Adaptasi' => floatval($response_to_change['kepuasan']),
-                        'Kemampuan Bertahan' => floatval($competition_ability['kepuasan']),
+                        'Kemampuan Fungsional' => $functional_ability['kepuasan'],
+                        'Konsistensi Strategi' => $measurement_ability['kepuasan'],
+                        'Kapasitas Responsif' => $movement_response['kepuasan'],
+                        'Kemampuan Adaptasi' => $response_to_change['kepuasan'],
+                        'Kemampuan Bertahan' => $competition_ability['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalIntiFinal, $total);
                     array_push($intiFinal, $dataByCountIndex);
@@ -3255,18 +3344,23 @@ class LaporanController extends Controller
                     $support_change5 = isset($support_change['5']) ? $support_change['5'] : 0;
                     $support_change4 = isset($support_change['4']) ? $support_change['4'] : 0;
                     $support_change3 = isset($support_change['3']) ? $support_change['3'] : 0;
-                    $support_change['kepuasan'] = number_format((($support_change5 + $support_change4 + $support_change3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $support_change['kepuasan'] = number_format((($support_change5 + $support_change4 + $support_change3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $strengthening_ability5 = isset($strengthening_ability['5']) ? $strengthening_ability['5'] : 0;
                     $strengthening_ability4 = isset($strengthening_ability['4']) ? $strengthening_ability['4'] : 0;
                     $strengthening_ability3 = isset($strengthening_ability['3']) ? $strengthening_ability['3'] : 0;
-                    $strengthening_ability['kepuasan'] = number_format((($strengthening_ability5 + $strengthening_ability4 + $strengthening_ability3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $strengthening_ability['kepuasan'] = number_format((($strengthening_ability5 + $strengthening_ability4 + $strengthening_ability3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Mendukung Perubahan' => floatval($support_change['kepuasan']),
-                        'Mengokoh Unit' => floatval($strengthening_ability['kepuasan']),
+                        'Mendukung Perubahan' => $support_change['kepuasan'],
+                        'Mengokoh Unit' => $strengthening_ability['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalPortofolioFinal, $total);
                     array_push($portofolioFinal, $dataByCountIndex);
@@ -3289,12 +3383,17 @@ class LaporanController extends Controller
                     $special_treatment5 = isset($special_treatment['5']) ? $special_treatment['5'] : 0;
                     $special_treatment4 = isset($special_treatment['4']) ? $special_treatment['4'] : 0;
                     $special_treatment3 = isset($special_treatment['3']) ? $special_treatment['3'] : 0;
-                    $special_treatment['kepuasan'] = number_format((($special_treatment5 + $special_treatment4 + $special_treatment3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                    $special_treatment['kepuasan'] = number_format((($special_treatment5 + $special_treatment4 + $special_treatment3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Akses Pemerintah' => floatval($special_treatment['kepuasan']),
+                        'Akses Pemerintah' => $special_treatment['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalLainnyaFinal, $total);
                     array_push($lainnyaFinal, $dataByCountIndex);
@@ -3339,6 +3438,7 @@ class LaporanController extends Controller
                 'status' => 'error',
                 'message' => 'error server',
             ];
+            dd($th);
             return response()->json($returnData, 500);
         }
     }
