@@ -40,7 +40,7 @@
                                                                     aria-expanded="false" style="color: black">
                                                                     Kepuasan Pelanggan
                                                                 </a>
-                                                                <ul class="dropdown-menu">
+                                                                <ul class="dropdown-menu kuisioner">
                                                                     <li><a class="dropdown-item"
                                                                             onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
                                                                     </li>
@@ -72,7 +72,7 @@
                                                                     aria-expanded="false" style="color: black">
                                                                     Kekuatan Kelemahan Pesaing
                                                                 </a>
-                                                                <ul class="dropdown-menu">
+                                                                <ul class="dropdown-menu kuisioner">
                                                                     <li><a class="dropdown-item"
                                                                             onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
                                                                     </li>
