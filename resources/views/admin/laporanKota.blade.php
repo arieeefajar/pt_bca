@@ -328,7 +328,7 @@
                 // Set themes
                 // https://www.amcharts.com/docs/v5/concepts/themes/
 
-                root.setThemes([am5themes_Animated.new(root), am5themes_Spirited.new(root), ]);
+                root.setThemes([am5themes_Animated.new(root)]);
 
                 // Create chart
                 // https://www.amcharts.com/docs/v5/charts/xy-chart/
