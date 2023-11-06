@@ -56,7 +56,7 @@
             height: 350px;
         }
 
-        .dropdown:hover .dropdown-menu {
+        .dropdown:hover .kuisioner {
             display: block;
         }
     </style>

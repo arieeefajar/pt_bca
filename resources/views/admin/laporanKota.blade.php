@@ -40,7 +40,7 @@
                                                                     aria-expanded="false" style="color: black">
                                                                     Kepuasan Pelanggan
                                                                 </a>
-                                                                <ul class="dropdown-menu">
+                                                                <ul class="dropdown-menu kuisioner">
                                                                     <li><a class="dropdown-item"
                                                                             onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
                                                                     </li>
@@ -72,7 +72,7 @@
                                                                     aria-expanded="false" style="color: black">
                                                                     Kekuatan Kelemahan Pesaing
                                                                 </a>
-                                                                <ul class="dropdown-menu">
+                                                                <ul class="dropdown-menu kuisioner">
                                                                     <li><a class="dropdown-item"
                                                                             onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
                                                                     </li>
@@ -332,7 +332,7 @@
                 // Set themes
                 // https://www.amcharts.com/docs/v5/concepts/themes/
 
-                root.setThemes([am5themes_Animated.new(root), am5themes_Spirited.new(root), ]);
+                root.setThemes([am5themes_Animated.new(root)]);
 
                 // Create chart
                 // https://www.amcharts.com/docs/v5/charts/xy-chart/
