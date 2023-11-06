@@ -242,7 +242,7 @@
                     });
 
                     contentTableFooter += `<tr>`
-                    contentTableFooter += `<th class="text-end" colspan="2">Total</th>`
+                    contentTableFooter += `<th class="text-end" colspan="2">Rata-rata</th>`
                     contentTableFooter += `<th class="text-center">${response[0]['Kepuasan']}%</th>`
                     contentTableFooter += `</tr>`
 
@@ -289,7 +289,7 @@
                     });
 
                     contentTableFooter += `<tr>`
-                    contentTableFooter += `<th class="text-end" colspan="2">Total</th>`
+                    contentTableFooter += `<th class="text-end" colspan="2">Rata-rata</th>`
                     contentTableFooter += `<th class="text-center">${response[0]['Kepuasan']}%</th>`
                     contentTableFooter += `</tr>`
 

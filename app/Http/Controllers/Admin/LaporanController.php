@@ -134,7 +134,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $price_comparison5 = isset($price_comparison['5'])
                     ? $price_comparison['5']
@@ -155,7 +155,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $variety_previlege5 = isset($variety_previlege['5'])
                     ? $variety_previlege['5']
@@ -176,7 +176,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $packaging_view5 = isset($packaging_view['5'])
                     ? $packaging_view['5']
@@ -197,7 +197,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $getting_easy5 = isset($getting_easy['5'])
                     ? $getting_easy['5']
@@ -216,7 +216,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $satisfaction5 = isset($satisfaction['5'])
                     ? $satisfaction['5']
@@ -235,7 +235,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $image_view5 = isset($image_view['5']) ? $image_view['5'] : 0;
                 $image_view4 = isset($image_view['4']) ? $image_view['4'] : 0;
@@ -248,17 +248,21 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $dataSend = [
-                    'Kelengkapan informasi pada kemasan' => floatval($information['kepuasan']),
-                    'Harga Produk dibanding dengan kompetitor' => floatval($price_comparison['kepuasan']),
-                    'Keunggulan Varietas dibanding kompetitor' => floatval($variety_previlege['kepuasan']),
-                    'Tampilan kemasan produk' => floatval($packaging_view['kepuasan']),
-                    'Kemudahan dalam memperoleh / membeli Produk' => floatval($getting_easy['kepuasan']),
-                    'Kepuasan memilih produk' => floatval($satisfaction['kepuasan']),
-                    'Tampilan gambar pada kemasan produk' => floatval($image_view['kepuasan']),
+                    'Kelengkapan informasi pada kemasan' => $information['kepuasan'],
+                    'Harga Produk dibanding dengan kompetitor' => $price_comparison['kepuasan'],
+                    'Keunggulan Varietas dibanding kompetitor' => $variety_previlege['kepuasan'],
+                    'Tampilan kemasan produk' => $packaging_view['kepuasan'],
+                    'Kemudahan dalam memperoleh / membeli Produk' => $getting_easy['kepuasan'],
+                    'Kepuasan memilih produk' => $satisfaction['kepuasan'],
+                    'Tampilan gambar pada kemasan produk' => $image_view['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -322,7 +326,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $promotion_quantity5 = isset($promotion_quantity['5'])
                     ? $promotion_quantity['5']
@@ -343,7 +347,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $promotion_quality5 = isset($promotion_quality['5'])
                     ? $promotion_quality['5']
@@ -364,13 +368,17 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $dataSend = [
-                    'Kecukupan jumlah material promosi' => floatval($material_amount['kepuasan']),
-                    'Kuantitas kegiatan promosi yang dilaksanakan oleh petugas' => floatval($promotion_quantity['kepuasan']),
-                    'Kualitas kegiatan promosi yang dilaksanakan oleh petugas' => floatval($promotion_quality['kepuasan']),
+                    'Kecukupan jumlah material promosi' => $material_amount['kepuasan'],
+                    'Kuantitas kegiatan promosi yang dilaksanakan oleh petugas' => $promotion_quantity['kepuasan'],
+                    'Kualitas kegiatan promosi yang dilaksanakan oleh petugas' => $promotion_quality['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -481,7 +489,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $vigor5 = isset($vigor['5']) ? $vigor['5'] : 0;
                 $vigor4 = isset($vigor['4']) ? $vigor['4'] : 0;
@@ -494,7 +502,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $growing_power5 = isset($growing_power['5'])
                     ? $growing_power['5']
@@ -513,7 +521,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $genetic_purity5 = isset($genetic_purity['5'])
                     ? $genetic_purity['5']
@@ -534,7 +542,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $pest_resistance5 = isset($pest_resistance['5'])
                     ? $pest_resistance['5']
@@ -555,7 +563,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $suitablelity_image_result5 = isset(
                     $suitablelity_image_result['5']
@@ -582,7 +590,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $suitablelity_result_request5 = isset(
                     $suitablelity_result_request['5']
@@ -609,7 +617,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $satisfaction_result5 = isset($satisfaction_result['5'])
                     ? $satisfaction_result['5']
@@ -630,18 +638,22 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $dataSend = [
-                    'Kemurnian fisik benih produk sesuai dengan standart mutu' => floatval($seed_purity['kepuasan']),
-                    'Vigor benih produk pada saat dipersemaian' => floatval($vigor['kepuasan']),
-                    'Daya tumbuh benih produk, sesuai dengan standart mutu' => floatval($growing_power['kepuasan']),
-                    'Kemurnian genetik sesuai dengan standart mutu' => floatval($genetic_purity['kepuasan']),
-                    'Ketahanan hama dan penyakit produk' => floatval($pest_resistance['kepuasan']),
-                    'Kesesuaian gambar produk dengan hasil panen' => floatval($suitablelity_image_result['kepuasan']),
-                    'Kesesuaian hasil panen terhadap permintaan pasar' => floatval($suitablelity_result_request['kepuasan']),
-                    'Kepuasan hasil panen produk' => floatval($satisfaction_result['kepuasan']),
+                    'Kemurnian fisik benih produk sesuai dengan standart mutu' => $seed_purity['kepuasan'],
+                    'Vigor benih produk pada saat dipersemaian' => $vigor['kepuasan'],
+                    'Daya tumbuh benih produk, sesuai dengan standart mutu' => $growing_power['kepuasan'],
+                    'Kemurnian genetik sesuai dengan standart mutu' => $genetic_purity['kepuasan'],
+                    'Ketahanan hama dan penyakit produk' => $pest_resistance['kepuasan'],
+                    'Kesesuaian gambar produk dengan hasil panen' => $suitablelity_image_result['kepuasan'],
+                    'Kesesuaian hasil panen terhadap permintaan pasar' => $suitablelity_result_request['kepuasan'],
+                    'Kepuasan hasil panen produk' => $satisfaction_result['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -736,7 +748,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $visit_intensity5 = isset($visit_intensity['5'])
                     ? $visit_intensity['5']
@@ -757,7 +769,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $communication_intensity5 = isset($communication_intensity['5'])
                     ? $communication_intensity['5']
@@ -778,7 +790,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $skill_credibility5 = isset($skill_credibility['5'])
                     ? $skill_credibility['5']
@@ -799,7 +811,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $influence_of_officer5 = isset($influence_of_officer['5'])
                     ? $influence_of_officer['5']
@@ -820,7 +832,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $communication_skill5 = isset($communication_skill['5'])
                     ? $communication_skill['5']
@@ -841,16 +853,20 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $dataSend = [
-                    'Kemampuan teknis budidaya petugas lapang' => floatval($technical_ability['kepuasan']),
-                    'Intensitas kunjungan petugas lapang' => floatval($visit_intensity['kepuasan']),
-                    'Intensitas interaksi dan komunikasi petugas lapang' => floatval($communication_intensity['kepuasan']),
-                    'Kecakapan dan kredibilitas (dapat dipercaya) petugas lapang' => floatval($skill_credibility['kepuasan']),
-                    'Pengaruh keberadaan petugas lapang' => floatval($influence_of_officer['kepuasan']),
-                    'Kemampuan teknis komunikasi petugas lapang' => floatval($communication_skill['kepuasan']),
+                    'Kemampuan teknis budidaya petugas lapang' => $technical_ability['kepuasan'],
+                    'Intensitas kunjungan petugas lapang' => $visit_intensity['kepuasan'],
+                    'Intensitas interaksi dan komunikasi petugas lapang' => $communication_intensity['kepuasan'],
+                    'Kecakapan dan kredibilitas (dapat dipercaya) petugas lapang' => $skill_credibility['kepuasan'],
+                    'Pengaruh keberadaan petugas lapang' => $influence_of_officer['kepuasan'],
+                    'Kemampuan teknis komunikasi petugas lapang' => $communication_skill['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -914,7 +930,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $completion_speed5 = isset($completion_speed['5'])
                     ? $completion_speed['5']
@@ -935,7 +951,7 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $handling5 = isset($handling['5']) ? $handling['5'] : 0;
                 $handling4 = isset($handling['4']) ? $handling['4'] : 0;
@@ -948,13 +964,17 @@ class LaporanController extends Controller
                         2,
                         '.',
                         ''
-                    ) . '%';
+                    );
 
                 $dataSend = [
-                    'Kecepatan verifikasi komplain pelanggan' => floatval($verification_speed['kepuasan']),
-                    'Kecepatan penyelesaian komplain pelanggan' => floatval($completion_speed['kepuasan']),
-                    'Penanganan komplain pelanggan' => floatval($handling['kepuasan']),
+                    'Kecepatan verifikasi komplain pelanggan' => $verification_speed['kepuasan'],
+                    'Kecepatan penyelesaian komplain pelanggan' => $completion_speed['kepuasan'],
+                    'Penanganan komplain pelanggan' => $handling['kepuasan'],
                 ];
+
+                foreach ($dataSend as $key => $val) {
+                    $dataSend[$key] = $this->roundNumber(floatval($dataSend[$key] * count($dataSend)));
+                }
 
                 $dataSend = $this->customSort($dataSend);
                 return response()->json([
@@ -1105,7 +1125,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $price_comparison5 = isset($price_comparison['5'])
                         ? $price_comparison['5']
@@ -1126,7 +1146,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $variety_previlege5 = isset($variety_previlege['5'])
                         ? $variety_previlege['5']
@@ -1147,7 +1167,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $packaging_view5 = isset($packaging_view['5'])
                         ? $packaging_view['5']
@@ -1168,7 +1188,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $getting_easy5 = isset($getting_easy['5'])
                         ? $getting_easy['5']
@@ -1187,7 +1207,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $satisfaction5 = isset($satisfaction['5'])
                         ? $satisfaction['5']
@@ -1206,7 +1226,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $image_view5 = isset($image_view['5']) ? $image_view['5'] : 0;
                     $image_view4 = isset($image_view['4']) ? $image_view['4'] : 0;
@@ -1219,18 +1239,24 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $dataByCountIndex = [
-                        'Kemasan Produk' => floatval($information['kepuasan']),
-                        'Harga Kompetitor' => floatval($price_comparison['kepuasan']),
-                        'Keunggulan Varietas' => floatval($variety_previlege['kepuasan']),
-                        'Desain Kemasan' => floatval($packaging_view['kepuasan']),
-                        'Akses Pembelian' => floatval($getting_easy['kepuasan']),
-                        'Kepuasan Konsumen' => floatval($satisfaction['kepuasan']),
-                        'Tampilan Gambar' => floatval($image_view['kepuasan']),
+                        'Kemasan Produk' => $information['kepuasan'],
+                        'Harga Kompetitor' => $price_comparison['kepuasan'],
+                        'Keunggulan Varietas' => $variety_previlege['kepuasan'],
+                        'Desain Kemasan' => $packaging_view['kepuasan'],
+                        'Akses Pembelian' => $getting_easy['kepuasan'],
+                        'Kepuasan Konsumen' => $satisfaction['kepuasan'],
+                        'Tampilan Gambar' => $image_view['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+                    $dataSend = $this->customSort($dataByCountIndex);
+
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalProductFinal, $total);
                     array_push($productFinal, $dataByCountIndex);
@@ -1288,7 +1314,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $promotion_quantity5 = isset($promotion_quantity['5'])
                         ? $promotion_quantity['5']
@@ -1309,7 +1335,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $promotion_quality5 = isset($promotion_quality['5'])
                         ? $promotion_quality['5']
@@ -1330,15 +1356,19 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $dataByCountIndex = [
-                        'Ketersediaan Materi' => floatval($material_amount['kepuasan']),
-                        'Intensitas Petugas' => floatval($promotion_quantity['kepuasan']),
-                        'Kualitas Promosi' => floatval($promotion_quality['kepuasan']),
+                        'Ketersediaan Materi' => $material_amount['kepuasan'],
+                        'Intensitas Petugas' => $promotion_quantity['kepuasan'],
+                        'Kualitas Promosi' => $promotion_quality['kepuasan'],
                     ];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
 
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalPromosiFinal, $total);
                     array_push($promosiFinal, $dataByCountIndex);
@@ -1443,7 +1473,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $vigor5 = isset($vigor['5']) ? $vigor['5'] : 0;
                     $vigor4 = isset($vigor['4']) ? $vigor['4'] : 0;
@@ -1456,7 +1486,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $growing_power5 = isset($growing_power['5'])
                         ? $growing_power['5']
@@ -1475,7 +1505,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $genetic_purity5 = isset($genetic_purity['5'])
                         ? $genetic_purity['5']
@@ -1496,7 +1526,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $pest_resistance5 = isset($pest_resistance['5'])
                         ? $pest_resistance['5']
@@ -1517,7 +1547,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $suitablelity_image_result5 = isset(
                         $suitablelity_image_result['5']
@@ -1544,7 +1574,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $suitablelity_result_request5 = isset(
                         $suitablelity_result_request['5']
@@ -1571,7 +1601,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $satisfaction_result5 = isset($satisfaction_result['5'])
                         ? $satisfaction_result['5']
@@ -1592,19 +1622,24 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $dataByCountIndex = [
-                        'Murni Benih' => floatval($seed_purity['kepuasan']),
-                        'Vigor Benih' => floatval($vigor['kepuasan']),
-                        'Daya Tumbuh' => floatval($growing_power['kepuasan']),
-                        'Murni Genetik' => floatval($genetic_purity['kepuasan']),
-                        'Ketahanan Produk' => floatval($pest_resistance['kepuasan']),
-                        'Kesesuaian Gambar' => floatval($suitablelity_image_result['kepuasan']),
-                        'Kesesuaian Panen' => floatval($suitablelity_result_request['kepuasan']),
-                        'Kepuasan Panen' => floatval($satisfaction_result['kepuasan']),
+                        'Murni Benih' => $seed_purity['kepuasan'],
+                        'Vigor Benih' => $vigor['kepuasan'],
+                        'Daya Tumbuh' => $growing_power['kepuasan'],
+                        'Murni Genetik' => $genetic_purity['kepuasan'],
+                        'Ketahanan Produk' => $pest_resistance['kepuasan'],
+                        'Kesesuaian Gambar' => $suitablelity_image_result['kepuasan'],
+                        'Kesesuaian Panen' => $suitablelity_result_request['kepuasan'],
+                        'Kepuasan Panen' => $satisfaction_result['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalKualitasFinal, $total);
                     array_push($kualitasFinal, $dataByCountIndex);
@@ -1693,7 +1728,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $visit_intensity5 = isset($visit_intensity['5'])
                         ? $visit_intensity['5']
@@ -1714,7 +1749,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $communication_intensity5 = isset($communication_intensity['5'])
                         ? $communication_intensity['5']
@@ -1735,7 +1770,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $skill_credibility5 = isset($skill_credibility['5'])
                         ? $skill_credibility['5']
@@ -1756,7 +1791,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $influence_of_officer5 = isset($influence_of_officer['5'])
                         ? $influence_of_officer['5']
@@ -1777,7 +1812,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $communication_skill5 = isset($communication_skill['5'])
                         ? $communication_skill['5']
@@ -1798,17 +1833,22 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $dataByCountIndex = [
-                        'Kemampuan Teknis' => floatval($technical_ability['kepuasan']),
-                        'Intensitas Kunjungan' => floatval($visit_intensity['kepuasan']),
-                        'Interaksi Petugas' => floatval($communication_intensity['kepuasan']),
-                        'Kecakapan Petugas' => floatval($skill_credibility['kepuasan']),
-                        'Pengaruh Petugas' => floatval($influence_of_officer['kepuasan']),
-                        'Kemampuan Komunikasi' => floatval($communication_skill['kepuasan']),
+                        'Kemampuan Teknis' => $technical_ability['kepuasan'],
+                        'Intensitas Kunjungan' => $visit_intensity['kepuasan'],
+                        'Interaksi Petugas' => $communication_intensity['kepuasan'],
+                        'Kecakapan Petugas' => $skill_credibility['kepuasan'],
+                        'Pengaruh Petugas' => $influence_of_officer['kepuasan'],
+                        'Kemampuan Komunikasi' => $communication_skill['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalLayananFinal, $total);
                     array_push($layananFinal, $dataByCountIndex);
@@ -1866,7 +1906,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $completion_speed5 = isset($completion_speed['5'])
                         ? $completion_speed['5']
@@ -1887,7 +1927,7 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $handling5 = isset($handling['5']) ? $handling['5'] : 0;
                     $handling4 = isset($handling['4']) ? $handling['4'] : 0;
@@ -1900,14 +1940,20 @@ class LaporanController extends Controller
                             2,
                             '.',
                             ''
-                        ) . '%';
+                        );
 
                     $dataByCountIndex = [
-                        'Verifikasi Cepat' => floatval($verification_speed['kepuasan']),
-                        'Penyelesaian Cepat' => floatval($completion_speed['kepuasan']),
-                        'Penanganan Komplain' => floatval($handling['kepuasan']),
+                        'Verifikasi Cepat' => $verification_speed['kepuasan'],
+                        'Penyelesaian Cepat' => $completion_speed['kepuasan'],
+                        'Penanganan Komplain' => $handling['kepuasan'],
                     ];
-                    $total = ['total' => (int) array_sum($dataByCountIndex)];
+
+                    foreach ($dataByCountIndex as $key => $val) {
+                        $dataByCountIndex[$key] = $this->roundNumber(floatval($dataByCountIndex[$key] * count($dataByCountIndex)));
+                    }
+
+                    $dataByCountIndex = $this->customSort($dataByCountIndex);
+                    $total = ['total' => (int) (array_sum($dataByCountIndex) / count($dataByCountIndex))];
 
                     array_push($totalPenangananFinal, $total);
                     array_push($penangananFinal, $dataByCountIndex);
@@ -1984,7 +2030,7 @@ class LaporanController extends Controller
                 $position_pov5 = isset($position_pov['5']) ? $position_pov['5'] : 0;
                 $position_pov4 = isset($position_pov['4']) ? $position_pov['4'] : 0;
                 $position_pov3 = isset($position_pov['3']) ? $position_pov['3'] : 0;
-                $position_pov['kepuasan'] = number_format((($position_pov5 + $position_pov4 + $position_pov3) / $dataTotalAllKategory) * 100, 2, '.', '') . '%';
+                $position_pov['kepuasan'] = number_format((($position_pov5 + $position_pov4 + $position_pov3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $deep5 = isset($deep['5']) ? $deep['5'] : 0;
                 $deep4 = isset($deep['4']) ? $deep['4'] : 0;
@@ -4845,5 +4891,14 @@ class LaporanController extends Controller
         }
 
         return $sortedData;
+    }
+
+    function roundNumber($number)
+    {
+        if ($number - floor($number) >= 0.5) {
+            return ceil($number);
+        } else {
+            return floor($number);
+        }
     }
 }
