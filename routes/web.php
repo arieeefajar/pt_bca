@@ -352,64 +352,30 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
     // route only executive
     Route::middleware(['auth', 'access:executive'])->group(function () {
+
         // laporan routes
-        Route::get('laporan', [LaporanController::class, 'index'])->name(
-            'laporan.index'
-        );
-        Route::get('laporan/{type}', [
-            LaporanController::class,
-            'jawaban_kuisioner',
-        ])->name('laporan.jawaban');
-        Route::get('laporanKota', [
-            LaporanController::class,
-            'laporanKota',
-        ])->name('laporan.kota');
+        Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+        Route::get('laporan/{type}', [LaporanController::class,'jawaban_kuisioner'])->name('laporan.jawaban');
+        Route::get('laporanKota', [LaporanController::class,'laporanKota',])->name('laporan.kota');
 
         // laporan perdaerah
-        Route::get('laporanDaerah/{daerah}', [
-            LaporanController::class,
-            'laporanDaerah',
-        ])->name('laporan.daerah');
+        Route::get('laporanDaerah/{daerah}', [LaporanController::class,'laporanDaerah'])->name('laporan.daerah');
 
         // jumlah survey toko route
-        Route::get('dataSurveyToko', [
-            DashboardController::class,
-            'dataSurveyToko',
-        ])->name('dataSurveyToko.index');
+        Route::get('dataSurveyToko', [DashboardController::class,'dataSurveyToko'])->name('dataSurveyToko.index');
 
         // get data ai maps
-        Route::get('getMapsAi', [
-            DashboardController::class,
-            'getDataMaps',
-        ])->name('getMapsAi');
+        Route::get('getMapsAi', [DashboardController::class,'getDataMaps'])->name('getMapsAi');
 
-        // get pertanyaan kepuasan
-        Route::get('getPertanyaanKepuasan/{category}/{area}', [
-            LaporanController::class,
-            'getPertanyaanKepuasan',
-        ])->name('getPertanyaanKepuasan');
-        // berdasarkan jumlah responden
-        Route::get('getPertanyaanKepuasanByRespondents/{category}/{area}', [
-            LaporanController::class,
-            'getPertanyaanKepuasanByRespondents',
-        ])->name('getPertanyaanKepuasanByRespondents');
+        // get pertanyaan kepuasan daerah
+        Route::get('getPertanyaanKepuasan/{category}/{area}', [LaporanController::class,'getPertanyaanKepuasan',])->name('getPertanyaanKepuasan');
+        Route::get('getPertanyaanKepuasanByRespondents/{category}/{area}', [LaporanController::class,'getPertanyaanKepuasanByRespondents'])->name('getPertanyaanKepuasanByRespondents');
+        // end get pertanyaan kepuasan
 
-        // get pertanyaan kekuatan kelemahan
-        Route::get('getPertanyaanKekuatanKelemahan/{category}/{area}', [
-            LaporanController::class,
-            'getPertanyaanKekuatanKelemahan',
-        ])->name('getPertanyaanKekuatanKelemahan');
-        // berdasarkan jumlah responden
-        Route::get('getPertanyaanKekuatanKelemahanByRespondents/{category}/{area}', [
-            LaporanController::class,
-            'getPertanyaanKekuatanKelemahanByRespondents',
-        ])->name('getPertanyaanKekuatanKelemahanByRespondents');
-
-        // berdasarkan jumlah responden
-        // Route::get('getPertanyaanKepuasanByRespondents/{category}/{area}', [
-        //     LaporanController::class,
-        //     'getPertanyaanKepuasanByRespondents',
-        // ])->name('getPertanyaanKepuasanByRespondents');
+        // get pertanyaan kekuatan kelemahan daerah
+        Route::get('getPertanyaanKekuatanKelemahan/{category}/{area}', [LaporanController::class,'getPertanyaanKekuatanKelemahan'])->name('getPertanyaanKekuatanKelemahan');
+        Route::get('getPertanyaanKekuatanKelemahanByRespondents/{category}/{area}', [LaporanController::class,'getPertanyaanKekuatanKelemahanByRespondents'])->name('getPertanyaanKekuatanKelemahanByRespondents');
+        // end get pertanyaan kekuatan kelemahan
     });
 
     // route other than surveyor
