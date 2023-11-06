@@ -121,7 +121,7 @@
                     </div>
                 </div><!-- end card header -->
                 <div class="card-body">
-                    <div id="chartdiv" class="mb-3"></div>
+                    <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
                 </div><!-- end card-body -->
             </div><!-- end card -->
 
@@ -250,6 +250,8 @@
                     $('#kepuasaPelangganFooter').html(contentTableFooter);
                 },
                 error: function(params) {
+                    root.dispose();
+                    $('#chartdiv').html('Server error / tidak ada data');
                     $('#kepuasaPelanggan').html('');
                     $('#kepuasaPelangganFooter').html('');
                 }
@@ -297,6 +299,8 @@
                     $('#kepuasaPelangganFooter').html(contentTableFooter);
                 },
                 error: function(params) {
+                    root.dispose();
+                    $('#chartdiv').html('Server error / tidak ada data');
                     $('#kepuasaPelanggan').html('');
                     $('#kepuasaPelangganFooter').html('');
                 }
@@ -309,10 +313,10 @@
             am5.ready(function() {
                 // Data
                 var allData = response[0];
-                console.log(allData);
 
                 // Create root element
                 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+                $('#chartdiv').html('');
                 root.dispose();
                 root = am5.Root.new("chartdiv");
 
