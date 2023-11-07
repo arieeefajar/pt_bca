@@ -314,6 +314,16 @@
                 // Data
                 var allData = response[0];
 
+                let countData = 0;
+
+                for (var key in allData) {
+                    if (allData.hasOwnProperty(key)) {
+                        countData++;
+                    }
+                }
+                // console.log(allData);
+                // console.log(count);
+
                 // Create root element
                 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
                 $('#chartdiv').html('');
@@ -493,22 +503,49 @@
                 }
 
                 var year = 0;
+                var interval;
+                var shortInterval;
 
-                // update data with values each 1.5 sec
-                var interval = setInterval(function() {
-                    year++;
+                function startLoop() {
+                    year = 0;
+                    yAxis.set("min", 0);
 
-                    if (year > 2018) {
-                        clearInterval(interval);
-                        clearInterval(sortInterval);
-                    }
+                    interval = setInterval(function() {
+                        year++;
 
-                    updateData();
-                }, stepDuration);
+                        if (year > countData) {
+                            clearInterval(interval);
+                            clearInterval(sortInterval);
+                            startLoop(); // Mulai loop lagi
+                            yAxis.set("min", 0);
+                        } else {
+                            updateData();
+                        }
+                    }, stepDuration);
 
-                var sortInterval = setInterval(function() {
-                    sortCategoryAxis();
-                }, 100);
+                    sortInterval = setInterval(function() {
+                        sortCategoryAxis();
+                    }, 100);
+                }
+
+                startLoop();
+
+                // // update data with values each 1.5 sec
+                // var interval = setInterval(function() {
+                //     year++;
+
+                //     if (year > countData) {
+                //         clearInterval(interval);
+                //         clearInterval(sortInterval);
+                //         // console.log('Berhasil Masuk Pak Eko');
+                //     }
+
+                //     updateData();
+                // }, stepDuration);
+
+                // var sortInterval = setInterval(function() {
+                //     sortCategoryAxis();
+                // }, 100);
 
                 function setInitialData() {
                     var d = allData[year];
