@@ -220,14 +220,25 @@
                 type: "get",
                 url: urlChart,
                 dataType: "json",
+                beforeSend: function() {
+                    root.dispose();
+                    $('#chartdiv').html('Loading...');
+                },
                 success: function(response) {
                     startChart(response);
+                },
+                error: function(params) {
+                    $('#chartdiv').html('Server error / tidak ada data');
                 }
             });
             $.ajax({
                 type: "get",
                 url: urlTable,
                 dataType: "json",
+                beforeSend: function() {
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Loading...</td></tr>');
+                    $('#kepuasaPelangganFooter').html('');
+                },
                 success: function(response) {
                     let contentTable = ''
                     let contentTableFooter = ''
@@ -250,9 +261,7 @@
                     $('#kepuasaPelangganFooter').html(contentTableFooter);
                 },
                 error: function(params) {
-                    root.dispose();
-                    $('#chartdiv').html('Server error / tidak ada data');
-                    $('#kepuasaPelanggan').html('');
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Server error / tidak ada data</td></tr>');
                     $('#kepuasaPelangganFooter').html('');
                 }
             });
@@ -269,14 +278,25 @@
                 type: "get",
                 url: urlChart,
                 dataType: "json",
+                beforeSend: function() {
+                    root.dispose();
+                    $('#chartdiv').html('Loading...');
+                },
                 success: function(response) {
                     startChart(response);
+                },
+                error: function(params) {
+                    $('#chartdiv').html('Server error / tidak ada data');
                 }
             });
             $.ajax({
                 type: "get",
                 url: urlTable,
                 dataType: "json",
+                beforeSend: function() {
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Loading...</td></tr>');
+                    $('#kepuasaPelangganFooter').html('');
+                },
                 success: function(response) {
                     let contentTable = ''
                     let contentTableFooter = ''
@@ -299,9 +319,7 @@
                     $('#kepuasaPelangganFooter').html(contentTableFooter);
                 },
                 error: function(params) {
-                    root.dispose();
-                    $('#chartdiv').html('Server error / tidak ada data');
-                    $('#kepuasaPelanggan').html('');
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Server error / tidak ada data</td></tr>');
                     $('#kepuasaPelangganFooter').html('');
                 }
             });
@@ -321,8 +339,6 @@
                         countData++;
                     }
                 }
-                // console.log(allData);
-                // console.log(count);
 
                 // Create root element
                 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -337,7 +353,7 @@
                     smallNumberPrefixes: [],
                 });
 
-                var stepDuration = 1000;
+                var stepDuration = 2000;
 
                 // Set themes
                 // https://www.amcharts.com/docs/v5/concepts/themes/

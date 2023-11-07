@@ -200,6 +200,7 @@
                 dataType: "json",
                 beforeSend: function() {
                     $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Loading...</td></tr>');
+                    $('#kepuasaPelangganFooter').html('');
                 },
                 success: function(response) {
                     let contentTable = ''
@@ -256,6 +257,7 @@
                 dataType: "json",
                 beforeSend: function() {
                     $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Loading...</td></tr>');
+                    $('#kepuasaPelangganFooter').html('');
                 },
                 success: function(response) {
                     let contentTable = ''
@@ -291,6 +293,14 @@
             am5.ready(function() {
                 // Data
                 var allData = response[0];
+
+                let countData = 0;
+
+                for (var key in allData) {
+                    if (allData.hasOwnProperty(key)) {
+                        countData++;
+                    }
+                }
 
                 // Create root element
                 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -471,22 +481,32 @@
                 }
 
                 var year = 0;
+                var interval;
+                var shortInterval;
 
-                // update data with values each 1.5 sec
-                var interval = setInterval(function() {
-                    year++;
+                function startLoop() {
+                    year = 0;
+                    yAxis.set("min", 0);
 
-                    if (year > 2018) {
-                        clearInterval(interval);
-                        clearInterval(sortInterval);
-                    }
+                    interval = setInterval(function() {
+                        year++;
 
-                    updateData();
-                }, stepDuration);
+                        if (year > countData) {
+                            clearInterval(interval);
+                            clearInterval(sortInterval);
+                            startLoop(); // Mulai loop lagi
+                            yAxis.set("min", 0);
+                        } else {
+                            updateData();
+                        }
+                    }, stepDuration);
 
-                var sortInterval = setInterval(function() {
-                    sortCategoryAxis();
-                }, 100);
+                    sortInterval = setInterval(function() {
+                        sortCategoryAxis();
+                    }, 100);
+                }
+
+                startLoop();
 
                 function setInitialData() {
                     var d = allData[year];
