@@ -119,55 +119,7 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    <div id="chartdiv" class="mb-3"></div>
-                    {{-- <div id="table-search">
-                        <div class="mb-3">
-                            <label class="form-label">Pilih Kuisioner</label>
-                            <!-- Select -->
-                            <div class="input-group">
-                                <select class="form-select" id="kuisioner" onchange="showjawaban(this)">
-                                    <option value="" selected disabled>Pilih...</option>
-                                    <option value="customer">Kepuasan Pelanggan</option>
-                                    <option value="competitor-analys">Analisis Pesaing</option>
-                                    <option value="competitor-identifier">Kekuatan Kelemahan Pesaing</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-nowrap" id="penilaianPelanggan">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">1</th>
-                                        <th class="text-center">2</th>
-                                        <th class="text-center">3</th>
-                                        <th class="text-center">4</th>
-                                        <th class="text-center">5</th>
-                                        <th class="text-center">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataDetail">
-                                </tbody>
-                            </table>
-
-                            <table class="table table-bordered table-nowrap" id="analisisPenilaianPelanggan"
-                                style="display: none">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">Ya</th>
-                                        <th class="text-center">Tidak</th>
-                                        <th class="text-center">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataDetail">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> --}}
+                    <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
                 </div><!-- end card-body -->
             </div><!-- end card -->
         </div>
@@ -182,44 +134,6 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    {{-- <div id="table-search">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-nowrap" id="aspekIndex">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">1</th>
-                                        <th class="text-center">2</th>
-                                        <th class="text-center">3</th>
-                                        <th class="text-center">4</th>
-                                        <th class="text-center">5</th>
-                                        <th class="text-center">Total</th>
-                                        <th class="text-center">Index</th>
-                                        <th class="text-center">Kepuasan</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataDetail1">
-                                </tbody>
-                            </table>
-
-                            <table class="table table-bordered table-nowrap" id="analisisAspekIndex" style="display: none;">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Pertanyaan</th>
-                                        <th class="text-center">Ya</th>
-                                        <th class="text-center">Tidak</th>
-                                        <th class="text-center">Total</th>
-                                        <th class="text-center">Index</th>
-                                        <th class="text-center">Kepuasan</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataDetail1">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> --}}
                     <div id="table-search">
                         <div class="table-responsive">
 
@@ -268,14 +182,26 @@
                 type: "get",
                 url: urlChart,
                 dataType: "json",
+                beforeSend: function() {
+                    root.dispose();
+                    $('#chartdiv').html('Loading...');
+                },
                 success: function(response) {
                     startChart(response);
+                },
+                error: function(params) {
+                    $('#chartdiv').html('Server error / tidak ada data');
                 }
             });
+
             $.ajax({
                 type: "get",
                 url: urlTable,
                 dataType: "json",
+                beforeSend: function() {
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Loading...</td></tr>');
+                    $('#kepuasaPelangganFooter').html('');
+                },
                 success: function(response) {
                     let contentTable = ''
                     let contentTableFooter = ''
@@ -298,9 +224,7 @@
                     $('#kepuasaPelangganFooter').html(contentTableFooter);
                 },
                 error: function(params) {
-                    root.dispose();
-                    $('#chartdiv').html('Server error / tidak ada data');
-                    $('#kepuasaPelanggan').html('');
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Server error / tidak ada data</td></tr>');
                     $('#kepuasaPelangganFooter').html('');
                 }
             });
@@ -316,14 +240,25 @@
                 type: "get",
                 url: urlChart,
                 dataType: "json",
+                beforeSend: function() {
+                    root.dispose();
+                    $('#chartdiv').html('Loading...');
+                },
                 success: function(response) {
                     startChart(response);
+                },
+                error: function(params) {
+                    $('#chartdiv').html('Server error / tidak ada data');
                 }
             });
             $.ajax({
                 type: "get",
                 url: urlTable,
                 dataType: "json",
+                beforeSend: function() {
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Loading...</td></tr>');
+                    $('#kepuasaPelangganFooter').html('');
+                },
                 success: function(response) {
                     let contentTable = ''
                     let contentTableFooter = ''
@@ -346,9 +281,7 @@
                     $('#kepuasaPelangganFooter').html(contentTableFooter);
                 },
                 error: function(params) {
-                    root.dispose();
-                    $('#chartdiv').html('Server error / tidak ada data');
-                    $('#kepuasaPelanggan').html('');
+                    $('#kepuasaPelanggan').html('<tr><td class="text-center" colspan="3">Server error / tidak ada data</td></tr>');
                     $('#kepuasaPelangganFooter').html('');
                 }
             });
@@ -360,6 +293,14 @@
             am5.ready(function() {
                 // Data
                 var allData = response[0];
+
+                let countData = 0;
+
+                for (var key in allData) {
+                    if (allData.hasOwnProperty(key)) {
+                        countData++;
+                    }
+                }
 
                 // Create root element
                 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -540,22 +481,32 @@
                 }
 
                 var year = 0;
+                var interval;
+                var shortInterval;
 
-                // update data with values each 1.5 sec
-                var interval = setInterval(function() {
-                    year++;
+                function startLoop() {
+                    year = 0;
+                    yAxis.set("min", 0);
 
-                    if (year > 2018) {
-                        clearInterval(interval);
-                        clearInterval(sortInterval);
-                    }
+                    interval = setInterval(function() {
+                        year++;
 
-                    updateData();
-                }, stepDuration);
+                        if (year > countData) {
+                            clearInterval(interval);
+                            clearInterval(sortInterval);
+                            startLoop(); // Mulai loop lagi
+                            yAxis.set("min", 0);
+                        } else {
+                            updateData();
+                        }
+                    }, stepDuration);
 
-                var sortInterval = setInterval(function() {
-                    sortCategoryAxis();
-                }, 100);
+                    sortInterval = setInterval(function() {
+                        sortCategoryAxis();
+                    }, 100);
+                }
+
+                startLoop();
 
                 function setInitialData() {
                     var d = allData[year];
