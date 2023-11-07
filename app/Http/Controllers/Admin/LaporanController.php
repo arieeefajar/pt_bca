@@ -13,8 +13,7 @@ class LaporanController extends Controller
         return view('admin.laporan');
     }
 
-
-    //* end pertanyaan laporan daerah
+    //! end pertanyaan laporan daerah
     public function getPertanyaanKepuasan($category, $area)
     {
         $location_name = base64_decode($area);
@@ -898,60 +897,20 @@ class LaporanController extends Controller
                 $completion_speed = $this->countValues($completion_speed);
                 $handling = $this->countValues($handling);
 
-                $verification_speed5 = isset($verification_speed['5'])
-                    ? $verification_speed['5']
-                    : 0;
-                $verification_speed4 = isset($verification_speed['4'])
-                    ? $verification_speed['4']
-                    : 0;
-                $verification_speed3 = isset($verification_speed['3'])
-                    ? $verification_speed['3']
-                    : 0;
-                $verification_speed['kepuasan'] =
-                    number_format(
-                        (($verification_speed5 +
-                            $verification_speed4 +
-                            $verification_speed3) /
-                            $dataTotalAllKategory) *
-                            100,
-                        2,
-                        '.',
-                        ''
-                    );
+                $verification_speed5 = isset($verification_speed['5']) ? $verification_speed['5'] : 0;
+                $verification_speed4 = isset($verification_speed['4']) ? $verification_speed['4'] : 0;
+                $verification_speed3 = isset($verification_speed['3']) ? $verification_speed['3'] : 0;
+                $verification_speed['kepuasan'] = number_format((($verification_speed5 + $verification_speed4 +$verification_speed3) /$dataTotalAllKategory) * 100, 2, '.', '');
 
-                $completion_speed5 = isset($completion_speed['5'])
-                    ? $completion_speed['5']
-                    : 0;
-                $completion_speed4 = isset($completion_speed['4'])
-                    ? $completion_speed['4']
-                    : 0;
-                $completion_speed3 = isset($completion_speed['3'])
-                    ? $completion_speed['3']
-                    : 0;
-                $completion_speed['kepuasan'] =
-                    number_format(
-                        (($completion_speed5 +
-                            $completion_speed4 +
-                            $completion_speed3) /
-                            $dataTotalAllKategory) *
-                            100,
-                        2,
-                        '.',
-                        ''
-                    );
+                $completion_speed5 = isset($completion_speed['5']) ? $completion_speed['5'] : 0;
+                $completion_speed4 = isset($completion_speed['4']) ? $completion_speed['4'] : 0;
+                $completion_speed3 = isset($completion_speed['3']) ? $completion_speed['3'] : 0;
+                $completion_speed['kepuasan'] = number_format((($completion_speed5 + $completion_speed4 + $completion_speed3) / $dataTotalAllKategory) * 100, 2,'.', '');
 
                 $handling5 = isset($handling['5']) ? $handling['5'] : 0;
                 $handling4 = isset($handling['4']) ? $handling['4'] : 0;
                 $handling3 = isset($handling['3']) ? $handling['3'] : 0;
-                $handling['kepuasan'] =
-                    number_format(
-                        (($handling5 + $handling4 + $handling3) /
-                            $dataTotalAllKategory) *
-                            100,
-                        2,
-                        '.',
-                        ''
-                    );
+                $handling['kepuasan'] = number_format((($handling5 + $handling4 + $handling3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $dataSend = [
                     'Kecepatan verifikasi komplain pelanggan' => $verification_speed['kepuasan'],
@@ -976,7 +935,6 @@ class LaporanController extends Controller
                 'status' => 'error',
                 'message' => 'error server',
             ];
-            dd($th);
             return response()->json($returnData, 500);
         }
     }
@@ -1011,11 +969,43 @@ class LaporanController extends Controller
                 }
             }
 
-            $productFinal = [];
-            $promosiFinal = [];
-            $kualitasFinal = [];
-            $layananFinal = [];
-            $penangananFinal = [];
+            $productFinal = [[
+                'Kemasan Produk' => 0,
+                'Harga Kompetitor' => 0,
+                'Keunggulan Varietas' => 0,
+                'Desain Kemasan' => 0,
+                'Akses Pembelian' => 0,
+                'Kepuasan Konsumen' => 0,
+                'Tampilan Gambar' => 0,
+            ]];
+            $promosiFinal = [[
+                'Ketersediaan Materi' => 0,
+                'Intensitas Petugas' => 0,
+                'Kualitas Promosi' => 0,
+            ]];
+            $kualitasFinal = [[
+                'Murni Benih' => 0,
+                'Vigor Benih' => 0,
+                'Daya Tumbuh' => 0,
+                'Murni Genetik' => 0,
+                'Ketahanan Produk' => 0,
+                'Kesesuaian Gambar' => 0,
+                'Kesesuaian Panen' => 0,
+                'Kepuasan Panen' => 0,
+            ]];
+            $layananFinal = [[
+                'Kemampuan Teknis' => 0,
+                'Intensitas Kunjungan' => 0,
+                'Interaksi Petugas' => 0,
+                'Kecakapan Petugas' => 0,
+                'Pengaruh Petugas' => 0,
+                'Kemampuan Komunikasi' => 0,
+            ]];
+            $penangananFinal = [[
+                'Verifikasi Cepat' => 0,
+                'Penyelesaian Cepat' => 0,
+                'Penanganan Komplain' => 0,
+            ]];
 
             $totalProductFinal = [];
             $totalPromosiFinal = [];
@@ -1946,20 +1936,25 @@ class LaporanController extends Controller
                     array_push($penangananFinal, $dataByCountIndex);
                 }
             }
-
+            
             if ($category == 'product') {
+                $productFinal = $this->clearSameData($productFinal);
                 return response()->json([(object)$productFinal, (object)$totalProductFinal]);
             }
             if ($category == 'promosi') {
+                $promosiFinal = $this->clearSameData($promosiFinal);
                 return response()->json([(object)$promosiFinal, (object)$totalPromosiFinal]);
             }
             if ($category == 'kualitas') {
+                $kualitasFinal = $this->clearSameData($kualitasFinal);
                 return response()->json([(object)$kualitasFinal, (object)$totalKualitasFinal]);
             }
             if ($category == 'layanan') {
+                $layananFinal = $this->clearSameData($layananFinal);
                 return response()->json([(object)$layananFinal, (object)$totalLayananFinal]);
             }
             if ($category == 'penanganan') {
+                $penangananFinal = $this->clearSameData($penangananFinal);
                 return response()->json([(object)$penangananFinal, (object)$totalPenangananFinal]);
             }
         } catch (\Throwable $th) {
@@ -2709,17 +2704,58 @@ class LaporanController extends Controller
                 }
             }
 
-            $productFinal = [];
-            $pemasaranFinal = [];
-            $distribusiFinal = [];
-            $operasionalFinal = [];
-            $risetFinal = [];
-            $keuanganFinal = [];
-            $organisasiFinal = [];
-            $manajerialFinal = [];
-            $intiFinal = [];
-            $portofolioFinal = [];
-            $lainnyaFinal = [];
+            $productFinal = [[
+                'Kedudukan Pesaing' => 0,
+                'Lini Produk' => 0,
+            ]];
+            $pemasaranFinal = [[
+                'Keterampilan Pesaing' => 0,
+                'Pengembangan Produk' => 0,
+            ]];
+            $distribusiFinal = [[
+                'Kualitas Distribusi' => 0,
+                'Hubungan Saluran' => 0,
+                'Pelayanan Distribusi' => 0,
+            ]];
+            $operasionalFinal = [[
+                'Teknologi Pesaing' => 0,
+                'Fleksibilitas Pesaing' => 0,
+                'Keterampilan Pesaing' => 0,
+                'Akses Bahan Baku' => 0,
+            ]];
+            $risetFinal = [[
+                'Paten Pesaing' => 0,
+                'Riset Internal Pesaing' => 0,
+                'Keterampilan Riset Pesaing' => 0,
+                'Akses Riset Eksternal Pesaing' => 0,
+            ]];
+            $keuanganFinal = [[
+                'Arus kas pesaing' => 0,
+                'Modal Baru Pesaing' => 0,
+                'Manajemen Keuangan Pesaing' => 0,
+            ]];
+            $organisasiFinal = [[
+                'Misi Pesaing' => 0,
+                'Struktur Organisasi Pesaing' => 0,
+            ]];
+            $manajerialFinal = [[
+                'Kualitas Kepemimpinan CEO' => 0,
+                'Kemampuan Manajemen Perusahaan' => 0,
+            ]];
+            $intiFinal = [[
+                'Kemampuan Fungsional' => 0,
+                'Konsistensi Strategi' => 0,
+                'Kapasitas Responsif' => 0,
+                'Kemampuan Adaptasi' => 0,
+                'Kemampuan Bertahan' => 0,
+            ]];
+            $portofolioFinal = [[
+                'Mendukung Perubahan' => 0,
+                'Mengokoh Unit' => 0,
+            ]];
+            $lainnyaFinal = [[
+                'Akses Pemerintah' => 0,
+            ]];
 
             $totalProductFinal = [];
             $totalPemasaranFinal = [];
@@ -2771,8 +2807,8 @@ class LaporanController extends Controller
                     $deep['kepuasan'] = number_format((($deep5 + $deep4 + $deep3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                     $dataByCountIndex = [
-                        'Kedudukan Pesaing' => floatval($position_pov['kepuasan']),
-                        'Lini Produk' => floatval($deep['kepuasan']),
+                        'Kedudukan Pesaing' => $position_pov['kepuasan'],
+                        'Lini Produk' => $deep['kepuasan'],
                     ];
 
                     foreach ($dataByCountIndex as $key => $val) {
@@ -3388,36 +3424,47 @@ class LaporanController extends Controller
             }
 
             if ($category == 'product') {
+                $productFinal = $this->clearSameData($productFinal);
                 return response()->json([(object)$productFinal, (object)$totalProductFinal], 200);
             }
             if ($category == 'pemasaran') {
+                $pemasaranFinal = $this->clearSameData($pemasaranFinal);
                 return response()->json([(object)$pemasaranFinal, (object)$totalPemasaranFinal], 200);
             }
             if ($category == 'distribusi') {
+                $distribusiFinal = $this->clearSameData($distribusiFinal);
                 return response()->json([(object)$distribusiFinal, (object)$totalDistribusiFinal], 200);
             }
             if ($category == 'operasional') {
+                $operasionalFinal = $this->clearSameData($operasionalFinal);
                 return response()->json([(object)$operasionalFinal, (object)$totalOperasionalFinal], 200);
             }
             if ($category == 'riset') {
+                $risetFinal = $this->clearSameData($risetFinal);
                 return response()->json([(object)$risetFinal, (object)$totalRisetFinal], 200);
             }
             if ($category == 'keuangan') {
+                $keuanganFinal = $this->clearSameData($keuanganFinal);
                 return response()->json([(object)$keuanganFinal, (object)$totalKeuanganFinal], 200);
             }
             if ($category == 'organisasi') {
+                $organisasiFinal = $this->clearSameData($organisasiFinal);
                 return response()->json([(object)$organisasiFinal, (object)$totalOrganisasiFinal], 200);
             }
             if ($category == 'manajerial') {
+                $manajerialFinal = $this->clearSameData($manajerialFinal);
                 return response()->json([(object)$manajerialFinal, (object)$totalManajerialFinal], 200);
             }
             if ($category == 'inti') {
+                $intiFinal = $this->clearSameData($intiFinal);
                 return response()->json([(object)$intiFinal, (object)$totalIntiFinal], 200);
             }
             if ($category == 'portofolio') {
+                $portofolioFinal = $this->clearSameData($portofolioFinal);
                 return response()->json([(object)$portofolioFinal, (object)$totalPortofolioFinal], 200);
             }
             if ($category == 'lainnya') {
+                $lainnyaFinal = $this->clearSameData($lainnyaFinal);
                 return response()->json([(object)$lainnyaFinal, (object)$totalLainnyaFinal], 200);
             }
         } catch (\Throwable $th) {
@@ -3429,9 +3476,9 @@ class LaporanController extends Controller
             return response()->json($returnData, 500);
         }
     }
-    //! end pertanyaan laporan daerah
+    //* end pertanyaan laporan daerah
 
-    //* pertanyaan laporan kepuasan all
+    //! pertanyaan laporan kepuasan all
     public function getPertanyaanKepuasanAll($category)
     {
         $endPointApi = env('PYTHON_END_POINT') . 'ai';
@@ -4391,7 +4438,6 @@ class LaporanController extends Controller
                 'status' => 'error',
                 'message' => 'error server',
             ];
-            dd($th);
             return response()->json($returnData, 500);
         }
     }
@@ -4423,11 +4469,43 @@ class LaporanController extends Controller
                 }
             }
 
-            $productFinal = [];
-            $promosiFinal = [];
-            $kualitasFinal = [];
-            $layananFinal = [];
-            $penangananFinal = [];
+            $productFinal = [[
+                'Kemasan Produk' => 0,
+                'Harga Kompetitor' => 0,
+                'Keunggulan Varietas' => 0,
+                'Desain Kemasan' => 0,
+                'Akses Pembelian' => 0,
+                'Kepuasan Konsumen' => 0,
+                'Tampilan Gambar' => 0,
+            ]];
+            $promosiFinal = [[
+                'Ketersediaan Materi' => 0,
+                'Intensitas Petugas' => 0,
+                'Kualitas Promosi' => 0,
+            ]];
+            $kualitasFinal = [[
+                'Murni Benih' => 0,
+                'Vigor Benih' => 0,
+                'Daya Tumbuh' => 0,
+                'Murni Genetik' => 0,
+                'Ketahanan Produk' => 0,
+                'Kesesuaian Gambar' => 0,
+                'Kesesuaian Panen' => 0,
+                'Kepuasan Panen' => 0,
+            ]];
+            $layananFinal = [[
+                'Kemampuan Teknis' => 0,
+                'Intensitas Kunjungan' => 0,
+                'Interaksi Petugas' => 0,
+                'Kecakapan Petugas' => 0,
+                'Pengaruh Petugas' => 0,
+                'Kemampuan Komunikasi' => 0,
+            ]];
+            $penangananFinal = [[
+                'Verifikasi Cepat' => 0,
+                'Penyelesaian Cepat' => 0,
+                'Penanganan Komplain' => 0,
+            ]];
 
             $totalProductFinal = [];
             $totalPromosiFinal = [];
@@ -5360,18 +5438,23 @@ class LaporanController extends Controller
             }
 
             if ($category == 'product') {
+                $productFinal = $this->clearSameData($productFinal);
                 return response()->json([(object)$productFinal, (object)$totalProductFinal]);
             }
             if ($category == 'promosi') {
+                $promosiFinal = $this->clearSameData($promosiFinal);
                 return response()->json([(object)$promosiFinal, (object)$totalPromosiFinal]);
             }
             if ($category == 'kualitas') {
+                $kualitasFinal = $this->clearSameData($kualitasFinal);
                 return response()->json([(object)$kualitasFinal, (object)$totalKualitasFinal]);
             }
             if ($category == 'layanan') {
+                $layananFinal = $this->clearSameData($layananFinal);
                 return response()->json([(object)$layananFinal, (object)$totalLayananFinal]);
             }
             if ($category == 'penanganan') {
+                $penangananFinal = $this->clearSameData($penangananFinal);
                 return response()->json([(object)$penangananFinal, (object)$totalPenangananFinal]);
             }
         } catch (\Throwable $th) {
@@ -5382,9 +5465,9 @@ class LaporanController extends Controller
             return response()->json($returnData, 500);
         }
     }
-    //! end pertanyaan laporan kepuasan all
+    //* end pertanyaan laporan kepuasan all
 
-    //* pertanyaan laporan kekuatan kelemahan all
+    //! pertanyaan laporan kekuatan kelemahan all
     public function getPertanyaanKekuatanKelemahanAll($category)
     {
         $endPointApi = env('PYTHON_END_POINT') . 'ai';
@@ -6119,17 +6202,58 @@ class LaporanController extends Controller
                 }
             }
 
-            $productFinal = [];
-            $pemasaranFinal = [];
-            $distribusiFinal = [];
-            $operasionalFinal = [];
-            $risetFinal = [];
-            $keuanganFinal = [];
-            $organisasiFinal = [];
-            $manajerialFinal = [];
-            $intiFinal = [];
-            $portofolioFinal = [];
-            $lainnyaFinal = [];
+            $productFinal = [[
+                'Kedudukan Pesaing' => 0,
+                'Lini Produk' => 0,
+            ]];
+            $pemasaranFinal = [[
+                'Keterampilan Pesaing' => 0,
+                'Pengembangan Produk' => 0,
+            ]];
+            $distribusiFinal = [[
+                'Kualitas Distribusi' => 0,
+                'Hubungan Saluran' => 0,
+                'Pelayanan Distribusi' => 0,
+            ]];
+            $operasionalFinal = [[
+                'Teknologi Pesaing' => 0,
+                'Fleksibilitas Pesaing' => 0,
+                'Keterampilan Pesaing' => 0,
+                'Akses Bahan Baku' => 0,
+            ]];
+            $risetFinal = [[
+                'Paten Pesaing' => 0,
+                'Riset Internal Pesaing' => 0,
+                'Keterampilan Riset Pesaing' => 0,
+                'Akses Riset Eksternal Pesaing' => 0,
+            ]];
+            $keuanganFinal = [[
+                'Arus kas pesaing' => 0,
+                'Modal Baru Pesaing' => 0,
+                'Manajemen Keuangan Pesaing' => 0,
+            ]];
+            $organisasiFinal = [[
+                'Misi Pesaing' => 0,
+                'Struktur Organisasi Pesaing' => 0,
+            ]];
+            $manajerialFinal = [[
+                'Kualitas Kepemimpinan CEO' => 0,
+                'Kemampuan Manajemen Perusahaan' => 0,
+            ]];
+            $intiFinal = [[
+                'Kemampuan Fungsional' => 0,
+                'Konsistensi Strategi' => 0,
+                'Kapasitas Responsif' => 0,
+                'Kemampuan Adaptasi' => 0,
+                'Kemampuan Bertahan' => 0,
+            ]];
+            $portofolioFinal = [[
+                'Mendukung Perubahan' => 0,
+                'Mengokoh Unit' => 0,
+            ]];
+            $lainnyaFinal = [[
+                'Akses Pemerintah' => 0,
+            ]];
 
             $totalProductFinal = [];
             $totalPemasaranFinal = [];
@@ -6798,36 +6922,47 @@ class LaporanController extends Controller
             }
 
             if ($category == 'product') {
+                $productFinal = $this->clearSameData($productFinal);
                 return response()->json([(object)$productFinal, (object)$totalProductFinal], 200);
             }
             if ($category == 'pemasaran') {
+                $pemasaranFinal = $this->clearSameData($pemasaranFinal);
                 return response()->json([(object)$pemasaranFinal, (object)$totalPemasaranFinal], 200);
             }
             if ($category == 'distribusi') {
+                $distribusiFinal = $this->clearSameData($distribusiFinal);
                 return response()->json([(object)$distribusiFinal, (object)$totalDistribusiFinal], 200);
             }
             if ($category == 'operasional') {
+                $operasionalFinal = $this->clearSameData($operasionalFinal);
                 return response()->json([(object)$operasionalFinal, (object)$totalOperasionalFinal], 200);
             }
             if ($category == 'riset') {
+                $risetFinal = $this->clearSameData($risetFinal);
                 return response()->json([(object)$risetFinal, (object)$totalRisetFinal], 200);
             }
             if ($category == 'keuangan') {
+                $keuanganFinal = $this->clearSameData($keuanganFinal);
                 return response()->json([(object)$keuanganFinal, (object)$totalKeuanganFinal], 200);
             }
             if ($category == 'organisasi') {
+                $organisasiFinal = $this->clearSameData($organisasiFinal);
                 return response()->json([(object)$organisasiFinal, (object)$totalOrganisasiFinal], 200);
             }
             if ($category == 'manajerial') {
+                $manajerialFinal = $this->clearSameData($manajerialFinal);
                 return response()->json([(object)$manajerialFinal, (object)$totalManajerialFinal], 200);
             }
             if ($category == 'inti') {
+                $productFinal = $this->clearSameData($productFinal);
                 return response()->json([(object)$intiFinal, (object)$totalIntiFinal], 200);
             }
             if ($category == 'portofolio') {
+                $intiFinal = $this->clearSameData($intiFinal);
                 return response()->json([(object)$portofolioFinal, (object)$totalPortofolioFinal], 200);
             }
             if ($category == 'lainnya') {
+                $lainnyaFinal = $this->clearSameData($lainnyaFinal);
                 return response()->json([(object)$lainnyaFinal, (object)$totalLainnyaFinal], 200);
             }
         } catch (\Throwable $th) {
@@ -6835,11 +6970,10 @@ class LaporanController extends Controller
                 'status' => 'error',
                 'message' => 'error server',
             ];
-            dd($th);
             return response()->json($returnData, 500);
         }
     }
-    //! pertanyaan laporan kekuatan kelemahan all
+    //* pertanyaan laporan kekuatan kelemahan all
 
     public function laporanDaerah($daerah)
     {
@@ -7671,5 +7805,31 @@ class LaporanController extends Controller
         } else {
             return floor($number);
         }
+    }
+
+    function clearSameData($inputArray) {
+        $dataFinal = $inputArray;
+        $previousArray = null;
+
+        foreach ($dataFinal as $index => $currentArray) {
+            if ($previousArray !== null) {
+                $isSameData = true;
+                foreach ($currentArray as $question => $valQuestion) {
+                    if ($valQuestion !== $previousArray[$question]) {
+                        $isSameData = false;
+                        break;
+                    }
+                }
+                // hapus index apabila nilainya sama dengan data sebelumnya
+                if ($isSameData) {
+                    unset($dataFinal[$index]);
+                }
+            }
+            $previousArray = $currentArray;
+        }
+
+        // atur ulang index array
+        $dataFinal = array_values($dataFinal);
+        return $dataFinal;
     }
 }
