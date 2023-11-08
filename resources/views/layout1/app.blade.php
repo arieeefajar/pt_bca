@@ -22,7 +22,6 @@
     <!-- custom Css-->
     <link href="{{ asset('admin_assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
-
 </head>
 
 <body>
