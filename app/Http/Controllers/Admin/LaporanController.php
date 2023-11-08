@@ -6990,6 +6990,54 @@ class LaporanController extends Controller
         }
     }
 
+    public function getRetailDataDaerah($area, $filter = 'monthly'){
+        $endPointApi = env('PYTHON_END_POINT') . 'ai';
+        $dataAI = [Http::get($endPointApi)->json()['data']][0]['potential_area_data'];
+
+        $location = base64_decode($area);
+
+        foreach ($dataAI as $value) {
+            if ($value['location']['name'] === $location) {
+                $dataAI = $value;
+            }
+        }
+
+        $finalData = [];
+
+        foreach ($dataAI[$filter] as $value) {
+            
+            if ($value['word'] !== '<oov>' && $value['word'] !== '') {
+                array_push($finalData, $value);
+            }
+        }
+
+        return response()->json($finalData);
+    }
+
+    public function getPotentionalAreaDaerah($area, $filter = 'monthly'){
+        $endPointApi = env('PYTHON_END_POINT') . 'ai';
+        $dataAI = [Http::get($endPointApi)->json()['data']][0]['retail_data'];
+
+        $location = base64_decode($area);
+
+        foreach ($dataAI as $value) {
+            if ($value['location']['name'] === $location) {
+                $dataAI = $value;
+            }
+        }
+
+        $finalData = [];
+
+        foreach ($dataAI[$filter] as $value) {
+            
+            if ($value['word'] !== '<oov>' && $value['word'] !== '') {
+                array_push($finalData, $value);
+            }
+        }
+
+        return response()->json($finalData);
+    }
+
     function kepuasanDaerah($data)
     {
         $dataAnswer = $data;

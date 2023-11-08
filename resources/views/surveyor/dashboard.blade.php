@@ -61,7 +61,7 @@
                                     <div>
                                         <p class="fw-semibold text-muted mb-0">Jumlah Belum Selesai Survey Toko</p>
                                         <h2 class="mt-4 ff-secondary fw-bold"><span class="counter-value"
-                                                data-target="{{ $dataJumlah['targetTokoBlmSelesai'] }}">{{ $dataJumlah['targetTokoBlmSelesai'] }}</span>
+                                                data-target="{{ $dataJumlah['targetTokoBlmSelesai'] }}">0</span>
                                         </h2>
                                     </div>
                                     <div>

@@ -102,8 +102,6 @@ class DashboardController extends Controller
                     break;
                 }
             }
-
-            // dd($dataArea);
             
         } catch (\Throwable $th) {
             $dataArea = null;
@@ -232,8 +230,16 @@ class DashboardController extends Controller
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
 
         foreach ($dataPerusahaan as $key => $value) {
-            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
-            $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->get();
+            $detailPenyimpanan = [];
+            foreach ($penyimpanan as $value) {
+                $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $value->id)->first();
+                if ($detailPenyimpanan) {
+                    $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('id', $detailPenyimpanan->penyimpanan_id)->first();
+                    // dd($penyimpanan);
+                    break;
+                }
+            }
             if ($detailPenyimpanan) {
                 if ($penyimpanan->status != 2) {
                     $dataPerusahaan[$key]->status = 1;
@@ -260,8 +266,16 @@ class DashboardController extends Controller
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
 
         foreach ($dataPerusahaan as $key => $value) {
-            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
-            $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->get();
+            $detailPenyimpanan = [];
+            foreach ($penyimpanan as $value) {
+                $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $value->id)->first();
+                if ($detailPenyimpanan) {
+                    $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('id', $detailPenyimpanan->penyimpanan_id)->first();
+                    // dd($penyimpanan);
+                    break;
+                }
+            }
             if ($detailPenyimpanan) {
                 if ($penyimpanan->status != 2) {
                     $dataPerusahaan[$key]->status = 1;
@@ -275,6 +289,7 @@ class DashboardController extends Controller
                 $dataPerusahaan[$key]->surveyor = '-';
             }
         }
+        // dd($dataPerusahaan);
         return view('admin.dataSurveyToko', compact('dataPerusahaan'));
     }
 
@@ -290,16 +305,35 @@ class DashboardController extends Controller
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
 
+        $tokoBlmSelesai = function($startDate, $endDate){
+            $dataPerusahaan = Customer::with('kota', 'kota.provinsi')->get();
+            $finalCount = [];
+
+            foreach ($dataPerusahaan as $key => $value) {
+                $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->get();
+                $detailPenyimpanan = [];
+                foreach ($penyimpanan as $value) {
+                    $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $value->id)->first();
+                    if ($detailPenyimpanan) {
+                        $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('id', $detailPenyimpanan->penyimpanan_id)->first();
+                        break;
+                    }
+                }
+                if ($detailPenyimpanan && $penyimpanan->status == 2) {
+                    array_push($finalCount, $value);
+                }
+            }
+
+            return count($finalCount);
+        };
+
         $dataJumlah = [
             'surveyor' => User::where('role', 'user')->get()->count(),
             'executive' => User::where('role', 'executive')->get()->count(),
             'admin' => User::where('role', 'admin')->get()->count(),
             'targetToko' => Customer::all()->count(),
 
-            'targetTokoBlmSelesai' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
-                ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
-                    $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
-                })->has('penyimpanan.detail_penyimpanan')->get()->count(),
+            'targetTokoBlmSelesai' => $tokoBlmSelesai($startDate, $endDate),
 
             'targetTokoSelesai' => Customer::join('penyimpanan', 'customer.id', '=', 'penyimpanan.customer_id')
                 ->where('penyimpanan.status', 1)

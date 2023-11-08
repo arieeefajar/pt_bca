@@ -14,9 +14,6 @@ class LoginController extends Controller
 {
     public function login()
     {
-        // dd(env('PYTHON_END_POINT'));
-        // $data = Carbon::now()->format('d/n/Y H:i:s');
-        // dd($data);
         return view('auth.login');
     }
 
@@ -62,38 +59,28 @@ class LoginController extends Controller
         // Validasi berhasil, lanjutkan dengan percobaan otentikasi
         $credentials = $request->only('nip', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
             // Login berhasil
             $user = Auth::user();
 
             if ($user->role == 'supper-admin') {
-                toast('Login berhasil', 'success')
-                    ->position('top')
-                    ->autoClose(3000);
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
                 return redirect()->route('superAdmin.dashboard');
             } elseif ($user->role == 'admin') {
-                toast('Login berhasil', 'success')
-                    ->position('top')
-                    ->autoClose(3000);
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
                 return redirect()->route('admin.dashboard');
             } elseif ($user->role == 'executive') {
-                toast('Login berhasil', 'success')
-                    ->position('top')
-                    ->autoClose(3000);
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
                 return redirect()->route('executive.dashboard');
             } elseif ($user->role == 'user') {
-                toast('Login berhasil', 'success')
-                    ->position('top')
-                    ->autoClose(3000);
+                toast('Login berhasil', 'success')->position('top')->autoClose(3000);
                 return redirect()->route('surveyor.dashboard');
             }
 
             abort(403, 'Unauthorized');
         } else {
             // Login gagal
-            toast('Email atau password salah', 'error')
-                ->position('top')
-                ->autoClose(3000);
+            toast('Nip atau password salah', 'error')->position('top')->autoClose(3000);
             return back()->withInput();
         }
     }

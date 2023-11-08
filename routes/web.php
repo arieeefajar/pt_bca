@@ -257,34 +257,14 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         //penyimpana rote berdasarkan kategori
         Route::prefix('penyimpanan')->group(function () {
-            Route::get('byToko', [PenyimpananController::class, 'index'])->name(
-                'byToko.index'
-            );
+            Route::get('byToko', [PenyimpananController::class, 'index'])->name('byToko.index');
 
-            Route::get('Kepuasan_Pelanggan', [
-                PenyimpananController::class,
-                'kepuasanPelanggan',
-            ])->name('Kepuasan_Pelanggan.index');
-            Route::get('Analisis_Pesaing', [
-                PenyimpananController::class,
-                'analisisPesaing',
-            ])->name('Analisis_Pesaing.index');
-            Route::get('Kekuatan_Kelemahan_Pesaing', [
-                PenyimpananController::class,
-                'kekuatanKelemahan',
-            ])->name('Kekuatan_Kelemahan_Pesaing.index');
-            Route::get('Skala_Pasar_Produk', [
-                PenyimpananController::class,
-                'skalaPasarProduk',
-            ])->name('Skala_Pasar_Produk.index');
-            Route::get('Potensi_Lahan', [
-                PenyimpananController::class,
-                'potensiLahan',
-            ])->name('Potensi_Lahan.index');
-            Route::get('Survey_Pesaing', [
-                PenyimpananController::class,
-                'surveyPesaing',
-            ])->name('Survey_Pesaing.index');
+            Route::get('Kepuasan_Pelanggan', [PenyimpananController::class, 'kepuasanPelanggan'])->name('Kepuasan_Pelanggan.index');
+            Route::get('Analisis_Pesaing', [PenyimpananController::class, 'analisisPesaing'])->name('Analisis_Pesaing.index');
+            Route::get('Kekuatan_Kelemahan_Pesaing', [PenyimpananController::class, 'kekuatanKelemahan',])->name('Kekuatan_Kelemahan_Pesaing.index');
+            Route::get('Skala_Pasar_Produk', [PenyimpananController::class, 'skalaPasarProduk'])->name('Skala_Pasar_Produk.index');
+            Route::get('Potensi_Lahan', [PenyimpananController::class, 'potensiLahan'])->name('Potensi_Lahan.index');
+            Route::get('Survey_Pesaing', [PenyimpananController::class, 'surveyPesaing'])->name('Survey_Pesaing.index');
         });
 
         //jumlah executive route
@@ -382,26 +362,21 @@ Route::middleware(['prevent-back-history'])->group(function () {
         // get pertanyaan kekuatan kelemahan daerah all
         Route::get('getPertanyaanKekuatanKelemahanAll/{category}', [LaporanController::class, 'getPertanyaanKekuatanKelemahanAll'])->name('getPertanyaanKekuatanKelemahanAll');
         Route::get('getPertanyaanKekuatanKelemahanByRespondentsAll/{category}', [LaporanController::class, 'getPertanyaanKekuatanKelemahanByRespondentsAll'])->name('getPertanyaanKekuatanKelemahanByRespondentsAll');
+
+        Route::get('getRetail/{area}/{filter?}', [LaporanController::class, 'getRetailDataDaerah']);
+        Route::get('getPotentionalArea/{area}/{filter?}', [LaporanController::class, 'getPotentionalAreaDaerah']);
     });
 
     // route other than surveyor
     Route::middleware(['auth', 'nonSurveyor'])->group(function () {
-        Route::get('dataTargetToko', [
-            DashboardController::class,
-            'dataTargetToko',
-        ])->name('dataTargetToko.index');
-        Route::get('dataSurveyToko', [
-            DashboardController::class,
-            'dataSurveyToko',
-        ])->name('dataSurveyToko.index');
+        Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko'])->name('dataTargetToko.index');
+        Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko'])->name('dataSurveyToko.index');
     });
 
     // route only surveyour
     Route::middleware(['auth', 'surveyor'])->group(function () {
         //menu routes
-        Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name(
-            'menu.index'
-        );
+        Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name('menu.index');
         Route::get('set-store', [
             DashboardSurveyerController::class,
             'setStore',
@@ -482,15 +457,8 @@ Route::middleware(['prevent-back-history'])->group(function () {
         });
 
         // Data List Target Toko
-        route::get('listTargetToko', [
-            DashboardSurveyerController::class,
-            'listTargetToko',
-        ])->name('listTargetToko.index');
-
+        route::get('listTargetToko', [DashboardSurveyerController::class, 'listTargetToko'])->name('listTargetToko.index');
         // Data List Hasil Survey
-        route::get('listHasilSurvey', [
-            DashboardSurveyerController::class,
-            'listHasilSurvey',
-        ])->name('listHasilSurvey.index');
+        route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
     });
 });
