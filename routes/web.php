@@ -57,7 +57,7 @@ Route::middleware(['prevent-back-history'])->group(function () {
     );
 
     //tes route
-    // Route::get('tes', [DashboardController::class, 'tes'])->name('tes')->middleware('guest');
+    Route::get('/surveyor', [DashboardSurveyerController::class, 'tes'])->name('tes')->middleware('guest');
 
     //profile
     Route::get('/profile', [ProfileControllerAdmin::class, 'index'])

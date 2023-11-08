@@ -3,23 +3,21 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box horizontal-logo">
-                <a href="index.html" class="logo logo-dark">
+                <a href="" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt="" height="22">
+                        <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="" height="70">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('admin_assets/assets/images/logo-dark.png') }}" alt=""
-                            height="17">
+                        <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="" height="70">
                     </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt="" height="22">
+                        <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="" height="70">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('admin_assets/assets/images/logo-light.png') }}" alt=""
-                            height="17">
+                        <img src="{{ asset('admin_assets/assets/images/logosimi.png') }}" alt="" height="70">
                     </span>
                 </a>
             </div>
@@ -33,11 +31,11 @@
                 </span>
             </button>
 
-            <!-- App Search-->
-            {{-- <form class="app-search d-none d-md-block">
+            <form class="app-search d-none d-md-block">
                 <div class="position-relative">
                     <input type="hidden" class="form-control" placeholder="Search..." autocomplete="off"
                         id="search-options" value="">
+                    {{-- <span class="mdi mdi-magnify search-widget-icon"></span> --}}
                     <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
                         id="search-close-options"></span>
                 </div>
@@ -86,8 +84,8 @@
                             <!-- item -->
                             <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                 <div class="d-flex">
-                                    <img src="admin_assets/assets/images/users/avatar-2.jpg"
-                                        class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                    <img src="assets/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs"
+                                        alt="user-pic">
                                     <div class="flex-1">
                                         <h6 class="m-0">Angela Bernier</h6>
                                         <span class="fs-11 mb-0 text-muted">Manager</span>
@@ -124,7 +122,8 @@
                                 class="ri-arrow-right-line ms-1"></i></a>
                     </div>
                 </div>
-            </form> --}}
+            </form>
+
         </div>
 
         <div class="d-flex align-items-center">
@@ -137,26 +136,22 @@
                             src="{{ asset('admin_assets/assets/images/users/user-dummy-img.jpg') }}"
                             alt="Header Avatar">
                         <span class="text-start ms-xl-2">
-                            <span
-                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
-                            <span
-                                class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->role }}</span>
+                            <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna
+                                Adame</span>
+                            <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Founder</span>
                         </span>
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
-                    <a class="dropdown-item" href="{{ route('profile.Surveyor') }}"><i
+                    <h6 class="dropdown-header">Welcome Anna!</h6>
+                    <a class="dropdown-item" href="pages-profile.html"><i
                             class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                             class="align-middle">Profile</span></a>
                     <div class="dropdown-divider"></div>
-                    <form action="{{ route('logout') }}" method="POST" id="formLogout">
-                        @csrf
-                        <button type="submit" class="dropdown-item"><i
-                                class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></button>
-                    </form>
+                    <a class="dropdown-item" href="auth-logout-basic.html"><i
+                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+                            data-key="t-logout">Logout</span></a>
                 </div>
             </div>
         </div>
