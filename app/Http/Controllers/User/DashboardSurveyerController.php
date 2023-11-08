@@ -215,4 +215,9 @@ class DashboardSurveyerController extends Controller
 
         return $dataJumlah;
     }
+
+    public function tes()
+    {
+        return view('surveyor.spesialKuisioner');
+    }
 }

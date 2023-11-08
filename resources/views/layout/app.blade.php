@@ -50,16 +50,7 @@
     <!-- jQuery (diperlukan oleh DataTables) -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
-    <style>
-        #chartdiv {
-            width: 100%;
-            height: 350px;
-        }
-
-        .dropdown:hover .kuisioner {
-            display: block;
-        }
-    </style>
+    @yield('otherStyle')
 
 </head>
 
@@ -137,15 +128,9 @@
     <script src="{{ asset('admin_assets/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/script.js') }}"></script>
 
-    <!-- apexcharts -->
-    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
     <!-- Vector map-->
     <script src="{{ asset('admin_assets/assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
-
-    {{-- <!-- Dashboard init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/dashboard-analytics.init.js') }}"></script> --}}
 
     <!-- App js -->
     <script src="{{ asset('admin_assets/assets/js/app.js') }}"></script>
@@ -155,32 +140,8 @@
     <script src="{{ asset('admin_assets/assets/libs/list.js/list.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
-    {{-- <!-- gridjs js -->
-    <script src="{{ asset('admin_assets/assets/libs/gridjs/gridjs.umd.js') }}"></script> --}}
-
-    {{-- <!-- gridjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/gridjs.init.js') }}"></script> --}}
-
-    <!-- apexcharts -->
-    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-    <!-- piecharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-pie.init.js') }}"></script>
-
-    <!-- radialbar charts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-radialbar.init.js') }}"></script>
-
-    {{-- <!-- barcharts init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/apexcharts-bar.init.js') }}"></script> --}}
-
     <!-- Sweet Alerts js -->
     <script src="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-
-    {{-- <!-- Sweet alert init js-->
-    <script src="{{ asset('admin_assets/assets/js/pages/sweetalerts.init.js') }}"></script> --}}
-
-    {{-- <!-- listjs init -->
-    <script src="{{ asset('admin_assets/assets/js/pages/listjs.init.js') }}"></script> --}}
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" src="{{ asset('vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
@@ -189,16 +150,10 @@
     {{-- form validate --}}
     <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
 
-    {{-- <!-- profile-setting init js -->
-    <script src="{{ asset('admin_assets/assets/js/pages/profile-setting.init.js') }}"></script> --}}
-
     <!-- leaflet plugin -->
     <script src="{{ asset('admin_assets/assets/libs/leaflet/leaflet.js') }}"></script>
     {{-- leaflet Css Extend --}}
     <script src="{{ asset('admin_assets/assets/js/leafletExtend/Control.FullScreen.js') }}"></script>
-    <!-- leaflet map.init -->
-    {{-- <script src="{{ asset('admin_assets/assets/js/pages/leaflet-us-states.js') }}"></script>
-    <script src="{{ asset('admin_assets/assets/js/pages/leaflet-map.init.js') }}"></script> --}}
 
     <script>
         window.onload = function() {

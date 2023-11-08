@@ -41,7 +41,8 @@
                                         <tr>
                                             <th class="text-center">{{ $key + 1 }}</th>
                                             <td class="text-center">{{ $data->nama }}</td>
-                                            <td class="text-center text-capitalize">{{ Str::replace('_', ' ', $data->jenis) }}</td>
+                                            <td class="text-center text-capitalize">
+                                                {{ Str::replace('_', ' ', $data->jenis) }}</td>
                                             <td class="text-center">{{ $data->kota->provinsi->nama }}</td>
                                             <td class="text-center">{{ $data->kota->nama }}</td>
                                             <td class="text-center">
@@ -98,11 +99,14 @@
                             <label class="form-label">Jenis</label>
                             <select required class="form-select" name="jenis" id="jenis">
                                 <option value="" selected disabled>Pilih Jenis</option>
-                                <option value="petani_pengguna" {{ old('jenis') == 'petani_pengguna' ? 'selected' : '' }}>Petani Pengguna</option>
-                                <option value="master_dealer" {{ old('jenis') == 'master_dealer' ? 'selected' : '' }}>Master Dealer</option>
+                                <option value="petani_pengguna" {{ old('jenis') == 'petani_pengguna' ? 'selected' : '' }}>
+                                    Petani Pengguna</option>
+                                <option value="master_dealer" {{ old('jenis') == 'master_dealer' ? 'selected' : '' }}>
+                                    Master Dealer</option>
                                 <option value="dealer" {{ old('jenis') == 'dealer' ? 'selected' : '' }}>Dealer</option>
                                 <option value="kios" {{ old('jenis') == 'kios' ? 'selected' : '' }}>Kios</option>
-                                <option value="lahan_petani" {{ old('jenis') == 'lahan_petani' ? 'selected' : '' }}>Lahan Petani</option>
+                                <option value="lahan_petani" {{ old('jenis') == 'lahan_petani' ? 'selected' : '' }}>Lahan
+                                    Petani</option>
                                 <option value="lainnya" {{ old('jenis') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                             </select>
                             <div class="invalid-feedback mb-3">
@@ -248,8 +252,7 @@
                                 <input type="text" name="latitude" class="form-control" placeholder="Latitude..."
                                     id="latitude_edit" class="form-control"
                                     oninput="this.value = this.value.replace(/[^0-9.-]/g, '');"
-                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$"
-                                    required />
+                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$" required />
                                 <div class="invalid-feedback">
                                     Harap isi latitude dengan benar.
                                 </div>
@@ -258,8 +261,7 @@
                                 <input type="text" name="longitude" class="form-control" placeholder="Longitude..."
                                     id="longitude_edit" class="form-control"
                                     oninput="this.value = this.value.replace(/[^0-9.-]/g, '');"
-                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$"
-                                    required />
+                                    pattern="^-?([0-8]?[0-9]?[0-9](\.[0-9]+)?|90(\.0+)?)$" required />
                                 <div class="invalid-feedback">
                                     Harap isi longitude dengan benar.
                                 </div>
