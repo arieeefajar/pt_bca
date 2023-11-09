@@ -40,24 +40,24 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::middleware(['prevent-back-history'])->group(function () {
+    
     //login routes
-    Route::get('/', [LoginController::class, 'login'])
-        ->name('login')
-        ->middleware('guest');
-    Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])
-        ->name('prosesLogin')
-        ->middleware('guest');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::post('/clear-selected-toko-cookie', [
-        LoginController::class,
-        'clearSelectedTokoCookie',
-    ])->name('clearCookie');
-    Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name(
-        'lupaPassword'
-    );
+    Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
+    Route::get('/login/survey', [LoginController::class, 'login'])->name('loginToko'); //->middleware('guest');
 
-    //tes route
-    Route::get('/surveyor', [DashboardSurveyerController::class, 'tes'])->name('tes')->middleware('guest');
+    Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin')->middleware('guest');
+    Route::post('/prosesLogin/survey', [LoginController::class, 'prosesLoginSurvey'])->name('prosesLoginSurvey')->middleware('guest');
+
+    Route::prefix('register/survey')->group(function () {
+        Route::get('/', [LoginController::class,'register']);
+        Route::post('/', [LoginController::class,'register_store']);
+    });
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+    Route::post('/clear-selected-toko-cookie', [LoginController::class, 'clearSelectedTokoCookie'])->name('clearCookie');
+    Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
     //profile
     Route::get('/profile', [ProfileControllerAdmin::class, 'index'])

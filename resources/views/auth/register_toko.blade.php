@@ -62,67 +62,49 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to SIMI.</p>
+                                    <h5 class="text-primary">Welcome</h5>
+                                    <p class="text-muted">Sign up to continue to SIMI.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    @if (request()->segment(2))
-                                        {{-- login toko --}}
-                                        <form action="{{ route('prosesLoginSurvey') }}" method="POST">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="no_telp" class="form-label">No Telepon</label>
-                                                <input type="text" class="form-control" id="no_telp"
-                                                    placeholder="Masukan Nomor Telepon" name="no_telp" required
-                                                    value="{{ old('no_telp') }}">
-                                            </div>
+                                    <form action="{{ url('register/survey') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nama Toko / Kios</label>
+                                            <input type="text" class="form-control" id="name"
+                                                placeholder="Masukan Nomor Telepon" name="name" required
+                                                value="{{ old('name') }}">
+                                        </div>
 
-                                            <div class="mb-3">
-                                                <label class="form-label" for="password">Password</label>
-                                                <div class="position-relative auth-pass-inputgroup mb-3">
-                                                    <input type="password" value="{{ old('password') }}" required
-                                                        class="form-control pe-5" placeholder="Enter password"
-                                                        id="password" name="password">
-                                                    <button
-                                                        class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
-                                                        type="button" id="password-addon"><i
-                                                            class="ri-eye-fill align-middle"></i></button>
-                                                </div>
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="no_telp" class="form-label">No Telepon</label>
+                                            <input type="text" class="form-control" id="no_telp"
+                                                placeholder="Masukan Nomor Telepon" name="no_telp" required
+                                                value="{{ old('no_telp') }}">
+                                        </div>
 
-                                            <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit">Sign In</button>
-                                            </div>
-                                        </form>
-                                    @else
-                                        {{-- login default --}}
-                                        <form action="{{ route('prosesLogin') }}" method="POST">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="nip" class="form-label">NIP</label>
-                                                <input type="text" class="form-control" id="email"
-                                                    placeholder="Masukan email" name="nip" required
-                                                    value="{{ old('nip') }}">
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Alamat</label>
+                                            <textarea name="address" id="address" cols="30" rows="5" class="form-control"
+                                                placeholder="Masukkan Alamat">{{ old('address') }}</textarea>
+                                        </div>
 
-                                            <div class="mb-3">
-                                                <label class="form-label" for="password">Password</label>
-                                                <div class="position-relative auth-pass-inputgroup mb-3">
-                                                    <input type="password" value="{{ old('password') }}" required
-                                                        class="form-control pe-5" placeholder="Enter password"
-                                                        id="password" name="password">
-                                                    <button
-                                                        class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
-                                                        type="button" id="password-addon"><i
-                                                            class="ri-eye-fill align-middle"></i></button>
-                                                </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="password">Password</label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password" value="{{ old('password') }}" required
+                                                    class="form-control pe-5" placeholder="Masukkan password"
+                                                    id="password" name="password">
+                                                <button
+                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
+                                                    type="button" id="password-addon"><i
+                                                        class="ri-eye-fill align-middle"></i></button>
                                             </div>
+                                        </div>
 
-                                            <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit">Sign In</button>
-                                            </div>
-                                        </form>
-                                    @endif
+                                        <div class="mt-4">
+                                            <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <!-- end card body -->
