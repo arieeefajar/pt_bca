@@ -79,6 +79,74 @@
                         id="close-modal"></button>
                 </div>
 
+                {{-- <form action="javascript:void(0);">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">First Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your firstname"
+                                    id="firstNameinput">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="lastNameinput" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your lastname"
+                                    id="lastNameinput">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="compnayNameinput" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" placeholder="Enter company name"
+                                    id="compnayNameinput">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="phonenumberInput" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="+(245) 451 45123"
+                                    id="phonenumberInput">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="emailidInput" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" placeholder="example@gamil.com"
+                                    id="emailidInput">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="address1ControlTextarea" class="form-label">Address</label>
+                                <input type="text" class="form-control" placeholder="Address 1"
+                                    id="address1ControlTextarea">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="citynameInput" class="form-label">City</label>
+                                <input type="email" class="form-control" placeholder="Enter your city"
+                                    id="citynameInput">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ForminputState" class="form-label">State</label>
+                                <select id="ForminputState" class="form-select" data-choices data-choices-sorting="true">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form> --}}
+
                 <form action="{{ route('customer.create') }}" class="needs-validation" novalidate method="POST"
                     id="myForm">
                     @csrf
@@ -117,7 +185,21 @@
                         {{-- provinsi --}}
                         <div class="mb-3">
                             <label class="form-label">Provinsi</label>
-                            <select required class="form-select" name="provinsi" id="add_provinsi"
+                            <select required id="add_provinsi" name="provinsi" class="form-select" data-choices
+                                data-choices-sorting="true"
+                                oninvalid="this.setCustomValidity('Harap pilih provinsi customer')"
+                                oninput="setCustomValidity('')">
+                                <option selected disabled>Pilih Provinsi</option>
+                                @foreach ($provinsi as $data)
+                                    <option value="{{ $data->id }}">
+                                        {{ $data->nama }}</option>
+                                @endforeach
+                                <div class="invalid-feedback mb-3">
+                                    Harap pilih provinsi.
+                                </div>
+                            </select>
+
+                            {{-- <select required class="form-select" name="provinsi" id="add_provinsi"
                                 oninvalid="this.setCustomValidity('Harap pilih provinsi customer')"
                                 oninput="setCustomValidity('')">
                                 <option value="" selected disabled>Pilih Provinsi</option>
@@ -128,7 +210,7 @@
                             </select>
                             <div class="invalid-feedback mb-3">
                                 Harap pilih provinsi.
-                            </div>
+                            </div> --}}
                         </div>
 
                         {{-- kota --}}
@@ -137,6 +219,10 @@
                             <select required class="form-select" name="kota" id="add_kota">
                                 <option value="" disabled selected>Pilih Provinsi Terlebih Dahulu</option>
                             </select>
+                            {{-- <select required class="form-select" name="kota" id="add_kota" data-choices
+                                data-choices-sorting="true">
+                                <option disabled selected>Pilih Provinsi Terlebih Dahulu</option>
+                            </select> --}}
                             <div class="invalid-feedback mb-3">
                                 Harap pilih kota.
                             </div>
