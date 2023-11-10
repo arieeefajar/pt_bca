@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\WilayahController;
 use App\Http\Controllers\Admin\WilayahSurveyController;
 use App\Http\Controllers\KuisionerController;
+use App\Http\Controllers\User\SurveyTokoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,10 @@ Route::prefix('wilayah_survey')->group(function(){
     Route::post('/store', [WilayahSurveyController::class, 'store']);
     Route::post('/update', [WilayahSurveyController::class, 'update']);
     Route::get('/destroy/{id}', [WilayahSurveyController::class, 'destroy']);
+});
+
+Route::prefix('add-data')->group(function () {
+    Route::post('/nama-benih', [SurveyTokoController::class,'add_nama_benih']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

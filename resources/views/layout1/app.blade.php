@@ -11,6 +11,9 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('admin_assets/assets/images/logosimi.png') }}">
 
+    <!-- Sweet Alert css-->
+    <link href="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
     <!-- Layout config Js -->
     <script src="{{ asset('admin_assets/assets/js/layout.js') }}"></script>
     <!-- Bootstrap Css -->
@@ -76,11 +79,15 @@
     <script src="{{ asset('admin_assets/assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/js/plugins.js') }}"></script>
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('admin_assets/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <!-- prismjs plugin -->
     <script src="{{ asset('admin_assets/assets/libs/prismjs/prism.js') }}"></script>
 
     <script src="{{ asset('admin_assets/assets/js/app.js') }}"></script>
+    {{-- jquery --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     <script>
         window.onload = function() {
