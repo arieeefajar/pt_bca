@@ -349,82 +349,44 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::middleware(['auth', 'surveyor'])->group(function () {
         //menu routes
         Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name('menu.index');
-        Route::get('set-store', [
-            DashboardSurveyerController::class,
-            'setStore',
-        ])->name('surveyor.setStore');
+        Route::get('set-store', [DashboardSurveyerController::class, 'setStore'])->name('surveyor.setStore');
 
         // kuisioner routes
         Route::middleware(['kuisionerRoleAccess'])->group(function () {
             // kuisioner kepusan pelanggan
             Route::prefix('kepuasan-pelanggan')->group(function () {
-                Route::get('/{api_id?}', [
-                    KuisionerKepuasanPelanggan::class,
-                    'index',
-                ])->name('kepuasanPelanggan.index');
-                Route::post('/store', [
-                    KuisionerKepuasanPelanggan::class,
-                    'store',
-                ])->name('kepuasanPelanggan.create');
+                Route::get('/{api_id?}', [KuisionerKepuasanPelanggan::class, 'index'])->name('kepuasanPelanggan.index');
+                Route::post('/store', [KuisionerKepuasanPelanggan::class, 'store'])->name('kepuasanPelanggan.create');
             });
 
             // kuisioner analisis pesaing
             Route::prefix('analisis-pesaing')->group(function () {
-                Route::get('/{api_id?}', [
-                    KuisonerAnalisisPesaingController::class,
-                    'index',
-                ])->name('analisisPesaing.index');
-                Route::post('/store', [
-                    KuisonerAnalisisPesaingController::class,
-                    'store',
-                ])->name('analisisPesaing.create');
+                Route::get('/{api_id?}', [KuisonerAnalisisPesaingController::class, 'index'])->name('analisisPesaing.index');
+                Route::post('/store', [KuisonerAnalisisPesaingController::class, 'store'])->name('analisisPesaing.create');
             });
 
             // kuisioner kekuatan dan kelemahan pesaing
             Route::prefix('kekuatan-dan-kelemahan-pesaing')->group(function () {
-                Route::get('/{api_id?}', [
-                    KuisionerKekuatanKelemahanPesaing::class,
-                    'index',
-                ])->name('KekuatanDanKelemahanPesaing.index');
-                Route::post('/store', [
-                    KuisionerKekuatanKelemahanPesaing::class,
-                    'store',
-                ])->name('KekuatanDanKelemahanPesaing.create');
+                Route::get('/{api_id?}', [KuisionerKekuatanKelemahanPesaing::class, 'index'])->name('KekuatanDanKelemahanPesaing.index');
+                Route::post('/store', [KuisionerKekuatanKelemahanPesaing::class, 'store'])->name('KekuatanDanKelemahanPesaing.create');
             });
 
             // kuisioner skala pasar produk
             Route::prefix('skala-pasar-produk')->group(function () {
-                Route::get('/{api_id?}', [
-                    KuisionerSkalaPasarProduk::class,
-                    'index',
-                ])->name('SkalaPasarProduk.index');
-                Route::post('/', [
-                    KuisionerSkalaPasarProduk::class,
-                    'store',
-                ])->name('SkalaPasarProduk.create');
+                Route::get('/{api_id?}', [KuisionerSkalaPasarProduk::class, 'index'])->name('SkalaPasarProduk.index');
+                Route::post('/', [KuisionerSkalaPasarProduk::class, 'store'])->name('SkalaPasarProduk.create');
             });
 
             //form survey
             Route::prefix('pesaing')->group(function () {
-                Route::get('/{api_id?}', [
-                    FormPesaingController::class,
-                    'index',
-                ])->name('formPesaing.index');
-                Route::post('/', [FormPesaingController::class, 'store'])->name(
-                    'formPesaing.create'
-                );
+                Route::get('/{api_id?}', [FormPesaingController::class, 'index'])->name('formPesaing.index');
+                Route::post('/', [FormPesaingController::class, 'store'])->name('formPesaing.create' );
             });
 
             // form pesaing
             Route::prefix('potensi-lahan')->group(function () {
-                Route::get('/{api_id?}', [
-                    FormPotensiLahanController::class,
-                    'index',
-                ])->name('formPotensiLahan.index');
-                Route::post('/store', [
-                    FormPotensiLahanController::class,
-                    'store',
-                ])->name('formPotensiLahan.create');
+                Route::get('/{api_id?}', [FormPotensiLahanController::class, 'index'])->name('formPotensiLahan.index');
+                Route::post('/store', [FormPotensiLahanController::class, 'store'])->name('formPotensiLahan.create');
             });
         });
 
@@ -434,8 +396,21 @@ Route::middleware(['prevent-back-history'])->group(function () {
         route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
     });
 
-    // route toko
+    // route only toko
     Route::middleware(['onlySurveyToko'])->group(function(){
         Route::get('survey_toko', [SurveyTokoController::class,'index'])->name('survey_toko.index');
+
+        // get data
+        Route::prefix('get-data')->group(function () {
+            Route::get('/produk-benih/{jenis}', [SurveyTokoController::class,'get_product_benih']);
+            Route::get('/jenis-benih/{id_produk_benih}', [SurveyTokoController::class,'get_jenis_benih']);
+            Route::get('/nama-benih/{id_jenis_benih}', [SurveyTokoController::class,'get_nama_produk']);
+            Route::get('/produsen-benih', [SurveyTokoController::class,'get_produsen_benih']);
+        });
+
+        // add data
+        Route::prefix('add-data')->group(function () {
+            Route::post('/nama-benih', [SurveyTokoController::class,'add_nama_benih']);
+        });
     });
 });
