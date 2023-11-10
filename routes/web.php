@@ -24,6 +24,7 @@ use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisionerSkalaPasarProduk;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use App\Http\Controllers\User\ProfileControllerSurveyor;
+use App\Http\Controllers\User\SurveyTokoController;
 use App\Models\Provinsi;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -43,7 +44,7 @@ Route::middleware(['prevent-back-history'])->group(function () {
     
     //login routes
     Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
-    Route::get('/login/survey', [LoginController::class, 'login'])->name('loginToko'); //->middleware('guest');
+    Route::get('/login/survey', [LoginController::class, 'login'])->name('loginToko')->middleware('guest');
 
     Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin')->middleware('guest');
     Route::post('/prosesLogin/survey', [LoginController::class, 'prosesLoginSurvey'])->name('prosesLoginSurvey')->middleware('guest');
@@ -60,44 +61,15 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
     //profile
-    Route::get('/profile', [ProfileControllerAdmin::class, 'index'])
-        ->name('profile')
-        ->middleware('auth');
-    Route::post('/profile-update/{id}', [
-        ProfileControllerAdmin::class,
-        'update',
-    ])
-        ->name('profile.update')
-        ->middleware('auth');
-    Route::post('/password-update/{id}', [
-        ProfileControllerAdmin::class,
-        'ubahPassword',
-    ])
-        ->name('password.update')
-        ->middleware('auth');
+    Route::get('/profile', [ProfileControllerAdmin::class, 'index'])->name('profile')->middleware('auth');
+    Route::post('/profile-update/{id}', [ProfileControllerAdmin::class,'update'])->name('profile.update') ->middleware('auth');
+    Route::post('/password-update/{id}', [ProfileControllerAdmin::class,'ubahPassword'])->name('password.update')->middleware('auth');
 
     // dashboard
-    Route::get('/super-admin-dashboard', [
-        DashboardController::class,
-        'supperAdmin',
-    ])
-        ->name('superAdmin.dashboard')
-        ->middleware('auth', 'access:supper-admin');
-    Route::get('/admin-dashboard', [DashboardController::class, 'admin'])
-        ->name('admin.dashboard')
-        ->middleware('auth', 'access:admin');
-    Route::get('/executive-dashboard', [
-        DashboardController::class,
-        'executive',
-    ])
-        ->name('executive.dashboard')
-        ->middleware('auth', 'access:executive');
-    Route::get('/surveyor-dashboard', [
-        DashboardSurveyerController::class,
-        'index',
-    ])
-        ->name('surveyor.dashboard')
-        ->middleware('auth', 'access:user');
+    Route::get('/super-admin-dashboard', [ DashboardController::class,'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
+    Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard')->middleware('auth', 'access:admin');
+    Route::get('/executive-dashboard', [DashboardController::class,'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
+    Route::get('/surveyor-dashboard', [ DashboardSurveyerController::class,'index',])->name('surveyor.dashboard')->middleware('auth', 'access:user');
 
     // route only super admin & admin
     Route::middleware(['auth', 'superAndAdmin'])->group(function () {
@@ -460,5 +432,10 @@ Route::middleware(['prevent-back-history'])->group(function () {
         route::get('listTargetToko', [DashboardSurveyerController::class, 'listTargetToko'])->name('listTargetToko.index');
         // Data List Hasil Survey
         route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
+    });
+
+    // route toko
+    Route::middleware(['onlySurveyToko'])->group(function(){
+        Route::get('survey_toko', [SurveyTokoController::class,'index'])->name('survey_toko.index');
     });
 });

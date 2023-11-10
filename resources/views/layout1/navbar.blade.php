@@ -136,22 +136,24 @@
                             src="{{ asset('admin_assets/assets/images/users/user-dummy-img.jpg') }}"
                             alt="Header Avatar">
                         <span class="text-start ms-xl-2">
-                            <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna
-                                Adame</span>
-                            <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Founder</span>
+                            <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text text-capitalize">{{ Auth::guard('toko')->user()->nama_toko }}</span>
+                            <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Custommer</span>
                         </span>
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <h6 class="dropdown-header">Welcome Anna!</h6>
+                    <h6 class="dropdown-header text-capitalize">Welcome {{ Auth::guard('toko')->user()->nama_toko }}</h6>
                     <a class="dropdown-item" href="pages-profile.html"><i
                             class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                             class="align-middle">Profile</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="auth-logout-basic.html"><i
-                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
-                            data-key="t-logout">Logout</span></a>
+                    <form action="{{ route('logout') }}" method="POST" id="formLogout">
+                        @csrf
+                        <button type="submit" class="dropdown-item"><i
+                                class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle" data-key="t-logout">Logout</span></button>
+                    </form>
                 </div>
             </div>
         </div>

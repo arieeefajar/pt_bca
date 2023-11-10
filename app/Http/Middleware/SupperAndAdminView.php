@@ -31,6 +31,8 @@ class SupperAndAdminView
             return redirect()->route('executive.dashboard');
         } elseif (Auth::user()->role == 'user') {
             return redirect()->route('surveyor.dashboard');
+        } elseif (Auth::guard('toko')->check()) {
+            return redirect()->route('survey_toko.index');
         }
 
         abort(403, 'Unauthorized');

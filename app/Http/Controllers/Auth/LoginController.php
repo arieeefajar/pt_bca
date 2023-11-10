@@ -116,7 +116,6 @@ class LoginController extends Controller
         if (Auth::guard('web')->attempt($credentials)) {
             // Login berhasil
             $user = Auth::user();
-            dd(Auth::guard('toko')->check());
 
             if ($user->role == 'supper-admin') {
                 toast('Login berhasil', 'success')->position('top')->autoClose(3000);
@@ -176,10 +175,8 @@ class LoginController extends Controller
         if (Auth::guard('toko')->attempt($credentials)) {
             // Login berhasil
             $user = Auth::guard('toko')->user();
-            dd(Auth::guard('toko')->check());
-
             toast('Login berhasil', 'success')->position('top')->autoClose(3000);
-            return redirect()->back()->withInput();
+            return redirect()->route('survey_toko.index');
         } else {
             // Login gagal
             toast('Nip atau password salah', 'error')->position('top')->autoClose(3000);
@@ -189,8 +186,14 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        // dd(Auth::check());
+        
         if (Auth::check()) {
+            $status = true;
+        } elseif (Auth::guard('toko')->check()) {
+            $status = false;
+        }
+
+        if (Auth::check() || Auth::guard('toko')->check()) {
             // Hapus cookie selectedTokoId
             Cookie::queue(Cookie::forget('selectedTokoId'));
             Cookie::queue(Cookie::forget('kategoriToko'));
@@ -202,7 +205,10 @@ class LoginController extends Controller
             $request->session()->regenerateToken();
         }
 
-        return redirect('/')->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate');;
+        if ($status) {
+            return redirect('/')->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate');
+        }
+        return redirect('/login/survey')->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate');
     }
 
     public function clearSelectedTokoCookie()

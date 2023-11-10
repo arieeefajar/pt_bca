@@ -22,7 +22,7 @@
     </style>
 @endsection
 <div class="row">
-    <div class="col-xxl-6">
+    <div class="col-xxl-12">
         <div class="card">
             <div class="card-body">
                 <!-- Nav tabs -->
@@ -42,6 +42,8 @@
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content  text-muted">
+
+                    {{-- bar chart --}}
                     <div class="tab-pane active" id="home" role="tabpanel">
                         <div class="row">
                             <div class="col-sm-6">
@@ -75,19 +77,19 @@
                                                                     </a>
                                                                     <ul class="dropdown-menu kuisioner">
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('product')">Produk</a>
+                                                                                onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('promosi')">Promosi</a>
+                                                                                onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('kualitas')">Kualitas
+                                                                                onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
                                                                                 produk</a></li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('layanan')">Layanan
+                                                                                onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
                                                                                 petugas lapang</a></li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('penanganan')">Penanganan
+                                                                                onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
                                                                                 komplain pelanggan</a></li>
                                                                     </ul>
                                                                 </li>
@@ -108,39 +110,39 @@
                                                                     </a>
                                                                     <ul class="dropdown-menu kuisioner">
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('riset')">Riset
+                                                                                onclick="getDataCartKekuatanKelemahan('riset', '{{ $location_name }}')">Riset
                                                                                 dan Pengembangan</a></li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
+                                                                                onclick="getDataCartKekuatanKelemahan('manajerial', '{{ $location_name }}')">Kemampuan
                                                                                 Manajerial</a></li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
+                                                                                onclick="getDataCartKekuatanKelemahan('inti', '{{ $location_name }}')">Kemampuan
                                                                                 Inti dan Menyesuaikan Diri dengan
                                                                                 Perubahan</a>
                                                                         </li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
+                                                                                onclick="getDataCartKekuatanKelemahan('portofolio', '{{ $location_name }}')">Portofolio
                                                                                 Pesaing</a></li>
                                                                         <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                                                                                onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
@@ -156,6 +158,8 @@
                         </div>
                         <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
                     </div>
+
+                    {{-- word count --}}
                     <div class="tab-pane" id="product1" role="tabpanel">
                         <div class="row mb-3">
                             <div class="col-sm-6">
@@ -182,28 +186,11 @@
                                                             id="navbarSupportedContent">
                                                             <ul class="navbar-nav me-auto">
                                                                 <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle" href="#"
+                                                                    <a class="nav-link" href="#" onclick="getWord('retail', '{{ $location_name }}')"
                                                                         role="button" data-bs-toggle="dropdown"
                                                                         aria-expanded="false" style="color: black">
                                                                         Analisis Pesaing
                                                                     </a>
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('product')">Produk</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('promosi')">Promosi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                                                produk</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('layanan')">Layanan
-                                                                                petugas lapang</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                                                komplain pelanggan</a></li>
-                                                                    </ul>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -215,48 +202,11 @@
                                                             id="navbarSupportedContent">
                                                             <ul class="navbar-nav me-auto">
                                                                 <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle" href="#"
+                                                                    <a class="nav-link" href="#" onclick="getWord('potentional', '{{ $location_name }}')"
                                                                         role="button" data-bs-toggle="dropdown"
                                                                         aria-expanded="false" style="color: black">
-                                                                        Kekuatan Kelemahan Pesaing
+                                                                        Potensi Lahan
                                                                     </a>
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                                                dan Pengembangan</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                                                Manajerial</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
-                                                                                Inti dan Menyesuaikan Diri dengan
-                                                                                Perubahan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                                                Pesaing</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
-                                                                        </li>
-                                                                    </ul>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -277,19 +227,8 @@
                                         <h6 class="card-title">Rangking</h4>
                                     </div>
                                     <div class="card-body">
-                                        <ol class="list-group list-group-numbered">
+                                        <ol class="list-group list-group-numbered" id="ranking">
                                             <li class="list-group-item">Send the billing agreement</li>
-                                            <li class="list-group-item">Send over all the documentation.</li>
-                                            <li class="list-group-item">Meeting with daron to review the intake form
-                                            </li>
-                                            <li class="list-group-item">Check uikings theme and give customer support
-                                            </li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
                                         </ol>
                                     </div>
                                 </div>
@@ -302,19 +241,8 @@
                                         <h6 class="card-title">Deskripsi</h4>
                                     </div>
                                     <div class="card-body">
-                                        <ol class="list-group list-group-numbered">
+                                        <ol class="list-group list-group-numbered" id="deskripsi">
                                             <li class="list-group-item">Send the billing agreement</li>
-                                            <li class="list-group-item">Send over all the documentation.</li>
-                                            <li class="list-group-item">Meeting with daron to review the intake form
-                                            </li>
-                                            <li class="list-group-item">Check uikings theme and give customer support
-                                            </li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
-                                            <li class="list-group-item">Start making a presentation</li>
                                         </ol>
                                     </div>
                                 </div>
@@ -373,6 +301,7 @@
 <script>
     $(document).ready(function() {
         getDataCartKepuasan('product', '{{ $location_name }}')
+        getWord('retail', '{{ $location_name }}')
     });
 
     function showIndex() {
@@ -772,6 +701,46 @@
             // https://www.amcharts.com/docs/v5/concepts/animations/
             series.appear(1000);
             chart.appear(1000, 100);
+        });
+    }
+
+    function getWord(kategory, daerah) {
+        let url;
+        const area = btoa(daerah)
+
+        if (kategory == "retail") {
+            url = `{{ url('getRetail/${area}') }}`;
+        } else if (kategory == "potentional"){
+            url = `{{ url('getPotentionalArea/${area}') }}`;
+        }
+
+        $.ajax({
+            type: "get",
+            url: url,
+            dataType: "json",
+            beforeSend: function() {
+                $('#ranking').html('<li class="list-group-item">Loading...</li>');
+                $('#deskripsi').html('<li class="list-group-item">Loading...</li>');
+            },
+            success: function(res) {
+                let ranking = '';
+                let suggestions = '';
+                $.each(res.ranking, function (index, val) { 
+                    if (index < 3) {
+                        ranking += `<li class="list-group-item">${val.word}.</li>`
+                    }
+                });
+                $.each(res.suggestions, function (index, val) { 
+                    suggestions += `<li class="list-group-item">${val}.</li>`
+                });
+
+                $('#ranking').html(ranking);
+                $('#deskripsi').html(suggestions);
+            },
+            error: function(params) {
+                $('#ranking').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                $('#deskripsi').html('<li class="list-group-item">Server error / tidak ada data</li>');
+            }
         });
     }
 </script>
