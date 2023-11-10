@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
             JenisTanamanSeeder::class,
             ProductSeeder::class,
             WilayahSurvey::class,
+            Suggestion::class,
+            ProdukBenih::class,
+            BenihSeeder::class,
+            ProdusenBenih::class,
+            NamaProdukBenih::class,
             // CustomerProductSeeder::class,
         ]);
     }

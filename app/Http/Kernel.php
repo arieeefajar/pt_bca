@@ -71,5 +71,7 @@ class Kernel extends HttpKernel
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
 
         'kuisionerRoleAccess' => \App\Http\Middleware\RoleAccess::class,
+
+        'onlySurveyToko' => \App\Http\Middleware\SurveyTokoAccess::class,
     ];
 }

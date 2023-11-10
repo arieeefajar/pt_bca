@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SuggestionPotensionalArea;
+use App\Models\SuggestionRetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -6988,6 +6990,78 @@ class LaporanController extends Controller
         } elseif ($type === 'competitor-identifier') {
             return $this->kekuatanKelemahan();
         }
+    }
+
+    public function getRetailDataDaerah($area, $filter = 'monthly'){
+        $endPointApi = env('PYTHON_END_POINT') . 'ai';
+        $dataAI = [Http::get($endPointApi)->json()['data']][0]['retail_data'];
+
+        $location = base64_decode($area);
+
+        foreach ($dataAI as $value) {
+            if ($value['location']['name'] === $location) {
+                $dataAI = $value;
+            }
+        }
+
+        $finalData = [];
+        $suggestions = [];
+
+        foreach ($dataAI[$filter] as $value) {
+            
+            if ($value['word'] !== '<oov>' && $value['word'] !== '') {
+                array_push($finalData, $value);
+            }
+        }
+
+        for ($i=0; $i < 3; $i++) { 
+            $suggestion = SuggestionRetail::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
+            array_push($suggestions, $suggestion->suggestion);
+        }
+        
+        $suggestions = (object) $suggestions;
+        $finalData = (object) $finalData;
+
+        return response()->json([
+            'ranking' => $finalData,
+            'suggestions' => $suggestions
+        ]);
+    }
+
+    public function getPotentionalAreaDaerah($area, $filter = 'monthly'){
+        $endPointApi = env('PYTHON_END_POINT') . 'ai';
+        $dataAI = [Http::get($endPointApi)->json()['data']][0]['potential_area_data'];
+
+        $location = base64_decode($area);
+
+        foreach ($dataAI as $value) {
+            if ($value['location']['name'] === $location) {
+                $dataAI = $value;
+            }
+        }
+
+        $finalData = [];
+        $suggestions = [];
+
+        foreach ($dataAI[$filter] as $value) {
+            
+            if ($value['word'] !== '<oov>' && $value['word'] !== '') {
+                array_push($finalData, $value);
+            }
+        }
+
+        for ($i=0; $i < 3; $i++) { 
+            $suggestion = SuggestionPotensionalArea::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
+            array_push($suggestions, $suggestion->suggestion);
+        }
+        
+        $suggestions = (object) $suggestions;
+        $finalData = (object) $finalData;
+
+        return response()->json([
+            'ranking' => $finalData,
+            'suggestions' => $suggestions
+        ]);
     }
 
     function kepuasanDaerah($data)

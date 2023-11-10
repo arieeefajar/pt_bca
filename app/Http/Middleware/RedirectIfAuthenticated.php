@@ -17,6 +17,12 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
+
+        if (Auth::guard('toko')->check()) {
+            toast('Anda sudah login sebelumnya', 'warning')->position('top')->autoClose(3000);
+            return redirect(RouteServiceProvider::SURVEY_HOME);
+        }
+        
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {

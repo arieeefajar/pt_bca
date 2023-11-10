@@ -244,7 +244,6 @@
     }
 
     function getDataCartKekuatanKelemahan(kategory) {
-
         $('#titleContent').html(`Penilaian Pelanggan / Kekuatan & Kelemahan / ${kategory}`);
 
         const urlChart = `{{ url('getPertanyaanKekuatanKelemahanByRespondentsAll/${kategory}') }}`;
@@ -264,6 +263,7 @@
                 $('#chartdiv').html('Server error / tidak ada data');
             }
         });
+
         $.ajax({
             type: "get",
             url: urlTable,
@@ -279,7 +279,7 @@
                 $.each(response[1], function(key, value) {
                     contentTable += `<tr>`
                     contentTable += `<td class="text-center">${no}</td>`
-                    contentTable += `<td class="text-wrap">${key}</td>`
+                    contentTable += `<td>${key}</td>`
                     contentTable += `<td class="text-center">${value}%</td>`
                     contentTable += `</tr>`
                     no++
@@ -329,7 +329,7 @@
                 smallNumberPrefixes: [],
             });
 
-            var stepDuration = 1000;
+            var stepDuration = 2000;
 
             // Set themes
             // https://www.amcharts.com/docs/v5/concepts/themes/

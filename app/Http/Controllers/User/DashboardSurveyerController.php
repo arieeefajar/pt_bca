@@ -93,8 +93,15 @@ class DashboardSurveyerController extends Controller
             })->get();
 
         foreach ($dataPerusahaan as $key => $value) {
-            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
-            $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->get();
+            $detailPenyimpanan = [];
+            foreach ($penyimpanan as $value) {
+                $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $value->id)->first();
+                if ($detailPenyimpanan) {
+                    $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('id', $detailPenyimpanan->penyimpanan_id)->first();
+                    break;
+                }
+            }
             if ($detailPenyimpanan) {
                 if ($penyimpanan->status != 2) {
                     $dataPerusahaan[$key]->status = 1;
@@ -123,19 +130,26 @@ class DashboardSurveyerController extends Controller
         $dataPerusahaan = Customer::with('kota', 'kota.provinsi', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor')
             ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate, $kota) {
                 $query->whereIn('kota_id', $kota);
-            })
-            ->orderBy('updated_at', 'desc')->get();
+            })->get();
 
         foreach ($dataPerusahaan as $key => $value) {
-            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->first();
-            $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $penyimpanan ? $penyimpanan->id : 'error')->first();
+            $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->get();
+            $detailPenyimpanan = [];
+            foreach ($penyimpanan as $value) {
+                $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $value->id)->first();
+                if ($detailPenyimpanan) {
+                $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('id', $detailPenyimpanan->penyimpanan_id)->first();
+                // dd($penyimpanan);
+                break;
+                }
+            }
             if ($detailPenyimpanan) {
                 if ($penyimpanan->status != 2) {
-                    $dataPerusahaan[$key]->status = 1;
-                    $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
+                $dataPerusahaan[$key]->status = 1;
+                $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
                 } else {
-                    $dataPerusahaan[$key]->status = 2;
-                    $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
+                $dataPerusahaan[$key]->status = 2;
+                $dataPerusahaan[$key]->surveyor = $penyimpanan->surveyor->name;
                 }
             } else {
                 $dataPerusahaan[$key]->status = 3;
@@ -156,6 +170,32 @@ class DashboardSurveyerController extends Controller
         $startDate =  Carbon::now()->startOfMonth()->format('Y-m-d') . ' 00:00:00';
         // Mendapatkan tanggal akhir bulan ini
         $endDate = Carbon::now()->endOfMonth()->format('Y-m-d') . ' 23:59:59';
+        $kota = Wilayah_survey::where('surveyor_id', Auth::user()->id)->pluck('kota_id')->toArray();
+
+        $tokoBlmSelesai = function($startDate, $endDate, $kota){
+            $dataPerusahaan = Customer::with('kota', 'kota.provinsi', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor')
+            ->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate, $kota) {
+                $query->whereIn('kota_id', $kota);
+            })->get();
+            $finalCount = [];
+
+            foreach ($dataPerusahaan as $key => $value) {
+                $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('customer_id', $value->id)->get();
+                $detailPenyimpanan = [];
+                foreach ($penyimpanan as $value) {
+                    $detailPenyimpanan = DetailPenyimpanan::where('penyimpanan_id', $value->id)->first();
+                    if ($detailPenyimpanan) {
+                        $penyimpanan = Penyimpanan::with('surveyor')->whereBetween('created_at', [$startDate, $endDate])->where('id', $detailPenyimpanan->penyimpanan_id)->first();
+                        break;
+                    }
+                }
+                if ($detailPenyimpanan && $penyimpanan->status == 2) {
+                    array_push($finalCount, $value);
+                }
+            }
+
+            return count($finalCount);
+        };
 
         $dataJumlah = [
             'targetTokoSelesai' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
@@ -170,12 +210,7 @@ class DashboardSurveyerController extends Controller
                     $query->where('surveyor_id', Auth::user()->id);
                 })->get()->count(),
 
-            'targetTokoBlmSelesai' => Customer::with('kota', 'kota.wilayah_survey', 'kota.wilayah_survey.surveyor', 'kota.provinsi', 'penyimpanan', 'penyimpanan.detail_penyimpanan')
-                ->whereHas('penyimpanan', function ($query) use ($startDate, $endDate) {
-                    $query->where('status', 2)->whereBetween('created_at', [$startDate, $endDate]);
-                })->whereHas('kota.wilayah_survey', function ($query) use ($startDate, $endDate) {
-                    $query->where('surveyor_id', Auth::user()->id);
-                })->has('penyimpanan.detail_penyimpanan')->get()->count(),
+            'targetTokoBlmSelesai' => $tokoBlmSelesai($startDate, $endDate, $kota)
         ];
 
         return $dataJumlah;

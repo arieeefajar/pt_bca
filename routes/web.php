@@ -24,6 +24,7 @@ use App\Http\Controllers\User\KuisionerKepuasanPelanggan;
 use App\Http\Controllers\User\KuisionerSkalaPasarProduk;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use App\Http\Controllers\User\ProfileControllerSurveyor;
+use App\Http\Controllers\User\SurveyTokoController;
 use App\Models\Provinsi;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -40,64 +41,35 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::middleware(['prevent-back-history'])->group(function () {
+    
     //login routes
-    Route::get('/', [LoginController::class, 'login'])
-        ->name('login')
-        ->middleware('guest');
-    Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])
-        ->name('prosesLogin')
-        ->middleware('guest');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::post('/clear-selected-toko-cookie', [
-        LoginController::class,
-        'clearSelectedTokoCookie',
-    ])->name('clearCookie');
-    Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name(
-        'lupaPassword'
-    );
+    Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
+    Route::get('/login/survey', [LoginController::class, 'login'])->name('loginToko')->middleware('guest');
 
-    //tes route
-    Route::get('/surveyor', [DashboardSurveyerController::class, 'tes'])->name('tes')->middleware('guest');
+    Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin')->middleware('guest');
+    Route::post('/prosesLogin/survey', [LoginController::class, 'prosesLoginSurvey'])->name('prosesLoginSurvey')->middleware('guest');
+
+    Route::prefix('register/survey')->group(function () {
+        Route::get('/', [LoginController::class,'register']);
+        Route::post('/', [LoginController::class,'register_store']);
+    });
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+    Route::post('/clear-selected-toko-cookie', [LoginController::class, 'clearSelectedTokoCookie'])->name('clearCookie');
+    Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
     //profile
-    Route::get('/profile', [ProfileControllerAdmin::class, 'index'])
-        ->name('profile')
-        ->middleware('auth');
-    Route::post('/profile-update/{id}', [
-        ProfileControllerAdmin::class,
-        'update',
-    ])
-        ->name('profile.update')
-        ->middleware('auth');
-    Route::post('/password-update/{id}', [
-        ProfileControllerAdmin::class,
-        'ubahPassword',
-    ])
-        ->name('password.update')
-        ->middleware('auth');
+    Route::get('/profile', [ProfileControllerAdmin::class, 'index'])->name('profile')->middleware('auth');
+    Route::post('/profile-update/{id}', [ProfileControllerAdmin::class,'update'])->name('profile.update') ->middleware('auth');
+    Route::post('/password-update/{id}', [ProfileControllerAdmin::class,'ubahPassword'])->name('password.update')->middleware('auth');
 
     // dashboard
-    Route::get('/super-admin-dashboard', [
-        DashboardController::class,
-        'supperAdmin',
-    ])
-        ->name('superAdmin.dashboard')
-        ->middleware('auth', 'access:supper-admin');
-    Route::get('/admin-dashboard', [DashboardController::class, 'admin'])
-        ->name('admin.dashboard')
-        ->middleware('auth', 'access:admin');
-    Route::get('/executive-dashboard', [
-        DashboardController::class,
-        'executive',
-    ])
-        ->name('executive.dashboard')
-        ->middleware('auth', 'access:executive');
-    Route::get('/surveyor-dashboard', [
-        DashboardSurveyerController::class,
-        'index',
-    ])
-        ->name('surveyor.dashboard')
-        ->middleware('auth', 'access:user');
+    Route::get('/super-admin-dashboard', [ DashboardController::class,'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
+    Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard')->middleware('auth', 'access:admin');
+    Route::get('/executive-dashboard', [DashboardController::class,'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
+    Route::get('/surveyor-dashboard', [ DashboardSurveyerController::class,'index',])->name('surveyor.dashboard')->middleware('auth', 'access:user');
 
     // route only super admin & admin
     Route::middleware(['auth', 'superAndAdmin'])->group(function () {
@@ -257,34 +229,14 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         //penyimpana rote berdasarkan kategori
         Route::prefix('penyimpanan')->group(function () {
-            Route::get('byToko', [PenyimpananController::class, 'index'])->name(
-                'byToko.index'
-            );
+            Route::get('byToko', [PenyimpananController::class, 'index'])->name('byToko.index');
 
-            Route::get('Kepuasan_Pelanggan', [
-                PenyimpananController::class,
-                'kepuasanPelanggan',
-            ])->name('Kepuasan_Pelanggan.index');
-            Route::get('Analisis_Pesaing', [
-                PenyimpananController::class,
-                'analisisPesaing',
-            ])->name('Analisis_Pesaing.index');
-            Route::get('Kekuatan_Kelemahan_Pesaing', [
-                PenyimpananController::class,
-                'kekuatanKelemahan',
-            ])->name('Kekuatan_Kelemahan_Pesaing.index');
-            Route::get('Skala_Pasar_Produk', [
-                PenyimpananController::class,
-                'skalaPasarProduk',
-            ])->name('Skala_Pasar_Produk.index');
-            Route::get('Potensi_Lahan', [
-                PenyimpananController::class,
-                'potensiLahan',
-            ])->name('Potensi_Lahan.index');
-            Route::get('Survey_Pesaing', [
-                PenyimpananController::class,
-                'surveyPesaing',
-            ])->name('Survey_Pesaing.index');
+            Route::get('Kepuasan_Pelanggan', [PenyimpananController::class, 'kepuasanPelanggan'])->name('Kepuasan_Pelanggan.index');
+            Route::get('Analisis_Pesaing', [PenyimpananController::class, 'analisisPesaing'])->name('Analisis_Pesaing.index');
+            Route::get('Kekuatan_Kelemahan_Pesaing', [PenyimpananController::class, 'kekuatanKelemahan',])->name('Kekuatan_Kelemahan_Pesaing.index');
+            Route::get('Skala_Pasar_Produk', [PenyimpananController::class, 'skalaPasarProduk'])->name('Skala_Pasar_Produk.index');
+            Route::get('Potensi_Lahan', [PenyimpananController::class, 'potensiLahan'])->name('Potensi_Lahan.index');
+            Route::get('Survey_Pesaing', [PenyimpananController::class, 'surveyPesaing'])->name('Survey_Pesaing.index');
         });
 
         //jumlah executive route
@@ -382,26 +334,21 @@ Route::middleware(['prevent-back-history'])->group(function () {
         // get pertanyaan kekuatan kelemahan daerah all
         Route::get('getPertanyaanKekuatanKelemahanAll/{category}', [LaporanController::class, 'getPertanyaanKekuatanKelemahanAll'])->name('getPertanyaanKekuatanKelemahanAll');
         Route::get('getPertanyaanKekuatanKelemahanByRespondentsAll/{category}', [LaporanController::class, 'getPertanyaanKekuatanKelemahanByRespondentsAll'])->name('getPertanyaanKekuatanKelemahanByRespondentsAll');
+
+        Route::get('getRetail/{area}/{filter?}', [LaporanController::class, 'getRetailDataDaerah']);
+        Route::get('getPotentionalArea/{area}/{filter?}', [LaporanController::class, 'getPotentionalAreaDaerah']);
     });
 
     // route other than surveyor
     Route::middleware(['auth', 'nonSurveyor'])->group(function () {
-        Route::get('dataTargetToko', [
-            DashboardController::class,
-            'dataTargetToko',
-        ])->name('dataTargetToko.index');
-        Route::get('dataSurveyToko', [
-            DashboardController::class,
-            'dataSurveyToko',
-        ])->name('dataSurveyToko.index');
+        Route::get('dataTargetToko', [DashboardController::class, 'dataTargetToko'])->name('dataTargetToko.index');
+        Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko'])->name('dataSurveyToko.index');
     });
 
     // route only surveyour
     Route::middleware(['auth', 'surveyor'])->group(function () {
         //menu routes
-        Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name(
-            'menu.index'
-        );
+        Route::get('menu', [DashboardSurveyerController::class, 'menu'])->name('menu.index');
         Route::get('set-store', [
             DashboardSurveyerController::class,
             'setStore',
@@ -482,15 +429,13 @@ Route::middleware(['prevent-back-history'])->group(function () {
         });
 
         // Data List Target Toko
-        route::get('listTargetToko', [
-            DashboardSurveyerController::class,
-            'listTargetToko',
-        ])->name('listTargetToko.index');
-
+        route::get('listTargetToko', [DashboardSurveyerController::class, 'listTargetToko'])->name('listTargetToko.index');
         // Data List Hasil Survey
-        route::get('listHasilSurvey', [
-            DashboardSurveyerController::class,
-            'listHasilSurvey',
-        ])->name('listHasilSurvey.index');
+        route::get('listHasilSurvey', [DashboardSurveyerController::class, 'listHasilSurvey'])->name('listHasilSurvey.index');
+    });
+
+    // route toko
+    Route::middleware(['onlySurveyToko'])->group(function(){
+        Route::get('survey_toko', [SurveyTokoController::class,'index'])->name('survey_toko.index');
     });
 });

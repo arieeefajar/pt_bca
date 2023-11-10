@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'toko' => [
+            'driver' => 'session',
+            'provider' => 'toko', // Sesuaikan dengan nama provider untuk admin
+        ],
     ],
 
     /*
@@ -64,11 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'toko' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AccountToko::class,
+        ],
     ],
 
     /*

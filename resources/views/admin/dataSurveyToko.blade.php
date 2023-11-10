@@ -20,6 +20,7 @@
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th>Nama</th>
+                                            <th>Tanggal</th>
                                             <th>Provinsi</th>
                                             <th>Kota</th>
                                             <th>Suerveyor</th>
@@ -27,11 +28,13 @@
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
+                                        <?php $number = 1 ?>
                                         @foreach ($dataPerusahaan as $index => $data)
                                             @if ($data->status == 2)
                                                 <tr>
-                                                    <th>{{ $index + 1 }}</th>
+                                                    <th>{{ $number }}</th>
                                                     <td>{{ $data->nama }}</td>
+                                                    <td>{{ $data->date }}</td>
                                                     <td>{{ $data->kota->provinsi->nama }}</td>
                                                     <td>{{ $data->kota->nama }}</td>
                                                     <td>{{ $data->surveyor }}</td>
@@ -40,6 +43,7 @@
                                                             Mengisi</span>
                                                     </td>
                                                 </tr>
+                                                <?php $number++; ?>
                                             @endif
                                         @endforeach
                                     </tbody>
