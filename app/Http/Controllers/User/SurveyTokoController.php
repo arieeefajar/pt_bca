@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Benih;
 use App\Models\NamaProdukBenih;
 use App\Models\ProdukBenih;
+use App\Models\ProdusenBenih;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,7 @@ class SurveyTokoController extends Controller
     }
 
     public function get_produsen_benih(){
-        $data = ProdukBenih::all();
+        $data = ProdusenBenih::all();
         return response()->json($data);
     }
 
