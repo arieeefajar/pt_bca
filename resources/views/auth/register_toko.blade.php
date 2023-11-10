@@ -66,26 +66,37 @@
                                     <p class="text-muted">Sign up to continue to SIMI.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="{{ url('register/survey') }}" method="POST">
+                                    <form action="{{ url('register/survey') }}" class="needs-validation" novalidate
+                                        method="POST">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Nama Toko / Kios</label>
                                             <input type="text" class="form-control" id="name"
                                                 placeholder="Masukan Nomor Telepon" name="name" required
                                                 value="{{ old('name') }}">
+                                            <div class="invalid-feedback">
+                                                Nama tidak boleh kosong.
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="no_telp" class="form-label">No Telepon</label>
                                             <input type="text" class="form-control" id="no_telp"
                                                 placeholder="Masukan Nomor Telepon" name="no_telp" required
-                                                value="{{ old('no_telp') }}">
+                                                value="{{ old('no_telp') }}" pattern="(\+62|62|0)8[1-9][0-9]{8,9}$"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, ''); validateInput(this);"
+                                                oninvalid="validateInput(this);">
+                                            <div class="invalid-feedback" id="validTlp">
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="address" class="form-label">Alamat</label>
-                                            <textarea name="address" id="address" cols="30" rows="5" class="form-control"
+                                            <textarea required name="address" id="address" cols="30" rows="5" class="form-control"
                                                 placeholder="Masukkan Alamat">{{ old('address') }}</textarea>
+                                            <div class="invalid-feedback">
+                                                Alamat tidak boleh kosong.
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
@@ -93,21 +104,28 @@
                                             <div class="position-relative auth-pass-inputgroup mb-3">
                                                 <input type="password" value="{{ old('password') }}" required
                                                     class="form-control pe-5" placeholder="Masukkan password"
-                                                    id="password" name="password">
+                                                    id="password" name="password" minlength="8"
+                                                    oninvalid="validatePassword(this)">
                                                 <button
                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
                                                     type="button" id="password-addon"><i
                                                         class="ri-eye-fill align-middle"></i></button>
+                                                <div class="invalid-feedback" id="validatePassword">
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+                                            <button class="btn btn-primary w-100" type="submit">Register</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <!-- end card body -->
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="mb-0">Sudah punya akun ? <a href="{{ route('loginToko') }}"
+                                    class="fw-bold text-primary text-decoration-underline"> Login </a> </p>
                         </div>
                         <!-- end card -->
                     </div>
@@ -152,6 +170,39 @@
     <script src="{{ asset('admin_assets/assets/js/pages/particles.app.js') }}"></script>
     <!-- password-addon init -->
     <script src="{{ asset('admin_assets/assets/js/pages/password-addon.init.js') }}"></script>
+
+    {{-- form validate --}}
+    <script src="{{ asset('admin_assets/assets/js/pages/form-validation.init.js') }}"></script>
+
+    <script>
+        function validateInput(input) {
+            const noTlp = document.getElementById('validTlp')
+
+            if (input.validity.valueMissing) {
+                input.setCustomValidity('No Hp tidak boleh kosong.');
+                noTlp.innerHTML = `No Telepon tidak boleh kosong.`;
+            } else if (input.validity.patternMismatch) {
+                input.setCustomValidity('Nomor telepon tidak valid. Silakan masukkan nomor telepon yang benar.');
+                noTlp.innerHTML = `Nomor telepon tidak valid. Silakan masukkan nomor telepon yang benar.`;
+            } else {
+                input.setCustomValidity('');
+            }
+        };
+
+        function validatePassword(input) {
+            const password = document.getElementById('validatePassword');
+
+            if (input.validity.valueMissing) {
+                input.setCustomValidity('Password tidak boleh kosong.');
+                password.innerHTML = `Password tidak boleh kosong.`;
+            } else if (input.value.length < 8) {
+                input.setCustomValidity('Password kurang dari 8 karakter.');
+                password.innerHTML = `Password kurang dari 8 karakter.`;
+            } else {
+                input.setCustomValidity('');
+            }
+        }
+    </script>
 
     @include('sweetalert::alert')
 </body>
