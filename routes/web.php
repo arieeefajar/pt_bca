@@ -41,7 +41,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::middleware(['prevent-back-history'])->group(function () {
-    
+
     //login routes
     Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
     Route::get('/login/survey', [LoginController::class, 'login'])->name('loginToko')->middleware('guest');
@@ -50,8 +50,8 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::post('/prosesLogin/survey', [LoginController::class, 'prosesLoginSurvey'])->name('prosesLoginSurvey')->middleware('guest');
 
     Route::prefix('register/survey')->group(function () {
-        Route::get('/', [LoginController::class,'register']);
-        Route::post('/', [LoginController::class,'register_store']);
+        Route::get('/', [LoginController::class, 'register'])->name('register');
+        Route::post('/', [LoginController::class, 'register_store']);
     });
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -62,14 +62,14 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
     //profile
     Route::get('/profile', [ProfileControllerAdmin::class, 'index'])->name('profile')->middleware('auth');
-    Route::post('/profile-update/{id}', [ProfileControllerAdmin::class,'update'])->name('profile.update') ->middleware('auth');
-    Route::post('/password-update/{id}', [ProfileControllerAdmin::class,'ubahPassword'])->name('password.update')->middleware('auth');
+    Route::post('/profile-update/{id}', [ProfileControllerAdmin::class, 'update'])->name('profile.update')->middleware('auth');
+    Route::post('/password-update/{id}', [ProfileControllerAdmin::class, 'ubahPassword'])->name('password.update')->middleware('auth');
 
     // dashboard
-    Route::get('/super-admin-dashboard', [ DashboardController::class,'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
+    Route::get('/super-admin-dashboard', [DashboardController::class, 'supperAdmin'])->name('superAdmin.dashboard')->middleware('auth', 'access:supper-admin');
     Route::get('/admin-dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard')->middleware('auth', 'access:admin');
-    Route::get('/executive-dashboard', [DashboardController::class,'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
-    Route::get('/surveyor-dashboard', [ DashboardSurveyerController::class,'index',])->name('surveyor.dashboard')->middleware('auth', 'access:user');
+    Route::get('/executive-dashboard', [DashboardController::class, 'executive'])->name('executive.dashboard')->middleware('auth', 'access:executive');
+    Route::get('/surveyor-dashboard', [DashboardSurveyerController::class, 'index',])->name('surveyor.dashboard')->middleware('auth', 'access:user');
 
     // route only super admin & admin
     Route::middleware(['auth', 'superAndAdmin'])->group(function () {
@@ -435,7 +435,7 @@ Route::middleware(['prevent-back-history'])->group(function () {
     });
 
     // route toko
-    Route::middleware(['onlySurveyToko'])->group(function(){
-        Route::get('survey_toko', [SurveyTokoController::class,'index'])->name('survey_toko.index');
+    Route::middleware(['onlySurveyToko'])->group(function () {
+        Route::get('survey_toko', [SurveyTokoController::class, 'index'])->name('survey_toko.index');
     });
 });

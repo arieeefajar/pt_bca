@@ -4,7 +4,7 @@
         <div class="col-xxl-12">
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Spesial Kuisioner</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">Kuisioner Online Survey Stok Toko</h4>
                     <div class="flex-shrink-0">
                         <div class="form-check form-switch form-switch-right form-switch-md">
                             {{-- <label for="form-grid-showcode" class="form-label text-muted">Show Code</label>

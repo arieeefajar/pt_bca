@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class SurveyTokoController extends Controller
 {
-    public function index(){
-        return view("surveyor.spesialKuisioner");
+    public function index()
+    {
+        return view("surveyor.onlineSurveyStokToko");
     }
 }
