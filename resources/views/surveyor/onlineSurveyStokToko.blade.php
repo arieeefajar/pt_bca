@@ -60,6 +60,22 @@
                                 </div>
                             </div>
 
+                            {{-- satuan --}}
+                            <div class="col-md-6" id="pilih_produsen">
+                                <div class="mb-3">
+                                    <label class="form-label">Pilih satuan</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                            aria-label="Text input with dropdown button">
+                                        <select class="form-select-sm">
+                                            <option selected disabled>Pilih satuan</option>
+                                            <option value="">Pilih satuan</option>
+                                            <option value="">Pilih satuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div><!--end row-->
 
                     </div>
@@ -256,7 +272,7 @@
         })
 
         // select nama (madrid, betras)
-        select_nama_produk.change(function () {
+        select_nama_produk.change(function() {
             const url = `{{ url('get-data/produsen-benih/') }}`
 
             $.ajax({
