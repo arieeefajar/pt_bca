@@ -1,7 +1,8 @@
 @extends('layout.app')
-@section('title', 'Market Intelligence')
-@section('menu', 'Market Intelligence')
+@section('title', 'Competitive Insight')
+@section('menu', 'Competitive Insight')
 @section('submenu', 'Menu')
+
 
 @section('content')
 @section('otherStyle')
@@ -14,137 +15,187 @@
         .dropdown:hover .kuisioner {
             display: block;
         }
+
+        .cardWord {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
     </style>
 @endsection
-{{-- <div class="row">
-    <div class="col-lg-12">
+<div class="row">
+    <div class="col-xxl-12">
         <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="card-title mb-0 mt-3" id="titleContent">Penilaian Pelanggan / Kepuasan / Product</h4>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <div style="float: right">
-                            <div class="d-flex align-items-center">
+            <div class="card-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs mb-3" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" id="penilaianPelanggan" href="#home"
+                            role="tab" aria-selected="false" onclick="showIndex()">
+                            Competitor Intelegence
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" id="wordCount" href="#product1" role="tab"
+                            aria-selected="false" onclick="closeIndex()">
+                            Product Intelegence
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content  text-muted">
 
-                                <div class="hamburger">
-                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <span class="hamburger-icon">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </span>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <!-- item-->
-                                        <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                            <div class="px-1">
-                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                    <ul class="navbar-nav me-auto">
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false" style="color: black">
-                                                                Kepuasan Pelanggan
-                                                            </a>
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('product')">Produk</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('promosi')">Promosi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                                        produk</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('layanan')">Layanan
-                                                                        petugas lapang</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                                        komplain pelanggan</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </nav>
-                                        <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                            <div class="px-1">
-                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                    <ul class="navbar-nav me-auto">
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false" style="color: black">
-                                                                Kekuatan Kelemahan Pesaing
-                                                            </a>
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                                        dan Pengembangan</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                                        Manajerial</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
-                                                                        Inti dan Menyesuaikan Diri dengan Perubahan</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                                        Pesaing</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                    {{-- competitor intellligence --}}
+                    <div class="tab-pane active" id="home" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h6 id="titleContent"> Analisis Pesaing
+                                </h6>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <div style="float: right">
+                                    <div class="d-flex align-items-center">
+
+                                        <div class="hamburger">
+                                            <button type="button" class="btn" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <span class="hamburger-icon">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <!-- item-->
+                                                <nav class="navbar navbar-expand-sm bg-body-tertiary">
+                                                    <div class="px-1">
+                                                        <div class="collapse navbar-collapse"
+                                                            id="navbarSupportedContent">
+                                                            <ul class="navbar-nav me-auto">
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle" href="#"
+                                                                        role="button" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false" style="color: black">
+                                                                        Analisis Pesaing
+                                                                    </a>
+                                                                    <ul class="dropdown-menu kuisioner">
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKepuasan('Perusahaan')">Perusahaan</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKepuasan('Pendatang Baru')">Pendatang
+                                                                                Baru</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKepuasan('Produk Subsitusi')">Produk
+                                                                                Substitusi</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKepuasan('Kekuatan Menawar Pemasok')">Kekuatan
+                                                                                Menawar
+                                                                                Pemasok</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKepuasan('Kekuatan Menawar Pembeli')">Kekuatan
+                                                                                Menawar
+                                                                                Pembeli</a>
+                                                                        </li>
+                                                                    </ul>
                                                                 </li>
                                                             </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </nav>
+                                                <nav class="navbar navbar-expand-sm bg-body-tertiary">
+                                                    <div class="px-1">
+                                                        <div class="collapse navbar-collapse"
+                                                            id="navbarSupportedContent">
+                                                            <ul class="navbar-nav me-auto">
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle" href="#"
+                                                                        role="button" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false" style="color: black">
+                                                                        Kekuatan Kelemahan Pesaing
+                                                                    </a>
+                                                                    <ul class="dropdown-menu kuisioner">
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('riset')">Riset
+                                                                                dan Pengembangan</a></li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
+                                                                                Manajerial</a></li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
+                                                                                Inti dan Menyesuaikan Diri dengan
+                                                                                Perubahan</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
+                                                                                Pesaing</a></li>
+                                                                        <li><a class="dropdown-item"
+                                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </nav>
                                             </div>
-                                        </nav>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center">
+                        </div>
+                    </div>
+
+                    {{-- Product Intelegence --}}
+                    <div class="tab-pane" id="product1" role="tabpanel">
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <h6 id="titleContent1"> Data Sekunder Permalan Permintaan Produk</h6>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <div style="float: right">
+                                    <div class="d-flex align-items-center">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div> --}}
                     </div>
                 </div>
-            </div><!-- end card header -->
-
-            <div class="card-body">
-                <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
-            </div><!-- end card-body -->
-        </div><!-- end card -->
+            </div>
+        </div>
     </div>
-    <!-- end col -->
 </div>
 
-<div class="row">
+{{-- index kepuasan --}}
+<div class="row" id="indexAspek">
     <div class="col-lg-12">
+        {{-- card index --}}
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title mb-0">Perhitungan Aspek Index</h4>
-            </div><!-- end card header -->
-
+                <h4 class="card-title mb-0 mt-3">Index Kepuasan</h4>
+            </div>
             <div class="card-body">
                 <div id="table-search">
                     <div class="table-responsive">
@@ -164,74 +215,11 @@
                         </table>
                     </div>
                 </div>
-            </div><!-- end card-body -->
-        </div><!-- end card -->
+            </div>
+        </div>
     </div>
     <!-- end col -->
-</div> --}}
-<!-- end row -->
-
-<div class="row project-wrapper">
-    <div class="col-xxl-8">
-        <div class="row d-flex justify-content-center">
-
-            {{-- Market Insight --}}
-            <div class="col-xl-5">
-                <a href="{{ route('market.insight') }}">
-                    <div class="card card-animate pt-2 pb-2 px-2">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <span class="avatar-title bg-soft-primary text-primary rounded-2 fs-2">
-                                        <i class="ri-file-text-line text-primary"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden ms-3">
-                                    <p class="text-uppercase fw-semibold text-muted text-truncate mb-3"></p>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h4 class="fs-4 flex-grow-1 mb-0">Market Insight</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card body -->
-                    </div>
-                </a>
-            </div><!-- end col -->
-
-            {{-- Competitive Insight --}}
-            <div class="col-xl-5">
-                <a href="{{ route('competitive.insight') }}">
-                    <div class="card card-animate pt-2 pb-2 px-2">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <span class="avatar-title bg-soft-success text-info rounded-2 fs-2">
-                                        <i class="ri-survey-line text-success"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden ms-3">
-                                    <p class="text-uppercase fw-semibold text-muted text-truncate mb-3"></p>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h4 class="fs-4 flex-grow-1 mb-0">Competitive Insight</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card body -->
-                    </div>
-                </a>
-            </div><!-- end col -->
-        </div> <!--end row -->
-    </div><!-- end col -->
-
-    {{-- btn pilih toko --}}
-    {{-- <div class="text-center mt-3 mb-3">
-        <form action="{{ route('clearCookie') }}" method="POST">
-            @csrf
-            <button class="btn btn-primary" type="submit">Pilih Toko</button>
-        </form>
-    </div> --}}
-</div><!-- end row -->
-
+</div>
 @endsection
 
 @section('otherJs')
@@ -241,17 +229,31 @@
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Spirited.js"></script>
 
+<!-- Chart code -->
 <script>
     $(document).ready(function() {
-        getDataCartKepuasan('product')
+        // getDataCartKepuasan('perusahaan')
+        $('#titleContent').html(`Analisis Pesaing`);
+        $('#chartdiv').html('Server error / tidak ada data');
     });
 
-    function getDataCartKepuasan(kategory) {
+    function showIndex() {
+        const indexAspek = document.getElementById('indexAspek');
+        indexAspek.style.display = "block"
+    }
 
-        $('#titleContent').html(`Penilaian Pelanggan / Kepuasan / ${kategory}`);
+    function closeIndex() {
+        const content = document.getElementById('indexAspek');
+        content.style.display = "none"
+    }
 
-        const urlChart = `{{ url('getPertanyaanKepuasanByRespondentsAll/${kategory}') }}`;
-        const urlTable = `{{ url('getPertanyaanKepuasanAll/${kategory}') }}`;
+    function getDataCartKepuasan(kategory, daerah) {
+
+        $('#titleContent').html(`Kepuasan / ${kategory}`);
+
+        const area = btoa(daerah)
+        const urlChart = `{{ url('getPertanyaanKepuasanByRespondents/${kategory}/${area}') }}`;
+        const urlTable = `{{ url('getPertanyaanKepuasan/${kategory}/${area}') }}`;
         $.ajax({
             type: "get",
             url: urlChart,
@@ -267,7 +269,6 @@
                 $('#chartdiv').html('Server error / tidak ada data');
             }
         });
-
         $.ajax({
             type: "get",
             url: urlTable,
@@ -310,6 +311,14 @@
 
         const urlChart = `{{ url('getPertanyaanKekuatanKelemahanByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('getPertanyaanKekuatanKelemahanAll/${kategory}') }}`;
+
+
+        var chartDiv = document.getElementById('chartdiv');
+        chartDiv.classList.remove('d-block');
+
+        const indexAspek = document.getElementById('indexAspek');
+        indexAspek.style.display = "block";
+
         $.ajax({
             type: "get",
             url: urlChart,
@@ -362,7 +371,6 @@
             }
         });
     }
-
     var root = am5.Root.new("chartdiv");
 
     function startChart(response) {
@@ -631,6 +639,62 @@
             // https://www.amcharts.com/docs/v5/concepts/animations/
             series.appear(1000);
             chart.appear(1000, 100);
+        });
+    }
+
+    function getWord(kategory) {
+        let url;
+        // const area = btoa(daerah)
+
+        if (kategory == "retail") {
+            url = `{{ url('getRetail') }}`;
+
+            $('#titleContent').html(`Survai Pesaing / Gambaran Umum`);
+
+            const workCount = document.getElementById('wordCountView');
+            workCount.classList.remove('d-none');
+
+            var chartDiv = document.getElementById('chartdiv');
+            chartDiv.classList.add('d-none');
+
+            const indexAspek = document.getElementById('indexAspek');
+            indexAspek.style.display = "none";
+
+        } else if (kategory == "potentional") {
+            url = `{{ url('getPotentionalArea') }}`;
+
+            $('#titleContent1').html(`Potensi Lahan / Gambaran Umum`);
+            const workCount1 = document.getElementById('wordCountView1');
+            workCount1.classList.remove('d-none');
+        }
+
+        $.ajax({
+            type: "get",
+            url: url,
+            dataType: "json",
+            beforeSend: function() {
+                $('#ranking').html('<li class="list-group-item">Loading...</li>');
+                $('#deskripsi').html('<li class="list-group-item">Loading...</li>');
+            },
+            success: function(res) {
+                let ranking = '';
+                let suggestions = '';
+                $.each(res.ranking, function(index, val) {
+                    if (index < 3) {
+                        ranking += `<li class="list-group-item">${val.word}.</li>`
+                    }
+                });
+                $.each(res.suggestions, function(index, val) {
+                    suggestions += `<li class="list-group-item">${val}.</li>`
+                });
+
+                $('#ranking').html(ranking);
+                $('#deskripsi').html(suggestions);
+            },
+            error: function(params) {
+                $('#ranking').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                $('#deskripsi').html('<li class="list-group-item">Server error / tidak ada data</li>');
+            }
         });
     }
 </script>

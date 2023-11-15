@@ -309,6 +309,9 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('laporan/{type}', [LaporanController::class, 'jawaban_kuisioner'])->name('laporan.jawaban');
         Route::get('laporanKota', [LaporanController::class, 'laporanKota',])->name('laporan.kota');
+        Route::get('marketInsight', [LaporanController::class, 'marketInsight'])->name('market.insight');
+        Route::get('competitiveInsight', [LaporanController::class, 'competitiveInsight'])->name('competitive.insight');
+        
 
         // laporan perdaerah
         Route::get('laporanDaerah/{daerah}', [LaporanController::class, 'laporanDaerah'])->name('laporan.daerah');
