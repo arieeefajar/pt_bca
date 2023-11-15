@@ -312,6 +312,8 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         // laporan perdaerah
         Route::get('laporanDaerah/{daerah}', [LaporanController::class, 'laporanDaerah'])->name('laporan.daerah');
+        Route::get('marketInsightDaerah/{daerah}', [LaporanController::class, 'marketInsightDaerah'])->name('laporan.marketInsightDaerah');
+        Route::get('competitiveInsight/{daerah}', [LaporanController::class, 'competitiveInsight'])->name('laporan.competitiveInsight');
 
         // jumlah survey toko route
         Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko'])->name('dataSurveyToko.index');
@@ -380,7 +382,7 @@ Route::middleware(['prevent-back-history'])->group(function () {
             //form survey
             Route::prefix('pesaing')->group(function () {
                 Route::get('/{api_id?}', [FormPesaingController::class, 'index'])->name('formPesaing.index');
-                Route::post('/', [FormPesaingController::class, 'store'])->name('formPesaing.create' );
+                Route::post('/', [FormPesaingController::class, 'store'])->name('formPesaing.create');
             });
 
             // form pesaing
@@ -397,20 +399,20 @@ Route::middleware(['prevent-back-history'])->group(function () {
     });
 
     // route only toko
-    Route::middleware(['onlySurveyToko'])->group(function(){
-        Route::get('survey_toko', [SurveyTokoController::class,'index'])->name('survey_toko.index');
+    Route::middleware(['onlySurveyToko'])->group(function () {
+        Route::get('survey_toko', [SurveyTokoController::class, 'index'])->name('survey_toko.index');
 
         // get data
         Route::prefix('get-data')->group(function () {
-            Route::get('/produk-benih/{jenis}', [SurveyTokoController::class,'get_product_benih']);
-            Route::get('/jenis-benih/{id_produk_benih}', [SurveyTokoController::class,'get_jenis_benih']);
-            Route::get('/nama-benih/{id_jenis_benih}', [SurveyTokoController::class,'get_nama_produk']);
-            Route::get('/produsen-benih', [SurveyTokoController::class,'get_produsen_benih']);
+            Route::get('/produk-benih/{jenis}', [SurveyTokoController::class, 'get_product_benih']);
+            Route::get('/jenis-benih/{id_produk_benih}', [SurveyTokoController::class, 'get_jenis_benih']);
+            Route::get('/nama-benih/{id_jenis_benih}', [SurveyTokoController::class, 'get_nama_produk']);
+            Route::get('/produsen-benih', [SurveyTokoController::class, 'get_produsen_benih']);
         });
 
         // add data
         Route::prefix('add-data')->group(function () {
-            Route::post('/nama-benih', [SurveyTokoController::class,'add_nama_benih']);
+            Route::post('/nama-benih', [SurveyTokoController::class, 'add_nama_benih']);
         });
     });
 });

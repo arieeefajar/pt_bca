@@ -902,12 +902,12 @@ class LaporanController extends Controller
                 $verification_speed5 = isset($verification_speed['5']) ? $verification_speed['5'] : 0;
                 $verification_speed4 = isset($verification_speed['4']) ? $verification_speed['4'] : 0;
                 $verification_speed3 = isset($verification_speed['3']) ? $verification_speed['3'] : 0;
-                $verification_speed['kepuasan'] = number_format((($verification_speed5 + $verification_speed4 +$verification_speed3) /$dataTotalAllKategory) * 100, 2, '.', '');
+                $verification_speed['kepuasan'] = number_format((($verification_speed5 + $verification_speed4 + $verification_speed3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $completion_speed5 = isset($completion_speed['5']) ? $completion_speed['5'] : 0;
                 $completion_speed4 = isset($completion_speed['4']) ? $completion_speed['4'] : 0;
                 $completion_speed3 = isset($completion_speed['3']) ? $completion_speed['3'] : 0;
-                $completion_speed['kepuasan'] = number_format((($completion_speed5 + $completion_speed4 + $completion_speed3) / $dataTotalAllKategory) * 100, 2,'.', '');
+                $completion_speed['kepuasan'] = number_format((($completion_speed5 + $completion_speed4 + $completion_speed3) / $dataTotalAllKategory) * 100, 2, '.', '');
 
                 $handling5 = isset($handling['5']) ? $handling['5'] : 0;
                 $handling4 = isset($handling['4']) ? $handling['4'] : 0;
@@ -1938,7 +1938,7 @@ class LaporanController extends Controller
                     array_push($penangananFinal, $dataByCountIndex);
                 }
             }
-            
+
             if ($category == 'product') {
                 $productFinal = $this->clearSameData($productFinal);
                 return response()->json([(object)$productFinal, (object)$totalProductFinal]);
@@ -6980,7 +6980,20 @@ class LaporanController extends Controller
     public function laporanDaerah($daerah)
     {
         $location_name = base64_decode($daerah);
-        return view('admin.laporanKota', compact('location_name'));
+        $location_name_encode = $daerah;
+        return view('admin.laporanKota', compact('location_name', 'location_name_encode'));
+    }
+
+    public function marketInsightDaerah($daerah)
+    {
+        $location_name = base64_decode($daerah);
+        return view('admin.marketIntelligenceDaerah.marketInsight', compact('location_name'));
+    }
+
+    public function competitiveInsight($daerah)
+    {
+        $location_name = base64_decode($daerah);
+        return view('admin.marketIntelligenceDaerah.competitiveInsight', compact('location_name'));
     }
 
     public function jawaban_kuisioner($type)
@@ -6992,7 +7005,8 @@ class LaporanController extends Controller
         }
     }
 
-    public function getRetailDataDaerah($area, $filter = 'monthly'){
+    public function getRetailDataDaerah($area, $filter = 'monthly')
+    {
         $endPointApi = env('PYTHON_END_POINT') . 'ai';
         $dataAI = [Http::get($endPointApi)->json()['data']][0]['retail_data'];
 
@@ -7008,17 +7022,17 @@ class LaporanController extends Controller
         $suggestions = [];
 
         foreach ($dataAI[$filter] as $value) {
-            
+
             if ($value['word'] !== '<oov>' && $value['word'] !== '') {
                 array_push($finalData, $value);
             }
         }
 
-        for ($i=0; $i < 3; $i++) { 
+        for ($i = 0; $i < 3; $i++) {
             $suggestion = SuggestionRetail::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
             array_push($suggestions, $suggestion->suggestion);
         }
-        
+
         $suggestions = (object) $suggestions;
         $finalData = (object) $finalData;
 
@@ -7028,7 +7042,8 @@ class LaporanController extends Controller
         ]);
     }
 
-    public function getPotentionalAreaDaerah($area, $filter = 'monthly'){
+    public function getPotentionalAreaDaerah($area, $filter = 'monthly')
+    {
         $endPointApi = env('PYTHON_END_POINT') . 'ai';
         $dataAI = [Http::get($endPointApi)->json()['data']][0]['potential_area_data'];
 
@@ -7044,17 +7059,17 @@ class LaporanController extends Controller
         $suggestions = [];
 
         foreach ($dataAI[$filter] as $value) {
-            
+
             if ($value['word'] !== '<oov>' && $value['word'] !== '') {
                 array_push($finalData, $value);
             }
         }
 
-        for ($i=0; $i < 3; $i++) { 
+        for ($i = 0; $i < 3; $i++) {
             $suggestion = SuggestionPotensionalArea::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
             array_push($suggestions, $suggestion->suggestion);
         }
-        
+
         $suggestions = (object) $suggestions;
         $finalData = (object) $finalData;
 
@@ -7881,7 +7896,8 @@ class LaporanController extends Controller
         }
     }
 
-    function clearSameData($inputArray) {
+    function clearSameData($inputArray)
+    {
         $dataFinal = $inputArray;
         $previousArray = null;
 
