@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('title', 'Market Intelligence')
-@section('menu', 'Market Intelligence')
+@section('title', 'Market Insight')
+@section('menu', 'Market Insight')
 @section('submenu', 'Menu')
 
 @section('content')
@@ -16,129 +16,89 @@
         }
     </style>
 @endsection
-{{-- <div class="row">
-    <div class="col-lg-12">
+<div class="row">
+    <div class="col-xxl-12">
         <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="card-title mb-0 mt-3" id="titleContent">Penilaian Pelanggan / Kepuasan / Product</h4>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <div style="float: right">
-                            <div class="d-flex align-items-center">
+            <div class="card-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs mb-3" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" id="wordCount" href="#product1" role="tab"
+                            aria-selected="false" onclick="showIndex()">
+                            Customer Insight
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content  text-muted">
+                    {{-- Custommer Insight --}}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4 class="card-title mb-0 mt-3" id="titleContent1">Penilaian Pelanggan / Kepuasan /
+                                Product</h4>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <div style="float: right">
+                                <div class="d-flex align-items-center">
 
-                                <div class="hamburger">
-                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <span class="hamburger-icon">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </span>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <!-- item-->
-                                        <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                            <div class="px-1">
-                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                    <ul class="navbar-nav me-auto">
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false" style="color: black">
-                                                                Kepuasan Pelanggan
-                                                            </a>
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('product')">Produk</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('promosi')">Promosi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                                        produk</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('layanan')">Layanan
-                                                                        petugas lapang</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                                        komplain pelanggan</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                    <div class="hamburger">
+                                        <button type="button" class="btn" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <span class="hamburger-icon">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end pe-5">
+                                            <!-- item-->
+                                            <nav class="navbar navbar-expand-sm bg-body-tertiary">
+                                                <div class="px-1">
+                                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                        <ul class="navbar-nav me-auto">
+                                                            <li class="nav-item dropdown">
+                                                                <a class="nav-link dropdown-toggle" href="#"
+                                                                    role="button" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false" style="color: black">
+                                                                    Kepuasan Pelanggan
+                                                                </a>
+                                                                <ul class="dropdown-menu kuisioner">
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('product')">Produk</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('promosi')">Promosi</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('kualitas')">Kualitas
+                                                                            produk</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('layanan')">Layanan
+                                                                            petugas lapang</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            onclick="getDataCartKepuasan('penanganan')">Penanganan
+                                                                            komplain pelanggan</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </nav>
-                                        <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                            <div class="px-1">
-                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                    <ul class="navbar-nav me-auto">
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false" style="color: black">
-                                                                Kekuatan Kelemahan Pesaing
-                                                            </a>
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                                        dan Pengembangan</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                                        Manajerial</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
-                                                                        Inti dan Menyesuaikan Diri dengan Perubahan</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                                        Pesaing</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </nav>
+                                            </nav>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
+                    </div>
                 </div>
-            </div><!-- end card header -->
-
-            <div class="card-body">
-                <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
-            </div><!-- end card-body -->
-        </div><!-- end card -->
+            </div>
+        </div>
     </div>
-    <!-- end col -->
 </div>
 
-<div class="row">
+<div class="row" id="indexAspek">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -168,72 +128,9 @@
         </div><!-- end card -->
     </div>
     <!-- end col -->
-</div> --}}
+</div>
 <!-- end row -->
-
-<div class="row project-wrapper">
-    <div class="col-xxl-8">
-        <div class="row d-flex justify-content-center">
-
-            {{-- Market Insight --}}
-            <div class="col-xl-5">
-                <a href="{{ route('market.insight') }}">
-                    <div class="card card-animate pt-2 pb-2 px-2">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <span class="avatar-title bg-soft-primary text-primary rounded-2 fs-2">
-                                        <i class="ri-file-text-line text-primary"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden ms-3">
-                                    <p class="text-uppercase fw-semibold text-muted text-truncate mb-3"></p>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h4 class="fs-4 flex-grow-1 mb-0">Market Insight</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card body -->
-                    </div>
-                </a>
-            </div><!-- end col -->
-
-            {{-- Competitive Insight --}}
-            <div class="col-xl-5">
-                <a href="{{ route('competitive.insight') }}">
-                    <div class="card card-animate pt-2 pb-2 px-2">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <span class="avatar-title bg-soft-success text-info rounded-2 fs-2">
-                                        <i class="ri-survey-line text-success"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden ms-3">
-                                    <p class="text-uppercase fw-semibold text-muted text-truncate mb-3"></p>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h4 class="fs-4 flex-grow-1 mb-0">Competitive Insight</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card body -->
-                    </div>
-                </a>
-            </div><!-- end col -->
-        </div> <!--end row -->
-    </div><!-- end col -->
-
-    {{-- btn pilih toko --}}
-    {{-- <div class="text-center mt-3 mb-3">
-        <form action="{{ route('clearCookie') }}" method="POST">
-            @csrf
-            <button class="btn btn-primary" type="submit">Pilih Toko</button>
-        </form>
-    </div> --}}
-</div><!-- end row -->
-
 @endsection
-
 @section('otherJs')
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -246,9 +143,20 @@
         getDataCartKepuasan('product')
     });
 
+    function showIndex() {
+        const content = document.getElementById('indexAspek');
+        content.style.display = "block"
+        console.log(content);
+    }
+
+    function closeIndex() {
+        const content = document.getElementById('indexAspek');
+        content.style.display = "none"
+    }
+
     function getDataCartKepuasan(kategory) {
 
-        $('#titleContent').html(`Penilaian Pelanggan / Kepuasan / ${kategory}`);
+        $('#titleContent1').html(`Penilaian Pelanggan / Kepuasan / ${kategory}`);
 
         const urlChart = `{{ url('getPertanyaanKepuasanByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('getPertanyaanKepuasanAll/${kategory}') }}`;

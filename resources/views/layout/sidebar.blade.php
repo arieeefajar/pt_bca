@@ -124,7 +124,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('laporan.index') }}">
-                            <i class="ri-hard-drive-2-line"></i> <span data-key="t-layouts">Laporan</span>
+                            <i class="ri-hard-drive-2-line"></i> <span data-key="t-layouts">Market Intelligence</span>
                         </a>
                     </li>
                 @endif
@@ -221,8 +221,9 @@
                                                     Pesaing</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="{{ route('Kekuatan_Kelemahan_Pesaing.index') }}" class="nav-link"
-                                                    data-key="t-ecommerce"></i>Kekuatan Kelemahan Pesaing</a>
+                                                <a href="{{ route('Kekuatan_Kelemahan_Pesaing.index') }}"
+                                                    class="nav-link" data-key="t-ecommerce"></i>Kekuatan Kelemahan
+                                                    Pesaing</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="{{ route('Skala_Pasar_Produk.index') }}" class="nav-link"

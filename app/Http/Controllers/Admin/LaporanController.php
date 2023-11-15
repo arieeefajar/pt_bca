@@ -7922,4 +7922,13 @@ class LaporanController extends Controller
         $dataFinal = array_values($dataFinal);
         return $dataFinal;
     }
+
+    function marketInsight(){
+        return view('admin.marketIntelligence.marketInsight');
+    }
+
+    function competitiveInsight(){
+        return view('admin.marketIntelligence.competitiveInsight');
+    }
 }
+
