@@ -183,7 +183,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-soft-primary text-primary rounded-2 fs-2">
-                                        <i class="ri-file-text-line text-primary"></i>
+                                        <i class="ri-bar-chart-fill text-primary"></i>
                                     </span>
                                 </div>
                                 <div class="flex-grow-1 overflow-hidden ms-3">
@@ -205,8 +205,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="avatar-sm flex-shrink-0">
-                                    <span class="avatar-title bg-soft-success text-info rounded-2 fs-2">
-                                        <i class="ri-survey-line text-success"></i>
+                                    <span class="avatar-title bg-soft-warning text-info rounded-2 fs-2">
+                                        <i class="ri-bar-chart-fill text-warning"></i>
                                     </span>
                                 </div>
                                 <div class="flex-grow-1 overflow-hidden ms-3">

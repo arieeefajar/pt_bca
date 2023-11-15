@@ -181,6 +181,15 @@
     <!-- end col -->
 </div>
 <!-- end row -->
+
+<div class="row">
+    <div class="text-center mt-3 mb-3">
+        <form action="{{ url("laporanDaerah/$location_name_encode") }}">
+            @csrf
+            <button class="btn btn-primary">Kembali</button>
+        </form>
+    </div>
+</div>
 @endsection
 
 @section('otherJs')

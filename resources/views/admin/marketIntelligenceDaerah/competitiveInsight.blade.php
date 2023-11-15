@@ -78,23 +78,24 @@
                                                                             onclick="getDataAnalisisPesaing()">
                                                                             Analisis Pesaing
                                                                         </a>
-                                                                        {{-- <ul class="dropdown-menu kuisioner">
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
+                                                                        <ul class="dropdown-menu kuisioner">
+                                                                            <li><a class="dropdown-item">Perusahaan</a>
                                                                             </li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
+                                                                            <li><a class="dropdown-item">Pendatang
+                                                                                    Baru</a>
                                                                             </li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
-                                                                                    produk</a></li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
-                                                                                    petugas lapang</a></li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
-                                                                                    komplain pelanggan</a></li>
-                                                                        </ul> --}}
+                                                                            <li><a class="dropdown-item">Produk
+                                                                                    Substitusi</a>
+                                                                            </li>
+                                                                            <li><a class="dropdown-item">Kekuatan
+                                                                                    Menawar
+                                                                                    Pemasok</a>
+                                                                            </li>
+                                                                            <li><a class="dropdown-item">Kekuatan
+                                                                                    Menawar
+                                                                                    Pembeli</a>
+                                                                            </li>
+                                                                        </ul>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -355,6 +356,15 @@
     <!-- end col -->
 </div>
 <!-- end row -->
+
+<div class="row">
+    <div class="text-center mt-3 mb-3">
+        <form action="{{ url("laporanDaerah/$location_name_encode") }}">
+            @csrf
+            <button class="btn btn-primary">Kembali</button>
+        </form>
+    </div>
+</div>
 @endsection
 
 @section('otherJs')

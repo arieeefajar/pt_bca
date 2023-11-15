@@ -130,6 +130,15 @@
     <!-- end col -->
 </div>
 <!-- end row -->
+
+<div class="row">
+    <div class="text-center mt-3 mb-3">
+        <form action="{{ route('laporan.index') }}">
+            @csrf
+            <button class="btn btn-primary">Kembali</button>
+        </form>
+    </div>
+</div>
 @endsection
 @section('otherJs')
 <!-- Resources -->

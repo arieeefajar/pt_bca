@@ -6987,13 +6987,15 @@ class LaporanController extends Controller
     public function marketInsightDaerah($daerah)
     {
         $location_name = base64_decode($daerah);
-        return view('admin.marketIntelligenceDaerah.marketInsight', compact('location_name'));
+        $location_name_encode = $daerah;
+        return view('admin.marketIntelligenceDaerah.marketInsight', compact('location_name', 'location_name_encode'));
     }
 
-    public function competitiveInsight($daerah)
+    public function competitiveInsightDaerah($daerah)
     {
         $location_name = base64_decode($daerah);
-        return view('admin.marketIntelligenceDaerah.competitiveInsight', compact('location_name'));
+        $location_name_encode = $daerah;
+        return view('admin.marketIntelligenceDaerah.competitiveInsight', compact('location_name', 'location_name_encode'));
     }
 
     public function jawaban_kuisioner($type)
@@ -7923,12 +7925,13 @@ class LaporanController extends Controller
         return $dataFinal;
     }
 
-    function marketInsight(){
+    function marketInsight()
+    {
         return view('admin.marketIntelligence.marketInsight');
     }
 
-    function competitiveInsight(){
+    function competitiveInsight()
+    {
         return view('admin.marketIntelligence.competitiveInsight');
     }
 }
-

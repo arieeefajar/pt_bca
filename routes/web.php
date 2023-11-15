@@ -311,12 +311,12 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('laporanKota', [LaporanController::class, 'laporanKota',])->name('laporan.kota');
         Route::get('marketInsight', [LaporanController::class, 'marketInsight'])->name('market.insight');
         Route::get('competitiveInsight', [LaporanController::class, 'competitiveInsight'])->name('competitive.insight');
-        
+
 
         // laporan perdaerah
         Route::get('laporanDaerah/{daerah}', [LaporanController::class, 'laporanDaerah'])->name('laporan.daerah');
         Route::get('marketInsightDaerah/{daerah}', [LaporanController::class, 'marketInsightDaerah'])->name('laporan.marketInsightDaerah');
-        Route::get('competitiveInsight/{daerah}', [LaporanController::class, 'competitiveInsight'])->name('laporan.competitiveInsight');
+        Route::get('competitiveInsight/{daerah}', [LaporanController::class, 'competitiveInsightDaerah'])->name('laporan.competitiveInsight');
 
         // jumlah survey toko route
         Route::get('dataSurveyToko', [DashboardController::class, 'dataSurveyToko'])->name('dataSurveyToko.index');

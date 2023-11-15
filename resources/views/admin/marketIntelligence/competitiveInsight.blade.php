@@ -77,24 +77,19 @@
                                                                         Analisis Pesaing
                                                                     </a>
                                                                     <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('Perusahaan')">Perusahaan</a>
+                                                                        <li><a class="dropdown-item">Perusahaan</a>
                                                                         </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('Pendatang Baru')">Pendatang
+                                                                        <li><a class="dropdown-item">Pendatang
                                                                                 Baru</a>
                                                                         </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('Produk Subsitusi')">Produk
+                                                                        <li><a class="dropdown-item">Produk
                                                                                 Substitusi</a>
                                                                         </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('Kekuatan Menawar Pemasok')">Kekuatan
+                                                                        <li><a class="dropdown-item">Kekuatan
                                                                                 Menawar
                                                                                 Pemasok</a>
                                                                         </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKepuasan('Kekuatan Menawar Pembeli')">Kekuatan
+                                                                        <li><a class="dropdown-item">Kekuatan
                                                                                 Menawar
                                                                                 Pembeli</a>
                                                                         </li>
@@ -219,6 +214,15 @@
         </div>
     </div>
     <!-- end col -->
+</div>
+
+<div class="row">
+    <div class="text-center mt-3 mb-3">
+        <form action="{{ route('laporan.index') }}">
+            @csrf
+            <button class="btn btn-primary">Kembali</button>
+        </form>
+    </div>
 </div>
 @endsection
 
