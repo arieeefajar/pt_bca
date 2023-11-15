@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProdevSales;
 use App\Models\SuggestionPotensionalArea;
 use App\Models\SuggestionRetail;
 use Illuminate\Http\Request;
@@ -12,7 +13,11 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        return view('admin.laporan');
+        // return view('admin.laporan');
+        $data = $this->getDataPenjualanProDev();
+
+        
+        return view('admin.testingRegresi', compact('data'));
     }
 
     //! end pertanyaan laporan daerah
@@ -5469,6 +5474,169 @@ class LaporanController extends Controller
     }
     //* end pertanyaan laporan kepuasan all
 
+    //! pertanyaan analisis pesaing all
+    public function getPertanyaanAnalisisPesaingAll(){
+        $endPointApi = env('PYTHON_END_POINT') . 'competitor-analys';
+
+        try {
+            $dataAPI = [Http::get($endPointApi)->json()['data']][0];
+
+            $dataRaw = [];
+
+            $allowedKeys = [
+                'any_competitor',
+                'any_substitution',
+                'big_capital',
+                'change_price',
+                'clear_difference',
+                'competitive_price',
+                'competitive_tendencies',
+                'contribution',
+                'cost',
+                'customor_movement',
+                'difference',
+                'difference_desire',
+                'dominant',
+                'easy_channel',
+                'easy_out',
+                'find_subtitution',
+                'policy',
+                'price_sensitivity',
+                'quality_than_price',
+                'quantity',
+                'supplier_choice',
+                'trend_competition'
+            ];
+
+            foreach ($dataAPI as $datas) {
+                $tmp = [];
+                foreach ($datas as $key => $data) {
+                    if (in_array($key, $allowedKeys)) {
+                        $tmp[$key]=$data;
+                    }
+                }
+                array_push($dataRaw, $tmp);
+            }
+
+            $dataRaw = $this->countValueBool($dataRaw);
+
+            // foreach ($dataRaw as $key => $value) {
+            //     $answer_yes = (int) $value['true'];
+            //     $answer_no = (int) $value['false'];
+            //     $total = $answer_yes + $answer_no;
+            //     $hasil = ($answer_yes * 100) / $total;
+            //     $dataRaw[$key]['persentase'] = (int) $this->roundNumber($hasil);
+            // }
+
+            foreach ($dataRaw as $key => $value) {
+                $answer_yes = (int) $value['true'];
+                $answer_no = (int) $value['false'];
+                $total = $answer_yes + $answer_no;
+                $hasil = ($answer_yes * 100) / $total;
+                $dataRaw[$key] = (int) $this->roundNumber($hasil);
+            }
+
+            // $dataRaw = $this->clearSameData($dataRaw);
+
+            return response()->json([
+                'data' => (object) $this->customSort($dataRaw),
+                'status' => 'success'
+            ],200);
+
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(),200);
+        }
+    }
+
+    public function getPertanyaanAnalisisPesaingByRespondentsAll(){
+        $endPointApi = env('PYTHON_END_POINT') . 'competitor-analys';
+
+        try {
+            $dataAPI = [Http::get($endPointApi)->json()['data']][0];
+
+            $dataRaw = [];
+            $dataAnswerLoop = [];
+            $dataFinal = [];
+
+            $allowedKeys = [
+                'any_competitor',
+                'any_substitution',
+                'big_capital',
+                'change_price',
+                'clear_difference',
+                'competitive_price',
+                'competitive_tendencies',
+                'contribution',
+                'cost',
+                'customor_movement',
+                'difference',
+                'difference_desire',
+                'dominant',
+                'easy_channel',
+                'easy_out',
+                'find_subtitution',
+                'policy',
+                'price_sensitivity',
+                'quality_than_price',
+                'quantity',
+                'supplier_choice',
+                'trend_competition'
+            ];
+
+            foreach ($dataAPI as $datas) {
+                $tmp = [];
+                foreach ($datas as $key => $data) {
+                    if (in_array($key, $allowedKeys)) {
+                        $tmp[$key]=$data;
+                    }
+                }
+                array_push($dataRaw, $tmp);
+            }
+            // dd($dataRaw);
+
+            // set index for dataAnswerLoop 
+            for ($i = 0; $i < count($dataRaw); $i++) {
+                $dataAnswerLoop[$i] = [];
+            }
+            
+            // insert data into dataAnswerLoop based on count index
+            for ($i = 0; $i < count($dataRaw); $i++) {
+                for ($j = 0; $j <= $i; $j++) {
+                    array_push($dataAnswerLoop[$i], $dataRaw[$j]);
+                }
+            }
+            // dd($dataAnswerLoop);
+
+            foreach ($dataAnswerLoop as $key => $val) {
+                $dataLoopRaw = $this->countValueBool($val);
+                // dd($dataLoopRaw);
+
+                foreach ($dataLoopRaw as $key => $value) {
+                    $answer_yes = (int) $value['true'];
+                    $answer_no = (int) $value['false'];
+                    $total = $answer_yes + $answer_no;
+                    $hasil = ($answer_yes * 100) / $total;
+                    $dataLoopRaw[$key] = (int) $this->roundNumber($hasil);
+                }
+
+                $dataLoopRaw = $this->customSort($dataLoopRaw);
+
+                array_push($dataFinal, $dataLoopRaw);
+            }
+            
+            $dataFinal = $this->clearSameData($dataFinal);
+
+            return response()->json([
+                'data' => (object) $dataFinal,
+                'status' => 'success'
+            ],200);
+
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(),200);
+        }
+    }
+    //* end pertanyaan analisis pesaing all
+
     //! pertanyaan laporan kekuatan kelemahan all
     public function getPertanyaanKekuatanKelemahanAll($category)
     {
@@ -7842,6 +8010,30 @@ class LaporanController extends Controller
         return $valueCounts;
     }
 
+    function countValueBool($array){
+        $summary = [];
+
+        // Iterasi melalui array data
+        foreach ($array as $item) {
+            foreach ($item as $key => $value) {
+                if (!isset($summary[$key])) {
+                    $summary[$key] = [
+                        'true' => 0,
+                        'false' => 0,
+                    ];
+                }
+
+                if ($value === true) {
+                    $summary[$key]['true']++;
+                } else {
+                    $summary[$key]['false']++;
+                }
+            }
+        }
+
+        return $summary;
+    }
+
     function customSort($data)
     {
         $formattedData = [];
@@ -7905,5 +8097,11 @@ class LaporanController extends Controller
         // atur ulang index array
         $dataFinal = array_values($dataFinal);
         return $dataFinal;
+    }
+
+    function getPenjualanAPI() {
+        $token = '3|Y4LKnJEuhVTSvkhRUgf5rm2nSdqaYh9YpX1ouYUQ';
+        $response = Http::withToken($token)->get('https://prodev.benihcitraasia.co.id/api/v1/sales')->json();
+        dd($response);
     }
 }

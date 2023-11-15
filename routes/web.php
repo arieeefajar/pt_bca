@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ProfileControllerAdmin;
 use App\Http\Controllers\Admin\WilayahSurveyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController as ControllersProfileController;
+use App\Http\Controllers\regretionController;
 use App\Http\Controllers\User\DashboardSurveyerController;
 use App\Http\Controllers\User\FormPesaingController;
 use App\Http\Controllers\User\FormPotensiLahanController;
@@ -335,6 +336,10 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('getPertanyaanKekuatanKelemahanAll/{category}', [LaporanController::class, 'getPertanyaanKekuatanKelemahanAll'])->name('getPertanyaanKekuatanKelemahanAll');
         Route::get('getPertanyaanKekuatanKelemahanByRespondentsAll/{category}', [LaporanController::class, 'getPertanyaanKekuatanKelemahanByRespondentsAll'])->name('getPertanyaanKekuatanKelemahanByRespondentsAll');
 
+        // get pertanyaan kuisioner analisis pesaing all
+        Route::get('laporanAnalisisPesaingAll', [LaporanController::class, 'getPertanyaanAnalisisPesaingAll']);
+        Route::get('laporanAnalisisPesaingByRespondentsAll', [LaporanController::class, 'getPertanyaanAnalisisPesaingByRespondentsAll']);
+
         Route::get('getRetail/{area}/{filter?}', [LaporanController::class, 'getRetailDataDaerah']);
         Route::get('getPotentionalArea/{area}/{filter?}', [LaporanController::class, 'getPotentionalAreaDaerah']);
     });
@@ -410,7 +415,14 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
         // add data
         Route::prefix('add-data')->group(function () {
-            Route::post('/nama-benih', [SurveyTokoController::class,'add_nama_benih']);
+            Route::post('/other_4_table', [SurveyTokoController::class,'add_other_4_table']);
+            Route::post('/other_3_table', [SurveyTokoController::class,'add_other_3_table']);
+            Route::post('/other_2_table', [SurveyTokoController::class,'add_other_2_table']);
+            Route::post('/other_1_table', [SurveyTokoController::class,'add_other_1_table']);
+
+            Route::post('/submit', [SurveyTokoController::class, 'submit']);
         });
     });
+
+    Route::get('tes-regretion', [regretionController::class,'index']);
 });

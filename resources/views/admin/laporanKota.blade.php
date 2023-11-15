@@ -186,7 +186,8 @@
                                                             id="navbarSupportedContent">
                                                             <ul class="navbar-nav me-auto">
                                                                 <li class="nav-item dropdown">
-                                                                    <a class="nav-link" href="#" onclick="getWord('retail', '{{ $location_name }}')"
+                                                                    <a class="nav-link" href="#"
+                                                                        onclick="getWord('retail', '{{ $location_name }}')"
                                                                         role="button" data-bs-toggle="dropdown"
                                                                         aria-expanded="false" style="color: black">
                                                                         Analisis Pesaing
@@ -202,7 +203,8 @@
                                                             id="navbarSupportedContent">
                                                             <ul class="navbar-nav me-auto">
                                                                 <li class="nav-item dropdown">
-                                                                    <a class="nav-link" href="#" onclick="getWord('potentional', '{{ $location_name }}')"
+                                                                    <a class="nav-link" href="#"
+                                                                        onclick="getWord('potentional', '{{ $location_name }}')"
                                                                         role="button" data-bs-toggle="dropdown"
                                                                         aria-expanded="false" style="color: black">
                                                                         Potensi Lahan
@@ -710,7 +712,7 @@
 
         if (kategory == "retail") {
             url = `{{ url('getRetail/${area}') }}`;
-        } else if (kategory == "potentional"){
+        } else if (kategory == "potentional") {
             url = `{{ url('getPotentionalArea/${area}') }}`;
         }
 
@@ -725,12 +727,12 @@
             success: function(res) {
                 let ranking = '';
                 let suggestions = '';
-                $.each(res.ranking, function (index, val) { 
+                $.each(res.ranking, function(index, val) {
                     if (index < 3) {
                         ranking += `<li class="list-group-item">${val.word}.</li>`
                     }
                 });
-                $.each(res.suggestions, function (index, val) { 
+                $.each(res.suggestions, function(index, val) {
                     suggestions += `<li class="list-group-item">${val}.</li>`
                 });
 
