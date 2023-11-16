@@ -57,7 +57,6 @@ Route::middleware(['prevent-back-history'])->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
     Route::post('/clear-selected-toko-cookie', [LoginController::class, 'clearSelectedTokoCookie'])->name('clearCookie');
     Route::get('lupaPassword', [LoginController::class, 'lupaPassword'])->name('lupaPassword');
 
@@ -76,37 +75,18 @@ Route::middleware(['prevent-back-history'])->group(function () {
     Route::middleware(['auth', 'superAndAdmin'])->group(function () {
         //user routes
         Route::prefix('user')->group(function () {
-            Route::get('/', [UserController::class, 'index'])->name(
-                'user.index'
-            );
-            Route::post('/', [UserController::class, 'create'])->name(
-                'user.create'
-            );
-            Route::post('/{id}', [UserController::class, 'update'])->name(
-                'user.update'
-            );
-            Route::delete('{id}', [UserController::class, 'destroy'])->name(
-                'user.destroy'
-            );
+            Route::get('/', [UserController::class, 'index'])->name('user.index');
+            Route::post('/', [UserController::class, 'create'])->name('user.create');
+            Route::post('/{id}', [UserController::class, 'update'])->name('user.update');
+            Route::delete('{id}', [UserController::class, 'destroy'])->name('user.destroy');
         });
 
         //jenis kuisioner routes
         Route::prefix('jenis-kuisioner')->group(function () {
-            Route::get('/', [JenisKuisionerController::class, 'index'])->name(
-                'jenisKuisioner.index'
-            );
-            Route::post('/store', [
-                JenisKuisionerController::class,
-                'store',
-            ])->name('jenisKuisioner.create');
-            Route::post('/update', [
-                JenisKuisionerController::class,
-                'update',
-            ])->name('jenisKuisioner.update');
-            Route::get('/destroy/{id}', [
-                JenisKuisionerController::class,
-                'destroy',
-            ])->name('jenisKuisioner.destroy');
+            Route::get('/', [JenisKuisionerController::class, 'index'])->name('jenisKuisioner.index');
+            Route::post('/store', [JenisKuisionerController::class,'store',])->name('jenisKuisioner.create');
+            Route::post('/update', [JenisKuisionerController::class,'update',])->name('jenisKuisioner.update');
+            Route::get('/destroy/{id}', [JenisKuisionerController::class,'destroy',])->name('jenisKuisioner.destroy');
         });
 
         // kuisioner routes
