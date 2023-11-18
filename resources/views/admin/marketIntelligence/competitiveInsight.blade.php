@@ -12,7 +12,20 @@
             height: 350px;
         }
 
-        .dropdown:hover .kuisioner {
+        .dropdown-hover:hover .kuisioner {
+            display: block;
+            right: 0;
+            left: 0;
+        }
+
+        .dropdown-menu.kuisioner li {
+            white-space: normal;
+        }
+
+        .dropdown-menu.kuisioner a.dropdown-item {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             display: block;
         }
 
@@ -65,93 +78,77 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <!-- item-->
-                                                <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                                    <div class="px-1">
-                                                        <div class="collapse navbar-collapse"
-                                                            id="navbarSupportedContent">
-                                                            <ul class="navbar-nav me-auto">
-                                                                <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle" href="#"
-                                                                        role="button" data-bs-toggle="dropdown"
-                                                                        aria-expanded="false" style="color: black">
-                                                                        Analisis Pesaing
-                                                                    </a>
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item">Perusahaan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Pendatang
-                                                                                Baru</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Produk
-                                                                                Substitusi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Kekuatan
-                                                                                Menawar
-                                                                                Pemasok</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Kekuatan
-                                                                                Menawar
-                                                                                Pembeli</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+
+                                                {{-- analisis pesaing --}}
+                                                <div class="dropdown-item dropdown-hover">
+                                                    <span class="align-middle dropdown-toggle">Analisis
+                                                        Pesaing</span>
+                                                    <div class="nav-item dropdown">
+                                                        <ul class="dropdown-menu kuisioner">
+                                                            <li><a class="dropdown-item">Perusahaan</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item">Pendatang
+                                                                    Baru</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item">Produk
+                                                                    Substitusi</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item">Kekuatan
+                                                                    Menawar
+                                                                    Pemasok</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item">Kekuatan
+                                                                    Menawar
+                                                                    Pembeli</a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </nav>
-                                                <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                                    <div class="px-1">
-                                                        <div class="collapse navbar-collapse"
-                                                            id="navbarSupportedContent">
-                                                            <ul class="navbar-nav me-auto">
-                                                                <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle" href="#"
-                                                                        role="button" data-bs-toggle="dropdown"
-                                                                        aria-expanded="false" style="color: black">
-                                                                        Kekuatan Kelemahan Pesaing
-                                                                    </a>
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                                                dan Pengembangan</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                                                Manajerial</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
-                                                                                Inti dan Menyesuaikan Diri dengan
-                                                                                Perubahan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                                                Pesaing</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                </div>
+
+                                                {{-- kekuatan kelemahan pesaing --}}
+                                                <div class="dropdown-item dropdown-hover">
+                                                    <span class="align-middle dropdown-toggle">Kekuatan Kelemahan
+                                                        Pesaing</span>
+                                                    <div class="nav-item dropdown">
+                                                        <ul class="dropdown-menu kuisioner">
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('riset')">Riset
+                                                                    dan Pengembangan</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
+                                                                    Manajerial</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
+                                                                    Inti dan Menyesuaikan Diri dengan
+                                                                    Perubahan</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
+                                                                    Pesaing</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </nav>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
