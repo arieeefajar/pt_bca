@@ -46,6 +46,7 @@
 
     {{-- jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="{{ asset('vendor/Chart.min.js') }}"></script>
 
     <!-- jQuery (diperlukan oleh DataTables) -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
