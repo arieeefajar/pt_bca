@@ -221,7 +221,7 @@
                 <div id="table-search">
                     <div class="table-responsive">
 
-                        <table class="table table-bordered table-nowrap" id="kepuasanPelanggan">
+                        <table class="table table-bordered" id="kepuasanPelanggan">
                             <thead class="table-light">
                                 <tr>
                                     <th class="text-center">No</th>
