@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class TextProcess extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $table = 'text_process';
+	protected $table = 'text_process';
 
-    protected $fillable = ['data'];
+	protected $fillable = ['data', 'id_produk'];
+
+	public function produkProdev()
+	{
+		return $this->belongsTo(ProdukProdev::class, 'id_produk', 'id_produk');
+	}
 }

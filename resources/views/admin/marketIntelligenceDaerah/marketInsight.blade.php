@@ -12,7 +12,20 @@
             height: 350px;
         }
 
-        .dropdown:hover .kuisioner {
+        .dropdown-hover:hover .kuisioner {
+            display: block;
+            right: 0;
+            left: 0;
+        }
+
+        .dropdown-menu.kuisioner li {
+            white-space: normal;
+        }
+
+        .dropdown-menu.kuisioner a.dropdown-item {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             display: block;
         }
 
@@ -101,40 +114,29 @@
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <!-- item-->
-                                                    <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                                        <div class="px-1">
-                                                            <div class="collapse navbar-collapse"
-                                                                id="navbarSupportedContent">
-                                                                <ul class="navbar-nav me-auto">
-                                                                    <li class="nav-item dropdown">
-                                                                        <a class="nav-link dropdown-toggle"
-                                                                            href="#" role="button"
-                                                                            data-bs-toggle="dropdown"
-                                                                            aria-expanded="false" style="color: black">
-                                                                            Kepuasan Pelanggan
-                                                                        </a>
-                                                                        <ul class="dropdown-menu kuisioner">
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
-                                                                            </li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
-                                                                            </li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
-                                                                                    produk</a></li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
-                                                                                    petugas lapang</a></li>
-                                                                            <li><a class="dropdown-item"
-                                                                                    onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
-                                                                                    komplain pelanggan</a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                    <div class="dropdown-item dropdown-hover">
+                                                        <span class="align-middle dropdown-toggle">Kepuasan
+                                                            Pelanggan</span>
+                                                        <div class="nav-item dropdown">
+                                                            <ul class="dropdown-menu kuisioner">
+                                                                <li><a class="dropdown-item"
+                                                                        onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
+                                                                        produk</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
+                                                                        petugas lapang</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
+                                                                        komplain pelanggan</a></li>
+                                                            </ul>
                                                         </div>
-                                                    </nav>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

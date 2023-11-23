@@ -12,12 +12,20 @@
             height: 350px;
         }
 
-        #graph {
-            width: 100%;
-            height: 100px;
+        .dropdown-hover:hover .kuisioner {
+            display: block;
+            right: 0;
+            left: 0;
         }
 
-        .dropdown:hover .kuisioner {
+        .dropdown-menu.kuisioner li {
+            white-space: normal;
+        }
+
+        .dropdown-menu.kuisioner a.dropdown-item {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             display: block;
         }
 
@@ -70,103 +78,81 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <!-- item-->
-                                                <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                                    <div class="px-1">
-                                                        <div class="collapse navbar-collapse"
-                                                            id="navbarSupportedContent">
-                                                            <ul class="navbar-nav me-auto">
-                                                                <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle" href="#"
-                                                                        role="button" data-bs-toggle="dropdown"
-                                                                        aria-expanded="false" style="color: black">
-                                                                        Analisis Pesaing
-                                                                    </a>
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                onclick="getDataCartAnalisisPesaing('pendatang_baru')">Pendatang
-                                                                                Baru</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                onclick="getDataCartAnalisisPesaing('substitusi')">Produk
-                                                                                Substitusi</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                onclick="getDataCartAnalisisPesaing('pemasok')">Kekuatan
-                                                                                Menawar
-                                                                                Pemasok</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                onclick="getDataCartAnalisisPesaing('pembeli')">Kekuatan
-                                                                                Menawar
-                                                                                Pembeli</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+
+                                                {{-- analisis pesaing --}}
+                                                <div class="dropdown-item dropdown-hover">
+                                                    <span class="align-middle dropdown-toggle">Analisis Pesaing</span>
+                                                    <div class="nav-item dropdown">
+                                                        <ul class="dropdown-menu kuisioner">
+                                                            <li><a onclick="getDataCartAnalisisPesaing('perusahaan')"
+                                                                    class="dropdown-item">Perusahaan</a>
+                                                            </li>
+                                                            <li><a onclick="getDataCartAnalisisPesaing('pendatang_baru')"
+                                                                    class="dropdown-item">Pendatang
+                                                                    Baru</a>
+                                                            </li>
+                                                            <li><a onclick="getDataCartAnalisisPesaing('substitusi')"
+                                                                    class="dropdown-item">Produk
+                                                                    Substitusi</a>
+                                                            </li>
+                                                            <li><a onclick="getDataCartAnalisisPesaing('pemasok')"
+                                                                    class="dropdown-item">Kekuatan
+                                                                    Menawar
+                                                                    Pemasok</a>
+                                                            </li>
+                                                            <li><a onclick="getDataCartAnalisisPesaing('pembeli')"
+                                                                    class="dropdown-item">Kekuatan
+                                                                    Menawar
+                                                                    Pembeli</a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </nav>
-                                                <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                                    <div class="px-1">
-                                                        <div class="collapse navbar-collapse"
-                                                            id="navbarSupportedContent">
-                                                            <ul class="navbar-nav me-auto">
-                                                                <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle" href="#"
-                                                                        role="button" data-bs-toggle="dropdown"
-                                                                        aria-expanded="false" style="color: black">
-                                                                        Kekuatan Kelemahan Pesaing
-                                                                    </a>
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                                                dan Pengembangan</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                                                Manajerial</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
-                                                                                Inti dan Menyesuaikan Diri dengan
-                                                                                Perubahan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                                                Pesaing</a></li>
-                                                                        <li><a class="dropdown-item"
-                                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                </div>
+
+                                                {{-- kekuatan kelemahan pesaing --}}
+                                                <div class="dropdown-item dropdown-hover">
+                                                    <span class="align-middle dropdown-toggle">Kekuatan Kelemahan
+                                                        Pesaing</span>
+                                                    <div class="nav-item dropdown">
+                                                        <ul class="dropdown-menu kuisioner">
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('riset')">Riset
+                                                                    dan Pengembangan</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
+                                                                    Manajerial</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
+                                                                    Inti dan Menyesuaikan Diri dengan
+                                                                    Perubahan</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
+                                                                    Pesaing</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </nav>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -180,12 +166,38 @@
                     {{-- Product Intelegence --}}
                     <div class="tab-pane" id="product1" role="tabpanel">
                         <div class="row mb-3 d-flex flex-column">
-                            <div class="col-sm-12 my-2">
+                            <div class="col-sm-12 my-2 d-flex justify-content-between">
                                 <h6 id="titleContent1"> Data Sekunder Permalan Permintaan Produk</h6>
+                                <select id="select_jenis">
+                                    @foreach ($jenis_tanaman as $value)
+                                        @if ($value === 'JAGUNG HIBRIDA')
+                                            <option selected value="{{ $value }}">{{ $value }}</option>
+                                        @else
+                                            <option value="{{ $value }}">{{ $value }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                {{-- <div class="hamburger">
+                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <span class="hamburger-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <!-- item-->
+                                        <div class="dropdown-item dropdown-hover">
+                                            <span class="align-middle" role="button">Kepuasan Pelanggan</span>
+                                        </div>
+                                    </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-12 text-right">
                                 {{-- <div style="float: right"> --}}
                                 <canvas id="graph" style="height: 50px"></canvas>
+                                <canvas id="graph_next_year" style="height: 50px"></canvas>
                                 {{-- </div> --}}
                             </div>
                         </div>
@@ -248,8 +260,25 @@
 <script>
     $(document).ready(function() {
         getDataCartAnalisisPesaing('perusahaan')
-        startRegretion()
+        startRegretion('JAGUNG HIBRIDA')
+        setJenis();
     });
+
+    const select_jenis = $('#select_jenis');
+    let chartRegretion;
+    let chartRegretionNextYear;
+
+    select_jenis.change(function() {
+        let value = $(this).val();
+        // console.log(value);
+        startRegretion(value);
+    })
+
+    function setJenis() {
+        const choices_instance_jenis = new Choices(select_jenis[0], {
+            shouldSort: false,
+        });
+    }
 
     function showIndex() {
         const indexAspek = document.getElementById('indexAspek');
@@ -276,7 +305,7 @@
                 $('#chartdiv').html('Loading...');
             },
             success: function(response) {
-                console.log(response.data);
+                // console.log(response.data);
                 startChart(response.data);
             },
             error: function(params) {
@@ -292,7 +321,7 @@
                 $('#kepuasaPelangganFooter').html('');
             },
             success: function(response) {
-                console.log(response.data);
+                // console.log(response.data);
                 let contentTable = ''
                 let contentTableFooter = ''
                 let no = 1;
@@ -658,44 +687,93 @@
         });
     }
 
-    function startRegretion() {
+    function startRegretion(kategory) {
         $.ajax({
             type: "get",
-            url: "{{ url('tes-regretion') }}",
+            // url: `{{ url('tes-regretion/${kategory}') }}`,
+            url: `{{ url('regretion-non-linier/${kategory}') }}`,
             dataType: "json",
             beforeSend: function() {
-                // root.dispose();
-                // $('#chartdiv').html('Loading...');
+                if (chartRegretion) {
+                    chartRegretion.destroy();
+                    chartRegretionNextYear.destroy();
+                }
+                $('#graph').html('Loading..');
             },
             success: function(response) {
-                // console.log('awokoakoaw');
-                // console.log(response);
+                $('#loading_graph').hide();
+                $('#graph').show();
 
                 let datasets = [];
+                let datasetsNextYears = [];
 
                 response.data.forEach((value, index) => {
-                    if (index < 5) {
-                        const dataset = {
+                    // if (index < 5) {
+                    const dataset = [{
                             label: `${value.label}`,
                             data: value.data,
-                            backgroundColor: generateRandomColor(),
-                            borderWidth: 1
-                        };
+                            fill: false,
+                            borderColor: generateRandomColor(),
+                            borderWidth: 3
+                        },
+                        // {
+                        //     label: `${value.label}`,
+                        //     data: value.data_next_year,
+                        //     fill: false,
+                        //     borderColor: generateRandomColor(),
+                        //     borderWidth: 3
+                        // }
+                    ];
+                    const datasetsNextYear = [{
+                            label: `${value.label}`,
+                            data: value.data_next_year,
+                            fill: false,
+                            borderColor: generateRandomColor(),
+                            borderWidth: 3
+                        },
+                        // {
+                        //     label: `${value.label}`,
+                        //     data: value.data_raw,
+                        //     fill: false,
+                        //     borderColor: generateRandomColor(),
+                        //     borderWidth: 3
+                        // }
+                    ];
 
-                        datasets.push(dataset);
-                    }
+                    dataset.forEach(element => {
+                        datasets.push(element);
+                    });
+                    datasetsNextYear.forEach(element => {
+                        datasetsNextYears.push(element);
+                    });
+                    // }
                 });
 
-                console.log(datasets);
+                // console.log(datasets);\
+
+                if (chartRegretion) {
+                    chartRegretionNextYear.destroy();
+                    chartRegretion.destroy();
+                }
 
                 ctx = document.getElementById('graph');
-                const chart = new Chart(ctx, {
+                ctx2 = document.getElementById('graph_next_year');
+                chartRegretion = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep',
                             'Oct', 'Nov', 'Des'
                         ],
                         datasets: datasets
+                    }
+                })
+                chartRegretionNextYear = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep',
+                            'Oct', 'Nov', 'Des'
+                        ],
+                        datasets: datasetsNextYears
                     }
                 })
             },

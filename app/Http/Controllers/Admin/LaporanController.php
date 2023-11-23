@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProdevSales;
+use App\Models\ProdukProdev;
 use App\Models\SuggestionPotensionalArea;
 use App\Models\SuggestionRetail;
 use Illuminate\Http\Request;
@@ -8234,6 +8235,7 @@ class LaporanController extends Controller
 
 	function competitiveInsight()
 	{
-		return view('admin.marketIntelligence.competitiveInsight');
+		$jenis_tanaman = ProdukProdev::select('jenis_tanaman')->distinct()->pluck('jenis_tanaman');
+		return view('admin.marketIntelligence.competitiveInsight', compact('jenis_tanaman'));
 	}
 }

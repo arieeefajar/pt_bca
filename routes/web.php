@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\KuisionerController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PenyimpananController;
 use App\Http\Controllers\Admin\PosisiController;
+use App\Http\Controllers\Admin\RegretionNonLinier;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\JenisTanamanController;
@@ -412,5 +413,6 @@ Route::middleware(['prevent-back-history'])->group(function () {
 		});
 	});
 
-	Route::get('tes-regretion', [regretionController::class, 'index']);
+	Route::get('tes-regretion/{category?}', [regretionController::class, 'index']);
+	Route::get('regretion-non-linier/{category?}', [RegretionNonLinier::class, 'index']);
 });

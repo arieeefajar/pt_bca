@@ -11,7 +11,20 @@
             height: 350px;
         }
 
-        .dropdown:hover .kuisioner {
+        .dropdown-hover:hover .kuisioner {
+            display: block;
+            right: 0;
+            left: 0;
+        }
+
+        .dropdown-menu.kuisioner li {
+            white-space: normal;
+        }
+
+        .dropdown-menu.kuisioner a.dropdown-item {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             display: block;
         }
     </style>
@@ -40,6 +53,7 @@
                             <div style="float: right">
                                 <div class="d-flex align-items-center">
 
+
                                     <div class="hamburger">
                                         <button type="button" class="btn" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
@@ -49,40 +63,31 @@
                                                 <span></span>
                                             </span>
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-end pe-5">
+                                        <div class="dropdown-menu dropdown-menu-end">
                                             <!-- item-->
-                                            <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                                                <div class="px-1">
-                                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                        <ul class="navbar-nav me-auto">
-                                                            <li class="nav-item dropdown">
-                                                                <a class="nav-link dropdown-toggle" href="#"
-                                                                    role="button" data-bs-toggle="dropdown"
-                                                                    aria-expanded="false" style="color: black">
-                                                                    Kepuasan Pelanggan
-                                                                </a>
-                                                                <ul class="dropdown-menu kuisioner">
-                                                                    <li><a class="dropdown-item"
-                                                                            onclick="getDataCartKepuasan('product')">Produk</a>
-                                                                    </li>
-                                                                    <li><a class="dropdown-item"
-                                                                            onclick="getDataCartKepuasan('promosi')">Promosi</a>
-                                                                    </li>
-                                                                    <li><a class="dropdown-item"
-                                                                            onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                                            produk</a></li>
-                                                                    <li><a class="dropdown-item"
-                                                                            onclick="getDataCartKepuasan('layanan')">Layanan
-                                                                            petugas lapang</a></li>
-                                                                    <li><a class="dropdown-item"
-                                                                            onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                                            komplain pelanggan</a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                            <div class="dropdown-item dropdown-hover">
+                                                <span class="align-middle dropdown-toggle">Kepuasan
+                                                    Pelanggan</span>
+                                                <div class="nav-item dropdown">
+                                                    <ul class="dropdown-menu kuisioner">
+                                                        <li><a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('product')">Produk</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('promosi')">Promosi</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('kualitas')">Kualitas
+                                                                produk</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('layanan')">Layanan
+                                                                petugas lapang</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('penanganan')">Penanganan
+                                                                komplain pelanggan</a></li>
+                                                    </ul>
                                                 </div>
-                                            </nav>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

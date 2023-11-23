@@ -10,11 +10,10 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('text_process', function (Blueprint $table) {
-			$table->id();
-			$table->string('id_produk', 10);
-			$table->json('data')->nullable();
-			$table->timestamps();
+		Schema::create('produk_prodev', function (Blueprint $table) {
+			$table->string('id_produk', 8)->primary();
+			$table->string('nama_produk', 20);
+			$table->string('jenis_tanaman', 20);
 		});
 	}
 
@@ -23,6 +22,6 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('text_process');
+		Schema::dropIfExists('produk_prodev');
 	}
 };

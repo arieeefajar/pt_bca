@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProdevSales;
+use App\Models\ProdukProdev;
 use App\Models\TextProcess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,22 +21,51 @@ class regretionController extends Controller
 	$b,
 	$all; //forecast y value based on linear regression
 
-	public function index()
+	public function index($category = 'JAGUNG HIBRIDA')
 	{
-		$dataDB = TextProcess::all();
+		$dataDB = TextProcess::with('produkProdev')
+			->whereHas('produkProdev', function ($query) use ($category) {
+				$query->where('jenis_tanaman', $category);
+				// $query->where('id_produk', '45');
+			})
+			->get();
 		$dataRegretion = [];
 
 		foreach ($dataDB as $val) {
 			$x = json_decode($val['data'])->x;
 			$y = json_decode($val['data'])->y;
 
+			$tmp = [];
+			foreach ($y as $value) {
+				if ($y > 0) {
+					$valKg = $value / 1000;
+					array_push($tmp, $valKg);
+				} else {
+					array_push($tmp, 0);
+				}
+			}
+			// dd($tmp);
+
+
 			$this->x = $x;
-			$this->y = $y;
+			$this->y = $tmp;
 			$this->compute();
+
+			$tmp = [];
+			foreach ($this->all as $finalVal) {
+				if ($finalVal < 0) {
+					array_push($tmp, 0);
+				} else {
+					array_push($tmp, $finalVal);
+				}
+			}
+			$this->all = $tmp;
+			// dd($this->all);
 
 			$data = [
 				'label' => json_decode($val['data'])->name,
 				'data' => $this->all,
+				// 'data_raw' => $this->y,
 			];
 
 			array_push($dataRegretion, $data);
@@ -118,16 +148,15 @@ class regretionController extends Controller
 		$month = 12;
 		$finalData = [];
 
-		$dataProduk = ProdevSales::select('nama_produk')
+		$dataProduk = ProdevSales::select('nama_produk', 'id_produk')
 			->distinct()
 			->whereYear('tanggal', $year)
-			->pluck('nama_produk')
-			->toArray();
+			->get();
 		foreach ($dataProduk as $value) {
-			$finalData[$value] = [];
+			$finalData[$value->nama_produk] = ['id_produk' => $value->id_produk];
 		}
-
 		foreach ($finalData as $nama_produk => $val) {
+
 			for ($i = 1; $i <= $month; $i++) {
 				$data = ProdevSales::where('nama_produk', $nama_produk)
 					->whereYear('tanggal', $year)
@@ -164,7 +193,6 @@ class regretionController extends Controller
 				}
 			}
 		}
-
 		return $finalData;
 	}
 
@@ -179,6 +207,7 @@ class regretionController extends Controller
 				'y' => $value['y'],
 			]);
 			TextProcess::create([
+				'id_produk' => $value['id_produk'],
 				'data' => $dataJson,
 			]);
 		}
