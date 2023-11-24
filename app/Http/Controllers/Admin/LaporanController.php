@@ -5506,40 +5506,40 @@ class LaporanController extends Controller
 			$dataRaw = [];
 
 			$allowedKeysPerusahaan = [
-				'any_competitor',
-				'difference',
-				'easy_out',
+				'any_competitor', //apakah terdapat banyak pesaing didalam pasar // Tingkat persaingan
+				'difference', //Apakah produk perusahaan dapat dibedakan dengan produk-produk pesaing // Keunikan produk
+				'easy_out', //Apakah tiap-tiap perusahaan dapat dengan mudah keluar dari persaingan pasar // Kemudahan keluar
 			];
 
 			$allowedKeysPendatangBaru = [
-				'big_capital',
-				'clear_difference',
-				'cost',
-				'easy_channel',
-				'policy',
-				'quantity',
+				'big_capital', //Apakah diperlukan modal besar untuk memulai bisnis dalam industri ini ? // Ukuran modalUkuran modal
+				'clear_difference', //Apakah produk perusahaan dapat dibedakan dengan jelas dibanding produk pesaing ? // Keunikan produk
+				'cost', //Apakah perusahaan mempunyai keunggulan biaya yang tidak tergantung ukuran produksi dibandingkan pendatang baru ? // Efisiensi biaya
+				'easy_channel', //Apakah pendatang baru dapat dengan mudah memakai saluran distribusi yang telah ada ? // Saluran distribusi
+				'policy', //Apakah kebijakan pemerintah memudahkan pendatang baru untuk masuk ke dalam industri ? //Kebijakan pemerintah
+				'quantity', //Apakah diperlukan produksi dalam jumlah besar untuk mencapai skala ekonomis? //Skala ekonomis
 			];
 
 			$allowedKeysSubstitusi = [
-				'competitive_price',
-				'find_subtitution',
+				'competitive_price', //jika ya, apakah harga produk substitusi tersebut bersaing dengan produk perusahaan ? //Harga Substitusi
+				'find_subtitution', //Apakah pembeli dapat dengan mudah menemukan barang substitusi yang dapat menggantikan fungsi dari produk perusahaan di dalam pasar ? //Alternatif Mudah
 			];
 
 			$allowedKeysMenawarPemasok = [
-				'any_substitution',
-				'change_price',
-				'competitive_tendencies',
-				'dominant',
-				'supplier_choice',
+				'any_substitution', //Apakah terdapat barang substitusi tertentu bagi perusahaan selain produk pemasok ? // Barang Substitusi
+				'change_price', //Apakah perusahaan bebas untuk berganti pemasok tanpa konsekuensi tertentu, seperti biaya perggantian, harga dan kualitas ? // Ganti Pemasok
+				'competitive_tendencies', //Apakah ada kecenderungan bagi pemasok untuk bersaing secara langsung dengan cara masuk ke dalam industri ? // Pemasok Bersaing
+				'dominant', //Apakah perusahaan dan/atau industrinya adalah kelompok pembeli dominan bagi kelompok pemasok ? // Pembeli Dominan
+				'supplier_choice', //Apakah perusahaan memiliki banyak pilihan dalam menentukan pemasok ? // Pilihan Pemasok
 			];
 
 			$allowedKeysMenawarPembeli = [
-				'contribution',
-				'customor_movement',
-				'difference_desire',
-				'price_sensitivity',
-				'quality_than_price',
-				'trend_competition'
+				'contribution', //Apakah tiap pembeli memberikan kontribusi yang besar terhadap total penjualan perusahaan ? // Pembeli Kontribusi
+				'customor_movement', //Apakah pembeli dapat dengan mudah berganti penjual tanpa konsekuensi tertentu seperti harga dan kualitas ? // Ganti Penjual
+				'difference_desire', //Apakah produk yang diinginkan oleh calon pembeli tidak berbeda jauh di antara pesaing-pesaing di dalam industri perusahaan ? //Produk Seragam
+				'price_sensitivity', //Apakah pembeli sangat sensitif terhadap perubahan harga ? //Pembeli Responsif 
+				'quality_than_price', //Apakah calon pembeli lebih mementingkan kualitas daripada harga dalam pembelian ? //Kualitas Lebih
+				'trend_competition' //Apakah ada kecenderungan bagi pembeli masuk ke dalam industri perusahaan untuk bersaing langsung ? // Masuk Industri
 			];
 
 			$allowedKeys = [];
@@ -5591,12 +5591,59 @@ class LaporanController extends Controller
 				$dataRaw[$key] = (int) $this->roundNumber($hasil);
 			}
 
+			$dataSend = [];
+			switch ($category) {
+				case "perusahaan":
+					$dataSend = [
+						'apakah terdapat banyak pesaing didalam pasar' => $dataRaw['any_competitor'],
+						'Apakah produk perusahaan dapat dibedakan dengan produk-produk pesaing' => $dataRaw['difference'],
+						'Apakah tiap-tiap perusahaan dapat dengan mudah keluar dari persaingan pasar' => $dataRaw['easy_out']
+					];
+					break;
+				case "pendatang_baru":
+					$dataSend = [
+						'Apakah diperlukan modal besar untuk memulai bisnis dalam industri ini ?' => $dataRaw['big_capital'],
+						'Apakah produk perusahaan dapat dibedakan dengan jelas dibanding produk pesaing ?' => $dataRaw['clear_difference'],
+						'Apakah perusahaan mempunyai keunggulan biaya yang tidak tergantung ukuran produksi dibandingkan pendatang baru ?' => $dataRaw['cost'],
+						'Apakah pendatang baru dapat dengan mudah memakai saluran distribusi yang telah ada ?' => $dataRaw['easy_channel'],
+						'Apakah kebijakan pemerintah memudahkan pendatang baru untuk masuk ke dalam industri ?' => $dataRaw['policy'],
+						'Apakah diperlukan produksi dalam jumlah besar untuk mencapai skala ekonomis?' => $dataRaw['quantity']
+					];
+					break;
+				case "substitusi":
+					$dataSend = [
+						'Jika ya, apakah harga produk substitusi tersebut bersaing dengan produk perusahaan ?' => $dataRaw['competitive_price'],
+						'Apakah pembeli dapat dengan mudah menemukan barang substitusi yang dapat menggantikan fungsi dari produk perusahaan di dalam pasar ?' => $dataRaw['find_subtitution']
+					];
+					break;
+				case "pemasok":
+					$dataSend = [
+						'Apakah terdapat barang substitusi tertentu bagi perusahaan selain produk pemasok ?' => $dataRaw['any_substitution'],
+						'Apakah perusahaan bebas untuk berganti pemasok tanpa konsekuensi tertentu, seperti biaya perggantian, harga dan kualitas ?' => $dataRaw['change_price'],
+						'Apakah ada kecenderungan bagi pemasok untuk bersaing secara langsung dengan cara masuk ke dalam industri ?' => $dataRaw['competitive_tendencies'],
+						'Apakah perusahaan dan/atau industrinya adalah kelompok pembeli dominan bagi kelompok pemasok ?' => $dataRaw['dominant'],
+						'Apakah perusahaan memiliki banyak pilihan dalam menentukan pemasok ?' => $dataRaw['supplier_choice']
+					];
+					break;
+				case "pembeli":
+					$dataSend = [
+						'Apakah tiap pembeli memberikan kontribusi yang besar terhadap total penjualan perusahaan ?' => $dataRaw['contribution'],
+						'Apakah pembeli dapat dengan mudah berganti penjual tanpa konsekuensi tertentu seperti harga dan kualitas ?' => $dataRaw['customor_movement'],
+						'Apakah produk yang diinginkan oleh calon pembeli tidak berbeda jauh di antara pesaing-pesaing di dalam industri perusahaan ?' => $dataRaw['difference_desire'],
+						'Apakah pembeli sangat sensitif terhadap perubahan harga ?' => $dataRaw['price_sensitivity'],
+						'Apakah calon pembeli lebih mementingkan kualitas daripada harga dalam pembelian ?' => $dataRaw['quality_than_price'],
+						'Apakah ada kecenderungan bagi pembeli masuk ke dalam industri perusahaan untuk bersaing langsung ?' => $dataRaw['trend_competition']
+					];
+					break;
+				default:
+			}
+
 			// $dataRaw = $this->clearSameData($dataRaw);
 
 			return response()->json([
 				'data' => [
-					$this->roundNumber(array_sum($dataRaw) / count($dataRaw)),
-					(object) $this->customSort($dataRaw),
+					$this->roundNumber(array_sum($dataSend) / count($dataSend)),
+					(object) $this->customSort($dataSend),
 				],
 				'status' => 'success'
 			], 200);
@@ -5710,12 +5757,61 @@ class LaporanController extends Controller
 					$dataLoopRaw[$key] = (int) $this->roundNumber($hasil);
 				}
 
-				$dataLoopRaw = $this->customSort($dataLoopRaw);
+				$dataSend = [];
+
+				switch ($category) {
+					case "perusahaan":
+						$dataSend = [
+							'Tingkat persaingan' => $dataLoopRaw['any_competitor'],
+							'Keunikan produk' => $dataLoopRaw['difference'],
+							'Kemudahan keluar' => $dataLoopRaw['easy_out']
+						];
+						break;
+					case "pendatang_baru":
+						$dataSend = [
+							'Ukuran modal' => $dataLoopRaw['big_capital'],
+							'Keunikan produk' => $dataLoopRaw['clear_difference'],
+							'Efisiensi biaya' => $dataLoopRaw['cost'],
+							'Saluran distribusi' => $dataLoopRaw['easy_channel'],
+							'Kebijakan pemerintah' => $dataLoopRaw['policy'],
+							'Skala ekonomis' => $dataLoopRaw['quantity']
+						];
+						break;
+					case "substitusi":
+						$dataSend = [
+							'Harga Substitusi' => $dataLoopRaw['competitive_price'],
+							'Alternatif Mudah' => $dataLoopRaw['find_subtitution']
+						];
+						break;
+					case "pemasok":
+						$dataSend = [
+							'Barang Substitusi' => $dataLoopRaw['any_substitution'],
+							'Ganti Pemasok' => $dataLoopRaw['change_price'],
+							'Pemasok Bersaing' => $dataLoopRaw['competitive_tendencies'],
+							'Pembeli Dominan' => $dataLoopRaw['dominant'],
+							'Pilihan Pemasok' => $dataLoopRaw['supplier_choice']
+						];
+						break;
+					case "pembeli":
+						$dataSend = [
+							'Pembeli Kontribusi' => $dataLoopRaw['contribution'],
+							'Ganti Penjual' => $dataLoopRaw['customor_movement'],
+							'Produk Seragam' => $dataLoopRaw['difference_desire'],
+							'Pembeli Responsif' => $dataLoopRaw['price_sensitivity'],
+							'Kualitas Lebih' => $dataLoopRaw['quality_than_price'],
+							'Masuk Industri' => $dataLoopRaw['trend_competition']
+						];
+						break;
+					default:
+				}
+
+				$dataLoopRaw = $this->customSort($dataSend);
 
 				array_push($dataFinal, $dataLoopRaw);
 			}
 
 			$dataFinal = $this->clearSameData($dataFinal);
+
 
 			return response()->json([
 				'data' => [(object) $dataFinal],

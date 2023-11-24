@@ -853,7 +853,7 @@
                 $.each(response.data[1], function(key, value) {
                     contentTable += `<tr>`
                     contentTable += `<td class="text-center">${no}</td>`
-                    contentTable += `<td>${key}</td>`
+                    contentTable += `<td class="text-capitalize">${key}</td>`
                     contentTable += `<td class="text-center">${value}%</td>`
                     contentTable += `</tr>`
                     no++
