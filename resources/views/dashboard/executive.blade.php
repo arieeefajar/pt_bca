@@ -21,7 +21,7 @@
             width: 250px;
         }
 
-        .dropdown-menu a.dropdown-item {
+        .dropdown-menu button.dropdown-item {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -30,7 +30,7 @@
 
         .cardShadow {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            height: 550px;
+            /* height: 550px; */
         }
     </style>
 @endsection
@@ -159,19 +159,19 @@
                                                         Kepuasan Pelanggan
                                                     </button>
                                                     <div id="dropdownMenu" style="display: none;">
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKepuasan('product')">Produk</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKepuasan('promosi')">Promosi</a>
-                                                        <a class="dropdown-item"
+                                                        <button class="btn dropdown-item"
+                                                            onclick="getDataCartKepuasan('product')">Produk</button>
+                                                        <button class="btn dropdown-item"
+                                                            onclick="getDataCartKepuasan('promosi')">Promosi</button>
+                                                        <button class="btn dropdown-item"
                                                             onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                            produk</a>
-                                                        <a class="dropdown-item"
+                                                            produk</button>
+                                                        <button class="btn dropdown-item"
                                                             onclick="getDataCartKepuasan('layanan')">Layanan
-                                                            petugas lapang</a>
-                                                        <a class="dropdown-item"
+                                                            petugas lapang</button>
+                                                        <button class="btn dropdown-item"
                                                             onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                            komplain pelanggan</a>
+                                                            komplain pelanggan</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -273,22 +273,22 @@
                                                             Analisis Pesaing
                                                         </button>
                                                         <div id="dropdownMenu1" style="display: none;">
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</a>
-                                                            <a class="dropdown-item"
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartAnalisisPesaing('pendatang_baru')">Pendatang
-                                                                Baru</a>
-                                                            <a class="dropdown-item"
+                                                                Baru</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartAnalisisPesaing('substitusi')">Produk
-                                                                Substitusi</a>
-                                                            <a class="dropdown-item"
+                                                                Substitusi</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartAnalisisPesaing('pemasok')">Kekuatan
                                                                 Menawar
-                                                                Pemasok</a>
-                                                            <a class="dropdown-item"
+                                                                Pemasok</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartAnalisisPesaing('pembeli')">Kekuatan
                                                                 Menawar
-                                                                Pembeli</a>
+                                                                Pembeli</button>
                                                         </div>
                                                     </div>
                                                     <div class="dropdown">
@@ -297,33 +297,33 @@
                                                             Kekuatan Kelemahan Pesaing
                                                         </button>
                                                         <div id="dropdownMenu2" style="display: none;">
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                            <a class="dropdown-item"
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('product')">Produk</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                                dan Pengembangan</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                            <a class="dropdown-item"
+                                                                dan Pengembangan</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                                Manajerial</a>
-                                                            <a class="dropdown-item"
+                                                                Manajerial</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
                                                                 Inti dan Menyesuaikan Diri dengan
-                                                                Perubahan</a>
-                                                            <a class="dropdown-item"
+                                                                Perubahan</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                                Pesaing</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                                                                Pesaing</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</button>
                                                         </div>
                                                     </div>
                                                 </div>

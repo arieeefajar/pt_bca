@@ -17,7 +17,7 @@
             width: 250px;
         }
 
-        .menuCompetitive a.dropdown-item {
+        .menuCompetitive button.dropdown-item {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -43,7 +43,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" id="wordCount" href="#product1" role="tab"
-                            aria-selected="false" onclick="closeIndex()">
+                            aria-selected="false" onclick="closeIndex();">
                             Product Intelligence
                         </a>
                     </li>
@@ -76,11 +76,13 @@
                                                             Analisis Pesaing
                                                         </button>
                                                         <div id="dropdownMenu" style="display: none;">
-                                                            <a class="dropdown-item">Perusahaan</a>
-                                                            <a class="dropdown-item">Pendatang Baru</a>
-                                                            <a class="dropdown-item">Produk Substitusi</a>
-                                                            <a class="dropdown-item">Kekuatan Menawar Pemasok</a>
-                                                            <a class="dropdown-item">Kekuatan Menawar Pembeli</a>
+                                                            <button class="btn dropdown-item">Perusahaan</button>
+                                                            <button class="btn dropdown-item">Pendatang Baru</button>
+                                                            <button class="btn dropdown-item">Produk Substitusi</button>
+                                                            <button class="btn dropdown-item">Kekuatan Menawar
+                                                                Pemasok</button>
+                                                            <button class="btn dropdown-item">Kekuatan Menawar
+                                                                Pembeli</button>
                                                         </div>
                                                     </div>
                                                     <div class="dropdown">
@@ -89,33 +91,33 @@
                                                             Kekuatan Kelemahan Pesaing
                                                         </button>
                                                         <div id="dropdownMenu1" style="display: none;">
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</a>
-                                                            <a class="dropdown-item"
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('riset', '{{ $location_name }}')">Riset
-                                                                dan Pengembangan</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</a>
-                                                            <a class="dropdown-item"
+                                                                dan Pengembangan</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('manajerial', '{{ $location_name }}')">Kemampuan
-                                                                Manajerial</a>
-                                                            <a class="dropdown-item"
+                                                                Manajerial</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('inti', '{{ $location_name }}')">Kemampuan
                                                                 Inti dan Menyesuaikan Diri dengan
-                                                                Perubahan</a>
-                                                            <a class="dropdown-item"
+                                                                Perubahan</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKekuatanKelemahan('portofolio', '{{ $location_name }}')">Portofolio
-                                                                Pesaing</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</a>
+                                                                Pesaing</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</button>
                                                         </div>
                                                     </div>
                                                     <div class="dropdown">
@@ -174,92 +176,37 @@
                                 <div class="col-sm-6">
                                     <h6 id="titleContent1"></h6>
                                 </div>
-                                <div class="col-sm-6 text-right">
-                                    <div style="float: right">
-                                        <div class="d-flex align-items-center">
-
-                                            <div class="hamburger">
-                                                <button type="button" id="buttonHamburger1" class="btn"
-                                                    onclick="toggleMenu1()">
-                                                    <span class="hamburger-icon">
-                                                        <span></span>
-                                                        <span></span>
-                                                        <span></span>
-                                                    </span>
-                                                </button>
-                                                <div class="dropdown-menu menuCompetitive" id="menu1"
-                                                    style="display: none">
-                                                    <div class="dropdown">
-                                                        <button class="btn" type="button"
-                                                            onclick="getDataSekunderPeramalan()">
-                                                            Data Sekunder
-                                                        </button>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn" type="button"
-                                                            onclick="getWord('potentional', '{{ $location_name }}')">
-                                                            Potensi Lahan
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{-- <div class="hamburger">
-                                                <button type="button" class="btn" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
-                                                    <span class="hamburger-icon">
-                                                        <span></span>
-                                                        <span></span>
-                                                        <span></span>
-                                                    </span>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <!-- item-->
-
-                                                    <div class="dropdown-item dropdown-hover">
-                                                        <span class="align-middle"
-                                                            onclick="getDataSekunderPeramalan()">Data
-                                                            Sekunder</span>
-                                                    </div>
-                                                    <div class="dropdown-item dropdown-hover">
-                                                        <span class="align-middle"
-                                                            onclick="getWord('potentional', '{{ $location_name }}')">Potensi
-                                                            Lahan</span>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
+                            </div>
+                            <div class="row" id="dataSekunder">
+                                <div class="mb-3 d-flex justify-content-center align-items-center" id="chartData">
+                                </div>
+                            </div>
+                            <div class="row" id="potensiLahan">
+                                {{-- card-rangking --}}
+                                <div class="col-sm-4">
+                                    <div class="card cardWord card-primary">
+                                        <div class="card-header">
+                                            <h6 class="card-title">Rangking</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="list-group list-group-numbered" id="ranking1">
+                                                <li class="list-group-item">Send the billing agreement</li>
+                                            </ol>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row" id="dataSekunder">
-                            <div class="mb-3 d-flex justify-content-center align-items-center" id="chartData"></div>
-                        </div>
-                        <div class="row" id="potensiLahan">
-                            {{-- card-rangking --}}
-                            <div class="col-sm-4">
-                                <div class="card cardWord card-primary">
-                                    <div class="card-header">
-                                        <h6 class="card-title">Rangking</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <ol class="list-group list-group-numbered" id="ranking1">
-                                            <li class="list-group-item">Send the billing agreement</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
 
-                            {{-- card deskripsi --}}
-                            <div class="col-sm-8">
-                                <div class="card cardWord card-warning">
-                                    <div class="card-header">
-                                        <h6 class="card-title">Deskripsi</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <ol class="list-group list-group-numbered" id="deskripsi1">
-                                            <li class="list-group-item">Send the billing agreement</li>
-                                        </ol>
+                                {{-- card deskripsi --}}
+                                <div class="col-sm-8">
+                                    <div class="card cardWord card-warning">
+                                        <div class="card-header">
+                                            <h6 class="card-title">Deskripsi</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="list-group list-group-numbered" id="deskripsi1">
+                                                <li class="list-group-item">Send the billing agreement</li>
+                                            </ol>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -323,9 +270,8 @@
 <script>
     $(document).ready(function() {
         getDataAnalisisPesaing()
-        getDataSekunderPeramalan()
         // getDataCartKepuasan('product', '{{ $location_name }}')
-        // getWord('retail', '{{ $location_name }}')
+        getWord('potentional', '{{ $location_name }}')
     });
 
     let menuVisible = false;
@@ -426,7 +372,6 @@
     function showIndex() {
         const content = document.getElementById('indexAspek');
         content.style.display = "block"
-        console.log(content);
     }
 
     function closeIndex() {
@@ -444,7 +389,7 @@
 
     function getDataAnalisisPesaing() {
         $('#titleContent').html(`Analisis Pesaing`);
-        $('#chartdiv').html('Server error / tidak ada data');
+        $('#chartdiv').html('Data belum tersedia');
         $('#kepuasaPelanggan').html('');
         $('#kepuasaPelangganFooter').html('');
     }
@@ -509,6 +454,7 @@
     }
 
     function getDataCartKekuatanKelemahan(kategory, daerah) {
+        showIndex();
         hideMenu();
         hideSubmenu();
         hideSubmenu1();
@@ -849,9 +795,9 @@
         const area = btoa(daerah)
 
         hideMenu();
-        hideMenu1()
         hideSubmenu();
         hideSubmenu1();
+        closeIndex();
 
         if (kategory == "retail") {
             url = `{{ url('getRetail/${area}') }}`;

@@ -17,7 +17,7 @@
             width: 200px;
         }
 
-        .dropdown-menu a.dropdown-item {
+        .dropdown-menu button.dropdown-item {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -114,19 +114,19 @@
                                                             Kepuasan Pelanggan
                                                         </button>
                                                         <div id="dropdownMenu" style="display: none;">
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
-                                                            <a class="dropdown-item"
-                                                                onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
-                                                            <a class="dropdown-item"
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
-                                                                produk</a>
-                                                            <a class="dropdown-item"
+                                                                produk</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
-                                                                petugas lapang</a>
-                                                            <a class="dropdown-item"
+                                                                petugas lapang</button>
+                                                            <button class="btn dropdown-item"
                                                                 onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
-                                                                komplain pelanggan</a>
+                                                                komplain pelanggan</button>
                                                         </div>
                                                     </div>
                                                 </div>
