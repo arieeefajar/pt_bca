@@ -79,11 +79,21 @@
                                                         Analisis Pesaing
                                                     </button>
                                                     <div id="dropdownMenu" style="display: none;">
-                                                        <a class="dropdown-item">Perusahaan</a>
-                                                        <a class="dropdown-item">Pendatang Baru</a>
-                                                        <a class="dropdown-item">Produk Substitusi</a>
-                                                        <a class="dropdown-item">Kekuatan Menawar Pemasok</a>
-                                                        <a class="dropdown-item">Kekuatan Menawar Pembeli</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</a>
+
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('pendatang_baru')">Pendatang
+                                                            Baru</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('substitusi')">Produk
+                                                            Substitusi</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('pemasok')">Kekuatan
+                                                            Menawar Pemasok</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('pembeli')">Kekuatan
+                                                            Menawar Pembeli</a>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown">
@@ -133,15 +143,40 @@
 
                     {{-- Product Intelegence --}}
                     <div class="tab-pane" id="product1" role="tabpanel">
-                        <div class="row mb-3">
-                            <div class="col-sm-6">
+                        <div class="row mb-3 d-flex flex-column">
+                            <div class="col-sm-12 my-2 d-flex justify-content-between">
                                 <h6 id="titleContent1"> Data Sekunder Permalan Permintaan Produk</h6>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <div style="float: right">
-                                    <div class="d-flex align-items-center">
+                                <select id="select_jenis" data-choices data-choices-sorting="true">
+                                    @foreach ($jenis_tanaman as $value)
+                                        @if ($value === 'JAGUNG HIBRIDA')
+                                            <option selected value="{{ $value }}">{{ $value }}</option>
+                                        @else
+                                            <option value="{{ $value }}">{{ $value }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                {{-- <div class="hamburger">
+                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <span class="hamburger-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <!-- item-->
+                                        <div class="dropdown-item dropdown-hover">
+                                            <span class="align-middle" role="button">Kepuasan Pelanggan</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </div> --}}
+                            </div>
+                            <div class="col-sm-12 text-right">
+                                {{-- <div style="float: right"> --}}
+                                <canvas id="graph"></canvas>
+                                <canvas id="graph_next_year" style="height: 50px"></canvas>
+                                {{-- </div> --}}
                             </div>
                         </div>
                         {{-- <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div> --}}
@@ -187,10 +222,7 @@
 
 <div class="row">
     <div class="text-center mt-3 mb-3">
-        <form action="{{ route('laporan.index') }}">
-            @csrf
-            <button class="btn btn-primary">Kembali</button>
-        </form>
+        <a href="{{ url('laporan') }}" class="btn btn-primary">Kembali</a>
     </div>
 </div>
 @endsection
@@ -205,10 +237,18 @@
 <!-- Chart code -->
 <script>
     $(document).ready(function() {
-        // getDataCartKepuasan('perusahaan')
-        $('#titleContent').html(`Analisis Pesaing`);
-        $('#chartdiv').html('Server error / tidak ada data');
+        getDataCartAnalisisPesaing('perusahaan')
+        startRegretion('JAGUNG HIBRIDA')
     });
+
+    const select_regretion = $('#select_jenis');
+
+    select_regretion.change(function() {
+        let value = $(this).val()
+        startRegretion(value);
+    })
+
+    let chartRegretion;
 
     let menuVisible = false;
     let subMenuVisible = false;
@@ -294,13 +334,15 @@
         content.style.display = "none"
     }
 
-    function getDataCartKepuasan(kategory, daerah) {
+    function getDataCartAnalisisPesaing(kategory) {
 
+        hideMenu();
+        hideSubmenu();
+        hideSubmenu1();
         $('#titleContent').html(`Kepuasan / ${kategory}`);
 
-        const area = btoa(daerah)
-        const urlChart = `{{ url('getPertanyaanKepuasanByRespondents/${kategory}/${area}') }}`;
-        const urlTable = `{{ url('getPertanyaanKepuasan/${kategory}/${area}') }}`;
+        const urlChart = `{{ url('laporanAnalisisPesaingByRespondentsAll/${kategory}') }}`;
+        const urlTable = `{{ url('laporanAnalisisPesaingAll/${kategory}') }}`;
         $.ajax({
             type: "get",
             url: urlChart,
@@ -310,7 +352,8 @@
                 $('#chartdiv').html('Loading...');
             },
             success: function(response) {
-                startChart(response);
+                // console.log(response.data);
+                startChart(response.data);
             },
             error: function(params) {
                 $('#chartdiv').html('Server error / tidak ada data');
@@ -325,10 +368,12 @@
                 $('#kepuasaPelangganFooter').html('');
             },
             success: function(response) {
+                // console.log(response.data);
                 let contentTable = ''
                 let contentTableFooter = ''
                 let no = 1;
-                $.each(response[1], function(key, value) {
+
+                $.each(response.data[1], function(key, value) {
                     contentTable += `<tr>`
                     contentTable += `<td class="text-center">${no}</td>`
                     contentTable += `<td>${key}</td>`
@@ -339,7 +384,7 @@
 
                 contentTableFooter += `<tr>`
                 contentTableFooter += `<th class="text-end" colspan="2">Rata-rata</th>`
-                contentTableFooter += `<th class="text-center">${response[0]['Kepuasan']}%</th>`
+                contentTableFooter += `<th class="text-center">${response.data[0]}%</th>`
                 contentTableFooter += `</tr>`
 
                 $('#kepuasaPelanggan').html(contentTable);
@@ -690,6 +735,114 @@
             series.appear(1000);
             chart.appear(1000, 100);
         });
+    }
+
+    function startRegretion(kategory) {
+        $.ajax({
+            type: "get",
+            // url: `{{ url('tes-regretion/${kategory}') }}`,
+            url: `{{ url('regretion-non-linier/${kategory}') }}`,
+            dataType: "json",
+            beforeSend: function() {
+                if (chartRegretion) {
+                    chartRegretion.destroy();
+                    chartRegretionNextYear.destroy();
+                }
+                $('#graph').html('Loading..');
+            },
+            success: function(response) {
+                $('#loading_graph').hide();
+                $('#graph').show();
+
+                let datasets = [];
+                let datasetsNextYears = [];
+
+                response.data.forEach((value, index) => {
+                    // if (index < 5) {
+                    const dataset = [{
+                            label: `${value.label}`,
+                            data: value.data,
+                            fill: false,
+                            borderColor: generateRandomColor(),
+                            borderWidth: 3
+                        },
+                        // {
+                        //     label: `${value.label}`,
+                        //     data: value.data_next_year,
+                        //     fill: false,
+                        //     borderColor: generateRandomColor(),
+                        //     borderWidth: 3
+                        // }
+                    ];
+                    const datasetsNextYear = [{
+                            label: `${value.label}`,
+                            data: value.data_next_year,
+                            fill: false,
+                            borderColor: generateRandomColor(),
+                            borderWidth: 3
+                        },
+                        // {
+                        //     label: `${value.label}`,
+                        //     data: value.data_raw,
+                        //     fill: false,
+                        //     borderColor: generateRandomColor(),
+                        //     borderWidth: 3
+                        // }
+                    ];
+
+                    dataset.forEach(element => {
+                        datasets.push(element);
+                    });
+                    datasetsNextYear.forEach(element => {
+                        datasetsNextYears.push(element);
+                    });
+                    // }
+                });
+
+                // console.log(datasets);\
+
+                if (chartRegretion) {
+                    chartRegretionNextYear.destroy();
+                    chartRegretion.destroy();
+                }
+
+                ctx = document.getElementById('graph');
+                ctx2 = document.getElementById('graph_next_year');
+                chartRegretion = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep',
+                            'Oct', 'Nov', 'Des'
+                        ],
+                        datasets: datasets
+                    }
+                })
+                chartRegretionNextYear = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep',
+                            'Oct', 'Nov', 'Des'
+                        ],
+                        datasets: datasetsNextYears
+                    }
+                })
+            },
+            error: function(params) {
+                console.log('error');
+                // $('#chartdiv').html('Server error / tidak ada data');
+            }
+        });
+    }
+
+    function generateRandomColor() {
+        var red = Math.floor(Math.random() * 256);
+        var green = Math.floor(Math.random() * 256);
+        var blue = Math.floor(Math.random() * 256);
+        var alpha = 0.2; // Set alpha to 0.2 by default
+
+        var rgbaColor = 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + alpha + ')';
+
+        return rgbaColor;
     }
 
     function getWord(kategory) {

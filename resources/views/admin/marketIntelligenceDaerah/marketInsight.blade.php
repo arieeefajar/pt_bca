@@ -178,10 +178,7 @@
 
 <div class="row">
     <div class="text-center mt-3 mb-3">
-        <form action="{{ url("laporanDaerah/$location_name_encode") }}">
-            @csrf
-            <button class="btn btn-primary">Kembali</button>
-        </form>
+        <a href="{{ url("laporanDaerah/$location_name_encode") }}" class="btn btn-primary">Kembali</a>
     </div>
 </div>
 @endsection
