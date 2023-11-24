@@ -12,17 +12,12 @@
             height: 350px;
         }
 
-        .dropdown-hover:hover .kuisioner {
-            display: block;
+        .dropdown-menu {
             right: 0;
-            left: 0;
+            width: 200px;
         }
 
-        .dropdown-menu.kuisioner li {
-            white-space: normal;
-        }
-
-        .dropdown-menu.kuisioner a.dropdown-item {
+        .dropdown-menu a.dropdown-item {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -104,37 +99,34 @@
                                         <div class="d-flex align-items-center">
 
                                             <div class="hamburger">
-                                                <button type="button" class="btn" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
+                                                <button type="button" id="buttonHamburger" class="btn"
+                                                    onclick="toggleMenu()">
                                                     <span class="hamburger-icon">
                                                         <span></span>
                                                         <span></span>
                                                         <span></span>
                                                     </span>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <!-- item-->
-                                                    <div class="dropdown-item dropdown-hover">
-                                                        <span class="align-middle dropdown-toggle">Kepuasan
-                                                            Pelanggan</span>
-                                                        <div class="nav-item dropdown">
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
-                                                                        produk</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
-                                                                        petugas lapang</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
-                                                                        komplain pelanggan</a></li>
-                                                            </ul>
+                                                <div class="dropdown-menu" id="menu" style="display: none">
+                                                    <div class="dropdown">
+                                                        <button class="btn dropdown-toggle" type="button"
+                                                            onclick="toggleSubMenu()">
+                                                            Kepuasan Pelanggan
+                                                        </button>
+                                                        <div id="dropdownMenu" style="display: none;">
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('product', '{{ $location_name }}')">Produk</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('promosi', '{{ $location_name }}')">Promosi</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('kualitas', '{{ $location_name }}')">Kualitas
+                                                                produk</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('layanan', '{{ $location_name }}')">Layanan
+                                                                petugas lapang</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKepuasan('penanganan', '{{ $location_name }}')">Penanganan
+                                                                komplain pelanggan</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -208,6 +200,51 @@
         getWord('retail', '{{ $location_name }}')
     });
 
+    let menuVisible = false;
+    let subMenuVisible = false;
+
+    function toggleMenu() {
+        if (menuVisible) {
+            hideMenu();
+        } else {
+            showMenu();
+        }
+    }
+
+    function toggleSubMenu() {
+        if (subMenuVisible) {
+            hideSubmenu();
+        } else {
+            showSubmenu();
+        }
+    }
+
+    function showMenu() {
+        menuVisible = true;
+        const menu = document.getElementById('menu');
+        menu.style.display = 'block';
+    }
+
+    function hideMenu() {
+        menuVisible = false;
+        const menu = document.getElementById('menu');
+        menu.style.display = 'none';
+    }
+
+    function showSubmenu() {
+        subMenuVisible = true;
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = 'block';
+        // console.log('oke');
+    }
+
+    function hideSubmenu() {
+        subMenuVisible = false;
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = 'none';
+        // console.log('oke');
+    }
+
     function showIndex() {
         const content = document.getElementById('indexAspek');
         content.style.display = "block"
@@ -220,7 +257,8 @@
     }
 
     function getDataCartKepuasan(kategory, daerah) {
-
+        hideMenu();
+        hideSubmenu();
         $('#titleContent').html(`Kepuasan / ${kategory}`);
 
         const area = btoa(daerah)

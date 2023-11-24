@@ -12,17 +12,12 @@
             height: 350px;
         }
 
-        .dropdown-hover:hover .kuisioner {
-            display: block;
+        .menuCompetitive {
             right: 0;
-            left: 0;
+            width: 250px;
         }
 
-        .dropdown-menu.kuisioner li {
-            white-space: normal;
-        }
-
-        .dropdown-menu.kuisioner a.dropdown-item {
+        .menuCompetitive a.dropdown-item {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -55,7 +50,6 @@
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content  text-muted">
-
                     <div class="tab-pane active" id="home" role="tabpanel">
                         <div class="container">
                             <div class="row">
@@ -65,99 +59,70 @@
                                 <div class="col-sm-6 text-right">
                                     <div style="float: right">
                                         <div class="d-flex align-items-center">
-
                                             <div class="hamburger">
-                                                <button type="button" class="btn" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
+                                                <button type="button" id="buttonHamburger" class="btn"
+                                                    onclick="toggleMenu()">
                                                     <span class="hamburger-icon">
                                                         <span></span>
                                                         <span></span>
                                                         <span></span>
                                                     </span>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <!-- item-->
-
-                                                    {{-- analisis pesaing --}}
-                                                    <div class="dropdown-item dropdown-hover">
-                                                        <span class="align-middle dropdown-toggle">Analisis
-                                                            Pesaing</span>
-                                                        <div class="nav-item dropdown">
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li class="nav-item dropdown">
-                                                                    <ul class="dropdown-menu kuisioner">
-                                                                        <li><a class="dropdown-item">Perusahaan</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Pendatang
-                                                                                Baru</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Produk
-                                                                                Substitusi</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Kekuatan
-                                                                                Menawar
-                                                                                Pemasok</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item">Kekuatan
-                                                                                Menawar
-                                                                                Pembeli</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
+                                                <div class="dropdown-menu menuCompetitive" id="menu"
+                                                    style="display: none">
+                                                    <div class="dropdown">
+                                                        <button class="btn dropdown-toggle" type="button"
+                                                            onclick="toggleSubMenu()">
+                                                            Analisis Pesaing
+                                                        </button>
+                                                        <div id="dropdownMenu" style="display: none;">
+                                                            <a class="dropdown-item">Perusahaan</a>
+                                                            <a class="dropdown-item">Pendatang Baru</a>
+                                                            <a class="dropdown-item">Produk Substitusi</a>
+                                                            <a class="dropdown-item">Kekuatan Menawar Pemasok</a>
+                                                            <a class="dropdown-item">Kekuatan Menawar Pembeli</a>
                                                         </div>
                                                     </div>
-
-                                                    {{-- kekuatan kelemahan pesaing --}}
-                                                    <div class="dropdown-item dropdown-hover">
-                                                        <span class="align-middle dropdown-toggle">Kekuatan Kelemahan
-                                                            Pesaing</span>
-                                                        <div class="nav-item dropdown">
-                                                            <ul class="dropdown-menu kuisioner">
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('riset', '{{ $location_name }}')">Riset
-                                                                        dan Pengembangan</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('manajerial', '{{ $location_name }}')">Kemampuan
-                                                                        Manajerial</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('inti', '{{ $location_name }}')">Kemampuan
-                                                                        Inti dan Menyesuaikan Diri dengan
-                                                                        Perubahan</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('portofolio', '{{ $location_name }}')">Portofolio
-                                                                        Pesaing</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</a>
-                                                                </li>
-                                                            </ul>
+                                                    <div class="dropdown">
+                                                        <button class="btn dropdown-toggle" type="button"
+                                                            onclick="toggleSubMenu1()">
+                                                            Kekuatan Kelemahan Pesaing
+                                                        </button>
+                                                        <div id="dropdownMenu1" style="display: none;">
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('product', '{{ $location_name }}')">Produk</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('distribusi', '{{ $location_name }}')">Distribusi</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('pemasaran', '{{ $location_name }}')">Pemasaran</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('operasional', '{{ $location_name }}')">Operasional</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('riset', '{{ $location_name }}')">Riset
+                                                                dan Pengembangan</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('keuangan', '{{ $location_name }}')">Keuangan</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('organisasi', '{{ $location_name }}')">Organisasi</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('manajerial', '{{ $location_name }}')">Kemampuan
+                                                                Manajerial</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('inti', '{{ $location_name }}')">Kemampuan
+                                                                Inti dan Menyesuaikan Diri dengan
+                                                                Perubahan</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('portofolio', '{{ $location_name }}')">Portofolio
+                                                                Pesaing</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="getDataCartKekuatanKelemahan('lainnya', '{{ $location_name }}')">Lain-lain</a>
                                                         </div>
                                                     </div>
-
-                                                    {{-- survey pesaing --}}
-                                                    <div class="dropdown-item dropdown-hover">
-                                                        <span class="align-middle"
-                                                            onclick="getWord('retail', '{{ $location_name }}')">Survey
-                                                            Pesaing</span>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            onclick="getWord('retail', '{{ $location_name }}')">
+                                                            Survey Pesaing
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,6 +179,31 @@
                                         <div class="d-flex align-items-center">
 
                                             <div class="hamburger">
+                                                <button type="button" id="buttonHamburger1" class="btn"
+                                                    onclick="toggleMenu1()">
+                                                    <span class="hamburger-icon">
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                    </span>
+                                                </button>
+                                                <div class="dropdown-menu menuCompetitive" id="menu1"
+                                                    style="display: none">
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            onclick="getDataSekunderPeramalan()">
+                                                            Data Sekunder
+                                                        </button>
+                                                    </div>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            onclick="getWord('potentional', '{{ $location_name }}')">
+                                                            Potensi Lahan
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="hamburger">
                                                 <button type="button" class="btn" data-bs-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
                                                     <span class="hamburger-icon">
@@ -236,7 +226,7 @@
                                                             Lahan</span>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -341,6 +331,101 @@
         // getWord('retail', '{{ $location_name }}')
     });
 
+    let menuVisible = false;
+    let menuVisible1 = false;
+    let subMenuVisible = false;
+    let subMenuVisible1 = false;
+
+    function toggleMenu() {
+        if (menuVisible) {
+            hideMenu();
+        } else {
+            showMenu();
+        }
+    }
+
+    function showMenu() {
+        menuVisible = true;
+        const menu = document.getElementById('menu');
+        menu.style.display = 'block';
+    }
+
+    function hideMenu() {
+        menuVisible = false;
+        const menu = document.getElementById('menu');
+        menu.style.display = 'none';
+    }
+
+    function toggleMenu1() {
+        if (menuVisible1) {
+            hideMenu1();
+        } else {
+            showMenu1();
+        }
+    }
+
+    function showMenu1() {
+        menuVisible1 = true;
+        const menu = document.getElementById('menu1');
+        menu.style.display = 'block';
+    }
+
+    function hideMenu1() {
+        menuVisible1 = false;
+        const menu = document.getElementById('menu1');
+        menu.style.display = 'none';
+    }
+
+    //analisis pesaing
+    function toggleSubMenu() {
+        if (subMenuVisible) {
+            hideSubmenu();
+        } else {
+            showSubmenu();
+            hideSubmenu1();
+        }
+    }
+
+    function showSubmenu() {
+        subMenuVisible = true;
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = 'block';
+        // console.log('oke');
+    }
+
+    function hideSubmenu() {
+        subMenuVisible = false;
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = 'none';
+        // console.log('oke');
+    }
+    //end analisis pesaing
+
+    //kekuatan kelemahan
+    function toggleSubMenu1() {
+        if (subMenuVisible1) {
+            hideSubmenu1();
+        } else {
+            showSubmenu1();
+            hideSubmenu();
+        }
+    }
+
+    function showSubmenu1() {
+        subMenuVisible1 = true;
+        const dropdownMenu = document.getElementById('dropdownMenu1');
+        dropdownMenu.style.display = 'block';
+        // console.log('oke');
+    }
+
+    function hideSubmenu1() {
+        subMenuVisible1 = false;
+        const dropdownMenu = document.getElementById('dropdownMenu1');
+        dropdownMenu.style.display = 'none';
+        // console.log('oke');
+    }
+    //end kekuatan kelemahan
+
     function showIndex() {
         const content = document.getElementById('indexAspek');
         content.style.display = "block"
@@ -353,6 +438,7 @@
     }
 
     function getDataSekunderPeramalan() {
+        hideMenu1()
         $('#titleContent1').html(`Data Sekunder Peramalan Permintaan Produk`);
         $('#dataSekunder').show();
         $('#potensiLahan').hide();
@@ -426,6 +512,9 @@
     }
 
     function getDataCartKekuatanKelemahan(kategory, daerah) {
+        hideMenu();
+        hideSubmenu();
+        hideSubmenu1();
 
         $('#titleContent').html(`Kekuatan & Kelemahan / ${kategory}`);
         $('#barChart').show();
@@ -761,6 +850,11 @@
     function getWord(kategory, daerah) {
         let url;
         const area = btoa(daerah)
+
+        hideMenu();
+        hideMenu1()
+        hideSubmenu();
+        hideSubmenu1();
 
         if (kategory == "retail") {
             url = `{{ url('getRetail/${area}') }}`;
