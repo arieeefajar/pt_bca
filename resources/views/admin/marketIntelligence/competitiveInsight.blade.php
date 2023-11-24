@@ -79,12 +79,21 @@
                                                         Analisis Pesaing
                                                     </button>
                                                     <div id="dropdownMenu" style="display: none;">
-                                                        <a class="dropdown-item">Perusahaan</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</a>
 
-                                                        <a class="dropdown-item">Pendatang Baru</a>
-                                                        <a class="dropdown-item">Produk Substitusi</a>
-                                                        <a class="dropdown-item">Kekuatan Menawar Pemasok</a>
-                                                        <a class="dropdown-item">Kekuatan Menawar Pembeli</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('pendatang_baru')">Pendatang
+                                                            Baru</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('substitusi')">Produk
+                                                            Substitusi</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('pemasok')">Kekuatan
+                                                            Menawar Pemasok</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartAnalisisPesaing('pembeli')">Kekuatan
+                                                            Menawar Pembeli</a>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown">
@@ -137,7 +146,7 @@
                         <div class="row mb-3 d-flex flex-column">
                             <div class="col-sm-12 my-2 d-flex justify-content-between">
                                 <h6 id="titleContent1"> Data Sekunder Permalan Permintaan Produk</h6>
-                                <select id="select_jenis">
+                                <select id="select_jenis" data-choices data-choices-sorting="true">
                                     @foreach ($jenis_tanaman as $value)
                                         @if ($value === 'JAGUNG HIBRIDA')
                                             <option selected value="{{ $value }}">{{ $value }}</option>
@@ -165,7 +174,7 @@
                             </div>
                             <div class="col-sm-12 text-right">
                                 {{-- <div style="float: right"> --}}
-                                <canvas id="graph" style="height: 50px"></canvas>
+                                <canvas id="graph"></canvas>
                                 <canvas id="graph_next_year" style="height: 50px"></canvas>
                                 {{-- </div> --}}
                             </div>
@@ -230,8 +239,16 @@
     $(document).ready(function() {
         getDataCartAnalisisPesaing('perusahaan')
         startRegretion('JAGUNG HIBRIDA')
-        setJenis();
     });
+
+    const select_regretion = $('#select_jenis');
+
+    select_regretion.change(function() {
+        let value = $(this).val()
+        startRegretion(value);
+    })
+
+    let chartRegretion;
 
     let menuVisible = false;
     let subMenuVisible = false;

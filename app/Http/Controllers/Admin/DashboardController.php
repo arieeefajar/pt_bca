@@ -112,7 +112,9 @@ class DashboardController extends Controller
 			$dataArea = null;
 		}
 
-		return view('dashboard.executive', compact('dataJumlah', 'dataArea'));
+		$jenis_tanaman = ProdukProdev::select('jenis_tanaman')->distinct()->pluck('jenis_tanaman');
+
+		return view('dashboard.executive', compact('dataJumlah', 'dataArea', 'jenis_tanaman'));
 	}
 
 	public function getDataMaps()
