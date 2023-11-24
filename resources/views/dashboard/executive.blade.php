@@ -30,6 +30,7 @@
 
         .cardShadow {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            height: 550px;
         }
     </style>
 @endsection
@@ -119,7 +120,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card cardShadow">
                 <div class="card-body">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs mb-3" role="tablist">
@@ -190,7 +191,7 @@
         <div class="col-md-6">
             <div class="row" id="indexAspek">
                 <div class="col-lg-12">
-                    <div class="card">
+                    <div class="card cardShadow">
                         <div class="card-header">
                             <h4 class="card-title mb-0">Perhitungan Aspek Index</h4>
                         </div><!-- end card header -->
@@ -224,7 +225,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card cardShadow">
                 <div class="card-body">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs mb-3" role="tablist">
@@ -349,7 +350,7 @@
             <div class="row" id="indexAspek1">
                 <div class="col-lg-12">
                     {{-- card index --}}
-                    <div class="card">
+                    <div class="card cardShadow">
                         <div class="card-header">
                             <h4 class="card-title mb-0 mt-3">Index Kepuasan</h4>
                         </div>
@@ -376,6 +377,16 @@
                     </div>
                 </div>
                 <!-- end col -->
+            </div>
+            <div class="row" id="grafikPeramalan" style="display: none;">
+                <div class="card cardShadow">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0 mt-3">Grafik peramalan</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Chart</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -631,18 +642,22 @@
         subMenuVisible2 = false;
         const dropdownMenu = document.getElementById('dropdownMenu2');
         dropdownMenu.style.display = 'none';
-        // console.log('oke');
     }
 
     function showIndex() {
         const content = document.getElementById('indexAspek1');
+        const grafikPeramalan = document.getElementById('grafikPeramalan');
+
+        grafikPeramalan.style.display = "none"
         content.style.display = "block"
-        console.log(content);
     }
 
     function closeIndex() {
         const content = document.getElementById('indexAspek1');
+        const grafikPeramalan = document.getElementById('grafikPeramalan');
+
         content.style.display = "none"
+        grafikPeramalan.style.display = "block"
     }
 
     function getDataCartKepuasan(kategory) {
