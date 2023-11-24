@@ -80,6 +80,7 @@
                                                     </button>
                                                     <div id="dropdownMenu" style="display: none;">
                                                         <a class="dropdown-item">Perusahaan</a>
+
                                                         <a class="dropdown-item">Pendatang Baru</a>
                                                         <a class="dropdown-item">Produk Substitusi</a>
                                                         <a class="dropdown-item">Kekuatan Menawar Pemasok</a>
@@ -318,6 +319,9 @@
 
     function getDataCartAnalisisPesaing(kategory) {
 
+        hideMenu();
+        hideSubmenu();
+        hideSubmenu1();
         $('#titleContent').html(`Kepuasan / ${kategory}`);
 
         const urlChart = `{{ url('laporanAnalisisPesaingByRespondentsAll/${kategory}') }}`;
