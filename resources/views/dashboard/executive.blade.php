@@ -16,12 +16,12 @@
             height: 350px;
         }
 
-        .dropdown-menu {
+        .menu {
             right: 0;
             width: 250px;
         }
 
-        .dropdown-menu button.dropdown-item {
+        .menu button.dropdown-item {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -125,53 +125,80 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs mb-3" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" id="wordCount" href="#product1"
-                                role="tab" aria-selected="false" onclick="showIndex()">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#menuMarketUnderstanding"
+                                role="tab" aria-selected="false"
+                                onclick="showDeskripsi(); getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy')">
+                                Market Understanding
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#customerInsight" role="tab"
+                                aria-selected="false" onclick="showIndex1(); getDataCartKepuasan('product')">
                                 Customer Insight
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content  text-muted">
-                        {{-- Custommer Insight --}}
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h4 class="card-title mb-0 mt-3" id="titleContent">Penilaian Pelanggan /
-                                    Kepuasan /
-                                    Product</h4>
+                    <div class="tab-content text-muted">
+                        <div class="tab-pane active" id="menuMarketUnderstanding" role="tabpanel">
+                            <div class="row mb-3">
+                                <div class="col-sm-12 d-flex justify-content-between">
+                                    <h6> Skala Pasar</h6>
+                                    <select data-choices data-choices-sorting="true">
+                                        <option value="">Contoh</option>
+                                    </select>
+                                </div>
                             </div>
-
-                            <div class="col-sm-6 text-right">
-                                <div style="float: right">
-                                    <div class="d-flex align-items-center">
-                                        <div class="hamburger">
-                                            <button type="button" id="buttonHamburger" class="btn"
-                                                onclick="toggleMenu()">
-                                                <span class="hamburger-icon">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                </span>
-                                            </button>
-                                            <div class="dropdown-menu" id="menu" style="display: none">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle" type="button"
-                                                        onclick="toggleSubMenu()">
-                                                        Kepuasan Pelanggan
-                                                    </button>
-                                                    <div id="dropdownMenu" style="display: none;">
-                                                        <button class="btn dropdown-item"
-                                                            onclick="getDataCartKepuasan('product')">Produk</button>
-                                                        <button class="btn dropdown-item"
-                                                            onclick="getDataCartKepuasan('promosi')">Promosi</button>
-                                                        <button class="btn dropdown-item"
-                                                            onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                            produk</button>
-                                                        <button class="btn dropdown-item"
-                                                            onclick="getDataCartKepuasan('layanan')">Layanan
-                                                            petugas lapang</button>
-                                                        <button class="btn dropdown-item"
-                                                            onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                            komplain pelanggan</button>
+                            <div class="card cardWord card-primary">
+                                <div class="card-header">
+                                    <h6 class="card-title">Rangking</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ol class="list-group list-group-numbered" id="ranking">
+                                        <li class="list-group-item">Send the billing agreement</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="customerInsight" role="tabpanel">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h4 class="card-title mb-0 mt-3" id="titleContent">Penilaian Pelanggan /
+                                        Kepuasan /
+                                        Product</h4>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <div style="float: right">
+                                        <div class="d-flex align-items-center">
+                                            <div class="hamburger">
+                                                <button type="button" id="buttonHamburger" class="btn"
+                                                    onclick="toggleMenu()">
+                                                    <span class="hamburger-icon">
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                    </span>
+                                                </button>
+                                                <div class="dropdown-menu menu" id="menu" style="display: none">
+                                                    <div class="dropdown">
+                                                        <button class="btn dropdown-toggle" type="button"
+                                                            onclick="toggleSubMenu()">
+                                                            Kepuasan Pelanggan
+                                                        </button>
+                                                        <div id="dropdownMenu" style="display: none;">
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('product')">Produk</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('promosi')">Promosi</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('kualitas')">Kualitas
+                                                                produk</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('layanan')">Layanan
+                                                                petugas lapang</button>
+                                                            <button class="btn dropdown-item"
+                                                                onclick="getDataCartKepuasan('penanganan')">Penanganan
+                                                                komplain pelanggan</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,9 +206,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +216,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="row" id="indexAspek">
+            <div class="row" id="indexAspek" style="display: none;">
                 <div class="col-lg-12">
                     <div class="card cardShadow">
                         <div class="card-header">
@@ -220,6 +247,20 @@
                 </div>
                 <!-- end col -->
             </div>
+            <div class="row" id="deskripsi">
+                <div class="col-md-12">
+                    <div class="card cardShadow card-warning">
+                        <div class="card-header">
+                            <h6 class="card-title">Deskripsi</h4>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-group list-group-numbered" id="deskripsiData1">
+                                <li class="list-group-item">Send the billing agreement</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -243,8 +284,7 @@
                         </li>
                     </ul>
                     <!-- Tab panes -->
-                    <div class="tab-content  text-muted">
-
+                    <div class="tab-content text-muted">
                         {{-- competitor intellligence --}}
                         <div class="tab-pane active" id="home" role="tabpanel">
                             <div class="row">
@@ -255,7 +295,6 @@
                                 <div class="col-sm-6 text-right">
                                     <div style="float: right">
                                         <div class="d-flex align-items-center">
-
                                             <div class="hamburger">
                                                 <button type="button" id="buttonHamburger1" class="btn"
                                                     onclick="toggleMenu1()">
@@ -265,8 +304,7 @@
                                                         <span></span>
                                                     </span>
                                                 </button>
-                                                <div class="dropdown-menu menuCompetitive" id="menu1"
-                                                    style="display: none">
+                                                <div class="dropdown-menu menu" id="menu1" style="display: none">
                                                     <div class="dropdown">
                                                         <button class="btn dropdown-toggle" type="button"
                                                             onclick="toggleSubMenu1()">
@@ -352,14 +390,87 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-sm-6 text-right">
-                                    <div style="float: right">
-                                        <div class="d-flex align-items-center">
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="hamburger">
+                                            <button type="button" id="buttonHamburger" class="btn"
+                                                onclick="toggleMenu2()">
+                                                <span class="hamburger-icon">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </span>
+                                            </button>
+                                            <div class="dropdown-menu menu" id="menu2" style="display: none">
+                                                <div class="dropdown">
+                                                    <button class="btn" type="button"
+                                                        onclick="startRegretion('JAGUNG HIBRIDA')">
+                                                        Data Sekunder
+                                                    </button>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="btn" type="button"
+                                                        onclick="getWord('potentional', 'SmVtYmVyLCBKYXdhIFRpbXVy')">
+                                                        Potensi Lahan
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <canvas id="graph"></canvas>
+                        </div>
+                        <div class="tab-pane" id="potensiLahan" role="tabpanel">
+                            <div class="row mb-3">
+                                <div class="col-sm-12 d-flex justify-content-between">
+                                    <h6> Potensi Lahan</h6>
+                                    <div style="float: right">
+                                        <div class="d-flex align-items-center">
+                                            <div class="hamburger">
+                                                <button type="button" id="buttonHamburger" class="btn"
+                                                    onclick="toggleMenu3()">
+                                                    <span class="hamburger-icon">
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                    </span>
+                                                </button>
+                                                <div class="dropdown-menu menu" id="menu3" style="display: none">
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            onclick="startRegretion('JAGUNG HIBRIDA'); hiddenGetWord()">
+                                                            Data Sekunder
+                                                        </button>
+                                                    </div>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            onclick="getWord('potentional', 'SmVtYmVyLCBKYXdhIFRpbXVy')">
+                                                            Potensi Lahan
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <select name="" id="" class="form-select" data-choices
+                                        data-choices-sorting="true">
+                                        <option value="">Contoh</option>
+                                    </select>
+                                    <div class="card cardWord card-primary">
+                                        <div class="card-header">
+                                            <h6 class="card-title">Rangking</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="list-group list-group-numbered" id="ranking1">
+                                                <li class="list-group-item">Send the billing agreement</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -404,6 +515,20 @@
                     </div>
                     <div class="card-body">
                         <canvas id="graph_next_year"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="deskripsi1" style="display: none;">
+                <div class="col-md-12">
+                    <div class="card cardShadow card-warning">
+                        <div class="card-header">
+                            <h6 class="card-title">Deskripsi</h4>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-group list-group-numbered" id="deskripsiData">
+                                <li class="list-group-item">Send the billing agreement</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -545,9 +670,10 @@
 
 <script>
     $(document).ready(function() {
-        getDataCartKepuasan('product')
+        // getDataCartKepuasan('product')
         getDataCartAnalisisPesaing('perusahaan')
         startRegretion('JAGUNG HIBRIDA')
+        getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy')
     });
 
     const select_regretion = $('#select_jenis');
@@ -561,6 +687,8 @@
 
     let menuVisible = false;
     let menuVisible1 = false;
+    let menuVisible2 = false;
+    let menuVisible3 = false;
     let subMenuVisible = false;
     let subMenuVisible1 = false;
     let subMenuVisible2 = false;
@@ -602,6 +730,46 @@
     function hideMenu1() {
         menuVisible1 = false;
         const menu = document.getElementById('menu1');
+        menu.style.display = 'none';
+    }
+
+    function toggleMenu2() {
+        if (menuVisible2) {
+            hideMenu2();
+        } else {
+            showMenu2();
+        }
+    }
+
+    function showMenu2() {
+        menuVisible2 = true;
+        const menu = document.getElementById('menu2');
+        menu.style.display = 'block';
+    }
+
+    function hideMenu2() {
+        menuVisible2 = false;
+        const menu = document.getElementById('menu2');
+        menu.style.display = 'none';
+    }
+
+    function toggleMenu3() {
+        if (menuVisible3) {
+            hideMenu3();
+        } else {
+            showMenu3();
+        }
+    }
+
+    function showMenu3() {
+        menuVisible3 = true;
+        const menu = document.getElementById('menu3');
+        menu.style.display = 'block';
+    }
+
+    function hideMenu3() {
+        menuVisible3 = false;
+        const menu = document.getElementById('menu3');
         menu.style.display = 'none';
     }
 
@@ -672,20 +840,45 @@
         dropdownMenu.style.display = 'none';
     }
 
+    function showDeskripsi() {
+        const deskripsi = document.getElementById('deskripsi');
+        const index = document.getElementById('indexAspek');
+
+        deskripsi.style.display = "block";
+        index.style.display = "none";
+    }
+
+    function showIndex1() {
+        const index = document.getElementById('indexAspek');
+        const deskripsi = document.getElementById('deskripsi');
+
+        index.style.display = "block";
+        deskripsi.style.display = "none";
+    }
+
     function showIndex() {
+        hideMenu2()
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
+        const product1 = document.getElementById('product1')
+        const potensiLahan = document.getElementById('potensiLahan')
+        const deskripsi1 = document.getElementById('deskripsi1')
 
         grafikPeramalan.style.display = "none"
         content.style.display = "block"
+        product1.style.display = "none"
+        potensiLahan.style.display = "none"
+        deskripsi1.style.display = "none"
     }
 
     function closeIndex() {
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
+        const product1 = document.getElementById('product1')
 
         content.style.display = "none"
         grafikPeramalan.style.display = "block"
+        product1.style.display = "block"
     }
 
     function getDataCartKepuasan(kategory) {
@@ -876,6 +1069,9 @@
     }
 
     function startRegretion(kategory) {
+        hideMenu2();
+        const potensiLahan = document.getElementById('potensiLahan');
+        potensiLahan.style.display = 'none';
         $.ajax({
             type: "get",
             // url: `{{ url('tes-regretion/${kategory}') }}`,
@@ -981,6 +1177,102 @@
         var rgbaColor = 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + alpha + ')';
 
         return rgbaColor;
+    }
+
+    function getWord(kategory, daerah) {
+
+        let url;
+        const area = btoa(daerah)
+
+        if (kategory == "retail") {
+            url = `{{ url('getRetail/${area}') }}`;
+        } else if (kategory == "potentional") {
+            url = `{{ url('getPotentionalArea/${area}') }}`;
+        }
+
+        if (url == `{{ url('getRetail/${area}') }}`) {
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "json",
+                beforeSend: function() {
+                    $('#ranking').html('<li class="list-group-item">Loading...</li>');
+                    $('#deskripsiData1').html('<li class="list-group-item">Loading...</li>');
+                },
+                success: function(res) {
+                    let ranking = '';
+                    let suggestions = '';
+                    $.each(res.ranking, function(index, val) {
+                        if (index < 3) {
+                            ranking += `<li class="list-group-item">${val.word}.</li>`
+                        }
+                    });
+                    $.each(res.suggestions, function(index, val) {
+                        suggestions += `<li class="list-group-item">${val}.</li>`
+                    });
+
+                    $('#ranking').html(ranking);
+                    $('#deskripsiData1').html(suggestions);
+                },
+                error: function(params) {
+                    $('#ranking').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                    $('#deskripsiData1').html(
+                        '<li class="list-group-item">Server error / tidak ada data</li>');
+                }
+            });
+        } else {
+            hideMenu3();
+            const chartRegretion = document.getElementById('product1');
+            const chartRegretionNextYear = document.getElementById('grafikPeramalan');
+            const potensiLahan = document.getElementById('potensiLahan');
+            const deskripsi1 = document.getElementById('deskripsi1');
+
+            chartRegretion.style.display = 'none';
+            chartRegretionNextYear.style.display = 'none';
+            potensiLahan.style.display = 'block';
+            deskripsi1.style.display = "block";
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "json",
+                beforeSend: function() {
+                    $('#ranking1').html('<li class="list-group-item">Loading...</li>');
+                    $('#deskripsiData').html('<li class="list-group-item">Loading...</li>');
+                },
+                success: function(res) {
+                    let ranking = '';
+                    let suggestions = '';
+                    $.each(res.ranking, function(index, val) {
+                        if (index < 3) {
+                            ranking += `<li class="list-group-item">${val.word}.</li>`
+                        }
+                    });
+                    $.each(res.suggestions, function(index, val) {
+                        suggestions += `<li class="list-group-item">${val}.</li>`
+                    });
+
+                    $('#ranking1').html(ranking);
+                    $('#deskripsiData').html(suggestions);
+                },
+                error: function(params) {
+                    $('#ranking1').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                    $('#deskripsiData').html(
+                        '<li class="list-group-item">Server error / tidak ada data</li>');
+                }
+            });
+        }
+    }
+
+    function hiddenGetWord() {
+        const chartRegretion = document.getElementById('product1');
+        const chartRegretionNextYear = document.getElementById('grafikPeramalan');
+        const potensiLahan = document.getElementById('potensiLahan');
+        const deskripsi1 = document.getElementById('deskripsi1');
+
+        chartRegretion.style.display = 'block';
+        chartRegretionNextYear.style.display = 'block';
+        deskripsi1.style.display = "none";
+        potensiLahan.style.display = 'none';
     }
 
     var root = am5.Root.new("chartdiv");

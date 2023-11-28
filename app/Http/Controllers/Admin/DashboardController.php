@@ -107,7 +107,6 @@ class DashboardController extends Controller
 					break;
 				}
 			}
-
 		} catch (\Throwable $th) {
 			$dataArea = null;
 		}
