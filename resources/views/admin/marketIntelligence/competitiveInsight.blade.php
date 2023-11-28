@@ -27,6 +27,11 @@
         .cardWord {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
+
+        .cardShadow {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /* height: 550px; */
+        }
     </style>
 @endsection
 <div class="row">
@@ -37,7 +42,8 @@
                 <ul class="nav nav-tabs mb-3" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" id="penilaianPelanggan" href="#home"
-                            role="tab" aria-selected="false" onclick="showIndex()">
+                            role="tab" aria-selected="false"
+                            onclick="showIndex(); getDataCartAnalisisPesaing('perusahaan')">
                             Competitor Intelegence
                         </a>
                     </li>
@@ -131,52 +137,153 @@
                                                             onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
                                                     </div>
                                                 </div>
+                                                <div class="dropdown">
+                                                    <button class="btn" type="button" onclick="getWord('retail')">
+                                                        Survey Pesaing
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center">
+                        <div class="row" id="barChart">
+                            <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center">
+                            </div>
+                        </div>
+                        <div class="container" id="surveyPesaing" style="display: none">
+                            <div class="row">
+                                {{-- card-rangking --}}
+                                <div class="col-sm-4">
+                                    <div class="card cardWord card-primary">
+                                        <div class="card-header">
+                                            <h6 class="card-title">Rangking</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="list-group list-group-numbered" id="ranking">
+                                                <li class="list-group-item">Send the billing agreement</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- card deskripsi --}}
+                                <div class="col-sm-8">
+                                    <div class="card cardWord card-warning">
+                                        <div class="card-header">
+                                            <h6 class="card-title">Deskripsi</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="list-group list-group-numbered" id="deskripsi">
+                                                <li class="list-group-item">Send the billing agreement</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {{-- Product Intelegence --}}
                     <div class="tab-pane" id="product1" role="tabpanel">
                         <div class="row mb-3 d-flex flex-column">
-                            <div class="col-sm-12 my-2 d-flex justify-content-between">
+                            <div class="col-sm-12 my-2 d-flex justify-content-between mb-0">
                                 <h6 id="titleContent1"> Data Sekunder Permalan Permintaan Produk</h6>
-                                <select id="select_jenis" data-choices data-choices-sorting="true">
-                                    @foreach ($jenis_tanaman as $value)
-                                        @if ($value === 'JAGUNG HIBRIDA')
-                                            <option selected value="{{ $value }}">{{ $value }}</option>
-                                        @else
-                                            <option value="{{ $value }}">{{ $value }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                {{-- <div class="hamburger">
-                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <span class="hamburger-icon">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </span>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <!-- item-->
-                                        <div class="dropdown-item dropdown-hover">
-                                            <span class="align-middle" role="button">Kepuasan Pelanggan</span>
+                                <div class="d-flex justify-content-between">
+                                    <select id="select_jenis" data-choices data-choices-sorting="true">
+                                        @foreach ($jenis_tanaman as $value)
+                                            @if ($value === 'JAGUNG HIBRIDA')
+                                                <option selected value="{{ $value }}">{{ $value }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $value }}">{{ $value }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <div class="hamburger">
+                                        <button type="button" class="btn" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <span class="hamburger-icon">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <!-- item-->
+                                            <div class="dropdown-item dropdown-hover">
+                                                <button class="btn" type="button"
+                                                    onclick="startRegretion('JAGUNG HIBRIDA')">
+                                                    Peramalan Permintaan
+                                                    Produk
+                                                </button>
+                                            </div>
+                                            <div class="dropdown-item dropdown-hover">
+                                                <button class="btn" type="button"
+                                                    onclick="getWord('potentional')">
+                                                    Potensi Lahan
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
-                            <div class="col-sm-12 text-right">
+                            <div class="row text-right" id="listGraph">
                                 {{-- <div style="float: right"> --}}
-                                <canvas id="graph"></canvas>
-                                <canvas id="graph_next_year" style="height: 50px"></canvas>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card cardShadow">
+                                        <div class="card-header">
+                                            Grafik Penjualan Produk
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="graph"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card cardShadow">
+                                        <div class="card-header">
+                                            Grafik Peramalan Produk
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="graph_next_year" style="height: 50px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- </div> --}}
+                            </div>
+
+                            <div class="container" id="potensiLahan" style="display: none">
+                                <div class="row">
+                                    {{-- card-rangking --}}
+                                    <div class="col-sm-4">
+                                        <div class="card cardWord card-primary">
+                                            <div class="card-header">
+                                                <h6 class="card-title">Rangking</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <ol class="list-group list-group-numbered" id="ranking">
+                                                    <li class="list-group-item">Send the billing agreement</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- card deskripsi --}}
+                                    <div class="col-sm-8">
+                                        <div class="card cardWord card-warning">
+                                            <div class="card-header">
+                                                <h6 class="card-title">Deskripsi</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <ol class="list-group list-group-numbered" id="deskripsi">
+                                                    <li class="list-group-item">Send the billing agreement</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {{-- <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div> --}}
@@ -243,8 +350,10 @@
 
     const select_regretion = $('#select_jenis');
 
+
     select_regretion.change(function() {
         let value = $(this).val()
+        console.log(value);
         startRegretion(value);
     })
 
@@ -326,7 +435,12 @@
 
     function showIndex() {
         const indexAspek = document.getElementById('indexAspek');
-        indexAspek.style.display = "block"
+        indexAspek.style.display = "block";
+
+        var surveyPesaing = document.getElementById('surveyPesaing');
+        if (surveyPesaing.style.display === 'block') {
+            indexAspek.style.display = "none";
+        }
     }
 
     function closeIndex() {
@@ -340,6 +454,9 @@
         hideSubmenu();
         hideSubmenu1();
         $('#titleContent').html(`Kepuasan / ${kategory}`);
+        $('#barChart').show();
+        $('#surveyPesaing').hide();
+        showIndex();
 
         const urlChart = `{{ url('laporanAnalisisPesaingByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('laporanAnalisisPesaingAll/${kategory}') }}`;
@@ -403,6 +520,10 @@
         hideSubmenu();
         hideSubmenu1();
         $('#titleContent').html(`Penilaian Pelanggan / Kekuatan & Kelemahan / ${kategory}`);
+        $('#barChart').show();
+        $('#surveyPesaing').hide();
+        showIndex();
+
 
         const urlChart = `{{ url('getPertanyaanKekuatanKelemahanByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('getPertanyaanKekuatanKelemahanAll/${kategory}') }}`;
@@ -738,6 +859,11 @@
     }
 
     function startRegretion(kategory) {
+        $('#titleContent1').html(`Data Sekunder Permalan Permintaan Produk`);
+        $('#listGraph').show();
+        $('.choices').css('display', 'block');
+        $('#potensiLahan').hide();
+
         $.ajax({
             type: "get",
             // url: `{{ url('tes-regretion/${kategory}') }}`,
@@ -846,29 +972,34 @@
     }
 
     function getWord(kategory) {
+        hideMenu();
         let url;
         // const area = btoa(daerah)
 
         if (kategory == "retail") {
             url = `{{ url('getRetail') }}`;
 
-            $('#titleContent').html(`Survai Pesaing / Gambaran Umum`);
+            $('#titleContent1').html(`Survey Pesaing`);
 
-            const workCount = document.getElementById('wordCountView');
-            workCount.classList.remove('d-none');
-
-            var chartDiv = document.getElementById('chartdiv');
-            chartDiv.classList.add('d-none');
-
-            const indexAspek = document.getElementById('indexAspek');
-            indexAspek.style.display = "none";
+            $('#titleContent').html(`Survey Pesaing`);
+            $('#barChart').hide();
+            root.dispose();
+            $('#surveyPesaing').css('display', 'block');
+            closeIndex();
 
         } else if (kategory == "potentional") {
             url = `{{ url('getPotentionalArea') }}`;
 
             $('#titleContent1').html(`Potensi Lahan / Gambaran Umum`);
-            const workCount1 = document.getElementById('wordCountView1');
-            workCount1.classList.remove('d-none');
+            $('#listGraph').hide();
+            root.dispose();
+            $('#potensiLahan').css('display', 'block');
+            $('.choices').css('display', 'none');
+            closeIndex();
+
+
+            // const workCount1 = document.getElementById('wordCountView1');
+            // workCount1.classList.remove('d-none');
         }
 
         $.ajax({
