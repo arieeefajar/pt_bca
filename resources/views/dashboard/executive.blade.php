@@ -32,6 +32,27 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             /* height: 550px; */
         }
+
+        #colInputPertanyaan textarea {
+            width: 100%;
+            height: 59%;
+            padding: 15px;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+            border-radius: 5px;
+            border-color: #bfbfbf;
+            max-height: 280px;
+        }
+
+        #colInputPertanyaan textarea:is(:focus, :valid) {
+            border-color: #bfbfbf;
+            padding: 14px;
+        }
+
+        #colInputPertanyaan textarea::-webkit-scrollbar {
+            width: 0px;
+        }
     </style>
 @endsection
 
@@ -111,11 +132,35 @@
 
                 <div class="card-body">
                     <div id="mapAI"
-                        class="leaflet-map d-flex align-items-center justify-content-center text-center bg-white"></div>
+                        class="leaflet-map d-flex align-items-center justify-content-center text-center bg-white">
+                    </div>
                 </div><!-- end card-body -->
             </div><!-- end card -->
         </div>
         <!-- end col -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                    <h4 class="card-title mb-0">Pertanyaan</h4>
+                </div><!-- end card header -->
+                <div class="card-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-12 mb-3" id="colInputPertanyaan">
+                                {{-- <input type="text" class="form-control" placeholder="Masukan pertanyaan anda"> --}}
+                                <textarea id="inputPertanyaan" placeholder="Masukan pertanyaan...."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Testing</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -126,8 +171,7 @@
                     <ul class="nav nav-tabs mb-3" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#menuMarketUnderstanding"
-                                role="tab" aria-selected="false"
-                                onclick="showDeskripsi(); getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy')">
+                                role="tab" aria-selected="false" onclick="showDeskripsi();">
                                 Market Understanding
                             </a>
                         </li>
@@ -153,7 +197,7 @@
                                     <h6 class="card-title">Rangking</h4>
                                 </div>
                                 <div class="card-body">
-                                    <ol class="list-group list-group-numbered" id="ranking">
+                                    <ol class="list-group list-group-numbered" id="rankingSkalaPasar">
                                         <li class="list-group-item">Send the billing agreement</li>
                                     </ol>
                                 </div>
@@ -247,14 +291,14 @@
                 </div>
                 <!-- end col -->
             </div>
-            <div class="row" id="deskripsi">
+            <div class="row" id="deskripsi2">
                 <div class="col-md-12">
                     <div class="card cardShadow card-warning">
                         <div class="card-header">
                             <h6 class="card-title">Deskripsi</h4>
                         </div>
                         <div class="card-body">
-                            <ol class="list-group list-group-numbered" id="deskripsiData1">
+                            <ol class="list-group list-group-numbered" id="deskripsiSkalaPasar">
                                 <li class="list-group-item">Send the billing agreement</li>
                             </ol>
                         </div>
@@ -364,13 +408,36 @@
                                                                 onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</button>
                                                         </div>
                                                     </div>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            onclick="getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy')">Survey
+                                                            Pesaing</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="chartdiv1" class="mb-3 d-flex justify-content-center align-items-center">
+                            <div id="barRace">
+                                <div id="chartdiv1" class="mb-3 d-flex justify-content-center align-items-center">
+                                </div>
+                            </div>
+                            <div style="display: none" id="surveyPesaing">
+                                <select name="" id="" class="form-select" data-choices
+                                    data-choices-sorting="true">
+                                    <option value="">Contoh</option>
+                                </select>
+                                <div class="card cardWord card-primary">
+                                    <div class="card-header">
+                                        <h6 class="card-title">Rangking</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ol class="list-group list-group-numbered" id="ranking">
+                                            <li class="list-group-item">Send the billing agreement</li>
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -515,6 +582,20 @@
                     </div>
                     <div class="card-body">
                         <canvas id="graph_next_year"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="deskripsi" style="display: none">
+                <div class="col-md-12">
+                    <div class="card cardShadow card-warning">
+                        <div class="card-header">
+                            <h6 class="card-title">Deskripsi</h4>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-group list-group-numbered" id="deskripsiData1">
+                                <li class="list-group-item">Send the billing agreement</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -671,12 +752,20 @@
 <script>
     $(document).ready(function() {
         // getDataCartKepuasan('product')
+        getSkalaPasar()
         getDataCartAnalisisPesaing('perusahaan')
         startRegretion('JAGUNG HIBRIDA')
-        getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy')
     });
 
+    const textarea = document.getElementById('inputPertanyaan');
     const select_regretion = $('#select_jenis');
+
+    textarea.addEventListener("keyup", e => {
+        textarea.style.height = `63px`;
+        let scHeight = e.target.scrollHeight;
+        textarea.style.height = `${scHeight}px`;
+        // console.log(scHeight);
+    })
 
     select_regretion.change(function() {
         let value = $(this).val()
@@ -858,6 +947,7 @@
 
     function showIndex() {
         hideMenu2()
+        getDataCartAnalisisPesaing('perusahaan')
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
         const product1 = document.getElementById('product1')
@@ -875,10 +965,12 @@
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
         const product1 = document.getElementById('product1')
+        const deskripsi = document.getElementById('deskripsi')
 
         content.style.display = "none"
         grafikPeramalan.style.display = "block"
         product1.style.display = "block"
+        deskripsi.style.display = "none";
     }
 
     function getDataCartKepuasan(kategory) {
@@ -950,6 +1042,16 @@
 
         const urlChart = `{{ url('getPertanyaanKekuatanKelemahanByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('getPertanyaanKekuatanKelemahanAll/${kategory}') }}`;
+        const chart = document.getElementById('barRace');
+        const surveyPesaing = document.getElementById('surveyPesaing');
+        const index = document.getElementById('indexAspek1');
+        const deskripsi = document.getElementById('deskripsi');
+
+        chart.style.display = 'block';
+        surveyPesaing.style.display = 'none';
+        index.style.display = 'block';
+        deskripsi.style.display = 'none';
+
         $.ajax({
             type: "get",
             url: urlChart,
@@ -1013,6 +1115,16 @@
 
         const urlChart = `{{ url('laporanAnalisisPesaingByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('laporanAnalisisPesaingAll/${kategory}') }}`;
+        const chart = document.getElementById('barRace');
+        const surveyPesaing = document.getElementById('surveyPesaing');
+        const index = document.getElementById('indexAspek1');
+        const deskripsi = document.getElementById('deskripsi');
+
+        chart.style.display = 'block';
+        surveyPesaing.style.display = 'none';
+        index.style.display = 'block';
+        deskripsi.style.display = 'none';
+
         $.ajax({
             type: "get",
             url: urlChart,
@@ -1191,6 +1303,20 @@
         }
 
         if (url == `{{ url('getRetail/${area}') }}`) {
+            hideMenu1();
+            const chart = document.getElementById('barRace');
+            const surveyPesaing = document.getElementById('surveyPesaing');
+            const index = document.getElementById('indexAspek1');
+            const deskripsi = document.getElementById('deskripsi');
+            const titleContent1 = document.getElementById('titleContent1');
+
+            chart.style.display = 'none';
+            surveyPesaing.style.display = 'block';
+            index.style.display = 'none';
+            deskripsi.style.display = 'block';
+            titleContent1.innerHTML = 'Survey Pesaing';
+
+
             $.ajax({
                 type: "get",
                 url: url,
@@ -1273,6 +1399,14 @@
         chartRegretionNextYear.style.display = 'block';
         deskripsi1.style.display = "none";
         potensiLahan.style.display = 'none';
+    }
+
+    function getSkalaPasar() {
+        const Rangking = document.getElementById('rankingSkalaPasar');
+        const deskripsi = document.getElementById('deskripsiSkalaPasar');
+
+        Rangking.innerHTML = '<li class="list-group-item">Data belum tersedia</li>'
+        deskripsi.innerHTML = '<li class="list-group-item">Data belum tersedia</li>'
     }
 
     var root = am5.Root.new("chartdiv");
