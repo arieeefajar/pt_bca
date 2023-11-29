@@ -32,50 +32,105 @@
                 <ul class="nav nav-tabs mb-3" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" id="wordCount" href="#product1" role="tab"
+                            aria-selected="false" onclick="closeIndex()">
+                            Market Understanding
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" id="penilaianPelanggan" href="#home" role="tab"
                             aria-selected="false" onclick="showIndex()">
                             Customer Insight
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content  text-muted">
-                    {{-- Custommer Insight --}}
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4 class="card-title mb-0 mt-3" id="titleContent1">Penilaian Pelanggan / Kepuasan /
-                                Product</h4>
+                    {{-- Market UnderStanding --}}
+                    <div class="tab-pane active" id="product1" role="tabpanel">
+                        <div class="container">
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <h6 id="titleContent">Skala Pasar</h6>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <div style="float: right">
+                                        <div class="d-flex align-items-center">
+                                            <select id="select_jenis" data-choices data-choices-sorting="true">
+                                                <option selected value="">kota 1</option>
+                                                <option value="kota">kota 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-6 text-right">
-                            <div style="float: right">
-                                <div class="d-flex align-items-center">
-                                    <div class="hamburger">
-                                        <button type="button" id="buttonHamburger" class="btn"
-                                            onclick="toggleMenu()">
-                                            <span class="hamburger-icon">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </span>
-                                        </button>
-                                        <div class="dropdown-menu" id="menu" style="display: none">
-                                            <div class="dropdown">
-                                                <button class="btn dropdown-toggle" type="button"
-                                                    onclick="toggleSubMenu()">
-                                                    Kepuasan Pelanggan
-                                                </button>
-                                                <div id="dropdownMenu" style="display: none;">
-                                                    <a class="dropdown-item"
-                                                        onclick="getDataCartKepuasan('product')">Produk</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="getDataCartKepuasan('promosi')">Promosi</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="getDataCartKepuasan('kualitas')">Kualitas
-                                                        produk</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="getDataCartKepuasan('layanan')">Layanan
-                                                        petugas lapang</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="getDataCartKepuasan('penanganan')">Penanganan
-                                                        komplain pelanggan</a>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="card cardWord card-primary">
+                                    <div class="card-header">
+                                        <h6 class="card-title">Rangking</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ol class="list-group list-group-numbered" id="ranking">
+                                            <li class="list-group-item">Send the billing agreement</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="card cardWord card-warning">
+                                    <div class="card-header">
+                                        <h6 class="card-title">Deskripsi</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ol class="list-group list-group-numbered" id="deskripsi">
+                                            <li class="list-group-item">Send the billing agreement</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Custommer Insight --}}
+                    <div class="tab-pane" id="home" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="card-title mb-0 mt-3" id="titleContent">Kepuasan Pelanggan / Product</h4>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <div style="float: right">
+                                    <div class="d-flex align-items-center">
+                                        <div class="hamburger">
+                                            <button type="button" id="buttonHamburger" class="btn"
+                                                onclick="toggleMenu()">
+                                                <span class="hamburger-icon">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </span>
+                                            </button>
+                                            <div class="dropdown-menu" id="menu" style="display: none">
+                                                <div class="dropdown">
+                                                    <button class="btn dropdown-toggle" type="button"
+                                                        onclick="toggleSubMenu()">
+                                                        Kepuasan Pelanggan
+                                                    </button>
+                                                    <div id="dropdownMenu" style="display: none;">
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartKepuasan('product')">Produk</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartKepuasan('promosi')">Promosi</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartKepuasan('kualitas')">Kualitas
+                                                            produk</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartKepuasan('layanan')">Layanan
+                                                            petugas lapang</a>
+                                                        <a class="dropdown-item"
+                                                            onclick="getDataCartKepuasan('penanganan')">Penanganan
+                                                            komplain pelanggan</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,9 +138,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
+                        <div class="row">
+                            <div id="chartdiv" class="mb-3 d-flex justify-content-center align-items-center"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,7 +148,7 @@
     </div>
 </div>
 
-<div class="row" id="indexAspek">
+<div class="row" id="indexAspek" style="display: none">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -142,6 +197,7 @@
 <script>
     $(document).ready(function() {
         getDataCartKepuasan('product');
+        getWord('retail');
     });
 
     let menuVisible = false;
@@ -586,6 +642,46 @@
             // https://www.amcharts.com/docs/v5/concepts/animations/
             series.appear(1000);
             chart.appear(1000, 100);
+        });
+    }
+
+    function getWord(kategory, daerah) {
+        let url;
+        const area = btoa(daerah)
+
+        if (kategory == "retail") {
+            url = `{{ url('getRetail/${area}') }}`;
+        } else if (kategory == "potentional") {
+            url = `{{ url('getPotentionalArea/${area}') }}`;
+        }
+
+        $.ajax({
+            type: "get",
+            url: url,
+            dataType: "json",
+            beforeSend: function() {
+                $('#ranking').html('<li class="list-group-item">Loading...</li>');
+                $('#deskripsi').html('<li class="list-group-item">Loading...</li>');
+            },
+            success: function(res) {
+                let ranking = '';
+                let suggestions = '';
+                $.each(res.ranking, function(index, val) {
+                    if (index < 3) {
+                        ranking += `<li class="list-group-item">${val.word}.</li>`
+                    }
+                });
+                $.each(res.suggestions, function(index, val) {
+                    suggestions += `<li class="list-group-item">${val}.</li>`
+                });
+
+                $('#ranking').html(ranking);
+                $('#deskripsi').html(suggestions);
+            },
+            error: function(params) {
+                $('#ranking').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                $('#deskripsi').html('<li class="list-group-item">Server error / tidak ada data</li>');
+            }
         });
     }
 </script>
