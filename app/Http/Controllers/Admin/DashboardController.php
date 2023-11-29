@@ -30,90 +30,10 @@ class DashboardController extends Controller
 
 	public function executive()
 	{
-		// $anu = ProdukProdev::with('prodev_sales')
-		// 	->where('jenis_tanaman', 'JAGUNG HIBRIDA')
-		// 	->get();
-		// dd($anu);
 		$dataJumlah = $this->dataForDashboard();
-		$endPointApi = env('PYTHON_END_POINT') . 'ai';
-		$dataArea = [];
-
-		try {
-			$dataAI = [Http::get($endPointApi)->json()['data']][0];
-
-			// set key berdasarkan wilayah
-			foreach ($dataAI['potential_area_data'] as $value) {
-				$dataArea[$value['location']['name']] = [];
-			}
-
-			foreach ($dataAI['retail_data'] as $valueAI) {
-				foreach ($dataArea as $key => $valueArea) {
-					if ($key !== $valueAI['location']['name']) {
-						$dataArea[$valueAI['location']['name']] = [];
-					}
-				}
-			}
-
-			foreach ($dataAI['customer_data'] as $valueAI) {
-				foreach ($dataArea as $key => $valueArea) {
-					if ($key !== $valueAI['location']['name']) {
-						$dataArea[$valueAI['location']['name']] = [];
-					}
-				}
-			}
-
-			foreach ($dataAI['competitor_identifier_data'] as $valueAI) {
-				foreach ($dataArea as $key => $valueArea) {
-					if ($key !== $valueAI['location']['name']) {
-						$dataArea[$valueAI['location']['name']] = [];
-					}
-				}
-			}
-
-
-			// set data berdasarkan wilayah yang sudah di set
-			foreach ($dataArea as $keyArea => $valueArea) {
-				foreach ($dataAI['potential_area_data'] as $valueAI) {
-					if ($keyArea === $valueAI['location']['name']) {
-						$dataArea[$keyArea]['potential_area_data'] = $valueAI;
-					}
-				}
-			}
-			foreach ($dataArea as $keyArea => $valueArea) {
-				foreach ($dataAI['retail_data'] as $valueAI) {
-					if ($keyArea === $valueAI['location']['name']) {
-						$dataArea[$keyArea]['retail_data'] = $valueAI;
-					}
-				}
-			}
-			foreach ($dataArea as $keyArea => $valueArea) {
-				foreach ($dataAI['customer_data'] as $valueAI) {
-					if ($keyArea === $valueAI['location']['name']) {
-						$dataArea[$keyArea]['customer_data'] = ['location' => $valueAI['location']];
-					}
-				}
-			}
-			foreach ($dataArea as $keyArea => $valueArea) {
-				foreach ($dataAI['competitor_identifier_data'] as $valueAI) {
-					if ($keyArea === $valueAI['location']['name']) {
-						$dataArea[$keyArea]['competitor_identifier_data'] = ['location' => $valueAI['location']];
-					}
-				}
-			}
-
-			foreach ($dataArea as $key => $values) {
-				foreach ($values as $value) {
-					$dataArea[$key]['location'] = $value['location'];
-					break;
-				}
-			}
-		} catch (\Throwable $th) {
-			$dataArea = null;
-		}
-
 		$jenis_tanaman = ProdukProdev::select('jenis_tanaman')->distinct()->pluck('jenis_tanaman');
 
-		return view('dashboard.executive', compact('dataJumlah', 'dataArea', 'jenis_tanaman'));
+		return view('dashboard.executive', compact('dataJumlah', 'jenis_tanaman'));
 	}
 
 	public function getDataMaps()

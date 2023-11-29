@@ -329,6 +329,9 @@ Route::middleware(['prevent-back-history'])->group(function () {
 		Route::get('getRetail/{area}/{filter?}', [LaporanController::class, 'getRetailDataDaerah']);
 		Route::get('getPotentionalArea/{area}/{filter?}', [LaporanController::class, 'getPotentionalAreaDaerah']);
 
+		Route::get('getCityWordCount', [LaporanController::class, 'getKotaWordCount']);
+		Route::get('getJenisTanaman', [LaporanController::class, 'getJenisTanamanRegresi']);
+
 		Route::get('text-process/regretion', [regretionController::class, 'dataProcessing']);
 	});
 
