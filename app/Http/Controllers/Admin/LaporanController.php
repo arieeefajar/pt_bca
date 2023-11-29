@@ -7437,7 +7437,11 @@ class LaporanController extends Controller
 
 		for ($i = 0; $i < 3; $i++) {
 			$suggestion = SuggestionPotensionalArea::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
-			array_push($suggestions, $suggestion->suggestion);
+			if ($suggestion) {
+				array_push($suggestions, $suggestion->suggestion);
+			} else {
+				array_push($suggestions, $finalData[$i]['word']);
+			}
 		}
 
 		$suggestions = (object) $suggestions;
