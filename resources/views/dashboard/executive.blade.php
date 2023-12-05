@@ -165,7 +165,7 @@
 
     {{-- market Insight --}}
     <div class="row">
-        <div class="col-md-6">
+        <div id="marketInsight" class="col-md-12">
             <div class="card cardShadow">
                 <div class="card-body">
                     <!-- Nav tabs -->
@@ -311,7 +311,7 @@
 
     {{-- competitive Insight --}}
     <div class="row">
-        <div class="col-md-6">
+        <div id="competitiveInsight" class="col-md-6">
             <div class="card cardShadow">
                 <div class="card-body">
                     <!-- Nav tabs -->
@@ -1127,30 +1127,39 @@
     }
 
     function showDeskripsi() {
+        const card = document.getElementById('marketInsight');
         const deskripsi = document.getElementById('deskripsi2');
         const index = document.getElementById('indexAspek');
 
+        card.classList.remove("col-md-6");
+        card.classList.add("col-md-12");
         deskripsi.style.display = "block";
         index.style.display = "none";
     }
 
     function showIndex1() {
+        const card = document.getElementById('marketInsight');
         const index = document.getElementById('indexAspek');
         const deskripsi = document.getElementById('deskripsi2');
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         index.style.display = "block";
         deskripsi.style.display = "none";
     }
 
     function showIndex() {
         hideMenu2()
-        getDataCartAnalisisPesaing('perusahaan')
+        getDataCartAnalisisPesaing('perusahaan');
+        const card = document.getElementById('competitiveInsight');
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
         const product1 = document.getElementById('product1')
         const potensiLahan = document.getElementById('potensiLahan')
         const deskripsi1 = document.getElementById('deskripsi1')
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         grafikPeramalan.style.display = "none"
         content.style.display = "block"
         product1.style.display = "none"
@@ -1159,11 +1168,14 @@
     }
 
     function closeIndex() {
+        const card = document.getElementById('competitiveInsight');
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
         const product1 = document.getElementById('product1')
         const deskripsi = document.getElementById('deskripsi')
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         content.style.display = "none"
         grafikPeramalan.style.display = "block"
         product1.style.display = "block"
@@ -1544,11 +1556,15 @@
             });
         } else {
             hideMenu3();
+
+            const card = document.getElementById('competitiveInsight');
             const chartRegretion = document.getElementById('product1');
             const chartRegretionNextYear = document.getElementById('grafikPeramalan');
             const potensiLahan = document.getElementById('potensiLahan');
             const deskripsi1 = document.getElementById('deskripsi1');
 
+            card.classList.remove("col-md-6");
+            card.classList.add("col-md-12");
             chartRegretion.style.display = 'none';
             chartRegretionNextYear.style.display = 'none';
             potensiLahan.style.display = 'block';
@@ -1586,11 +1602,14 @@
     }
 
     function hiddenGetWord() {
+        const card = document.getElementById('competitiveInsight');
         const chartRegretion = document.getElementById('product1');
         const chartRegretionNextYear = document.getElementById('grafikPeramalan');
         const potensiLahan = document.getElementById('potensiLahan');
         const deskripsi1 = document.getElementById('deskripsi1');
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         chartRegretion.style.display = 'block';
         chartRegretionNextYear.style.display = 'block';
         deskripsi1.style.display = "none";
@@ -1599,7 +1618,6 @@
 
     function getSkalaPasar() {
         const deskripsi = document.getElementById('deskripsiSkalaPasar');
-
         deskripsi.innerHTML = '<li class="list-group-item">Data belum tersedia</li>'
     }
 
