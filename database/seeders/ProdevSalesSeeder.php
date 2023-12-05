@@ -14,32 +14,49 @@ class ProdevSalesSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		$itemsPerPage = 50;
-		$page = 428;
-		$totalPages = ceil($page / $itemsPerPage);
+		// $itemsPerPage = 50;
+		// $page = 428;
+		// $totalPages = ceil($page / $itemsPerPage);
 
-		for ($currentPage = 1; $currentPage <= $totalPages; $currentPage++) {
-			$startItem = ($currentPage - 1) * $itemsPerPage + 1;
-			$endItem = min($currentPage * $itemsPerPage, $page);
+		// for ($currentPage = 1; $currentPage <= $totalPages; $currentPage++) {
+		// 	$startItem = ($currentPage - 1) * $itemsPerPage + 1;
+		// 	$endItem = min($currentPage * $itemsPerPage, $page);
 
-			for ($i = $startItem; $i <= $endItem; $i++) {
-				$response = Http::withToken(env('TOKEN_PRODEV'))
-					->get(env('PRODEV_END_POINT') . 'sales?page=' . $i)
-					->json()['data'];
+		// 	for ($i = $startItem; $i <= $endItem; $i++) {
+		// 		$response = Http::withToken(env('TOKEN_PRODEV'))
+		// 			->get(env('PRODEV_END_POINT') . 'sales?page=' . $i)
+		// 			->json()['data'];
 
-				foreach ($response as $val) {
-					ProdevSales::create([
-						'id_transaksi' => $val['id_transaksi'],
-						'id_produk' => $val['id_produk'],
-						'nama_produk' => $val['nama_produk'],
-						'tanggal' => $val['tanggal'],
-						'tahun_jual' => $val['tahun_jual'],
-						'berat' => $val['berat'],
-						'kode_customer' => $val['kode_customer'],
-						'nama_toko' => $val['nama_toko'],
-					]);
-				}
-			}
+		// 		foreach ($response as $val) {
+		// 			ProdevSales::create([
+		// 				'id_transaksi' => $val['id_transaksi'],
+		// 				'id_produk' => $val['id_produk'],
+		// 				'nama_produk' => $val['nama_produk'],
+		// 				'tanggal' => $val['tanggal'],
+		// 				'tahun_jual' => $val['tahun_jual'],
+		// 				'berat' => $val['berat'],
+		// 				'kode_customer' => $val['kode_customer'],
+		// 				'nama_toko' => $val['nama_toko'],
+		// 			]);
+		// 		}
+		// 	}
+		// }
+
+		$pathPotensiLahan = base_path('database/seeders/dataJson/dataProdevSales.json');
+		$readPotensiLahan = file_get_contents($pathPotensiLahan);
+		$jsonPotensiLahan = [json_decode($readPotensiLahan, true)];
+
+		foreach ($jsonPotensiLahan[0] as $val) {
+			ProdevSales::create([
+				'id_transaksi' => $val['id_transaksi'],
+				'id_produk' => $val['id_produk'],
+				'nama_produk' => $val['nama_produk'],
+				'tanggal' => $val['tanggal'],
+				'tahun_jual' => $val['tahun_jual'],
+				'berat' => $val['berat'],
+				'kode_customer' => $val['kode_customer'],
+				'nama_toko' => $val['nama_toko'],
+			]);
 		}
 	}
 }

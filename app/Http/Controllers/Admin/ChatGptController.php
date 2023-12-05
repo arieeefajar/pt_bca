@@ -4,42 +4,43 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ChatGptController extends Controller
 {
 	public function index(Request $request)
 	{
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-		curl_setopt($ch, CURLOPT_HTTPHEADER, [
-			'Content-Type: application/json',
-			'Authorization: Bearer ' . env('OPENAI_API_KEY') ?? '',
-		]);
-		$message = '{
-			"model": "gpt-3.5-turbo",
-			"messages": [
-				{
-					"role": "user",
-					"content": "' . $request->message . '"
-				}
+		$endPointApi = "https://api.openai.com/v1/chat/completions";
+
+		// return response()->json([
+		// 	'message' => 'success',
+		// 	'answer' => $request->message
+		// ], 200);
+
+		$dataSend = [
+			"model" => "gpt-3.5-turbo",
+			"messages" => [
+				[
+					"role" => "user",
+					"content" => $request->message
+				]
 			],
-			"temperature": 1,
-			"max_tokens": 256,
-			"top_p": 1,
-			"frequency_penalty": 0,
-			"presence_penalty": 0
-		}';
-		// $message = json_encode($message);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $message);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			"temperature" => 1,
+			"max_tokens" => 256,
+			"top_p" => 1,
+			"frequency_penalty" => 0,
+			"presence_penalty" => 0
+		];
 
-		$response = curl_exec($ch);
+		$response = Http::withHeaders([
+			'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
+		])->post($endPointApi, $dataSend);
 
-		curl_close($ch);
-		return $response;
+		$responJson = $response->json()['choices'][0]['message']['content'];
 
+		return response()->json([
+			'message' => 'success',
+			'answer' => $responJson
+		], 200);
 	}
 }

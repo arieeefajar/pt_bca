@@ -388,12 +388,6 @@
 
                 $.each(data_potentional, function(index, val) {
                     if (val === 'Jember, Jawa Timur') {
-                        kota_retail.push({
-                            value: val,
-                            label: val,
-                            selected: true,
-                            disabled: false
-                        });
                         kota_potentional.push({
                             value: val,
                             label: val,
@@ -401,13 +395,25 @@
                             disabled: false
                         });
                     } else {
-                        kota_retail.push({
+                        kota_potentional.push({
                             value: val,
                             label: val,
                             selected: false,
                             disabled: false
                         });
-                        kota_potentional.push({
+                    }
+                });
+
+                $.each(data_retail, function(index, val) {
+                    if (val === 'Jember, Jawa Timur') {
+                        kota_retail.push({
+                            value: val,
+                            label: val,
+                            selected: true,
+                            disabled: false
+                        });
+                    } else {
+                        kota_retail.push({
                             value: val,
                             label: val,
                             selected: false,

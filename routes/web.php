@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ChatGptController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DetailKuisionerController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\User\KuisionerSkalaPasarProduk;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use App\Http\Controllers\User\ProfileControllerSurveyor;
 use App\Http\Controllers\User\SurveyTokoController;
+use App\Models\ProdevSales;
 use App\Models\Provinsi;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -333,6 +335,8 @@ Route::middleware(['prevent-back-history'])->group(function () {
 		Route::get('getJenisTanaman', [LaporanController::class, 'getJenisTanamanRegresi']);
 
 		Route::get('text-process/regretion', [regretionController::class, 'dataProcessing']);
+
+		Route::post('/get-gpt', [ChatGptController::class, 'index']);
 	});
 
 	// route other than surveyor
