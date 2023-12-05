@@ -7400,7 +7400,11 @@ class LaporanController extends Controller
 
 		for ($i = 0; $i < 3; $i++) {
 			$suggestion = SuggestionRetail::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
-			array_push($suggestions, $suggestion->suggestion);
+			if ($suggestion) {
+				array_push($suggestions, $suggestion->suggestion);
+			} else {
+				array_push($suggestions, $finalData[$i]['word']);
+			}
 		}
 
 		$suggestions = (object) $suggestions;
@@ -7437,7 +7441,11 @@ class LaporanController extends Controller
 
 		for ($i = 0; $i < 3; $i++) {
 			$suggestion = SuggestionPotensionalArea::where('name', 'like', '%' . $finalData[$i]['word'] . '%')->first();
-			array_push($suggestions, $suggestion->suggestion);
+			if ($suggestion) {
+				array_push($suggestions, $suggestion->suggestion);
+			} else {
+				array_push($suggestions, $finalData[$i]['word']);
+			}
 		}
 
 		$suggestions = (object) $suggestions;
@@ -8331,7 +8339,42 @@ class LaporanController extends Controller
 
 	function competitiveInsight()
 	{
+		return view('admin.marketIntelligence.competitiveInsight');
+	}
+
+	function getKotaWordCount()
+	{
+		$endPointApi = env('PYTHON_END_POINT') . 'ai';
+		$daftar_kota_retail = [];
+		$daftar_kota_potentional = [];
+
+		try {
+			$dataAI = [Http::get($endPointApi)->json()['data']][0];
+			foreach ($dataAI['retail_data'] as $val) {
+				array_push($daftar_kota_retail, $val['location']['name']);
+			}
+			foreach ($dataAI['potential_area_data'] as $val) {
+				array_push($daftar_kota_potentional, $val['location']['name']);
+			}
+		} catch (\Throwable $th) {
+			//throw $th;
+		}
+
+		return response()->json([
+			'message' => 'success',
+			'data' => [
+				'retail' => $daftar_kota_retail,
+				'potentional' => $daftar_kota_potentional,
+			],
+		], 200);
+	}
+
+	function getJenisTanamanRegresi()
+	{
 		$jenis_tanaman = ProdukProdev::select('jenis_tanaman')->distinct()->pluck('jenis_tanaman');
-		return view('admin.marketIntelligence.competitiveInsight', compact('jenis_tanaman'));
+		return response()->json([
+			'message' => 'success',
+			'data' => $jenis_tanaman
+		], 200);
 	}
 }

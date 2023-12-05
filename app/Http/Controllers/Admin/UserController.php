@@ -11,149 +11,149 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
-    {
+	public function index()
+	{
 
-        // make roles array
-        $roles = ['supper-admin', 'admin', 'executive', 'user'];
+		// make roles array
+		$roles = ['supper-admin', 'admin', 'executive', 'user'];
 
-        // call data users where role in roles array and order by asc
-        $users = User::whereIn('role', $roles)
-            ->orderBy('created_at', 'desc')
-            ->get();
+		// call data users where role in roles array and order by asc
+		$users = User::whereIn('role', $roles)
+			->orderBy('created_at', 'desc')
+			->get();
 
-        // return view
-        return view('admin.user', compact('users'));
-    }
+		// return view
+		return view('admin.user', compact('users'));
+	}
 
-    public function create(Request $request)
-    {
+	public function create(Request $request)
+	{
 
-        $customMessages = [
-            'name.required' => 'Username harus di isi',
-            'name.max' => 'Username maximal :max karakter',
+		$customMessages = [
+			'name.required' => 'Username harus di isi',
+			'name.max' => 'Username maximal :max karakter',
 
-            'nip.required' => 'Email harus di isi',
-            'nip.unique' => 'Email sudah digunakan',
-            'nip.max' => 'Email maximal :max karakter',
+			'nip.required' => 'Email harus di isi',
+			'nip.unique' => 'Email sudah digunakan',
+			'nip.max' => 'Email maximal :max karakter',
 
-            'posisi.required' => 'posisi harus di isi',
-            'posisi.max' => 'posisi maximal :max karakter',
-            'posisi.string' => 'posisi harus berupa text',
+			'posisi.required' => 'posisi harus di isi',
+			'posisi.max' => 'posisi maximal :max karakter',
+			'posisi.string' => 'posisi harus berupa text',
 
-            'password.required' => 'Password harus di isi',
-            'password.min' => 'Password minimal :min karakter',
+			'password.required' => 'Password harus di isi',
+			'password.min' => 'Password minimal :min karakter',
 
-            'alamat.required' => 'Alamat harus di isi',
-            'alamat.max' => 'Alamat maximal :max karakter',
+			'alamat.required' => 'Alamat harus di isi',
+			'alamat.max' => 'Alamat maximal :max karakter',
 
-            'no_telp.required' => 'No Telepon harus di isi',
-            'no_telp.min' => 'No Telepon minimal :min karakter',
-            'no_telp.max' => 'No Telepon maximal :max karakter',
+			'no_telp.required' => 'No Telepon harus di isi',
+			'no_telp.min' => 'No Telepon minimal :min karakter',
+			'no_telp.max' => 'No Telepon maximal :max karakter',
 
-            'role.required' => 'Role harus di isi',
-            'role.in' => 'Role tidak valid',
-        ];
+			'role.required' => 'Role harus di isi',
+			'role.in' => 'Role tidak valid',
+		];
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:30',
-            'nip' => 'required|unique:users|max:40',
-            'posisi' => 'required|string|max:30',
-            'password' => 'required|min:8',
-            'alamat' => 'required|max:255',
-            'no_telp' => 'required|min:11|max:16',
-            'role' => 'required|in:supper-admin,admin,executive,user',
-        ], $customMessages);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|max:30',
+			'nip' => 'required|unique:users|max:40',
+			'posisi' => 'required|string|max:30',
+			'password' => 'required|min:8',
+			'alamat' => 'required|max:255',
+			'no_telp' => 'required|min:11|max:16',
+			'role' => 'required|in:supper-admin,admin,executive,user',
+		], $customMessages);
 
-        // check validator data
-        if ($validator->fails()) {
-            alert()->error('Gagal', $validator->messages()->all()[0]);
-            return redirect()->back()->withInput();
-        }
+		// check validator data
+		if ($validator->fails()) {
+			alert()->error('Gagal', $validator->messages()->all()[0]);
+			return redirect()->back()->withInput();
+		}
 
-        // create new user data
-        $user = new User();
-        $user->name = $request->name;
-        $user->nip = $request->nip;
-        $user->position = $request->posisi;
-        $user->password = Hash::make($request->password);
-        $user->alamat = $request->alamat;
-        $user->no_telp = $request->no_telp;
-        $user->role = $request->role;
+		// create new user data
+		$user = new User();
+		$user->name = $request->name;
+		$user->nip = $request->nip;
+		$user->position = $request->posisi;
+		$user->password = Hash::make($request->password);
+		$user->alamat = $request->alamat;
+		$user->no_telp = $request->no_telp;
+		$user->role = $request->role;
 
-        // execute
-        try {
-            $user->save();
-            alert()->success('Berhasil', 'Berhasil menambahkan data user baru');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            alert()->error('Gagal', $th);
-            return redirect()->back()->withInput();
-        }
-    }
+		// execute
+		try {
+			$user->save();
+			alert()->success('Berhasil', 'Berhasil menambahkan data user baru');
+			return redirect()->back();
+		} catch (\Throwable $th) {
+			alert()->error('Gagal', $th);
+			return redirect()->back()->withInput();
+		}
+	}
 
-    public function update(Request $request, $id)
-    {
-        $customMessages = [
-            'required' => ':attribute harus diisi.',
-            'numeric' => ':attribute harus berupa angka.',
-            'unique' => 'NIP sudah digunakan.',
-            'in' => ':attribute tidak valid.',
-        ];
+	public function update(Request $request, $id)
+	{
+		$customMessages = [
+			'required' => ':attribute harus diisi.',
+			'numeric' => ':attribute harus berupa angka.',
+			'unique' => 'NIP sudah digunakan.',
+			'in' => ':attribute tidak valid.',
+		];
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:40',
-            'posisi' => 'required|string|max:30',
-            'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|string|max:16',
-            'role' => 'required|in:supper-admin,admin,executive,user',
-        ], $customMessages);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|string|max:40',
+			'posisi' => 'required|string|max:30',
+			'alamat' => 'required|string|max:255',
+			'no_telp' => 'required|string|max:16',
+			'role' => 'required|in:supper-admin,admin,executive,user',
+		], $customMessages);
 
-        // check validator data
-        if ($validator->fails()) {
-            alert()->error('Gagal', $validator->messages()->all()[0]);
-            return redirect()->back();
-        }
+		// check validator data
+		if ($validator->fails()) {
+			alert()->error('Gagal', $validator->messages()->all()[0]);
+			return redirect()->back();
+		}
 
-        // get user data from id
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->position = $request->posisi;
-        $user->alamat = $request->alamat;
-        $user->no_telp = $request->no_telp;
-        $user->role = $request->role;
+		// get user data from id
+		$user = User::findOrFail($id);
+		$user->name = $request->name;
+		$user->position = $request->posisi;
+		$user->alamat = $request->alamat;
+		$user->no_telp = $request->no_telp;
+		$user->role = $request->role;
 
-        // execute edit
-        try {
-            $user->save();
-            alert()->success('Berhasil', 'Berhasil mengubah data user');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            alert()->error('Gagal', $th);
-            return redirect()->back();
-        }
-    }
+		// execute edit
+		try {
+			$user->save();
+			alert()->success('Berhasil', 'Berhasil mengubah data user');
+			return redirect()->back();
+		} catch (\Throwable $th) {
+			alert()->error('Gagal', $th);
+			return redirect()->back();
+		}
+	}
 
-    public function destroy(string $id)
-    {
+	public function destroy(string $id)
+	{
 
-        // get user data from id
-        $user = User::find($id);
+		// get user data from id
+		$user = User::find($id);
 
-        // if user data not exists
-        if (!$user) {
-            alert()->error('Gagal', 'User tidak di temukan');
-            return redirect()->route('user.index')->with('error', 'User not found.');
-        }
+		// if user data not exists
+		if (!$user) {
+			alert()->error('Gagal', 'User tidak di temukan');
+			return redirect()->route('user.index')->with('error', 'User not found.');
+		}
 
-        // execute delete
-        try {
-            $user->delete();
-            alert()->success('Berhasil', 'Berhasil menghapus data user');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            alert()->error('Gagal', $th);
-            return redirect()->back();
-        }
-    }
+		// execute delete
+		try {
+			$user->delete();
+			alert()->success('Berhasil', 'Berhasil menghapus data user');
+			return redirect()->back();
+		} catch (\Throwable $th) {
+			alert()->error('Gagal', $th);
+			return redirect()->back();
+		}
+	}
 }

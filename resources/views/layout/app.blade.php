@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- leaflet Css -->
     <link href="{{ asset('admin_assets/assets/libs/leaflet/leaflet.css') }}" rel="stylesheet" type="text/css" />

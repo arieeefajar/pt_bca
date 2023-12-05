@@ -49,7 +49,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" id="wordCount" href="#product1" role="tab"
-                            aria-selected="false" onclick="closeIndex()">
+                            aria-selected="false" onclick="showProductIntellegence()">
                             Product Intelegence
                         </a>
                     </li>
@@ -64,85 +64,80 @@
                                 <h6 id="titleContent"> Analisis Pesaing
                                 </h6>
                             </div>
-                            <div class="col-sm-6 text-right">
-                                <div style="float: right">
-                                    <div class="d-flex align-items-center">
-
-                                        <div class="hamburger">
-                                            <button type="button" id="buttonHamburger" class="btn"
-                                                onclick="toggleMenu()">
-                                                <span class="hamburger-icon">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                </span>
+                            <div class="col-sm-6 text-right d-flex justify-content-end">
+                                <select id="select_kota_retail">
+                                </select>
+                                <div class="hamburger">
+                                    <button type="button" id="buttonHamburger" class="btn" onclick="toggleMenu()">
+                                        <span class="hamburger-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu menuCompetitive" id="menu" style="display: none">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button"
+                                                onclick="toggleSubMenu()">
+                                                Analisis Pesaing
                                             </button>
-                                            <div class="dropdown-menu menuCompetitive" id="menu"
-                                                style="display: none">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle" type="button"
-                                                        onclick="toggleSubMenu()">
-                                                        Analisis Pesaing
-                                                    </button>
-                                                    <div id="dropdownMenu" style="display: none;">
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</a>
+                                            <div id="dropdownMenu" style="display: none;">
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartAnalisisPesaing('perusahaan')">Perusahaan</a>
 
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartAnalisisPesaing('pendatang_baru')">Pendatang
-                                                            Baru</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartAnalisisPesaing('substitusi')">Produk
-                                                            Substitusi</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartAnalisisPesaing('pemasok')">Kekuatan
-                                                            Menawar Pemasok</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartAnalisisPesaing('pembeli')">Kekuatan
-                                                            Menawar Pembeli</a>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle" type="button"
-                                                        onclick="toggleSubMenu1()">
-                                                        Kekuatan Kelemahan Pesaing
-                                                    </button>
-                                                    <div id="dropdownMenu1" style="display: none;">
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('riset')">Riset
-                                                            dan Pengembangan</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
-                                                            Manajerial</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
-                                                            Inti dan Menyesuaikan Diri dengan
-                                                            Perubahan</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
-                                                            Pesaing</a>
-                                                        <a class="dropdown-item"
-                                                            onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button class="btn" type="button" onclick="getWord('retail')">
-                                                        Survey Pesaing
-                                                    </button>
-                                                </div>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartAnalisisPesaing('pendatang_baru')">Pendatang
+                                                    Baru</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartAnalisisPesaing('substitusi')">Produk
+                                                    Substitusi</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartAnalisisPesaing('pemasok')">Kekuatan
+                                                    Menawar Pemasok</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartAnalisisPesaing('pembeli')">Kekuatan
+                                                    Menawar Pembeli</a>
                                             </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button"
+                                                onclick="toggleSubMenu1()">
+                                                Kekuatan Kelemahan Pesaing
+                                            </button>
+                                            <div id="dropdownMenu1" style="display: none;">
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('product')">Produk</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('distribusi')">Distribusi</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('pemasaran')">Pemasaran</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('operasional')">Operasional</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('riset')">Riset
+                                                    dan Pengembangan</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('keuangan')">Keuangan</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('organisasi')">Organisasi</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('manajerial')">Kemampuan
+                                                    Manajerial</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('inti')">Kemampuan
+                                                    Inti dan Menyesuaikan Diri dengan
+                                                    Perubahan</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('portofolio')">Portofolio
+                                                    Pesaing</a>
+                                                <a class="dropdown-item"
+                                                    onclick="getDataCartKekuatanKelemahan('lainnya')">Lain-lain</a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn" type="button" onclick="showRanking('retail')">
+                                                Survey Pesaing
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -191,15 +186,9 @@
                             <div class="col-sm-12 my-2 d-flex justify-content-between mb-0">
                                 <h6 id="titleContent1"> Data Sekunder Permalan Permintaan Produk</h6>
                                 <div class="d-flex justify-content-between">
-                                    <select id="select_jenis" data-choices data-choices-sorting="true">
-                                        @foreach ($jenis_tanaman as $value)
-                                            @if ($value === 'JAGUNG HIBRIDA')
-                                                <option selected value="{{ $value }}">{{ $value }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $value }}">{{ $value }}</option>
-                                            @endif
-                                        @endforeach
+                                    <select id="select_jenis"></select>
+
+                                    <select id="select_kota_potentional">
                                     </select>
                                     <div class="hamburger">
                                         <button type="button" class="btn" data-bs-toggle="dropdown"
@@ -221,7 +210,7 @@
                                             </div>
                                             <div class="dropdown-item dropdown-hover">
                                                 <button class="btn" type="button"
-                                                    onclick="getWord('potentional')">
+                                                    onclick="showRanking('potentional')">
                                                     Potensi Lahan
                                                 </button>
                                             </div>
@@ -263,7 +252,7 @@
                                                 <h6 class="card-title">Rangking</h4>
                                             </div>
                                             <div class="card-body">
-                                                <ol class="list-group list-group-numbered" id="ranking">
+                                                <ol class="list-group list-group-numbered" id="ranking1">
                                                     <li class="list-group-item">Send the billing agreement</li>
                                                 </ol>
                                             </div>
@@ -277,7 +266,7 @@
                                                 <h6 class="card-title">Deskripsi</h4>
                                             </div>
                                             <div class="card-body">
-                                                <ol class="list-group list-group-numbered" id="deskripsi">
+                                                <ol class="list-group list-group-numbered" id="deskripsi1">
                                                     <li class="list-group-item">Send the billing agreement</li>
                                                 </ol>
                                             </div>
@@ -344,17 +333,39 @@
 <!-- Chart code -->
 <script>
     $(document).ready(function() {
+        get_nama_kota()
+        get_jenis_tanaman()
         getDataCartAnalisisPesaing('perusahaan')
-        startRegretion('JAGUNG HIBRIDA')
     });
 
-    const select_regretion = $('#select_jenis');
+    let kota_retail = [];
+    let kota_potentional = [];
+    let jenis_tanaman = [];
 
+    const select_regretion = $('#select_jenis');
+    const select_kota_retail = $('#select_kota_retail');
+    const select_kota_potentional = $('#select_kota_potentional');
+
+    let choices_instance_kota_retail;
+    let choices_instance_kota_potentional;
+    let choices_instance_select_jenis;
 
     select_regretion.change(function() {
         let value = $(this).val()
         console.log(value);
         startRegretion(value);
+    })
+    select_kota_retail.change(function() {
+        let value = $(this).val()
+        let area = btoa(value);
+
+        getWord('retail', area);
+    })
+    select_kota_potentional.change(function() {
+        let value = $(this).val()
+        let area = btoa(value);
+
+        getWord('potentional', area);
     })
 
     let chartRegretion;
@@ -362,6 +373,100 @@
     let menuVisible = false;
     let subMenuVisible = false;
     let subMenuVisible1 = false;
+
+    function get_nama_kota() {
+        $.ajax({
+            type: "get",
+            url: `{{ url('getCityWordCount') }}`,
+            dataType: "json",
+            beforeSend: function() {
+
+            },
+            success: function(response) {
+                const data_potentional = response.data.potentional
+                const data_retail = response.data.retail
+
+                $.each(data_potentional, function(index, val) {
+                    if (val === 'Jember, Jawa Timur') {
+                        kota_potentional.push({
+                            value: val,
+                            label: val,
+                            selected: true,
+                            disabled: false
+                        });
+                    } else {
+                        kota_potentional.push({
+                            value: val,
+                            label: val,
+                            selected: false,
+                            disabled: false
+                        });
+                    }
+                });
+
+                $.each(data_retail, function(index, val) {
+                    if (val === 'Jember, Jawa Timur') {
+                        kota_retail.push({
+                            value: val,
+                            label: val,
+                            selected: true,
+                            disabled: false
+                        });
+                    } else {
+                        kota_retail.push({
+                            value: val,
+                            label: val,
+                            selected: false,
+                            disabled: false
+                        });
+                    }
+                });
+            },
+            error: function(params) {
+                console.log('error');
+                // $('#chartdiv').html('Server error / tidak ada data');
+            }
+        });
+    }
+
+    function showProductIntellegence(params) {
+        closeIndex()
+        startRegretion('JAGUNG HIBRIDA')
+    }
+
+    function get_jenis_tanaman() {
+        $.ajax({
+            type: "get",
+            url: `{{ url('getJenisTanaman') }}`,
+            dataType: "json",
+            beforeSend: function() {
+
+            },
+            success: function(response) {
+                $.each(response.data, function(index, val) {
+                    if (val === 'JAGUNG HIBRIDA') {
+                        jenis_tanaman.push({
+                            value: val,
+                            label: val,
+                            selected: true,
+                            disabled: false
+                        });
+                    } else {
+                        jenis_tanaman.push({
+                            value: val,
+                            label: val,
+                            selected: false,
+                            disabled: false
+                        });
+                    }
+                });
+            },
+            error: function(params) {
+                console.log('error');
+                // $('#chartdiv').html('Server error / tidak ada data');
+            }
+        });
+    }
 
     function toggleMenu() {
         if (menuVisible) {
@@ -444,6 +549,7 @@
     }
 
     function closeIndex() {
+
         const content = document.getElementById('indexAspek');
         content.style.display = "none"
     }
@@ -453,6 +559,7 @@
         hideMenu();
         hideSubmenu();
         hideSubmenu1();
+        hideSelectKotaRetail();
         $('#titleContent').html(`Kepuasan / ${kategory}`);
         $('#barChart').show();
         $('#surveyPesaing').hide();
@@ -519,6 +626,7 @@
         hideMenu();
         hideSubmenu();
         hideSubmenu1();
+        hideSelectKotaRetail();
         $('#titleContent').html(`Penilaian Pelanggan / Kekuatan & Kelemahan / ${kategory}`);
         $('#barChart').show();
         $('#surveyPesaing').hide();
@@ -859,6 +967,10 @@
     }
 
     function startRegretion(kategory) {
+
+        showJenisTanaman();
+        hideSelectKotaPotentional();
+
         $('#titleContent1').html(`Data Sekunder Permalan Permintaan Produk`);
         $('#listGraph').show();
         $('.choices').css('display', 'block');
@@ -971,35 +1083,106 @@
         return rgbaColor;
     }
 
-    function getWord(kategory) {
+    function showSelectKotaRetail() {
+
+        if (choices_instance_kota_retail) {
+            choices_instance_kota_retail.destroy();
+        }
+
+        choices_instance_kota_retail = new Choices(select_kota_retail[0], {
+            choices: kota_retail,
+            shouldSort: false,
+        });
+
+        select_kota_retail.css("display", "block");
+    }
+
+    function showSelectKotaPotentional() {
+
+        if (choices_instance_kota_potentional) {
+            choices_instance_kota_potentional.destroy();
+        }
+
+        choices_instance_kota_potentional = new Choices(select_kota_potentional[0], {
+            choices: kota_potentional,
+            shouldSort: false,
+        });
+
+        select_kota_retail.css("display", "block");
+    }
+
+    function showJenisTanaman() {
+        if (choices_instance_select_jenis) {
+            choices_instance_select_jenis.destroy();
+        }
+
+        choices_instance_select_jenis = new Choices(select_regretion[0], {
+            choices: jenis_tanaman,
+            shouldSort: false,
+        });
+
+        select_regretion.css("display", "block");
+    }
+
+    function hideSelectKotaRetail() {
+        if (choices_instance_kota_retail) {
+            choices_instance_kota_retail.destroy();
+        }
+        select_kota_retail.css("display", "none");
+    }
+
+    function hideSelectKotaPotentional() {
+        if (choices_instance_kota_potentional) {
+            choices_instance_kota_potentional.destroy();
+        }
+        select_kota_potentional.css("display", "none");
+    }
+
+    function hideJenisTanaman() {
+        if (choices_instance_select_jenis) {
+            choices_instance_select_jenis.destroy();
+        }
+        select_regretion.css("display", "none");
+    }
+
+    function showRanking(kategory) {
+        hideSubmenu1();
+        hideSubmenu();
         hideMenu();
-        let url;
-        // const area = btoa(daerah)
 
-        if (kategory == "retail") {
-            url = `{{ url('getRetail') }}`;
-
-            $('#titleContent1').html(`Survey Pesaing`);
-
-            $('#titleContent').html(`Survey Pesaing`);
+        if (kategory === 'retail') {
+            showSelectKotaRetail();
             $('#barChart').hide();
             root.dispose();
             $('#surveyPesaing').css('display', 'block');
             closeIndex();
-
-        } else if (kategory == "potentional") {
-            url = `{{ url('getPotentionalArea') }}`;
-
-            $('#titleContent1').html(`Potensi Lahan / Gambaran Umum`);
+        } else if (kategory === 'potentional') {
+            showSelectKotaPotentional();
+            hideJenisTanaman();
+            $('#select_jenis').css('display', 'none');
             $('#listGraph').hide();
             root.dispose();
             $('#potensiLahan').css('display', 'block');
-            $('.choices').css('display', 'none');
             closeIndex();
+        }
+
+        getWord(kategory, 'SmVtYmVyLCBKYXdhIFRpbXVy')
+    }
+
+    function getWord(kategory, area) {
+        let url;
+
+        if (kategory == "retail") {
+            url = `{{ url('getRetail/${area}') }}`;
+
+            $('#titleContent1').html(`Survey Pesaing`);
+            $('#titleContent').html(`Survey Pesaing`);
 
 
-            // const workCount1 = document.getElementById('wordCountView1');
-            // workCount1.classList.remove('d-none');
+        } else if (kategory == "potentional") {
+            url = `{{ url('getPotentionalArea/${area}') }}`;
+
+            $('#titleContent1').html(`Potensi Lahan / Gambaran Umum`);
         }
 
         $.ajax({
@@ -1009,8 +1192,11 @@
             beforeSend: function() {
                 $('#ranking').html('<li class="list-group-item">Loading...</li>');
                 $('#deskripsi').html('<li class="list-group-item">Loading...</li>');
+                $('#ranking1').html('<li class="list-group-item">Loading...</li>');
+                $('#deskripsi1').html('<li class="list-group-item">Loading...</li>');
             },
             success: function(res) {
+                console.log(res);
                 let ranking = '';
                 let suggestions = '';
                 $.each(res.ranking, function(index, val) {
@@ -1024,10 +1210,14 @@
 
                 $('#ranking').html(ranking);
                 $('#deskripsi').html(suggestions);
+                $('#ranking1').html(ranking);
+                $('#deskripsi1').html(suggestions);
             },
             error: function(params) {
                 $('#ranking').html('<li class="list-group-item">Server error / tidak ada data</li>');
                 $('#deskripsi').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                $('#ranking1').html('<li class="list-group-item">Server error / tidak ada data</li>');
+                $('#deskripsi1').html('<li class="list-group-item">Server error / tidak ada data</li>');
             }
         });
     }

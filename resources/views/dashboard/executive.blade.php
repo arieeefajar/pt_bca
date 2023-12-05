@@ -147,17 +147,17 @@
                     <h4 class="card-title mb-0">Pertanyaan</h4>
                 </div><!-- end card header -->
                 <div class="card-body">
-                    <form action="">
-                        <div class="row">
-                            <div class="col-md-12 mb-3" id="colInputPertanyaan">
-                                {{-- <input type="text" class="form-control" placeholder="Masukan pertanyaan anda"> --}}
-                                <textarea id="inputPertanyaan" placeholder="Masukan pertanyaan...."></textarea>
-                            </div>
-                            <div class="col-md-12">
-                                <p>Testing</p>
-                            </div>
+                    <div class="col-md-12 p-4 rounded-3 bg-light" id="body_answer" style="display: none">
+                        <b id="question_show"></b><br><br>
+                        <p id="answer_show"></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3 d-flex justify-content-between p-2" id="colInputPertanyaan">
+                            <textarea id="inputPertanyaan" class="align-self-center" placeholder="Masukan pertanyaan...." style="width: 95%"></textarea>
+                            <button id="submit_gpt" type="button" class="btn btn-success btn-icon align-self-center"><i
+                                    class="ri-arrow-right-line"></i></button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -424,10 +424,7 @@
                                 </div>
                             </div>
                             <div style="display: none" id="surveyPesaing">
-                                <select name="" id="" class="form-select" data-choices
-                                    data-choices-sorting="true">
-                                    <option value="">Contoh</option>
-                                </select>
+                                <select name="" id="select_retail"></select>
                                 <div class="card cardWord card-primary">
                                     <div class="card-header">
                                         <h6 class="card-title">Rangking</h4>
@@ -445,7 +442,7 @@
                         <div class="tab-pane" id="product1" role="tabpanel">
                             <div class="row mb-3">
                                 <div class="col-sm-12 d-flex justify-content-between">
-                                    <h6 id="titleContent2"> Data Sekunder Permalan Permintaan Produk</h6>
+                                    <h6 id="titleContent2"> Data Sekunder Permalan Permintaan Produk (2021)</h6>
                                     <select id="select_jenis" data-choices data-choices-sorting="true">
                                         @foreach ($jenis_tanaman as $value)
                                             @if ($value === 'JAGUNG HIBRIDA')
@@ -522,10 +519,7 @@
                                     </div>
                                 </div>
                                 <div class="container">
-                                    <select name="" id="" class="form-select" data-choices
-                                        data-choices-sorting="true">
-                                        <option value="">Contoh</option>
-                                    </select>
+                                    <select name="" id="select_potential"></select>
                                     <div class="card cardWord card-primary">
                                         <div class="card-header">
                                             <h6 class="card-title">Rangking</h4>
@@ -578,7 +572,7 @@
             <div class="row" id="grafikPeramalan" style="display: none;">
                 <div class="card cardShadow">
                     <div class="card-header">
-                        <h4 class="card-title mb-0 mt-3">Grafik peramalan</h4>
+                        <h4 class="card-title mb-0 mt-3">Grafik peramalan (2022)</h4>
                     </div>
                     <div class="card-body">
                         <canvas id="graph_next_year"></canvas>
@@ -677,8 +671,6 @@
                         const latitude = value.location.latitude
                         const longtitude = value.location.longtitude
 
-                        console.log(value);
-
                         // potential area
                         let wordCountRetail = ''
                         if (value.retail_data != undefined) {
@@ -742,6 +734,45 @@
             mapAI.remove();
         }
     }
+
+    const submit_gpt = $('#submit_gpt')
+    let statusAnswer = false
+    submit_gpt.click(function() {
+        let question = $('textarea#inputPertanyaan').val()
+        if (question !== '') {
+            let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+            let formData = new FormData();
+            formData.append('_token', csrfToken);
+            formData.append('message', question);
+
+            $.ajax({
+                type: "post",
+                url: "{{ url('get-gpt') }}",
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    if (!statusAnswer) {
+                        $('#body_answer').css('display', 'block');
+                        statusAnswer = true
+                    }
+                    $('#question_show').html('Loading...');
+                    $('#answer_show').html('Loading...');
+                },
+                success: function(response) {
+                    $('#question_show').html(question);
+                    $('#answer_show').html(response.answer);
+                    $('textarea#inputPertanyaan').val('')
+                },
+                error: function(params) {
+                    $('#question_show').html('error');
+                    $('#answer_show').html('error');
+                }
+            });
+        }
+    });
 </script>
 
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -755,7 +786,116 @@
         getSkalaPasar()
         getDataCartAnalisisPesaing('perusahaan')
         startRegretion('JAGUNG HIBRIDA')
+        get_nama_kota();
     });
+
+    let kota_retail = [];
+    let kota_potentional = [];
+
+    const select_kota_retail = $('#select_retail');
+    const select_kota_potentional = $('#select_potential');
+
+    let choices_instance_kota_retail;
+    let choices_instance_kota_potentional;
+
+    select_kota_retail.change(function() {
+        let value = $(this).val()
+        let area = btoa(value);
+
+        getWord('retail', area);
+    })
+    select_kota_potentional.change(function() {
+        let value = $(this).val()
+        let area = btoa(value);
+
+        getWord('potentional', area);
+    })
+
+    function showSelectKotaRetail() {
+
+        if (choices_instance_kota_retail) {
+            choices_instance_kota_retail.destroy();
+        }
+
+        choices_instance_kota_retail = new Choices(select_kota_retail[0], {
+            choices: kota_retail,
+            shouldSort: false,
+        });
+
+        select_kota_retail.css("display", "block");
+    }
+
+    function showSelectKotaPotentional() {
+
+        if (choices_instance_kota_potentional) {
+            choices_instance_kota_potentional.destroy();
+        }
+
+        choices_instance_kota_potentional = new Choices(select_kota_potentional[0], {
+            choices: kota_potentional,
+            shouldSort: false,
+        });
+
+        select_kota_retail.css("display", "block");
+    }
+
+    async function get_nama_kota() {
+        await $.ajax({
+            type: "get",
+            url: `{{ url('getCityWordCount') }}`,
+            dataType: "json",
+            beforeSend: function() {
+
+            },
+            success: function(response) {
+                const data_potentional = response.data.potentional
+                const data_retail = response.data.retail
+
+                $.each(data_potentional, function(index, val) {
+                    if (val === 'Jember, Jawa Timur') {
+                        kota_potentional.push({
+                            value: val,
+                            label: val,
+                            selected: true,
+                            disabled: false
+                        });
+                    } else {
+                        kota_potentional.push({
+                            value: val,
+                            label: val,
+                            selected: false,
+                            disabled: false
+                        });
+                    }
+                });
+
+                $.each(data_retail, function(index, val) {
+                    if (val === 'Jember, Jawa Timur') {
+                        kota_retail.push({
+                            value: val,
+                            label: val,
+                            selected: true,
+                            disabled: false
+                        });
+                    } else {
+                        kota_retail.push({
+                            value: val,
+                            label: val,
+                            selected: false,
+                            disabled: false
+                        });
+                    }
+                });
+            },
+            error: function(params) {
+                console.log('error');
+                // $('#chartdiv').html('Server error / tidak ada data');
+            }
+        });
+
+        await showSelectKotaRetail()
+        await showSelectKotaPotentional()
+    }
 
     const textarea = document.getElementById('inputPertanyaan');
     const select_regretion = $('#select_jenis');
@@ -930,7 +1070,7 @@
     }
 
     function showDeskripsi() {
-        const deskripsi = document.getElementById('deskripsi');
+        const deskripsi = document.getElementById('deskripsi2');
         const index = document.getElementById('indexAspek');
 
         deskripsi.style.display = "block";
@@ -939,7 +1079,7 @@
 
     function showIndex1() {
         const index = document.getElementById('indexAspek');
-        const deskripsi = document.getElementById('deskripsi');
+        const deskripsi = document.getElementById('deskripsi2');
 
         index.style.display = "block";
         deskripsi.style.display = "none";
@@ -976,7 +1116,7 @@
     function getDataCartKepuasan(kategory) {
         hideMenu();
         hideSubmenu();
-        $('#titleContent').html(`Penilaian Pelanggan / Kepuasan / ${kategory}`);
+        $('#titleContent').html(`Penilaian Pelanggan / Kepuasan / ${kategory} (2 Bulan Terakhir)`);
 
         const urlChart = `{{ url('getPertanyaanKepuasanByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('getPertanyaanKepuasanAll/${kategory}') }}`;
@@ -1038,7 +1178,7 @@
         hideMenu1();
         hideSubmenu1();
         hideSubmenu2();
-        $('#titleContent1').html(`Penilaian Pelanggan / Kekuatan & Kelemahan / ${kategory}`);
+        $('#titleContent1').html(`Penilaian Pelanggan / Kekuatan & Kelemahan / ${kategory} (2 Bulan Terakhir)`);
 
         const urlChart = `{{ url('getPertanyaanKekuatanKelemahanByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('getPertanyaanKekuatanKelemahanAll/${kategory}') }}`;
@@ -1111,7 +1251,7 @@
         hideMenu1();
         hideSubmenu1();
         hideSubmenu2();
-        $('#titleContent1').html(`Analisis Pesaing / ${kategory}`);
+        $('#titleContent1').html(`Analisis Pesaing / ${kategory} (2 Bulan Terakhir)`);
 
         const urlChart = `{{ url('laporanAnalisisPesaingByRespondentsAll/${kategory}') }}`;
         const urlTable = `{{ url('laporanAnalisisPesaingAll/${kategory}') }}`;
@@ -1294,15 +1434,14 @@
     function getWord(kategory, daerah) {
 
         let url;
-        const area = btoa(daerah)
 
         if (kategory == "retail") {
-            url = `{{ url('getRetail/${area}') }}`;
+            url = `{{ url('getRetail/${daerah}') }}`;
         } else if (kategory == "potentional") {
-            url = `{{ url('getPotentionalArea/${area}') }}`;
+            url = `{{ url('getPotentionalArea/${daerah}') }}`;
         }
 
-        if (url == `{{ url('getRetail/${area}') }}`) {
+        if (url == `{{ url('getRetail/${daerah}') }}`) {
             hideMenu1();
             const chart = document.getElementById('barRace');
             const surveyPesaing = document.getElementById('surveyPesaing');
