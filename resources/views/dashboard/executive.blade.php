@@ -712,6 +712,8 @@
                         const locationName = btoa(value.location.name)
                         const latitude = value.location.latitude
                         const longtitude = value.location.longtitude
+                        const analisis_sentimen =
+                            `<p class="text-center ${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'text-success' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.potential_area_data[category]['sentimen']}</b></p>`
 
                         // potential area
                         let wordCountRetail = ''
@@ -720,7 +722,8 @@
                                 `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Analisis Pesaing :</b></p>`
                             wordCountRetail =
                                 `${headerRetail}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
-                            $.each(value.retail_data[category], function(indexRetail, retail) {
+                            $.each(value.retail_data[category]['data'], function(indexRetail,
+                                retail) {
                                 if (indexRetail == 5) {
                                     wordCountRetail += `</p><p>- ${retail.word}<br>`
                                 } else {
@@ -737,7 +740,7 @@
                                 `<p class="text-center" style="margin-bottom: -10px"><b>Hasil Survey Potensi Lahan :</b></p>`
                             wordCountPotentialArea =
                                 `${headerPotential}<div class="d-flex gap-3" style="margin-bottom: -20px"><p style="margin-right:10px">`
-                            $.each(value.potential_area_data[category], function(
+                            $.each(value.potential_area_data[category]['data'], function(
                                 indexPotentialArea,
                                 potentialArea) {
                                 if (indexPotentialArea == 5) {
@@ -748,15 +751,27 @@
                                         `- ${potentialArea.word}<br>`
                                 }
                             });
-                            wordCountPotentialArea += '</p></div>'
+                            wordCountPotentialArea +=
+                                `</p></div>`
                         }
 
                         let indexAspek =
                             `<div class="w-100 text-center mt-3"><a class="btn btn-primary btn-sm mx-auto text-white text-capitalize" href="laporanDaerah/${locationName}">index aspek</a></div>`;
 
                         const containerContent =
-                            `<div id="content">${area}${wordCountRetail}${wordCountPotentialArea}${indexAspek}</div>`
-                        var marker = L.marker([latitude, longtitude]).addTo(mapAI).bindPopup(
+                            `<div id="content">${area}${analisis_sentimen}${wordCountRetail}${wordCountPotentialArea}${indexAspek}</div>`
+
+                        var greenIcon = new L.Icon({
+                            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'green' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'yellow' : 'red'}.png`,
+                            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                            iconSize: [25, 41],
+                            iconAnchor: [12, 41],
+                            popupAnchor: [1, -34],
+                            shadowSize: [41, 41]
+                        });
+                        var marker = L.marker([latitude, longtitude], {
+                            icon: greenIcon
+                        }).addTo(mapAI).bindPopup(
                             containerContent);
                     });
                 }

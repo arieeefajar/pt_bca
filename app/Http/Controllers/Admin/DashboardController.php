@@ -45,6 +45,8 @@ class DashboardController extends Controller
 		try {
 			$dataAI = [Http::get($endPointApi)->json()['data']][0];
 
+			// dd($dataAI);
+
 			// set key berdasarkan wilayah
 			foreach ($dataAI['potential_area_data'] as $value) {
 				$dataArea[$value['location']['name']] = [];
@@ -79,14 +81,50 @@ class DashboardController extends Controller
 			foreach ($dataArea as $keyArea => $valueArea) {
 				foreach ($dataAI['potential_area_data'] as $valueAI) {
 					if ($keyArea === $valueAI['location']['name']) {
-						$dataArea[$keyArea]['potential_area_data'] = $valueAI;
+						$dataArea[$keyArea]['potential_area_data'] = array(
+							'location' => $valueAI['location'],
+							'monthly' => array(
+								'data' => $valueAI['monthly'],
+								'sentimen' => $this->analisisSentimen($valueAI['monthly'])
+							),
+							'quarterly' => array(
+								'data' => $valueAI['quarterly'],
+								'sentimen' => $this->analisisSentimen($valueAI['quarterly'])
+							),
+							'semesterly' => array(
+								'data' => $valueAI['semesterly'],
+								'sentimen' => $this->analisisSentimen($valueAI['semesterly'])
+							),
+							'yearly' => array(
+								'data' => $valueAI['yearly'],
+								'sentimen' => $this->analisisSentimen($valueAI['yearly'])
+							),
+						);
 					}
 				}
 			}
 			foreach ($dataArea as $keyArea => $valueArea) {
 				foreach ($dataAI['retail_data'] as $valueAI) {
 					if ($keyArea === $valueAI['location']['name']) {
-						$dataArea[$keyArea]['retail_data'] = $valueAI;
+						$dataArea[$keyArea]['retail_data'] = array(
+							'location' => $valueAI['location'],
+							'monthly' => array(
+								'data' => $valueAI['monthly'],
+								'sentimen' => $this->analisisSentimen($valueAI['monthly'])
+							),
+							'quarterly' => array(
+								'data' => $valueAI['quarterly'],
+								'sentimen' => $this->analisisSentimen($valueAI['quarterly'])
+							),
+							'semesterly' => array(
+								'data' => $valueAI['semesterly'],
+								'sentimen' => $this->analisisSentimen($valueAI['semesterly'])
+							),
+							'yearly' => array(
+								'data' => $valueAI['yearly'],
+								'sentimen' => $this->analisisSentimen($valueAI['yearly'])
+							),
+						);
 					}
 				}
 			}
@@ -112,6 +150,9 @@ class DashboardController extends Controller
 				}
 			}
 
+			// dd($dataArea);
+
+			// $this->analisisSentimen($dataArea['Jember, Jawa Timur']['potential_area_data']['monthly']);
 			return response()->json([
 				'data' => $dataArea,
 			]);
@@ -120,6 +161,126 @@ class DashboardController extends Controller
 				'data' => null,
 			]);
 		}
+	}
+
+	function analisisSentimen($data)
+	{
+		$korpus = array(
+			'positif' => array(
+				'baik',
+				'tahan',
+				'banyak',
+				'potensi',
+				'manis'
+			),
+			'netral' => array(
+				'musim',
+				'panen',
+				'produksi',
+			),
+			'negatif' => array(
+				'sedikit',
+				'layu',
+				'mati',
+				'gagal',
+				'busuk',
+			)
+		);
+
+		$TK = [];
+		$TKC = array(
+			'positif' => [],
+			'netral' => [],
+			'negatif' => [],
+		);
+
+		// found TK & TKC
+		foreach ($data as $val) {
+			if ($val['word'] !== '<oov>') {
+				array_push($TK, $val['count']);
+
+				if (in_array($val['word'], $korpus['positif'])) {
+					array_push($TKC['positif'], $val);
+					// jika ya potong perulangan
+					continue;
+				}
+
+				if (in_array($val['word'], $korpus['netral'])) {
+					array_push($TKC['netral'], $val);
+					continue;
+				}
+
+				if (in_array($val['word'], $korpus['negatif'])) {
+					array_push($TKC['negatif'], $val);
+					continue;
+				}
+			}
+		}
+
+		$TK = array_sum($TK);
+
+		// sum TKC positif
+		$sum_positif = [0];
+		if (count($TKC['positif']) > 0) {
+			foreach ($TKC['positif'] as $val) {
+				$CPositif = $val['count'] / $TK;
+				array_push($sum_positif, $CPositif);
+			}
+		}
+		$sum_positif = array_sum($sum_positif);
+
+		// sum TKC netral
+		$sum_netral = [0];
+		if (count($TKC['netral']) > 0) {
+			foreach ($TKC['netral'] as $val) {
+				$CNetral = $val['count'] / $TK;
+				array_push($sum_netral, $CNetral);
+			}
+		}
+		$sum_netral = array_sum($sum_netral);
+
+		// sum TKC netral
+		$sum_negatif = [0];
+		if (count($TKC['negatif']) > 0) {
+			foreach ($TKC['negatif'] as $val) {
+				$CNegatif = $val['count'] / $TK;
+				array_push($sum_negatif, $CNegatif);
+			}
+		}
+		$sum_negatif = array_sum($sum_negatif);
+
+		$NilaiTerbesar = max($sum_positif, $sum_netral, $sum_negatif);
+
+		switch ($NilaiTerbesar) {
+			case $sum_positif:
+				$NilaiTerbesar = 'Positif';
+				break;
+
+			case $sum_netral:
+				$NilaiTerbesar = 'Netral';
+				break;
+
+			case $sum_negatif:
+				$NilaiTerbesar = 'Negatif';
+				break;
+		}
+
+		return $NilaiTerbesar;
+
+
+		// testing
+		// $answer = [
+		// 	"Tumbuh cepat",
+		// 	"Tumbuh cenderung lama, tetapi hasil lebih bagus",
+		// 	"Ukuran buah lurus",
+		// 	"Sering memberikan diskon"
+		// ];
+
+		// $answer = str_replace(",", "", $answer);
+		// $answer = implode(" ", $answer);
+		// $answer = explode(" ", $answer . '');
+
+		// dd($answer);
 	}
 
 	public function dataSurveyor()
