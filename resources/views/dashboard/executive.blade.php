@@ -163,8 +163,9 @@
         </div>
     </div>
 
+    {{-- market Insight --}}
     <div class="row">
-        <div class="col-md-6">
+        <div id="marketInsight" class="col-md-12">
             <div class="card cardShadow">
                 <div class="card-body">
                     <!-- Nav tabs -->
@@ -192,12 +193,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="card cardWord card-primary">
+                            <div class="card cardShadow card-primary">
                                 <div class="card-header">
-                                    <h6 class="card-title">Rangking</h4>
+                                    <h6 class="card-title">Rekomendasi</h4>
                                 </div>
                                 <div class="card-body">
-                                    <ol class="list-group list-group-numbered" id="rankingSkalaPasar">
+                                    <ol class="list-group list-group-numbered" id="deskripsiSkalaPasar">
                                         <li class="list-group-item">Send the billing agreement</li>
                                     </ol>
                                 </div>
@@ -293,7 +294,7 @@
             </div>
             <div class="row" id="deskripsi2">
                 <div class="col-md-12">
-                    <div class="card cardShadow card-warning">
+                    {{-- <div class="card cardShadow card-warning">
                         <div class="card-header">
                             <h6 class="card-title">Deskripsi</h4>
                         </div>
@@ -302,14 +303,15 @@
                                 <li class="list-group-item">Send the billing agreement</li>
                             </ol>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 
+    {{-- competitive Insight --}}
     <div class="row">
-        <div class="col-md-6">
+        <div id="competitiveInsight" class="col-md-6">
             <div class="card cardShadow">
                 <div class="card-body">
                     <!-- Nav tabs -->
@@ -425,7 +427,17 @@
                             </div>
                             <div style="display: none" id="surveyPesaing">
                                 <select name="" id="select_retail"></select>
-                                <div class="card cardWord card-primary">
+                                <div class="card cardShadow card-primary">
+                                    <div class="card-header">
+                                        <h6 class="card-title">Rekomendasi</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ol class="list-group list-group-numbered" id="deskripsiData1">
+                                            <li class="list-group-item">Send the billing agreement</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                {{-- <div class="card cardWord card-primary">
                                     <div class="card-header">
                                         <h6 class="card-title">Rangking</h4>
                                     </div>
@@ -434,7 +446,7 @@
                                             <li class="list-group-item">Send the billing agreement</li>
                                         </ol>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -488,7 +500,7 @@
                         <div class="tab-pane" id="potensiLahan" role="tabpanel">
                             <div class="row mb-3">
                                 <div class="col-sm-12 d-flex justify-content-between">
-                                    <h6> Potensi Lahan</h6>
+                                    <h6>Potensi Lahan</h6>
                                     <div style="float: right">
                                         <div class="d-flex align-items-center">
                                             <div class="hamburger">
@@ -520,7 +532,17 @@
                                 </div>
                                 <div class="container">
                                     <select name="" id="select_potential"></select>
-                                    <div class="card cardWord card-primary">
+                                    <div class="card cardShadow card-primary">
+                                        <div class="card-header">
+                                            <h6 class="card-title">Rekomendasi</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="list-group list-group-numbered" id="deskripsiData">
+                                                <li class="list-group-item">Send the billing agreement</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="card cardWord card-primary">
                                         <div class="card-header">
                                             <h6 class="card-title">Rangking</h4>
                                         </div>
@@ -529,7 +551,7 @@
                                                 <li class="list-group-item">Send the billing agreement</li>
                                             </ol>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -581,21 +603,41 @@
             </div>
             <div class="row" id="deskripsi" style="display: none">
                 <div class="col-md-12">
-                    <div class="card cardShadow card-warning">
+                    <div class="card cardShadow">
                         <div class="card-header">
-                            <h6 class="card-title">Deskripsi</h4>
+                            <h6 class="card-title">Persaingan Produk</h4>
                         </div>
                         <div class="card-body">
-                            <ol class="list-group list-group-numbered" id="deskripsiData1">
+                            <div class="live-preview">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered border-primary align-middle mb-0">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Produk BCA</th>
+                                                <th>Produk Pesaing</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>BETRAS 4</td>
+                                                <td>Contoh 4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            {{-- <ol class="list-group list-group-numbered" id="produkPesaing">
                                 <li class="list-group-item">Send the billing agreement</li>
-                            </ol>
+                            </ol> --}}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row" id="deskripsi1" style="display: none;">
                 <div class="col-md-12">
-                    <div class="card cardShadow card-warning">
+                    {{-- <div class="card cardShadow card-warning">
                         <div class="card-header">
                             <h6 class="card-title">Deskripsi</h4>
                         </div>
@@ -604,7 +646,7 @@
                                 <li class="list-group-item">Send the billing agreement</li>
                             </ol>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -1085,30 +1127,39 @@
     }
 
     function showDeskripsi() {
+        const card = document.getElementById('marketInsight');
         const deskripsi = document.getElementById('deskripsi2');
         const index = document.getElementById('indexAspek');
 
+        card.classList.remove("col-md-6");
+        card.classList.add("col-md-12");
         deskripsi.style.display = "block";
         index.style.display = "none";
     }
 
     function showIndex1() {
+        const card = document.getElementById('marketInsight');
         const index = document.getElementById('indexAspek');
         const deskripsi = document.getElementById('deskripsi2');
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         index.style.display = "block";
         deskripsi.style.display = "none";
     }
 
     function showIndex() {
         hideMenu2()
-        getDataCartAnalisisPesaing('perusahaan')
+        getDataCartAnalisisPesaing('perusahaan');
+        const card = document.getElementById('competitiveInsight');
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
         const product1 = document.getElementById('product1')
         const potensiLahan = document.getElementById('potensiLahan')
         const deskripsi1 = document.getElementById('deskripsi1')
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         grafikPeramalan.style.display = "none"
         content.style.display = "block"
         product1.style.display = "none"
@@ -1117,11 +1168,14 @@
     }
 
     function closeIndex() {
+        const card = document.getElementById('competitiveInsight');
         const content = document.getElementById('indexAspek1');
         const grafikPeramalan = document.getElementById('grafikPeramalan');
         const product1 = document.getElementById('product1')
         const deskripsi = document.getElementById('deskripsi')
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         content.style.display = "none"
         grafikPeramalan.style.display = "block"
         product1.style.display = "block"
@@ -1502,11 +1556,15 @@
             });
         } else {
             hideMenu3();
+
+            const card = document.getElementById('competitiveInsight');
             const chartRegretion = document.getElementById('product1');
             const chartRegretionNextYear = document.getElementById('grafikPeramalan');
             const potensiLahan = document.getElementById('potensiLahan');
             const deskripsi1 = document.getElementById('deskripsi1');
 
+            card.classList.remove("col-md-6");
+            card.classList.add("col-md-12");
             chartRegretion.style.display = 'none';
             chartRegretionNextYear.style.display = 'none';
             potensiLahan.style.display = 'block';
@@ -1544,11 +1602,14 @@
     }
 
     function hiddenGetWord() {
+        const card = document.getElementById('competitiveInsight');
         const chartRegretion = document.getElementById('product1');
         const chartRegretionNextYear = document.getElementById('grafikPeramalan');
         const potensiLahan = document.getElementById('potensiLahan');
         const deskripsi1 = document.getElementById('deskripsi1');
 
+        card.classList.remove("col-md-12");
+        card.classList.add("col-md-6");
         chartRegretion.style.display = 'block';
         chartRegretionNextYear.style.display = 'block';
         deskripsi1.style.display = "none";
@@ -1556,10 +1617,7 @@
     }
 
     function getSkalaPasar() {
-        const Rangking = document.getElementById('rankingSkalaPasar');
         const deskripsi = document.getElementById('deskripsiSkalaPasar');
-
-        Rangking.innerHTML = '<li class="list-group-item">Data belum tersedia</li>'
         deskripsi.innerHTML = '<li class="list-group-item">Data belum tersedia</li>'
     }
 
