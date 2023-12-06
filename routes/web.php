@@ -423,3 +423,5 @@ Route::middleware(['prevent-back-history'])->group(function () {
 	Route::get('tes-regretion/{category?}', [regretionController::class, 'index']);
 	Route::get('regretion-non-linier/{category?}', [RegretionNonLinier::class, 'index']);
 });
+
+Route::get('/anu', [LaporanController::class, 'getPerbandinganProduct']);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DetailPenyimpanan;
+use App\Models\Penyimpanan;
 use App\Models\ProdevSales;
 use App\Models\ProdukProdev;
 use App\Models\SuggestionPotensionalArea;
@@ -8376,5 +8378,62 @@ class LaporanController extends Controller
 			'message' => 'success',
 			'data' => $jenis_tanaman
 		], 200);
+	}
+
+	function getPerbandinganProduct()
+	{
+		// $data = Penyimpanan::has('detail_penyimpanan')->get();
+		// $data = Penyimpanan::has('detail_penyimpanan')->whereMonth('created_at', 11)->get();
+		// $data = Penyimpanan::has('detail_penyimpanan')->distinct()->selectRaw('MONTH(created_at) as month')->pluck('month');
+		// $data = Penyimpanan::has('detail_penyimpanan')->distinct()->selectRaw('YEAR(created_at) as year')->pluck('year');
+
+		// $data = Penyimpanan::whereHas('detail_penyimpanan', function ($query) {
+		// 	$query->where('pertanyaan', 'form_pesaing');
+		// })->get();
+
+		$data = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota')->whereHas('penyimpanan', function ($query) {
+			$query->whereMonth('created_at', 10);
+		})->where('pertanyaan', 'form_pesaing')
+			->whereHas('penyimpanan.customer.kota', function ($queryKota) {
+				$queryKota->where('id', '3509');
+			})->get();
+
+		$data_product_competitor = [];
+		foreach ($data as $val) {
+			$endPointApi = env('PYTHON_END_POINT') . 'retail/' . $val->api_id;
+			$dataAnswer = [Http::get($endPointApi)->json()['data']];
+
+			foreach ($dataAnswer[0]['competitor_product'] as $product) {
+				array_push($data_product_competitor, strtolower($product));
+			}
+		}
+
+		$data_product_competitor = $this->countSameName($data_product_competitor);
+
+		$nilai_3_teratas = array_unique($data_product_competitor);
+		arsort($nilai_3_teratas);
+		$nilai_3_teratas = array_slice($nilai_3_teratas, 0, 3, true);
+
+		$data_final = [];
+		foreach ($nilai_3_teratas as $ranking) {
+			foreach ($data_product_competitor as $product => $val) {
+				if ($ranking === $val) {
+					$data_final += [$product => $val];
+				}
+			}
+		}
+		dd($data_final);
+	}
+	function countSameName($array)
+	{
+		$countedNames = [];
+
+		foreach ($array as $nama) {
+			// Menggunakan nama sebagai kunci array
+			// Jika nama belum ada, inisialisasi dengan 1, jika sudah ada, tambahkan 1
+			$countedNames[$nama] = isset($countedNames[$nama]) ? $countedNames[$nama] + 1 : 1;
+		}
+
+		return $countedNames;
 	}
 }
