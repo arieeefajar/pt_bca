@@ -1,0 +1,4979 @@
+[
+    {
+        "kode_customer": "BL01-005",
+        "provinsi": "BALI",
+        "kota": "KAB. BADUNG",
+        "nama_toko": "PT. I - THON",
+        "tipe_customer": "Lainnya",
+        "kode_area": "BL01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "BL01-0281",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI BL01",
+        "tipe_customer": "Lainnya",
+        "kode_area": "BL01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0001",
+        "provinsi": "BALI",
+        "kota": "KOTA DENPASAR",
+        "nama_toko": "CV. AGRO PRIMA JAYA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "BL01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0002",
+        "provinsi": "BALI",
+        "kota": "KAB. GIANYAR",
+        "nama_toko": "UD. GIRI PUTRI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "BL01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0005",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "PT. KARISMA INDOAGRO UNIVERSAL",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0006",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BANYUWANGI",
+        "nama_toko": "PT. SEMERU MEGARAYA AGRO",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0008",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BANYUWANGI",
+        "nama_toko": "SUMBER REJEKI BANYUWANGI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0018",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. KEDIRI",
+        "nama_toko": "SUMBER TANI AGRO KEDIRI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0019",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. MALANG",
+        "nama_toko": "PT. SUMBER MAKMUR AGRIKULTURE INDONESIA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0021",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. MALANG",
+        "nama_toko": "PT. TANI SEJATI MANDIRI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0022",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "CV. SUMBER MAKMUR AGROINDO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0023",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BOJONEGORO",
+        "nama_toko": "UD. MDR PERTANIAN ABADI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0024",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. SUMENEP",
+        "nama_toko": "ARDILA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0025",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. GRESIK",
+        "nama_toko": "PT. BERKAH INDO TANI GERSIK",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0027",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. SIDOARJO",
+        "nama_toko": "MANDIRI JAYA SIDOARJO",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0029",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. TUBAN",
+        "nama_toko": "TOKO PERTANIAN HIKMAH AGUNG",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0033",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. TRENGGALEK",
+        "nama_toko": "KOKO SUDARMAWAN",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0037",
+        "provinsi": "DAERAH ISTIMEWA YOGYAKARTA",
+        "kota": "KOTA YOGYAKARTA",
+        "nama_toko": "SRI REJEKI KULON  PROGO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0040",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. MAGELANG",
+        "nama_toko": "TANI MRATANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0041",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. PATI",
+        "nama_toko": "UD. TANI MAREM",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0043",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BLORA",
+        "nama_toko": "PUTRA TANI BLORA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0046",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. GROBOGAN",
+        "nama_toko": "AGRO MULIA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0047",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. JEPARA",
+        "nama_toko": "IZZUR TANI JEPARA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0048",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SRAGEN",
+        "nama_toko": "ABI TANI GONDANG",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0052",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. TEMANGGUNG",
+        "nama_toko": "CV. MUNCOL BARU",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0060",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BANYUMAS",
+        "nama_toko": "ANUGRAH PURWOKERTO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0064",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. TEGAL",
+        "nama_toko": "YOHAR BAHRUS SALAM",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0067",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. KEBUMEN",
+        "nama_toko": "CV. CAHAYA TANI KEBUMEN",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0072",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. KENDAL",
+        "nama_toko": "PT. TUNAS SAHABAT TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0073",
+        "provinsi": "JAWA BARAT",
+        "kota": "KOTA CIMAHI",
+        "nama_toko": "TANI JAYA CIMAHI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0074",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BANDUNG",
+        "nama_toko": "TANI SUBUR BANDUNG",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0077",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. GARUT",
+        "nama_toko": "MERDEKA TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0078",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. TASIKMALAYA",
+        "nama_toko": "MUKTI TANI Tasikmalaya",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0080",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BANDUNG",
+        "nama_toko": "SETIA BUDI SUPERMAKET",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0090",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BANDUNG",
+        "nama_toko": "JM TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0091",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "SUKA TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0093",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "SUMBER BAHAGIA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0094",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BOGOR",
+        "nama_toko": "SETIA KAUM TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0095",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "KIAT JAYA TANI (AGUS JATNIKA)",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0096",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "UD. BAROKAH CIANJUR",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0098",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BOGOR",
+        "nama_toko": "TOKO BERKAH TANI JONGGOL",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0099",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BANDUNG",
+        "nama_toko": "TOKO KANCIL MAS PUTRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0101",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "ALISTA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0103",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. SUKABUMI",
+        "nama_toko": "DEVI KURNIA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0104",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. SUKABUMI",
+        "nama_toko": "CAHAYA TANI SUKABUMI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0105",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "AHMAD MUNAWAR MARFAUNG",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0107",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. INDRAMAYU",
+        "nama_toko": "CV. TANAMAN SUBUR PRIMA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0118",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIREBON",
+        "nama_toko": "MULYA TANI CIREBON",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0120",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. INDRAMAYU",
+        "nama_toko": "DEWA TANI INDRAMAYU",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0129",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. SUBANG",
+        "nama_toko": "TATA JAYA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0130",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. PURWAKARTA",
+        "nama_toko": "NUSA HIJAU",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0132",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. KARAWANG",
+        "nama_toko": "TUNAS TANI MAKMUR",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0136",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. KARAWANG",
+        "nama_toko": "UGAI TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0138",
+        "provinsi": "BANTEN",
+        "kota": "KAB. TANGERANG",
+        "nama_toko": "SUMBER TANI TANGERANG",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW10",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-0145",
+        "provinsi": "KALIMANTAN TIMUR",
+        "kota": "KOTA SAMARINDA",
+        "nama_toko": "CV. BINTANG PERMATA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0146",
+        "provinsi": "KALIMANTAN TIMUR",
+        "kota": "KAB. KUTAI TIMUR",
+        "nama_toko": "SUMBER AGUNG SANGATTA",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0155",
+        "provinsi": "KALIMANTAN TIMUR",
+        "kota": "KOTA SAMARINDA",
+        "nama_toko": "UD. TANI JAYA LESTARI",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0161",
+        "provinsi": "KALIMANTAN UTARA",
+        "kota": "KOTA TARAKAN",
+        "nama_toko": "CV. LAKSA BENIH",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0162",
+        "provinsi": "KALIMANTAN TIMUR",
+        "kota": "KOTA SAMARINDA",
+        "nama_toko": "ARIES TYANANDA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0163",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KAB. SAMBAS",
+        "nama_toko": "PELITA KARYA SAMBAS",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL02",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0166",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KAB. KETAPANG",
+        "nama_toko": "SAHABAT TANI KALBAR",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL02",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0170",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KOTA PONTIANAK",
+        "nama_toko": "M. NAUFAL",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL02",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0171",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KOTA SINGKAWANG",
+        "nama_toko": "CV. POPULAR TRADING",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL02",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0174",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KAB. HULU SUNGAI TENGAH",
+        "nama_toko": "CV. MEKAR TANI ",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0178",
+        "provinsi": "KALIMANTAN TENGAH",
+        "kota": "KOTA PALANGKARAYA",
+        "nama_toko": "ANEKA TANI UNGGUL",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL04",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0179",
+        "provinsi": "KALIMANTAN TENGAH",
+        "kota": "KOTA PALANGKARAYA",
+        "nama_toko": "BUDI BERKAH",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL04",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0180",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KAB. KETAPANG",
+        "nama_toko": "BINTANG PETANI SAMPIT",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL04",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0185",
+        "provinsi": "KALIMANTAN TENGAH",
+        "kota": "KOTA PALANGKARAYA",
+        "nama_toko": "PURNA IRAWAN",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL04",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-0187",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KAB. LOMBOK TENGAH",
+        "nama_toko": "PT. ILHAM TANI MANDIRI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0188",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KOTA MATARAM",
+        "nama_toko": "CV. PUTRA AGRO MAKMUR",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0193",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KAB. LOMBOK TIMUR",
+        "nama_toko": "KIOS SEDERHANA TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0198",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. KUPANG",
+        "nama_toko": "FERDINAN TANTRY",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-0204",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BANYUWANGI",
+        "nama_toko": "A. DIMIYATI",
+        "tipe_customer": "Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0208",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BOGOR",
+        "nama_toko": "M. Syukur",
+        "tipe_customer": "Lainnya",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0219",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DIZA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0225",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "SMK Tlogosari",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0228",
+        "provinsi": "PAPUA BARAT",
+        "kota": "KAB. SORONG",
+        "nama_toko": "Toko Pertanian Yudi Joyo",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0231",
+        "provinsi": "JAWA BARAT",
+        "kota": "KOTA CIMAHI",
+        "nama_toko": "CV. CSI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0241",
+        "provinsi": "PAPUA",
+        "kota": "KOTA JAYAPURA",
+        "nama_toko": "CV. NUSA AGRO MAKMUR",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0244",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BANYUWANGI",
+        "nama_toko": "SUPARDI",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0245",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BANYUWANGI",
+        "nama_toko": "BINTANG PLASINDO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0256",
+        "provinsi": "JAWA BARAT",
+        "kota": "KOTA DEPOK",
+        "nama_toko": "Balai Besar Pengembangan Pengujian Mutu Benih",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-0271",
+        "provinsi": "LAMPUNG",
+        "kota": "KOTA BANDAR LAMPUNG",
+        "nama_toko": "CV. USAHA TANI GINTUNG",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0276",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TENGAH",
+        "nama_toko": "CV. SALIM ABADI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0277",
+        "provinsi": "LAMPUNG",
+        "kota": "KOTA BANDAR LAMPUNG",
+        "nama_toko": "PT. MITRA KHARISMA JAYA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0286",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TENGAH",
+        "nama_toko": "KIOS PAK TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0317",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TIMUR",
+        "nama_toko": "ARIZONALDI SM02",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0332",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA PALEMBANG",
+        "nama_toko": "CV. JAYA MANGGALA ABADI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0480",
+        "provinsi": "BENGKULU",
+        "kota": "KAB. SELUMA",
+        "nama_toko": "CV. USAHA TANI SEJAHTERA BENGKULU",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-0506",
+        "provinsi": "RIAU",
+        "kota": "KAB. PELALAWAN",
+        "nama_toko": "Sultan Tani",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0515",
+        "provinsi": "RIAU",
+        "kota": "KAB. INDRAGIRI HULU",
+        "nama_toko": "Putra Tani Air Molek",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0516",
+        "provinsi": "RIAU",
+        "kota": "KAB. SIAK",
+        "nama_toko": "SINAR TANI SIAK",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0521",
+        "provinsi": "RIAU",
+        "kota": "KAB. ROKAN HULU",
+        "nama_toko": "SARANA TANI ROHUL",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0527",
+        "provinsi": "RIAU",
+        "kota": "KOTA PEKANBARU",
+        "nama_toko": "PT. GLOBAL INTI AGRO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0536",
+        "provinsi": "RIAU",
+        "kota": "KAB. ROKAN HILIR",
+        "nama_toko": "BUDI IRWANTO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0544",
+        "provinsi": "RIAU",
+        "kota": "KOTA PEKANBARU",
+        "nama_toko": "REZA TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0561",
+        "provinsi": "RIAU",
+        "kota": "KAB. BENGKALIS",
+        "nama_toko": "ANTAR TANI 2",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0567",
+        "provinsi": "RIAU",
+        "kota": "KOTA PEKANBARU",
+        "nama_toko": "TOKO BINTER",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0594",
+        "provinsi": "RIAU",
+        "kota": "KAB. PELALAWAN",
+        "nama_toko": "Global Tani Kerinci",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0613",
+        "provinsi": "RIAU",
+        "kota": "KAB. SIAK",
+        "nama_toko": "SARANA TANI KANDIS RIAU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0616",
+        "provinsi": "RIAU",
+        "kota": "KAB. ROKAN HILIR",
+        "nama_toko": "JAYA TANI PEKANBARU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0760",
+        "provinsi": "SUMATERA BARAT",
+        "kota": "KOTA PAYAKUMBUH",
+        "nama_toko": "JAZLIWARMAN",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM06",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0774",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "UD. FUADY NASUTION",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM07",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0811",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. SERDANG BEDAGAI",
+        "nama_toko": "UD. KONTAK TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0812",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. RATA SINUHAJI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0817",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. LANGKAT",
+        "nama_toko": "UD. HARAPAN TANI TANJUNG PURA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0818",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. LANGKAT",
+        "nama_toko": "UD. JASA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0819",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. LANGKAT",
+        "nama_toko": "UD. SINAR TANI STABAT",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0830",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA PALEMBANG",
+        "nama_toko": "UD. Usaha Tani Medan",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0843",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. DARMA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0849",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KOTA MEDAN",
+        "nama_toko": "UD. SELARAS TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0854",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. GUNA TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0856",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "UD. MUARA TANI KELAMBIR LIMA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0865",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KOTA TEBING TINGGI",
+        "nama_toko": "CV. AGRI BINA CIPTA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0866",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KOTA TEBING TINGGI",
+        "nama_toko": "UD. SOLO JAYA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0868",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. SIMALUNGUN",
+        "nama_toko": "UD. PARGAULAN TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0871",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. SIMALUNGUN",
+        "nama_toko": "UD. ADI TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0878",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. BATU BARA",
+        "nama_toko": "UD. KELUARGA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0909",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. KARO",
+        "nama_toko": "UD. PEMBIBITAN K. SURBAKTI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-0911",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. JULI TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-1112",
+        "provinsi": "KEPULAUAN RIAU",
+        "kota": "KOTA BATAM",
+        "nama_toko": "SUHARDI BATAM",
+        "tipe_customer": "Dealer",
+        "kode_area": "KP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-1114",
+        "provinsi": "KEPULAUAN RIAU",
+        "kota": "KAB. BINTAN",
+        "nama_toko": "TOKO IMMANUEL",
+        "tipe_customer": "Dealer",
+        "kode_area": "KP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-1122",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KOTA MAKASSAR",
+        "nama_toko": "CV. TANI BERU PRATAMA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1123",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KOTA MAKASSAR",
+        "nama_toko": "KARAENG SESE",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1125",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. LUWU UTARA",
+        "nama_toko": "SUMBER TANI BONE BONE",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1128",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KOTA MAKASSAR",
+        "nama_toko": "PT. SAHABAT AGRO MAKMUR SEJAHTERA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1141",
+        "provinsi": "MALUKU",
+        "kota": "KAB. KEPULAUAN ARU",
+        "nama_toko": "SURYA MANDIRI MALUKU",
+        "tipe_customer": "Dealer",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1143",
+        "provinsi": "SULAWESI TENGGARA",
+        "kota": "KOTA KENDARI",
+        "nama_toko": "CV. HARAPAN AGRO MANDIRI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW04",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1145",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SEMARANG",
+        "nama_toko": "Toko Tani 88",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-1147",
+        "provinsi": "RIAU",
+        "kota": "KOTA PEKANBARU",
+        "nama_toko": "PT. GEMBUR MEKAR JAYA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-1160",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KAB. OGAN KOMERING ULU SELATAN",
+        "nama_toko": "CV. ADRIAN ARGO PERKASA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-1161",
+        "provinsi": "JAMBI",
+        "kota": "KOTA JAMBI",
+        "nama_toko": "Eko Wahyudi",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM03",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "C-1162",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. GARUT",
+        "nama_toko": "CV. Multi Niaga Nusantara New",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-1165",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. SUKABUMI",
+        "nama_toko": "PUTRA TANI SURADE",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-1166",
+        "provinsi": "JAWA BARAT",
+        "kota": "KOTA DEPOK",
+        "nama_toko": "PT. Trubus Mitra Swadaya",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-1167",
+        "provinsi": "BANTEN",
+        "kota": "KAB. SERANG",
+        "nama_toko": "CV. BINTANG TANI BANTEN",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW10",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "C-1185",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. MAGELANG",
+        "nama_toko": "SETYO CAHYO NUGROHO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-1186",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SUKOHARJO",
+        "nama_toko": "MULIA TANI SUKOHARJO",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "C-1188",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KAB. BENGKAYANG",
+        "nama_toko": "Syarif Ilham",
+        "tipe_customer": "Lainnya",
+        "kode_area": "KL02",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "C-1189",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "UD. Sentral Tani Gorontalo",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1191",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "ANAK TANI GORONTALO",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1192",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. MINAHASA UTARA",
+        "nama_toko": "Septia Tani",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "C-1215",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. KARO",
+        "nama_toko": "Pembibitan J366",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "C-1219",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "Yaldi Primantamara",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "C-1220",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "Prasetyo  IT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0001",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFA - ONLINE",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0004",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "Makrifat Business - Online",
+        "tipe_customer": "Lainnya",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0005",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "BENIH CITRA ASIA - ONLINE",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0006",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "LPNU Mart Jember",
+        "tipe_customer": "Lainnya",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0007",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "PARIWISATA LPNU",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0008",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "PUSAT OLEH - OLEH LPNU",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0009",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "PERTANIAN LPNU JEMBER",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0010",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "KOPERASI LPNU",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0011",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "PERTANIAN JEMBER ONLINE",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0013",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "MITRA LPNU JEMBER",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0014",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "Bintang Citra Asia[online]",
+        "tipe_customer": "Lainnya",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "DM01-0015",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "DEMA SUKSES",
+        "tipe_customer": "Dealer",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "JW01-013",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BONDOWOSO",
+        "nama_toko": "PRIMA TANI BONDOWOSO",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW01-138",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "CEPI FAISAL HUSAINI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW01-139",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "AHMAD SODIKIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW01-140",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BANYUWANGI",
+        "nama_toko": "BAMBANG PRAMBUDI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW02-0515",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. TRENGGALEK",
+        "nama_toko": "TOKO RIDHO TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "JW02-0647",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI JW02",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW02-193",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. KEDIRI",
+        "nama_toko": "UD. MULUR",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW02-204",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. MAGETAN",
+        "nama_toko": "SUMBER AGUNG TANI MAGETAN",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW02-228",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. PONOROGO",
+        "nama_toko": "METRO TANI PONOROGO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-0372",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI JW03",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-0379",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. TUBAN",
+        "nama_toko": "KUKUH",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-0380",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. LAMONGAN",
+        "nama_toko": "UD. HASIL BUMI (P. BISRI)",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-0383",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. LAMONGAN",
+        "nama_toko": "SULAIMAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-0384",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. LAMONGAN",
+        "nama_toko": "MOH. AZHAR / TP TANI BAROKAH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-0385",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "SENO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-186",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. LAMONGAN",
+        "nama_toko": "TOKO JAWA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-188",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "TOKO PERTANIAN JOYO",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-196",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "TOKO SURYA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-197",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BOJONEGORO",
+        "nama_toko": "CV. SUMBER TANI MAKMUR BOJONEGORO",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-200",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. GRESIK",
+        "nama_toko": "ADITIA RISTA SAPUTRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW03-219",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "ILHAM BUDI SUSILO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-0607",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SRAGEN",
+        "nama_toko": "TOKO GUNUNG SUBUR",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-0608",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. KARANGANYAR",
+        "nama_toko": "TOKO TANI SUBUR KARANGANYAR",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-0634",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SEMARANG",
+        "nama_toko": "FIFA TANI SALATIGA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-0760",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. KLATEN",
+        "nama_toko": "SARANA PERTANIAN TANI LESTARI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-0771",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SEMARANG",
+        "nama_toko": "AHMAD FAUZI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-0772",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SUKOHARJO",
+        "nama_toko": "PRASETYA ADI PRAKOSA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-189",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. MAGELANG",
+        "nama_toko": "TOKO PERTANIAN PATRA BUMI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-190",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. TEMANGGUNG",
+        "nama_toko": "BARITO RAYA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-191",
+        "provinsi": "DAERAH ISTIMEWA YOGYAKARTA",
+        "kota": "KOTA YOGYAKARTA",
+        "nama_toko": "PT. HIBRIDA JAYA UNGGUL",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-193",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. MAGELANG",
+        "nama_toko": "TOKO KONCO TANI MAGELANG",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-194",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. KLATEN",
+        "nama_toko": "HANDAYANI TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-202",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. TEMANGGUNG",
+        "nama_toko": "FAJAR PURWOKO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-204",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. PURWOREJO",
+        "nama_toko": "CAHYO DWI YULIANTO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW04-205",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SRAGEN",
+        "nama_toko": "DANANG ALAM WARDANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW04",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "JW05-0725",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI JW05",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW05-073",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BREBES",
+        "nama_toko": "CV. BIMA TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW05-0834",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. TEGAL",
+        "nama_toko": "JAYA TANI TEGAL",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW05-0842",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BATANG",
+        "nama_toko": "KIOS TANI MURNI P. ALI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW05-0843",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BATANG",
+        "nama_toko": "UD. ASRIYAH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW05-584",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "IMAM HIDAYAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW05",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW06-0496",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI JW06",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW06-168",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. TASIKMALAYA",
+        "nama_toko": "CV. MEGA JAYA SEMESTA TASIK",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW06",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW07-0819",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "INDAH FARDIANAH (BUMI INDAH)",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW07-169",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "PUTRA TANI MAKMUR",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW07-171",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BANDUNG",
+        "nama_toko": "CV. GATOT KACA 2",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "JW07",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW08-137",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. INDRAMAYU",
+        "nama_toko": "ASEP SUTISNA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW09-1084",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "JAENAL MUSLIHAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW09-1085",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DIKI SURYA APRILIANTO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW09-92",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. SUBANG",
+        "nama_toko": "HIDAYAH SYEH MAULUDIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW08",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW11-0252",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SEMARANG",
+        "nama_toko": "RBL AGRO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW11-0264",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. PATI",
+        "nama_toko": "EKSAN JAYA TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW11-0269",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. KUDUS",
+        "nama_toko": "UD. BUDI KARYA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW11-0278",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SEMARANG",
+        "nama_toko": "REJANING BUMI LELUHUR NUSANTARA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW11-147",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BLORA",
+        "nama_toko": "PUTRA TANI PURWODADI",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "JW11-148",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KOTA SURABAYA",
+        "nama_toko": "TOKO ERLINDA",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW11",
+        "kode_amm": "AMM03"
+    },
+    {
+        "kode_customer": "KL01-0252",
+        "provinsi": "KALIMANTAN UTARA",
+        "kota": "KOTA TARAKAN",
+        "nama_toko": "CV. TANI ANDA MANDIRI",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL01-0291",
+        "provinsi": "KALIMANTAN UTARA",
+        "kota": "KAB. BULUNGAN",
+        "nama_toko": "DINAS PERTANIAN BULUNGAN ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL01-165",
+        "provinsi": "KALIMANTAN TIMUR",
+        "kota": "KAB. KUTAI KARTANEGARA",
+        "nama_toko": "PT. AGRO KALIMANTAN SEJAHTERA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL01-196",
+        "provinsi": "KALIMANTAN TIMUR",
+        "kota": "KOTA SAMARINDA",
+        "nama_toko": "CV. BINTANG JAYA MANDIRI",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL01",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL02-0593",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KOTA PONTIANAK",
+        "nama_toko": "HAKIKAT ARWANA SUKSES",
+        "tipe_customer": "Lainnya",
+        "kode_area": "KL02",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL03-0430",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KOTA BANJARBARU",
+        "nama_toko": "CV MAKMUR SEJAHTERA ",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL03-0445",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KOTA BANJARBARU",
+        "nama_toko": "UD MIRASA TANI ",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL03-0658",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KAB. BANJAR",
+        "nama_toko": "CV MAHKOTA NIAGA ",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL03-182",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KAB. TANAH LAUT",
+        "nama_toko": "SURYA AGRO TANAH LAUT",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL03-184",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KOTA BANJARMASIN",
+        "nama_toko": "UD. NEW ULIN JAYA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL03-214",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KOTA BANJARBARU",
+        "nama_toko": "AAM ",
+        "tipe_customer": "Dealer",
+        "kode_area": "KL03",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KL04-0569",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI KL04",
+        "tipe_customer": "Lainnya",
+        "kode_area": "KL04",
+        "kode_amm": "AMM05"
+    },
+    {
+        "kode_customer": "KP01-0001",
+        "provinsi": "DKI JAKARTA",
+        "kota": "KOTA ADM. JAKARTA SELATAN",
+        "nama_toko": "PT. PELANGI PERMATA HASADA",
+        "tipe_customer": "Dealer",
+        "kode_area": "KP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "LN01-001",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ALBERT LING",
+        "tipe_customer": "Lainnya",
+        "kode_area": "LN01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "LN01-0013",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "Khairul Boss Fertigation Consultancy",
+        "tipe_customer": "Lainnya",
+        "kode_area": "LN01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "LN01-0014",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "Mr. Pham Thanh Vu",
+        "tipe_customer": "Lainnya",
+        "kode_area": "LN01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "LN01-0015",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "AWODOYE SOLOMON OLUWAFEMI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "LN01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "LN01-0016",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ACE AGRO ENTERPRISE",
+        "tipe_customer": "Lainnya",
+        "kode_area": "LN01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "LN01-002",
+        "provinsi": "DKI JAKARTA",
+        "kota": "KOTA ADM. JAKARTA PUSAT",
+        "nama_toko": "GIZ OFFICE INDONESIA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "MALUKU-002",
+        "provinsi": "MALUKU",
+        "kota": "KOTA AMBON",
+        "nama_toko": "MULTI TANI AMBON",
+        "tipe_customer": "Dealer",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "MALUKU-145",
+        "provinsi": "MALUKU",
+        "kota": "KOTA AMBON",
+        "nama_toko": "Mitra Tani Ambon",
+        "tipe_customer": "Lainnya",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "MALUKU-146",
+        "provinsi": "MALUKU",
+        "kota": "KAB. BURU",
+        "nama_toko": "SUNARDI MALUKU",
+        "tipe_customer": "Dealer",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "MALUKU-147",
+        "provinsi": "MALUKU UTARA",
+        "kota": "KOTA TERNATE",
+        "nama_toko": "PT. TANI SATWA MAKMUR",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "MD01-0002",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI MD01",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "MD01-0003",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. PAMEKASAN",
+        "nama_toko": "UD. KAWAN TANI PAMEKASAN",
+        "tipe_customer": "Dealer",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "MD01-1",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. SUMENEP",
+        "nama_toko": "AGUS HADI ZAMRONI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW03",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "MK01-0001",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KOTA MANADO",
+        "nama_toko": "MELKI MARKOS SUAWAH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "NT01-0347",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI NT01",
+        "tipe_customer": "Lainnya",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT01-198",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KAB. LOMBOK TIMUR",
+        "nama_toko": "UD. KARYA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT01-206",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KOTA MATARAM",
+        "nama_toko": "HALDI GUSTIANDI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-0332",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. ENDE",
+        "nama_toko": "MITRA TANI ENDE",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-0341",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KOTA KUPANG",
+        "nama_toko": "PT. PELANGI PERMATA HASADA NT02",
+        "tipe_customer": "Lainnya",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-0409",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. MANGGARAI",
+        "nama_toko": "TOKO PUTRA GEMILANG",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-202",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. FLORES TIMUR",
+        "nama_toko": "TOKO TANI NELAYAN",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-203",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. NGADA",
+        "nama_toko": "TOKO TANI MAKMUR BAJAWA",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-205",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. MANGGARAI",
+        "nama_toko": "TOKO PANDU TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-208",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. NGADA",
+        "nama_toko": "TANI JAYA BAJAWA",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-209",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. MALAKA",
+        "nama_toko": "DUTA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-211",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KAB. BIMA",
+        "nama_toko": "ABDUL KHARIM",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "NT01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-212",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. MANGGARAI TIMUR",
+        "nama_toko": "SAHABAT TANI BORONG",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-217",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KOTA SURABAYA",
+        "nama_toko": "MAHAPUTRA ABADI",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "NT02-224",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. MANGGARAI",
+        "nama_toko": "TOKO GEMILANG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-225",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. SUMBA TIMUR",
+        "nama_toko": "CV. MITRA USAHA SUMBA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "NT02-238",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. KUPANG",
+        "nama_toko": "ABDUL HARIS",
+        "tipe_customer": "Lainnya",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "OF01-0329",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "FACHRI RIZAL",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0331",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SUJIANTO",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0332",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TAM CARGO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0337",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KOTA SURABAYA",
+        "nama_toko": "DAUD FARM",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0339",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. KEDIRI",
+        "nama_toko": "PT. ALAM SEMESTA AGRO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0340",
+        "provinsi": "KEPULAUAN RIAU",
+        "kota": "KAB. NATUNA",
+        "nama_toko": "SAROJONO (NATUNA)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0341",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ISWANDI IDRIS",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0342",
+        "provinsi": "KEPULAUAN RIAU",
+        "kota": "KAB. BINTAN",
+        "nama_toko": "CV. BISAGRO MAKMUR ABADI",
+        "tipe_customer": "Dealer",
+        "kode_area": "KP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0344",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "SANTOSO STAF LAMONGAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0345",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. CIANJUR",
+        "nama_toko": "RUMAH PETANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0346",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "RINA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0347",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "KH. FATHOR ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0348",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. GRESIK",
+        "nama_toko": "PT. OM HWAHAHA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0349",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. TOJO UNA UNA",
+        "nama_toko": "YESSICA CHANDRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0350",
+        "provinsi": "DKI JAKARTA",
+        "kota": "KOTA ADM. JAKARTA SELATAN",
+        "nama_toko": "PT. SEMBILAN SURYA INDONESIA",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0352",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JOMBANG",
+        "nama_toko": "AH. HABIBUL AMIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0354",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BANDUNG",
+        "nama_toko": "PT. SUAKABUMI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-0355",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. GOWA",
+        "nama_toko": "ALAM",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-276",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KOTA SURABAYA",
+        "nama_toko": "PT. ANGHAUZ INDONESIA",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-277",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KOTA MEDAN",
+        "nama_toko": "PT. SABAS SINERGI INDONESIA (sikumis.com)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-279",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "MOHAMMAD AZHAR BIN MOHAMMAD NOOR",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-283",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. MALANG",
+        "nama_toko": "CV. BERKAH HASIL BUMI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-286",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. MALANG",
+        "nama_toko": "PT. ADITYA SENTANA AGRO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-313",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BEKASI",
+        "nama_toko": "FAHRUDIN",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-317",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. PURWAKARTA",
+        "nama_toko": "HIDROPONIK PURWAKARTA (TEGUH PAMBUDI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "DM01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-319",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "FAHIRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "OF01-325",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "TAUFIQ TIMUR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "JW01",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "PP01-0271",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "HIDROPONIK - 18",
+        "tipe_customer": "Dealer",
+        "kode_area": "OF01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PP01-0274",
+        "provinsi": "PAPUA BARAT",
+        "kota": "KAB. SORONG",
+        "nama_toko": "TOKO TANI FAFA SORONG",
+        "tipe_customer": "Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PP01-0275",
+        "provinsi": "KEPULAUAN RIAU",
+        "kota": "KOTA BATAM",
+        "nama_toko": "KA TANI (BU YANTI BATAM)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PP01-0276",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KAB. KUPANG",
+        "nama_toko": "TOKO SURIANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "NT02",
+        "kode_amm": "AMM04"
+    },
+    {
+        "kode_customer": "PP01-266",
+        "provinsi": "PAPUA",
+        "kota": "KAB. MERAUKE",
+        "nama_toko": "SURYA AGUNG",
+        "tipe_customer": "Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PP01-267",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KOTA SURABAYA",
+        "nama_toko": "LUDDY SUTHELIE SERUI",
+        "tipe_customer": "Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PP01-269",
+        "provinsi": "PAPUA",
+        "kota": "KAB. MIMIKA",
+        "nama_toko": "TIMIKA SAHARUDIN",
+        "tipe_customer": "Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PP01-270",
+        "provinsi": "PAPUA BARAT",
+        "kota": "KAB. MANOKWARI",
+        "nama_toko": "UD. NURHAYATI PAPUA",
+        "tipe_customer": "Dealer",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PROYEK-0291",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "DISPERTA PROVINSI JAWA TIMUR ( BLITAR)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0295",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DISPERTA PROVINSI RIAU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0310",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0315",
+        "provinsi": "DKI JAKARTA",
+        "kota": "KOTA ADM. JAKARTA SELATAN",
+        "nama_toko": "PT. RITEL BERSAMA NASIONAL",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0317",
+        "provinsi": "JAMBI",
+        "kota": "KAB. TEBO",
+        "nama_toko": "DISPERTA  PROVINSI JAMBI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0318",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DISPERTA NTT ROTE NDAO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0319",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "CV. DARMANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PP01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "PROYEK-0322",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DISPERTA PROVINSI BANTAENG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0325",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "PROYEK DISPERTA WAJO SULSEL",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0326",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DISPERTA SIMALUNGUN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0329",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KOTA PONTIANAK",
+        "nama_toko": "DINAS PERTANIAN  PROVINSI KALIMANTAN BARAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0330",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KOTA BANJARBARU",
+        "nama_toko": "DINAS PERTANIAN KALIMANTAN SELATAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0331",
+        "provinsi": "BALI",
+        "kota": "KOTA DENPASAR",
+        "nama_toko": "DINAS PERTANIAN BALI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0332",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. MALANG",
+        "nama_toko": "DINAS PERTANIAN KAB. MALANG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0333",
+        "provinsi": "JAMBI",
+        "kota": "KOTA JAMBI",
+        "nama_toko": "DINAS PERTANIAN JAMBI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0334",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "DINAS PERTANIAN GORONTALO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0335",
+        "provinsi": "ACEH",
+        "kota": "KOTA BANDA ACEH",
+        "nama_toko": "DINAS PERTANIAN PROV. ACEH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0336",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. MOROWALI",
+        "nama_toko": "DISPERTA KAB MOROWALI SULTENG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0337",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DAIRI",
+        "nama_toko": "DINAS PERTANIAN DAIRI DAN SEDANG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0338",
+        "provinsi": "SUMATERA BARAT",
+        "kota": "KOTA PADANG",
+        "nama_toko": "DINAS PERTANIAN SUMATRA BARAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0339",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SEMARANG",
+        "nama_toko": "DINAS PETANIAN JAWA TENGAH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0340",
+        "provinsi": "SUMATERA BARAT",
+        "kota": "KAB. PASAMAN BARAT",
+        "nama_toko": "DINAS PERTANIAN PASAMAN BARAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0341",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG SELATAN",
+        "nama_toko": "DISPERTA LAMPUNG SELATAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0342",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. BONE",
+        "nama_toko": "DISPERTA KAB. SINJAI BONE",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0343",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. SUMENEP",
+        "nama_toko": "DINAS PERTANIAN KAB.SUMENEP",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0344",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KAB. DOMPU",
+        "nama_toko": "DINAS PERTANIAN KAB. DOMPU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0346",
+        "provinsi": "KALIMANTAN BARAT",
+        "kota": "KOTA PONTIANAK",
+        "nama_toko": "CV. AZKYA PERMATA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0347",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. BOGOR",
+        "nama_toko": "CV. GILANG MAKMUR PERKASA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0348",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DINAS PERTANIAN SRAGEN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0349",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DINAS PERTANIAN KABUPATEN BONE - BONE",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0350",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DINAS KABUPATEN BATU BARA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0351",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DINAS PERTANIAN KABUPATEN LAMPUNG PESAWARAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0352",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DINAS PERTANIAN KABUPATEN LAMPUNG TANGGAMUS",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0355",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. GOWA",
+        "nama_toko": "CV. AMAL ABADI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0356",
+        "provinsi": "PAPUA",
+        "kota": "KOTA JAYAPURA",
+        "nama_toko": "DINAS PERTANIAN PROVINSI PAPUA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0357",
+        "provinsi": "DAERAH ISTIMEWA YOGYAKARTA",
+        "kota": "KAB. GUNUNGKIDUL",
+        "nama_toko": "DINAS PERTANIAN GUNUNG KIDUL",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0358",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. SUMEDANG",
+        "nama_toko": "DINAS PERTANIAN KABUPATEN SUMEDANG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0359",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. BLORA",
+        "nama_toko": "DINAS PERTANIAN KAB. BLORA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0360",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. BONDOWOSO",
+        "nama_toko": "DINAS PERTANIAN BONDOWOSO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0361",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KAB. LOMBOK TIMUR",
+        "nama_toko": "DINAS PERTANIAN LOMBOK TIMUR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-0362",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. NGAWI",
+        "nama_toko": "DINAS PERTANIAN NGAWI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-169",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. TUBAN",
+        "nama_toko": "PROYEK TUBAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-184",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KOTA KUPANG",
+        "nama_toko": "DIRJEN TANAMAN PANGAN (PROYEK KUPANG)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-186",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "PROYEK POLIWALI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-189",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "PROYEK SUMENEP",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-193",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DISPERTA TANAMAN PANGAN (PROYEK BIMA)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-194",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DIRJEN TANAMAN PANGAN (PROYEK DOMPU)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-197",
+        "provinsi": "JAWA BARAT",
+        "kota": "KAB. GARUT",
+        "nama_toko": "DISPERTA PROVINSI JAWA BARAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-199",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. CILACAP",
+        "nama_toko": "KABUPATEN CILACAP (DINAS PERTNIAN JAWA TENGAH)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-200",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "DINAS PERTANIAN TANAMAN PANGAN PALEMBANG SUMATERA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-205",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "KABUPATEN MERANGIN (DISPERTA JAMBI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-206",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "DISPERTA PROVINSI JAWA TIMUR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-213",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DINAS TANAMAN PANGAN DAN PERTERNAKAN KENDARI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-216",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "KABUPATEN TANJAB BARAT (DISPERTA JAMBI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-217",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "KABUPATEN MUARO (DISPERTA JAMBI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-218",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KABUPATEN TOLITOLI (DISPERTA SULAWESI TENGAH)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-230",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "KABUPATEN BUNGO (DISPERTA PROVINSI JAMBI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-233",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "DISPERTA PROVINSI SULAWESI SELATAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-235",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "KABUPATEN SAROLANGUN (DISPERTA PROVINSI JAMBI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-259",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KABUPATEN BATANGHARI (PROVINSI JAMBI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-263",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. GROBOGAN",
+        "nama_toko": "DINAS PERTANIAN DAN PERKEBUNAN KAB. GROBOGAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-271",
+        "provinsi": "NUSA TENGGARA BARAT",
+        "kota": "KOTA MATARAM",
+        "nama_toko": "DISPERTA PROVINSI NTB",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-279",
+        "provinsi": "BENGKULU",
+        "kota": "KOTA BENGKULU",
+        "nama_toko": "DISPERTA PROVINSI BENGKULU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-285",
+        "provinsi": "NUSA TENGGARA TIMUR",
+        "kota": "KOTA KUPANG",
+        "nama_toko": "ANAMAR WAHANA SIRNARASA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-287",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "CV. MITRA HORTI MANDIRI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "PROYEK-290",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "DISPERTA PROVINSI JAWA TIMUR (BANYUWANGI)",
+        "tipe_customer": "Lainnya",
+        "kode_area": "PROYEK",
+        "kode_amm": "PROYEK"
+    },
+    {
+        "kode_customer": "SM01-0998",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS SARANA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-0999",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO RAHMAD",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1000",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS ANAM TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1001",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS TANI AGUNG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1002",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS PRANYOTO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1003",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS HALWA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1004",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS SINAR JAYA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1005",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS EVAN JAYA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1006",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS MEKAR JAYA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1007",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS SUBUR JAYA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1008",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS PAK YANTO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1009",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS SARANA MULTI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1010",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS MUNCUL JAYA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1012",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS ANDRE TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1013",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS TANI JAYA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1014",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS MULYO TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1015",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS ALAM TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1016",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS NUNG TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1017",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO MUH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1018",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO MIJO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1019",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO AMAD",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1020",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO FENDI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1021",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO PUTRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1022",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO DIDI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1023",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO FAUZI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1024",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "KIOS JAYA TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1025",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO SUYIT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1026",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "PADANG GUCI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1038",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "BOIMIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-1081",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG SELATAN",
+        "nama_toko": "KIOS TANJUNG TANI ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-289",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG BARAT",
+        "nama_toko": "KIOS JAYA SUBUR",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-291",
+        "provinsi": "KALIMANTAN SELATAN",
+        "kota": "KAB. KOTABARU",
+        "nama_toko": "ILHAM FAJAR LAMPUNG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-292",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TENGAH",
+        "nama_toko": "KONCO TANI LAMPUNG TENGAH",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-294",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TENGAH",
+        "nama_toko": "KIOS HAURA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-303",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TIMUR",
+        "nama_toko": "PROGO TANI LAMPUNG",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-307",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG SELATAN",
+        "nama_toko": "KIOS SAHABAT TANI TALANG JAWA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-308",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG BARAT",
+        "nama_toko": "NIAGA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-309",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG SELATAN",
+        "nama_toko": "KIOS SIDOMAKMUR",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-318",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PRINGSEWU",
+        "nama_toko": "SUWARNO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-321",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TENGAH",
+        "nama_toko": "KIOS ANEKA JAYA ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-329",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG SELATAN",
+        "nama_toko": "KIOS ANTARIKSA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-395",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. PESAWARAN",
+        "nama_toko": "AHMAD MUDZAKIR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM01-437",
+        "provinsi": "LAMPUNG",
+        "kota": "KOTA METRO",
+        "nama_toko": "KIOS TANI MULYA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM01",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-0746",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA PRABUMULIH",
+        "nama_toko": "PRABU AGRO SENTOSA ",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-0891",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KAB. OGAN KOMERING ULU",
+        "nama_toko": "Kios Nadia Tani",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-0892",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KAB. OGAN KOMERING ULU TIMUR",
+        "nama_toko": "Kios Agromart",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-0893",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KAB. OGAN KOMERING ULU TIMUR",
+        "nama_toko": "Kios Hikmah Tani",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-0940",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI SM02",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-371",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KAB. OGAN ILIR",
+        "nama_toko": "AGIS PRATAMA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-372",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA PALEMBANG",
+        "nama_toko": "LIMAN JAYA SAMPURNA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-373",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KAB. OGAN ILIR",
+        "nama_toko": "TOKO SMART TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-374",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA PALEMBANG",
+        "nama_toko": "ANUGERAH AGRO SEJAHTERA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM02-375",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA PRABUMULIH",
+        "nama_toko": "KIOS DUNIA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM02",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM03-0904",
+        "provinsi": "JAMBI",
+        "kota": "KOTA JAMBI",
+        "nama_toko": "ARIZONALDI [NEW]",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM03",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM03-1048",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI SM03",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM03",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM03-480",
+        "provinsi": "JAMBI",
+        "kota": "KAB. BATANGHARI",
+        "nama_toko": "ARIZONALDI SM03",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM03",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-0801",
+        "provinsi": "BENGKULU",
+        "kota": "KOTA BENGKULU",
+        "nama_toko": "RAFLESIA PUTRA TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1080",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA LUBUK LINGGAU",
+        "nama_toko": "MERAH DELIMA TANI ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1115",
+        "provinsi": "BENGKULU",
+        "kota": "KOTA BENGKULU",
+        "nama_toko": "KAPUAS TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1116",
+        "provinsi": "BENGKULU",
+        "kota": "KOTA BENGKULU",
+        "nama_toko": "SALAK TANI ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1120",
+        "provinsi": "BENGKULU",
+        "kota": "KOTA BENGKULU",
+        "nama_toko": "CV. BERKAH GEMILANG BENGKULU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1124",
+        "provinsi": "BENGKULU",
+        "kota": "KAB. BENGKULU UTARA",
+        "nama_toko": "ERWIN TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1133",
+        "provinsi": "SUMATERA SELATAN",
+        "kota": "KOTA LUBUK LINGGAU",
+        "nama_toko": "REDO TANI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1205",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SARANA TANI [LIFIK]",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1206",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKE AP",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1207",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "HIJAU TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1208",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SARANA TANI [ALM ASNAF]",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1209",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NATA SUMBER SUBUR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1210",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ISTANA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1211",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ARSAN TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1212",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKE MASAT",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1213",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKE LUBUK LINGGAU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-1214",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "MERLIN TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-484",
+        "provinsi": "BENGKULU",
+        "kota": "KAB. KEPAHIANG",
+        "nama_toko": "SEDULUR TANI BENGKULU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM04-486",
+        "provinsi": "BENGKULU",
+        "kota": "KOTA BENGKULU",
+        "nama_toko": "MULYA TANI BENGKULU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM04",
+        "kode_amm": "AMM02"
+    },
+    {
+        "kode_customer": "SM05-0680",
+        "provinsi": "RIAU",
+        "kota": "KOTA PEKANBARU",
+        "nama_toko": "PELITA TANI KUALUH",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1040",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "BERINGIN TANI INHIL ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1041",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "MITRA TANI KILAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1042",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "REZEKI TANI JAYA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1043",
+        "provinsi": "RIAU",
+        "kota": "KAB. INDRAGIRI HULU",
+        "nama_toko": "AGRO CIPTA MANDIRI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1044",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SINAR TANI RENGAT ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1045",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SINAR TANI LIRIK INHU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1046",
+        "provinsi": "RIAU",
+        "kota": "KAB. INDRAGIRI HILIR",
+        "nama_toko": "KARYA TANI TEMBILAHAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1047",
+        "provinsi": "RIAU",
+        "kota": "KAB. INDRAGIRI HILIR",
+        "nama_toko": "TOKO PUJA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1048",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "BUMI TANI SIAK",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1049",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SUMBER REZEKI SIAK",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1050",
+        "provinsi": "RIAU",
+        "kota": "KAB. SIAK",
+        "nama_toko": "FAJR TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1051",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TANI JAYA DUMAI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1052",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TANI JAYA KANDIS",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1053",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ZIKRI TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1054",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "MITRA TANI KEMUNING",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1055",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "IDLAN TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1056",
+        "provinsi": "RIAU",
+        "kota": "KAB. KAMPAR",
+        "nama_toko": "FATHI TANI JAYA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1057",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "LAMBADIA TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1058",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TANI MANDIRI ABADI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1059",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TANI RAYA PKU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-1060",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "TOKO 3 BERSAUDARA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-626",
+        "provinsi": "JAMBI",
+        "kota": "KOTA JAMBI",
+        "nama_toko": "ARIZONALDI SM05",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-627",
+        "provinsi": "RIAU",
+        "kota": "KAB. SIAK",
+        "nama_toko": "UD. FAJAR TANI INDRAPURA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-630",
+        "provinsi": "RIAU",
+        "kota": "KOTA PEKANBARU",
+        "nama_toko": "UD. ERA JAYA TANI MAS",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-632",
+        "provinsi": "RIAU",
+        "kota": "KAB. BENGKALIS",
+        "nama_toko": "TOKO SINAR TANI DURI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-633",
+        "provinsi": "RIAU",
+        "kota": "KAB. INDRAGIRI HILIR",
+        "nama_toko": "ACC TANI BARU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM05-710",
+        "provinsi": "RIAU",
+        "kota": "KAB. INDRAGIRI HULU",
+        "nama_toko": "PANCAR TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM05",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-1019",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. BATU BARA",
+        "nama_toko": "KELUARGA TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-1546",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. SERDANG BEDAGAI",
+        "nama_toko": "UD BINA TANI SERDANG ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-1688",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. DELI SUBUR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-1706",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "ENDA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-1707",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "SM08 UD BERKAH ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-1708",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "UD KOST TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-931",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KOTA MEDAN",
+        "nama_toko": "UD. RODA TANI KMP LALANG",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-934",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. SUBUR TANI HAMPARAN PERAK",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-935",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "UD. Permai Agro S",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-936",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "UD. KOLAM TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-940",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. SIMALUNGUN",
+        "nama_toko": "UD. MURNI PEMATANG BANDAR",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM08-952",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "UD. FAJAR TANI KLUMPANG",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM08",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-1063",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DAIRI",
+        "nama_toko": "NASRUL DABUTAR",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-1064",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. KARO",
+        "nama_toko": "WINDO BAHARKO GINTING",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-1196",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. KARO",
+        "nama_toko": "UD MULIA TANI BERASTAGI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-1248",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. SIMALUNGUN",
+        "nama_toko": "UD.BANDAR JAYA ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-1313",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "PEMBIBITAN DARTO",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-934",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DELI SERDANG",
+        "nama_toko": "MEI ANDI SYAHPUTRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM09-941",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KAB. DAIRI",
+        "nama_toko": "UD. ZAHRA TANI SIDIKALANG",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM09",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-000",
+        "provinsi": "SUMATERA UTARA",
+        "kota": "KOTA MEDAN",
+        "nama_toko": "WIRA ANDRYANTO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0189",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "UD USAHA TANI BIREUEN",
+        "tipe_customer": "Dealer",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0190",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "RAHIMAH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0191",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "GEUCHIK AIYUB ACEH",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0194",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "UD CITRA ALAM ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0195",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "UD. KAWAN TANI BIREUEN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0225",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "AGEN MUSLEM",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SM10-0226",
+        "provinsi": "ACEH",
+        "kota": "KAB. BIREUEN",
+        "nama_toko": "UD. SWADAYA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SM10",
+        "kode_amm": "AMM01"
+    },
+    {
+        "kode_customer": "SW01-0230",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. GOWA",
+        "nama_toko": "AHMI TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0231",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. BONE",
+        "nama_toko": "SMART TANI BONE",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0232",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. GOWA",
+        "nama_toko": "TANI JAYA GOWA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0246",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. MAROS",
+        "nama_toko": "KHOIFIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0251",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH PROYEK HORTI SW01",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0287",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "NUR AFIFAH - PROYEK HORTI SW01",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0292",
+        "provinsi": "-",
+        "kota": "-",
+        "nama_toko": "CV. CAHAYA SEJATI HORTI SW01",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0293",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. BONE",
+        "nama_toko": "KIOS SAMAR TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0294",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. JENEPONTO",
+        "nama_toko": "H.SANUDDIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0295",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KOTA MAKASSAR",
+        "nama_toko": "PT MULTI BIOTAMA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0296",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. JENEPONTO",
+        "nama_toko": "KIOS USAHA TANI JENEPONTO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-0297",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. JENEPONTO",
+        "nama_toko": "DG TAJUDDIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-128",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. MAROS",
+        "nama_toko": "RIFAI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-155",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. JENEPONTO",
+        "nama_toko": " TANI SUNGGUMANAI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-163",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. JENEPONTO",
+        "nama_toko": "WAWAN TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-166",
+        "provinsi": "SULAWESI BARAT",
+        "kota": "KAB. MAMUJU",
+        "nama_toko": "CAHAYA DEMAK ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-176",
+        "provinsi": "SULAWESI BARAT",
+        "kota": "KAB. PASANGKAYU",
+        "nama_toko": "Toko Wahyu 577",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-177",
+        "provinsi": "SULAWESI BARAT",
+        "kota": "KAB. PASANGKAYU",
+        "nama_toko": "KHARISMA NAJWA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-181",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. JENEPONTO",
+        "nama_toko": "AMRAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW01-186",
+        "provinsi": "SULAWESI BARAT",
+        "kota": "KAB. PASANGKAYU",
+        "nama_toko": "UD. CAHAYA TOREDA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0226",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. PARIGI MOUTONG",
+        "nama_toko": "REZKI TANI  SAUSU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0263",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BANGGAI",
+        "nama_toko": "TOKO GAMA MAKMUR",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0343",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. BOALEMO",
+        "nama_toko": "TARDI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0358",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "UD VIRA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0404",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "SAHABAT TANI RANDANGAN",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0431",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. PARIGI MOUTONG",
+        "nama_toko": "CHANDRA TANI ",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0433",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BANGGAI",
+        "nama_toko": "TOKO DUA DUA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0441",
+        "provinsi": "SULAWESI BARAT",
+        "kota": "KAB. PASANGKAYU",
+        "nama_toko": "MAKMUR TANI MAMUJU ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0442",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KOTA PALU",
+        "nama_toko": "PRIMA TANI [HJ. DEWI]",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0445",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. PARIGI MOUTONG",
+        "nama_toko": "TOKO PUTRA TANI BANYUWANGI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0468",
+        "provinsi": "SULAWESI BARAT",
+        "kota": "KAB. PASANGKAYU",
+        "nama_toko": "TOKO MUTIARA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0473",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KOTA PALU",
+        "nama_toko": "TOKO MEGA RIA ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0474",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. SIGI",
+        "nama_toko": "SURYANTO BUDI SANTOSO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0489",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KOTA PALU",
+        "nama_toko": "ANAK TANI DONGGALA",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0490",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BANGGAI",
+        "nama_toko": "TOKO SEMANGAT BARU",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-0493",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BANGGAI",
+        "nama_toko": "NURWANTY",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-194",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. POSO",
+        "nama_toko": "D TANI POSO",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-195",
+        "provinsi": "JAWA TENGAH",
+        "kota": "KAB. SRAGEN",
+        "nama_toko": "INDO TANI POSO",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-201",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "SUMBER TANI RANDANGAN ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-202",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "AGRO MANDIRI GORONTALO",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-203",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. SIGI",
+        "nama_toko": "KURNIA TANI SIGI",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-204",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. SIGI",
+        "nama_toko": "KHARISMA TANI SIGIBIROMARU",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-221",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KOTA PALU",
+        "nama_toko": "ASRUDDIN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW02-372",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BANGGAI",
+        "nama_toko": "CAHAYA LUTVIANA SARI PERTANIAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-0406",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. BOLAANG MONGONDOW",
+        "nama_toko": "RIFALDI GUNAWAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-0410",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KOTA BITUNG",
+        "nama_toko": " ZAM-ZAM BITUNG",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-0462",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. MINAHASA",
+        "nama_toko": "APRIANTO SIMON",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-0470",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. BOLAANG MONGONDOW",
+        "nama_toko": "AHMAD YULIANTO",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-0475",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. BOLAANG MONGONDOW UTARA",
+        "nama_toko": "TOKO AKAR TANI",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-142",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. MINAHASA UTARA",
+        "nama_toko": "SEPTIA TANI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-143",
+        "provinsi": "MALUKU UTARA",
+        "kota": "KAB. HALMAHERA UTARA",
+        "nama_toko": "KILIN MAS HALMAHERA",
+        "tipe_customer": "Dealer",
+        "kode_area": "MK01",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-196",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. SIGI",
+        "nama_toko": "Febrianto N.Hi.Topae",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW02",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-198",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. BOLAANG MONGONDOW",
+        "nama_toko": "TANI PRATAMA",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-199",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "SUMBER TANI JAYA GORONTALO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-201",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KAB. BOLAANG MONGONDOW UTARA",
+        "nama_toko": "SUMBER TANI KAIDIPANG",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-202",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KOTA MANADO",
+        "nama_toko": "SUMBER TANI JAYA MANADO",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW03-244",
+        "provinsi": "SULAWESI UTARA",
+        "kota": "KOTA KOTAMOBAGU",
+        "nama_toko": "SAPARUDDIN SW03",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW04-145",
+        "provinsi": "SULAWESI SELATAN",
+        "kota": "KAB. MAROS",
+        "nama_toko": "TS HAYYAN",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW04",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW05-0053",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. BONE BOLANGO",
+        "nama_toko": "PILOLAHEYA TANI ",
+        "tipe_customer": "Lainnya",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW05-0563",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BUOL",
+        "nama_toko": "USAHA BARU JAYA ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW05-0571",
+        "provinsi": "SULAWESI TENGAH",
+        "kota": "KAB. BUOL",
+        "nama_toko": "TOKO SEDERHANA  BUOL",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW05-0575",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. GORONTALO",
+        "nama_toko": "UD TANI SAMI JAYA ",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "SW05-0578",
+        "provinsi": "GORONTALO",
+        "kota": "KAB. BOALEMO",
+        "nama_toko": "MARZUKI BOALEMO",
+        "tipe_customer": "Dealer",
+        "kode_area": "SW03",
+        "kode_amm": "AMM06"
+    },
+    {
+        "kode_customer": "Tunas Subur-001",
+        "provinsi": "JAWA TIMUR",
+        "kota": "KAB. JEMBER",
+        "nama_toko": "ASRORI",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "TS01",
+        "kode_amm": "AMM00"
+    },
+    {
+        "kode_customer": "Tunas Subur-004",
+        "provinsi": "LAMPUNG",
+        "kota": "KAB. LAMPUNG TENGAH",
+        "nama_toko": "AZAM TANI JAYA",
+        "tipe_customer": "Master Dealer",
+        "kode_area": "TS02",
+        "kode_amm": "AMM00"
+    }
+]

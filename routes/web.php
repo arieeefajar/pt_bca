@@ -28,6 +28,7 @@ use App\Http\Controllers\User\KuisionerSkalaPasarProduk;
 use App\Http\Controllers\User\KuisonerAnalisisPesaingController;
 use App\Http\Controllers\User\ProfileControllerSurveyor;
 use App\Http\Controllers\User\SurveyTokoController;
+use App\Models\CustomerProdev;
 use App\Models\ProdevSales;
 use App\Models\Provinsi;
 use Illuminate\Support\Facades\Route;
@@ -337,6 +338,9 @@ Route::middleware(['prevent-back-history'])->group(function () {
 		Route::get('text-process/regretion', [regretionController::class, 'dataProcessing']);
 
 		Route::post('/get-gpt', [ChatGptController::class, 'index']);
+
+		Route::get('regretion-non-linier/{category?}', [RegretionNonLinier::class, 'index']);
+		Route::get('/getPerbandinganProduk/{year}/{city}', [LaporanController::class, 'getPerbandinganProduct']);
 	});
 
 	// route other than surveyor
@@ -421,5 +425,9 @@ Route::middleware(['prevent-back-history'])->group(function () {
 	});
 
 	Route::get('tes-regretion/{category?}', [regretionController::class, 'index']);
-	Route::get('regretion-non-linier/{category?}', [RegretionNonLinier::class, 'index']);
+
+});
+
+Route::get('tes-Data', function () {
+	return response()->json(CustomerProdev::all());
 });

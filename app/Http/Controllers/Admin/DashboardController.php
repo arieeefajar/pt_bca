@@ -33,7 +33,13 @@ class DashboardController extends Controller
 		$dataJumlah = $this->dataForDashboard();
 		$jenis_tanaman = ProdukProdev::select('jenis_tanaman')->distinct()->pluck('jenis_tanaman');
 
-		return view('dashboard.executive', compact('dataJumlah', 'jenis_tanaman'));
+		$kotaRetail = DetailPenyimpanan::with('penyimpanan.customer.kota')->get();
+		$kotaRetail = $kotaRetail->pluck('penyimpanan.customer.kota.id', 'penyimpanan.customer.kota.nama')->toArray();
+		$kotaRetail = array_unique($kotaRetail);
+
+		$tahunRetail = Penyimpanan::has('detail_penyimpanan')->distinct()->selectRaw('YEAR(created_at) as year')->pluck('year')->sort()->reverse();
+
+		return view('dashboard.executive', compact('dataJumlah', 'jenis_tanaman', 'kotaRetail', 'tahunRetail'));
 	}
 
 	public function getDataMaps()
@@ -296,6 +302,7 @@ class DashboardController extends Controller
 		$users = User::whereIn('role', ['executive'])
 			->orderBy('created_at', 'desc')
 			->get();
+
 		return view('admin.dataExecutive', compact('users'));
 	}
 

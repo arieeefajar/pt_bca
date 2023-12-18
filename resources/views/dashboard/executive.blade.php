@@ -412,7 +412,7 @@
                                                     </div>
                                                     <div class="dropdown">
                                                         <button class="btn" type="button"
-                                                            onclick="getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy')">Survey
+                                                            onclick="getSurveyPesaing()">Survey
                                                             Pesaing</button>
                                                     </div>
                                                 </div>
@@ -608,6 +608,31 @@
                             <h6 class="card-title">Persaingan Produk</h4>
                         </div>
                         <div class="card-body">
+
+                            <div class="d-flex mb-3 gap-3">
+                                <div>
+                                    <select name="" id="persaingan_produk_year" class="form-select"
+                                        data-choices data-choices-sorting="true">
+                                        @foreach ($tahunRetail as $item)
+                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <select name="" id="persaingan_produk_kota" class="form-select"
+                                        data-choices data-choices-sorting="true">
+                                        @foreach ($kotaRetail as $index => $item)
+                                            @if ($item == '3509')
+                                                <option selected value="{{ $item }}">{{ $index }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $item }}">{{ $index }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="live-preview">
                                 <div class="table-responsive">
                                     <table class="table table-bordered border-primary align-middle mb-0">
@@ -618,12 +643,7 @@
                                                 <th>Produk Pesaing</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="text-center">
-                                            <tr>
-                                                <td>1</td>
-                                                <td>BETRAS 4</td>
-                                                <td>Contoh 4</td>
-                                            </tr>
+                                        <tbody class="text-center" id="table_perbandingan_produk">
                                         </tbody>
                                     </table>
                                 </div>
@@ -664,11 +684,13 @@
 
     $('#changeCategory').on('change', function() {
         deleteMaps()
+        // console.log(this.value);
         getDataAi(this.value)
         // alert( this.value );
     });
 
     const getDataAi = (category) => {
+        console.log(category);
 
         const url = "{{ route('getMapsAi') }}"
 
@@ -707,13 +729,26 @@
                     });
 
                     $.each(response.data, function(index, value) {
+                        console.log(value);
 
                         const area = `<h6 class="text-center"><b>${index}</b></h6>`
                         const locationName = btoa(value.location.name)
                         const latitude = value.location.latitude
                         const longtitude = value.location.longtitude
-                        const analisis_sentimen =
-                            `<p class="text-center ${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'text-success' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.potential_area_data[category]['sentimen']}</b></p>`
+                        // console.log(value.potential_area_data[category]['sentimen']);
+                        console.log(value.potential_area_data ? 'ada' : 'gaada');
+
+                        let analisis_sentimen = '';
+                        if (value.potential_area_data) {
+                            analisis_sentimen =
+                                `<p class="text-center ${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'text-success' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.potential_area_data[category]['sentimen']}</b></p>`
+                        } else if (value.retail_data) {
+                            analisis_sentimen =
+                                `<p class="text-center ${value.retail_data[category]['sentimen'] === 'Positif' ? 'text-success' : value.retail_data[category]['sentimen'] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.retail_data[category]['sentimen']}</b></p>`
+                        } else {
+                            analisis_sentimen = ''
+                        }
+
 
                         // potential area
                         let wordCountRetail = ''
@@ -761,16 +796,28 @@
                         const containerContent =
                             `<div id="content">${area}${analisis_sentimen}${wordCountRetail}${wordCountPotentialArea}${indexAspek}</div>`
 
-                        var greenIcon = new L.Icon({
-                            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'green' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'yellow' : 'red'}.png`,
-                            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                            iconSize: [25, 41],
-                            iconAnchor: [12, 41],
-                            popupAnchor: [1, -34],
-                            shadowSize: [41, 41]
-                        });
+                        let customIcon;
+                        if (value.potential_area_data || value.retail_data) {
+                            customIcon = new L.Icon({
+                                iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'green' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'yellow' : 'red'}.png`,
+                                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                                iconSize: [25, 41],
+                                iconAnchor: [12, 41],
+                                popupAnchor: [1, -34],
+                                shadowSize: [41, 41]
+                            });
+                        } else {
+                            customIcon = new L.Icon({
+                                iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png`,
+                                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                                iconSize: [25, 41],
+                                iconAnchor: [12, 41],
+                                popupAnchor: [1, -34],
+                                shadowSize: [41, 41]
+                            });
+                        }
                         var marker = L.marker([latitude, longtitude], {
-                            icon: greenIcon
+                            icon: customIcon
                         }).addTo(mapAI).bindPopup(
                             containerContent);
                     });
@@ -1500,7 +1547,13 @@
         return rgbaColor;
     }
 
+    function getSurveyPesaing() {
+        getWord('retail', 'SmVtYmVyLCBKYXdhIFRpbXVy');
+        getPersainganProduk(@json($tahunRetail)[0], 3509)
+    }
+
     function getWord(kategory, daerah) {
+
 
         let url;
 
@@ -2161,5 +2214,57 @@
             chart.appear(1000, 100);
         });
     }
+
+    const select_tahun_perbandingan_produk = $('#persaingan_produk_year');
+    const select_kota_perbandingan_produk = $('#persaingan_produk_kota');
+    select_tahun_perbandingan_produk.change(function() {
+        let val_year = $(this).val()
+        let val_city = select_kota_perbandingan_produk.val()
+        getPersainganProduk(val_year, val_city);
+    })
+    select_kota_perbandingan_produk.change(function() {
+        let val_city = $(this).val()
+        let val_year = select_tahun_perbandingan_produk.val()
+        getPersainganProduk(val_year, val_city);
+    })
+
+    function getPersainganProduk(year, city) {
+
+        $.ajax({
+            type: "get",
+            url: `{{ url('getPerbandinganProduk/${year}/${city}') }}`,
+            dataType: "json",
+            beforeSend: function() {
+                const loading = `<tr><td colspan="3" class="text-center">Loading...</td></tr>`
+                $('#table_perbandingan_produk').html(loading);
+            },
+            success: function(response) {
+                console.log(response);
+                let index_table = 1;
+                let table_content = '';
+                $.each(response, function(index, our_product) {
+                    table_content += `<tr class="text-uppercase"><td>${index_table}</td>`
+                    table_content += `<td>${index}</td>`
+
+                    let competitor = ''
+                    $.each(our_product, function(index2, competitor_product) {
+                        competitor += index2 + ', '
+                    });
+                    competitor = competitor.split('-').join('');
+                    competitor = competitor.slice(0, competitor.lastIndexOf(','));
+
+                    table_content += `<td>${competitor}</td></tr>`
+                    index_table++;
+                });
+
+                $('#table_perbandingan_produk').html(table_content);
+            },
+            error: function() {
+                const loading = `<tr><td colspan="3" class="text-center">Error / tidak ada data</td></tr>`
+                $('#table_perbandingan_produk').html(loading);
+            }
+        });
+    }
+    // @json($tahunRetail);
 </script>
 @endsection
