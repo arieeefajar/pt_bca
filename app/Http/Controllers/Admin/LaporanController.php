@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\DetailPenyimpanan;
 use App\Models\Penyimpanan;
 use App\Models\ProdevSales;
+use App\Models\Product;
 use App\Models\ProdukProdev;
 use App\Models\SuggestionPotensionalArea;
 use App\Models\SuggestionRetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use PhpParser\Error;
 
 class LaporanController extends Controller
 {
@@ -8380,8 +8382,10 @@ class LaporanController extends Controller
 		], 200);
 	}
 
-	function getPerbandinganProduct()
+	function getPerbandinganProduct($year, $city)
 	{
+
+		// dd($year, $city);
 		// $data = Penyimpanan::has('detail_penyimpanan')->get();
 		// $data = Penyimpanan::has('detail_penyimpanan')->whereMonth('created_at', 11)->get();
 		// $data = Penyimpanan::has('detail_penyimpanan')->distinct()->selectRaw('MONTH(created_at) as month')->pluck('month');
@@ -8391,38 +8395,113 @@ class LaporanController extends Controller
 		// 	$query->where('pertanyaan', 'form_pesaing');
 		// })->get();
 
-		$data = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota')->whereHas('penyimpanan', function ($query) {
-			$query->whereMonth('created_at', 10);
+
+		// dd($getKotaRetail);
+
+		$data = DetailPenyimpanan::with('penyimpanan', 'penyimpanan.customer', 'penyimpanan.customer.kota')->whereHas('penyimpanan', function ($query) use ($year, $city) {
+			$query->whereYear('created_at', $year);
 		})->where('pertanyaan', 'form_pesaing')
-			->whereHas('penyimpanan.customer.kota', function ($queryKota) {
-				$queryKota->where('id', '3509');
+			->whereHas('penyimpanan.customer.kota', function ($queryKota) use ($city) {
+				$queryKota->where('id', $city);
 			})->get();
 
-		$data_product_competitor = [];
+		if (count($data) === 0) {
+			throw new Error("Nilai tidak boleh kurang dari 0");
+		}
+
+		// $data_product_competitor = [];
+		// foreach ($data as $val) {
+		// 	$endPointApi = env('PYTHON_END_POINT') . 'retail/' . $val->api_id;
+		// 	$dataAnswer = [Http::get($endPointApi)->json()['data']];
+
+		// 	foreach ($dataAnswer[0]['competitor_product'] as $product) {
+		// 		array_push($data_product_competitor, strtolower($product));
+		// 	}
+		// }
+
+		// $data_product_competitor = $this->countSameName($data_product_competitor);
+
+		// $nilai_3_teratas = array_unique($data_product_competitor);
+		// arsort($nilai_3_teratas);
+		// $nilai_3_teratas = array_slice($nilai_3_teratas, 0, 3, true);
+
+		// $data_final = [];
+		// foreach ($nilai_3_teratas as $ranking) {
+		// 	foreach ($data_product_competitor as $product => $val) {
+		// 		if ($ranking === $val) {
+		// 			$data_final += [$product => $val];
+		// 		}
+		// 	}
+		// }
+
+		$data_compare = [];
 		foreach ($data as $val) {
 			$endPointApi = env('PYTHON_END_POINT') . 'retail/' . $val->api_id;
 			$dataAnswer = [Http::get($endPointApi)->json()['data']];
 
+			$tmp = [$dataAnswer[0]['our_product'] => []];
 			foreach ($dataAnswer[0]['competitor_product'] as $product) {
-				array_push($data_product_competitor, strtolower($product));
+				array_push($tmp[$dataAnswer[0]['our_product']], $product);
+			}
+
+			array_push($data_compare, $tmp);
+		}
+
+		$product_data = [];
+		foreach ($data_compare as $key1 => $val1) {
+			foreach ($val1 as $key2 => $val2) {
+				$nama_produk = Product::where('id', $key2)->pluck('nama_produk')->first();
+				array_push($product_data, $nama_produk);
 			}
 		}
 
-		$data_product_competitor = $this->countSameName($data_product_competitor);
+		$product_data = array_unique($product_data);
+		$product_data = array_combine($product_data, array_fill(0, count($product_data), []));
 
-		$nilai_3_teratas = array_unique($data_product_competitor);
-		arsort($nilai_3_teratas);
-		$nilai_3_teratas = array_slice($nilai_3_teratas, 0, 3, true);
+		foreach ($product_data as $product => $val1) {
 
-		$data_final = [];
-		foreach ($nilai_3_teratas as $ranking) {
-			foreach ($data_product_competitor as $product => $val) {
-				if ($ranking === $val) {
-					$data_final += [$product => $val];
+			foreach ($data_compare as $key2 => $val2) {
+				foreach ($val2 as $key3 => $val3) {
+					$nama_produk = Product::where('id', $key3)->pluck('nama_produk')->first();
+					if ($product == $nama_produk) {
+						foreach ($val3 as $key4 => $val4) {
+							array_push($product_data[$nama_produk], strtolower($val4));
+						}
+					}
 				}
 			}
+
 		}
-		dd($data_final);
+
+		foreach ($product_data as $key => $val) {
+			$product_data[$key] = array_count_values($val);
+		}
+
+		// tes dummy
+		// $product_data = [
+		// 	'7' => [
+		// 		"pioneer b21" => 1,
+		// 		"bisi 18" => 1
+		// 	],
+		// 	'9' => [
+		// 		"awokaoka" => 4,
+		// 		"bjir" => 3,
+		// 		"pkl" => 4,
+		// 		"nk sumo" => 6
+		// 	]
+		// ];
+
+		foreach ($product_data as $key => &$values) {
+			arsort($values);
+			$product_data[$key] = array_slice($values, 0, 3);
+		}
+
+		return response()->json($product_data);
+	}
+
+	function getKotaPerbandinganProduct()
+	{
+
 	}
 	function countSameName($array)
 	{
