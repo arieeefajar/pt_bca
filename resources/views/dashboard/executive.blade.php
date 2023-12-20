@@ -120,30 +120,6 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-                    <h4 class="card-title mb-0">Maps Retail & Potensi Lahan</h4>
-                    <select id="changeCategory" class="text-capitalize form-select mt-3 mt-md-0"
-                        style="width: 100%; max-width: 300px;">
-                        <option value="monthly">monthly</option>
-                        <option value="quarterly">quarterly</option>
-                        <option value="semesterly">semesterly</option>
-                        <option value="yearly">yearly</option>
-                    </select>
-                </div><!-- end card header -->
-
-                <div class="card-body">
-                    <div id="mapAI"
-                        class="leaflet-map d-flex align-items-center justify-content-center text-center bg-white">
-                    </div>
-                </div><!-- end card-body -->
-            </div><!-- end card -->
-        </div>
-        <!-- end col -->
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
                     <h4 class="card-title mb-0">Pertanyaan</h4>
                 </div><!-- end card header -->
                 <div class="card-body">
@@ -670,6 +646,31 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    {{-- map --}}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                    <h4 class="card-title mb-0">Maps Retail & Potensi Lahan</h4>
+                    <select id="changeCategory" class="text-capitalize form-select mt-3 mt-md-0"
+                        style="width: 100%; max-width: 300px;">
+                        <option value="monthly">monthly</option>
+                        <option value="quarterly">quarterly</option>
+                        <option value="semesterly">semesterly</option>
+                        <option value="yearly">yearly</option>
+                    </select>
+                </div><!-- end card header -->
+
+                <div class="card-body">
+                    <div id="mapAI"
+                        class="leaflet-map d-flex align-items-center justify-content-center text-center bg-white">
+                    </div>
+                </div><!-- end card-body -->
+            </div><!-- end card -->
+        </div>
+        <!-- end col -->
     </div>
 </div>
 @endsection
