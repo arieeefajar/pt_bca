@@ -154,8 +154,17 @@
 
     <!-- leaflet plugin -->
     <script src="{{ asset('admin_assets/assets/libs/leaflet/leaflet.js') }}"></script>
+
     {{-- leaflet Css Extend --}}
     <script src="{{ asset('admin_assets/assets/js/leafletExtend/Control.FullScreen.js') }}"></script>
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
+
+    <!-- apexcharts -->
+    <script src="{{ asset('admin_assets/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+    <!-- piecharts init -->
+    <script src="{{ asset('admin_assets/assets/js/apexChartCustom.js') }}"></script>
 
     <script>
         window.onload = function() {

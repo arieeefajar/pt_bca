@@ -116,6 +116,7 @@
         </div> <!-- end col-->
     </div>
 
+    {{-- pertanyaan --}}
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -137,6 +138,32 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                    <h4 class="card-title mb-0">Presentase Angket</h4>
+                    <select id="" class="text-capitalize form-select mt-3 mt-md-0"
+                        style="width: 100%; max-width: 300px;">
+                        <option value="contoh">contoh</option>
+                        <option value="contoh">contoh</option>
+                        <option value="contoh">contoh</option>
+                    </select>
+                </div><!-- end card header -->
+                <!-- end card header -->
+
+                <div class="card-body">
+                    <div id="simple_pie_chart"
+                        data-colors='["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]'
+                        class="apex-charts" dir="ltr"></div>
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end col -->
     </div>
 
     {{-- market Insight --}}
