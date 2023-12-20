@@ -90,20 +90,16 @@ class DashboardController extends Controller
 						$dataArea[$keyArea]['potential_area_data'] = array(
 							'location' => $valueAI['location'],
 							'monthly' => array(
-								'data' => $valueAI['monthly'],
-								'sentimen' => $this->analisisSentimen($valueAI['monthly'])
+								'data' => $valueAI['monthly']
 							),
 							'quarterly' => array(
-								'data' => $valueAI['quarterly'],
-								'sentimen' => $this->analisisSentimen($valueAI['quarterly'])
+								'data' => $valueAI['quarterly']
 							),
 							'semesterly' => array(
-								'data' => $valueAI['semesterly'],
-								'sentimen' => $this->analisisSentimen($valueAI['semesterly'])
+								'data' => $valueAI['semesterly']
 							),
 							'yearly' => array(
-								'data' => $valueAI['yearly'],
-								'sentimen' => $this->analisisSentimen($valueAI['yearly'])
+								'data' => $valueAI['yearly']
 							),
 						);
 					}
@@ -115,20 +111,16 @@ class DashboardController extends Controller
 						$dataArea[$keyArea]['retail_data'] = array(
 							'location' => $valueAI['location'],
 							'monthly' => array(
-								'data' => $valueAI['monthly'],
-								'sentimen' => $this->analisisSentimen($valueAI['monthly'])
+								'data' => $valueAI['monthly']
 							),
 							'quarterly' => array(
-								'data' => $valueAI['quarterly'],
-								'sentimen' => $this->analisisSentimen($valueAI['quarterly'])
+								'data' => $valueAI['quarterly']
 							),
 							'semesterly' => array(
-								'data' => $valueAI['semesterly'],
-								'sentimen' => $this->analisisSentimen($valueAI['semesterly'])
+								'data' => $valueAI['semesterly']
 							),
 							'yearly' => array(
-								'data' => $valueAI['yearly'],
-								'sentimen' => $this->analisisSentimen($valueAI['yearly'])
+								'data' => $valueAI['yearly']
 							),
 						);
 					}
@@ -147,6 +139,101 @@ class DashboardController extends Controller
 						$dataArea[$keyArea]['competitor_identifier_data'] = ['location' => $valueAI['location']];
 					}
 				}
+			}
+
+			// dd($dataAI['potential_area_data']);
+			// sentimen
+			foreach ($dataArea as $keyArea => $valArea) {
+
+				// dd($dataArea);
+
+				$sentimen = array(
+					'monthly' => [],
+					'quarterly' => [],
+					'semesterly' => [],
+					'yearly' => [],
+				);
+
+				// dd($sentimen);
+
+				foreach ($dataAI['potential_area_data'] as $key => $value) {
+					if ($keyArea === $value['location']['name']) {
+
+
+						if ($value['location']['name'] === 'Kareng baru, Nusa Tenggara Barat') {
+							dd($keyArea, $value['location']['name']);
+						}
+
+						foreach ($value['monthly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['monthly'], $valWord);
+							}
+						}
+						foreach ($value['quarterly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['quarterly'], $valWord);
+							}
+						}
+						foreach ($value['semesterly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['semesterly'], $valWord);
+							}
+						}
+						foreach ($value['yearly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['yearly'], $valWord);
+							}
+						}
+					}
+				}
+
+				foreach ($dataAI['retail_data'] as $key => $value) {
+					if ($keyArea === $value['location']['name']) {
+
+						foreach ($value['monthly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['monthly'], $valWord);
+							}
+						}
+						foreach ($value['quarterly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['quarterly'], $valWord);
+							}
+						}
+						foreach ($value['semesterly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['semesterly'], $valWord);
+							}
+						}
+						foreach ($value['yearly'] as $valWord) {
+							$word = $valWord['word'];
+							if ($word !== '<oov>') {
+								array_push($sentimen['yearly'], $valWord);
+							}
+						}
+					}
+				}
+
+				if (count($sentimen['monthly']) > 0) {
+					foreach ($sentimen as $key => $value) {
+						$sentimen[$key] = $this->analisisSentimen($sentimen[$key]);
+					}
+					$dataArea[$keyArea]['sentimen'] = $sentimen;
+				}
+
+				// dd(count($sentimen['monthly']));
+				// foreach ($sentimen as $key => $value) {
+				// 	$sentimen[$key] = $this->analisisSentimen($sentimen[$key]);
+				// }
+
+				// $dataArea[$keyArea]['sentimen'] = $sentimen;
 			}
 
 			foreach ($dataArea as $key => $values) {
