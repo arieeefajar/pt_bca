@@ -691,7 +691,6 @@
     });
 
     const getDataAi = (category) => {
-        console.log(category);
 
         const url = "{{ route('getMapsAi') }}"
 
@@ -730,22 +729,18 @@
                     });
 
                     $.each(response.data, function(index, value) {
-                        console.log(value);
 
                         const area = `<h6 class="text-center"><b>${index}</b></h6>`
-                        const locationName = btoa(value.location.name)
+                        const locationName = value.location.name
                         const latitude = value.location.latitude
                         const longtitude = value.location.longtitude
                         // console.log(value.potential_area_data[category]['sentimen']);
-                        console.log(value.potential_area_data ? 'ada' : 'gaada');
 
                         let analisis_sentimen = '';
-                        if (value.potential_area_data) {
+
+                        if (value.sentimen) {
                             analisis_sentimen =
-                                `<p class="text-center ${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'text-success' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.potential_area_data[category]['sentimen']}</b></p>`
-                        } else if (value.retail_data) {
-                            analisis_sentimen =
-                                `<p class="text-center ${value.retail_data[category]['sentimen'] === 'Positif' ? 'text-success' : value.retail_data[category]['sentimen'] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.retail_data[category]['sentimen']}</b></p>`
+                                `<p class="text-center ${value.sentimen['' + category] === 'Positif' ? 'text-success' : value.sentimen['' + category] === 'Netral' ? 'text-warning' : 'text-danger'}" style="margin-bottom: -10px"><b>Analisis Sentimen : ${value.sentimen['' + category]}</b></p>`
                         } else {
                             analisis_sentimen = ''
                         }
@@ -798,9 +793,9 @@
                             `<div id="content">${area}${analisis_sentimen}${wordCountRetail}${wordCountPotentialArea}${indexAspek}</div>`
 
                         let customIcon;
-                        if (value.potential_area_data || value.retail_data) {
+                        if (value.sentimen) {
                             customIcon = new L.Icon({
-                                iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${value.potential_area_data[category]['sentimen'] === 'Positif' ? 'green' : value.potential_area_data[category]['sentimen'] === 'Netral' ? 'yellow' : 'red'}.png`,
+                                iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${value.sentimen['' + category] === 'Positif' ? 'green' : value.sentimen['' + category] === 'Netral' ? 'yellow' : 'red'}.png`,
                                 shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
                                 iconSize: [25, 41],
                                 iconAnchor: [12, 41],
